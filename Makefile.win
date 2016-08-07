@@ -1,0 +1,56 @@
+RM = rm -f
+RMR = rm -fr
+MKDIR = mkdir -p
+CP = cp
+CPR = cp -r
+
+MAKEFILE = Makefile.win
+MAIN_PROG = maitreya8.exe
+RELEASE_DIR = ../release
+
+SRC_DIR = src
+GUI_DIR = src/gui
+PICS_DIR = src/pics
+RESOURCES_DIR = src/resources
+LOCATION_DIR = src/atlas
+
+all:
+	cd src; make -f $(MAKEFILE); cd ..
+
+clean:
+	cd src; make -f $(MAKEFILE) clean; cd ..
+
+release: all
+	$(MKDIR) $(RELEASE_DIR)
+	cd $(GUI_DIR) && strip $(MAIN_PROG) && cd ..
+	$(RM) $(RELEASE_DIR)/$(MAIN_PROG)
+	$(CP) $(GUI_DIR)/$(MAIN_PROG) $(RELEASE_DIR)
+	$(RM) $(RELEASE_DIR)/geonames1000.sql
+	$(CP) $(LOCATION_DIR)/geonames1000.sql $(RELEASE_DIR)
+	$(CP) COPYING Copying.txt
+	unix2dos Copying.txt
+	$(CP) Copying.txt $(RELEASE_DIR)
+	$(RMR) $(RELEASE_DIR)/pics
+	$(MKDIR) $(RELEASE_DIR)/pics
+	$(CP) $(PICS_DIR)/*.jpg $(RELEASE_DIR)/pics
+	$(CP) $(PICS_DIR)/*.png $(RELEASE_DIR)/pics
+	$(RMR) $(RELEASE_DIR)/xml
+	$(MKDIR) $(RELEASE_DIR)/resources
+	$(CP) $(RESOURCES_DIR)/*.json $(RELEASE_DIR)/resources
+	$(MKDIR) $(RELEASE_DIR)/resources/yogas
+	$(CP) $(RESOURCES_DIR)/yogas/*.json $(RELEASE_DIR)/resources/yogas
+	$(MKDIR) $(RELEASE_DIR)/resources/dasas
+	$(CP) $(RESOURCES_DIR)/dasas/*.json $(RELEASE_DIR)/resources/dasas
+	$(RMR) $(RELEASE_DIR)/fonts
+	$(MKDIR) $(RELEASE_DIR)/fonts
+	$(CPR) $(SRC_DIR)/fonts/Saravali.ttf $(RELEASE_DIR)/fonts
+	$(CP) $(PICS_DIR)/maitreya8.ico $(RELEASE_DIR)
+	$(CP) po/maitreya8.pot $(RELEASE_DIR)
+	for LANG in de de ru te pl it hu ro es fr ta; \
+	do \
+		$(RMR) $(RELEASE_DIR)/$$LANG; \
+		$(MKDIR) $(RELEASE_DIR)/$$LANG; \
+		$(CP) po/$$LANG.gmo $(RELEASE_DIR)/$$LANG/maitreya8.mo; \
+	done
+
+

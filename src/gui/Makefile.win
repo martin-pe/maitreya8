@@ -1,0 +1,48 @@
+.SUFFIXES: .o.cpp
+
+CPP = g++
+AR = ar r
+RM = rm -f
+
+SWE_LIB = ../swe/libswe.a
+BASE_LIB = ../base/libmaitreya_base.a
+JYOTISH_LIB = ../jyotish/libjyotish.a
+JSON_LIB = ../wxJSON/libmaitreya_wxJSON.a
+PDF_LIB = ../wxpdfdoc/libmaitreya_wxpdfdoc.a
+DB_LIB = ../wxsqlite3/libmaitreya_wxsqlite3.a
+DIALOG_LIB = ../dialogs/libmaitreya_dialogs.a
+VIEW_LIB = ../views/libmaitreya_views.a
+
+MAITREYA_PROG = maitreya8.exe
+
+MAKEFILE = Makefile.win
+
+CPPFLAGS = -g -I. -I../.. -I../base -I../jyotish -I../dialogs -I../swe -I../wxpdfdoc \
+	-I../swe `wx-config --cppflags` 
+
+LDLIBS = -lstdc++ $(VIEW_LIB) $(JYOTISH_LIB) $(DIALOG_LIB) $(BASE_LIB) $(SWE_LIB) $(DB_LIB)\
+	$(JSON_LIB) $(PDF_LIB) `wx-config --libs` 
+
+OBS = ApplicationWindow.o BasicVedicChart.o BasicView.o BasicWidget.o ChartField.o \
+	ChildWindow.o DasaTreeWidget.o BarDiagram.o Document.o GraphicalChart.o SheetWriter.o \
+	GraphicGrid.o guibase.o ChildWindowListCtrl.o MenuProvider.o MultipleChildWindow.o \
+	PrintoutSheetCreator.o PdfBase.o PdfPainter.o SarvatobhadraChart.o SplitterWidget.o \
+	Statusbar.o ToolPanel.o TreeWidget.o VedicChart.o VedicRasiChart.o \
+	WesternChart.o YogaEditor.o BasicWesternChart.o SheetWidget.o PdfTools.o \
+	maitreya_resources.o
+
+$(MAITREYA_PROG) : $(OBS)
+	test -f geonames1000.sql || ln -s ../atlas/geonames1000.sql
+	$(CPP) -o $(MAITREYA_PROG) $(OBS) $(LDLIBS)
+
+.cpp.o :
+	$(CPP) -c -o$@ $*.cpp $(CPPFLAGS)
+
+maitreya_resources.o : maitreya8.rc
+	windres -i maitreya8.rc -o maitreya_resources.o \
+	--include-dir /usr/local/include/wx-3.0 --define __WIN32__ 
+
+clean:
+	$(RM) *.o $(MAITREYA_PROG) *.core
+
+

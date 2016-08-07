@@ -1,0 +1,29 @@
+.SUFFIXES: .o.cpp
+
+DB_LIB = libmaitreya_wxsqlite3.a
+
+CPP = g++
+CC = gcc
+AR = ar r
+RM = rm -f
+
+CPPFLAGS = -g -I. `wx-config --cppflags`
+
+LDLIBS = `wx-config --libs` 
+
+OBS = wxsqlite3.o sqlite3.o
+
+all : $(DB_LIB)
+
+$(DB_LIB) : $(OBS)
+	$(AR) $(DB_LIB) $(OBS)
+
+.cpp.o :
+	$(CPP) -c -o$@ $*.cpp $(CPPFLAGS)
+
+.c.o:
+	$(CC) -c $(CFLAGS) $<     
+
+clean:
+	$(RM) *.o $(DB_LIB) *.core
+

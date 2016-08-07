@@ -1,0 +1,31 @@
+.SUFFIXES: .o.cpp
+
+CPP = g++
+AR = ar r
+RM = rm -f
+
+BASE_LIB = libmaitreya_base.a
+
+CPPFLAGS = -w -g -I. -I.. -I../../ -I../swe -I../pics -I../wxJSON -I../wxsqlite3  `wx-config --cppflags`
+
+LDLIBS = `wx-config --libs` 
+
+OBS = AtlasDao.o AtlasImporter.o AtlasLogic.o BaseDao.o Calculator.o ChartConfig.o \
+	ChartProperties.o ColorConfig.o Commands.o Conf.o DataSet.o FileConfig.o \
+	FontProvider.o GraphConfig.o ImageProvider.o Lang.o LanguageConfig.o mathbase.o \
+	MultipleViewConfig.o PlanetList.o PrintoutConfig.o SymbolProvider.o VedicChartConfig.o \
+	AspectConfig.o ViewNode.o WesternChartConfig.o SheetConfig.o \
+	IdConverter.o JSonTool.o maitreya.o ConfigListLoader.o VargaBase.o ConfigStubs.o \
+
+all : $(BASE_LIB)
+
+$(BASE_LIB) : $(OBS)
+	$(AR) $(BASE_LIB) $(OBS)
+
+.cpp.o :
+	$(CPP) -c -o$@ $*.cpp $(CPPFLAGS)
+
+clean:
+	$(RM) *.o $(BASE_LIB) *.core
+
+

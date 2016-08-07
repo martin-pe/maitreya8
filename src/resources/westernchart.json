@@ -1,0 +1,766 @@
+{
+    "configs": [
+        {
+            "name": "Default"
+        },
+        {
+            "name": "Default/signs in plain text",
+            "zodiacalsigns": {
+                "symboltype": 1
+            }
+        },
+        {
+            "name": "Default/signs plain text, rotated/short",
+            "zodiacalsigns": {
+                "symboltype": 1,
+                "rotatesymbols": true
+            }
+        },
+        {
+            "name": "Default/signs plain text, rotated/medium length",
+            "zodiacalsigns": {
+                "symboltype": 2,
+                "rotatesymbols": true
+            }
+        },
+        {
+            "name": "Default/signs rotated",
+            "zodiacalsigns": {
+                "rotatesymbols": true
+            }
+        },
+        {
+            "name": "Default/Colored Signs and Houses",
+            "houses": {
+                "palette": "housestock"
+            },
+            "zodiacalsigns": {
+                "palette": "signstock"
+            }
+        },
+        {
+            "name": "Big Signs",
+            "angles": {
+                "innercircle": {
+                    "radius": "40"
+                },
+                "outercircle": {
+                    "radius": "97"
+                }
+            },
+            "aspects": {
+                "radius": 40
+            },
+            "housenumbers": {
+                "radius": 43
+            },
+            "innerhouse": {
+                "radius": 40
+            },
+            "innertransitplanets": {
+                "radius": 48
+            },
+            "innertransitzodiac": {
+                "radius": 40
+            },
+            "innertransitzodiac1degree": {
+                "radius": 42
+            },
+            "innertransitzodiac5degree": {
+                "radius": 44
+            },
+            "outerhouse": {
+                "radius": 69
+            },
+            "outerzodiac": {
+                "radius": 92,
+								"pen": {
+										"style": "wxSOLID",
+										"width": 2
+								}
+            },
+            "planetmarkerlength": 2,
+            "planets": {
+                "radius": 62
+            },
+            "zodiac": {
+                "radius": 69
+            },
+            "zodiac1degree": {
+                "radius": 70
+            },
+            "zodiac5degree": {
+                "radius": 71
+            },
+            "zodiac10degree": {
+                "radius": 72,
+                "show": true
+            },
+            "zodiacalsigns": {
+                "rotatesymbols": true,
+                "symboltype": 0,
+                "symbolzoomfactor": 200
+            },
+            "zodiacsymbols": {
+                "radius": 85
+            },
+            "innertransitzodiac1degree": {
+                "radius": 41
+            },
+            "innertransitzodiac5degree": {
+                "radius": 42
+            },
+            "innertransitzodiac10degree": {
+                "radius": 44
+            }
+        },
+        {
+            "name": "Big Signs Version 2",
+            "extends": "Big Signs",
+            "zodiac": {
+                "radius": 69,
+								"pen": {
+										"color" : "grey",
+										"style": "wxSOLID",
+										"width": 2
+								}
+            }
+				},
+        {
+            "name": "Big Signs Colored",
+            "extends": "Big Signs",
+            "houses": {
+                "palette": "housestock"
+            },
+            "zodiacalsigns": {
+                "palette": "signstock"
+            }
+        },
+        {
+            "name": "Big Signs Desert",
+            "extends": "Big Signs",
+            "zodiacalsigns": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Big Signs / Desert 2",
+            "extends": "Big Signs Desert",
+            "houses": {
+                "palette": "desert"
+            }
+        },
+        {
+            "name": "Big Signs Rainbow",
+            "extends": "Big Signs",
+            "zodiacalsigns": {
+                "palette": "rainbow",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Big Signs / Rainbow 2",
+            "extends": "Big Signs Rainbow",
+            "houses": {
+                "palette": "rainbow"
+            }
+        },
+        {
+            "name": "Madera",
+            "brush": {
+                "filename": "madera.jpg",
+                "style": "wxSTIPPLE"
+            }
+        },
+        {
+            "name": "Madera/colored signs",
+            "brush": {
+                "filename": "madera.jpg",
+                "style": "wxSTIPPLE"
+            },
+            "zodiacalsigns": {
+                "palette": "madera",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Houses Outside",
+            "angles": {
+                "innercircle": {
+                    "radius": 50
+                },
+                "outercircle": {
+                    "radius": 97
+                }
+            },
+            "aspects": {
+                "radius": 50
+            },
+            "housenumbers": {
+                "radius": 88
+            },
+            "outerhouse": {
+                "radius": 93
+            },
+            "outerzodiac": {
+                "radius": 85
+            },
+            "planets": {
+                "radius": 65
+            },
+            "innerhouse": {
+                "radius": 85
+            },
+            "zodiac": {
+                "radius": 72
+            },
+            "zodiac1degree": {
+                "radius": 74
+            },
+            "zodiac5degree": {
+                "radius": 76
+            },
+            "zodiac10degree": {
+                "radius": 77
+            },
+            "zodiacsymbols": {
+                    "radius": 80
+						}
+        },
+        {
+            "name": "Alternative",
+            "outerzodiac": {
+                "radius": 92,
+								"pen": {
+										"style": "wxSOLID",
+										"width": 2
+								},
+            },
+            "zodiac": {
+                "radius": 69,
+								"pen": {
+										"style": "wxSOLID",
+										"width": 2
+								},
+            },
+            "zodiacsymbols": {
+                "radius": 87
+            },
+            "zodiac1degree": {
+                "radius": 70
+            },
+            "zodiac5degree": {
+                "radius": 72
+            },
+            "zodiac10degree": {
+                "radius": 74,
+                "show": true
+            },
+            "aspects": {
+                "radius": 30
+            },
+            "planets": {
+                "radius": 60
+            },
+            "innerhouse": {
+                "radius": 40
+            },
+            "outerhouse": {
+                "radius": 69
+            },
+            "housenumbers": {
+                "radius": 35
+            },
+            "innertransitplanets": {
+                "radius": 48
+            },
+            "innertransitzodiac": {
+                "radius": 40
+            },
+            "innertransitzodiac1degree": {
+                "radius": 42
+            },
+            "innertransitzodiac5degree": {
+                "radius": 43
+            },
+            "innertransitzodiac10degree": {
+                "radius": 45
+            },
+            "zodiacalsigns": {
+                "rotatesymbols": true,
+                "symboltype": 0,
+                "symbolzoomfactor": 150
+            }
+        },
+        {
+            "name": "Alternative/ colored",
+            "extends": "Alternative",
+						"patterns" : [
+							{
+								"innerFrame" : "zodiac",
+								"outerFrame" : "zodiac10Degree",
+								"palette" : "signstock",
+								"aligntohouses" : false
+							}
+						]
+        },
+        {
+            "name": "Alternative/ Desert",
+            "extends": "Alternative",
+            "zodiacalsigns": {
+								"palette" : "desert",
+                "globaltextcolor": "black"
+							}
+        },
+        {
+            "name": "Alternative/ Desert 2",
+            "extends": "Alternative",
+						"patterns" : [
+							{
+								"innerFrame" : "outerZodiac",
+								"outerFrame" : "zodiac10Degree",
+								"palette" : "desert",
+								"aligntohouses" : false
+							}
+						],
+            "zodiacalsigns": {
+                "globaltextcolor": "black"
+							}
+        },
+        {
+            "name": "Ellipse",
+            "frametype": "ellipse"
+        },
+        {
+            "name": "Triangle",
+            "frametype": "triangle"
+        },
+        {
+            "name": "Rainbow",
+            "zodiacalsigns": {
+                "palette": "rainbow",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Full",
+            "outerzodiac": {
+                "frametype": "rectangle",
+                "radius": "wxSOLID"
+            }
+        },
+        {
+            "name": "Full2",
+            "outerzodiac": {
+                "frametype": "rectangle",
+                "radius": 100
+            },
+            "zodiacalsigns": {
+                "globaltextcolor": "light grey",
+                "rotatesymbols": true,
+                "symboltype": 0,
+                "symbolzoomfactor": 800
+            },
+            "zodiacsymbols": {
+                "radius": 120
+            }
+        },
+        {
+            "name": "Full2a",
+            "outerzodiac": {
+                "frametype": "rectangle",
+                "radius": 100
+            },
+            "zodiacalsigns": {
+                "globaltextcolor": "light grey",
+                "rotatesymbols": false,
+                "symboltype": 0,
+                "symbolzoomfactor": 800
+            },
+            "zodiacsymbols": {
+                "radius": 120
+            }
+        },
+        {
+            "name": "Test2",
+            "zodiacsymbols": {
+                "frametype": "ellipse",
+                "radius": 81
+            },
+            "outerzodiac": {
+                "frametype": "ellipse",
+                "pen": {
+                    "style": "wxSOLID",
+										"color": "gray",
+                    "width": 12
+                },
+                "radius": 95
+            }
+        },
+        {
+            "name": "Do not rotate signs und Zoom Symbols",
+            "outerzodiac": {
+                "radius": 130
+            },
+            "zodiacalsigns": {
+                "globaltextcolor": "light grey",
+                "rotatesymbols": false,
+                "symboltype": 0,
+                "symbolzoomfactor": 350,
+                "palette": "signstock"
+            },
+            "zodiacsymbols": {
+                "radius": 100
+            }
+        },
+        {
+            "name": "Do not rotate with Karo",
+            "brush": {
+                "filename": "karo.jpg",
+                "style": "wxSTIPPLE"
+            },
+            "outerzodiac": {
+                "radius": 130
+            },
+            "zodiacalsigns": {
+                "globaltextcolor": "light grey",
+                "rotatesymbols": false,
+                "symboltype": 0,
+                "symbolzoomfactor": 350,
+                "palette": "signstock"
+            },
+            "zodiacsymbols": {
+                "radius": 110
+            }
+        },
+        {
+            "name": "Aquarius",
+            "angles": {
+                "innercircle": {
+                    "radius": "28"
+                },
+                "outercircle": {
+                    "radius": "97"
+                }
+            },
+            "aspects": {
+                "radius": 75
+            },
+            "housenumbers": {
+                "radius": 24
+            },
+            "innerhouse": {
+                "radius": 20
+            },
+            "innertransitplanets": {
+                "radius": 48
+            },
+            "innertransitzodiac": {
+                "radius": 40
+            },
+            "innertransitzodiac1degree": {
+                "radius": 42
+            },
+            "innertransitzodiac5degree": {
+                "radius": 43
+            },
+            "innertransitzodiac10degree": {
+                "radius": 44
+            },
+            "outerhouse": {
+                "radius": 75
+            },
+            "pen": {
+                "style": "wxSOLID",
+                "width": 3
+            },
+            "planetmarkerlength": 2,
+            "planets": {
+                "radius": 65
+            },
+            "zodiac": {
+                "radius": 75
+            },
+            "zodiac1degree": {
+                "radius": 77
+            },
+            "zodiac5degree": {
+                "radius": 79
+            },
+            "zodiacalsigns": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            },
+            "zodiacsymbols": {
+                "radius": 85
+            }
+        },
+        {
+            "extends": "Big Signs",
+            "houses": {
+                "globaltextcolor": "grey",
+                "palette": "signstock"
+            },
+            "name": "Big Signs/Colored",
+            "zodiacalsigns": {
+                "globaltextcolor": "white",
+                "palette": "housestock"
+            }
+        },
+        {
+            "extends": "Big Signs",
+            "name": "Big Signs/Grobi",
+            "zodiacalsigns": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            },
+            "houses": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "extends": "Big Signs",
+            "name": "Big Signs/Rainbow",
+            "zodiacalsigns": {
+                "palette": "rainbow",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "House numbers inside",
+            "innerhouse": {
+                "radius": 25,
+								"brush": {
+									"color": "#a6a6a6"
+								}
+            },
+            "housenumbers": {
+                "radius": 20
+            }
+        },
+        {
+            "name": "Test Palette",
+            "zodiac": {
+								"pen": {
+										"color" : "green",
+										"style": "wxSOLID",
+										"width": 3
+								}
+            },
+						"patterns" : [
+							{
+								"innerFrame" : "innerHouse",
+								"outerFrame" : "houseNumbers",
+								"palette" : "rainbow",
+								"aligntohouses" : true
+							},
+							{
+								"innerFrame" : "zodiac",
+								"outerFrame" : "outerZodiac",
+								"palette" : "rainbow",
+								"aligntohouses" : false
+							}
+						]
+        },
+        {
+            "name": "Gunnar",
+            "outerzodiac": {
+                "radius": 92,
+								"pen": {
+										"style": "wxSOLID",
+										"width": 2
+								},
+            },
+            "zodiac": {
+                "radius": 69,
+								"pen": {
+										"style": "wxSOLID",
+										"width": 2
+								},
+            },
+            "zodiacsymbols": {
+                "radius": 87
+            },
+            "zodiac1degree": {
+                "radius": 70
+            },
+            "zodiac5degree": {
+                "radius": 72
+            },
+            "zodiac10degree": {
+                "radius": 74,
+                "show": true
+            },
+            "aspects": {
+                "radius": 30
+            },
+            "planets": {
+                "radius": 60
+            },
+            "innerhouse": {
+                "radius": 40
+            },
+            "outerhouse": {
+                "radius": 69
+            },
+            "housenumbers": {
+                "radius": 35
+            },
+            "innertransitplanets": {
+                "radius": 48
+            },
+            "innertransitzodiac": {
+                "radius": 40
+            },
+            "innertransitzodiac1degree": {
+                "radius": 42
+            },
+            "innertransitzodiac5degree": {
+                "radius": 43
+            },
+            "innertransitzodiac10degree": {
+                "radius": 45
+            },
+            "zodiacalsigns": {
+                "rotatesymbols": true,
+                "symboltype": 0,
+                "symbolzoomfactor": 150
+            },
+						"patterns" : [
+							{
+								"innerFrame" : "zodiac",
+								"outerFrame" : "zodiac10Degree",
+								"palette" : "signstock",
+								"aligntohouses" : false
+							}
+						]
+        },
+        {
+            "name": "Gunnar 2",
+            "extends": "Gunnar",
+            "zodiac": {
+								"pen": {
+										"style": "wxSOLID",
+										"width": 3
+								}
+            },
+            "outerzodiac": {
+								"pen": {
+										"style": "wxSOLID",
+										"width": 3
+								}
+            },
+            "zodiac10degree": {
+								"pen": {
+										"style": "wxSOLID",
+										"width": 3
+								}
+            },
+            "zodiacalsigns": {
+                "globaltextcolor": "#cccccc"
+						},
+						"patterns" : [
+							{
+								"innerFrame" : "zodiac10degree",
+								"outerFrame" : "outerzodiac",
+								"palette" : "redstyle",
+								"aligntohouses" : false
+							}
+						]
+				},
+        {
+            "name": "Gunnar Rainbow",
+            "extends": "Gunnar",
+						"patterns" : [
+							{
+								"innerFrame" : "zodiac",
+								"outerFrame" : "zodiac10Degree",
+								"palette" : "rainbow",
+								"aligntohouses" : false
+							}
+						]
+        },
+        {
+            "name": "Test Palette2",
+            "outerzodiac": {
+                "radius": 92,
+								"pen": {
+										"color" : "green",
+										"style": "wxSOLID",
+										"width": 3
+								},
+            },
+            "zodiac": {
+                "radius": 69,
+								"pen": {
+										"color" : "green",
+										"style": "wxSOLID",
+										"width": 3
+								},
+            },
+            "zodiac1degree": {
+                "radius": 70
+            },
+            "zodiac5degree": {
+                "radius": 72
+            },
+            "zodiac10degree": {
+                "radius": 75,
+                "show": true
+            },
+            "aspects": {
+                "radius": 30
+            },
+            "planets": {
+                "radius": 60
+            },
+            "innerhouse": {
+                "radius": 22
+            },
+            "outerhouse": {
+                "radius": 69
+            },
+            "zodiacalsigns": {
+                "rotatesymbols": true,
+                "symboltype": 0,
+                "symbolzoomfactor": 150
+            },
+						"patterns" : [
+							{
+								"innerFrame" : "innerHouse",
+								"outerFrame" : "outerHouse",
+								"palette" : "housestock",
+								"aligntohouses" : true
+							},
+							{
+								"innerFrame" : "zodiac",
+								"outerFrame" : "zodiac10Degree",
+								"palette" : "signstock",
+								"aligntohouses" : false
+							}
+						],
+        },
+        {
+            "name": "Rainbow2",
+            "zodiacalsigns": {
+						  	"palette" : "rainbow",
+                "globaltextcolor": "red"
+            }
+        },
+        {
+            "name": "Test Housepalette",
+            "houses": {
+								"palette" : "redstyle",
+                "globaltextcolor": "green"
+            }
+        },
+        {
+            "name": "Test Rotate Hue",
+            "houses": {
+								"palette" : "madera"
+            }
+        },
+    ]
+}

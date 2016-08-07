@@ -1,0 +1,25 @@
+.SUFFIXES: .o.cpp
+
+JSON_LIB = libmaitreya_wxJSON.a
+
+CPP = g++
+AR = ar r
+RM = rm -f
+
+CPPFLAGS = -g -I. -w `wx-config --cppflags`
+
+LDLIBS = `wx-config --libs` 
+
+OBS = jsonreader.o jsonval.o jsonwriter.o
+
+all : $(JSON_LIB)
+
+$(JSON_LIB) : $(OBS)
+	$(AR) $(JSON_LIB) $(OBS)
+
+.cpp.o :
+	$(CPP) -c -o$@ $*.cpp $(CPPFLAGS)
+
+clean:
+	$(RM) *.o $(JSON_LIB) *.core
+

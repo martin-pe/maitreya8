@@ -1,0 +1,61 @@
+#!/bin/sh
+#
+#  Startup wrapper for maitreya8.bin
+#
+#  Hint:
+#  Script maitreya8 is generated from maitreya8.template by Makefile
+#
+
+progname=$0
+oldcwd=`pwd`
+
+# Resolve symbolic link if possible
+if test -L $0
+then
+	echo "$progname is a link, try to resolve..."
+	echo "Progname is now $progname"
+fi
+
+dirname=`dirname $progname`
+binary="$dirname/maitreya8.bin"
+
+datarootdir="DATAROOTDIR"
+abstopbuilddir="ABSTOPBUILDDIR"
+
+# test if binary exists an can be executed
+if ! test -f $binary 
+then
+	echo "Error: binary $binary not found in directory $dirname, exit"
+	exit 1
+fi
+
+if ! test -x $binary 
+then
+	echo "Error: binary $binary in directory $dirname not executable, exit"
+	exit 1
+fi
+
+localdatadir="$dirname/.."
+xmltestfile="$localdatadir/resources/multipleview.json"
+
+if test -f $xmltestfile
+then
+	# echo "Seems to be local installation in $abstopbuilddir, setting datadir to '$localdatadir'"
+	datadir="$localdatadir"
+else
+	# echo "Seems to be regular installation in $datarootdir, setting datadir to '$datarootdir/maitreya8'"
+	datadir="$datarootdir/maitreya8"
+fi
+
+command="$dirname/maitreya8.bin $datadir $*"
+
+echo
+echo "Maitreya 8 startup parameters are"
+echo "  Executable: $dirname/maitreya8.bin"
+echo "  Datadir:    $datadir"
+echo "  Command:    $command"
+echo
+
+$command
+
+

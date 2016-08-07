@@ -1,0 +1,197 @@
+
+THIS IS NOT THE GENERIC GNU INSTALL FILE.
+
+Installation instructions for Maitreya
+======================================
+
+Here you can get some hints for successful compilation. These steps are NOT required if you donwloaded the binary package.
+
+Table of Contents
+-----------------
+
+1. Installation on UNIX-like systems
+2. Installation on Windows systems
+3. Installation on Mac systems
+
+1. Installation on UNIX-like systems 
+====================================
+
+The distribution is based on automake, so the traditional configure/make
+should be sufficient on most systems.
+
+The compilation should work on most UNIX or Linux Systems. The program is
+known to compile on systems like Redhat Linux, Debian, SuSE and FreeBSD. 
+
+Prerequisites
+-------------
+
+You must have installed wxWidgets including the headers. Versions 3.0 or 2.8 both work.
+
+Most platforms provide ready-to-use prebuild packages.
+
+Example list for wx 2.8 installation on Ubuntu Feisty is
+
+    * libwxbase2.8-0
+    * libwxbase2.8-dev
+    * libwxgtk2.8-0
+    * wx2.8-headers
+
+Most platforms have only 2 or 3 required packages. We recommend UNICODE packages if 
+your platform provides ansi and unicode versions of the software.
+If not mentioned, unicode will be most likely the default.
+
+You can also compile wx from source code, see http://www.wxwidgets.org.
+
+configure
+---------
+
+Let's assume that you installed wxWidgets.
+
+Default installation directory is /usr/local/maitreya.
+
+If you want to change this type
+
+ ./configure --prefix=<directory>
+
+where <directory> could be something like '/usr' or '/opt'. All will be installed under
+/usr/maitreya or /opt/maitreya etc.
+
+ALL the data are installed  under $(prefix)/maitreya.
+So there's nothing under /usr/local/share/icons, etc. Only a link from
+/usr/local/bin/maitreya to the main binary will be created.
+prefix is /opt).
+
+The wx-config script is essential for the platform dependent compiler switches.
+configure must find it, otherwise there's no chance to compile the program
+well. wx-config is searched in various standard directories. If configure
+doesn't find your wx-config, start configure with the option
+
+ --with-wx-config-dir=<directory>
+
+The resulting executable (src/gui/maitreya) will be quite big. You can strip if you don't
+want debugging informations (strip src/gui/maitreya).
+
+Please read the font installation note after compilation. The font "MaitreyaSymbols.ttf" from
+the directory "src/fonts" must be installed onto your system.
+
+- End of *nix notes
+
+2. Installation on Win32 systems
+================================
+
+You can use either MS Visual Studio Express 2005 or MinGW compiler.
+
+Visual Studio Express 2008
+--------------------------
+
+Visual Studio Express 2008 can be downloaded for free.
+
+Please follow the isntallation instructions. You must register for Visual Studio, it's for free.
+
+wxWidgets compilation is straight forward. The project files are located under build/msw.
+Recommeded target for first time compilation is the "Unicode Debug" target.
+
+Please read the wx documentation for more details.
+
+The environment variable WXWIN must be set to the directory of the wxWidgets installation (e.g. d:\wxWidgets-2.8.7). 
+
+The Maitreya project is located in "maitreya.sln" in the root directory of the package.
+The batch script "setup_vcpp_resources.bat" can be used to copy the necessary directories (with language resources etc).
+
+Compilation should be done for the target "Unicode Debug". This must be same as before in wx compilation.
+
+Make "gui" the main project (right click on the project context menu).
+
+Main target of the project is the executable "maitreya.exe" in the directory "src/gui".
+
+Remark: older versions of Developer Studio (like 5.0 or 6.0 and Visual Studio Express 2005) are not supported by the software.
+
+MinGW
+-----
+
+The compilation with MinGW is more complicated. 
+
+First step: install MingW
+
+Second step: Installation of wxWidgets
+--------------------------------------
+
+Get the source code for wxWidgets from wxwidgets.org. You can fetch either the
+windows packages (like wx-msw) or the wxAll package. Unpack the source code
+and read the documentation under doc/msw.
+
+Go to the the root directory of the wxWidgets source code distribution.
+
+Type
+ ./configure --disable-shared --enable-unicode
+ make
+ make install
+
+You can also leave the option --disable-shared. You will then get a shared
+library of wxWidgets. The release will be bigger then.
+
+If everything goes well, you'll have a ready-to-use wxWidgets installation.
+
+You can test your installation by compiling one of the samples (e.g. samples
+minimal). Just go to the directory, type
+ make 
+and start the example.
+
+
+Third step: Installation of Maitreya
+------------------------------------
+Create a directory for the source code tree, e.g. c:\maitreya. Enter this
+directory.
+
+Unpack the source code archive either by
+unzip <path>/maitreya-<version>.zip (zip file)
+
+or tar jxvf <path>/maitreya-<version>.tar.bz2 (bzip2 file)
+
+Type
+ make -f Makefile.win
+
+Hope that everything's going right.
+
+The executable (src/gui/maitreya.exe) will be quite big. You can strip if you
+don't want debugging informations (strip src/gui/maitreya.exe).
+
+Note
+-----
+You need mingw DLL to start the program. So you must either start
+the program from the mingw shell or you must provide these files (mingw*.dll).
+
+These files are located n the msys or mingw directory. It's okay to copy them to the
+place where the executable or Maitreya is located. Probably you can 
+also copy them to the windows directory, try it.
+
+- End of Windows notes
+
+3. Compilation on MacOS X
+=========================
+
+The program compiles and runs on MacOS Snow Leopard.
+
+Prerequisites are:
+- GNU gcc and g++ (install xcode)
+- statically linked version of wxWidgets for release package.
+- wxWidgets from xcode works, too
+
+Compilation of wxWidgets
+- get wxWidgets 2.8, unpack it
+- create folder for build, change to folder and call configure as follows
+
+../configure --enable-unicode --disable-shared
+
+Unpack the maitreya release and call configure 
+
+CLAGS="-arch i386" CPPLAGS="-arch i386" configure --with-libfontconfig-prefix=/usr/X11 --with-wx-config=[path-to-wx-config]/wx-config
+
+Calling the script "create_mac_release.sh" will create the release directory and application folder "Maitreya6.app" with required data
+
+Create the disk image with
+create_mac_release.sh dmg
+
+- End of MacOS notes
+
+

@@ -1,0 +1,196 @@
+{
+   "configs" : [
+      {
+         "description" : "Sunapha: a planet (excepting Sun) in the 2nd from the Moon",
+         "effect" : "One born with Sunapha Yoga will be wealthy, will have self-made prowess (or will reach an exalted position of his own efforts), be very virtuous, be learned in Shastras and their meanings, be very famous, virtuous (like Lord Rama), be peacefully disposed, happy, be a king, or a minister and be highly intelligent.",
+         "rule" : "return ( getRasi( Mars ) == red12( getRasi( Moon ) + 1 ) or getRasi( Mercury ) == red12( getRasi( Moon ) + 1 )\n  or getRasi( Jupiter ) == red12( getRasi( Moon ) + 1 ) or getRasi( Venus ) == red12( getRasi( Moon ) + 1 )\n  or getRasi( Saturn ) == red12( getRasi( Moon ) + 1 ) )\n  and getRasi( Mars ) != red12( getRasi( Moon ) - 1 ) and getRasi( Mercury ) != red12( getRasi( Moon ) - 1 )\n  and getRasi( Jupiter ) != red12( getRasi( Moon ) - 1 ) and getRasi( Venus ) != red12( getRasi( Moon ) - 1 )\n  and getRasi( Saturn ) != red12( getRasi( Moon ) - 1 ) ;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Anapha: a planet (excepting Sun) in the 12th from the Moon",
+         "effect" : "One born in Anapha Yoga will be eloquent in speech, magnanimous, virtuous, will enjoy food, drink, flowers, robes and females, will be famous, calm in disposition, happy, pleased and will possess a beautiful body.",
+         "rule" : "return ( getRasi( Mars ) == red12( getRasi( Moon ) - 1 ) or getRasi( Mercury ) == red12( getRasi( Moon ) - 1 )\n  or getRasi( Jupiter ) == red12( getRasi( Moon ) - 1 ) or getRasi( Venus ) == red12( getRasi( Moon ) - 1 )\n  or getRasi( Saturn ) == red12( getRasi( Moon ) - 1 ) )\n  and getRasi( Mars ) != red12( getRasi( Moon ) + 1 ) and getRasi( Mercury ) != red12( getRasi( Moon ) + 1 )\n  and getRasi( Jupiter ) != red12( getRasi( Moon ) + 1 ) and getRasi( Venus ) != red12( getRasi( Moon ) + 1 )\n  and getRasi( Saturn ) != red12( getRasi( Moon ) + 1 ) ;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura: planets (excepting Sun) in the 2nd and 12th from the Moon",
+         "effect" : "One born in Durudhura Yoga will be famous on the earth for his speech, wisdom, valour and virtues. He will enjoy freedom, comforts, wealth and conveyances. He will be liberal, but will come to grief by maintaining his family members. He will have good behavior.",
+         "rule" : "return ( getRasi( Mars ) == red12( getRasi( Moon ) - 1 ) or getRasi( Mercury ) == red12( getRasi( Moon ) - 1 )\n  or getRasi( Jupiter ) == red12( getRasi( Moon ) - 1 ) or getRasi( Venus ) == red12( getRasi( Moon ) - 1 )\n  or getRasi( Saturn ) == red12( getRasi( Moon ) - 1 ) )\n  and ( getRasi( Mars ) == red12( getRasi( Moon ) + 1 ) or getRasi( Mercury ) == red12( getRasi( Moon ) + 1 )\n  or getRasi( Jupiter ) == red12( getRasi( Moon ) + 1 ) or getRasi( Venus ) == red12( getRasi( Moon ) + 1 )\n  or getRasi( Saturn ) == red12( getRasi( Moon ) + 1 ) ) ;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Kemadruma: no planet (excepting Sun) in the 2nd and 12th from the Moon",
+         "effect" : "The native with Kemadruma Yoga will be deprived of life, drinks, food, residence, robes and friends, though he may belong to regal scion. He will suffer from poverty, grief, sickness and be dirty. He will live by hard labor, be wicked and be inimically disposed to one and all.",
+         "rule" : "return getRasi( Mars ) != red12( getRasi( Moon ) - 1 ) and getRasi( Mercury ) != red12( getRasi( Moon ) - 1 )\n  and getRasi( Jupiter ) != red12( getRasi( Moon ) - 1 ) and getRasi( Venus ) != red12( getRasi( Moon ) - 1 )\n  and getRasi( Saturn ) != red12( getRasi( Moon ) - 1 ) and getRasi( Mars ) != red12( getRasi( Moon ) + 1 )\n  and getRasi( Mercury ) != red12( getRasi( Moon ) + 1 ) and getRasi( Jupiter ) != red12( getRasi( Moon ) + 1 )\n  and getRasi( Venus ) != red12( getRasi( Moon ) + 1 ) and getRasi( Saturn ) != red12( getRasi( Moon ) + 1 ) ;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Sunapha Yoga caused by Mars",
+         "effect" : "If Sunapha Yoga is caused by Mars (by being in the 2nd of the Moon), the native will be valorous, wealthy, cruel in speech, be an Army chief, will be fierce, torturous, proud and inimical.",
+         "rule" : "return getRasi( Mars ) == red12( getRasi( Moon ) + 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Sunapha Yoga caused by Mercury",
+         "effect" : "If Mercury be the cause of Sunapha Yoga, the native will be expert in Vedas, Shastras and music. He will be virtuous and a poet. He will be high-minded, intent on thinking of good for all and will possess a brilliant physique.",
+         "rule" : "return getRasi( Mercury ) == red12( getRasi( Moon ) + 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Sunapha Yoga caused by Jupiter",
+         "effect" : "Should Jupiter cause Sunapha Yoga, a person so born will have high learning, will be famous and himself be a king, or dear to a king. He will have a good family and have plenty of wealth.",
+         "rule" : "return getRasi( Jupiter ) == red12( getRasi( Moon ) + 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Sunapha Yoga caused by Venus",
+         "effect" : "Venus will give wife, lands, wealth, prowess, quadrupeds and valour. The native will further be honoured by king and will also be courageous.",
+         "rule" : "return getRasi( Venus ) == red12( getRasi( Moon ) + 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Sunapha Yoga caused by Saturn",
+         "effect" : "Should Saturn be in the 2nd of the Moon causing Sunapha Yoga, the native will be skillful, be worshipped by the people in his village and city and will have wealth galore. He will be devoted to his work and be brave.",
+         "rule" : "return getRasi( Saturn ) == red12( getRasi( Moon ) + 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Anapha Yoga caused by Mars",
+         "effect" : "If Anapha Yoga is caused by Mars-being in the 12th from the Moonthe native will head a band of thieves, will be arrogant in disposition, be honoured, fond of war, given to anger, good, praiseworthy, good-bodied and proud.",
+         "rule" : "return getRasi( Mars ) == red12( getRasi( Moon ) - 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Anapha Yoga caused by Mercury",
+         "effect" : "If by Mercury, the native will be an expert in singing, dancing and writing, will be a poet and an able orator. He will be conferred honours by tile ruler. will have a brilliant body and will perform famous deeds.",
+         "rule" : "return getRasi( Mercury ) == red12( getRasi( Moon ) - 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Anapha Yoga caused by Jupiter",
+         "effect" : "Should the Yoga be caused by Jupiter, the native will be majestic, strong, intelligent, fond of assembly, famous through a king and will be a poet.",
+         "rule" : "return getRasi( Jupiter ) == red12( getRasi( Moon ) - 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Anapha Yoga caused by Venus",
+         "effect" : "Venus causing this Yoga gives an exceedingly great liking for women. The native will be dear to the king and will enjoy pleasures. He will be splendourous, famous and will have abundant gold.",
+         "rule" : "return getRasi( Venus ) == red12( getRasi( Moon ) - 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Anapha Yoga caused by Saturn",
+         "effect" : "If Saturn causes this Yoga, the subject will be broad-shouldered, be a leader, be indired to keep up his commitments, be rich with quadrupeds, devoted to an infamous lady and be virtuous.",
+         "rule" : "return getRasi( Saturn ) == red12( getRasi( Moon ) - 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Mars and Mercury",
+         "effect" : "If Durudhura Yoga is caused by the pair of Mars and Mercury, the native will be a liar, be very wealthy, expert, very wicked, greatly miserly, addicted to an old lady and be chief in his race.",
+         "rule" : "return ( getRasi( Mars ) == red12( getRasi( Moon ) - 1 ) and getRasi( Mercury ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Mars ) == red12( getRasi( Moon ) + 1 ) and getRasi( Mercury ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Mars and Jupiter",
+         "effect" : "If Durudhura Yoga is caused by Mars and Jupiter, one will be famous by his deeds, be mighty (or wealthy), inimically disposed to many and disposed to anger, will protect his men and will gather money.",
+         "rule" : "return ( getRasi( Mars ) == red12( getRasi( Moon ) - 1 ) and getRasi( Jupiter ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Mars ) == red12( getRasi( Moon ) + 1 ) and getRasi( Jupiter ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Mars and Venus",
+         "effect" : "If the Moon has Venus and Mars on either side, the native will have a virtuous wife, will be fortunate, argumentative, pure, skillful, will like doing exercises and be bold in war.",
+         "rule" : "return ( getRasi( Mars ) == red12( getRasi( Moon ) - 1 ) and getRasi( Venus ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Mars ) == red12( getRasi( Moon ) + 1 ) and getRasi( Venus ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Mars and Saturn",
+         "effect" : "If Saturn and Mars plank the Moon, the native will be the husband of a bad lady. He will save a lot of money. He will have vices. He will be given to anger and be a tale bearer. He will win over his enemies.",
+         "rule" : "return ( getRasi( Mars ) == red12( getRasi( Moon ) - 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Mars ) == red12( getRasi( Moon ) + 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Mercury and Jupiter",
+         "effect" : "Should Jupiter and Mercury be on either side of the Moon, the native will be virtuous, learned in Shastras, garrulous, be a good poet, be wealthy, capable of making sacrifices and be famous.",
+         "rule" : "return ( getRasi( Mercury ) == red12( getRasi( Moon ) - 1 ) and getRasi( Jupiter ) == red12( getRasi( Moon ) + 1 ) )\nor ( getRasi( Mercury ) == red12( getRasi( Moon ) + 1 ) and getRasi( Jupiter ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Mercury and Venus",
+         "effect" : "If Durudhura Yoga is caused by Mercury and Venus, the person will be a sweet speaker, be fortunate, splendourous, beautiful, be fond of dance, singing etc., be served, valiant and be a minister.",
+         "rule" : "return ( getRasi( Mercury ) == red12( getRasi( Moon ) - 1 ) and getRasi( Venus ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Mercury ) == red12( getRasi( Moon ) + 1 ) and getRasi( Venus ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Mercury and Saturn",
+         "effect" : "If Mercury and Saturn plank the Moon, the native will move from one country to the other to earn money. He will not be much educated, will be worshipped by others, but be inimical to his own men.",
+         "rule" : "return ( getRasi( Mercury ) == red12( getRasi( Moon ) - 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Mercury ) == red12( getRasi( Moon ) + 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Jupiter and Venus",
+         "effect" : "Should Jupiter and Venus cause this Yoga, by being on either side of the Moon, the native will be courageous, intelligent, will have political wisdom, will possess gold and gems, will be famous and be in the employ of a king.",
+         "rule" : "return ( getRasi( Jupiter ) == red12( getRasi( Moon ) - 1 ) and getRasi( Venus ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Jupiter ) == red12( getRasi( Moon ) + 1 ) and getRasi( Venus ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Jupiter and Saturn",
+         "effect" : "If Jupiter and Saturn be such planets, as to cause Durudhura Yoga the native will be happy, will have knowledge of politics, will be sweet in speech, learned, peaceful, wealthy and good looking.",
+         "rule" : "return ( getRasi( Jupiter ) == red12( getRasi( Moon ) - 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Jupiter ) == red12( getRasi( Moon ) + 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      },
+      {
+         "description" : "Durudhura Yoga caused by Venus and Saturn",
+         "effect" : "One, who has Durudhura Yoga caused by Venus and Saturn will conduct himself, like an old man (i.e. so mature), be chief in his race, skillful, dear to women and will have plenty of money. He will be honoured by the king and gather abundant wealth.",
+         "rule" : "return ( getRasi( Venus ) == red12( getRasi( Moon ) - 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) + 1 ) ) \nor ( getRasi( Venus ) == red12( getRasi( Moon ) + 1 ) and getRasi( Saturn ) == red12( getRasi( Moon ) - 1 ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Lunar"
+      }
+   ]
+}

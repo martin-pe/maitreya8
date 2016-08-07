@@ -1,0 +1,580 @@
+{
+   "configs" : [
+      {
+         "description" : "Dhuma in 1",
+         "effect" : "If Dhuma is in Lagna, the native will be valiant, endowed with beautiful eyes, stupefied in disposition, unkind, wicked and highly short-tempered.",
+         "rule" : "return getBhava( Dhuma ) == House1;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 2",
+         "effect" : "If Dhuma is in Dhana Bhava, the native will be sickly, wealthy, devoid of a limb, will incur humiliation at royal level, be dull witted and be a eunuch.",
+         "rule" : "return getBhava( Dhuma ) == House2;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 3",
+         "effect" : "Dhuma is in Sahaja Bhava, the native will be intelligent, very bold, delighted, eloquent and be endowed with men and wealth.",
+         "rule" : "return getBhava( Dhuma ) == House3;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 4",
+         "effect" : "If Dhuma is in Bandhu Bhava, the native will be grieved on account of being given up by his female, but will be learned in all Shastras.",
+         "rule" : "return getBhava( Dhuma ) == House4;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 5",
+         "effect" : "If Dhuma is in Putra Bhava, the native will have limited progeny, be devoid of wealth, be great, will eat anything and be bereft of friends and Mantras.",
+         "rule" : "return getBhava( Dhuma ) == House5;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 6",
+         "effect" : "If Dhuma is in Ari Bhava, the native will be strong, will conquer his enemies, be very brilliant, famous and free from diseases.",
+         "rule" : "return getBhava( Dhuma ) == House6;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 7",
+         "effect" : "If Dhuma is in Yuvati Bhava, the native will be penniless, be ever sensuous, skilful in going to other's females and be always devoid of brilliance.",
+         "rule" : "return getBhava( Dhuma ) == House7;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 8",
+         "effect" : "If Dhuma is in Randhra Bhava, the native will be bereft of courage, but be enthusiastic, be truthful, disagreeable, hardhearted and selfish.",
+         "rule" : "return getBhava( Dhuma ) == House8;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 9",
+         "effect" : "If Dhuma is in Dharma Bhava, the native will be endowed sons and fortunes, be rich, honourable, kind, religious and well disposed to his relatives.",
+         "rule" : "return getBhava( Dhuma ) == House9;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 10",
+         "effect" : "If Dhuma is in Karma Bhava, the native will be endowed with sons and fortunes, be delighted, intelligent, happy and truthful.",
+         "rule" : "return getBhava( Dhuma ) == House10;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 11",
+         "effect" : "If Dhuma is in Labha Bhava, the native will be endowed with wealth, grains and gold, be beautiful, will have knowledge of arts, be modest and be skilful in singing.",
+         "rule" : "return getBhava( Dhuma ) == House11;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Dhuma in 12",
+         "effect" : "If Dhuma is in Vyaya Bhava, the native will be morally fallen, will indulge in sinful acts, be interested in other's wives, addicted to vices, unkind and crafty.",
+         "rule" : "return getBhava( Dhuma ) == House12;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 1",
+         "effect" : "If Vyatipata is in Tanu Bhava, the native will be troubled by miseries, be cruel, will indulge in destructive acts, be foolish and will be disposed to his relatives.",
+         "rule" : "return getBhava( Vyatipata ) == House1;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 2",
+         "effect" : "If Vyatipata is in Dhana Bhava, the native will be morally crooked, be bilious, will enjoy pleasures, be unkind, but grateful, be wicked and sinful.",
+         "rule" : "return getBhava( Vyatipata ) == House2;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 3",
+         "effect" : "If Vyatipata is in Sahaja Bhava, the native will be firm in disposition, be a warrior, be liberal, very rich, dear to the king and be head of an Army.",
+         "rule" : "return getBhava( Vyatipata ) == House3;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 4",
+         "effect" : "If Vyatipata is in Bandhu Bhava, the native will be endowed with relatives etc., but not sons and fortunes.",
+         "rule" : "return getBhava( Vyatipata ) == House4;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 5",
+         "effect" : "If Vyatipata is in Putra Bhava, the native will be poor, be charming in appearance, will have imbalances of phlegm, bile and wind, be hard-hearted and shameless.",
+         "rule" : "return getBhava( Vyatipata ) == House5;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 6",
+         "effect" : "If Vyatipata is in Ari Bhava, the native will destroy his enemies, be physically mighty, skilful in use of all kinds of weapons and in arts and be peaceful in disposition.",
+         "rule" : "return getBhava( Vyatipata ) == House6;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 7",
+         "effect" : "If Vyatipata is in Yuvati Bhava, the native will be bereft of wealth, wife and sons, will subdue to females, be miserable, sensuous, shameless and friendly to others.",
+         "rule" : "return getBhava( Vyatipata ) == House7;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 8",
+         "effect" : "If Vyatipata is in Randhra Bhava, the native will have deformity of eyes, be ugly, unfortunate, spiteful to Brahmins and be troubled by disorders of blood.",
+         "rule" : "return getBhava( Vyatipata ) == House8;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 9",
+         "effect" : "If Vyatipata is in Dharma Bhava, the native will have many kinds of business and many friends; he will be very learned, well disposed to his wife and he will be eloquent.",
+         "rule" : "return getBhava( Vyatipata ) == House9;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 10",
+         "effect" : "If Vyatipata is in Karma Bhava, the native will be religious, peaceful, skilful in religious acts, very learned and far-sighted.",
+         "rule" : "return getBhava( Vyatipata ) == House10;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 11",
+         "effect" : "If Vyatipata is in Labha Bhava, the native will be extremely opulent, be honourable, truthful, firm in policy, endowed with many horses and be interested in singing.",
+         "rule" : "return getBhava( Vyatipata ) == House11;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Vyatipata in 12",
+         "effect" : "If Vyatipata is in Vyaya Bhava, the native will be given to anger, associated with many activities, disabled, irreligious and hate his own relatives.",
+         "rule" : "return getBhava( Vyatipata ) == House12;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 1",
+         "effect" : "If Parivesha is in Tanu Bhava, the native will be learned, truthful, peaceful, rich, endowed with sons, pure, charitable and dear to elders.",
+         "rule" : "return getBhava( Parivesha ) == House1;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 2",
+         "effect" : "If Parivesha is in Dhana Bhava, the native will be wealthy, charming, will enjoy pleasures, be happy, very religious and be a Lord.",
+         "rule" : "return getBhava( Parivesha ) == House2;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 3",
+         "effect" : "If Parivesha is in Sahaja Bhava, the native will be fond of his wife, be very charming, pious, well disposed to his men, be a servant and be respectful of his elders.",
+         "rule" : "return getBhava( Parivesha ) == House3;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 4",
+         "effect" : "If Parivesha is in Bandhu Bhava, the native will be wonder-struck, helpful to enemies as well, kind, endowed with everything and be skilful in singing.",
+         "rule" : "return getBhava( Parivesha ) == House4;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 5",
+         "effect" : "If Parivesha is in Putra Bhava, the native will be affluent, virtuous, splendourous, affectionate, religious and dear to his wife.",
+         "rule" : "return getBhava( Parivesha ) == House5;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 6",
+         "effect" : "If Parivesha is in Ari Bhava, the native will be famous and wealthy, be endowed with sons and pleasures, be helpful to all and will conquer his enemies.",
+         "rule" : "return getBhava( Parivesha ) == House6;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 7",
+         "effect" : "If Parivesha is in Yuvati Bhava, the native will have limited number of children, be devoid of happiness, be of mediocre intelligence, very hard-headed and will have a sickly wife.",
+         "rule" : "return getBhava( Parivesha ) == House7;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 8",
+         "effect" : "If Parivesha is in Randhra Bhava, the native will be spiritually disposed, peaceful, strong-bodied, firm in decision, religious and gentle.",
+         "rule" : "return getBhava( Parivesha ) == House8;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 9",
+         "effect" : "If Parivesha is in Dharma Bhava, the native will be endowed with sons, be happy, brilliant, very affluent, be devoid of excessive passion, be honourable and be happy with even a iota.",
+         "rule" : "return getBhava( Parivesha ) == House9;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 10",
+         "effect" : "If Parivesha is in Karma Bhava, the native will be versed in arts, will enjoy pleasures, be strong-bodied and be learned in all Shastras.",
+         "rule" : "return getBhava( Parivesha ) == House10;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 11",
+         "effect" : "If Parivesha is in Labha Bhava, the native will enjoy pleasures through women, be virtuous, intelligent, dear to his people and will suffer disorders of digestive fire.",
+         "rule" : "return getBhava( Parivesha ) == House11;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Parivesha in 12",
+         "effect" : "If Parivesha is in Vyaya Bhava, the native will always be a spendthrift, be miserable, firm and will dishonour elders.",
+         "rule" : "return getBhava( Parivesha ) == House12;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 1",
+         "effect" : "If Chapa is in Tanu Bhava, the native will be endowed with wealth, grains and gold, be grateful, agreeable and devoid of all actions.",
+         "rule" : "return getBhava( Chapa ) == House1;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 2",
+         "effect" : "If Chapa is in Dhana Bhava, the native will speak affably, be very rich, modest, learned, charming and religious.",
+         "rule" : "return getBhava( Chapa ) == House2;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 3",
+         "effect" : "If Chapa is in Sahaja Bhava, the native will be a miser, be versed in many arts, will indulge in thieving, be devoid of some limb and be unfriendly.",
+         "rule" : "return getBhava( Chapa ) == House3;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 4",
+         "effect" : "If Chapa is in Bandhu Bhava, the native will be happy, endowed with quadrupeds, wealth, grains etc., be honoured by the king and be devoid of sickness.",
+         "rule" : "return getBhava( Chapa ) == House4;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 5",
+         "effect" : "If Chapa is in Putra Bhava, the native will be splendourous, far-sighted, pious, affable and will acquire prosperity in all his undertakings.",
+         "rule" : "return getBhava( Chapa ) == House5;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 6",
+         "effect" : "If Chapa is in Ari Bhava, the native will destroy his enemies, be happy, affectionate, pure and will achieve plentifulness in all his undertakings.",
+         "rule" : "return getBhava( Chapa ) == House6;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 7",
+         "effect" : "If Chapa is in Yuvati Bhava, the native will be wealthy, endowed with all virtues, learned in Shastras, religious and agreeable.",
+         "rule" : "return getBhava( Chapa ) == House7;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 8",
+         "effect" : "If Chapa is in Randhra Bhava, the native will be interested in other's jobs, be cruel, interested in other's wives and have a defective limb.",
+         "rule" : "return getBhava( Chapa ) == House8;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 9",
+         "effect" : "If Chapa is in Dharma Bhava, the native will perform penance, will take to religious observations, be highly learned and be famous among men.",
+         "rule" : "return getBhava( Chapa ) == House9;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 10",
+         "effect" : "If Chapa is in Karma Bhava, the native will be endowed with many sons, abundant wealth, cows, buffaloes etc. and will be famous among men.",
+         "rule" : "return getBhava( Chapa ) == House10;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 11",
+         "effect" : "If Chapa is in Labha Bhava, the native will gain many treasures, will be free from diseases, very fiery in disposition, affectionate to his wife and will have knowledge of Mantras and weapons.",
+         "rule" : "return getBhava( Chapa ) == House11;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Chapa in 12",
+         "effect" : "If Chapa is in Vyaya Bhava, the native will be wicked, very honourable, evil in disposition, shameless, will go to other's females and be ever poor.",
+         "rule" : "return getBhava( Chapa ) == House12;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 1",
+         "effect" : "If Upaketu is in Tanu Bhava, the native will be skilful in all branches of learning, be happy, efficient in speech, agreeable and be very affectionate.",
+         "rule" : "return getBhava( Upaketu ) == House1;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 2",
+         "effect" : "If Upaketu is in Dhana Bhava, the native will be a good and affable speaker, be splendourous, will write poetry, be scholarly, honourable, modest and endowed with conveyances.",
+         "rule" : "return getBhava( Upaketu ) == House2;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 3",
+         "effect" : "If Upaketu is in Sahaja Bhava, the native will be miserly, cruel acts, thin-bodied, poor and will incur severe diseases.",
+         "rule" : "return getBhava( Upaketu ) == House3;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 4",
+         "effect" : "If Upaketu is in Bandhu Bhava, the native will be charming, very virtuous, gentle, interested in Vedic Knowledge and be always happy.",
+         "rule" : "return getBhava( Upaketu ) == House4;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 5",
+         "effect" : "If Upaketu is in Putra Bhava, the native will be happy, will enjoy pleasures, be versed in arts, skilled in expedients, intelligent, eloquent and will respect elders.",
+         "rule" : "return getBhava( Upaketu ) == House5;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 6",
+         "effect" : "If Upaketu is in Ari Bhava, the native will be ominous for material relatives, will win over his enemies, be endowed with many relatives, valiant, splendourous and skilful.",
+         "rule" : "return getBhava( Upaketu ) == House6;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 7",
+         "effect" : "If Upaketu is in Yuvati Bhava, the native will be interested in gambling, be sensuous, will enjoy pleasures and will befriend prostitutes.",
+         "rule" : "return getBhava( Upaketu ) == House7;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 8",
+         "effect" : "If Upaketu is in Randhra Bhava, the native will be interested in base acts, be sinful, shameless, will blame others, will lack in marital happiness and will take other's side.",
+         "rule" : "return getBhava( Upaketu ) == House8;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 9",
+         "effect" : "If Upaketu is in Dharma Bhava, the native will wear badges, be delighted, helpfully disposed to all and he will be skilled in religious deeds.",
+         "rule" : "return getBhava( Upaketu ) == House9;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 10",
+         "effect" : "If Upaketu is in Karma Bhava, the native will be endowed with happiness and fortunes, be fond of females, be charitable and will befriend Brahmins.",
+         "rule" : "return getBhava( Upaketu ) == House10;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 11",
+         "effect" : "If Upaketu is in Labha Bhava, the native will ever acquire gains, be very religious, honourable, affluent, fortunate, valiant and skilled in sacrificial rites.",
+         "rule" : "return getBhava( Upaketu ) == House11;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Upaketu in 12",
+         "effect" : "If Upaketu is in Vyaya Bhava, the native will be interested in sinful acts, be valiant, untrustworthy, unkind, interested in other's females and be short-tempered.",
+         "rule" : "return getBhava( Upaketu ) == House12;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 1",
+         "effect" : "If Gulika is in Tanu Bhava, the native will be afflicted by diseases, be lustful, sinful, crafty, wicked and very miserable.",
+         "rule" : "return getBhava( Gulika ) == House1;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 2",
+         "effect" : "If Gulika is in Dhana Bhava, the native will be unsightly in appearance, miserable, mean, given to vices, shameless and penniless.",
+         "rule" : "return getBhava( Gulika ) == House2;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 3",
+         "effect" : "If Gulika is in Sahaja Bhava, the native will be charming in appearance, will head a village, be fond of virtuous men and be honoured by the king.",
+         "rule" : "return getBhava( Gulika ) == House3;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 4",
+         "effect" : "If Gulika is in Bandhu Bhava, the native will be sickly, devoid of happiness, sinful and afflicted due to windy and billious excesses.",
+         "rule" : "return getBhava( Gulika ) == House4;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 5",
+         "effect" : "If Gulika is in Putra Bhava, the native will not be praise-worthy, be poor, short-lived, spiteful, mean, be a eunuch, be subdued by his wife and be a heterodox.",
+         "rule" : "return getBhava( Gulika ) == House5;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 6",
+         "effect" : "If Gulika is in Ari Bhava, the native will be devoid of enemies, be strong-bodied, splendourous, liked by his wife, enthusiastic, very friendly and helpful in disposition.",
+         "rule" : "return getBhava( Gulika ) == House6;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 7",
+         "effect" : "If Gulika is in Yuvati Bhava, the native will subdue to his spouse, be sinful, will go to other's females, be emaciated, devoid of friendship and will live on his wife's wealth.",
+         "rule" : "return getBhava( Gulika ) == House7;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 8",
+         "effect" : "If Gulika is in Randhra Bhava, the native will be troubled by hunger, be miserable, cruel, very much short-tempered, very unkind, poor and bereft of good qualities.",
+         "rule" : "return getBhava( Gulika ) == House8;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 9",
+         "effect" : "If Gulika is in Dharma Bhava, the native will undergo many ordeals, be emaciated, will perform evil acts, be very unkind, sluggish and be a talebearer.",
+         "rule" : "return getBhava( Gulika ) == House9;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 10",
+         "effect" : "If Gulika is in Karma Bhava, the native will be endowed with sons, be happy, will enjoy many things, be fond of worshipping gods and fire and will practice meditation and religion.",
+         "rule" : "return getBhava( Gulika ) == House10;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 11",
+         "effect" : "If Gulika is in Labha Bhava, the native will enjoy women of class, be a leader of men, be helpful to his relatives, be short stature and be an emperor.",
+         "rule" : "return getBhava( Gulika ) == House11;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      },
+      {
+         "description" : "Gulika in 12",
+         "effect" : "If Gulika is in Vyaya Bhava, the native will indulge in base deeds, be sinful, defective-limbed, unfortunate, indolent and will join mean people.",
+         "rule" : "return getBhava( Gulika ) == House12;",
+         "highervargas" : true,
+         "source" : "Hora Shastra",
+         "group" : "Upagrahas and Kalavelas"
+      }
+   ]
+}

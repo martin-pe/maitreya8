@@ -1,0 +1,676 @@
+{
+   "configs" : [
+      {
+         "description" : "Moon in Aries",
+         "effect" : "Should the Moon be in Aries, the native will have a golden coloured body, will be endowed with lasting wealth, be devoid of co-born, be valorous, self-respected, auspicious, prosperous, libidinous, will have weak legs, ugly nails and little hair, be fickle-minded, will consider honour, as wealth, will possess hands and legs, like the lotus, (i.e. these will be lotus-red), will have more sons, round eyes, be friendly, be afraid of getting into watery places, like river, well etc.), will have wounds on the head and be won over by females.",
+         "rule" : "return getRasi( Moon ) == Aries;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Aries aspected by the Sun",
+         "effect" : "If the Moon is in Aries at birth and be in aspect to the Sun, the native will be quite irascible, be honoured by the king, be soft, be valorous and fond of war.",
+         "rule" : "return getRasi( Moon ) == Aries and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aries aspected by Mars",
+         "effect" : "If the Moon in Aries is aspected by Mars, the person will suffer from diseases of eyes and teeth, will have wounds caused by arrows (or horse/cow etc.) and will suffer windy diseases and urinary disorders.",
+         "rule" : "return getRasi( Moon ) == Aries and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aries aspected by Mercury",
+         "effect" : "Should Mercury aspect the Moon in Aries, the native will teach various disciplines, will possess good speech, will achieve his desires, be a great poet and be widely famous.",
+         "rule" : "return getRasi( Moon ) == Aries and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aries aspected by Jupiter",
+         "effect" : "If Jupiter aspects the Moon in Aries, the person will be endowed with servants and abundant riches and be a king, or a kings minister.",
+         "rule" : "return getRasi( Moon ) == Aries and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aries aspected by Venus",
+         "effect" : "Venus aspecting the Moon in Aries denotes, that the subject will be lucky, be endowed with sons and wealth, will own (i.e. marry) a supreme lady and costly ornaments and will not eat much.",
+         "rule" : "return getRasi( Moon ) == Aries and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aries aspected by Saturn",
+         "effect" : "The Moon in Aries aspected by Saturn indicates, that the native will be jealous, miserable to a great extent, be very poor, dirty and untruthful.",
+         "rule" : "return getRasi( Moon ) == Aries and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Taurus",
+         "effect" : "If the Moon be in Taurus at birth, the native will be large-hearted, highly charitable, short-haired, libidinous, famous, brilliant, will have (more) daughters, will possess eyes resembling that of a bull, be in a position to differentiate between good and bad, be happy during middle and concluding parts of his life, will have strong waist, feet, shoulders, face etc., will have (some) identity on the side and back of the body, will walk beautifully and be endowed with forbearance. Should the Moon be in the first half of Taurus, the mother of the native is not long-lived. Similarly the father is short-lived, if the Moon occupies the second half of Taurus.",
+         "rule" : "return getRasi( Moon ) == Taurus;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Taurus aspected by the Sun",
+         "effect" : "Should the Moon be in Taurus and be in aspect to the Sun, the native will be a farmer, be very industrious, be very rich with servants and quadrupeds and will lend money on usury.",
+         "rule" : "return getRasi( Moon ) == Taurus and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Taurus aspected by Mars",
+         "effect" : "If Mars aspects the Moon in Taurus, the subject will be highly libidinous, will lose his wife and friends on account of another lady, will steal the heart of the fair sex and will prove adverse for the mother.",
+         "rule" : "return getRasi( Moon ) == Taurus and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Taurus aspected by Mercury",
+         "effect" : "Should the said Moon be in aspect to Mercury, the native will be highly learned, will know the code of speech, be of pleasing disposition, be dear to everyone and will uncomparably be of good qualities.",
+         "rule" : "return getRasi( Moon ) == Taurus and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Taurus aspected by Jupiter",
+         "effect" : "If Jupiter aspects the Moon in Taurus, the native will have long living wife and children and lasting wealth, be respectfully disposed to his parents, be virtuous and very famous.",
+         "rule" : "return getRasi( Moon ) == Taurus and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Taurus aspected by Venus",
+         "effect" : "Should Venus aspect the Moon in Taurus, one will be endowed with ornaments, conveyances and houses and will possess comforts of sleeping and sitting, scents, robes, garlands etc.",
+         "rule" : "return getRasi( Moon ) == Taurus and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Taurus aspected by Saturn",
+         "effect" : "If it is Saturn, that aspects the Moon in Taurus, one will be devoid of wealth, be inauspicious for mother and wife and will be endowed with sons, friends and relatives.",
+         "rule" : "return getRasi( Moon ) == Taurus and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Gemini",
+         "effect" : "If the Moon is in Gemini at birth, one will have prominent nose and dark eyes, will be skillful in the art of love, poetry etc., will enjoy sexual pleasures, will have lines of fish in the palm, will be fond of worldly enjoyments, will be sinewy, be very intelligent, splendourous, be endowed with happiness, jocular disposition and eloquent speech, be won over by the females, will have a long body, will befriend neuters and will have two mothers.",
+         "rule" : "return getRasi( Moon ) == Gemini;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Gemini aspected by the Sun",
+         "effect" : "If the Moon is in Gemini at birth and is aspected by the Sun, the native will be quite learned, be splendourous, very beautiful, be charitable, be very miserable and be not rich.",
+         "rule" : "return getRasi( Moon ) == Gemini and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Gemini aspected by Mars",
+         "effect" : "If Mars lends aspect to the Moon in Gemini, the person will be very valorous, very learned, be endowed with happiness, conveyances, wealth and beauty. This is certain.",
+         "rule" : "return getRasi( Moon ) == Gemini and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Gemini aspected by Mercury",
+         "effect" : "The Moon in Gemini aspected by Mercury makes one skillful in producing money, always successful and inviolable king.",
+         "rule" : "return getRasi( Moon ) == Gemini and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Gemini aspected by Jupiter",
+         "effect" : "If Jupiter aspects the Moon in Gemini, one will be a teacher of Shastras, be famous, truthful, very beautiful, honourable and be an eloquent speaker.",
+         "rule" : "return getRasi( Moon ) == Gemini and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Gemini aspected by Venus",
+         "effect" : "If Venus aspects the Moon in Gemini, the person will be endowed with the company of supreme females, garlands, robes, conveyances, ornaments and jewels and will be sportive.",
+         "rule" : "return getRasi( Moon ) == Gemini and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Gemini aspected by Saturn",
+         "effect" : "Should Saturn aspect the Moon in Gemini, the subject will be devoid of relatives, wife, happiness and wealth and will be inimical to the public.",
+         "rule" : "return getRasi( Moon ) == Gemini and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Cancer",
+         "effect" : "If the Moon is in Cancer at birth, the native will be fortunate, valorous, be endowed with residence, friends, journeys and astrological knowledge, be sensuous, grateful, be a minister, be truthful, will live abroad, be passionate, hairy-bodied, fond of water and flowers, interested in construction of houses, wells etc. and will have a prominent neck.",
+         "rule" : "return getRasi( Moon ) == Cancer;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Cancer aspected by the Sun",
+         "effect" : "Should the Moon be in her House at birth and be aspected by the Sun, the native will be in the employ of king, be not rich, be a letter-bearer and will protect forts (i.e. will be a security officer in royal service).",
+         "rule" : "return getRasi( Moon ) == Cancer and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Cancer aspected by Mars",
+         "effect" : "If the Moon in Cancer is aspected by Mars, the subject will be valorous, be deformed, will prove ominous to his mother and be skillful in his jobs.",
+         "rule" : "return getRasi( Moon ) == Cancer and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Cancer aspected by Mercury",
+         "effect" : "Should Mercury lend his aspect to the Moon in Cancer, he will be spirited in disposition, be endowed with political wisdom, wealth, wife and sons, will be a kings minister and be happy.",
+         "rule" : "return getRasi( Moon ) == Cancer and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Cancer aspected by Jupiter",
+         "effect" : "Jupiter aspecting the Moon in her own House indicates, that the person will be a king, be endowed with royal qualities, be happy, will have a good wife, will behave well, be modest and valorous.",
+         "rule" : "return getRasi( Moon ) == Cancer and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Cancer aspected by Venus",
+         "effect" : "If Venus aspects the Moon in Cancer, the subject will be endowed with money, gold, wife, robes and jewels, be head of prostitutes and be splendourous.",
+         "rule" : "return getRasi( Moon ) == Cancer and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Cancer aspected by Saturn",
+         "effect" : "Should Saturn aspect the Cancer-posited Moon, he will be of wandering disposition, be miserable, very poor, be a liar, a sinner and be mean.",
+         "rule" : "return getRasi( Moon ) == Cancer and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Leo",
+         "effect" : "If the Moon is in Leo, one will have sturdy bones, sparse hair, wide face, small and yellowish eyes, will hate women, will suffer from hunger and thirst, will incur stomach disorders and tooth-decay, will eat flesh, be charitable, harsh, will have few sons, will seek sexual union in forests and hills, be respectfully disposed to his mother, will have broad chest, be valorous, dutiful and will have majestic looks.",
+         "rule" : "return getRasi( Moon ) == Leo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Leo aspected by the Sun",
+         "effect" : "Should the Moon be in Leo in aspect to the Sun, the native will be equal to a king, will have excellent qualities and majestic voice, will be valorous, be fond of intoxicants and be widely famous.",
+         "rule" : "return getRasi( Moon ) == Leo and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Leo aspected by Mars",
+         "effect" : "If Mars aspects the Moon in Leo he will be an Army chief, will have excellent wife, sons, wealth and conveyances and be superior among people.",
+         "rule" : "return getRasi( Moon ) == Leo and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Leo aspected by Mercury",
+         "effect" : "Should Mercury aspect the Moon in Leo one will be endowed with the characteristics of a female and also the grace akin to that of a female, will be in the custody of females, will serve females and will enjoy money, happiness and pleasures.",
+         "rule" : "return getRasi( Moon ) == Leo and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Leo aspected by Jupiter",
+         "effect" : "If Jupiter aspects the Moon in Leo, one will be excellent among his caste-men, be wide-famed, highly virtuous and will equal a king.",
+         "rule" : "return getRasi( Moon ) == Leo and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Leo aspected by Venus",
+         "effect" : "Should Venus aspect the Moon in Leo, one will possess a wife, wealth and high knowledge, be sickly disposed, will be a female's servant and be skillful in sexual union.",
+         "rule" : "return getRasi( Moon ) == Leo and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Leo aspected by Saturn",
+         "effect" : "If the Moon in Leo is aspected by Saturn, the person will be an agriculturist, be not wealthy, be a liar, will protect forts, be devoid of happiness from wife and be mean.",
+         "rule" : "return getRasi( Moon ) == Leo and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Virgo",
+         "effect" : "If the Moon occupies Virgo at birth, one will be addicted to women, will have long hands, attractive body and face, beautiful teeth, eyes and ears, be learned, be a religious preceptor (teaching Vedas etc.), be an eloquent speaker, be truthful and pure, valorous, be kind to living beings, be interested in others' affairs, be of forgiving disposition, be fortunate, will have more daughters, but not many sons.",
+         "rule" : "return getRasi( Moon ) == Virgo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Virgo aspected by the Sun",
+         "effect" : "If the Moon occupies Virgo at birth and is aspected by the Sun, the native will be in charge of royal wealth, be famous, will keep up his word and perform distinguished acts.",
+         "rule" : "return getRasi( Moon ) == Virgo and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Virgo aspected by Mars",
+         "effect" : "If Mars aspects the Moon posited in Virgo, the subject will be skillful in mechanical, or fine arts (of 64 kinds), be famous, affluent, disciplined, courageous and will be inauspicious for mother.",
+         "rule" : "return getRasi( Moon ) == Virgo and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Virgo aspected by Mercury",
+         "effect" : "Should it be Mercury, that lends aspect to the Moon in Virgo, the native will be expert in astrology and literature, be successful in disputes/quarrels and be highly skillful to a surprising extent.",
+         "rule" : "return getRasi( Moon ) == Virgo and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Virgo aspected by Jupiter",
+         "effect" : "Jupiter aspecting the Moon in Virgo indicates, that the native will be supreme among his relatives, be happy, will carry out royal duties, will keep up his word and will be endowed with wealth.",
+         "rule" : "return getRasi( Moon ) == Virgo and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Virgo aspected by Venus",
+         "effect" : "If Venus aspects the Moon in Virgo, the person will have many wives, be endowed with many kinds of makeups, pleasures and wealth and will always be blessed with fortunes.",
+         "rule" : "return getRasi( Moon ) == Virgo and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Virgo aspected by Saturn",
+         "effect" : "The Moon in Virgo aspected by Saturn indicates, that the native will not have firm memory, will suffer from poverty, will not have happiness, will be bereft of mother, will be at the disposal of women (or be controlled by them) and will derive wealth through females.",
+         "rule" : "return getRasi( Moon ) == Virgo and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Libra",
+         "effect" : "If the Moon is posited in Libra at birth, the native will have elevated nose, broad eyes, will have weak (not prominent) face and emaciated body, will have many wives, many bulls (cattle) and abundant landed property, be valorous, will have testicles resembling that of an ox, be skillful in work, will honour Gods and the wise, be endowed with various kinds of wealth, will be conquered by females, will have an emaciated body (this is a repetition), will donate corns, will not be firm in disposition and will be helpful to his relatives.",
+         "rule" : "return getRasi( Moon ) == Libra;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Libra aspected by the Sun",
+         "effect" : "If the Moon is in Libra and is aspected by the Sun, the person will be bereft of wealth, be diseased, will wander here and there, be insulted, be bereft of enjoyment, sons and strength.",
+         "rule" : "return getRasi( Moon ) == Libra and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Libra aspected by Mars",
+         "effect" : "If Mars aspects the Moon in Libra, the person will be sharp, be a thief, be mean, adulterous, will enjoy scents and garlands, be wise and will suffer from eye diseases.",
+         "rule" : "return getRasi( Moon ) == Libra and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Libra aspected by Mercury",
+         "effect" : "If Mercury aspects the Moon in Libra, the subject will be skillful in arts, will have abundant riches and grains, will be an auspicious speaker, be highly learned and be famous in his country.",
+         "rule" : "return getRasi( Moon ) == Libra and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Libra aspected by Jupiter",
+         "effect" : "Should Jupiter aspect the Moon in Libra, the person will be always worshipped and be skillful in sales and purchases of gems etc.",
+         "rule" : "return getRasi( Moon ) == Libra and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Libra aspected by Venus",
+         "effect" : "If Venus lends his aspect to the Moon in Libra, one will be beautiful, be free from sickness, fortunate, strong bodied, be learned and will have knowledge of many means.",
+         "rule" : "return getRasi( Moon ) == Libra and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Libra aspected by Saturn",
+         "effect" : "Should Saturn aspect the Moon in Libra, the native will be very affluent, be sweet in speech, be endowed with conveyances, be very much interested in sexual affairs, be devoid of happiness and be favourable to his mother.",
+         "rule" : "return getRasi( Moon ) == Libra and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Scorpio",
+         "effect" : "Should the Moon be in Scorpio at birth, one will be a miser, will have round (well grown) thighs, coarse physique and nose, will be cruel in acts, be a thief, be sick in childhood, will have spoiled chin and nails, but beautiful eyes, will be plentiful, industrious, skillful, fond of others' housewives, devoid of relatives, insane (or infatuated with passion), valorous, will lose wealth due to royal wrath and will have a big abdomen and a big head.",
+         "rule" : "return getRasi( Moon ) == Scorpio;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Scorpio aspected by the Sun",
+         "effect" : "If the Moon at birth is in Scorpio and aspected by the Sun, the native will hate people (i.e. will not be friendly with others), be learned, wandering nature and rich, but be not happy.",
+         "rule" : "return getRasi( Moon ) == Scorpio and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Scorpio aspected by Mars",
+         "effect" : "Should Mars aspect the Moon in Scorpio, the native will have incomparable courage, be equal to a king, be endowed with wealth, be valorous, unconquerable in battle and be a voracious eater.",
+         "rule" : "return getRasi( Moon ) == Scorpio and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Scorpio aspected by Mercury",
+         "effect" : "If Mercury aspects the Moon in Scorpio, the person will not be skillful, be hard in speech, will obtain twins, be tricky, will produce fictitious things and be an expert singer.",
+         "rule" : "return getRasi( Moon ) == Scorpio and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Scorpio aspected by Jupiter",
+         "effect" : "If Jupiter lends aspect to the Moon in Scorpio, the native will be interested in performing his duties, will be biased towards people, be wealthy and be beautiful.",
+         "rule" : "return getRasi( Moon ) == Scorpio and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Scorpio aspected by Venus",
+         "effect" : "If Venus aspects the Moon in Scorpio, the native will be highly intelligent, be fortunate, be endowed with riches, conveyances and beauty and will lose strength on account of women.",
+         "rule" : "return getRasi( Moon ) == Scorpio and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Scorpio aspected by Saturn",
+         "effect" : "If Saturn aspects the Moon in Scorpio, the native will have base sons, be a talebearer, be sick, poor and untruthful.",
+         "rule" : "return getRasi( Moon ) == Scorpio and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Sagittarius",
+         "effect" : "If the Moon is in Sagittarius at birth, the native will be dwarfish, will have round eyes, big heart, waist and hands, be a good speaker, will have prominent shoulders and neck, will live near watery zone, will have knowledge of arts and secret affairs, be courageous, will possess strong bones, be very strong, will have strong neck and lips, be attached to his relatives, be grateful and distinguished. His legs will not be wider, when in position.",
+         "rule" : "return getRasi( Moon ) == Sagittarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Sagittarius aspected by the Sun",
+         "effect" : "If the Moon in Sagittarius is aspected by the Sun, the person will be a king, be affluent, valorous, famous and will have incomparable happiness and conveyances.",
+         "rule" : "return getRasi( Moon ) == Sagittarius and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Sagittarius aspected by Mars",
+         "effect" : "Should Mars aspect the Moon in Sagittarius, the person will be an Army chief, will be very rich, fortunate, famous for his valor and will have a large working force.",
+         "rule" : "return getRasi( Moon ) == Sagittarius and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Sagittarius aspected by Mercury",
+         "effect" : "If the Moon in Sagittarius is aspected by Mercury, one will have many servants, will be an expert astrologer and artist and be a skillful dancer.",
+         "rule" : "return getRasi( Moon ) == Sagittarius and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Sagittarius aspected by Jupiter",
+         "effect" : "If Jupiter aspects the Moon in Sagittarius, one will possess very attractive physique, be a king's minister and will be endowed with wealth, virtues and happiness.",
+         "rule" : "return getRasi( Moon ) == Sagittarius and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Sagittarius aspected by Venus",
+         "effect" : "Should Venus aspect the Moon in Sagittarius, the native will be happy, beautiful and fortunate, be endowed with sons, wealth and sexual desires and will have good friends and wife.",
+         "rule" : "return getRasi( Moon ) == Sagittarius and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Sagittarius aspected by Saturn",
+         "effect" : "If Saturn aspects the Moon in Sagittarius, the person will be sweet in speech, will speak good words, will have wide knowledge of Shastras, be truthful, soft and be a kings man.",
+         "rule" : "return getRasi( Moon ) == Sagittarius and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Capricorn",
+         "effect" : "If the Moon at birth be in Capricorn, the native will be a singer, will be averse to cold articles (or season), will have stout body, will be fond of truth and charity, be distinguished, famous, less irascible, be libidinous, unkind and shameless; will possess beautiful eyes and emaciated body, will violate teacher's bed, be a poet, will have round thighs, be not very enthusiastic, be very miserly and will have long neck and ears.",
+         "rule" : "return getRasi( Moon ) == Capricorn;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Capricorn aspected by the Sun",
+         "effect" : "Should the Moon in Capricorn be aspected by the Sun at birth, one will be penniless, miserable, wandering-nature, interested in others' work, dirty and clever.",
+         "rule" : "return getRasi( Moon ) == Capricorn and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Capricorn aspected by Mars",
+         "effect" : "If Mars aspects the Moon in Capricorn, one will enjoy abundant riches, be highly liberal, be fortunate, wealthy, will have conveyances and be brave.",
+         "rule" : "return getRasi( Moon ) == Capricorn and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Capricorn aspected by Mercury",
+         "effect" : "If Mercury aspects the Moon in Capricorn, one will be dunce, be interested in living in other places, be bereft of wife, be fickle minded and be devoid of happiness and money.",
+         "rule" : "return getRasi( Moon ) == Capricorn and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Capricorn aspected by Venus",
+         "effect" : "Should Jupiter aspect the Moon in Capricorn at birth, the native will be a king, be incomparably brave, will have royal qualities and will possess many wives, children and friends.",
+         "rule" : "return getRasi( Moon ) == Capricorn and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Capricorn aspected by Venus",
+         "effect" : "If Venus aspects the Moon in Capricorn, one will join others' wives, be endowed with wealth, ornaments, conveyances, garlands etc., be blameworthy and be issueless.",
+         "rule" : "return getRasi( Moon ) == Capricorn and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Capricorn aspected by Saturn",
+         "effect" : "If Saturn aspects the Moon in Capricorn one will be indolent, dirty, be endowed with money, be troubled by sexual feelings, will join others' housewives and be untruthful.",
+         "rule" : "return getRasi( Moon ) == Capricorn and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aquarius",
+         "effect" : "If the Moon is in Aquarius at birth, the person will have elevated nose, rough, or uneven body and stout hands and legs, will be addicted to intoxicants, will be averse to the virtuous, be not himself virtuous, will obtain illegal sons, will have stout head, ugly/diseased eyes, bright face and prominent waist, be an artisan, will have bad mentality, be miserable and will be very poor.",
+         "rule" : "return getRasi( Moon ) == Aquarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Aquarius aspected by the Sun",
+         "effect" : "Should the Moon at birth be in Aquarius and be aspected by the Sun, one will be very dirty in disposition, be valorous, will be like a king in guise, be virtuous and be an agriculturist.",
+         "rule" : "return getRasi( Moon ) == Aquarius and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aquarius aspected by Mars",
+         "effect" : "If Mars aspects the Moon in Aquarius, one will be quite truthful, will not inherit money from mother and elders, be indolent and mysterious and interested in others' work.",
+         "rule" : "return getRasi( Moon ) == Aquarius and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aquarius aspected by Mercury",
+         "effect" : "If Mercury aspects the Moon in Aquarius, the native will be skillful in treating others well, while hosting them, will be proficient in music, will be liked by the fair sex and will possess less money and less happiness.",
+         "rule" : "return getRasi( Moon ) == Aquarius and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aquarius aspected by Jupiter",
+         "effect" : "Should Jupiter aspect the Moon in Aquarius, the native will own villages, agriculture lands and trees, be endowed with superior castles and superior ladies and will be devoted to (sensual) enjoyment (Bhogi also means rich person, or a king)",
+         "rule" : "return getRasi( Moon ) == Aquarius and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aquarius aspected by Venus",
+         "effect" : "If Venus aspects the Moon in Aquarius, the person will be base, issueless, friendless, timid, be censured by preceptors, be sinful, will have a bad wife and will be least happy.",
+         "rule" : "return getRasi( Moon ) == Aquarius and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Aquarius aspected by Saturn",
+         "effect" : "Should the Moon in Aquarius have Saturn's aspect, the native will have (prominent) nails and hair, be dirty, will seek union with other women, be a dunce, be irreligious and be rich possessing many immovables.",
+         "rule" : "return getRasi( Moon ) == Aquarius and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Pisces",
+         "effect" : "If the Moon is in Pisces, the native will be expert in fine arts, be capable of winning even unfavourable people, be learned in Shastras, beautiful bodied, proficient in music, very religious, will cohabit with many women, be a polite speaker, will serve the king, be somewhat irascible, will have a big head, be endowed with happiness and wealth, will be won over by the fair sex, be virtuous, be interested in sailing and be liberal.",
+         "rule" : "return getRasi( Moon ) == Pisces;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Moon in Pisces aspected by the Sun",
+         "effect" : "If the Moon posited in Pisces is aspected by the Sun, the native will be highly libidinous, be happy, be an Army chief, be very affluent and will have delighted wife. ",
+         "rule" : "return getRasi( Moon ) == Pisces and isGrahaDrishti( Sun, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Pisces aspected by Mars",
+         "effect" : "If Mars aspects the Moon in Pisces, the person will be insulted, be devoid of happiness, is an unchaste woman's son, will be interested in sins and will be valorous.",
+         "rule" : "return getRasi( Moon ) == Pisces and isGrahaDrishti( Mars, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Pisces aspected by Mercury",
+         "effect" : "He will be a king, if the Moon in Pisces is aspected by Mercury; will be highly intelligent, be happy and will be surrounded by supreme females and be controlled by them.",
+         "rule" : "return getRasi( Moon ) == Pisces and isGrahaDrishti( Mercury, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Pisces aspected by Jupiter",
+         "effect" : "If Jupiter aspects the Moon in Pisces, he will be beautiful, fierce, head of a district, be very affluent, beautiful and will be surrounded by many women.",
+         "rule" : "return getRasi( Moon ) == Pisces and isGrahaDrishti( Jupiter, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Pisces aspected by Venus",
+         "effect" : "If Venus aspects the Moon in Pisces, he will be skillful in coition, interested in dance, instrumental music and songs and will steal the hearts of the fair sex.",
+         "rule" : "return getRasi( Moon ) == Pisces and isGrahaDrishti( Venus, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Moon in Pisces aspected by Saturn",
+         "effect" : "Should Saturn aspect the Moon in Pisces, he will be deformed, be unfavourable to mother, be sexually distressed, be devoid of sons, wife and intelligence and will be attached to mean and ugly females.",
+         "rule" : "return getRasi( Moon ) == Pisces and isGrahaDrishti( Saturn, Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      }
+   ]
+}

@@ -1,0 +1,40 @@
+CFLAGS = -g -O9 -Wall -U_WIN32 -D_WINDOWS_
+OP=$(CFLAGS)  
+CC=gcc
+
+.o :
+	$(CC) $(OP) -o $@ $? -lm
+.c.o:
+	$(CC) -c $(OP) $<     
+
+SWEOBJ = swedate.o swehouse.o swejpl.o swemmoon.o swemplan.o swepcalc.o sweph.o\
+	swepdate.o swephlib.o swecl.o
+
+swetest.exe: swetest.o swehel.o libswe.a
+	$(CC) $(OP) -o swetest.exe swetest.o swehel.o -L. -lswe -lm
+
+sweclips: sweclips.o libswe.a
+	$(CC) $(OP) -o sweclips sweclips.o -L. -lswe -lm
+
+swemini: swemini.o libswe.a
+	$(CC) $(OP) -o swemini swemini.o -L. -lswe -lm
+
+libswe.a: $(SWEOBJ)
+	ar r libswe.a	$(SWEOBJ)
+
+libswe.sl: $(SWEOBJ)
+	ld -b -o libswe.sl	$(SWEOBJ)
+
+clean:
+	rm -f *.o swetest libswe*
+	
+swecl.o: swejpl.h sweodef.h swephexp.h swedll.h sweph.h swephlib.h
+swedate.o: swephexp.h sweodef.h swedll.h
+swehouse.o: swephexp.h sweodef.h swedll.h swephlib.h swehouse.h
+swejpl.o: swephexp.h sweodef.h swedll.h sweph.h swejpl.h
+swemmoon.o: swephexp.h sweodef.h swedll.h sweph.h swephlib.h
+swemplan.o: swephexp.h sweodef.h swedll.h sweph.h swephlib.h swemptab.c
+swepcalc.o: swepcalc.h sweodef.h swephexp.h swedll.h
+sweph.o: swejpl.h sweodef.h swephexp.h swedll.h sweph.h swephlib.h
+swephlib.o: swephexp.h sweodef.h swedll.h sweph.h swephlib.h
+swetest.o: sweodef.h swephexp.h swedll.h

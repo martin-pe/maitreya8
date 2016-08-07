@@ -1,0 +1,27 @@
+.SUFFIXES: .o.cpp
+
+CPP = g++
+AR = ar r
+RM = rm -f
+
+VIEW_LIB = libmaitreya_views.a
+
+CPPFLAGS = -g -I. -I../base -I../gui -I../jyotish -I../dialogs `wx-config --cppflags`
+
+LDLIBS = `wx-config --libs` 
+
+OBS = AshtakaVargaView.o DasaGraphicView.o DasaView.o EclipseView.o EphemView.o GraphicView.o HoraView.o \
+	PartnerView.o SbcView.o SolarView.o TextView.o TransitView.o \
+	VargaView.o YogaView.o SheetView.o PrintView.o
+
+all : $(VIEW_LIB)
+
+$(VIEW_LIB) : $(OBS)
+	$(AR) $(VIEW_LIB) $(OBS)
+
+.cpp.o :
+	$(CPP) -c -o$@ $*.cpp $(CPPFLAGS)
+
+clean:
+	$(RM) *.o $(VIEW_LIB) *.core
+

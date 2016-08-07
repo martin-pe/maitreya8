@@ -1,0 +1,436 @@
+{
+   "configs" : [
+      {
+         "description" : "Saturn in Aries",
+         "effect" : "If Saturn occupies Aries at the time of one's birth one will be miserable due to his vices and hard labor, be deceitful will hate his relatives, be blameworthy, garrulous, reprobated, poor, bad in appearance, ill-tempered, inimical to his people, will do base acts, be jealous and sinful.",
+         "rule" : "return getRasi( Saturn ) == Aries;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in Scorpio",
+         "effect" : "If Saturn occupies Scorpio at birth, the native will be hostile, be crooked, affected by poison and weapons, very ill-tempered, miserly, egoistic, rich, capable of stealing others' money, averse to instruments played on festive occasions, malicious, very miserable and will face destruction, misery and diseases.",
+         "rule" : "return getRasi( Saturn ) == Scorpio;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in a sign of Mars aspected by Sun",
+         "effect" : "If Saturn occupies a Rasi of Mars and is aspected by the Sun, one will be interested in agriculture, be very affluent, be endowed with cows, buffaloes and horses, be fortunate and industrious.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mars and isGrahaDrishti( Sun, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mars aspected by Moon",
+         "effect" : "If Saturn is in Aries, or Scorpio and is aspected by the Moon, one will be fickle minded, base, will join mean and ugly women and be devoid of happiness and wealth.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mars and isGrahaDrishti( Moon, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mars aspected by Mars",
+         "effect" : "If Saturn is in Aries, or Scorpio and is aspected by Mars, one will kill animals, be base, be a leader of robbers, be famous and be fond of (joining other) women, meat and wine.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mars and isGrahaDrishti( Mars, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mars aspected by Mercury",
+         "effect" : "If Saturn is in Aries, or Scorpio and is aspected by Mercury, one will be untruthful, not virtuous, will eat much, be a famous thief and be devoid of happiness and riches.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mars and isGrahaDrishti( Mercury, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mars aspected by Jupiter",
+         "effect" : "If Saturn is in Aries, or Scorpio and is aspected by Jupiter, one will be endowed with happiness, wealth and fortune, be a king's minister and be chief.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mars and isGrahaDrishti( Jupiter, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mars aspected by Venus",
+         "effect" : "If Saturn is in Aries, or Scorpio and is aspected by Venus, one will be quite unsteady in disposition, very ugly, will join other women and courtesans and be bereft of pleasures.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mars and isGrahaDrishti( Venus, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Taurus",
+         "effect" : "If Saturn occupies Taurus at the time of one's birth, he will be bereft of wealth, be a servant, will speak undesirable words, be untruthful, will win the hearts of old women, will have bad friends, will be addicted to women, will serve other women, be not outspoken, will have strong sight, be related to numerous assignments and be a fool.",
+         "rule" : "return getRasi( Saturn ) == Taurus;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in Libra",
+         "effect" : "Saturn posited in Libra at birth indicates, that the subject will be rich, soft-spoken, will earn money and honours from foreign countries, be a king, or a scholar, will have his wealth protected by his relatives, be senior in the circle, will attain a high status owing to his gracious speech in an assemblage, be good and will join corrupt female dancers and prostitutes.",
+         "rule" : "return getRasi( Saturn ) == Libra;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in a sign of Venus aspected by Sun",
+         "effect" : "Should Saturn be in a Sign of Venus and is aspected by the Sun, the native will be clear in speech, will lose wealth, be a scholar, will eat in other's houses and be weak in constitution.",
+         "rule" : "return getLord( getRasi( Saturn )) == Venus and isGrahaDrishti( Sun, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Venus aspected by Moon",
+         "effect" : "If Saturn is in Taurus, or Libra and is aspected by the Moon, one will gain wealth through women, will be honoured by ministers of kings, be dear to women and be endowed with family.",
+         "rule" : "return getLord( getRasi( Saturn )) == Venus and isGrahaDrishti( Moon, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Venus aspected by Mars",
+         "effect" : "If Saturn is in Taurus, or Libra and is aspected by Mars, one will be skillful in war preparations, but will be away from war, will speak much and be endowed with wealth and family.",
+         "rule" : "return getLord( getRasi( Saturn )) == Venus and isGrahaDrishti( Mars, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Venus aspected by Mercury",
+         "effect" : "If Saturn is in Taurus, or Libra and is aspected by Mercury one will always be jocularly disposed, be equal to a neuter, will serve females and be base.",
+         "rule" : "return getLord( getRasi( Saturn )) == Venus and isGrahaDrishti( Mercury, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Venus aspected by Jupiter",
+         "effect" : "If Saturn is in Taurus, or Libra and is aspected by Jupiter, one will share happiness and misery of others, will do others' jobs, be dear to people, charitable and industrious.",
+         "rule" : "return getLord( getRasi( Saturn )) == Venus and isGrahaDrishti( Jupiter, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Venus aspected by Venus",
+         "effect" : "If Saturn is in Taurus, or Libra and is aspected by Venus, one will be happy on account of women and wine (i.e. will enjoy these), be endowed with gems, be very strong and be dear to the king.",
+         "rule" : "return getLord( getRasi( Saturn )) == Venus and isGrahaDrishti( Venus, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Gemini",
+         "effect" : "If Saturn occupies Gemini, one will contract debts and imprisonments, will toil, will have vanity in disposition will consecrate by hymns and prayers, be bereft of virtues, be always in hide-out, be libidinous, cunning, wicked and fond of wandering and of sports.",
+         "rule" : "return getRasi( Saturn ) == Gemini;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in Virgo",
+         "effect" : "If Saturn occupies Virgo at birth the subject will resemble a eunuch, be very crafty, will depend on others for food, be addicted to prostitutes, will have a few friends, be unacquainted with arts, be desirous of indulging in ugly acts, will possess sons and wealth, be indolent, helpful to others, will intent upon spoiling virgins and be cautious in his actions.",
+         "rule" : "return getRasi( Saturn ) == Virgo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in a sign of Mercury aspected by Sun",
+         "effect" : "If Saturn occupies a Rasi of Mercury at birth and is aspected by the Sun, the native will be devoid of happiness and wealth, be virtuous, bereft of anger, will endure difficulties and be valorous.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mercury and isGrahaDrishti( Sun, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mercury aspected by Moon",
+         "effect" : "If Saturn is in Gemini, or Virgo and is aspected by the Moon, one will be equal to a king, will possess a bright physique, will earn wealth and honour through women and will do women's jobs.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mercury and isGrahaDrishti( Moon, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mercury aspected by Mars",
+         "effect" : "If Saturn is in Gemini, or Virgo and is aspected by Mars, one will be a famous boxer, be stupefied, will carry heavy loads and will possess an ugly body.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mercury and isGrahaDrishti( Mars, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mercury aspected by Mercury",
+         "effect" : "If Saturn is in Gemini, or Virgo and is aspected by Mercury, one will be rich, skillful in war, be a dance master, a skillful singer and an expert in arts.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mercury and isGrahaDrishti( Mercury, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mercury aspected by Jupiter",
+         "effect" : "If Saturn is in Gemini, or Virgo and is aspected by Jupiter, one will be trustworthy in the king's circle, will possess all kinds of (good) qualities, be liked by good men and will earn wealth through his virtues.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mercury and isGrahaDrishti( Jupiter, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Mercury aspected by Venus",
+         "effect" : "If Saturn is in Gemini, or Virgo and is aspected by Venus, one will be skillful in beautifying women, be a teacher of Yogas, or a saint and be dear to the fair sex.",
+         "rule" : "return getLord( getRasi( Saturn )) == Mercury and isGrahaDrishti( Venus, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Cancer",
+         "effect" : "If Saturn is in Cancer, one will possess a beloved wife, be devoid of wealth in boyhood, will suffer many diseases, be learned, motherless, soft-spoken, distinguished in acts, will always contract diseases, will trouble others, be inimical to relatives, crooked, be kingly in his mid-life and will enjoy growing pleasures.",
+         "rule" : "return getRasi( Saturn ) == Cancer;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in Cancer aspected by Sun",
+         "effect" : "If Saturn occupies Cancer at birth and is aspected by the Sun, the native will lose his father in his very boyhood be bereft of wealth, wife and happiness, will eat bad food and be sinful.",
+         "rule" : "return getLord( getRasi( Saturn )) == Moon and isGrahaDrishti( Sun, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Cancer aspected by Moon",
+         "effect" : "If Saturn is in Cancer and is aspected by the Moon, one will be a source of evil to his mother, be wealthy and will be troubled by his co-born.",
+         "rule" : "return getLord( getRasi( Saturn )) == Moon and isGrahaDrishti( Moon, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Cancer aspected by Mars",
+         "effect" : "If Saturn is in Cancer and is aspected by Mars, one will enjoy king's wealth, be defective bodied, will possess gold and gems, be endowed with a family and will have a bad group of relatives and wife.",
+         "rule" : "return getLord( getRasi( Saturn )) == Moon and isGrahaDrishti( Mars, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Cancer aspected by Mercury",
+         "effect" : "If Saturn is in Cancer and is aspected by Mercury, one will be hard-hearted, garrulous, will conquer his enemies, will show vanity and will do noble acts.",
+         "rule" : "return getLord( getRasi( Saturn )) == Moon and isGrahaDrishti( Mercury, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Cancer aspected by Jupiter",
+         "effect" : "If Saturn is in Cancer and is aspected by Jupiter, one will be endowed with lands, houses, friends, sons, wealth, gems and wife.",
+         "rule" : "return getLord( getRasi( Saturn )) == Moon and isGrahaDrishti( Jupiter, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Cancer aspected by Venus",
+         "effect" : "If Saturn is in Cancer and is aspected by Venus, one is of a noble descent, but will be bereft of beauty, grace and happiness.",
+         "rule" : "return getLord( getRasi( Saturn )) == Moon and isGrahaDrishti( Venus, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Leo",
+         "effect" : "If Saturn occupies Leo, one will be interested in writing and reading, be skillful, be disdained, devoid of virtues and wife, will live by servitude, be devoid of his own men and happiness, be interested in doing base acts, ill-tempered, be mad with (undue) desires, will carry loads, will toil hard and will have a wrinkled body.",
+         "rule" : "return getRasi( Saturn ) == Leo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in Leo aspected by Sun",
+         "effect" : "If Saturn occupies the Sun-owned Rasi and is aspected by the Sun himself, the native will be devoid of wealth, happiness and nobility, will be a liar and a drunkard, will possess a bad physique, be a servant and be very miserable.",
+         "rule" : "return getLord( getRasi( Saturn )) == Sun and isGrahaDrishti( Sun, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Leo aspected by Moon",
+         "effect" : "If Saturn is in Leo and is aspected by the Moon, one will enjoy abundant wealth, precious stones and women, be widely famous and be dear to the king.",
+         "rule" : "return getLord( getRasi( Saturn )) == Sun and isGrahaDrishti( Moon, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Leo aspected by Mars",
+         "effect" : "If Saturn is in Leo and is aspected by Mars, one will everyday move from place to place, be unfortunate, will live in fortresses and hills, be base and be bereft of wife and sons.",
+         "rule" : "return getLord( getRasi( Saturn )) == Sun and isGrahaDrishti( Mars, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Leo aspected by Mercury",
+         "effect" : "If Saturn is in Leo and is aspected by Mercury, one will not be outspoken, be lazy, poor, will do females' jobs, be dirty and miserable.",
+         "rule" : "return getLord( getRasi( Saturn )) == Sun and isGrahaDrishti( Mercury, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Leo aspected by Jupiter",
+         "effect" : "If Saturn is in Leo and is aspected by Jupiter, one will be chief and rich in his town, or among his men, will be endowed with progeny and be trustworthy.",
+         "rule" : "return getLord( getRasi( Saturn )) == Sun and isGrahaDrishti( Jupiter, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Leo aspected by Venus",
+         "effect" : "If Saturn is in Leo and is aspected by Venus, one will be averse to women, be splendourous, slow (or tardy), happy, rich and will attain a good end.",
+         "rule" : "return getLord( getRasi( Saturn )) == Sun and isGrahaDrishti( Venus, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Sagittarius",
+         "effect" : "If Saturn occupies Sagittarius, one will be skillful in behavior, teaching, Vedic meanings, learning and denotation, (i.e. he will be best placed in these respects), be famous due to virtuous children, family profession and his own virtues, will enjoy excellent affluence in his old age, will speak less, will have many names and be soft in disposition.",
+         "rule" : "return getRasi( Saturn ) == Sagittarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in Pisces",
+         "effect" : "If Saturn occupies Pisces at birth, one will be fond of Sacrifices and arts, be chief among his relatives and friends, be calm, will have increasing wealth, be skillful in policy-making, be capable of diamond testing, be virtuous, modest and will later on acquire an authoritative position.",
+         "rule" : "return getRasi( Saturn ) == Pisces;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in a sign of Jupiter aspected by Sun",
+         "effect" : "If Saturn occupies Sagittarius, or Pisces at birth, in aspect to the Sun the native will be the father of others' children and through these children he will attain wealth, name, fame and honour.",
+         "rule" : "return getLord( getRasi( Saturn )) == Jupiter and isGrahaDrishti( Sun, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Jupiter aspected by Moon",
+         "effect" : "If Saturn is in Sagittarius, or Pisces and is aspected by the Moon, one will be bereft of mother, will have two names and be endowed with wife, children and wealth.",
+         "rule" : "return getLord( getRasi( Saturn )) == Jupiter and isGrahaDrishti( Moon, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Jupiter aspected by Mars",
+         "effect" : "If Saturn is in Sagittarius, or Pisces and is aspected by Mars, one will be troubled by windy diseases, will dislike people, be sinful, mean, blameworthy etc.",
+         "rule" : "return getLord( getRasi( Saturn )) == Jupiter and isGrahaDrishti( Mars, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Jupiter aspected by Mercury",
+         "effect" : "If Saturn is in Sagittarius, or Pisces and is aspected by Mercury, one will be equal to a king, be happy, be a preceptor, be honourable, rich and fortunate.",
+         "rule" : "return getLord( getRasi( Saturn )) == Jupiter and isGrahaDrishti( Mercury, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Jupiter aspected by Jupiter",
+         "effect" : "If Saturn is in Sagittarius, or Pisces and is aspected by Jupiter, one will be a king, or equal to a king, or a minister, or an Army chief and be free from all kinds of danger.",
+         "rule" : "return getLord( getRasi( Saturn )) == Jupiter and isGrahaDrishti( Jupiter, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Jupiter aspected by Venus",
+         "effect" : "If Saturn is in Sagittarius, or Pisces and is aspected by Venus, one will have two mothers and two fathers, will live in forests and hills, will be unsteady and be endowed with many kinds of assignments.",
+         "rule" : "return getLord( getRasi( Saturn )) == Jupiter and isGrahaDrishti( Venus, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in Capricorn",
+         "effect" : "If Saturn is posited at birth in Capricorn, the native will lord over the lands of others' females, will be endowed with Vedic knowledge, virtues and knowledge of many branches of fine arts, be excellent among his caste-men, be honourable, will respect others, be famous, be interested in bathing and decoration, will be skillful in performance, will live in foreign places, be courageous and be polite in behavior.",
+         "rule" : "return getRasi( Saturn ) == Capricorn;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in Aquarius",
+         "effect" : "If Saturn is in Aquarius, the native will be a great liar, be eminent, be addicted to women and wine, be wicked, crafty, will fall prey to evil friendship, be very ill-tempered, be averse to knowledge, conversation and traditional law, be addicted to other women, be harsh in speech and will attempt at many undertakings.",
+         "rule" : "return getRasi( Saturn ) == Aquarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Saturn in a sign of Saturn aspected by Sun",
+         "effect" : "If Saturn is in Capricorn/Aquarius and is aspected by the Sun, he will be sick, will have an ugly wife, will eat other's food, be miserable, wandering in nature and will carry loads.",
+         "rule" : "return getLord( getRasi( Saturn )) == Saturn and isGrahaDrishti( Sun, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Saturn aspected by Moon",
+         "effect" : "If Saturn is in Capricorn, or Aquarius and is aspected by the Moon, one will be fickle-minded, untruthful, sinful, will not have good terms with his mother, be rich and be sorrowful due to wandering.",
+         "rule" : "return getLord( getRasi( Saturn )) == Saturn and isGrahaDrishti( Moon, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Saturn aspected by Mars",
+         "effect" : "If Saturn is in Capricorn, or Aquarius and is aspected by Mars, one will be very valorous, famous, be superior among great men and sharp.",
+         "rule" : "return getLord( getRasi( Saturn )) == Saturn and isGrahaDrishti( Mars, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Saturn aspected by Mercury",
+         "effect" : "If Saturn is in Capricorn, or Aquarius and is aspected by Mercury, he will carry loads, be clouded in mentality (or Tamasik in disposition), be good-looking, wandering-natured, learned, be not quite wealthy and be fortunate.",
+         "rule" : "return getLord( getRasi( Saturn )) == Saturn and isGrahaDrishti( Mercury, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Saturn aspected by Jupiter",
+         "effect" : "If Saturn is in Capricorn, or Aquarius and is aspected by Jupiter, one will be famous for his good qualities, be a king, or be of royal scion, long-lived and be free from diseases.",
+         "rule" : "return getLord( getRasi( Saturn )) == Saturn and isGrahaDrishti( Jupiter, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Saturn in a sign of Saturn aspected by Venus",
+         "effect" : "If Saturn is in Capricorn, or Aquarius and is aspected by Venus, one will be rich, addicted to other women, fortunate, happy and will enjoy food and drinks.",
+         "rule" : "return getLord( getRasi( Saturn )) == Saturn and isGrahaDrishti( Venus, Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      }
+   ]
+}

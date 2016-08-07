@@ -1,0 +1,13 @@
+Source: maitreya8
+Section: misc
+Priority: extra
+Maintainer: M. Pettau <http://www.saravali.de/contact.html>
+Build-Depends: debhelper (>= 5), autotools-dev, libwxbase3.0-dev, libwxgtk3.0-dev, wx3.0-headers, wx3.0-i18n, libfontconfig1-dev, libswe-dev, libswe0, libwxsqlite3-3.0-dev
+Standards-Version: 3.7.2
+
+Package: maitreya8
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Software for Vedic and western astrology
+ Free software for western and Vedic astrology (Jyotish). Supports classical Vedic astrology, KP system and parts of Jaimini system. Western part includes Uranian astrology. Platforms: Win32, Linux and UNIX.
+

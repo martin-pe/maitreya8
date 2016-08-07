@@ -1,0 +1,102 @@
+{
+	"configs" : [
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Saturn",
+				"lord" : "Saturn",
+				"sublord" : "Saturn",
+				"effect" : "Effects, like acquisition of a kingdom, happiness from wife and children, acquisition of conveyances, like elephants, gain of clothes, attainment of the position of a Commander of the Army by the beneficence of the king, acquisition of cattle, villages and land etc., will be derived in the Antardasa of Saturn in the Dasa of Saturn, if Saturn is in his own, in his exaltation Rasi, or in deep exaltation, or, if Saturn is in a Kendra, or Trikona, or, if Saturn is a Yog Karak.
+Fear, or danger from the king, getting inflicted with injuries with some weapon, bleeding gums, dysentery etc. will be the evil effects at the commencement of the Dasa, if Saturn is in Randhra, or Vyaya, or, if Saturn is associated with malefics in his debilitation Rasi. There will be danger from thieves etc., going away from the homeland, mental agony etc. in the middle portion of the Dasa. The last part of the Dasa will yield beneficial results.
+There will be danger of premature death, if Saturn is Dhana’s, or Yuvati’s Lord. Lord Shiva will afford protection and render relief, if Mrityunjaya Japa is performed in the prescribed manner."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Mercury",
+				"lord" : "Saturn",
+				"sublord" : "Mercury",
+				"effect" : "Effects, like reverence from the people, good reputation, gain of wealth, comforts of conveyances etc., inclination towards performance of religious sacrifices (Yagyas), Raj Yog, bodily felicity, enthusiasm, well-being in the family, pilgrimage to holy places, performance of religious rites, listening to Puranas, charities, availability of sweetish preparations etc., will be derived in the Antardasa of Mercury in the Dasa of Saturn, if Mercury is in a Kendra, or Trikona.
+Acquisition of a kingdom, gain of wealth, headship of a village will be the effects at the commencement of the Dasa, if Mercury is in Ari, Randhra, or Vyaya from Lagn, or from the Lord of the Dasa, or, if Mercury is associated with Sun, Mars and Rahu. Affliction with diseases, failure in all ventures, anxiety and feeling of danger etc. will be experienced in the middle portion and in the last part of the Dasa.
+There will be physical distress, if Mercury is Dhana’s, or Yuvati’s Lord. The remedial measures to obtain relief from the above evil effects and to regain enjoyment in life are recitation of Vishnu Sahasranam and giving grains in charity."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Ketu",
+				"lord" : "Saturn",
+				"sublord" : "Ketu",
+				"effect" : "Evil effects, like loss of position, dangers, poverty, distress, foreign journeys etc., will be derived in the Antardasa of Ketu in the Dasa of Saturn, even if Ketu is in his exaltation, in his own, in a benefic Rasi, or in a Kendra, or Trikona, or, if Ketu is associated with, or receives a Drishti from benefics. If Ketu is related to the Lagn’s Lord, there will be gain of wealth and enjoyment and bathing in holy places and visit to a sacred shrine at the commencement of the Antardasa.
+Gain of physical strength and courage, religious thoughts, audience with the king (high dignitaries of government, like president, prime minister, governor, ministers) and all kinds of enjoyments will be experienced, if Ketu is in a Kendra, in a Trikona, in the 3rd, or 11th from the Lord of the Dasa.
+Fear of premature death, coarse food, cold fever, dysentery, wounds, danger from thieves, separation from wife and children etc., will be the results, if Ketu is in Randhra, or Vyaya from Lagn, or from the Lord of the Dasa.
+There will be physical distress, if Ketu is in Dhana, or Yuvati. Remedial measure to obtain relief from the above evil effects and to regain enjoyments of life by the beneficence of Ketu is giving a goat in charity."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Venus",
+				"lord" : "Saturn",
+				"sublord" : "Venus",
+				"effect" : "Effects, like marriage, birth of a son, gain of wealth, sound health, well-being in the family, acquisition of a kingdom, enjoyments by the beneficence of the king, honours, gain of clothes, ornaments, conveyance and other desired objects, will be derived in the Antardasa of Venus in the Dasa of Saturn, if Venus is in a Kendra, Trikona, or in Labh, associated with, or receiving a Drishti from benefics. If during the period of Antardasa of Venus Jupiter is favourable in transit, there will be dawn of fortune and growth of property. If Saturn is favourable in transit, there will be Raj Yog effects, or the accomplishment of Yog rites (Yog Triya Siddhi).
+Distress to wife, loss of position, mental agony, quarrels with close relations etc. will be the results, if Venus is in his debilitation Rasi, if Venus is combust, or, if Venus is in Ari, Randhra, or Vyaya.
+Fulfillment of ambitions by the beneficence of the king, charities, performance of religious rites, creation of interest in the study of Shastras, composition of poems, interest in Vedanta etc., listening to Puranas, happiness from wife and children will be experienced, if Venus is in Dharm, Labh, or Kendra from the Lord of the Dasa.
+There will be eye trouble, fevers, loss of good conduct, dental problems, heart disease, pain in arms, danger from drowning, or falling from a tree, antagonism towards relations with the officials of government and brothers, if Venus is in the 6th, 8th, or 12th from the Lord of the Dasa.
+There will be physical distress, if Venus is Dhana’s, or Yuvati’s Lord. The remedial measures to obtain relief from the above evil effects and to regain enjoyment and good health is by the beneficence of Goddess Durga and the performance of Durga Saptashati Path and giving a cow, or a female buffalo in charity."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Sun",
+				"lord" : "Saturn",
+				"sublord" : "Sun",
+				"effect" : "Effects, like good relations with one’s employer, well-being in the family, happiness from children, gain of conveyances and cattle etc., will be derived in the Antardasa of Sun in the Dasa of Saturn, if Sun is in his exaltation, in his own Rasi, or, if Sun is associated with Dharm’s Lord, or, if Sun is in a Kendra, or Trikona, associated with, or receiving a Drishti from benefics.
+There will be heart disease, defamation, loss of position, mental agony, separation from close relatives, obstacles in industrial ventures, fevers, fears, loss of kinsmen, loss of articles, dear to the person, if Sun is in Randhra, or Vyaya, or, if Sun is in the 8th, or 12th from the Lord of the Dasa.
+There will be physical distress, if Sun is Dhana’s, or Yuvati’s Lord. The worship of Sun is the remedial measure to obtain relief from the above evil effects."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Moon",
+				"lord" : "Saturn",
+				"sublord" : "Moon",
+				"effect" : "Effects, like gains of conveyance, garments, ornaments, improvement of fortune and enjoyments, taking care of brothers, happiness in both maternal and paternal homes, increase in cattle wealth etc., will be derived in the Antardasa of Moon in the Dasa of Saturn, if Moon is full, in her exaltation, or in her own Rasi, or in a Kendra, or Trikona, or in the 11th from the Dasa Lord, or, if Moon receives a Drishti from benefics.
+There will be great distress, wrath, separation from parents, ill health of children, losses in business, irregular meals, administration of medicines, if Moon is waning, if Moon is associated with, or receives Drishti from malefics, or, if Moon is in his debilitation Rasi, or, if Moon is in malefic Navamsa, or, if Moon is in the Rasi of a malefic Grah. There will, however, be good effects and some gain of wealth at the commencement of the Antardasa.
+Enjoyment of conveyances and garments, happiness from kinsmen, happiness from parents, wife, employer etc. will be the results, if Moon is in a Kendra, Trikona, or in the 11th from the Lord of the Dasa.
+Effects, like sleepiness, lethargy, loss of position, loss of enjoyments, increase in the number of enemies, antagonism with kinsmen, will be experienced, if Moon is weak and is in the 6th, 8th, or 12th from the Lord of the Dasa.
+There will be lethargy and physical distress, if Moon is Dhana’, or Yuvati’s Lord. The remedial measures to obtain relief from the above evil effects and prolongation of longevity are Havan and giving jaggery, Ghī, rice, mixed with curd, a cow, or a female buffalo in charity."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Mars",
+				"lord" : "Saturn",
+				"sublord" : "Mars",
+				"effect" : "Effects, like enjoyments, gain of wealth, reverence from the king, gain of conveyances, clothes and ornaments, attainment of the position of a Commander of the Army, increase in agricultural and cattle wealth, construction of a new house, happiness to kinsmen, will be derived from the very commencement of the Antardasa of Mars in the Dasa of Saturn, if Mars is in his exaltation, in his own Rasi, or, if Mars is associated with Lagn’s Lord, or with the Dasa Lord.
+There will be loss of wealth, danger of wounds, danger from thieves, snakes, weapons, gout and other similar diseases, distress to father and brothers, quarrels with copartners, loss of kinsmen, coarse food, going away to foreign lands, unnecessary expenditure etc., if Mars is in his debilitation Rasi, or combust, or in Randhra, or Vyaya and associated with, or receiving a Drishti from malefics.
+Great distress, dependence on others and fear of premature death, may be expected, if Mars is in Dhana, or, if Mars is Yuvati’s, or Randhra’s Lord. The remedial measures to obtain relief from the above evil effects are performance of Havan and giving a bull in charity."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Rahu",
+				"lord" : "Saturn",
+				"sublord" : "Rahu",
+				"effect" : "Effects, like quarrels, mental agony, physical distress, agony, antagonism with the sons, danger from diseases, unnecessary expenditure, discord with close relations, danger from the government, foreign journeys, loss of house and agricultural lands, will be derived in the Antardasa of Rahu in the Dasa of Saturn, if Rahu not be in his house of exaltation, or any other auspicious position.
+Enjoyment, gains of wealth, increase in agricultural production, devotion to deities and Brahmins, pilgrimage to holy places, increase in cattle wealth, well-being in the family will be the results at the commencement of the Antardasa, if Rahu is associated with Lagn’s Lord, or a Yog Karak Grah, or, if Rahu is in his exaltation, or in his own Rasi, or, if Rahu is in a Kendra, or Labh from Lagn, or from the Lord of the Dasa. There will be cordiality with the king and happiness from friends in the middle portion of the Antardasa.
+There will be acquisition of elephants, opulence and glory, cordial relations with the king, gains of valuable clothes, if Rahu is in Mesh, Kanya, Kark, Vrishabh, Meen, or Dhanu.
+There will be physical distress, if Rahu is associated with Dhana’s, or Yuvati’s Lord. The remedial measures to obtain relief from the above evil effects are Mrityunjaya Japa and giving a goat in charity."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Jupiter",
+				"lord" : "Saturn",
+				"sublord" : "Jupiter",
+				"effect" : "Effects, like success all-round, well-being in the family, gain of conveyances, ornaments and clothes by the beneficence of the king, reverence, devotion to deities and the preceptor, association with men of learning, happiness from wife and children etc., will be derived in the Antardasa of Jupiter in the Dasa of Saturn, if Jupiter is in a Kendra, or in a Trikona, or, if Jupiter is associated with Lagn’s Lord, or, if Jupiter is in his own, or in his exaltation Rasi.
+Results, like death of the near relations, loss of wealth, antagonism with the government officials, failure in projects, journeys to foreign lands, affliction with diseases, like leprosy etc., will be experienced, if Jupiter is in his debilitation Rasi, or, if Jupiter is associated with malefics, or, if Jupiter is in Ari, Sahaj, or Vyaya.
+There will be opulence and glory, happiness to wife, gains through the king, comforts of good food and clothes, religious-mindedness, name and fame in the country, interest in Vedas and Vedanta, performance of religious sacrifices, giving grains etc. in charity, if Jupiter is in the 5th, 9th, 11th, 2nd, or Kendra from the Lord of the Dasa.
+Antagonism with kinsmen, mental agony, quarrels, loss of position, losses in ventures, loss of wealth, as a result of imposition of fines, or penalties by government, imprisonment distress to wife and son will be the results, if Jupiter is weak and is in the 6th, 8th, or 12th from the Lord of the Dasa.
+There will be physical distress, agony, death of the native, or any member of the family, if Jupiter is Dhana’s, or Yuvati’s Lord. Remedial measures to obtain relief from the above evil effects are recitation of Shiva Sahasranam and giving gold in charity."
+		}
+	]
+}

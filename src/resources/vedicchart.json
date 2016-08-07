@@ -1,0 +1,205 @@
+{
+    "configs": [
+        {
+            "name": "Default"
+        },
+        {
+            "name": "Double Frame",
+            "outerrectangle": {
+                "doubleouterline": true
+            }
+        },
+        {
+            "name": "Rounded Frame",
+            "outerrectangle": {
+                "cornerradius": 10
+            }
+        },
+        {
+            "name": "Grey Frame",
+            "outerrectangle": {
+                "pen": {
+                    "color": "#cccccc",
+                    "width": 15
+                }
+            }
+        },
+        {
+            "name": "Grey Frame/Rounded",
+            "outerrectangle": {
+                "cornerradius": 10,
+                "pen": {
+                    "color": "#cccccc",
+                    "width": 20
+                }
+            },
+            "pen": {
+								"color": "#cccccc",
+                "width": 20
+            },
+            "textcolor": "black"
+        },
+        {
+            "name": "Grey Frame/Rounded - Colored Signs",
+            "outerrectangle": {
+                "cornerradius": 5,
+                "pen": {
+                    "color": "#cccccc",
+                    "width": 20
+                }
+            },
+            "pen": {
+								"color": "#cccccc",
+                "width": 20
+            },
+            "textcolor": "black",
+						"palette" : "signstock"
+        },
+        {
+            "name": "Minimal/No Frame",
+            "outerrectangle": {
+                "show": false
+            }
+        },
+        {
+            "name": "Colored Signs",
+						"palette" : "signstock"
+        },
+        {
+            "name": "Colored/Red Style",
+						"palette" : "redstyle"
+        },
+        {
+            "brush": {
+                "color": "black",
+                "style": "wxSOLID"
+            },
+            "markedfields": {
+                "brush": {
+                    "color": "#565656",
+                    "style": "wxcross_hatch"
+                }
+            },
+            "name": "Yellow",
+            "outerrectangle": {
+                "doubleouterline": false,
+                "pen": {
+                    "color": "yellow",
+                    "width": 3
+                }
+            },
+            "pen": {
+                "color": "yellow",
+                "width": 2
+            }
+        },
+        {
+            "brush": {
+                "filename": "madera.jpg",
+                "style": "wxSTIPPLE"
+            },
+            "markedfields": {
+                "brush": {
+                    "filename": "madera.jpg",
+                    "rotatehue": 10,
+                    "style": "wxSTIPPLE"
+                }
+            },
+            "name": "Madera"
+        },
+        {
+            "extends": "Madera",
+            "markedfields": {
+                "brush": {
+                    "filename": "madera.jpg",
+                    "rotatehue": 230,
+                    "style": "wxSTIPPLE"
+                }
+            },
+            "name": "Madera/Colored Signs",
+						"palette" : "madera"
+        },
+        {
+            "extends": "Yellow",
+            "name": "Too Big",
+            "outerrectangle": {
+                "radius": 108
+            }
+        },
+        {
+            "brush": {
+                "filename": "marble.jpg",
+                "style": "wxSTIPPLE"
+            },
+            "markedfields": {
+                "brush": {
+                    "filename": "marble.jpg",
+                    "rotatehue": 230,
+                    "style": "wxSTIPPLE"
+                },
+                "pen": {
+                    "color": "red",
+                    "style": "wxSOLID",
+                    "width": 10
+                },
+                "textcolor": "green"
+            },
+            "name": "Marble",
+            "pen": {
+                "linewidth": 2,
+                "style": "wxSOLID"
+            }
+        },
+        {
+            "extends": "Marble",
+            "name": "Marble/Colored Signs",
+						"palette" : "marble"
+        },
+        {
+            "brush": {
+                "filename": "stars.jpg",
+                "style": "wxSTIPPLE"
+            },
+            "extends": "Yellow",
+            "name": "Stars"
+        },
+        {
+            "brush": {
+                "color": "#3c6a2a",
+                "style": "wxSOLID"
+            },
+            "name": "Fisherman's Friend",
+            "pen": {
+                "color": "black",
+                "style": "wxSOLID",
+                "width": 10
+            }
+        },
+        {
+            "brush": {
+                "color": "#000000",
+                "style": "wxSOLID"
+            },
+            "name": "Linux Console",
+            "pen": {
+                "color": "#00ff00",
+                "style": "wxSOLID",
+                "width": 2
+            }
+        },
+        {
+            "globaltextcolor": "black",
+            "name": "Rainbow",
+					  "palette": "rainbow"
+        },
+        {
+            "globaltextcolor": "black",
+            "name": "Desert",
+					  "palette": "desert"
+        },
+        {
+				  	"name": "Test Palette",
+					  "palette": "madera"
+        }
+    ]
+}

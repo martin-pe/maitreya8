@@ -1,0 +1,436 @@
+{
+   "configs" : [
+      {
+         "description" : "Mars in Aries",
+         "effect" : "If Mars at birth occupies Aries, the native will be splendourous, truthful, valorous, be a king, be fond of war, interested in adventurous acts, be an Army chief, or head of a village, or a band; be delighted, charitable be endowed with a number of cows, goats etc. and grains, be fierce and will join many women.",
+         "rule" : "return getRasi( Mars ) == Aries;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in Scorpio",
+         "effect" : "If Mars occupies Scorpio at birth, the native will be attached to trade, will be interested in Vedic knowledge, be leader of thieves, skillful in his duties, be interested in wars, be highly sinful, will do big crimes, will be perfidious towards his enemies, will betray, be disposed towards killing, be unhelpful, be a talebearer, will be endowed with lands, sons and wife and be troubled by poison, fire, weapons and wounds.",
+         "rule" : "return getRasi( Mars ) == Scorpio;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in a sign of Mars aspected by Sun",
+         "effect" : "Should Mars at birth be in Aries/Scorpio and be aspected by the Sun, the person will possess wealth, wife and children, be a kings minister, be a justice, be famous and be a charitable king.",
+         "rule" : "return getLord( getRasi( Mars )) == Mars and isGrahaDrishti( Sun, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mars aspected by Moon",
+         "effect" : "Should Mars at birth be in Aries/Scorpio and be aspected by the Moon, the native will be bereft of mother, will have a wounded body, will hate his own people, will not have friends, be jealous and will have female children.",
+         "rule" : "return getLord( getRasi( Mars )) == Mars and isGrahaDrishti( Moon, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mars aspected by Mercury",
+         "effect" : "Should Mars at birth be in Aries/Scorpio and be aspected by Mercury, the subject will be an expert in stealing others' money, be a liar, be devoted to Manmatha (i.e. highly libidinous), be hostile and will frequently visit prostitutes.",
+         "rule" : "return getLord( getRasi( Mars )) == Mars and isGrahaDrishti( Mercury, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mars aspected by Jupiter",
+         "effect" : "Should Mars at birth be in Aries/Scorpio and be aspected by Jupiter, the native will be learned, sweet-spoken, fortunate, dear to parents, be very affluent and will be a king par excellence.",
+         "rule" : "return getLord( getRasi( Mars )) == Mars and isGrahaDrishti( Jupiter, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mars aspected by Venus",
+         "effect" : "Should Mars at birth be in Aries/Scorpio and be aspected by Venus, the native will be imprisoned due to females and will be deprived of his money on account of females, more than once.",
+         "rule" : "return getLord( getRasi( Mars )) == Mars and isGrahaDrishti( Venus, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mars aspected by Saturn",
+         "effect" : "Should Mars at birth be in Aries/Scorpio and be aspected by Saturn, the native will be capable of hindering thieves in spite of his being not valorous, will be devoid of his men and will maintain another woman.",
+         "rule" : "return getLord( getRasi( Mars )) == Mars and isGrahaDrishti( Saturn, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Taurus",
+         "effect" : "If Mars is in Taurus in a nativity, the person will break the vows of chaste women, will eat voraciously, will have little wealth and few sons, be jealous, will maintain many people, will not trust others, will play violently, will speak very harshly, be fond of music, be sinful, be inimical to relatives and will bring infamy to his family.",
+         "rule" : "return getRasi( Mars ) == Taurus;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in Libra",
+         "effect" : "If Mars occupies Libra in a nativity, the person will be liable to wandering, will indulge in bad business, be an able speaker, be fortunate, deformed in respect of some limb, will have few relatives, be fond of wars, will lose his first wife, will deal in liquors and will earn through prostitutes to only lose.",
+         "rule" : "return getRasi( Mars ) == Libra;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in a sign of Venus aspected by Sun",
+         "effect" : "If Mars is in Taurus/Libra, with the aspect of the Sun, the person will seek to move in forests and hills, will hate women, will have many enemies, will have fierce appearance and be courageous.",
+         "rule" : "return getLord( getRasi( Mars )) == Venus and isGrahaDrishti( Sun, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Venus aspected by Moon",
+         "effect" : "If Mars is in Taurus/Libra with the aspect of the Moon, the native will not honour his mother, be wicked, will lord many women and be dear to them and will fear war.",
+         "rule" : "return getLord( getRasi( Mars )) == Venus and isGrahaDrishti( Moon, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Venus aspected by Mercury",
+         "effect" : "If Mars is in Taurus/Libra with the aspect of Mercury, the native will promote quarrels, will speak much, will have a soft body, will possess (indifferent or) few sons and little wealth and will be learned in Shastras.",
+         "rule" : "return getLord( getRasi( Mars )) == Venus and isGrahaDrishti( Mercury, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Venus aspected by Jupiter",
+         "effect" : "If Mars is in Taurus/Libra with the aspect of Jupiter, the subject will be skillful in music and in play of musical instruments, be fortunate, be dear to his relatives and will be pure.",
+         "rule" : "return getLord( getRasi( Mars )) == Venus and isGrahaDrishti( Jupiter, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Venus aspected by Venus",
+         "effect" : "If Mars is in Taurus/Libra with the aspect of Venus, the person will be a kings minister, be liked by the king, be an Army chief, will have famous name (i.e. titles etc.) and will be happy.",
+         "rule" : "return getLord( getRasi( Mars )) == Venus and isGrahaDrishti( Venus, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Venus aspected by Saturn",
+         "effect" : "If Mars is in Taurus/Libra with the aspect of Saturn, the native will be happy, famous, wealthy, be endowed with friends and own men, be learned and will be head of a group of villages/towns, or group of men.",
+         "rule" : "return getLord( getRasi( Mars )) == Venus and isGrahaDrishti( Saturn, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Gemini",
+         "effect" : "Should Mars be in Gemini, the native will be splendourous, be capable of enduring miseries, be very learned, be well versed with poetical rules, skillful in various kinds of fine arts, fond of going to foreign countries, virtuously disposed, highly intelligent, favourably disposed to his sons and friends and will devote to various kinds of assignments.",
+         "rule" : "return getRasi( Mars ) == Gemini;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in Virgo",
+         "effect" : "Should Mars occupy Virgo at birth, the subject will be worthy of honour, be never rich, be very fond of sexual union and music, be soft and sweet spoken, will have various kinds of expenses, be not much valorous, be learned, will have ribs in their advanced position, will fear enemies very much, be skillful in Shastras and fine arts, be fond of bathing, make-up etc. and be splendourous.",
+         "rule" : "return getRasi( Mars ) == Virgo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in a sign of Mercury aspected by Sun",
+         "effect" : "If at birth Mars be in Gemini/Virgo and in aspect to the Sun, the native will be blessed with learning, wealth and courage, be fond of hills, forests and fortresses and be highly strong.",
+         "rule" : "return getLord( getRasi( Mars )) == Mercury and isGrahaDrishti( Sun, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mercury aspected by Moon",
+         "effect" : "If Mars is in Gemini/Virgo and is aspected by the Moon, the person will be happy, wealthy, splendourous, will guard women's apartments, will be endowed with women and will manage the kings residence.",
+         "rule" : "return getLord( getRasi( Mars )) == Mercury and isGrahaDrishti( Moon, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mercury aspected by Mercury",
+         "effect" : "If Mars is in Gemini/Virgo and is aspected by Mercury, one will be skillful in the art of writing, in mathematics and in poetry, be garrulous, be liar, be a sweet speaker, be a messenger (or an ambassador) and will endure lot of misery.",
+         "rule" : "return getLord( getRasi( Mars )) == Mercury and isGrahaDrishti( Mercury, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mercury aspected by Jupiter",
+         "effect" : "If Mars is in Gemini/Virgo and is aspected by Jupiter, the native will be a kings representative, be bright, will go to foreign countries, as an ambassador, be skillful in all doings and be a leader.",
+         "rule" : "return getLord( getRasi( Mars )) == Mercury and isGrahaDrishti( Jupiter, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mercury aspected by Venus",
+         "effect" : "If Mars is in Gemini/Virgo and is aspected by Venus, the person will do the jobs of females, be very fortunate and will enjoy food and robes.",
+         "rule" : "return getLord( getRasi( Mars )) == Mercury and isGrahaDrishti( Venus, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Mercury aspected by Saturn",
+         "effect" : "If Mars is in Gemini/Virgo and is aspected by Saturn, the person will be interested in wandering in mines (i.e. places beneath surface), hills and forests, will have husbandry, as his livelihood, be highly miserable, be very valorous, dirty and be devoid of wealth.",
+         "rule" : "return getLord( getRasi( Mars )) == Mercury and isGrahaDrishti( Saturn, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Cancer",
+         "effect" : "If Mars is in Cancer at birth, the subject will like living in others' houses, be deformed, sick, will attain riches through agriculture, will enjoy royal food and robes during childhood, will eat food in others' houses, will become wealthy through the source of water, be repeatedly anguished and be always distressed.",
+         "rule" : "return getRasi( Mars ) == Cancer;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in Cancer aspected by Sun",
+         "effect" : "If Mars be in Cancer at birth and is aspected by the Sun, the native will be subjected to bilious diseases, be splendourous, be a justice in position and be valorous.",
+         "rule" : "return getLord( getRasi( Mars )) == Moon and isGrahaDrishti( Sun, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Cancer aspected by Moon",
+         "effect" : "If the Moon aspects Mars in Cancer, the person will be troubled by various diseases, will have mean conduct, will possess an unsightly body and be miserable.",
+         "rule" : "return getLord( getRasi( Mars )) == Moon and isGrahaDrishti( Moon, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Cancer aspected by Mercury",
+         "effect" : "If Mercury aspects Mars in Cancer, the person will be dirty, sinful, will possess a mean family, will be rejected by his own men and be shameless.",
+         "rule" : "return getLord( getRasi( Mars )) == Moon and isGrahaDrishti( Mercury, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Cancer aspected by Jupiter",
+         "effect" : "If Mars in Cancer is aspected by Jupiter, the native will be famous, be king's minister, be learned, charitable, wealthy and be bereft of carnal pleasures.",
+         "rule" : "return getLord( getRasi( Mars )) == Moon and isGrahaDrishti( Jupiter, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Cancer aspected by Venus",
+         "effect" : "If Venus aspects Mars in Cancer, the subject will be grieved on account of women's company, be insulted by women and will lose wealth on account of women.",
+         "rule" : "return getLord( getRasi( Mars )) == Moon and isGrahaDrishti( Venus, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Cancer aspected by Saturn",
+         "effect" : "Should Saturn aspect Mars in Cancer, the native will acquire money through journey in water, be equal to a king, be sportive in his acts and be always bright.",
+         "rule" : "return getLord( getRasi( Mars )) == Moon and isGrahaDrishti( Saturn, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Leo",
+         "effect" : "If Mars is in Leo in a nativity, the native will be impatient, be valorous, intent upon grabbing others' money and children, will like to live in forests, be fond of eating cow's flesh (or beef etc.), will lose his first wife, will kill snakes and animals, will be bereft of children, be devoid of charitable acts and be always active in his jobs.",
+         "rule" : "return getRasi( Mars ) == Leo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in Leo aspected by Sun",
+         "effect" : "If Mars is in Leo and is aspected by the Sun, the native will be humble, helpful to friends, be endowed with own men and be fond of wandering in cow-houses, forests and hills.",
+         "rule" : "return getLord( getRasi( Mars )) == Sun and isGrahaDrishti( Sun, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Leo aspected by Moon",
+         "effect" : "If the Moon aspects Mars in Leo, the native will be ominous for his mother, be intelligent, will possess a hard body, be widely famous and will obtain money through women.",
+         "rule" : "return getLord( getRasi( Mars )) == Sun and isGrahaDrishti( Moon, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Leo aspected by Mercury",
+         "effect" : "If Mercury aspects Mars in Leo, the native will be clever in many arts, be a miser, be skillful in poetry and fine arts and be wicked.",
+         "rule" : "return getLord( getRasi( Mars )) == Sun and isGrahaDrishti( Mercury, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Leo aspected by Jupiter",
+         "effect" : "If Jupiter aspects Mars in Leo, the person will be close to the king, be highly learned, be of pure mentality and be an Army chief.",
+         "rule" : "return getLord( getRasi( Mars )) == Sun and isGrahaDrishti( Jupiter, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Leo aspected by Venus",
+         "effect" : "Should Venus aspect Mars in Leo, the person will have union with many women, be fortunate in respect of his wife and will be ever juvenile.",
+         "rule" : "return getLord( getRasi( Mars )) == Sun and isGrahaDrishti( Venus, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Leo aspected by Saturn",
+         "effect" : "Saturn aspecting Mars in Leo denotes, that the person will look, like an old man, be poor, will wander in others' houses/be miserable.",
+         "rule" : "return getLord( getRasi( Mars )) == Sun and isGrahaDrishti( Saturn, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : ""
+      },
+      {
+         "description" : "Mars in Sagittarius",
+         "effect" : "Should Mars be in Sagittarius, the native will have many wounds, be emaciated, be harsh in speech, crafty, alienated, be a warrior endowed with chariots, elephants and Army men, will pass arrows on other's Army from his chariot, be happy with hard work, will lose his happiness and money due to anger and will not honour elders.",
+         "rule" : "return getRasi( Mars ) == Sagittarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in Pisces",
+         "effect" : "Should Mars be in Pisces at the time of one's birth, the person will be troubled by diseases, will have indifferent children, will live in foreign countries, be insulted by his own relatives, will lose all his wealth by his cunning and cheating disposition, will be depressed in spirits, be very miserable, will disrespect elders and Brahmins, be unkind, will conceive (other's) desires, be fond of praises and be famous.",
+         "rule" : "return getRasi( Mars ) == Pisces;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in a sign of Jupiter aspected by Sun",
+         "effect" : "If Mars occupies Sagittarius, or Pisces at birth and is aspected by the Sun, the subject will be world honoured, be fortunate, will live in forests, hills and fortresses and be cruel.",
+         "rule" : "return getLord( getRasi( Mars )) == Jupiter and isGrahaDrishti( Sun, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Jupiter aspected by Moon",
+         "effect" : "If Mars is in Sagittarius, or Pisces and is aspected by the Moon, the person will be deformed, belligerent, learned and be always inimical to the king.",
+         "rule" : "return getLord( getRasi( Mars )) == Jupiter and isGrahaDrishti( Moon, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Jupiter aspected by Mercury",
+         "effect" : "If Mars is in Sagittarius, or Pisces and is aspected by Mercury, the person will be a scholar, be skillful, learned in fine arts and be highly learned in general.",
+         "rule" : "return getLord( getRasi( Mars )) == Jupiter and isGrahaDrishti( Mercury, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Jupiter aspected by Jupiter",
+         "effect" : "If Mars is in Sagittarius, or Pisces and is aspected by Jupiter, the person will be devoid of wife and happiness, will be beyond the reach of enemies, be wealthy and be fond of exercises.",
+         "rule" : "return getLord( getRasi( Mars )) == Jupiter and isGrahaDrishti( Jupiter, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Jupiter aspected by Venus",
+         "effect" : "If Mars is in Sagittarius, or Pisces and is aspected by Venus, the person will be very much dear to women, be interested in cosmetics, makeup etc., be charitable, be libidinous and be fortunate.",
+         "rule" : "return getLord( getRasi( Mars )) == Jupiter and isGrahaDrishti( Venus, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Jupiter aspected by Saturn",
+         "effect" : "If Mars is in Sagittarius, or Pisces and is aspected by Saturn, the person will have defective body, be sinful, wandering-nature, devoid of happiness and interested in others' religion.",
+         "rule" : "return getLord( getRasi( Mars )) == Jupiter and isGrahaDrishti( Saturn, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in Capricorn",
+         "effect" : "If Mars is posited in Capricorn at birth, one will be wealthy (fortunate), be endowed with happiness and pleasures, be wealthy, will have an excellent disposition, be famous, be an Army chief, or a king, will possess a good wife, be successful in war, will live in his own country, be independent, be a protector, be virtuous and will be interested in various procedures.",
+         "rule" : "return getRasi( Mars ) == Capricorn;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in Aquarius",
+         "effect" : "If Mars is posited in Aquarius at the time of one's birth, he will be devoid of both affection and purity, will look like an old person, will die a bad death, will have spite, jealousy, untruthful disposition, afflicted speech and lost wealth, will be ugly, will have (abundant) hair on the body, will lose money in gambling, will be unsightly, will have miserable profession, be fond of liquor and be unfortunate.",
+         "rule" : "return getRasi( Mars ) == Aquarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mars in a sign of Saturn aspected by Sun",
+         "effect" : "Should Mars be in Capricorn, or Aquarius and be aspected by the Sun, the subject will have very dark body, be courageous, will have many wives, sons and abundant wealth and be very sharp.",
+         "rule" : "return getLord( getRasi( Mars )) == Saturn and isGrahaDrishti( Sun, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Saturn aspected by Moon",
+         "effect" : "Should Mars be in Capricorn, or Aquarius and be aspected by the Moon, one will be fickle minded, be not well disposed towards his mother, be fond of beautification, be charitable, be not firm in friendship and be rich.",
+         "rule" : "return getLord( getRasi( Mars )) == Saturn and isGrahaDrishti( Moon, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Saturn aspected by Mercury",
+         "effect" : "Should Mars be in Capricorn, or Aquarius and be aspected by Mercury, the subject will walk very slowly, be not rich, will not have any profession, be not strong, be not outspoken and be not virtuous.",
+         "rule" : "return getLord( getRasi( Mars )) == Saturn and isGrahaDrishti( Mercury, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Saturn aspected by Jupiter",
+         "effect" : "Should Mars be in Capricorn, or Aquarius and be aspected by Jupiter, the native will be very beautiful, will possess kingly qualities, will fulfill his undertakings, be long-lived and be endowed with relatives.",
+         "rule" : "return getLord( getRasi( Mars )) == Saturn and isGrahaDrishti( Jupiter, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Saturn aspected by Venus",
+         "effect" : "Should Mars be in Capricorn, or Aquarius and be aspected by Venus, one will be endowed with various kinds of (carnal) pleasures, be interested in fostering women and be belligerent.",
+         "rule" : "return getLord( getRasi( Mars )) == Saturn and isGrahaDrishti( Venus, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mars in a sign of Saturn aspected by Saturn",
+         "effect" : "Should Mars be in Capricorn, or Aquarius and be aspected by Saturn, the person will be a king, be very affluent, will hate women, will possess many children, be learned, be devoid, of happiness and be timid in war.",
+         "rule" : "return getLord( getRasi( Mars )) == Saturn and isGrahaDrishti( Saturn, Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      }
+   ]
+}

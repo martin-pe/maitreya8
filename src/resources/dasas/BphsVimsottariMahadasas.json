@@ -1,0 +1,82 @@
+{
+	"configs" : [
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Sun",
+				"lord" : "Sun",
+				"effect" : "During the Dasa of Sun there is acquisition of wealth, great felicity and honours from the Government, if at the time of birth Sun is in his own Rasi, in his exaltation Rasi, in a Kendra, in Labh, be associated with the Lord of Dharm, or the Lord of Karm and strong in his Varg. The native will be blessed with a son (children), if Sun is with the Lord of Putr. The native will acquire elephants and other kinds of wealth, if Sun is associated with the Lord of Dhana. The native will enjoy comforts of conveyances, if Sun is associated with the Lord of Bandhu. He attains a high position, like that of Army Chief, by the beneficence of the king and enjoys all kinds of happiness. Thus during the Dasa of a strong (and favourable) Sun there are acquisitions of clothes, agricultural products, wealth, honours, conveyances etc.
+During the Dasa of Sun there will be anxieties, loss of wealth, punishment from Government, defamation, opposition by kinsmen, distress to father, (in)auspicious happenings at home, distress to paternal and maternal uncles etc., anxiety and inimical relations with other people for no reason whatsoever, should Sun be in his Rasi of debilitation, be weak in Ari, Randhra, or Vyaya, or be associated with malefic Grahas, or with the Lord of Ari, Randhra, or Vyaya. There will be some favourable effects at times, if in the above situations Sun receives a Drishti from benefic Grahas. The effects will always be unfavourable, when malefic Grahas give a Drishti to Sun."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Moon",
+				"lord" : "Moon",
+				"effect" : "O Brahmin! After describing the effects of the Dasa of Sun in brief, I will now come to the effects of Vimshottari Dasa of Moon. During the Dasa of Moon from its commencement to the end there will be opulence and glory, good fortune, gain of wealth, auspicious functions at home, dawn of fortune, attainment of a high position in Government, acquisition of conveyances, clothes, birth of children and acquisition of cattle, should Moon be in her exaltation, in her own Rasi, in Kendra, in Labh, Dharm, or Putr, be associated with, or receives a Drishti from benefics, be fully powerful and is associated with the Lord of Karm, Dharm, or Bandhu. There will be extraordinary gains of wealth and luxuries, if such a Moon is in Dhana Bhava.
+Should Moon be waning, or in her debilitation Rasi, there will be loss of wealth in her Dasa. If Moon is in Sahaj, there will be happiness off and on. If Moon is associated with malefics, there will be idiocy, mental tension, trouble from employees and mother and loss of wealth. If waning Moon is in Ari, Randhra, or Vyaya, or is associated with malefics, there will be inimical relations with Government, loss of wealth, distress to mother and similar evil effects. If a strong Moon is placed in Ari, Randhra, or Vyaya there will be troubles and good times off and on."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Mars",
+				"lord" : "Mars",
+				"effect" : "If Mars is in his exaltation, in his Multrikon, in his own Rasi, in Kendra, in Labh, or Dhana Bhava with strength, in a benefic Ańś (Navamsa) and is associated with a benefic, there will be during his Dasa acquisition of kingdom (attainment of a high administrative, or political position in Government, gain of wealth and land, recognition by Government), gain of wealth from foreign countries and acquisition of conveyances and ornaments. There will also be happiness and good relations with co-borns. If Mars with strength is placed in a Kendra, or in Sahaj, there will be gain of wealth through valour, victory over enemies, happiness from wife and children. There will, however, be a possibility of some unfavourable effects at the end of the Dasa.
+If Mars is in his debilitation Rasi, weak, in an inauspicious Bhava, or is associated with, or receives a Drishti from malefics, there will be in his Dasa loss of wealth, distress and similar unfavourable effects."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu",
+				"lord" : "Rahu",
+				"effect" : "In order to clarify the effects of the Dasa of Rahu I shall first mention the exaltation and debilitation Rāśis of Rahu and Ketu. The exaltation Rasi of Rahu is Vrishabh. The exaltation Rasi of Ketu is Vrischik. The Multrikonas of Rahu and Ketu are Mithun and Dhanu. The own Rāśis of Rahu and Ketu are Kumbh and Vrischik. Some sages have expressed the view, that Kanya is the own Rasi of Rahu and Meen is the own Rasi of Ketu. Should Rahu be in his exaltation Rasi etc., there will be during the Dasa of Rahu great happiness from acquisition of wealth, agricultural products etc., acquisition of conveyances with the help of friends and Government, construction of a new house, birth of sons (children), religious inclinations, recognition from Government of foreign countries and gain of wealth, clothes etc. If Rahu be associated with, or receives a Drishti from benefics, be in a benefic Rasi and be in Tanu, Bandhu, Yuvati, Karm, Labh, or Sahaj, there will be during his Dasa all kinds of comforts by the beneficence of the Government, acquisition of wealth through a foreign Government, or sovereign and felicity at home.
+If Rahu is in Randhra, or Vyaya Bhava, there will be during his Dasa all kinds of troubles and distress. If Rahu is associated with a malefic, or a Marak Grah, or is in his debilitation Rasi, there will be loss of position, destruction of his residential house, mental agony, trouble to wife and children and misfortune of getting bad food. There will be loss of wealth at the commencement of the Dasa, some relief and gain of wealth in his own country and distress and anxieties during the last portion of the Dasa."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter",
+				"lord" : "Jupiter",
+				"effect" : "Now I am going to describe the effects of the Dasa of Jupiter, the great benefic and preceptor of the Gods.
+If Jupiter is in his exaltation, his own Rasi, his Multrikon, in Karm, Putr, or Dharm Bhava, in his own Navamsa, or in his exalted Navamsa, there will be during his Dasa: acquisition of kingdom, great felicity, recognition by Government, acquisition of conveyances and clothes, devotion to deities and Brahmins, happiness in respect of his wife and children and success in the performance of religious sacrifices (oblations).
+If Jupiter is in his debilitation Rasi, combust, associated with malefics, or in Ari, or Randhra, there will be during his Dasa loss of residential premises, anxiety, distress to children, loss of cattle and pilgrimage. The Dasa will give some unfavourable effects at its commencement only. During the later part of the Dasa there will be good effects, like gain of wealth, awards from and recognition by Government."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn",
+				"lord" : "Saturn",
+				"effect" : "Now I will describe to you the effects of the Dasa of Saturn, who is considered the vilest and most inferior amongst all the Grahas.
+If Saturn is in his exaltation, in his own Rasi, or in Multrikon, or friendly Rasi, in his own, or exalted Navamsa and in Sahaj, or Labh, there will be during his Dasa recognition by Government, opulence and glory, name and fame, success in the educational sphere, acquisition of conveyances and ornaments etc., gain of wealth, favours from Government, attainment of a high position, like Commander of an Army, acquisition of a kingdom, benevolence of goddess Lakshmi, gain of property and birth of children.
+If Saturn is in Ari, Randhra, or Vyaya, in his debilitation Rasi, or combust, there will be during his Dasa ill effects from poison, injury from weapons, separation from father, distress to wife and children, disaster, as a result of displeasure of Government, imprisonment etc. If Saturn receives a Drishti from, or is associated with a benefic, is placed in a Kendra, or in a Trikona, in Dhanu, or in Meen, there will be acquisition of a kingdom, conveyances and clothes."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury",
+				"lord" : "Mercury",
+				"effect" : "Now I am going to describe the effects of the Dasa of Mercury, who is called a Kumar (in his teens) amongst all the Grahas.
+If Mercury is in his exaltation, in his own, in a friendly Rasi, or in Labh, Putr, or Dharm, there will be during his Dasa acquisition of wealth, gain of reputation, improvement in knowledge, benevolence of Government, auspicious functions, happiness from wife and children, good health, availability of sweetish preparations, profits in business etc. If Mercury receives a Drishti from a benefic, is in Dharm, or is the Lord of Karm, the aforesaid beneficial results will be experienced in full and there will be great felicity all-round.
+If Mercury is associated with a malefic, there will be during his Dasa punishment by Government, inimical relations with kinsmen, journey to a foreign country, dependence on others and the possibility of urinary troubles. If Mercury is in Ari, Randhra, or Vyaya, there will be loss of wealth, due to indulgence in lascivious activities, possibility of suffering from rheumatism and jaundice, danger of thefts and malevolence of Government, loss of land and cattle etc. At the commencement of the Dasa of Mercury, there will be gains of wealth, betterment in the educational sphere, birth of children and happiness. In the middle of the Dasa, there will be recognition from Government. The last part of the Dasa will be distressful."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu",
+				"lord" : "Ketu",
+				"effect" : "Now I will tell you about the Dasa of Ketu, who is a headless trunk (Kabandha) amongst all the Grahas.
+If Ketu is in a Kendra, a Trikona, or in Labh, in a benefic Rasi, in his exaltation, or in his own Rasi, there will be during his Dasa cordial relations with the king, desired headship of a country, or village, comforts of conveyances, happiness from children, gain from foreign countries, happiness from wife and acquisition of cattle. If Ketu is in Sahaj, Ari, or Labh, there will be in his Dasa acquisition of a kingdom, good relations with friends and opportunities for the acquisition of elephants. At the commencement of the Ketu Dasa there will be Raj Yog. During the middle portion of the Dasa there will be possibilities of fearfulness and in the last part there will be sufferings from ailments and journeys to distant places. If Ketu is in Dhana, Randhra, or Vyaya, or receives a Drishti from a malefic, there will be imprisonment, destruction of kinsmen and residential premises and anxieties, company of menials and diseases."
+		},
+		{
+				"source" : "Hora Shastra",
+				"dasa" : "Vimsottari",
+				"description" : "Venus",
+				"lord" : "Venus",
+				"effect" : "Now I will describe the effects of the Dasa of Venus, who is the incarnate of intoxication, ecstasy, delight and pride amongst all the Grahas.
+If Venus is in his exaltation, in his own Rasi, or in a Kendra, or a Trikona, there will be during his Dasa acquisition of fancy clothes, ornaments, conveyances, cattle and land etc., availability of sweet preparations every day, recognition from the sovereign, luxurious functions of songs and dances etc. by the benevolence of Goddess Lakshmi. If Venus is in his Multrikon, during his Dasa there will definitely be acquisition of a kingdom, acquisition of a house, birth of children and grandchildren, celebration of marriage in the family, attainment of a high position, like the Commander of an Army, visits of friends, recovery of lost wealth, property, or kingdom.
+If Venus is in Ari, Randhra, or Vyaya, there will be during his Dasa inimical relations with kinsmen, distress to wife, losses in business, destruction of cattle and separation from relations.
+If Venus is in Bandhu, as Lord of Dharm, or Karm, there will be during his Dasa attainment of rulership of a country, or village, performance of pious deeds, like building of reservoirs and temples and giving grains etc. in charity, availability of sweet preparations every day, vigor in work, name and fame and happiness from wife and children.
+Similar are the effects of Venus in his sub-periods. If Venus is Lord of Dhana, or Yuvati, there will be during his Dasa physical pains and troubles. To get alleviation from those troubles the native should perform Shatarudriya, or Mrityunjaya Japa in the prescribed manner and give in charity a cow, or female buffalo."
+		}
+	]
+}

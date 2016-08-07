@@ -1,0 +1,42 @@
+
+.SUFFIXES: .o.cpp
+
+CPP = g++
+AR = ar r
+RM = rm -f
+
+SWE_LIB = ../swe/libswe.a
+BASE_LIB = ../base/libmaitreya_base.a
+JYOTISH_LIB = libjyotish.a
+JYOTISH_PROG = textclient.exe
+
+OBS = ArabicParts.o Ashtakavarga.o AshtottariDasa.o Aspect.o astrobase.o Dasa.o \
+	Eclipse.o Ephemeris.o Expert.o Expression.o GenericDasa.o GenericTableWriter.o \
+	Hora.o Horoscope.o Jaimini.o KalachakraDasa.o MdlInterpreter.o \
+	MdlLexer.o MdlParser.o Nakshatra.o Partner.o VedicPlanet.o BasicHoroscope.o \
+	SingletonLifeline.o SolarChart.o TextHelper.o Transit.o \
+	Varga.o VargaHoroscope.o \
+	VimsottariDasa.o YogaConfig.o Yoga.o DasaConfig.o DasaTool.o \
+	Table.o Sheet.o Painter.o Exporter.o HtmlExporter.o PrintoutTextHelper.o
+
+all : $(JYOTISH_LIB)
+
+CPPFLAGS = -g -c -I. -I../swe -I../base -I../wxJSON -I.. -I../.. `wx-config --cppflags`
+    
+LDLIBS = -lstdc++ $(JYOTISH_LIB) $(BASE_LIB) $(SWE_LIB) `wx-config --libs` 
+
+.cc.o :
+	$(CPP) $(CPPFLAGS) -o$@ $*.cc
+
+.cpp.o :
+	$(CPP) $(CPPFLAGS) -o$@ $*.cpp
+
+$(JYOTISH_PROG) : $(JYOTISH_LIB) textclient.o
+	$(CPP) -o $(JYOTISH_PROG) textclient.o $(LDLIBS)
+ 
+$(JYOTISH_LIB) : $(OBS)
+	$(AR) $(JYOTISH_LIB) $(OBS)
+ 
+clean:
+	$(RM) *.o $(JYOTISH_PROG) $(JYOTISH_LIB) *.core
+

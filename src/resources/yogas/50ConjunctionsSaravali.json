@@ -1,0 +1,732 @@
+{
+   "configs" : [
+      {
+         "description" : "Sun = Moon",
+         "effect" : "One, who has the Sun and Moon together will be at the disposal of his wife (or females), immodest, be a metallurgist (can be interpreted also, as “able to deceive”), will be quite wealthy and be an expert in sale of intoxicants.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars",
+         "effect" : "Should the Sun and Mars be in one House the native will be splendourous, valorous, dull witted, strong, be a liar, be sinful, disposed to kill (or torture) and be fierce.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury",
+         "effect" : "If the Sun and Mercury are in one House, the native will be in service, will have unsteady wealth, be sweet in speech, will have fame and money, be noble, dear to king and good people and will possess strength, beauty and learning.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Jupiter",
+         "effect" : "If the Sun and Jupiter be together, one will be virtuous, be a minister of king, will gain through friends, be with good mind and be a preceptor.",
+         "rule" : "return getRasi( Sun ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Venus",
+         "effect" : "If the Sun and Venus be together, one will be skillful in use of weapons, be mighty, weak-sighted in old age, will be able to amuse the public and will have abundant money earned through women.",
+         "rule" : "return getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Saturn",
+         "effect" : "If the Sun and Saturn are together, the native will be a metallurgist, be virtuous, mindful of his own duties, will lose his wife and son, will have the qualities suitable to his race, will be pure, but not so upright.",
+         "rule" : "return getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mars",
+         "effect" : "One, who has the Moon and Mars together, will be valorous, brave in war, be a boxer, will suffer bloody imbalances, or diseases, will manufacture articles of mud, skin and minerals and will be an artisan and a metallurgist.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury",
+         "effect" : "One, who has the Moon Mercury combination will be expert in poems and fables, be wealthy, amiable to his wife, beautiful, smiling-faced and will be endowed with distinct virtues.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Jupiter",
+         "effect" : "One with Jupiter and the Moon together will be firm in friendship, modest, respectful towards his relatives, wealthy, virtuous and regardful of Gods and the wise.",
+         "rule" : "return getRasi( Moon ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Venus",
+         "effect" : "Should the Moon and Venus be together, the native will be endowed with flowers, incense and clothes, will know to perform duties (kriya also means rites), be dear to his race, very lazy and expert in buying and selling.",
+         "rule" : "return getRasi( Moon ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Saturn",
+         "effect" : "Should the Moon and Saturn be together, the native will possess a decayed wife, be dear to public, will breed elephants and horses, be devoid of virtues, be under the control of others, unwealthy and defeated.",
+         "rule" : "return getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Mercury",
+         "effect" : "If Mars and Mercury are together at birth, the native will have unlucky wife, little wealth, will work with gold and iron, be an architect, will keep a wicked widow and be expert in making medicines.",
+         "rule" : "return getRasi( Mars ) == getRasi( Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Jupiter",
+         "effect" : "If Mars and Jupiter be together at birth, the native will be an artisan, Vedic expert, intelligent, expert in speech, wise and fond of using weapons.",
+         "rule" : "return getRasi( Mars ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Venus",
+         "effect" : "One, who had Mars and Venus together at birth will be worshipped, be chief among his men, be a mathematician (or an astrologer) and be fond of gambling, untruth etc.",
+         "rule" : "return getRasi( Mars ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Saturn",
+         "effect" : "Mars and Saturn be together, one will be a metallurgist. be expert in jugglery, be deceitful, skillful in thieving, troubled by weapons and poison and be fond of quarrels.",
+         "rule" : "return getRasi( Mars ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Jupiter",
+         "effect" : "One, who has Mercury and Jupiter together will be a noted dancer, scholar, singer and instrumentalist. He will be wise and happy.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Venus",
+         "effect" : "Should Mercury and Venus be together at birth, the native will be abundantly rich, a politician, an artisan, will study Vedas, be good in speech, will know to sing, make fun and like scents and flowers.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Saturn",
+         "effect" : "One, who has Mercury and Saturn together at birth, will contract debts, be proud, deceiving, an able poet, intent on moving, expert and will possess auspicious speech.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Jupiter = Venus",
+         "effect" : "One, who has Jupiter and Venus together at birth will live by education and arguments, will follow a highly virtuous path, will have accurate conception, or notion (of things) and will have a supreme wife.",
+         "rule" : "return getRasi( Jupiter ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Jupiter = Saturn",
+         "effect" : "A native, who has Jupiter and Saturn together at birth will be heroic, will have plenty of wealth, will be chief of the city (mayor etc.), famous and will be the head of an assembly, a village, or an association.",
+         "rule" : "return getRasi( Jupiter ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Venus = Saturn",
+         "effect" : "If Venus and Saturn are together at birth, one will be expert in breaking wood, be a barber, painter, or sculptor, boxer, be intent on wandering and be owner of quadrupeds.",
+         "rule" : "return getRasi( Venus ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mars",
+         "effect" : "Should the Sun, the Moon and Mars be together at birth, the native will be bereft of shame, be sinful, will have knowledge of machinery, will destroy enemies, be brave and will be expert in any kind of work.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mercury",
+         "effect" : "If the Sun, Moon and Mercury are together, the native will be splendourous, very intelligent, will be fond of arts, assembly and drinks, be in royal service and bold.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Jupiter",
+         "effect" : "Should the Sun, Moon and Jupiter be in one House; the native will be given to anger, be cunning, expert in service, intent on going to foreign places, be intelligent and fickle minded.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Venus",
+         "effect" : "Should the Sun, Moon and Venus be in one House at birth, the native will steal others' money, will be a debaucher and be expert in Shastras.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Saturn",
+         "effect" : "If the Sun, Moon and Saturn be together in one House, the native will be lustful, be expert in arguments, be a dunce, be at the disposal of others and be poor.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars = Mercury",
+         "effect" : "If the Sun, Mars and Mercury are in one House at birth, the native will be famous, hard-hearted, shameless and be devoid of wealth, sons and wife.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars = Jupiter",
+         "effect" : "Should Mars, Jupiter and the Sun be together at birth, the native will be an expert speaker, very wealthy, either a kings minister, or even a king himself, be truthful and fierce.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars = Venus",
+         "effect" : "One, who has Venus, Mars and the Sun in one House, will be subjected to eye diseases, belongs to a good race, will be fortunate, harsh and wealthy.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars = Saturn",
+         "effect" : "Should Mars, Saturn and the Sun be together, the native will have deformed limbs, be without wealth, always sick, without his people and be a big fool.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Jupiter",
+         "effect" : "If Jupiter, Mercury and the Sun be together at birth, the native will be subjected to eye-diseases, be very wealthy, be interested in Shastras, fables, poetry, meetings and stonework and will become a good writer.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Venus",
+         "effect" : "If Mercury, Sun and Venus be together, the native will be insatiable, talkative, intent on wandering and subjected to grief on account of women.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Saturn",
+         "effect" : "One, who has Saturn, the Sun and Mercury in one House will be a neuter, will hate others and will be given up by his relatives.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Jupiter = Venus",
+         "effect" : "Should Venus, Jupiter and the Sun be together at birth, the native will be weak-sighted, bold, intelligent, indigent, be a minister and be devoted to others' jobs.",
+         "rule" : "return getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Jupiter = Saturn",
+         "effect" : "If Jupiter, Saturn and the Sun be together at birth. the native will not have a prominent physique, will be worshipped, will hate his own men, will have good wife, children and friends, be dear to the king and be fearless.",
+         "rule" : "return getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Venus = Saturn",
+         "effect" : "One, who has Venus, Saturn and the Sun together at birth will be emotionally upset due to fear from enemies, will be devoid of honour and knowledge of arts and poetry, will have a mean history and will suffer from Leprosy.",
+         "rule" : "return getRasi( Sun ) == getRasi( Venus ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Mars",
+         "effect" : "Should the Moon Mercury and Mars be together at birth, the native will be sinful, mean in habits and conduct and devoid of friends and relatives throughout life.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury ) and getRasi( Moon ) == getRasi( Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Jupiter = Mars",
+         "effect" : "A native, who has Mars, the Moon and Jupiter together at birth will have an even body, be addicted to women, be a thief, be splendourous, dear to women and given to anger.",
+         "rule" : "return getRasi( Moon ) == getRasi( Jupiter ) and getRasi( Moon ) == getRasi( Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Venus = Mars",
+         "effect" : "One, who has Mars, Venus and the Moon together at birth is the son of a bad woman and also will wed such a lady. He will be of wandering disposition and will have fear from cold.",
+         "rule" : "return getRasi( Moon ) == getRasi( Venus ) and getRasi( Moon ) == getRasi( Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Saturn = Mars",
+         "effect" : "If Mars, Moon and Saturn join at birth, the person concerned will lose his mother in boyhood, be mean, wicked and inimical to people.",
+         "rule" : "return getRasi( Moon ) == getRasi( Saturn ) and getRasi( Moon ) == getRasi( Mars );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Jupiter",
+         "effect" : "Should Mercury, Moon and Jupiter be together, the native will be wealthy, skillful, eloquent in speech, bright, famous and will have many sons and brothers.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury ) and getRasi( Moon ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Venus",
+         "effect" : "One, who has Mercury, Venus and Moon together at birth, will be mean in conduct in spite of his being learned and cultured. be Jealous and miserly.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury ) and getRasi( Moon ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Saturn",
+         "effect" : "If Saturn, Moon and Mercury be together, the person concerned will be dependent, deformed, learned, be an able speaker and respected by the king.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury ) and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Jupiter = Venus",
+         "effect" : "Should Venus, Jupiter and the Moon be in one House at birth, the native will be a chaste woman's son, be a scholar, will have knowledge of arts and many Shastras, be virtuous and beautiful.",
+         "rule" : "return getRasi( Moon ) == getRasi( Jupiter ) and getRasi( Moon ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Jupiter = Saturn",
+         "effect" : "One, who has Moon, Jupiter and Saturn combination at birth will know the inner meaning of Shastras, will seek union with aged women, be devoid of shame and be the head of a village and people.",
+         "rule" : "return getRasi( Moon ) == getRasi( Jupiter ) and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Venus = Saturn",
+         "effect" : "If the Moon, Venus and Saturn are in combination at birth, one will be a writer, reader of books, Purohita (family guru), will have to his credit merits of past birth and be an astrologer.",
+         "rule" : "return getRasi( Moon ) == getRasi( Venus ) and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Mars = Jupiter",
+         "effect" : "One, who has Mercury, Jupiter and Mars together will be a good poet, Lord of a group, will marry a virtuous lady, be intent on helping others and an expert singer.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Mars ) and getRasi( Mercury ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Mars = Venus",
+         "effect" : "Should Mars, Mercury and Venus be together at birth, the native will give up his caste, be deformed, fickle-minded, wicked and garrulous.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Mars ) and getRasi( Mercury ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Mars = Saturn",
+         "effect" : "Should Mercury, Saturn and Mars be together at birth, one will be a servant, will have dark eyes, be intent on living in foreign places, will have facial diseases and will be witty.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Mars ) and getRasi( Mercury ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Jupiter = Venus",
+         "effect" : "Should Mercury, Jupiter and Venus be together, the native will have good physique, be successful over his enemies, be a king, fortunate, widely famous and truthfully disposed.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Jupiter ) and getRasi( Mercury ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Jupiter = Saturn",
+         "effect" : "When Mercury, Saturn and Jupiter are together at birth, it denotes, that the native will enjoy honour, wealth and sovereignty, be learned, will have abundant pleasures, be attached to his wife, be courageous and fortunate.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Jupiter ) and getRasi( Mercury ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Venus = Saturn",
+         "effect" : "One, who has Mercury, Venus and Saturn together at birth will be scurrilous in speech, fraudulent, be a liar, addicted to other women, vehement, ('vishama' has several other meanings, viz., irregular, uneven, mysterious, inaccessible, rough, painful, troublesome etc.), will have knowledge of arts and be attached to his own country.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Saturn ) and getRasi( Mercury ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Jupiter = Venus",
+         "effect" : "One, who has Venus, Jupiter and Mars together at birth will be dear to king, will have good sons and enjoy pleasures through women. He will please all persons.",
+         "rule" : "return getRasi( Mars ) == getRasi( Jupiter ) and getRasi( Mars ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Jupiter = Saturn",
+         "effect" : "If Jupiter, Mars and Saturn be together at birth, the native will be honoured by the king, will have wounds on the body, be mean and blamed by friends. He will also be unkind.",
+         "rule" : "return getRasi( Mars ) == getRasi( Jupiter ) and getRasi( Mars ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Venus = Saturn",
+         "effect" : "If Saturn, Mars and Venus are in one House at birth, the native is born to an immoral lady, will marry such a lady, will be devoid of happiness and will be intent on wandering in distant places.",
+         "rule" : "return getRasi( Mars ) == getRasi( Saturn ) and getRasi( Mars ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Jupiter = Venus = Saturn",
+         "effect" : "Should Jupiter, Venus and Saturn be in one House at birth one will become a king even though he might be of mean natal order, will be very famous and be a repository of virtues.",
+         "rule" : "return getRasi( Saturn ) == getRasi( Jupiter ) and getRasi( Saturn ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mars = Mercury",
+         "effect" : "Should these four planets be together at birth. the native will be a writer, a thief and be scurrilous in speech. He will be sickly, cunning and be capable of deceiving others.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mars = Jupiter",
+         "effect" : "One, who has these four planets in one House at birth, will be wealthy, dear to women, splendourous, will maintain decorum, be free from grief and expert in work.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mars = Venus",
+         "effect" : "If these four planets join at birth, one will speak and conduct himself, as a great person, be happy, expert, intent on gathering money and will have learning, sons and wife.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mars = Saturn",
+         "effect" : "One, who has these four planets together at birth, will have uneven physique, be short in stature, be unwealthy and will collect food by begging and be a proven dunce.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mercury = Jupiter",
+         "effect" : "If these four planets are in one House, the native will be a goldsmith (or a gold dealer etc.), be long eyed, be a sculptor, be very wealthy, bold and beautiful bodied.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mercury = Venus",
+         "effect" : "The native, who has these four planets together at birth, will be deformed, lucky, short-statured and dear to king.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Mercury = Saturn",
+         "effect" : "If these four planets are together at birth, the native will lose his parents in childhood, be devoid of money and happiness, be wandering, will earn food by begging and will be a liar.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Jupiter = Venus",
+         "effect" : "Should these planets be in one House at birth, the subject concerned will be head of water, animals and forests (i.e. his livelihood may be through such sources), will be happy, honoured by the king and be an expert.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Jupiter = Saturn",
+         "effect" : "If the said planets join at birth, the native will be dark-eyed, fierce, will have many sons, be wealthy and fortunate through women.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Moon = Venus = Saturn",
+         "effect" : "Should one have a combination of these planets in one House at birth, the native will have habits, like a female, be very weak, desirous of coming up and timid at all times.",
+         "rule" : "return getRasi( Sun ) == getRasi( Moon ) and getRasi( Sun ) == getRasi( Venus ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Mars = Jupiter",
+         "effect" : "These four planets together at birth indicate, that the subject will be brave, be a composer of Shastras, or a ruler of province, will lose his wife and money, be undesirable and will wander.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Mars = Venus",
+         "effect" : "If these four planets be together at birth, the native will be addicted to other women, be a thief, will have uneven limbs, will be a bad person and will be bereft of energy.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Mars = Saturn",
+         "effect" : "If these four planets are together at birth, the subject will be a warrior, scholar, be fierce, will be meanly disposed, be chief among poets and be a minister, or a king.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Jupiter = Venus",
+         "effect" : "With these planets in one House, one will be wealthy, happy, chief, will have cherished desires, will have relatives and be noble.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Saturn = Venus",
+         "effect" : "Should these four planets be in conjunction at birth, one will be scurrilous in speech, fortunate, learned, soft spoken, happy, energetic, pure, wealthy, bold and helpful to friends.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Saturn ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mercury = Jupiter = Saturn",
+         "effect" : "One, who has these four planets together at birth, will have a neuter's habits, be prestigious, fond of quarrels, will have brothers, or sisters and be not enthusiastic.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mercury ) and getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars = Jupiter = Venus",
+         "effect" : "With the conjunction of these four planets, one will be fortunate, worth worship by the people, be wealthy, dear to king and famous.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars = Jupiter = Saturn",
+         "effect" : "Should these join at birth, one will be rash, prime among his group, will have cherished desires, will be endowed with relatives and friends and dear to king.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Mars = Venus = Saturn",
+         "effect" : "One, who has these four planets together at birth, will be deformed, mean in conduct, oblique-sighted, will hate his relatives and will always be insulted.",
+         "rule" : "return getRasi( Sun ) == getRasi( Mars ) and getRasi( Sun ) == getRasi( Venus ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Sun = Jupiter = Venus = Saturn",
+         "effect" : "These four planets in conjunction at birth will make the person a miser, a poet, chief, leader of sculptors and mean.",
+         "rule" : "return getRasi( Sun ) == getRasi( Jupiter ) and getRasi( Sun ) == getRasi( Venus ) and getRasi( Sun ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Mars = Jupiter",
+         "effect" : "One, who has the conjunction of these four planets at birth, will be an expert in Shastras, be a king, or a great minister and be extremely intelligent.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury ) and getRasi( Moon ) == getRasi( Mars ) and getRasi( Moon ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Mars = Venus",
+         "effect" : "If these four planets are together at birth, one will be fond of quarrels, will sleep much, be mean, will marry an unchaste lady, be fortunate, will hate his relatives and be not happy.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury ) and getRasi( Moon ) == getRasi( Mars ) and getRasi( Moon ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Mars = Saturn",
+         "effect" : "One, who has these four planets together will be bold, be without parents, is from an ignoble race, will have many wives, friends and sons and will have good conduct.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury ) and getRasi( Moon ) == getRasi( Mars ) and getRasi( Moon ) == getRasi( Jupiter );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Jupiter = Venus",
+         "effect" : "One, who has these four planets together will be learned, be devoid of parents, good looking, wealthy, very lucky and be without enemies.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury )\n  and getRasi( Moon ) == getRasi( Jupiter )\n  and getRasi( Moon ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Jupiter = Saturn",
+         "effect" : "Should these be conjunct one will be virtuous, famous, noble and splendourous, fond of relatives, wise, be a kings minister and be a chief poet.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury )\n  and getRasi( Moon ) == getRasi( Jupiter )\n  and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mercury = Venus = Saturn",
+         "effect" : "If these planets are together at birth, the native will be intent on seeking sexual pleasures with others' wives, will have an unchaste wife, be devoid of relatives, learned and will hate people.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mercury )\n  and getRasi( Moon ) == getRasi( Venus )\n  and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mars = Jupiter = Venus",
+         "effect" : "One, who has these four planets conjunct at birth will be deaf, wealthy, bold, rash in speech, firm in nature, wise and liberal.\n",
+         "rule" : "return getRasi( Moon ) == getRasi( Mars )\n  and getRasi( Moon ) == getRasi( Jupiter )\n  and getRasi( Moon ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mars = Jupiter = Saturn",
+         "effect" : "If these four planets are together at birth, one will be deformed, will have a good wife, be highly tolerant, be self-respected, learned will have many friends and be happy.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mars )\n  and getRasi( Moon ) == getRasi( Jupiter )\n  and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Mars = Venus = Saturn",
+         "effect" : "If these four planets are together, one will marry an unchaste lady, will be proud, will have eyes resembling that of a snake and will be always emotional. This is certain.",
+         "rule" : "return getRasi( Moon ) == getRasi( Mars )\n  and getRasi( Moon ) == getRasi( Venus )\n  and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Moon = Jupiter = Venus = Saturn",
+         "effect" : "The native with these four planets conjunct will be devoid of mother, be lucky, will suffer from skin diseases, will be subjected to grief, be intent on roaming, will know many languages and will be truthful.",
+         "rule" : "return getRasi( Moon ) == getRasi( Jupiter )\n  and getRasi( Moon ) == getRasi( Venus )\n  and getRasi( Moon ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Mars = Jupiter = Venus",
+         "effect" : "If these four planets are in one House, the subject will be fond of picking up quarrels with his wife, will be wealthy, worshipped by the people, will possess good qualities and be free from sickness.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Mars )\n  and getRasi( Mercury ) == getRasi( Jupiter )\n  and getRasi( Mercury ) == getRasi( Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Mars = Jupiter = Saturn",
+         "effect" : "One, who has these four planets in one House at birth, will be brave, learned, be a good speaker, be without wealth, truthful and will have good habits. He will be able to argue and endure. He will be intelligent.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Mars )\n  and getRasi( Mercury ) == getRasi( Jupiter )\n  and getRasi( Mercury ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Mars = Venus = Saturn",
+         "effect" : "If these four planets are together at birth, the native will be an expert boxer, will depend on others, will have coarse body, will possess pride of war, be famous and will breed dogs.",
+         "rule" : "return getRasi( Mercury ) == getRasi( Mars )\n  and getRasi( Mercury ) == getRasi( Venus )\n  and getRasi( Mercury ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mercury = Jupiter = Venus = Saturn",
+         "effect" : "Should these be together at birth, the native will be intelligent, interested in Shastras, be a debaucher and an obedient servant. \n",
+         "rule" : "return getRasi( Mercury ) == getRasi( Jupiter )\n  and getRasi( Mercury ) == getRasi( Venus )\n  and getRasi( Mercury ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      },
+      {
+         "description" : "Mars = Jupiter = Venus = Saturn",
+         "effect" : "If these four planets are together at birth, the native will be splendourous, wealthy, addicted to other women, fond of bravery, fickle-minded and ill-disposed.",
+         "rule" : "return getRasi( Mars ) == getRasi( Jupiter )\n  and getRasi( Mars ) == getRasi( Venus )\n  and getRasi( Mars ) == getRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Conjunction"
+      }
+   ]
+}

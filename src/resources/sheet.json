@@ -1,0 +1,804 @@
+{
+   "configs" : [
+      {
+         "textColor" : "#000000",
+         "name" : "Default",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#92BCD5",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#D3D3D3",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 2,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 1
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "White",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 0,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#924848",
+               "style" : "wxBDIAGONAL_HATCH"
+            },
+            "shadowStyle" : 0,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#DEDEDE",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : false,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 0,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 0
+         },
+         "selectionMode" : 3,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "New Entry",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#7391F0",
+               "width" : 12,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 1,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#D2E0E9",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#4D58DB",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#D3D3D3",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#D0D2D0",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 2,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 1
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Dust",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 3,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#919191",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#2E2727",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 3,
+            "shadowWidth" : 11,
+            "useCellColors" : true,
+            "cellBorderStyle" : 3
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Monochrome",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 2,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#000000",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#FAFAFA",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#000000",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 3,
+            "shadowWidth" : 6,
+            "useCellColors" : true,
+            "cellBorderStyle" : 3
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Karo",
+         "selectedItemBrush" : {
+            "rotatehue" : 0,
+            "filename" : "karo4.jpg",
+            "style" : "wxSTIPPLE"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 1,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "rotatehue" : 241,
+               "filename" : "karo4.jpg",
+               "style" : "wxSTIPPLE"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "rotatehue" : 85,
+               "filename" : "karo4.jpg",
+               "style" : "wxSTIPPLE"
+            },
+            "shadowBrush" : {
+               "color" : "#3A2424",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "rotatehue" : 168,
+               "filename" : "karo3.jpg",
+               "style" : "wxSTIPPLE"
+            },
+            "cellBrush" : {
+               "rotatehue" : 0,
+               "filename" : "karo.jpg",
+               "style" : "wxSTIPPLE"
+            },
+            "headerBorderStyle" : 3,
+            "shadowWidth" : 11,
+            "useCellColors" : true,
+            "cellBorderStyle" : 3
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "rotatehue" : 0,
+            "filename" : "karo4.jpg",
+            "style" : "wxSTIPPLE"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Mint",
+         "selectedItemBrush" : {
+            "color" : "#83DE39",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 2,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#97E994",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#FFFFFF",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#D3D3D3",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#CCECAC",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 2,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 0
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Freitag2",
+         "selectedItemBrush" : {
+            "rotatehue" : 0,
+            "filename" : "millimeter2.jpg",
+            "style" : "wxSTIPPLE"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#3D72A4",
+               "width" : 8,
+               "style" : "wxLONG_DASH"
+            },
+            "outerBorderStyle" : 1,
+            "cellBgMode" : 2,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#92BCD5",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#EEBA7D",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#D3D3D3",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "style" : "wxTRANSPARENT"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 2,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 1
+         },
+         "selectionMode" : 1,
+         "brush" : {
+            "rotatehue" : 0,
+            "filename" : "millimeter4.jpg",
+            "style" : "wxSTIPPLE"
+         }
+      },
+      {
+         "textColor" : "#58E056",
+         "name" : "Linux Console",
+         "selectedItemBrush" : {
+            "color" : "#216F16",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#64C729",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 1,
+            "cellTextColor" : "#6BD31B",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#2B3033",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#D8E8D3",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#18451D",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#000000",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 0,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 0
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#000000",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "New Entry",
+         "selectedItemBrush" : {
+            "color" : "#CF3838",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 2,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#92BCD5",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#D3D3D3",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 1,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 2
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Orange",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 2,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 2,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#F2B837",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#717171",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 3,
+            "shadowWidth" : 12,
+            "useCellColors" : true,
+            "cellBorderStyle" : 3
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Black and White",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 0,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#AEAEAE",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 1,
+            "cellBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#000000",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#A9A0A0",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EFEFD4",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 3,
+            "shadowWidth" : 6,
+            "useCellColors" : true,
+            "cellBorderStyle" : 3
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      },
+      {
+         "textColor" : "#000000",
+         "name" : "Light Grey",
+         "selectedItemBrush" : {
+            "color" : "#D3D3D3",
+            "style" : "wxSOLID"
+         },
+         "tablestyle" : {
+            "outerBorderPen" : {
+               "color" : "#A3A3A3",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "outerBorderStyle" : 3,
+            "cellBgMode" : 1,
+            "cellTextColor" : "#000000",
+            "gridStyle" : 1,
+            "headerBrush" : {
+               "color" : "#ADADAD",
+               "style" : "wxSOLID"
+            },
+            "shadowStyle" : 0,
+            "cellBorderPen" : {
+               "color" : "#B9B9B9",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerBorderPen" : {
+               "color" : "#A7A7A7",
+               "width" : 1,
+               "style" : "wxSOLID"
+            },
+            "headerTextColor" : "#000000",
+            "evenCellBrush" : {
+               "color" : "#F1EBD3",
+               "style" : "wxSOLID"
+            },
+            "shadowBrush" : {
+               "color" : "#DEDEDE",
+               "style" : "wxSOLID"
+            },
+            "useHeaderColors" : true,
+            "oddCellBrush" : {
+               "color" : "#E9E1BB",
+               "style" : "wxSOLID"
+            },
+            "cellBrush" : {
+               "color" : "#EEEEEE",
+               "style" : "wxSOLID"
+            },
+            "headerBorderStyle" : 3,
+            "shadowWidth" : 5,
+            "useCellColors" : true,
+            "cellBorderStyle" : 3
+         },
+         "selectionMode" : 2,
+         "brush" : {
+            "color" : "#FFFFFF",
+            "style" : "wxSOLID"
+         }
+      }
+   ]
+}

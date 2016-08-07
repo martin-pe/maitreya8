@@ -1,0 +1,436 @@
+{
+   "configs" : [
+      {
+         "description" : "Mercury in Aries",
+         "effect" : "If Mercury is in Aries at the time of one's birth, the native will be fond of battles (be uncompromising), be very learned, wicked, emaciated, interested in music and dance, be untruthful, be attached to sexual pleasures, be a writer, will produce fictitious things, will eat much, will lose hard-earned money, will incur debts and imprisonment frequently and will be sometimes fickle minded and yet sometimes firm in disposition.",
+         "rule" : "return getRasi( Mercury ) == Aries;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in Scorpio",
+         "effect" : "If Mercury is posited in Scorpio, one will experience troubles, grief and evils, will hate the virtuous, will be devoid of truth, religion and shame, be a dunce, be not virtuous, be a miser, will cohabit with wicked women, be fond of giving cruel punishments, be not out spoken, be interested in blameworthy jobs, will incur debts, will join base men and will steel other's properties.",
+         "rule" : "return getRasi( Mercury ) == Scorpio;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in a sign of Mars aspected by Sun",
+         "effect" : "Should Mercury occupy a Sign of Mars at birth and be aspected by the Sun, the person will be truthful, be very happy, be honoured by the king and be patiently disposed.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mars and isGrahaDrishti( Sun, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mars aspected by Moon",
+         "effect" : "If Mercury is in a Sign of Mars and is aspected by the Moon, the native will steal the hearts of the fair sex, will serve others, be dirty and be bereft of virtues.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mars and isGrahaDrishti( Moon, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mars aspected by Mars",
+         "effect" : "If Mercury is in a Sign of Mars and is aspected by Mars, one will be a liar, a sweet speaker, will promote quarrels, be learned, affluent, dear to king and valorous.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mars and isGrahaDrishti( Mars, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mars aspected by Jupiter",
+         "effect" : "If Mercury is in a Sign of Mars and is aspected by Jupiter, one will be happy, will possess a glossy and hairy physique, will have attractive hair, will be very rich, will command others and be sinful.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mars and isGrahaDrishti( Jupiter, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mars aspected by Venus",
+         "effect" : "If Mercury is in a Sign of Mars and is aspected by Venus, the subject will be in royal service, be fortunate, principal among men, or in his town, will speak skillfully, be trustworthy and will be endowed with a wife.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mars and isGrahaDrishti( Venus, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mars aspected by Saturn",
+         "effect" : "If Mercury is in a Sign of Mars and is aspected by Saturn, the person will experience miseries, be fierce, be intent upon doing cruel activities and be devoid of his own men.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mars and isGrahaDrishti( Saturn, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Taurus",
+         "effect" : "Should Mercury be in Taurus, the native will be skillful, eminently liberal, be famous, will have knowledge of Vedas and Sastras, be fond of exercises, robes, ornaments and garlands, be firm in disposition, will have sincerely earned wealth, will possess a chaste wife, will be a soft and sweet speaker and be after sexual satisfaction.",
+         "rule" : "return getRasi( Mercury ) == Taurus;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in Libra",
+         "effect" : "If Mercury falls in Libra at the time of one's birth, the native will possess knowledge of arts, be intent upon arguments, be an able speaker, will spend money lavishly, will have business in various directions, will honour wise men, guests, Gods and preceptors (elders), be skillful in pretending to serve others, be amiable, devoted to Gods, fraudulent, fickle-minded and sometimes short-tempered and yet sometimes (notably) peaceful.",
+         "rule" : "return getRasi( Mercury ) == Libra;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in a sign of Venus aspected by Sun",
+         "effect" : "Should Mercury be in a House of Venus and be aspected by the Sun, the subject will suffer from penury and acute grief, will have a sick physique, be interested in serving others and will be censured.",
+         "rule" : "return getLord( getRasi( Mercury )) == Venus and isGrahaDrishti( Sun, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Venus aspected by Moon",
+         "effect" : "Should Mercury be in a House of Venus and be aspected by the Moon, the native will be trustworthy, affluent, firmly pious, devoid of sickness, will have lasting family ties, be famous and be a kings minister.",
+         "rule" : "return getLord( getRasi( Mercury )) == Venus and isGrahaDrishti( Moon, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Venus aspected by Mars",
+         "effect" : "Should Mercury be in a House of Venus and be aspected by Mars, the native will be troubled by diseases and enemies, be distressed, will incur royal insult and will be deprived of all worldly objects.",
+         "rule" : "return getLord( getRasi( Mercury )) == Venus and isGrahaDrishti( Mars, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Venus aspected by Jupiter",
+         "effect" : "Should Mercury be in a House of Venus and be aspected by Jupiter, the native will be highly learned, will fulfill his promise, will be leader of a country/city/group of men and be famous.",
+         "rule" : "return getLord( getRasi( Mercury )) == Venus and isGrahaDrishti( Jupiter, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Venus aspected by Venus",
+         "effect" : "Should Mercury be in a House of Venus and be aspected by Venus, the person will be fortunate, soft in disposition, be happy, will enjoy good robes make up etc. and will steal the hearts of the fair sex.",
+         "rule" : "return getLord( getRasi( Mercury )) == Venus and isGrahaDrishti( Venus, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Venus aspected by Saturn",
+         "effect" : "If Saturn throws his aspect on Mercury in a House of Venus, the subject will be devoid of happiness, be dirty, will experience many diseases and evils, will be subjected to grief on account of his relatives and be distressed.",
+         "rule" : "return getLord( getRasi( Mercury )) == Venus and isGrahaDrishti( Saturn, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Gemini",
+         "effect" : "If Mercury occupies Gemini at birth, the subject will have an auspicious appearance, will speak sweetly, be very affluent, be an able speaker, be honourable, will give up his happiness, will cohabit less, will have two wives, be fond of arguments, will be learned in Vedas, Sastras etc., be a poet, be independent, dear, very munificent, proficient in work and will have many sons and friends.",
+         "rule" : "return getRasi( Mercury ) == Gemini;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in Virgo",
+         "effect" : "If Mercury occupies his exaltation Sign at the time of one's birth, the native will be quite virtuous, eloquent, skillful, will have knowledge of writing (be an exponent) and poetry, be learned in fine/mechanical arts, be sweet in disposition, be liked by women, be not much virile, be the eldest son of family, be honoured by virtuous, be disposed to serve others, modest, argumentative, famous, charitable and strong.",
+         "rule" : "return getRasi( Mercury ) == Virgo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in a sign of Mercury aspected by Sun",
+         "effect" : "Should Mercury be in Gemini/Virgo and be aspected by the Sun, the native will speak truth, be fortunate, dear to king, be a Lord himself, be polite in his activities and be liked by all.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mercury and isGrahaDrishti( Sun, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mercury aspected by Moon",
+         "effect" : "Should Mercury be in his own House and receive the aspect of the Moon, the person will be sweet in disposition, garrulous, will promote quarrels, be interested in acquiring sastric knowledge, firm and will succeed in all his undertakings.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mercury and isGrahaDrishti( Moon, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mercury aspected by Mars",
+         "effect" : "Should Mercury be in his own House and receive the aspect of Mars, the person will have an injured body, be dirty, be a genius, will serve the king and be dear to him.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mercury and isGrahaDrishti( Mars, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mercury aspected by Jupiter",
+         "effect" : "Should Mercury be in his own House and receive the aspect of Jupiter, one will be a king's minister, be excellent, be beautiful, charitable, rich, be endowed with his own men and be courageous.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mercury and isGrahaDrishti( Jupiter, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mercury aspected by Venus",
+         "effect" : "Should Mercury be in his own House and receive the aspect of Venus, the native will be highly learned be a royal employee, be a messenger, will honour friendship and will be interested in base women.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mercury and isGrahaDrishti( Venus, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Mercury aspected by Saturn",
+         "effect" : "Should Mercury be in his own House and receive the aspect of Saturn, one will be progressive-minded, be modest, will achieve success in undertakings started by him and will be wealthy with money and clothes.",
+         "rule" : "return getLord( getRasi( Mercury )) == Mercury and isGrahaDrishti( Saturn, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Cancer",
+         "effect" : "One born with Mercury in Cancer will be learned, will be fond of living in other countries, be interested in cohabiting with women and also in music, be fickle-minded, prattling, inimical to his own relatives, will be fond of arguments, will lose wealth on account of enmity with women, be of bad disposition, be interested in many jobs, be a good poet and will be popular on account of the fame of his ancestors.",
+         "rule" : "return getRasi( Mercury ) == Cancer;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in Cancer aspected by Sun",
+         "effect" : "Should Mercury be in Cancer, in aspect to the Sun, one will be a dhoby, or a gardener, or a house-builder, or gem smith.",
+         "rule" : "return getLord( getRasi( Mercury )) == Moon and isGrahaDrishti( Sun, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Cancer aspected by Moon",
+         "effect" : "If the Moon aspects Mercury in Cancer, one will be deprived of wealth (or energy of the physique) on account of women and will be miserable for the same reason.",
+         "rule" : "return getLord( getRasi( Mercury )) == Moon and isGrahaDrishti( Moon, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Cancer aspected by Mars",
+         "effect" : "If Mars lends his aspect to Mercury in Cancer, he will not have much learning, be garrulous, be a great liar, will produce fictitious things, be a thief and will be affectionate in speech.",
+         "rule" : "return getLord( getRasi( Mercury )) == Moon and isGrahaDrishti( Mars, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Cancer aspected by Jupiter",
+         "effect" : "If Jupiter aspects Mercury in Cancer, one will be a great scholar, very dear (to all), be fortunate, dear to the king and will cross the boundaries of learning.",
+         "rule" : "return getLord( getRasi( Mercury )) == Moon and isGrahaDrishti( Jupiter, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Cancer aspected by Venus",
+         "effect" : "Should Venus aspect Mercury in Cancer, one will be equal to Cupid in appearance, will possess attractive physique, be well-versed in the art of singing and in playing musical instruments, be fortunate and softly disposed.",
+         "rule" : "return getLord( getRasi( Mercury )) == Moon and isGrahaDrishti( Venus, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Cancer aspected by Saturn",
+         "effect" : "If Saturn aspects Mercury in Cancer, one will be fond of vanity, be sinful, will face imprisonment, be devoid of virtues and will hate co-born and elders.",
+         "rule" : "return getLord( getRasi( Mercury )) == Moon and isGrahaDrishti( Saturn, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Leo",
+         "effect" : "Should the planet Mercury occupy Leo at one's birth, the native will not possess even bit of wisdom (Kala – bit, hence Gnanakala interpreted thus), be famous in the world, be not truthful, will possess a weak memory, be wealthy, be not strong, will indulge in fratricide, be unfortunate in respect of wife, be independent, mean in conduct, be a servant, be devoid of children, be against his own race, but be favourable to others.",
+         "rule" : "return getRasi( Mercury ) == Leo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in Leo aspected by Sun",
+         "effect" : "If Mercury occupies Leo at birth and is aspected by the Sun, the native will be jealous, rich, virtuous, cruel, mean, fickle-minded and shameless.",
+         "rule" : "return getLord( getRasi( Mercury )) == Sun and isGrahaDrishti( Sun, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Leo aspected by Moon",
+         "effect" : "If the Moon aspects Mercury in Leo, one will be very beautiful, very skillful, be interested in poetry, fine arts, music and dance, be wealthy and virtuous.",
+         "rule" : "return getLord( getRasi( Mercury )) == Sun and isGrahaDrishti( Moon, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Leo aspected by Mars",
+         "effect" : "If Mars lends his aspect to Mercury in Leo, one will be base, miserable, physically injured, unskillful and impotent.",
+         "rule" : "return getLord( getRasi( Mercury )) == Sun and isGrahaDrishti( Mars, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Leo aspected by Jupiter",
+         "effect" : "If Jupiter aspects Mercury in Leo, one will be beautiful, very learned, be a gifted speaker, be very famous and be endowed with attendants and conveyances.",
+         "rule" : "return getLord( getRasi( Mercury )) == Sun and isGrahaDrishti( Jupiter, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Leo aspected by Venus",
+         "effect" : "If Venus aspects Mercury in Leo, one will possess unparalleled beauty, be softly disposed, will have an attractive face, will have many conveyances, be very courageous and be a minister.",
+         "rule" : "return getLord( getRasi( Mercury )) == Sun and isGrahaDrishti( Venus, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Leo aspected by Saturn",
+         "effect" : "If Saturn aspects Mercury in Leo, one will be tall in stature, be splendourless, be ugly, will emanate bad smell from body out of sweat and be miserable.",
+         "rule" : "return getLord( getRasi( Mercury )) == Sun and isGrahaDrishti( Saturn, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Sagittarius",
+         "effect" : "Should Mercury be in Sagittarius, the native will be famous, liberal, will have knowledge of Vedas and Sastras, be valorous, will practice abstract meditation, be a minister, or family priest, be chief among his race-men, will be very rich, be interested in performing Yajnas and teaching (Vedas etc.), be a skillful speaker, be charitable and be an expert in writing and fine arts.",
+         "rule" : "return getRasi( Mercury ) == Sagittarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in Pisces",
+         "effect" : "Should Mercury be in Pisces, one will be fond of good conduct and purity, will live in foreign countries, be issueless, poor, will have a chaste wife, be virtuous, fortunate, be devoid of religion, be skillful in stitching etc. and be devoid of profane knowledge, acquaintance with Sastras and fine arts, will be proficient in bagging other's wealth and will be devoid of wealth.",
+         "rule" : "return getRasi( Mercury ) == Pisces;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in a sign of Jupiter aspected by Sun",
+         "effect" : "Should Mercury be in Sagittarius/Pisces and aspected by the Sun, one will suffer from urinary diseases and epilepsy and be peaceful in disposition.",
+         "rule" : "return getLord( getRasi( Mercury )) == Jupiter and isGrahaDrishti( Sun, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Jupiter aspected by Moon",
+         "effect" : "If the Moon aspects Mercury in Sagittarius/Pisces, the native will be a writer, be beautiful par excellence, be very affluent, trustworthy, amiable and happy.",
+         "rule" : "return getLord( getRasi( Mercury )) == Jupiter and isGrahaDrishti( Moon, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Jupiter aspected by Mars",
+         "effect" : "If Mars aspects Mercury in Sagittarius/Pisces, the native will be a leader of townsmen, or thieves, will reside in forests and will be a famous writer.",
+         "rule" : "return getLord( getRasi( Mercury )) == Jupiter and isGrahaDrishti( Mars, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Jupiter aspected by Jupiter",
+         "effect" : "Should Jupiter aspect Mercury in Sagittarius/Pisces, the native will be rich by memory, intelligence and descendency, be beautiful, noble and knowledgeable, be a kings minister, or his treasurer and be a writer.",
+         "rule" : "return getLord( getRasi( Mercury )) == Jupiter and isGrahaDrishti( Jupiter, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Jupiter aspected by Venus",
+         "effect" : "If Venus aspect Mercury in Sagittarius/Pisces, the native will educate boys and girls, be wealthy, soft in disposition and brave.",
+         "rule" : "return getLord( getRasi( Mercury )) == Jupiter and isGrahaDrishti( Venus, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Jupiter aspected by Saturn",
+         "effect" : "If Saturn aspect Mercury in Sagittarius/Pisces, the native will be intent upon living in forests, will eat much, be wicked, dirty and will be unsuccessful in all his undertakings.",
+         "rule" : "return getLord( getRasi( Mercury )) == Jupiter and isGrahaDrishti( Saturn, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in Capricorn",
+         "effect" : "If Mercury is in Capricorn at birth, the native will be mean, dull, impotent, will do others' work, be devoid of virtues, be subjected to various kinds of miseries, will dream, wander etc., be a tale bearer, be untruthful, devoid of relatives, dirty and timid.",
+         "rule" : "return getRasi( Mercury ) == Capricorn;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in Aquarius",
+         "effect" : "Should Mercury be in Aquarius at birth, the subject will be bereft of good disposition and good deeds, be attached to many religious acts, will give up doing worthy things, be insulted by others, be impure, be not virtuous, be very wicked, be inimical to wife, be devoid of carnal pleasures, be very unfortunate, very timid, impotent, dirty and modest.",
+         "rule" : "return getRasi( Mercury ) == Aquarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Mercury in a sign of Saturn aspected by Sun",
+         "effect" : "If Mercury be in a House of Saturn and is aspected by the Sun, one will be a boxer, be very strong, one will eat abundantly, be censured, will speak sweetly and be famous.",
+         "rule" : "return getLord( getRasi( Mercury )) == Saturn and isGrahaDrishti( Sun, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Saturn aspected by Moon",
+         "effect" : "If Mercury be in a House of Saturn and is aspected by the Moon, one will derive his livelihood through water, be plentiful will sell flowers, liquor and bulbs (vegetables), will have fierce appearance and be firm (i.e. not moving much).",
+         "rule" : "return getLord( getRasi( Mercury )) == Saturn and isGrahaDrishti( Moon, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Saturn aspected by Mars",
+         "effect" : "If Mercury be in a House of Saturn and is aspected by Mars, one will be infirm in speech, be calm in disposition, bashful and happy.",
+         "rule" : "return getLord( getRasi( Mercury )) == Saturn and isGrahaDrishti( Mars, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Saturn aspected by Jupiter",
+         "effect" : "If Mercury be in a House of Saturn and is aspected by Jupiter, one will be endowed with abundant money and grains, be honoured in his village/town and by his men, be happy and be famous.",
+         "rule" : "return getLord( getRasi( Mercury )) == Saturn and isGrahaDrishti( Jupiter, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Saturn aspected by Venus",
+         "effect" : "If Mercury be in a House of Saturn and is aspected by Venus, one will be the husband of a base woman, be ugly, be unintelligible, be troubled by sexual passion and will have many sons.",
+         "rule" : "return getLord( getRasi( Mercury )) == Saturn and isGrahaDrishti( Venus, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Mercury in a sign of Saturn aspected by Saturn",
+         "effect" : "If Mercury be in a House of Saturn and is aspected by Saturn, one will be sinful, very poor, miserable and mean.",
+         "rule" : "return getLord( getRasi( Mercury )) == Saturn and isGrahaDrishti( Saturn, Mercury );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      }
+   ]
+}

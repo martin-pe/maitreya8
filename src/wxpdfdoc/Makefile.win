@@ -1,0 +1,35 @@
+.SUFFIXES: .o.cpp
+
+PDF_LIB = libmaitreya_wxpdfdoc.a
+
+CPP = g++
+AR = ar r
+RM = rm -f
+
+CPPFLAGS = -g -I. -w `wx-config --cppflags`
+
+LDLIBS = `wx-config --libs` 
+
+OBS = pdfannotation.o pdfbarcode.o pdfcffdecoder.o \
+	pdfcffindex.o pdfcolour.o pdfdecode.o pdfdocument.o\
+	pdfencoding.o pdfencrypt.o pdffont.o pdffontdata.o \
+	pdffontdatacore.o pdffontdataopentype.o pdffontdatatruetype.o \
+	pdffontdatatype0.o pdffontdatatype1.o pdffontdescription.o \
+	pdffontdetails.o pdffontextended.o pdffontmanager.o \
+	pdffontparser.o pdffontparsertruetype.o pdffontparsertype1.o \
+	pdffontsubsetcff.o pdffontsubsettruetype.o pdffontvolt.o pdfform.o \
+	pdfgradient.o pdfgraphics.o pdfimage.o pdfkernel.o \
+	pdflayer.o pdfobjects.o pdfocg.o pdfparser.o pdfpattern.o \
+	pdfrijndael.o pdftemplate.o pdfutility.o pdfxml.o
+
+all : $(PDF_LIB)
+
+$(PDF_LIB) : $(OBS)
+	$(AR) $(PDF_LIB) $(OBS)
+
+.cpp.o :
+	$(CPP) -c -o$@ $*.cpp $(CPPFLAGS)
+
+clean:
+	$(RM) *.o $(PDF_LIB) *.core
+

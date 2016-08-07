@@ -1,0 +1,436 @@
+{
+   "configs" : [
+      {
+         "description" : "Venus in Aries",
+         "effect" : "Should Venus be in Aries at birth, one will be night-blind, will have many blemishes, be inimical, will join other housewives, will visit whores, will move in forests and hills, will be imprisoned on account of women, be base, hard in disposition, be an Army chief, or chief of men, be not reliable and be eminent.",
+         "rule" : "return getRasi( Venus ) == Aries;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in Scorpio",
+         "effect" : "If Venus occupies Scorpio, the subject will be jealous, be very malicious, be not religious, be argumentative, be crafty, be not attached to brothers, be not fortunate, will be troubled by enemies, be distressed, will be inimical to unchaste women, be skillful in killing, will incur heavy debts, will suffer penury, be proud and will contract venereal diseases.",
+         "rule" : "return getRasi( Venus ) == Scorpio;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in a sign of Mars aspected by Sun",
+         "effect" : "Should Venus occupy Aries/Scorpio at birth and is in aspect to the Sun, one will be miserable on account of women and will lose wealth and happiness on account of them, will be a king and be learned.",
+         "rule" : "return getLord( getRasi( Venus )) == Mars and isGrahaDrishti( Sun, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mars aspected by Moon",
+         "effect" : "If Venus is in Aries, or Scorpio and is aspected by the Moon, one will be imprisoned, very fickle-minded, be libidinous, will marry a base lady and will be bereft of children.",
+         "rule" : "return getLord( getRasi( Venus )) == Mars and isGrahaDrishti( Moon, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mars aspected by Mars",
+         "effect" : "If Venus is in Aries, or Scorpio and is aspected by Mars, one will be devoid of wealth, honour and happiness, will do others' jobs and will perform dirty jobs.",
+         "rule" : "return getLord( getRasi( Venus )) == Mars and isGrahaDrishti( Mars, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mars aspected by Mercury",
+         "effect" : "If Venus is in Aries, or Scorpio and is aspected by Mercury, one will be foolish, profligate, unworthy, be not in good terms with his own relatives, be immodest, thievish, mean and cruel.",
+         "rule" : "return getLord( getRasi( Venus )) == Mars and isGrahaDrishti( Mercury, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mars aspected by Jupiter",
+         "effect" : "If Venus is in Aries, or Scorpio and is aspected by Jupiter, one will be endowed with beautiful eyes, will have a charitable wife, will possess a beautiful and long body and will have many sons.",
+         "rule" : "return getLord( getRasi( Venus )) == Mars and isGrahaDrishti( Jupiter, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mars aspected by Saturn",
+         "effect" : "If Venus is in Aries, or Scorpio and is aspected by Saturn, one will be very dirty, lazy and wandering-natured, will serve others and be a thief.",
+         "rule" : "return getLord( getRasi( Venus )) == Mars and isGrahaDrishti( Saturn, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Taurus",
+         "effect" : "Should Venus at birth be in Taurus, one will be endowed with many wives and gems, be an agriculturist, will possess scents, garlands and robes, will live on account of cows, be charitable, will maintain his relatives, will have good appearance, will be learned in many branches, will give away many things, will help the living beings and be a principal person.",
+         "rule" : "return getRasi( Venus ) == Taurus;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in Libra",
+         "effect" : "If Venus occupies Libra, the native will acquire hard-earned money, be valorous, endowed with superior robes etc., interested in living in foreign countries, will protect his own people, be skillful in his duties, rich, meritorious, famous by honouring Gods and Brahmins, be a scholar and be fortunate.",
+         "rule" : "return getRasi( Venus ) == Libra;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in a sign of Venus aspected by Sun",
+         "effect" : "Should Venus at birth occupy Taurus/Libra and is aspected by the Sun, the person will acquire an excellent wife and abundant wealth, will become a great man and will be subdued by women.",
+         "rule" : "return getLord( getRasi( Venus )) == Venus and isGrahaDrishti( Sun, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Venus aspected by Moon",
+         "effect" : "If Venus is in Taurus, or Libra and is aspected by the Moon, it indicates, that one is born of an excellent mother, will be endowed with happiness, wealth, respect and sons, will have excellence and be splendourous.",
+         "rule" : "return getLord( getRasi( Venus )) == Venus and isGrahaDrishti( Moon, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Venus aspected by Mars",
+         "effect" : "If Venus is in Taurus, or Libra and is aspected by Mars, one will marry a bad female, will lose home and wealth on account of females and be sensuous.",
+         "rule" : "return getLord( getRasi( Venus )) == Venus and isGrahaDrishti( Mars, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Venus aspected by Mercury",
+         "effect" : "If Venus is in Taurus, or Libra and is aspected by Mercury, one will be splendourous, sweet, fortunate, happy, bold, wise and virtuous and will possess distinguished strength.",
+         "rule" : "return getLord( getRasi( Venus )) == Venus and isGrahaDrishti( Mercury, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Venus aspected by Jupiter",
+         "effect" : "If Venus is in Taurus, or Libra and is aspected by Jupiter, one will be endowed with wife, sons, abodes, conveyances, riches etc. and will achieve desired objects.",
+         "rule" : "return getLord( getRasi( Venus )) == Venus and isGrahaDrishti( Jupiter, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Venus aspected by Saturn",
+         "effect" : "If Venus is in Taurus, or Libra and is aspected by Saturn, one will have little happiness, little wealth, will be reprobate, will marry a mean lady and will suffer from diseases.",
+         "rule" : "return getLord( getRasi( Venus )) == Venus and isGrahaDrishti( Saturn, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Gemini",
+         "effect" : "Should Venus occupy Gemini at birth, one will be famous in sciences and Sastras, be beautiful, libidinous, be skillful in writing and in poetry, be dear to good people, will derive wealth through music and dances, will have many friends, will honour Gods and Brahmins and be firm in friendship.",
+         "rule" : "return getRasi( Venus ) == Gemini;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in Virgo",
+         "effect" : "Should Venus be in Virgo, the native will not be quite discriminative, be soft in disposition, be skillful, will be helpful to others, will speak sweetly, will earn money through several sources, will cohabit with bad women, be mean, be devoid of happiness and pleasures, will beget more daughters and less sons, will visit shrines and be a scholar in an assembly.",
+         "rule" : "return getRasi( Venus ) == Virgo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in a sign of Mercury aspected by Sun",
+         "effect" : "If Venus is in Gemini/Virgo and aspected by the Sun, one will be well disposed towards the king, his own mother and wife, be learned and rich.",
+         "rule" : "return getLord( getRasi( Venus )) == Mercury and isGrahaDrishti( Sun, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mercury aspected by Moon",
+         "effect" : "If Venus is in Gemini, or Virgo and is aspected by the Moon, one will have dark eyes, beautiful hair, be endowed with sleeping comforts, conveyances etc., be splendourous, beautiful in appearance and be fortunate.",
+         "rule" : "return getLord( getRasi( Venus )) == Mercury and isGrahaDrishti( Moon, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mercury aspected by Mars",
+         "effect" : "If Venus is in Gemini, or Virgo and is aspected by Mars, one will be highly sensuous, be fortunate and will destroy his wealth through women.",
+         "rule" : "return getLord( getRasi( Venus )) == Mercury and isGrahaDrishti( Mars, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mercury aspected by Mercury",
+         "effect" : "If Venus is in Gemini, or Virgo and is aspected by Mercury, one will be learned, sweet in disposition, wealthy and endowed with conveyances and children, be fortunate and be leader of men, or be a king.",
+         "rule" : "return getLord( getRasi( Venus )) == Mercury and isGrahaDrishti( Mercury, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mercury aspected by Jupiter",
+         "effect" : "If Venus is in Gemini, or Virgo and is aspected by Jupiter, one will be highly happy, be radiant, courageous, learned and be a preceptor.",
+         "rule" : "return getLord( getRasi( Venus )) == Mercury and isGrahaDrishti( Jupiter, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Mercury aspected by Saturn",
+         "effect" : "If Venus is in Gemini, or Virgo and is aspected by Saturn, one will be very miserable, insulted, fickle-minded, green-eyed and be a dunce.",
+         "rule" : "return getLord( getRasi( Venus )) == Mercury and isGrahaDrishti( Saturn, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Cancer",
+         "effect" : "If Venus occupies Cancer at the time of one's birth, he will be wise, virtuous, learned, strong, soft, chief among men, will have desired happiness and wealth, be good-looking, just, very much troubled on account of women and wine and will be miserable with family troubles.",
+         "rule" : "return getRasi( Venus ) == Cancer;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in Cancer aspected by Sun",
+         "effect" : "If Venus is in Cancer and aspected by the Sun, the native's wife will be attached to her duties, will possess a spotless body, will be a king's daughter, (i.e. she will be of a rich heritage), one short-tempered and will be endowed with wealth.",
+         "rule" : "return getLord( getRasi( Venus )) == Moon and isGrahaDrishti( Sun, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Cancer aspected by Moon",
+         "effect" : "If Venus is in Cancer and is aspected by the Moon, one will keep his step-mother happy, will have a daughter first and later on many sons, be happy, fortunate and beautiful.",
+         "rule" : "return getLord( getRasi( Venus )) == Moon and isGrahaDrishti( Moon, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Cancer aspected by Mars",
+         "effect" : "If Venus is in Cancer and is aspected by Mars, one will be skillful in arts, be very rich, will suffer on account of women, be fortunate and will promote the cause of his relatives.",
+         "rule" : "return getLord( getRasi( Venus )) == Moon and isGrahaDrishti( Mars, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Cancer aspected by Mercury",
+         "effect" : "If Venus is in Cancer and is aspected by Mercury, one will marry a learned woman, will suffer miseries on account of his relatives, will wander, be wealthy and learned.",
+         "rule" : "return getLord( getRasi( Venus )) == Moon and isGrahaDrishti( Mercury, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Cancer aspected by Jupiter",
+         "effect" : "If Venus is in Cancer and is aspected by Jupiter, one will be endowed with many servants, sons, happiness, relatives and friends and be dear to king.",
+         "rule" : "return getLord( getRasi( Venus )) == Moon and isGrahaDrishti( Jupiter, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Cancer aspected by Saturn",
+         "effect" : "If Venus is in Cancer and is aspected by Saturn, one will be subdued by women, be poor, base, ugly, fickle-minded and unhappy.",
+         "rule" : "return getLord( getRasi( Venus )) == Moon and isGrahaDrishti( Saturn, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Leo",
+         "effect" : "If Venus occupies Leo at birth, the native will respect women, will enjoy wealth and happiness, will have less virility, be dear to relatives, be miserable in spite of his happiness, will help others, will respect Brahmins, elders and preceptors and will be devoid of much discrimination.",
+         "rule" : "return getRasi( Venus ) == Leo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in Leo aspected by Sun",
+         "effect" : "If Venus occupies Leo at the time of birth and is aspected by the Sun, one will be jealous, be dear to the fair sex, libidinous will acquire money through women and will possess elephants.",
+         "rule" : "return getLord( getRasi( Venus )) == Sun and isGrahaDrishti( Sun, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Leo aspected by Moon",
+         "effect" : "If Venus is in Leo and is aspected by the Moon, one will present obsequial water to his step mother, will be miserable on account of women, be rich and will have various kinds of mental disposition (i.e. be infirm in disposition).",
+         "rule" : "return getLord( getRasi( Venus )) == Sun and isGrahaDrishti( Moon, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Leo aspected by Mars",
+         "effect" : "If Venus is in Leo and is aspected by Mars, one will be a royal person, be famous, dear to women, be affluent, fortunate and be attached to other's wives.",
+         "rule" : "return getLord( getRasi( Venus )) == Sun and isGrahaDrishti( Mars, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Leo aspected by Mercury",
+         "effect" : "If Venus is in Leo and is aspected by Mercury, one will be ever engaged in earning, be miserly in disposition, be addicted to women, will join other's wives, be courageous, crafty, false and wealthy.",
+         "rule" : "return getLord( getRasi( Venus )) == Sun and isGrahaDrishti( Mercury, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Leo aspected by Jupiter",
+         "effect" : "If Venus is in Leo and is aspected by Jupiter, one will be endowed with conveyances, wealth and servants, will marry many women and be a king's minister.",
+         "rule" : "return getLord( getRasi( Venus )) == Sun and isGrahaDrishti( Jupiter, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Leo aspected by Saturn",
+         "effect" : "If Venus is in Leo and is aspected by Saturn, one will be a king, or equal to a king, be famous, will have abundant wealth and conveyances, will marry a prostitute (or a widow), be beautiful in appearance and be miserable.",
+         "rule" : "return getLord( getRasi( Venus )) == Sun and isGrahaDrishti( Saturn, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Sagittarius",
+         "effect" : "One, who has Venus in Sagittarius will be endowed with good results accruing out of virtues, dutifulness and wealth, be dear to all people, be splendourous, be an excellent personage, will shine like the Sun before his family members, be a scholar, will be endowed with cows, be fond of decoration, will enjoy wealth, wife and fortunes, be a king's minister, be skillful, will have a stout and long physique and be respected by all.",
+         "rule" : "return getRasi( Venus ) == Sagittarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in Pisces",
+         "effect" : "If Venus is posited in Pisces at birth, one will be courteous, liberal, virtuous, very wealthy, will destroy enemies, be famous in the world, excellent, distinguished, dear to king, be endowed with good speech and wisdom, be liberal, will derive wealth and respect from the virtuous, will keep up his promise, will maintain his family members and be endowed with knowledge.",
+         "rule" : "return getRasi( Venus ) == Pisces;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in a sign of Jupiter aspected by Sun",
+         "effect" : "If Venus occupies Sagittarius/Pisces at birth and aspected by the Sun, one will be very short tempered, learned, wealthy, be liked by all and will go to foreign countries.",
+         "rule" : "return getLord( getRasi( Venus )) == Jupiter and isGrahaDrishti( Sun, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Jupiter aspected by Moon",
+         "effect" : "If Venus is in Sagittarius, or Pisces and is aspected by the Moon, one will be famous, be kingly, will eat rich food, be distinguished and will possess incomparable strength.",
+         "rule" : "return getLord( getRasi( Venus )) == Jupiter and isGrahaDrishti( Moon, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Jupiter aspected by Mars",
+         "effect" : "If Venus is in Sagittarius, or Pisces and is aspected by Mars, one will be very much ill-disposed towards women, will be both happy and miserable, be rich and will possess cows.",
+         "rule" : "return getLord( getRasi( Venus )) == Jupiter and isGrahaDrishti( Mars, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Jupiter aspected by Mercury",
+         "effect" : "If Venus is in Sagittarius, or Pisces and is aspected by Mercury, one will be endowed with all kinds of robes, ornaments, foods and drinks and will possess plenty of money and horses and cows, will possess many wives and many sons, be happy and be very wealthy.",
+         "rule" : "return getLord( getRasi( Venus )) == Jupiter and isGrahaDrishti( Mercury, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Jupiter aspected by Jupiter",
+         "effect" : "-",
+         "rule" : "return getLord( getRasi( Venus )) == Jupiter and isGrahaDrishti( Jupiter, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Jupiter aspected by Saturn",
+         "effect" : "If Venus is in Sagittarius, or Pisces and is aspected by Saturn, one will be always amassing financial gains, be happy, will enjoy pleasures and abundant wealth and be fortunate.",
+         "rule" : "return getLord( getRasi( Venus )) == Jupiter and isGrahaDrishti( Saturn, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in Capricorn",
+         "effect" : "If Venus occupies Capricorn at birth, one will be miserable due to heavy expenses, will have an emaciated body, will be fond of aged women, will suffer from heart diseases, be miserly in the matter of money, be a liar, be skillful in cheating, be a eunuch, be devoid of (good) acts, interested in others' work, very distressed, be a dunce and will, however, endure misery.",
+         "rule" : "return getRasi( Venus ) == Capricorn;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in Aquarius",
+         "effect" : "Should Venus be in Aquarius, one will suffer from fear and excitement, be not successful in undertakings, will go to other women, be not virtuous, be inimical to elders and to his children, be bereft of ablutions, like bathing and will not be endowed with (good) robes, ornaments etc. and be dirty.",
+         "rule" : "return getRasi( Venus ) == Aquarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Venus in a sign of Saturn aspected by Sun",
+         "effect" : "Should Venus be in Capricorn/Aquarius and be in aspect to the Sun, the native will be firm, very dear to females, very wealthy, very happy and truthful and be courageous.",
+         "rule" : "return getLord( getRasi( Venus )) == Saturn and isGrahaDrishti( Sun, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Saturn aspected by Moon",
+         "effect" : "If Venus is in Capricorn, or Aquarius and is aspected by the Moon, one will be very splenderous, very valorous, very affluent and fortunate.",
+         "rule" : "return getLord( getRasi( Venus )) == Saturn and isGrahaDrishti( Moon, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Saturn aspected by Mars",
+         "effect" : "If Venus is in Capricorn, or Aquarius and is aspected by Mars, one will lose his spouse, will suffer many evils and diseases, will undergo difficulties and later on be happy.",
+         "rule" : "return getLord( getRasi( Venus )) == Saturn and isGrahaDrishti( Mars, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Saturn aspected by Mercury",
+         "effect" : "If Venus is in Capricorn, or Aquarius and is aspected by Mercury, one will be learned, rich, skillful in sacred precepts, highly scholastic, truthful and happy.",
+         "rule" : "return getLord( getRasi( Venus )) == Saturn and isGrahaDrishti( Mercury, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Saturn aspected by Jupiter",
+         "effect" : "If Venus is in Capricorn, or Aquarius and is aspected by Jupiter, one will enjoy robes and garlands, be beautiful, will be skillful in music and musical instruments and will posses a good wife.",
+         "rule" : "return getLord( getRasi( Venus )) == Saturn and isGrahaDrishti( Jupiter, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Venus in a sign of Saturn aspected by Saturn",
+         "effect" : "If Venus is in Capricorn, or Aquarius and is aspected by Saturn, one will be endowed with servants, conveyances and wealth, be dirty and will possess a black, beautiful and broad physique ",
+         "rule" : "return getLord( getRasi( Venus )) == Saturn and isGrahaDrishti( Saturn, Venus );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      }
+   ]
+}

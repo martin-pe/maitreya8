@@ -1,0 +1,644 @@
+{
+	"configs" : [
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Sun",
+				"lord" : "Sun",
+				"sublord" : "Sun",
+				"effect" : "During the antar dasa of the Sun in his dasa. the person born will achieve renown by the beneficience of the king. He will acquire wealth and wander about in mountain and forest regions and will suffer from fever and heat troubles. He may lose his father. Notes — The good effects may be expected when the Sun be well placed and the evil effects will occur when the Sun is adversely posited."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Moon",
+				"lord" : "Sun",
+				"sublord" : "Moon",
+				"effect" : "Effects like destruction of enemies, relief from distress, influx of wealth, acquisition of agricultural lands, building a house and meeting with friends are the 197likely effects to be experienced by the native in the antar dasa of the Moon in the dasa of the Sun. If the Moon be adversely placed the native will suffer from consumption, watery diseases and there will be danger for the native."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Mars",
+				"lord" : "Sun",
+				"sublord" : "Mars",
+				"effect" : "Effects like sickness, loss of position, troubles from enemies, animosity with kinsmen, fear from the king, destruction of wealth and ulcers in the body etc., will be derived by the native in the antar dasa of Mars in the dasa of the Sun."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Rahu",
+				"lord" : "Sun",
+				"sublord" : "Rahu",
+				"effect" : "Effects like destruction of enemies, influx of many kinds of wealth, regular worship of gods. Brahmin, preceptor, entertainment of kinsmen, ear troubles and diseases like tuberculosis, may be expected by the native in the antar dasa of Jupiter in the dasa of the Sun."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Saturn",
+				"lord" : "Sun",
+				"sublord" : "Saturn",
+				"effect" : "Effects like loss of wealth, separation from the son, diseases to wife, death of an elderly person (preceptor, father, uncle etc.), excessive expenditure, destruction of clothes and other domestic articles, filthiness, and phlegmatic troubles, will be experienced by the native in the antar dasa of Saturn in the dasa of the Sun."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Mercury",
+				"lord" : "Sun",
+				"sublord" : "Mercury",
+				"effect" : "Effects like suffering from cutaneous eruptions, boils, leprosy, jaundice, pains in the waist and stomach, and troubles from all the three humours viz., bile, phlegm and wind, will be derived by the native, in the antar dasa of Mercury in the dasa of the Sun."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Ketu",
+				"lord" : "Sun",
+				"sublord" : "Ketu",
+				"effect" : "Effects like loss of freinds, misunderstanding with the members of the family, fear from enemies, loss of wealth, illness of an elderly relation and pains in the leg, severe headache, will be felt by the native in the antar dasa of Ketu in the dasa of the Sun."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Sun-Venus",
+				"lord" : "Sun",
+				"sublord" : "Venus",
+				"effect" : "Effects like headache, disorders of stomach, pain in the anus (piles), carrying out of agricultural venture, loss of house and wealth, shortage of grain and illness of children and wife, will be experienced in the antar dasa of Venus in the dasa of the Sun."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Moon",
+				"lord" : "Moon",
+				"sublord" : "Moon",
+				"effect" : "Birth of daughters, acquisition of clean and bright clothes, meeting with respected Brahmin, happiness to mother and enjoyment of comforts of the couch, will be the likely effects in the antar dasa of the Moon in her own dasa."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Mars",
+				"lord" : "Moon",
+				"sublord" : "Mars",
+				"effect" : "Bilious troubles, troubles from fire, diseases caused by impurity of blood, distress from enemies and thieves, unhappiness, and loss of wealth, will be likely effects that will be derived by the native, in the antar dasa of Mars in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Rahu",
+				"lord" : "Moon",
+				"sublord" : "Rahu",
+				"effect" : "Occuring of a severe reproach or fault, increase of enemies, illness of kinsmen danger from thunder storms, lightning and illness caused by food, drink or indigestion, will be the likely effects to be experienced by the native, in the antar dasa of Rahu in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Jupiter",
+				"lord" : "Moon",
+				"sublord" : "Jupiter",
+				"effect" : "Taking great delight in making gifts and other magnificient actions, conferment of honours by the king, meetings with friends, acquisition of new clothes and ornaments, and enjoyment of all kinds of happiness, will be the likely effects to be derived by the native, In the antar dasa of Jupiter in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Saturn",
+				"lord" : "Moon",
+				"sublord" : "Saturn",
+				"effect" : "Affliction with many kinds of diseases, illness of friend, son and wife and danger of a great calamity or death, will be the likely effects for the native, during the antar dasa of Saturn in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Mercury",
+				"lord" : "Moon",
+				"sublord" : "Mercury",
+				"effect" : "Acquisition at all times of elephants, horses, cows, wealth, ornaments and property, happiness and achievement of self knowledge will be the effects for the native in the antar dasa of Mercury in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Ketu",
+				"lord" : "Moon",
+				"sublord" : "Ketu",
+				"effect" : "Effects like loss of mental equilibrium, danger from water, loss of wealth, kinsman and servants, will be experienced by the native in the antar dasa of Ketu in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Venus",
+				"lord" : "Moon",
+				"sublord" : "Venus",
+				"effect" : "Embarkation on the sale or purchase of gold, water conveyances, jewels, women, agricultural products etc., acquisition of children, friends, cattle and grains, will be effects for the native in the antar dasa of Venus in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Moon-Sun",
+				"lord" : "Moon",
+				"sublord" : "Sun",
+				"effect" : "Honour from the king, commission of valourous deeds, relief from diseases, suffering from diseases caused by bile and wind, victory over enemies and the downfall of the latter, are the likely effects that will be realised by the native in the antar dasa of the Sun in the dasa of the Moon."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Mars",
+				"lord" : "Mars",
+				"sublord" : "Mars",
+				"effect" : "Effects like suffering from diseases arising from the excess of bile and heat, danger of wounds, separation from brothers, animosity with the kinsmen the king, danger from thieves and fire, gain of money from agricultural operations and litigation, will be derived by the native in the antar dasa of Mars in his own dasa."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Rahu",
+				"lord" : "Mars",
+				"sublord" : "Rahu",
+				"effect" : "Effects like danger from weapons, fire, thieves, enemies and king, injury from poison, loss of an elderly relation or preceptor, suffering from diseases in the waist, eyes and head, danger of death (of the native himself) or some calamity, will be felt during the antar dasa of Rahu in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Jupiter",
+				"lord" : "Mars",
+				"sublord" : "Jupiter",
+				"effect" : "Effects like worship of Brahmins and gods, pilgrimage to sacred places and shrines, performance of meritorious deeds, showing hospitality to guests at home, birth of children, acquisition of new friends, suffering from ear troubles in a severe form or from phlegmatic trouble, will be experienced by the native in the antar dasa of Jupiter in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Saturn",
+				"lord" : "Mars",
+				"sublord" : "Saturn",
+				"effect" : "Effects like trouble after trouble to children, elderly relations, calamities beyond number, loss of money through enemies, fear of sickness through heat and 200wind, loss of wealth and happening of events causing mental distress, will be realised by the native during the antar dasa of Saturn in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Mercury",
+				"lord" : "Mars",
+				"sublord" : "Mercury",
+				"effect" : "Harassment by king or governor, enmity with Sudras fear from enemies, and thieves, loss of wealth, destruction of cattle, elephants and horses and association with enemies are the likely effects for the native in the antar dasa of Mercury in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Ketu",
+				"lord" : "Mars",
+				"sublord" : "Ketu",
+				"effect" : "There will be danger from thunder bolt, sudden trouble from fire and weapons, banishment from the country, destruction of wealth, or occurrence of death (of the native) or loss of wife, in the antar dasa of Ketu in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Venus",
+				"lord" : "Mars",
+				"sublord" : "Venus",
+				"effect" : "Defeat in battle, residence in a foreign country, theft, trouble in the left eye, and loss of servants are the effects to be expected by the native in the antar dasa of Venus in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Sun",
+				"lord" : "Mars",
+				"sublord" : "Sun",
+				"effect" : "Honour from the king, enhancement in glory as a result of victory in battle, acquisition of servants, wealth, grains, women and harem, widening of the scope for livelihood and wealth through daring deeds, are what may be expected in the antar dasa of the Sun in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mars-Moon",
+				"lord" : "Mars",
+				"sublord" : "Moon",
+				"effect" : "Acquisition of various kinds of wealth, birth of a son, gain of clothes, bed, ornaments, gems and other kinds of property, severance from the enemies, trouble to some elder and suffering from enlargement of spleen and excess of bile will be the likely effects for the native in the antar dasa of the Moon in the dasa of Mars."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Rahu",
+				"lord" : "Rahu",
+				"sublord" : "Rahu",
+				"effect" : "Effects like illness through water and poison, snake bite, cohabitation with another man's wife, separation from or loss of one's near and dear ones, speaking harshly, and mental anguish through wicked people, will be the characteristics of the antar dasa of Rahu in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Jupiter",
+				"lord" : "Rahu",
+				"sublord" : "Jupiter",
+				"effect" : "Happiness, worshipping Brahmins and gods, freedom form diseases, association with a woman with attractive eyes and discussion with leameds about the interpretation of sacred scriptures, will be the main features of the antar dasa of Jupiter in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Saturn",
+				"lord" : "Rahu",
+				"sublord" : "Saturn",
+				"effect" : "Disputes with wife, sons and brothers, loss of position, destruction of servants, injury to the body and suffering from diseases due to excess of wind and bile, will be the likely effects for the native, in the antar dasa of Saturn in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Mercury",
+				"lord" : "Rahu",
+				"sublord" : "Mercury",
+				"effect" : "Acquisition of wealth and children, association with friends, feeling of inferiority in an acute form, and dexterous handling of adornment and skilful Mercury will mark the antar dasa of Mercury in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Ketu",
+				"lord" : "Rahu",
+				"sublord" : "Ketu",
+				"effect" : "Effects like danger from fever, fire, weapons and enemies, suffering from headache, trembling of the body, injury to friends, suffering caused by wounds and poison and animosity with friends, will be experienced in the antar dasa of Ketu in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Venus",
+				"lord" : "Rahu",
+				"sublord" : "Venus",
+				"effect" : "Acquisition of wife (marriage), enjoyment of cohabitation with wife, acquisition of elephants, horses and land and enjoyment thereof, animosity with kinsmen and suffering caused by excess of wind and phlegm, will be the likely effects in the antar dasa of Venus in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Sun",
+				"lord" : "Rahu",
+				"sublord" : "Sun",
+				"effect" : "Troubles from enemies, many calamities, troubles from poison and fire, injury from weapons, pain in the eyes, great damage from the king or government and distress to wife and children will mark the antar dasa of the Sun in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Moon",
+				"lord" : "Rahu",
+				"sublord" : "Moon",
+				"effect" : "Loss of wife, quarrel with other people, mental anguish, troubles to friends, danger from water, loss of agricultural products, wealth, catttle and children will be the likely effects in the antar dasa of the Moon in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Rahu-Mars",
+				"lord" : "Rahu",
+				"sublord" : "Mars",
+				"effect" : "Danger from the king, fire, thieves, and weapons, one's own death caused through a terrible disease, loss of position, troubles, from heat and eye troubles, will be the likely features of the Antar dasa of Mars in the dasa of Rahu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Jupiter",
+				"lord" : "Jupiter",
+				"sublord" : "Jupiter",
+				"effect" : "Dawn of fortune, increase in lustre, reverence from all sides, brith of a son, development of good qualities, honour from the king, association with one's preceptor and pious men and fulfilment of all ambitions, will be the characteristics of the antar dasa of Jupiter in his own dasa."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Saturn",
+				"lord" : "Jupiter",
+				"sublord" : "Saturn",
+				"effect" : "Effects like association with prostitutes, taking alcic drinks and such other actions, reaching highter eminence, distress to members of the family and cattle, extravagance, excessive fear, distress to children and eye troubles, will be realised by the native in the antar dasa of Saturn in the dasa of Juptier."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Mercury",
+				"lord" : "Jupiter",
+				"sublord" : "Mercury",
+				"effect" : "Coming to grief through women, gambling and drinking, sickness caused by the imbalance of three humours viz. bile, wind and phlegm will be the effects according to one school of thought, in the antar dasa of Mercury in the dasa of Jupiter. According to view taken by others during this antar dasa, the native will engage himself in the worship of gods and Brahmins and acquisition of children, wealth and happiness."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Ketu",
+				"lord" : "Jupiter",
+				"sublord" : "Ketu",
+				"effect" : "There will be wounds from weapons, animosity with servans, distress to wife and children, trouble form bilious disorders, separation from elders and other kinsmen and danger to one's own life, in the antar dasa of Ketu in the dasa of Jupiter."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Venus",
+				"lord" : "Jupiter",
+				"sublord" : "Venus",
+				"effect" : "Acquisition of wealth, cattle, grains, wife, son, food, drinks, ornaments, bead and articles of domestic use and enjoyment thereof and reverrence to gods and Brahmins will be the auspicious features of the antar dasa of Venus in the dasa of Jupiter."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Sun",
+				"lord" : "Jupiter",
+				"sublord" : "Sun",
+				"effect" : "Effects like victory over enemines, honour from the king, birth of children and grandchildren, gains of wealth, acquisition of palanquin and horses, and residence in a populous city with all comforts, will be derived in the antar dasa of the Sun in the dasa of Jupiter."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Moon",
+				"lord" : "Jupiter",
+				"sublord" : "Moon",
+				"effect" : "Acquisition of many women, gain of wealth, worship of gods and Brahmins, achievement of name and fame, gain from agricultural pursuit, profit in trading and destruction of enemies, will mark the antar dasa of the Moon in the dasa of Jupiter."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Mars",
+				"lord" : "Jupiter",
+				"sublord" : "Mars",
+				"effect" : "Satisfying the relatives, addition of wealth from a host of enemies, acquisition of good lands, doing charitable acts, celebrity of power, some injury to preceptor or an elder or a severe hurt to the eye, will be the effects that may be expected in the antar dasa of Mars in the dasa of Jupiter."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Jupiter-Rahu",
+				"lord" : "Jupiter",
+				"sublord" : "Rahu",
+				"effect" : "Distress to or from kinsmen, mental tension, sickness, danger from theives, illness of a preceptor or an elder, stomach disorders, trouble from the king, increase in troubles from enemies and loss of wealth will be likely results in the antar dasa of Rahu in the dasa of Jupiter."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Saturn",
+				"lord" : "Saturn",
+				"sublord" : "Saturn",
+				"effect" : "Gains in agricutural activities, acquisition of more buffaloes and servants, gain of wealth from a person of Sudra community acquistlon of a woman old in age, Increase in sinful deeds and lethargy, will be the effects for the native in the antar dasa of Saturn in his own dasa."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Mercury",
+				"lord" : "Saturn",
+				"sublord" : "Mercury",
+				"effect" : "Increase in good fortune, honour form the king, victory over enemies, company of females, success and company of friends, suffering from diseases caused by the three humours and sickness to brothers and children, will be the characteristic features of the antar dasa of Mercury in the dasa of Saturn."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Ketu",
+				"lord" : "Saturn",
+				"sublord" : "Ketu",
+				"effect" : "Suffering from trouble caused by wind and fire, trouble from enemies, constant quarrels with wife and children, danger from snakes and inauspicious happenings will be the effects for the native in the antar dasa of Ketu in the dasa of Jupiter."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Venus",
+				"lord" : "Saturn",
+				"sublord" : "Venus",
+				"effect" : "Effects like happiness from wife, children and friends, Increase of wealth due to agriculture and trade by sea voyages and becoming widely renowned, will be experienced in the antar dasa of Venus in the dasa of Saturn."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Sun",
+				"lord" : "Saturn",
+				"sublord" : "Sun",
+				"effect" : "Death or constant danger from enemies, sickness to preceptor or an elder, stomach disorder, eye troubles and loss of wealth and rains will be the features of the antar dasa of the Sun in the dasa of Saturn."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Moon",
+				"lord" : "Saturn",
+				"sublord" : "Moon",
+				"effect" : "Death of the native or loss of wife, troubles, to friends, danger from diseases arising from water and wind and likelihood of falling sick, will be the effects for the native in the antar dasa of the Moon in the dasa of Saturn."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Mars",
+				"lord" : "Saturn",
+				"sublord" : "Mars",
+				"effect" : "Effects like loss of position, quarrels with relations suffering from fever, trouble from fire, weapon and poison, increase in the number of enemies, trouble from hernia and eye disease, will be derived in the antar dasa of Mars in the dasa of Saturn."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Rahu",
+				"lord" : "Saturn",
+				"sublord" : "Rahu",
+				"effect" : "Deviating from the path of righteousness, loss of life or danger from diabetes, enlargement of spleen, and a continuous fever or wound, will be the main inauspicious effects in the antar dasa of Rahu in the dasa of Saturn."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Saturn-Jupiter",
+				"lord" : "Saturn",
+				"sublord" : "Jupiter",
+				"effect" : "Taking delight in worshipping gods and Brahmins, enjoyment of living in one's own house with children and substantial increase in wealth and grains, will be the likely effects in the antar dasa of Jupiter, in the dasa of Saturn."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Mercury",
+				"lord" : "Mercury",
+				"sublord" : "Mercury",
+				"effect" : "Following the path of virtuous, association with the learned, having an unbiased mind of clear intellect, acquisition of wealth through Brahmin, great fame through learning and continuous happiness, will be the effects in the antar dasa of Mercury in his own dasa."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Ketu",
+				"lord" : "Mercury",
+				"sublord" : "Ketu",
+				"effect" : "Loss of peace of mind as a result of unhappiness, sorrow and quarrels, trembling of the body, association with enemies, and loss of agricultural crops and conveyances, will mark the antar dasa of Ketu in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Venus",
+				"lord" : "Mercury",
+				"sublord" : "Venus",
+				"effect" : "Worship of gods, preceptors and Brahmins, involvement in charitable and virtuous actions acquisition of clothes and ornaments and meetings with friends, may be expected by the native in the antar dasa of Venus in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Sun",
+				"lord" : "Mercury",
+				"sublord" : "Sun",
+				"effect" : "Acqulstion of gold, corals, horses and elephants and house, comforts of food and drinks and conferment of honour by the king are the likely expectations in the antar dasa of the Sun in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Moon",
+				"lord" : "Mercury",
+				"sublord" : "Moon",
+				"effect" : "Effects like headache, severe pain in the neck, eye troubles, leprosy, ring worm and danger to life, may be experienced in the antar dasa of the Moon in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Mars",
+				"lord" : "Mercury",
+				"sublord" : "Mars",
+				"effect" : "Danger from fire, eye troubles, danger from thieves, continuous unhappiness, loss of position and trouble from windly diseases, will be the likely effects in the antar dasa of Mars in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Rahu",
+				"lord" : "Mercury",
+				"sublord" : "Rahu",
+				"effect" : "Headache, eye pain, stomach disorder, weakness caused by affliction with consumption or other diseases, destruction of wealth, danger from fire, poison and water and loss of honour or position may be expected by the native, in the antar dasa of Rahu in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Jupiter",
+				"lord" : "Mercury",
+				"sublord" : "Jupiter",
+				"effect" : "Destruction of enemies, freedom from diseases, success in gaining self knowledge, honour from the king and great interest in penance and religious activities, will be the likely effects in the antar dasa of Jupiter in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Mercury-Saturn",
+				"lord" : "Mercury",
+				"sublord" : "Saturn",
+				"effect" : "Effects like heavy loss of wealth and righteousness, failure in all ventures and diseases arising from wind and phlegm, will be experienced in the antar dasa of Saturn in the dasa of Mercury."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Ketu",
+				"lord" : "Ketu",
+				"sublord" : "Ketu",
+				"effect" : "Quarrels with enemies, misunderstanding with friends, hearing of bad words, troubles from fever and heat, loss of wealth and taking shelter in another man's abode may be expected in the antar dasa of Ketu in his own dasa."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Venus",
+				"lord" : "Ketu",
+				"sublord" : "Venus",
+				"effect" : "Quarrel with a pious man of lore, misunderstanding with wife and kinsmen, birth of a daughter, loss of reputation and humiliation and annoyance from others will be the features of the antar dasa of Venus in the dasa of Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Sun",
+				"lord" : "Ketu",
+				"sublord" : "Sun",
+				"effect" : "Death of preceptor or an elder of the family, misunderstandings with relatives, trouble from fever, fighting a rebellion for the king, disease caused by phlegm and wind and gain from foreign trade, should be expected in the antar dasa of the Sun in the dasa of Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Moon",
+				"lord" : "Ketu",
+				"sublord" : "Moon",
+				"effect" : "Sudden gains or loss of wealth, separation from son, a laboured delivery that engenders much sorrow, acquisition of servants and birth of daughter, will happen during the antar dasa of the Moon in the dasa of Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Mars",
+				"lord" : "Ketu",
+				"sublord" : "Mars",
+				"effect" : "Quarrels with members of family, loss of brothers and danger from thieves, fire and enemies, will be effects in the Antar Das of Mars in the dasa of Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Rahu",
+				"lord" : "Ketu",
+				"sublord" : "Rahu",
+				"effect" : "Quarrels on account of enemies, danger from the king, fire and thieves, hearing of harsh words from wicked persons and indulging in acts to cause harm to others, will be the features of the antar dasa of Rahu in the dasa of Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Jupiter",
+				"lord" : "Ketu",
+				"sublord" : "Jupiter",
+				"effect" : "Birth of a very good son, worship of gods, acquisition of wealth and land, receiving of gifts from many places and honour from the king, will be the effects in the antar dasa of Jupiter in the dasa Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Saturn",
+				"lord" : "Ketu",
+				"sublord" : "Saturn",
+				"effect" : "Loss of servants, annoyance from or to others, quarrels with enemies, loss of a limb, loss of position and wealth, should be expected in the antar dasa of Saturn in the dasa of Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Ketu-Mercury",
+				"lord" : "Ketu",
+				"sublord" : "Mercury",
+				"effect" : "Birth of a good son, praise from employer, acquisition of land and wealth, harassment by a chief of enemies and loss of cattle and agriculture, will be the likely effects in the antar dasa of Mercury in the dasa of Ketu."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Venus",
+				"lord" : "Venus",
+				"sublord" : "Venus",
+				"effect" : "there will be plentiful acquisition of clothes, ornaments, conveyance, perfumes and the like, enjoyment of the couch, gain of wealth and splendour of the body, in the antar dasa of Venus in his own dasa."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Sun",
+				"lord" : "Venus",
+				"sublord" : "Sun",
+				"effect" : "Suffering from diseases in the eye, stomach and cheeks, danger from the king and troubles from elder members of the family, will be the likely effects in the antar dasa of the Sun in the dasa of Venus."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Moon",
+				"lord" : "Venus",
+				"sublord" : "Moon",
+				"effect" : "Injury to nails, head and teeth, diseases arising from wind and bile, loss of wealth, dysentry, consumption and enlargement of the spleen, will be the characteristic features of the antar dasa of the Moon in the dasa of Venus."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Mars",
+				"lord" : "Venus",
+				"sublord" : "Mars",
+				"effect" : "Pollution of blood, diseases arising from excess of bile, acquisition and accumulation of gold, copper, and land, dedication of a young woman, loss of profession, are the likely effects in the antar dasa of Mars in the dasa of Venus."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Rahu",
+				"lord" : "Venus",
+				"sublord" : "Rahu",
+				"effect" : "Acquisition of wealth, birth of a son, speaking good words, reverence to and from members of the family, overcoming the enemy and imprisonment of the latter and injury from poison, fire and thieves, may be expected in the antar dasa of Rahu in the dasa of Venus."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Jupiter",
+				"lord" : "Venus",
+				"sublord" : "Jupiter",
+				"effect" : "Performance of religious duties, worship of gods, association with wife and children and enjoyments derivable from the position of authority, will be the results in the antar dasa of Jupiter in the dasa of Venus."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Saturn",
+				"lord" : "Venus",
+				"sublord" : "Saturn",
+				"effect" : "Honour from the citizens, military or police or from the king, acquisition of a good wife, influx of many kinds of wealth and acquisition of items of comfort and luxury, will mark the antar dasa of Saturn in the dasa of Venus."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Mercury",
+				"lord" : "Venus",
+				"sublord" : "Mercury",
+				"effect" : "There will be comfort from sons, acquisition of many kinds of properties and wealth, name and feme, conferment of power and authority, destruction of enemies, and suffering from diseases caused by the three humours, viz wind, bile and phlegm, may be expected in the antar dasa of Mercury in the dasa of Venus."
+		},
+		{
+				"source" : "Phala Deepika",
+				"dasa" : "Vimsottari",
+				"description" : "Venus-Ketu",
+				"lord" : "Venus",
+				"sublord" : "Ketu",
+				"effect" : "Separation from children or loss of children, unhappiness, disease in some limb, lot of suffering through fire, losses and association with prostitutes, will be the main features in the Antar dasa of Ketu in the dasas of Venus."
+		}
+	]
+}

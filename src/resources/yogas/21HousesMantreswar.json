@@ -1,0 +1,868 @@
+{
+   "configs" : [
+      {
+         "description" : "Sun in 1",
+         "effect" : "If the Sun be In the 1st house at birth, the native will have scanty hair. He will be lazy, of hot disposition, impetuous and tall In stature. He will have soiled eyes and a lean and thin body. He will be cruel, impatient and valourous.",
+         "rule" : "return getBhava( Sun ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 2",
+         "effect" : "When the Sun is in the 2nd house at birth, the person concerned will be without any learning; he will be shameless and will be stammering.",
+         "rule" : "return getBhava( Sun ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 3",
+         "effect" : "Should the Sun occupy the 3rd house, the native will be powerful, valiant, wealthy and generous. He will have inimical relations with his kinsmen.",
+         "rule" : "return getBhava( Sun ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 4",
+         "effect" : "If the Sun be in 4th house, the native will be bereft of happiness and comfort, relations, lands, friends and house. He will be in Government service and will squander away his ancestral property.",
+         "rule" : "return getBhava( Sun ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 5",
+         "effect" : "When the Sun is in the 5th house from the Lagna, the person concerned will be short tempered and will be deprived of happiness, wealth and children. He will be intelligent and wander in forest regions.",
+         "rule" : "return getBhava( Sun ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 6",
+         "effect" : "If the Sun be in the 6th house, the native will become a king. He will earn renown and will be equipped with praiseworthy qualities. He will be wealthy and capable of overcoming his enemies.",
+         "rule" : "return getBhava( Sun ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 7",
+         "effect" : "When the Sun is in the 7th at birth, the person concerned will suffer from the wrath of the king. He will have deformed body and will have no wife. He will suffer humiliation from others.",
+         "rule" : "return getBhava( Sun ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 8",
+         "effect" : "With the Sun in the 8th house, the person born will be deprived of his wealth and friends. He will be short-lived and suffer from defective eyesight. He can be blind also.",
+         "rule" : "return getBhava( Sun ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 9",
+         "effect" : "Should the Sun be In 9th house at birth, the person concerned is likely to suffer from the loss of his father, but he will not be deprived of children and relations. He will have due respect foi gods and Brahmins.",
+         "rule" : "return getBhava( Sun ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 10",
+         "effect" : "With the Sun in the 10th house, the native will be blessed with sons and will enjoy the comfort of conveyances. He will receive praise for his good conduct and will have Intelligence, wealth, strength and fame. He will be a king.",
+         "rule" : "return getBhava( Sun ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 11",
+         "effect" : "The Sun in the 11th house makes the native very wealthy and long lived. He will be a king with ever lasting happiness.",
+         "rule" : "return getBhava( Sun ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Sun in 12",
+         "effect" : "Should the Sun be in the 12th house at birth the native will have inimical relations with his father. His eyesight will be defective and he will be devoid of wealth and children.",
+         "rule" : "return getBhava( Sun ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 1",
+         "effect" : "If at birth the Moon be waxing and be posited in the first house (the lagna), the native will possess a strong constitution and will be longlived. He will be powerful, fearless and wealthy. The effects will be quite reverse if the Moon be waning.",
+         "rule" : "return getBhava( Moon ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 2",
+         "effect" : "If the Moon be posited in the 2nd house, the person born will be a man of learning, sweet in speech and wealthy. He will have a defective limb and be sensuous.",
+         "rule" : "return getBhava( Moon ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 3",
+         "effect" : "If the Moon be in the 3rd house at birth the person born will have brothers. He will be lascivious, powerful and strong but very miserfy.",
+         "rule" : "return getBhava( Moon ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 4",
+         "effect" : "Should the Moon be placed in the 4th house, the person concerned will be happy, will be indulging in sensual pleasures He will be generous in gifts, will have good friends, will have comforts of conveyances and will enjoy a high reputation (Moon gets Digbala in the 4th).",
+         "rule" : "return getBhava( Moon ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 5",
+         "effect" : "If the Moon be in the 5th house at birth the person will walk gently, will be brilliant and will have good sons. Such a person becomes Minister of a king.",
+         "rule" : "return getBhava( Moon ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 6",
+         "effect" : "If the Moon be in the sixth house the person born will be short lived, will be stupid and sufferer of stomach ailments. He will aslo face humiliation.",
+         "rule" : "return getBhava( Moon ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 7",
+         "effect" : "Should the Moon be housed in the 7th at birth, the person concerned will be beautiful in his looks, and will be loved by a faithful and illustrious wife.",
+         "rule" : "return getBhava( Moon ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 8",
+         "effect" : "When the Moon occupies the 8th house at birth, the person concerned will be sickly and shortlived.",
+         "rule" : "return getBhava( Moon ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 9",
+         "effect" : "Should the Moon happen to be in the 9th house, the person born will be wealthy, virtuous and will be blessed with children.",
+         "rule" : "return getBhava( Moon ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 10",
+         "effect" : "The Moon in 10th house at birth makes the native victorious over his enemies, and achieve success in all his ventures. He will be engaged in pious deeds and will be a supporter of good people.",
+         "rule" : "return getBhava( Moon ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 11",
+         "effect" : "Should the Moon occupy the 11th house at birth, the person concerned will be high minded, longlived and wealthy and will be blessed with children. He will also have comforts of servants.",
+         "rule" : "return getBhava( Moon ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Moon in 12",
+         "effect" : "When the Moon is placed in the 12th house, the native is indolent, humiliated and unhappy. Others have animosity against him.",
+         "rule" : "return getBhava( Moon ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 1",
+         "effect" : "If Mars occupies the 1st house or the Lagna, the native will be very cruel but valourous. He will be short lived and his body will get bruised.",
+         "rule" : "return getBhava( Mars ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 2",
+         "effect" : "When Mars is posited in the 2nd house at birth, the native will not be good looking and will not be clever in speaking. He will have tearing and will be devoid of wealth. He will be serving low people.",
+         "rule" : "return getBhava( Mars ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 3",
+         "effect" : "Should Mars be in the 3rd house at birth, the person concerned will be equipped with qualities, will be powerful, happy and brave. He will be not subdued by others. But he will be deprived of the happiness of brothers.",
+         "rule" : "return getBhava( Mars ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 4",
+         "effect" : "When Mars is placed in the 4th house, the native will be bereft of mother, friends, happiness, conveyances and lands.",
+         "rule" : "return getBhava( Mars ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 5",
+         "effect" : "The person concerned will have no children and will face many disasters, should the Mars happen to occupy the 5th house at birth. The native will be a talebearer and without enough intelligence.",
+         "rule" : "return getBhava( Mars ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 6",
+         "effect" : "Should Mars happen to occupy the 6th house at birth, the person concerned will be wealthy, generous, capable of vanquishing his enemies and will have splendour like that of a king. Mars in the 6th makes the native very sensuous.",
+         "rule" : "return getBhava( Mars ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 7",
+         "effect" : "When Mars is in the 7th, the person born will indulge in undesirable actions, will be afflicted by diseases and will have a wife who will die prematurely.",
+         "rule" : "return getBhava( Mars ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 8",
+         "effect" : "Mars in the 8th house gives the native a diseased body, deprive him of wealth and makes him shortlived and reviled by others.",
+         "rule" : "return getBhava( Mars ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 9",
+         "effect" : "Should Mars occupy the 9th house, the native will face animosity from others even if he be a favourite of the king. He will not enjoy the happiness of his father (i.e. he will lose his father prematurely), and will oppress other people.",
+         "rule" : "return getBhava( Mars ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 10",
+         "effect" : "If Mars be in the 10th house the person though cruel by nature will be charitable and will be like a king. He will be valiant and will be extolled even by great personalities.",
+         "rule" : "return getBhava( Mars ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 11",
+         "effect" : "When Mars occupies the 11th house the native will be powerful, wealthy, valourous, of good conduct, and happy.",
+         "rule" : "return getBhava( Mars ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mars in 12",
+         "effect" : "Mars in the 12th house makes the native a talebearer and cruel. He will be devoid of wife, and mean by nature. He will suffer from eye diseases.",
+         "rule" : "return getBhava( Mars ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 1",
+         "effect" : "Should Mercury be posited in the 1st house or the lagna, the native will be learned in all Shastras, will be soft spoken and longlived.",
+         "rule" : "return getBhava( Mercury ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 2",
+         "effect" : "If Mercury happens to occupy the 2nd house at birth the person earns his livelihood by his intelligence. He will compose poems and will be cultured in his speech. He will get sweetish preparations to eat.",
+         "rule" : "return getBhava( Mercury ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 3",
+         "effect" : "If Mercury be in the 3rd house, the person born will be brave but will have a medium span of life. He will have good brothers and sisters, but he will suffer from fatigue and be dejected.",
+         "rule" : "return getBhava( Mercury ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 4",
+         "effect" : "When Mercury occupies the 4th house, the person born will be learned and witty. He will be possessed of friends, wealth and happiness.",
+         "rule" : "return getBhava( Mercury ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 5",
+         "effect" : "With Mercury in the 5th, the native will be learned, happy and courageous. He will be blessed with children and will be well versed in Mantras.",
+         "rule" : "return getBhava( Mercury ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 6",
+         "effect" : "Should Mercury happen to occupy 6th house, the native will be indolent, harsh in speech and will be capable of overcoming his enemies. He will become adament when people enter into arguments with him.",
+         "rule" : "return getBhava( Mercury ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 7",
+         "effect" : "Mercury occupying the 7th house makes the native learned, decently dressed. He will have all greatness and a wealthy woman as his wife.",
+         "rule" : "return getBhava( Mercury ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 8",
+         "effect" : "When Mercury is in the 8th house at birth the person concerned will be widely renowned and longlived. He will be the supporter of his family, a lord and a commander of army.",
+         "rule" : "return getBhava( Mercury ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 9",
+         "effect" : "With the Mercury occupying the 9th house, the native will be learned, wealthy, religious minded and observer of virtuous conduct. He will be well versed in everything and will not be reserved in speaking.",
+         "rule" : "return getBhava( Mercury ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 10",
+         "effect" : "If Mercury be posited in the 10th house at birth, the native will be learned, powerful, wise, happy, virtuous and will stick to his word. He will be successful from the very beginning in all his ventures.",
+         "rule" : "return getBhava( Mercury ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 11",
+         "effect" : "Should Mercury occupy the 11th house, the person will be longlived. He will keep his word, and will be very wealthy and nappy. He will enjoy the comforts of servants.",
+         "rule" : "return getBhava( Mercury ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Mercury in 12",
+         "effect" : "Mercury in the 12th makes the native poor and helpless, indolent and cruel and without any education. He will also suffer from humiliation.",
+         "rule" : "return getBhava( Mercury ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 1",
+         "effect" : "If Jupiter be in Lagna at birth, the person concerned will be handsome and attractive, virtuous, longlived and fearless. He will be blessed with the grace of God.",
+         "rule" : "return getBhava( Jupiter ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 2",
+         "effect" : "Should Jupiter occupy the 2nd house at birth, the person concerned will be learned and wealthy, will possess a beautiful face and will be eloquent in speech. He will enjoy food of high standard.",
+         "rule" : "return getBhava( Jupiter ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 3",
+         "effect" : "If Jupiter be placed in the 3rd house, the person born will be sinful, wicked and miserly He will suffer humiliation but one of his brothers will attain a position of honour and will be renowned.",
+         "rule" : "return getBhava( Jupiter ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 4",
+         "effect" : "With Jupiter posited in the 4th, person will be happy and will live with mother, friends, sons and servants. He will have plenty of grains.",
+         "rule" : "return getBhava( Jupiter ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 5",
+         "effect" : "Should Jupiter be in the 5th house, the native will suffer from distress from sons (children). He will be learned and a minister of the king.",
+         "rule" : "return getBhava( Jupiter ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 6",
+         "effect" : "If Jupiter occupies the 6th house at birth, the native will destroy his enemies but he will be lazy and will be humiliated. He will be clever and well versed in the recitation and utility of Mantras.",
+         "rule" : "return getBhava( Jupiter ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 7",
+         "effect" : "When Jupiter is posited in 7th house at birth, the native will be blessed with a decent wife and children. He will be handsome and more liberal than his father.",
+         "rule" : "return getBhava( Jupiter ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 8",
+         "effect" : "With Jupiter in the 8th house at birth, the native will be poor and helpless and earns his livelihood through servants or menials. He will indulge in mean action, but will be longlived.",
+         "rule" : "return getBhava( Jupiter ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 9",
+         "effect" : "If Jupiter be in 9th house at birth, the native, will be wealthy and will be blessed with sons (children). He will be famous and will be eager to perform virtuous deeds and religious rites. He will become a minister of the king.",
+         "rule" : "return getBhava( Jupiter ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 10",
+         "effect" : "Should Jupiter be occupying the 10th house at birth, the native will be very wealthy and a favourite of the king. Be earns a high reputation and is virtuous.",
+         "rule" : "return getBhava( Jupiter ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 11",
+         "effect" : "Jupiter in 11th house at birth makes the native wealthy, longlived and fearless. He gets few children; but enjoys the comforts of conveyances.",
+         "rule" : "return getBhava( Jupiter ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Jupiter in 12",
+         "effect" : "When Jupiter occupies the 12th house, the native will earn animosity ol others, and will himself use abusive language. He will be childless , sinful, indolent and a person who serves others.",
+         "rule" : "return getBhava( Jupiter ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 1",
+         "effect" : "If Venus be posited in the lagna at birth, the native will have a beautiful and attractive body, and will be happy and longlived.",
+         "rule" : "return getBhava( Venus ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 2",
+         "effect" : "Should Venus occupy the 2nd house at birth, the native will be a poet and will enjoy riches of various kinds.",
+         "rule" : "return getBhava( Venus ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 3",
+         "effect" : "If Venus be In the 3rd house at birth, the native will be miserly, unpopular, devoid of wealth, happiness and wife.",
+         "rule" : "return getBhava( Venus ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 4",
+         "effect" : "With Venus occupying the 4th house, the person born, the native will be endowed with good conveyances, a decent house, ornaments, clothes and scents.",
+         "rule" : "return getBhava( Venus ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 5",
+         "effect" : "When Venus be in the 5th house at birth, the native will be endowed with wealth and will be as influential and renowned as a king. He will be learned and will be blessed with the happiness of children.",
+         "rule" : "return getBhava( Venus ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 6",
+         "effect" : "With Venus posited in the 6th house at birth, the native will have no enemies, but he will be devoid of wealth. He will develop ilicit relations with several young girls, but will not enjoy happiness.",
+         "rule" : "return getBhava( Venus ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 7",
+         "effect" : "Should Venus be placed in 7th house at birth, the native will enjoy the company of a faithful and beautiful wife and he may lose his wife. He will be wealthy and will have intrigues with bad women.",
+         "rule" : "return getBhava( Venus ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 8",
+         "effect" : "Venus posited in the 8th house at birth, will make the native wealthy, longlived and a landlord.",
+         "rule" : "return getBhava( Venus ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 9",
+         "effect" : "If Venus occupies the 9th house at birth, the native will draw his fortune through the beneficience of the king. He will be blessed with wife, sons and friends.",
+         "rule" : "return getBhava( Venus ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 10",
+         "effect" : "With Venus occupying the 10th house at birth, the native will perform virtuous deeds. He will enjoy happiness from friends, will be greatly honoured, will enjoy high reputation and will attain a high status.",
+         "rule" : "return getBhava( Venus ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 11",
+         "effect" : "Should Venus occupy the 11th house at birth, the native will be wealthy, but will have connections with other people's wives. He will enjoy all kinds of happiness.",
+         "rule" : "return getBhava( Venus ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Venus in 12",
+         "effect" : "If Venus occupies the 12th house at birth, the native will enjoy sexual relationships with many women (bed comforts). He will be rich and prosperous.",
+         "rule" : "return getBhava( Venus ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 1",
+         "effect" : "If at birth Saturn is in the Lagna in his sign of exaltation (Libra) or in his own sign (Capricorn and Aquarius), the person concerned will be equal to the king, a chief or mayor of a city. If Saturn be in the Lagna in any other sign, the native will suffer from sorrow and misery from his very childhood and will be poverty stricken. He will be living shabbily and will be inactive.",
+         "rule" : "return getBhava( Saturn ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 2",
+         "effect" : "Should Saturn be in the 2nd house at birth, the face of the native will be unattractive. He will not take the righteous path and will be devoid of wealth but in the latter part of his life he will quit his native place and will then possess wealth, conveyance and all enjoyments of life.",
+         "rule" : "return getBhava( Saturn ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 3",
+         "effect" : "If Saturn should happen to occupy the 3rd house at birth, the native will be very intelligent, wise and liberal and will live with his wife. However, he will be indolent and unhappy.",
+         "rule" : "return getBhava( Saturn ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 4",
+         "effect" : "If Saturn be in the 4th house at birth, the native will be bereft of house, respect and mother. He will be sickly in his childhood. He will also be unhappy.",
+         "rule" : "return getBhava( Saturn ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 5",
+         "effect" : "If Saturn occupied the 5th house the person concerned will be evil minded and wicked. He will be bereft of learning, children, wealth and happiness. He roams about aimlessly.",
+         "rule" : "return getBhava( Saturn ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 6",
+         "effect" : "Should Saturn occupy the 6th house at birth, the person concerned will be glutton, wealthy and will vanquish his enemies. He will also be arrogant.",
+         "rule" : "return getBhava( Saturn ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 7",
+         "effect" : "When at birth Saturn is posited in the 7th house, the native develops relations with women of questionable character. He will be poverty stricken, a wanderer and unhappy.",
+         "rule" : "return getBhava( Saturn ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 8",
+         "effect" : "Saturn occupying the 8th house at birth will make the native unclean afflicted with piles, devoid of wealth, of cruel disposition, hungry and will be avoided by his friends.",
+         "rule" : "return getBhava( Saturn ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 9",
+         "effect" : "Should Saturn occupy the 9th house, the native will be devoid of good fortune, wealth, children father and will be irreligious. He will also be wicked.",
+         "rule" : "return getBhava( Saturn ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 10",
+         "effect" : "Saturn in 10th house enables the native to be king or equal to the king. He will be valiant, renowned and will be engaged in agricultural pursuits.",
+         "rule" : "return getBhava( Saturn ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 11",
+         "effect" : "Saturn in the 11th makes the native devoid of ill health and enables him lasting income and wealth.",
+         "rule" : "return getBhava( Saturn ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Saturn in 12",
+         "effect" : "Should Saturn occupy the 12th house at birth, the native will be impudent, poor, childless, defective of some limb, stupid and defeated by his enemies.",
+         "rule" : "return getBhava( Saturn ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 1",
+         "effect" : "When Rahu is in the occupaton of the 1st house at birth, the native will be shortlived, wealthy and strong and suffer from diseases in the higher limbs (Face, head etc.).",
+         "rule" : "return getBhava( Rahu ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 2",
+         "effect" : "The person who has Rahu in the 2nd house at birth, will be insincere in speech and his words will carry double meaning. He will suffer from disease of the mouth or the face. He will be tender hearted and will receive wealth through the beneficence of the king. He will be of an angry disposition and happy.",
+         "rule" : "return getBhava( Rahu ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 3",
+         "effect" : "When Rahu is in the 3rd house at birth, the native will be proud, inimical towards his co-born, wealthy, longlived and strongwilled.",
+         "rule" : "return getBhava( Rahu ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 4",
+         "effect" : "With Rahu in the 4th house at birth, the native will have a short span of life and will be seldom happy.",
+         "rule" : "return getBhava( Rahu ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 5",
+         "effect" : "When Rahu occupies the 5th house at birth, the native will have nasal touch in his speech. He will be childless, hard hearted and will suffer from pain in the stomach.",
+         "rule" : "return getBhava( Rahu ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 6",
+         "effect" : "Should Rahu occupy the 6th house at birth, the native will be troubled by the enemies and will be oppressed by malefic planets. He will be wealthy and longlived and will suffer from ulcer in the anus.",
+         "rule" : "return getBhava( Rahu ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 7",
+         "effect" : "Rahu in the 7th house at birth makes the person concerned independent, but without intelligence. He squanders away his money by associating with women. He will become a widower and also impotent.",
+         "rule" : "return getBhava( Rahu ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 8",
+         "effect" : "If Rahu be posited in the 8th house the native will become miserable, will suffer from rheumatism, will have few children and will indulge in impure actions.",
+         "rule" : "return getBhava( Rahu ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 9",
+         "effect" : "If Rahu occupies the 9th house at birth, the native will be harsh in speech and will indulge in unrighteous actions but he will become head of a clan, city or a village.",
+         "rule" : "return getBhava( Rahu ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 10",
+         "effect" : "If Rahu be in the 10th house, the person born will have a limited number of issues, engaged in working for others, will not perform any rightful deeds, will be fearless and famous.",
+         "rule" : "return getBhava( Rahu ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 11",
+         "effect" : "With Rahu occupying the 11th house at birth, the native will be wealthy and longlived, will have a limited number of issues, and will suffer from some disease of the ear.",
+         "rule" : "return getBhava( Rahu ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Rahu in 12",
+         "effect" : "Rahu in the 12th house at birth makes a man squanderer of money, will indulge in sinful deeds and suffer from diseases like dropsy etc.",
+         "rule" : "return getBhava( Rahu ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 1",
+         "effect" : "When Ketu occupies the 1st house or the Lagna, the person born will be ungrateful, unhappy and tale bearer, will associate with unsociable elements, deformed in his body, fallen from position and outcaste.",
+         "rule" : "return getBhava( Ketu ) == House1;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 2",
+         "effect" : "With Ketu in the 2nd house at birth, the native will be bereft of learning and will have a harsh manner of speaking. He will have a sinister look and be dependent for food on others.",
+         "rule" : "return getBhava( Ketu ) == House2;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 3",
+         "effect" : "Should Ketu occupy the 3rd house at birth, the native will be longlived, powerful and renowned. He will live happily with his wife and will eat good food; but he will be deprived of a brother.",
+         "rule" : "return getBhava( Ketu ) == House3;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 4",
+         "effect" : "With Ketu occupying the 4th house at birth, the native will live in another man's house and will lose his lands, mother and happiness. He will be forced to leave his native land.",
+         "rule" : "return getBhava( Ketu ) == House4;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 5",
+         "effect" : "Ketu in the 5th house at a person's birth deprives the native of his children. He will be evil minded and will be oppressed by goblins (evil spirits).",
+         "rule" : "return getBhava( Ketu ) == House5;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 6",
+         "effect" : "If Ketu occupies the 6th house at birth, the native will be magnanimous, full of best qualities, firm, renowned and will be vested with high authority. He will vanquish his enemies and will be successful in obtaining Ishta Siddhi.",
+         "rule" : "return getBhava( Ketu ) == House6;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 7",
+         "effect" : "Ketu's occupation of the 7th house at birth will make the native suffer humiliation. He will associate with fallen women and will be separated from his own wife. He will suffer from diseases of the bowels and may lose his potency.",
+         "rule" : "return getBhava( Ketu ) == House7;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 8",
+         "effect" : "With Ketu occupying the 8th house at birth, the native will suffer from separation from his nears and dears. He will be quarrelsome and shortlived. He will get injury from some weapon and will be unsuccessful in all his ventures.",
+         "rule" : "return getBhava( Ketu ) == House8;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 9",
+         "effect" : "Ketu In the 9th house at birth, makes the native indulge in sinful and unrighteous actions. He will be deprived of his father, will be unfortunate, poverty stricken and will defame others.",
+         "rule" : "return getBhava( Ketu ) == House9;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 10",
+         "effect" : "If Ketu occupies the 10th house at a person's birth, he will face obstacles in performing good acts. He will be impure and indulge in wicked actions. He will be very bold and famous for his valor.",
+         "rule" : "return getBhava( Ketu ) == House10;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 11",
+         "effect" : "If Ketu should occupy the 11th house, the person born will accumulate wealth and will be equipped with good qualities. He will enjoy himself and all items of luxuries and comforts will be available to him. He will achieve success in all his undertakings.",
+         "rule" : "return getBhava( Ketu ) == House11;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      },
+      {
+         "description" : "Ketu in 12",
+         "effect" : "When Ketu occupies the 12th house at birth, the native will commit sinful acts secretly. He will squander away all his money for undesirable purposes. He will destroy his wealth and take to forbidden conduct. He will suffer from diseases of the eyes.",
+         "rule" : "return getBhava( Ketu ) == House12;",
+         "highervargas" : true,
+         "source" : "Phala Deepika",
+         "group" : "House position"
+      }
+   ]
+}

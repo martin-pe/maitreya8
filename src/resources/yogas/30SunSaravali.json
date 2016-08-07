@@ -1,0 +1,436 @@
+{
+   "configs" : [
+      {
+         "description" : "Sun in Aries",
+         "effect" : "One, who has the Sun in Aries will comment on the meanings of Shastras, be famous in arts, fond of war, fierce, attached to his duty, fond of roaming, will have strong bones, be good in deeds, will do valorous acts, will be subjected to bilious and bloody disorders, be splendourous and strong. The native will also become a king.",
+         "rule" : "return getRasi( Sun ) == Aries;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in Scorpio",
+         "effect" : "The native with the Sun in Scorpio will have an incombatible lust for war, be away from Vedic (religious) path, be a liar, a dunce, will have a base, wicked wife (can also mean loss of wife), be cruel and be attached to mean women. He will be irascible, will follow bad course, be a miser, be fond of promoting quarrels, be troubled by weapons, fire and poison and be unfortunate in respect of parents.",
+         "rule" : "return getRasi( Sun ) == Scorpio;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in a sign of Mars aspected by Moon",
+         "effect" : "Should the Sun be in a Sign of Mars (i.e. either in Aries, or in Scorpio) and be aspected by the Moon, the native will be interested in giving away gifts, will have many servants, be charming, be dear to fair sex and will have a soft physique.",
+         "rule" : "return getLord( getRasi( Sun )) == Mars and isGrahaDrishti( Moon, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mars aspected by Mars",
+         "effect" : "Should the Sun be in a Sign of Mars and be aspected by Mars, the native will display his courage in battle, be cruel, will possess eyes, hands and legs of blood-red colour, be splendourous and strong.",
+         "rule" : "return getLord( getRasi( Sun )) == Mars and isGrahaDrishti( Mars, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mars aspected by Mercury",
+         "effect" : "Should the Sun be in a Sign of Mars and be aspected by Mercury, the subject will be a servant, will do others' jobs, will not have much wealth, be devoid of strength, be subjected to much grief and will possess a dirty body.",
+         "rule" : "return getLord( getRasi( Sun )) == Mars and isGrahaDrishti( Mercury, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mars aspected by Jupiter",
+         "effect" : "Should the Sun be in a Sign of Mars and Jupiter aspects the said Sun, the native will have plenty of money, will donate, be a king's minister, a judge and a supreme person.",
+         "rule" : "return getLord( getRasi( Sun )) == Mars and isGrahaDrishti( Jupiter, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mars aspected by Venus",
+         "effect" : "If Venus aspects the Sun posited in a House of Mars, the native will be the husband of a bad woman, will have many enemies, but few relatives (or not well-placed relatives), be poor and will suffer from leprosy.",
+         "rule" : "return getLord( getRasi( Sun )) == Mars and isGrahaDrishti( Venus, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mars aspected by Saturn",
+         "effect" : "In case Saturn aspects the Sun in a Sign of Mars, the native will be subjected to grief on account of physical ailments, will have intense passion in his undertaking, be dull-witted and a dunce.",
+         "rule" : "return getLord( getRasi( Sun )) == Mars and isGrahaDrishti( Saturn, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Taurus",
+         "effect" : "The position of the Sun in the Sign Taurus indicates, that the native will have troubles from disease of face and eyes, will endure difficulties, will have an emaciated body, will not have many sons, will be beautiful (also means fortunate, nice, handsome etc.), will possess decorum, be wise, will hate barren (or confined) women, be endowed with eatables, garlands, robes and scents, will have knowledge of singing, playing musical instruments and dancing and will face risk from water.",
+         "rule" : "return getRasi( Sun ) == Taurus;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in Libra",
+         "effect" : "If the Sun is in Libra at birth, the native will face frustration, destruction and heavy expenditure, will be intent on living in foreign places (out of distress), be wicked, mean, be devoid of affection, will live by selling gold and other metals, be jealous, fond of doing others' jobs, will co-habit with others' wives, be dirty, will incur royal contempt and be shameless.",
+         "rule" : "return getRasi( Sun ) == Libra;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in a sign of Venus aspected by Moon",
+         "effect" : "One, who has the Sun in a sign of Venus aspected by the Moon will be addicted to prostitutes, will be soft spoken, will have many women, as dependents and will derive livelihood through water.",
+         "rule" : "return getLord( getRasi( Sun )) == Venus and isGrahaDrishti( Moon, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Venus aspected by Mars",
+         "effect" : "If Mars is aspecting the Sun in a Sign of Venus, the subject will be brave, fond of battle, bright in appearance, will earn wealth and fame out of his valor and will be deformed.",
+         "rule" : "return getLord( getRasi( Sun )) == Venus and isGrahaDrishti( Mars, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Venus aspected by Mercury",
+         "effect" : "Should it be Mercury, that aspects the Sun in a Sign of Venus, one will be skillful in drawing, writing, poetry, authorship, singing etc. and will possess a good physique.",
+         "rule" : "return getLord( getRasi( Sun )) == Venus and isGrahaDrishti( Mercury, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Venus aspected by Jupiter",
+         "effect" : "If Jupiter should lend his aspect to the Sun in Libra, or Taurus, the subject will have many foes and friends, be a king's minister, will have beautiful eyes, be splendourous and will be a pleased ruler.",
+         "rule" : "return getLord( getRasi( Sun )) == Venus and isGrahaDrishti( Jupiter, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Venus aspected by Venus",
+         "effect" : "When Venus aspects the Sun in Libra, or Taurus, one will be a king, or a king's minister, be endowed with wife, wealth and pleasure galore, be wise and timid.",
+         "rule" : "return getLord( getRasi( Sun )) == Venus and isGrahaDrishti( Venus, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Venus aspected by Saturn",
+         "effect" : "Saturn aspecting the Sun in fall, or in Taurus denotes, that the native will be mean, indolent, will cohabit with aged women, will be wicked and will be troubled by diseases.",
+         "rule" : "return getLord( getRasi( Sun )) == Venus and isGrahaDrishti( Saturn, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Gemini",
+         "effect" : "One who has the Sun in Gemini will be a scholar, be sweet in speech, affectionate (particularly to one's offspring), will have good conduct, be expert in profane knowledge and also in Sastras, be exceedingly affluent, liberal, skillful, be an astrologer, be mediocre in appearance, will have two mothers, be fortunate and modest.",
+         "rule" : "return getRasi( Sun ) == Gemini;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in Virgo",
+         "effect" : "Should the Sun be in Virgo at birth, the person will possess a physique akin to that of a female, be a scholar, be weak, be an expert writer, be learned and will render service to Gods and elders. He will be expert in repairs of driven vehicles, will be skillful in Vedas, songs and playing instruments and will speak softly and kindly.",
+         "rule" : "return getRasi( Sun ) == Virgo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in a sign of Mercury aspected by Moon",
+         "effect" : "Should the Sun be in Gemini, or Virgo be aspected by the Moon, the native will be put to troubles by enemies and relatives, will be distressed by visits to foreign countries. and will in general be wailing.",
+         "rule" : "return getLord( getRasi( Sun )) == Mercury and isGrahaDrishti( Moon, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mercury aspected by Mars",
+         "effect" : "The Sun in a House of Mercury and in aspect to Mars denotes, that the subject will have fear from enemies, will be encountered by quarrels, will be grieved on account of loss in a war, be poor and bashful.",
+         "rule" : "return getLord( getRasi( Sun )) == Mercury and isGrahaDrishti( Mars, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mercury aspected by Mercury",
+         "effect" : "Should Mercury aspect the Sun posited in Gemini, or Virgo, the subject will have a history akin to that of a king, will be famous, be endowed with relatives, free from enemies, but will encounter eye diseases.",
+         "rule" : "return getLord( getRasi( Sun )) == Mercury and isGrahaDrishti( Mercury, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mercury aspected by Jupiter",
+         "effect" : "Jupiter aspecting the Sun in a Sign of Mercury foretells, that the native will have knowledge of many Shastras, be a king's messenger (or representative), will go to foreign countries, be fierce and be always bewildered.",
+         "rule" : "return getLord( getRasi( Sun )) == Mercury and isGrahaDrishti( Jupiter, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mercury aspected by Venus",
+         "effect" : "If Venus aspects the Sun, posited in Sign of Mercury, the native will be endowed with money, wife and sons, will make less friends, be free from sickness, be happy and fickle minded.",
+         "rule" : "return getLord( getRasi( Sun )) == Mercury and isGrahaDrishti( Venus, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Mercury aspected by Saturn",
+         "effect" : "Should Saturn aspect the Sun in Gemini, or Virgo, the native will have many servants, be anxious (as for an absent lover), will maintain many relatives, will remain delighted and will be crafty.",
+         "rule" : "return getLord( getRasi( Sun )) == Mercury and isGrahaDrishti( Saturn, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Cancer",
+         "effect" : "The Sun in Cancer indicates, that the native will not be steady in mind in respect of his undertakings, will be famous by virtue of his royal qualities, will hate his own men, be unfortunate in respect of wife (have an ugly wife), will be good-looking himself, be troubled due to imbalances of phlegm and bile, be distressed on account of labour (hard work), will like intoxicants, follow virtuous principles, be honourable, will be eloquent, will be a geographer and a scientist in the matter of atmosphere/space, will be very steady and will hate people from paternal side.",
+         "rule" : "return getRasi( Sun ) == Cancer;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in Cancer aspected by Moon",
+         "effect" : "If the Sun in Cancer is aspected by the Moon, the person will be a king, or equal to a king, will become rich by business through water and be cruel.",
+         "rule" : "return getLord( getRasi( Sun )) == Moon and isGrahaDrishti( Moon, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Cancer aspected by Mars",
+         "effect" : "Should Mars throw his aspect on the Sun in Cancer, one will contract pulmonary consumption and fistula in the anus, or pudendum, be dejected on account of his relatives and be a slanderer.",
+         "rule" : "return getLord( getRasi( Sun )) == Moon and isGrahaDrishti( Mars, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Cancer aspected by Mercury",
+         "effect" : "If Mercury aspects the Sun in Cancer, the native will be famous for his learning and honour, be dear to the king, skillful and will destroy enemies.",
+         "rule" : "return getLord( getRasi( Sun )) == Moon and isGrahaDrishti( Mercury, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Cancer aspected by Jupiter",
+         "effect" : "Should Jupiter throw his aspect in Cancer occupied by the Sun, the native will be pre-eminent, a king, a minister, or an Army chief, be very famous and learned in arts.",
+         "rule" : "return getLord( getRasi( Sun )) == Moon and isGrahaDrishti( Jupiter, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Cancer aspected by Venus",
+         "effect" : "If Venus aspects the Sun in Cancer, the native will subordinate his wife (or women), will have money through his wife, be helpful to others, fierce in battle and will speak sweetly.",
+         "rule" : "return getLord( getRasi( Sun )) == Moon and isGrahaDrishti( Venus, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Cancer aspected by Saturn",
+         "effect" : "Saturn's aspect on the Sun in Cancer, denotes, that the person will suffer from phlegmatic and windy disorders, be wicked and be a tale-bearer.",
+         "rule" : "return getLord( getRasi( Sun )) == Moon and isGrahaDrishti( Saturn, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Leo",
+         "effect" : "If the Sun occupies Leo, the native will destroy his enemies, be given to anger, will perform notable acts, will wander in forests, hills and fortresses, be enthusiastic, valorous, bright in appearance, will eat meat, flesh etc. and will be formidable. He will be restive, strong in a lasting measure, talkative, be a king, be plentiful in wealth and famous.",
+         "rule" : "return getRasi( Sun ) == Leo;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in Leo aspected by Moon",
+         "effect" : "If the Sun occupying Leo is aspected by the Moon, the native will be a scholar, will have a good wife, will suffer from phlegmatic disorders and will be dear to king.",
+         "rule" : "return getLord( getRasi( Sun )) == Sun and isGrahaDrishti( Moon, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Leo aspected by Mars",
+         "effect" : "If Mars aspects the Sun in Leo, the native will be interested in others' wives, be courageous, valorous, revolutionary, formidable and chief.",
+         "rule" : "return getLord( getRasi( Sun )) == Sun and isGrahaDrishti( Mars, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Leo aspected by Mercury",
+         "effect" : "If Mercury aspects the Sun in Leo, the person will be a scholar, a writer (or an exponent), a gambler, be wandering-natured, mean and be endowed with great strength.",
+         "rule" : "return getLord( getRasi( Sun )) == Sun and isGrahaDrishti( Mercury, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Leo aspected by Jupiter",
+         "effect" : "If the Sun in Leo is aspected by Jupiter, the person will construct temples, gardens and tanks; will have predominant strength, will like loneliness and be highly intelligent.",
+         "rule" : "return getLord( getRasi( Sun )) == Sun and isGrahaDrishti( Jupiter, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Leo aspected by Venus",
+         "effect" : "Venus aspecting the Sun in Leo will make one earn bad name, infamous. Such a person will be troubled by leprosy, be unkind and shameless.",
+         "rule" : "return getLord( getRasi( Sun )) == Sun and isGrahaDrishti( Venus, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Leo aspected by Saturn",
+         "effect" : "Should Saturn aspect the Sun in Leo, the person will be skillful in creating obstacles, will be a eunuch and will cause grief to others.",
+         "rule" : "return getLord( getRasi( Sun )) == Sun and isGrahaDrishti( Saturn, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Sagittarius",
+         "effect" : "If the Sun at birth is in Sagittarius, one will be endowed with wealth, be dear to king, learned, will respect Gods and Brahmins, be skillful in rendering training in use of weapons and arrows and breeding of elephants, be fit to deal with, be honourable, be always peaceful, be rich, will possess a broad and beautiful physique, be helpful to relatives and be energetic.",
+         "rule" : "return getRasi( Sun ) == Sagittarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in Pisces",
+         "effect" : "If the Sun is in Pisces at birth, one will be friendly, will have tendency to amass, be fond of women and happy, be learned, will destroy many enemies and be wealthy and rich. He will be endowed with wife, good sons and servants, will have wealth on account of transactions via sea/river, be an eloquent speaker, but a liar, will suffer from diseases of the private parts and will have many a co-born.",
+         "rule" : "return getRasi( Sun ) == Pisces;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in a sign of Jupiter aspected by Moon",
+         "effect" : "Should the Sun at birth be in a sign of Jupiter and be aspected by the Moon, the native will be endowed with eloquent speech, wisdom, wealth and sons. He will be equal to a king and be devoid of misery. He will also possess a pleasing body.",
+         "rule" : "return getLord( getRasi( Sun )) == Jupiter and isGrahaDrishti( Moon, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Jupiter aspected by Mars",
+         "effect" : "Should Mars lend aspect to the Sun in a sign of Jupiter, the subject will earn fame through battle, be endowed with clarity of speech, money and happiness and be short-tempered.",
+         "rule" : "return getLord( getRasi( Sun )) == Jupiter and isGrahaDrishti( Mars, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Jupiter aspected by Mercury",
+         "effect" : "Mercury aspecting the said Sun denotes, that the native will possess sweet speech and will have knowledge of writing, literature, arts, assembly, Journey and minerals.",
+         "rule" : "return getLord( getRasi( Sun )) == Jupiter and isGrahaDrishti( Mercury, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Jupiter aspected by Jupiter",
+         "effect" : "If Jupiter aspects the Sun in Pisces/Sagittarius, the person will move in royal palaces, or be a king himself, will possess elephants, horses and wealth and be ever after learning.",
+         "rule" : "return getLord( getRasi( Sun )) == Jupiter and isGrahaDrishti( Jupiter, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Jupiter aspected by Venus",
+         "effect" : "Should Venus aspect the Sun in Jupiter's House, one will enjoy women of superior class, be endowed with scents and garlands and be peaceful.",
+         "rule" : "return getLord( getRasi( Sun )) == Jupiter and isGrahaDrishti( Venus, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Jupiter aspected by Saturn",
+         "effect" : "If Saturn aspects the Sun in Pisces, or Sagittarius, the native will be unclean, will eat other's food, will join bad men and will breed animals.",
+         "rule" : "return getLord( getRasi( Sun )) == Jupiter and isGrahaDrishti( Saturn, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in Capricorn",
+         "effect" : "One who has the Sun in Capricorn will be base, interested in bad women, be greedy, will advance with mean jobs, be endowed with various deeds, be timid, devoid of relatives, fickle-minded, fond of wandering, weak, will lose everything due to conflicts with his relatives and will be a voracious eater.",
+         "rule" : "return getRasi( Sun ) == Capricorn;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in Aquarius",
+         "effect" : "If the Sun is in Aquarius at birth, one will suffer from heart diseases, will have enormous strength (courage), be very short-tempered, be fortunate through other housewives, be hated by the learned, be firm in his activities, be miserable, will have little wealth, be fraudulent, be not firm in friendship, will have dirty body and be a miser.",
+         "rule" : "return getRasi( Sun ) == Aquarius;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Rasi position"
+      },
+      {
+         "description" : "Sun in a sign of Saturn aspected by the Moon",
+         "effect" : "If the Moon aspects the Sun in a sign of Saturn, the native will be highly cunning in disposition and will lose his wealth and happiness on account of his befriending females.",
+         "rule" : "return getLord( getRasi( Sun )) == Saturn and isGrahaDrishti( Moon, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Saturn aspected by Mars",
+         "effect" : "Mars aspecting the Sun in Capricorn, or Aquarius denotes, that the native will be troubled by diseases and enemies, will be wounded by weapons on account of quarreling with others and be deformed.",
+         "rule" : "return getLord( getRasi( Sun )) == Saturn and isGrahaDrishti( Mars, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Saturn aspected by Mercury",
+         "effect" : "If Mercury aspects the Sun in Capricorn, or Aquarius, the person will be brave, will have a eunuch's nature, will steal other's wealth and will have all limbs devoid of strength.",
+         "rule" : "return getLord( getRasi( Sun )) == Saturn and isGrahaDrishti( Mercury, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Saturn aspected by Jupiter",
+         "effect" : "Should Jupiter aspect the Sun in Capricorn, or Aquarius, one will undertake to do auspicious deeds, be wise, will patronize all, widely famous and intelligent.",
+         "rule" : "return getLord( getRasi( Sun )) == Saturn and isGrahaDrishti( Jupiter, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Saturn aspected by Venus",
+         "effect" : "If Venus aspects the Sun in a sign of Saturn, the native will deal with conch, coral and ruby, will derive abundant wealth through prostitutes and females and be happy.",
+         "rule" : "return getLord( getRasi( Sun )) == Saturn and isGrahaDrishti( Venus, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      },
+      {
+         "description" : "Sun in a sign of Saturn aspected by Saturn",
+         "effect" : "If Saturn aspects the Sun posited in Capricorn, or Aquarius, the person will destroy his enemies and will prosper due to royal honours.",
+         "rule" : "return getLord( getRasi( Sun )) == Saturn and isGrahaDrishti( Saturn, Sun );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Aspect"
+      }
+   ]
+}

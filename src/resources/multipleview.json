@@ -1,0 +1,347 @@
+{
+    "configs": [
+        {
+            "description": "Simple view for Vedic astrologers: planets, Rasi/Navamasa chart and tree view of Dasas",
+            "name": "Vedic Simple",
+            "splitter": {
+                "sashpos": 300,
+                "splitdirection": "Vertical",
+                "window1": {
+                    "widget": {
+                        "viewtype": "planets"
+                    }
+                },
+                "window2": {
+                    "splitter": {
+                        "splitdirection": "Vertical",
+                        "window1": {
+                            "widget": {
+                                "colcount": 1,
+                                "rowcount": 2,
+                                "vargas": [
+                                    0,
+                                    1
+                                ],
+                                "vedic": true,
+                                "viewtype": "grid"
+                            }
+                        },
+                        "window2": {
+                            "widget": {
+                                "viewtype": "dasa"
+                            }
+                        }
+                    }
+                }
+            },
+            "vedic": true
+        },
+        {
+            "description": "Simple view for Vedic astrologers: planets, Rasi/Bhava chart and tree view of Dasas",
+            "name": "Vedic Bhava",
+            "splitter": {
+                "sashpos": 300,
+                "splitdirection": "Vertical",
+                "window1": {
+                    "widget": {
+                        "viewtype": "planets"
+                    }
+                },
+                "window2": {
+                    "splitter": {
+                        "splitdirection": "Vertical",
+                        "window1": {
+                            "widget": {
+                                "colcount": 1,
+                                "rowcount": 2,
+                                "vargas": [
+                                    0,
+                                    20
+                                ],
+                                "vedic": true,
+                                "viewtype": "grid"
+                            }
+                        },
+                        "window2": {
+                            "widget": {
+                                "viewtype": "dasa"
+                            }
+                        }
+                    }
+                }
+            },
+            "vedic": true
+        },
+        {
+            "description": "All vedic views in one window",
+            "name": "Vedic Comprehensive",
+            "notebook": {
+                "pages": [
+                    {
+                        "name": "Main",
+                        "splitter": {
+                            "sashpospercent": 30,
+                            "splitdirection": "Vertical",
+                            "window1": {
+                                "widget": {
+                                    "vedic": true,
+                                    "viewtype": "planets"
+                                }
+                            },
+                            "window2": {
+                                "splitter": {
+                                    "sashpospercent": 50,
+                                    "splitdirection": "Vertical",
+                                    "window1": {
+                                        "widget": {
+                                            "colcount": 1,
+                                            "rowcount": 2,
+                                            "vargas": [
+                                                0,
+                                                1
+                                            ],
+                                            "vedic": true,
+                                            "viewtype": "grid"
+                                        }
+                                    },
+                                    "window2": {
+                                        "widget": {
+                                            "viewtype": "dasa"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Shad Varga",
+                        "widget": {
+                            "colcount": 3,
+                            "rowcount": 2,
+                            "vargas": [
+                                0,
+                                2,
+                                3,
+                                1,
+                                9,
+                                14
+                            ],
+                            "vedic": true,
+                            "viewtype": "grid"
+                        }
+                    },
+                    {
+                        "name": "Varga (2)",
+                        "widget": {
+                            "colcount": 3,
+                            "rowcount": 2,
+                            "vargas": [
+                                4,
+                                6,
+                                8,
+                                10,
+                                11,
+                                12
+                            ],
+                            "vedic": true,
+                            "viewtype": "grid"
+                        }
+                    },
+                    {
+                        "name": "Varga (3)",
+                        "widget": {
+                            "colcount": 3,
+                            "rowcount": 2,
+                            "vargas": [
+                                13,
+                                15,
+                                16,
+                                17,
+                                18,
+                                19
+                            ],
+                            "vedic": true,
+                            "viewtype": "grid"
+                        }
+                    },
+                    {
+                        "name": "Vimsopaka Bala",
+                        "widget": {
+                            "viewtype": "vimsopaka"
+                        }
+                    },
+                    {
+                        "name": "Text",
+                        "widget": {
+                            "viewtype": "text"
+                        }
+                    },
+                    {
+                        "name": "Graphical Dasa",
+                        "splitter": {
+                            "sashpos": 450,
+                            "splitdirection": "Horizontal",
+                            "window1": {
+                                "widget": {
+                                    "viewtype": "gdasa"
+                                }
+                            },
+                            "window2": {
+                                "widget": {
+                                    "colcount": 2,
+                                    "rowcount": 1,
+                                    "vargas": [
+                                        0,
+                                        1
+                                    ],
+                                    "vedic": true,
+                                    "viewtype": "grid"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Ashtaka Varga",
+                        "widget": {
+                            "viewtype": "av"
+                        }
+                    },
+                    {
+                        "name": "Yogas",
+                        "widget": {
+                            "viewtype": "yoga"
+                        }
+                    },
+                    {
+                        "name": "Sarvatobhadra",
+                        "widget": {
+                            "viewtype": "sbc"
+                        }
+                    },
+                    {
+                        "name": "Transit",
+                        "widget": {
+                            "viewtype": "transit"
+                        }
+                    },
+                    {
+                        "name": "Solar",
+                        "widget": {
+                            "vedic": true,
+                            "viewtype": "solar"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Planets (left) and western chart (right)",
+            "name": "Western Simple",
+            "splitter": {
+                "sashpospercent": 30,
+                "splitdirection": "Vertical",
+                "window1": {
+                    "widget": {
+                        "viewtype": "planets"
+                    }
+                },
+                "window2": {
+                    "widget": {
+                        "viewtype": "graphic"
+                    }
+                }
+            },
+            "vedic": false
+        },
+        {
+            "description": "Planets and aspects (left) and western chart (right)",
+            "name": "Western with aspects",
+            "splitter": {
+                "sashpospercent": 30,
+                "splitdirection": "Vertical",
+                "window1": {
+                    "splitter": {
+                        "splitdirection": "Horizontal",
+                        "window1": {
+                            "widget": {
+                                "viewtype": "planets"
+                            }
+                        },
+                        "window2": {
+                            "widget": {
+                                "viewtype": "text"
+                            }
+                        }
+                    }
+                },
+                "window2": {
+                    "widget": {
+                        "viewtype": "graphic"
+                    }
+                }
+            },
+            "vedic": false
+        },
+        {
+            "description": "All western views in one window",
+            "name": "Western Comprehensive",
+            "notebook": {
+                "pages": [
+                    {
+                        "name": "Main",
+                        "splitter": {
+                            "sashpospercent": 30,
+                            "splitdirection": "Vertical",
+                            "window1": {
+                                "splitter": {
+                                    "sashpospercent": 50,
+                                    "splitdirection": "Horizontal",
+                                    "window1": {
+                                        "widget": {
+                                            "vedic": false,
+                                            "viewtype": "planets"
+                                        }
+                                    },
+                                    "window2": {
+                                        "widget": {
+                                            "showtoolbar": false,
+                                            "textmode": "15",
+                                            "vedic": false,
+                                            "viewtype": "text"
+                                        }
+                                    }
+                                }
+                            },
+                            "window2": {
+                                "widget": {
+                                    "vedic": false,
+                                    "viewtype": "graphic"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Text",
+                        "widget": {
+                            "viewtype": "text"
+                        }
+                    },
+                    {
+                        "name": "Transit",
+                        "widget": {
+                            "viewtype": "transit"
+                        }
+                    },
+                    {
+                        "name": "Solar",
+                        "widget": {
+                            "vedic": true,
+                            "viewtype": "solar"
+                        }
+                    }
+                ]
+            },
+            "vedic": false
+        }
+    ]
+}

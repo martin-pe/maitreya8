@@ -1,0 +1,5 @@
+?package(maitreya): needs="X11" \
+                    section="Education/Miscellaneous" \
+                    title="Maitreya6" \
+                    command="maitreya8" \
+                    icon="${datarootdir}/pixmaps/maitreya.png"

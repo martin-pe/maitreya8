@@ -1,0 +1,220 @@
+{
+   "configs" : [
+      {
+         "description" : "Moon in Aswini",
+         "effect" : "The person born In Aswini will be fond of decoration, handsome, popular, skilful and intelligent ",
+         "rule" : "return getNakshatra( Moon ) == Aswini;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Bharani",
+         "effect" : "One born in Bharani will be determined, truthful, healthy, skilful and happy.",
+         "rule" : "return getNakshatra( Moon ) == Bharani;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Krittika",
+         "effect" : "The person born in Krittika will be a voracious enter, fond of other’s wives, attractive and renowned ",
+         "rule" : "return getNakshatra( Moon ) == Krittika;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Rohini",
+         "effect" : "Rohini makes a man truthful, clean, following religious and moral principles, sweet in speech, fixed mind and handsome.",
+         "rule" : "return getNakshatra( Moon ) == Rohini;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Mrigasira",
+         "effect" : "Mrigasira-Capricious, skilful, cowardly, good speaker, hopeful, rich and enjoying.",
+         "rule" : "return getNakshatra( Moon ) == Mrigasira;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Arudra",
+         "effect" : "Aridra-Dissimulating in self-interest, proud, ungrateful, cruel and sinful.",
+         "rule" : "return getNakshatra( Moon ) == Arudra;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Punarvasu",
+         "effect" : "Punarvasu-Religious endurance, happy, good, dull, sickly, thirsty and pleased with small gifts.",
+         "rule" : "return getNakshatra( Moon ) == Punarvasu;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Pushyami",
+         "effect" : "Pushya-Control over passions, popular, learned, rich and charitable.",
+         "rule" : "return getNakshatra( Moon ) == Pushyami;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Aslesha",
+         "effect" : "Aslesha-Dissimulator, clever in selfishness, sinful, ungrateful and a cheat.",
+         "rule" : "return getNakshatra( Moon ) == Aslesha;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Makha",
+         "effect" : "Makha-Many servants and great wealth, enjoying, respector of elders and gods and very enterprising.",
+         "rule" : "return getNakshatra( Moon ) == Makha;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Purva Phalgini",
+         "effect" : "Pubba-Sweet speech, liberal, handsome, fond of traveling and royal servant.",
+         "rule" : "return getNakshatra( Moon ) == PurvaPhalgini;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Uttara Phalguni",
+         "effect" : "Uttara-Popular, self-acquired property, enjoying and happy.",
+         "rule" : "return getNakshatra( Moon ) == UttaraPhalguni;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Hashta",
+         "effect" : "Hasta-Enterprising, intelligent or (shameless), drunkard, cruel and thievish.",
+         "rule" : "return getNakshatra( Moon ) == Hashta;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Chitta",
+         "effect" : "Chitta-Using various clothes and garlands, good looks and limbs.",
+         "rule" : "return getNakshatra( Moon ) == Chitta;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Swati",
+         "effect" : "Swati-Polite, merchant, kind hearted, not able to endure thirst, sweet tongued and generous.",
+         "rule" : "return getNakshatra( Moon ) == Swati;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Vishakha",
+         "effect" : "Visakha-Jealous, avaricious, handsome, clever speaker and quarrelsome, or maker of money.",
+         "rule" : "return getNakshatra( Moon ) == Vishakha;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Anuradha",
+         "effect" : "Anuradha-Master or chief, living in foreign countries, not able to bear hunger and fond of traveling.",
+         "rule" : "return getNakshatra( Moon ) == Anuradha;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Jeshta",
+         "effect" : "Jyeshta-Few friends, contented, charitable, very irritable.",
+         "rule" : "return getNakshatra( Moon ) == Jeshta;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Moola",
+         "effect" : "Moola-Proud, rich happy, good, steady and enjoying.",
+         "rule" : "return getNakshatra( Moon ) == Moola;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Purva Shadha",
+         "effect" : "Purvashada-Good and pleasant wife, proud and a steady friend.",
+         "rule" : "return getNakshatra( Moon ) == PurvaShadha;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in UttaraShadha",
+         "effect" : "Uttarashada-Polite, knowing, virtuous, many friends, grateful and popular.",
+         "rule" : "return getNakshatra( Moon ) == UttaraShadha;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Sravana",
+         "effect" : "Sravana-Rich surroundings, learned, good and liberal or liberal to wife, wealthy and renowned.",
+         "rule" : "return getNakshatra( Moon ) == Sravana;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Dhanishta",
+         "effect" : "Dhanishta-Liberal, rich, courageous, fond of music and money.",
+         "rule" : "return getNakshatra( Moon ) == Dhanishta;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Satabishak",
+         "effect" : "Satabhisha-Plain and truthful, striken from sorrow through females, etc., killer of enemies, adventurous and irreconcilable.",
+         "rule" : "return getNakshatra( Moon ) == Satabishak;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Purva Bhadra",
+         "effect" : "Poorvabhadra-Sorrowful, loss of money through females, skilful and miserly.",
+         "rule" : "return getNakshatra( Moon ) == PurvaBhadra;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Uttara Bhadra",
+         "effect" : "Uttarabhadra-Good and witty speaker in society and meetings, happy, many children and grandchildren, successful over enemies and charitable.",
+         "rule" : "return getNakshatra( Moon ) == UttaraBhadra;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      },
+      {
+         "description" : "Moon in Revati",
+         "effect" : "Revati-Well- developed organs, popular, courageous, clean and wealthy. developed organs, popular, courageous, clean and wealthy.",
+         "rule" : "return getNakshatra( Moon ) == Revati;",
+         "highervargas" : false,
+         "source" : "Brihat Jataka",
+         "group" : "Nakshatra position"
+      }
+   ]
+}

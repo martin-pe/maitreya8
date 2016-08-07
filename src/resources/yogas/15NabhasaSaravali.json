@@ -1,0 +1,260 @@
+{
+   "configs" : [
+      {
+         "description" : "Akriti/Nauka: Seven planets in seven houses from Lagna",
+         "effect" : "NAU YOGA. The native's livelihood will be through water; he will have many gains, will be very famous, be pleased, mean, strong and stingy. This and other Yogas are effective at all times independant of Dasas.",
+         "rule" : "return countPlanetsInHouse( HOUSE1 ) == 1 and countPlanetsInHouse( HOUSE2 ) == 1\n  and countPlanetsInHouse( HOUSE3 ) == 1 and countPlanetsInHouse( HOUSE4 ) == 1\n  and countPlanetsInHouse( HOUSE5 ) == 1 and countPlanetsInHouse( HOUSE6 ) == 1\n  and countPlanetsInHouse( HOUSE7 ) == 1;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Koota: Seven planets in seven houses from the 4th",
+         "effect" : "KOOTA YOGA. The native with Koota Yoga will be a liar, be crafty, be a jailer, be poor, wicked, cruel and will always live in hills and fortresses.",
+         "rule" : "return countPlanetsInHouse( HOUSE4 ) == 1 and countPlanetsInHouse( HOUSE5 ) == 1\n  and countPlanetsInHouse( HOUSE6 ) == 1 and countPlanetsInHouse( HOUSE7 ) == 1\n  and countPlanetsInHouse( HOUSE8 ) == 1 and countPlanetsInHouse( HOUSE9 ) == 1\n  and countPlanetsInHouse( HOUSE10 ) == 1;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Chatra: Seven planets in seven houses from the 7th",
+         "effect" : "CHATRA YOGA. The native with Chatra Yoga will help his own men, be kind, liberal, dear to king, very intelligent and will enjoy happiness in boyhood and at the end.",
+         "rule" : "return countPlanetsInHouse( HOUSE7 ) == 1 and countPlanetsInHouse( HOUSE8 ) == 1\n  and countPlanetsInHouse( HOUSE9 ) == 1 and countPlanetsInHouse( HOUSE10 ) == 1\n  and countPlanetsInHouse( HOUSE11 ) == 1 and countPlanetsInHouse( HOUSE12 ) == 1\n  and countPlanetsInHouse( HOUSE1 ) == 1;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Chapa: Seven planets in seven houses from the 10th",
+         "effect" : "CHAPA YOGA. (KARMUKA YOGA). The native with Chapa Yoga will be a liar, jailer, thief and will live in forests. He will not have wealth in the middle of his life.",
+         "rule" : "return countPlanetsInHouse( HOUSE10 ) == 1 and countPlanetsInHouse( HOUSE11 ) == 1\n  and countPlanetsInHouse( HOUSE12 ) == 1 and countPlanetsInHouse( HOUSE1 ) == 1\n  and countPlanetsInHouse( HOUSE2 ) == 1 and countPlanetsInHouse( HOUSE3 ) == 1\n  and countPlanetsInHouse( HOUSE4 ) == 1;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Ardha Chandra: planets occupying seven continuous houses, not starting from an angle",
+         "effect" : "ARDHA CHANDRA YOGA. One born with Ardha Chandra Yoga will be fortunate, be an Army chief, be brilliant bodied, dear to king and strong. He will possess gems, gold and ornaments.",
+         "rule" : "return ( countPlanetsInHouse( HOUSE2 ) == 1 and countPlanetsInHouse( HOUSE3 ) == 1 and countPlanetsInHouse( HOUSE4 ) == 1 and countPlanetsInHouse( HOUSE5 ) == 1 and countPlanetsInHouse( HOUSE6 ) == 1 and countPlanetsInHouse( HOUSE7 ) == 1 and countPlanetsInHouse( HOUSE8 ) == 1 )\n\nor ( countPlanetsInHouse( HOUSE3 ) == 1 and countPlanetsInHouse( HOUSE4 ) == 1 and countPlanetsInHouse( HOUSE5 ) == 1 and countPlanetsInHouse( HOUSE6 ) == 1 and countPlanetsInHouse( HOUSE7 ) == 1 and countPlanetsInHouse( HOUSE8 ) == 1 and countPlanetsInHouse( HOUSE9 ) == 1 )\n\nor ( countPlanetsInHouse( HOUSE5 ) == 1 and countPlanetsInHouse( HOUSE6 ) == 1 and countPlanetsInHouse( HOUSE7 ) == 1 and countPlanetsInHouse( HOUSE8 ) == 1 and countPlanetsInHouse( HOUSE9 ) == 1 and countPlanetsInHouse( HOUSE10 ) == 1 and countPlanetsInHouse( HOUSE11 ) == 1 )\n\nor ( countPlanetsInHouse( HOUSE6 ) == 1 and countPlanetsInHouse( HOUSE7 ) == 1 and countPlanetsInHouse( HOUSE8 ) == 1 and countPlanetsInHouse( HOUSE9 ) == 1 and countPlanetsInHouse( HOUSE10 ) == 1 and countPlanetsInHouse( HOUSE11 ) == 1 and countPlanetsInHouse( HOUSE12 ) == 1 )\n\nor ( countPlanetsInHouse( HOUSE8 ) == 1 and countPlanetsInHouse( HOUSE9 ) == 1 and countPlanetsInHouse( HOUSE10 ) == 1 and countPlanetsInHouse( HOUSE11 ) == 1 and countPlanetsInHouse( HOUSE12 ) == 1 and countPlanetsInHouse( HOUSE1 ) == 1 and countPlanetsInHouse( HOUSE2 ) == 1 )\n\nor ( countPlanetsInHouse( HOUSE9 ) == 1 and countPlanetsInHouse( HOUSE10 ) == 1 and countPlanetsInHouse( HOUSE11 ) == 1 and countPlanetsInHouse( HOUSE12 ) == 1 and countPlanetsInHouse( HOUSE1 ) == 1 and countPlanetsInHouse( HOUSE2 ) == 1 and countPlanetsInHouse( HOUSE3 ) == 1 )\n\nor ( countPlanetsInHouse( HOUSE11 ) == 1 and countPlanetsInHouse( HOUSE12 ) == 1 and countPlanetsInHouse( HOUSE1 ) == 1 and countPlanetsInHouse( HOUSE2 ) == 1 and countPlanetsInHouse( HOUSE3 ) == 1 and countPlanetsInHouse( HOUSE4 ) == 1 and countPlanetsInHouse( HOUSE5 ) == 1 )\n\nor ( countPlanetsInHouse( HOUSE12 ) == 1 and countPlanetsInHouse( HOUSE1 ) == 1 and countPlanetsInHouse( HOUSE2 ) == 1 and countPlanetsInHouse( HOUSE3 ) == 1 and countPlanetsInHouse( HOUSE4 ) == 1 and countPlanetsInHouse( HOUSE5 ) == 1 and countPlanetsInHouse( HOUSE6 ) == 1 );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Vajra: all benefics in Lagna and 7, all malefics in 4 and 10",
+         "effect" : "VAJRA YOGA. One born with Vajra Yoga will be happy at the beginning and end of his life, bold, beautiful, free from sickness, unfortunate and be inimical to his own people.",
+         "rule" : "return ( getBhava( Sun ) % 6 == 3\n  and ( isBenefic( Moon ) or getBhava( Moon ) % 6 == 0 )\n  and ( not isBenefic( Moon ) or getBhava( Moon ) % 6 == 3 )\n  and getBhava( Mars ) % 6 == 3\n  and ( isBenefic( Mercury ) or getBhava( Mercury ) % 6 == 0 )\n  and ( not isBenefic( Mercury ) or getBhava( Mercury ) % 6 == 3 )\n  and getBhava( Venus ) % 6 == 0\n  and getBhava( Saturn ) % 6 == 3\n );\n",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Yava: all malefics in Lagna and 7, all benefics in 4 and 10",
+         "effect" : "YAVA YOGA One born with Yava Yoga will observe fasts and other religious rules, be intent on doing auspicious acts, be happy in the middle of life, be liberal and will have lasting wealth.",
+         "rule" : "return ( getBhava( Sun ) % 6 == 0\n  and ( isBenefic( Moon ) or getBhava( Moon ) % 6 == 3 ) \n  and ( not isBenefic( Moon ) or getBhava( Moon ) % 6 == 0 )\n  and getBhava( Mars ) % 6 == 0\n  and ( isBenefic( Mercury ) or getBhava( Mercury ) % 6 == 3 )\n  and ( not isBenefic( Mercury ) or getBhava( Mercury ) % 6 == 0 )\n  and getBhava( Venus ) % 6 == 3\n  and getBhava( Saturn ) % 6 == 0\n );\n",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Padma (Kamala): all planets in kendra",
+         "effect" : "KAMALA YOGA. One born with Kamala Yoga will be highly famous, very virtuous, assuredly long living, very rich, very bright in appearance and will be the Lord of the earth.",
+         "rule" : "return isPlanetInKendra( Sun ) and isPlanetInKendra( Moon )\n  and isPlanetInKendra( Mars ) and isPlanetInKendra( Mercury )\n  and isPlanetInKendra( Jupiter ) and isPlanetInKendra( Venus )\n  and isPlanetInKendra( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Vapi: all planets in apoklima or panaphara",
+         "effect" : "VAPI YOGA. One born with Vapi Yoga will be skillful in amassing wealth, will enjoy lasting riches and happiness, be beautiful and will be endowed with happiness from sons.",
+         "rule" : "return ( isPlanetInApoklima( Sun ) and isPlanetInApoklima( Moon ) and isPlanetInApoklima( Moon ) and isPlanetInApoklima( Mars ) and isPlanetInApoklima( Mercury ) and isPlanetInApoklima( Jupiter ) and isPlanetInApoklima( Venus ) and isPlanetInApoklima( Saturn ) )\n\nor ( isPlanetInPanaphara( Sun ) and isPlanetInPanaphara( Moon ) and isPlanetInPanaphara( Moon ) and isPlanetInPanaphara( Mars ) and isPlanetInPanaphara( Mercury ) and isPlanetInPanaphara( Jupiter ) and isPlanetInPanaphara( Venus ) and isPlanetInPanaphara( Saturn ));",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Sakata: all planets occupy Lagna and the 7th",
+         "effect" : "SAKATA YOGA. One born with Sakata Yoga will be troubled by diseases, will have a bad wife, will be a dunce, will live by pulling carts, will be poor and be without relatives and friends.",
+         "rule" : "return getBhava( Sun ) % 6 == House1 and getBhava( Moon ) % 6 == House1\n  and getBhava( Mars ) % 6 == House1 and getBhava( Mercury ) % 6 == House1\n  and getBhava( Jupiter ) % 6 == House1 and getBhava( Venus ) % 6 == House1\n  and getBhava( Saturn ) % 6 == House1;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Vihaga: all planets occupy the 4th and the 10th",
+         "effect" : "VIHAGA YOGA. (PAKSHI YOGA). The native with this Yoga will be intent on wandering, will have mean habits, will be a messenger, will live through sexual dealings, shameless and fond of quarrels.",
+         "rule" : "return getBhava( Sun ) % 6 == HOUSE4 and getBhava( Moon ) % 6 == HOUSE4\n  and getBhava( Mars ) % 6 == HOUSE4 and getBhava( Mercury ) % 6 == HOUSE4\n  and getBhava( Jupiter ) % 6 == HOUSE4 and getBhava( Venus ) % 6 == HOUSE4\n  and getBhava( Saturn ) % 6 == HOUSE4;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Gada: all planets occupy 2 successive angles",
+         "effect" : "GADA YOGA. One born with this Yoga, will always care for honour and money, will perform yagnas etc., will be expert in Sastras and music and will be endowed with money, gold, jewels and wealth.",
+         "rule" : "return countPlanetsInHouse( HOUSE1 ) + countPlanetsInHouse( HOUSE4 ) == 7\n  or countPlanetsInHouse( HOUSE4 ) + countPlanetsInHouse( HOUSE7 ) == 7\n  or countPlanetsInHouse( HOUSE7 ) + countPlanetsInHouse( HOUSE10 ) == 7\n  or countPlanetsInHouse( HOUSE10 ) + countPlanetsInHouse( HOUSE1 ) == 7;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Sringataka: all planets in Lagna or its trines",
+         "effect" : "SRINGATAKA YOGA. One born with this Yoga will be fond of quarrels, be a warrior, be happy, dear to king, will have a fortunate wife, be rich and will hate the fair sex.",
+         "rule" : "return getBhava( Sun ) % 4 == 0 and getBhava( Moon ) % 4 == 0\n  and getBhava( Mars ) % 4 == 0 and getBhava( Mercury ) % 4 == 0\n  and getBhava( Jupiter ) % 4 == 0 and getBhava( Venus ) % 4 == 0\n  and getBhava( Saturn ) % 4 == 0;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Hala: all planets in trines without Lagna",
+         "effect" : "HALA YOGA. The native of this Yoga will eat in plenty, will be indigent, will have agricultural profession, will be subjected to grief, be emotional, be forsaken by relatives and friends and will be a servant.",
+         "rule" : "return getBhava( Sun ) % 4 == 0 and getBhava( Moon ) % 4 == 0\n  and getBhava( Mars ) % 4 == 0 and getBhava( Mercury ) % 4 == 0\n  and getBhava( Jupiter ) % 4 == 0 and getBhava( Venus ) % 4 == 0\n  and getBhava( Saturn ) % 4 == 0 and countPlanetsInHouse( HOUSE1 ) == 0;\n",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Chakra: all planets in 6 alternative signs from the ascendant",
+         "effect" : "CHAKRA YOGA. One born in this Yoga will be a king at whose feet will be the heads of the other prostrating kings adoring diamond-studded crowns. (That is, the subordinate kings, wearing diamond-studded crowns will honour a Chakra Yoga native, who will be the chief of such kings)",
+         "rule" : "return countPlanetsInHouse( HOUSE1 ) >= 1 and countPlanetsInHouse( HOUSE3 ) >= 1\n  and countPlanetsInHouse( HOUSE5 ) >= 1 and countPlanetsInHouse( HOUSE7 ) >= 1\n  and countPlanetsInHouse( HOUSE9 ) >= 1 and countPlanetsInHouse( HOUSE11 ) >= 1\n  and countPlanetsInHouse( HOUSE2 ) == 0 and countPlanetsInHouse( HOUSE4 ) == 0\n  and countPlanetsInHouse( HOUSE6 ) == 0 and countPlanetsInHouse( HOUSE8 ) == 0\n  and countPlanetsInHouse( HOUSE10 ) == 0 and countPlanetsInHouse( HOUSE12 ) == 0;\n\n",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Samudra: all planets in 6 alternative signs from the 2th",
+         "effect" : "SAMUDRA YOGA. Should a person be born under this Yoga, he will have abundant wealth and precious stones, will be a king, be endowed with pleasures, be dear to people, will have steady mind and be truthful in disposition (“Sattvavanta”).",
+         "rule" : "return countPlanetsInHouse( HOUSE2 ) >= 1 and countPlanetsInHouse( HOUSE4 ) >= 1\n  and countPlanetsInHouse( HOUSE6 ) >= 1 and countPlanetsInHouse( HOUSE8 ) >= 1\n  and countPlanetsInHouse( HOUSE10 ) >= 1 and countPlanetsInHouse( HOUSE12 ) >= 1\n  and countPlanetsInHouse( HOUSE1 ) == 0 and countPlanetsInHouse( HOUSE3 ) == 0\n  and countPlanetsInHouse( HOUSE5 ) == 0 and countPlanetsInHouse( HOUSE7 ) == 0\n  and countPlanetsInHouse( HOUSE9 ) == 0 and countPlanetsInHouse( HOUSE11 ) == 0;\n",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Yupa: All planets in 4 continuous houses from the Ascendant",
+         "effect" : "YUPA YOGA. The native with this Yoga will have self-protection, be charitable, be endowed with riches and happiness and will observe religious fastings and vows. He will be a distinguished person.",
+         "rule" : "return countPlanetsInHouse( HOUSE1 ) != 0 and countPlanetsInHouse( HOUSE2 ) != 0\n  and countPlanetsInHouse( HOUSE3 ) != 0 and countPlanetsInHouse( HOUSE4 ) != 0\n  and countPlanetsInHouse( HOUSE1 ) + countPlanetsInHouse( HOUSE2 ) + countPlanetsInHouse( HOUSE3 ) + countPlanetsInHouse( HOUSE4 ) == 7;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Sara: All planets in 4 continuous houses from the 4th",
+         "effect" : "SARA YOGA. The native with sara Yoga will manufacture arrows (arms etc. in modern context), will catch hold of thieves (for example, be a police officer), will live in forests to hunt animals, will be equal to a mad person, will torture and be fond of mean handiworks.",
+         "rule" : "return countPlanetsInHouse( HOUSE4 ) != 0 and countPlanetsInHouse( HOUSE5 ) != 0\n  and countPlanetsInHouse( HOUSE6 ) != 0 and countPlanetsInHouse( HOUSE7 ) != 0\n  and countPlanetsInHouse( HOUSE4 ) + countPlanetsInHouse( HOUSE5 ) + countPlanetsInHouse( HOUSE6 ) + countPlanetsInHouse( HOUSE7 ) == 7;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Sakti: All planets in 4 continuous houses from the 7th",
+         "effect" : "SAKTI YOGA. One born with this Yoga will be devoid of wealth, deformed, subjected to grief, mean, lazy, short-lived, expert in war and be beautiful.",
+         "rule" : "return countPlanetsInHouse( HOUSE7 ) != 0 and countPlanetsInHouse( HOUSE8 ) != 0\n  and countPlanetsInHouse( HOUSE9 ) != 0 and countPlanetsInHouse( HOUSE10 ) != 0\n  and countPlanetsInHouse( HOUSE7 ) + countPlanetsInHouse( HOUSE8 ) + countPlanetsInHouse( HOUSE9 ) + countPlanetsInHouse( HOUSE10 ) == 7;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Akriti/Danda: All planets in 4 continuous houses from the 10th",
+         "effect" : "DANDA YOGA. The native with this Yoga will lose his wife and sons, will be poor, discarded by all people, be out of the men of his circle, be grieved, mean and will be servant.",
+         "rule" : "return countPlanetsInHouse( HOUSE10 ) != 0 and countPlanetsInHouse( HOUSE11 ) != 0\n  and countPlanetsInHouse( HOUSE12 ) != 0 and countPlanetsInHouse( HOUSE1 ) != 0\n  and countPlanetsInHouse( HOUSE10 ) + countPlanetsInHouse( HOUSE11 ) + countPlanetsInHouse( HOUSE12 ) + countPlanetsInHouse( HOUSE1 ) == 7;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Dala/Maala: all angles exclusively occupied by benefics",
+         "effect" : "MAALA YOGA. One born with maala Yoga will always be happy, be endowed with conveyances, robes, wealth and pleasures, splendourous and will have plurality of wives.",
+         "rule" : "return isPlanetInKendra( Venus ) and isPlanetInKendra( Jupiter ) and isBenefic( Mercury ) and isPlanetInKendra( Mercury ) and isBenefic( Moon ) and isPlanetInKendra( Moon ) and not isPlanetInKendra( Sun ) and not isPlanetInKendra( Mars ) and not isPlanetInKendra( Saturn ) and countPlanetsInHouse( HOUSE1 ) > 0 and countPlanetsInHouse( HOUSE4 ) > 0 and countPlanetsInHouse( HOUSE7 ) > 0;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Dala/Sarpa: all angles exclusively occupied by malefics",
+         "effect" : "SARPA YOGA. The native born under this Yoga will be crooked in disposition, pitiless, always be a subject of grief, poor and will live in other's House and eat their food.",
+         "rule" : "return isPlanetInKendra( Sun ) and isPlanetInKendra( Mars ) and isPlanetInKendra( Saturn ) and ( isBenefic( Moon ) or isPlanetInKendra( Moon )) and ( isBenefic( Mercury ) or isPlanetInKendra( Mercury )) and countPlanetsInHouse( HOUSE1 ) > 0 and countPlanetsInHouse( HOUSE4 ) > 0 and countPlanetsInHouse( HOUSE7 ) > 0;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Asraya/Rajju: all planets in movable signs",
+         "effect" : "RAJJU YOGA. The subject with this Yoga will be fond of wandering, attractive in appearance, will earn money in foreign countries, be cruel and mischievously disposed.",
+         "rule" : "return isPlanetInMovableRasi( Sun ) and isPlanetInMovableRasi( Moon )\n  and isPlanetInMovableRasi( Mars ) and isPlanetInMovableRasi( Mercury )\n  and isPlanetInMovableRasi( Jupiter ) and isPlanetInMovableRasi( Venus )\n  and isPlanetInMovableRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Asraya/Musala: all planets in fixed signs",
+         "effect" : "MUSALA YOGA. One born under this Yoga will be endowed with honour, wealth and wisdom, be attached to his duty, be liked by king, be famous. steady-minded and bold.",
+         "rule" : "return isPlanetInFixedRasi( Sun ) and isPlanetInFixedRasi( Moon )\n  and isPlanetInFixedRasi( Mars ) and isPlanetInFixedRasi( Mercury )\n  and isPlanetInFixedRasi( Jupiter ) and isPlanetInFixedRasi( Venus )\n  and isPlanetInFixedRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Asraya/Nala: all planets in dual signs",
+         "effect" : "NALA YOGA. One born with nala Yoga will have uneven physique (i.e. some limbs long and some short), will gather money, be skillful, be helpful to his relatives and be attractive in appearance.",
+         "rule" : "return isPlanetInDualRasi( Sun ) and isPlanetInDualRasi( Moon )\n  and isPlanetInDualRasi( Mars ) and isPlanetInDualRasi( Mercury )\n  and isPlanetInDualRasi( Jupiter ) and isPlanetInDualRasi( Venus )\n  and isPlanetInDualRasi( Saturn );",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Sankhya/Gola: all planets in 1 sign",
+         "effect" : "GOLA YOGA. One born in this Yoga will be indigent, indolent, devoid of learning and honour, dirty and always grieved.",
+         "rule" : "return countNumberOfOccupiedSigns() == 1;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Sankhya/Yuga: all planets in 2 signs",
+         "effect" : "YUGA YOGA. One born with this Yoga will be a religious hypocrite, be bereft of wealth, forsaken by people and devoid of sons, honour and virtues.",
+         "rule" : "return countNumberOfOccupiedSigns() == 2;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Sankhya/Sula: all planets in 3 signs",
+         "effect" : "SULA YOGA. The native with sula Yoga will be harsh, indolent, poor, torturous, become a prohibited person, bold, successful in war and fearful.",
+         "rule" : "return countNumberOfOccupiedSigns() == 3;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Sankhya/Kedara: all planets in 4 signs",
+         "effect" : "KEDARA YOGA. One born under this Yoga will be useful to many, will have agricultural profession, be truthfully disposed, fickle minded and wealthy.",
+         "rule" : "return countNumberOfOccupiedSigns() == 4;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Sankhya/Pasa: all planets in 5 signs",
+         "effect" : "PASA YOGA. One born with pasa Yoga will be bonded, be attached to work, worldly in disposition, will talk too much, will not have good qualities and will have many servants.",
+         "rule" : "return countNumberOfOccupiedSigns() == 5;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Sankhya/Damini: all planets in 6 signs",
+         "effect" : "DAMINI YOGA. One born with this Yoga will be helpful, will have cattle, be Lord of money, be foolish, will have many sons and jewels, be bold and learned.",
+         "rule" : "return countNumberOfOccupiedSigns() == 6;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      },
+      {
+         "description" : "Sankhya/Veena: all planets in 7 signs",
+         "effect" : "VEENA YOGA. One born with this combination will have friends, be eloquent, interested in Sastras, musical instruments and singing. He will be happy, will have many servants and be famous.",
+         "rule" : "return countNumberOfOccupiedSigns() == 7;",
+         "highervargas" : true,
+         "source" : "Saravali",
+         "group" : "Nabhasa"
+      }
+   ]
+}
