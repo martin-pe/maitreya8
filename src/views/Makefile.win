@@ -10,9 +10,9 @@ CPPFLAGS = -g -I. -I../base -I../gui -I../jyotish -I../dialogs `wx-config --cppf
 
 LDLIBS = `wx-config --libs` 
 
-OBS = AshtakaVargaView.o DasaGraphicView.o DasaView.o EclipseView.o EphemView.o GraphicView.o HoraView.o \
-	PartnerView.o SbcView.o SolarView.o TextView.o TransitView.o \
-	VargaView.o YogaView.o SheetView.o PrintView.o
+OBS = AshtakaVargaView.o DasaGraphicView.o DasaView.o EclipseView.o EphemView.o \
+	GraphicView.o HoraView.o PartnerView.o SbcView.o ShadbalaView.o SheetView.o \
+	SolarView.o TextView.o TransitView.o UranianView.o VargaView.o YogaView.o
 
 all : $(VIEW_LIB)
 

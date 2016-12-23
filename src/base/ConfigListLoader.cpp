@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "ConfigListLoader.h"
@@ -43,14 +41,15 @@ ConfigBaseLoader::ConfigBaseLoader( const wxString ftoken, const ConfigResourceT
 	const wxString separator = wxFileName::GetPathSeparator();
 	switch( resourceType )
 	{
-		case CrtPrivateFile:
+		case CrtLocalFile:
 		case CrtGlobalFile:
-			privateResourcename = FileConfig::get()->getConfigDir() + ftoken + CFG_JSON_EXTENSION;
+			localResourcename = FileConfig::get()->getConfigDir() + ftoken + CFG_JSON_EXTENSION;
 			globalResourcename = FileConfig::get()->getResourceDir() + ftoken + CFG_JSON_EXTENSION;
 		break;
-		case CrtPrivateDir:
+		case CrtLocalDir:
 		case CrtGlobalDir:
-			privateResourcename = FileConfig::get()->getConfigDir() + ftoken + separator;
+		case CrtCombinedDir:
+			localResourcename = FileConfig::get()->getConfigDir() + ftoken + separator;
 			globalResourcename = FileConfig::get()->getResourceDir() + ftoken + separator;
 		break;
 		default:
@@ -68,17 +67,25 @@ bool ConfigBaseLoader::loadConfigs()
 {
 	switch( resourceType )
 	{
-		case CrtPrivateFile:
-			return parseConfigFile( privateResourcename );
+		case CrtLocalFile:
+			return parseConfigFile( localResourcename );
 		break;
 		case CrtGlobalFile:
-			return parseConfigFile( globalResourcename );
+			return parseConfigFile( globalResourcename, true );
 		break;
-		case CrtPrivateDir:
-			return traverseConfigDir( privateResourcename );
+		case CrtLocalDir:
+			return traverseConfigDir( localResourcename, true );
 		break;
 		case CrtGlobalDir:
-			return traverseConfigDir( globalResourcename );
+			return traverseConfigDir( globalResourcename, true );
+		break;
+		case CrtCombinedDir:
+		{
+			bool b = traverseConfigDir( globalResourcename, true );
+			traverseConfigDir( localResourcename );
+			return b;
+		}
+		break;
 		default:
 			assert( false );
 		break;
@@ -94,12 +101,13 @@ bool ConfigBaseLoader::loadDefaultConfigs()
 {
 	switch( resourceType )
 	{
-		case CrtPrivateFile:
+		case CrtLocalFile:
 		case CrtGlobalFile:
 			return parseConfigFile( globalResourcename );
 		break;
-		case CrtPrivateDir:
+		case CrtLocalDir:
 		case CrtGlobalDir:
+		case CrtCombinedDir:
 			return traverseConfigDir( globalResourcename );
 		default:
 			assert( false );
@@ -112,43 +120,37 @@ bool ConfigBaseLoader::loadDefaultConfigs()
 **   ConfigBaseLoader   ---   traverseConfigDir
 **
 ******************************************************/
-bool ConfigBaseLoader::traverseConfigDir( wxString dirname )
+bool ConfigBaseLoader::traverseConfigDir( wxString dirname, const bool mustExist )
 {
 	bool b = true;
-	wxString f, filename;
+	wxArrayString files;
+	int count = 0;
 	wxLogMessage( wxT( "ConfigBaseLoader::traverseConfigDir resource %s" ), dirname.c_str( ));
 
 	if ( ! wxDir::Exists( dirname ))
 	{
-		wxLogError( wxString::Format( wxT ( "config directory %s does not exist" ), dirname.c_str() ));
+		if ( mustExist ) wxLogError( wxString::Format( wxT ( "config directory %s does not exist" ), dirname.c_str() ));
 		return false;
 	}
 
-	wxDir dir( dirname );
-	if ( ! dir.IsOpened() )
+	size_t l = wxDir::GetAllFiles( dirname, &files, wxT( "*.json" ));
+	files.Sort();
+	for ( uint i = 0; i < files.GetCount(); i++ )
 	{
-		wxLogError( wxString::Format( wxT ( "cannot open config directory %s" ), dirname.c_str() ));
-	}
-	else
-	{
-		bool cont = dir.GetFirst( &f, wxT( "*.json" ), wxDIR_FILES );
-		if ( ! cont )
+		// filespec in wxDir::GetAllFiles is not reliable, so repeat filtering
+		if ( files[i].Right( 5 ) == wxT( ".json" ))
 		{
-			wxLogWarning( wxString::Format( wxT ( "config directory %s is empty" ), dirname.c_str() ));
+			count++;
+			if ( ! parseConfigFile( files[i] )) b = false;
 		}
-		while ( cont )
-		{
-			// Windows implementation doesn't filter extension
-			if ( f.Right( 5 ) == wxT( ".json" ))
-			{
-				filename = dirname + f;
-				if ( ! parseConfigFile( filename )) b = false;
-			}
+	}
+	if ( count == 0 )
+	{
+		wxLogError( wxString::Format( wxT ( "config directory %s contains no JSON files" ), dirname.c_str() ));
+		b = false;
+	}
 
-			cont = dir.GetNext( &f );
-		}
-	}
-	wxLogMessage( wxT( "ConfigBaseLoader::traverseConfigDir  %s finished" ), dirname.c_str( ));
+	wxLogMessage( wxT( "ConfigBaseLoader::traverseConfigDir %s finished and found %d appropriate files" ), dirname.c_str(), count );
 	return b;
 }
 
@@ -157,12 +159,12 @@ bool ConfigBaseLoader::traverseConfigDir( wxString dirname )
 **   ConfigBaseLoader   ---   parseConfigFile
 **
 ******************************************************/
-bool ConfigBaseLoader::parseConfigFile( wxString file )
+bool ConfigBaseLoader::parseConfigFile( wxString file, const bool mustExist )
 {
 	wxLogMessage( wxT( "ConfigBaseLoader::parseConfigFile file %s" ), file.c_str( ));
 	if ( ! wxFileName::FileExists( file ))
 	{
-		wxLogError( wxT( "File %s does not exist, using defaults" ), file.c_str());
+		if ( mustExist ) wxLogError( wxT( "File %s does not exist, using defaults" ), file.c_str());
 		return false;
 	}
 	if ( ! wxFileName::IsFileReadable( file ))

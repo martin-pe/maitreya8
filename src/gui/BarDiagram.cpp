@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "BarDiagram.h"
@@ -66,25 +64,29 @@ void BarDiagramWriter::writeVargaDiagrams()
 	const ObjectArray &obs = PlanetList().getVedicPlanetOnlyList();
 
 	uint i;
+
+	SheetWidgetGrid *grid = new SheetWidgetGrid( 3 );
+
 	BarDiagramWidget *diagram1 = new BarDiagramWidget( props, _( "Shad Varga" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram1->addItem( new BarDiagramItem( obs[i], horoscope->getPlanet( obs[i] )->getVimsopakaBala( 0 )));
-	sheet->addItem( diagram1 );
+	grid->addItem( diagram1 );
 
 	BarDiagramWidget *diagram2 = new BarDiagramWidget( props, _( "Sapta Varga" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram2->addItem( new BarDiagramItem( obs[i], horoscope->getPlanet( obs[i] )->getVimsopakaBala( 1 )));
-	sheet->addItem( diagram2 );
+	grid->addItem( diagram2 );
 
 	BarDiagramWidget *diagram3 = new BarDiagramWidget( props, _( "Dasa Varga" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram3->addItem( new BarDiagramItem( obs[i], horoscope->getPlanet( obs[i] )->getVimsopakaBala( 2 )));
-	sheet->addItem( diagram3 );
+	grid->addItem( diagram3 );
 
 	BarDiagramWidget *diagram4 = new BarDiagramWidget( props, _( "Shodasa Varga" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram4->addItem( new BarDiagramItem( obs[i], horoscope->getPlanet( obs[i] )->getVimsopakaBala( 3 )));
-	sheet->addItem( diagram4 );
+	grid->addItem( diagram4 );
 
 	BarDiagramWidget *diagram5 = new BarDiagramWidget( props, _( "Average" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram5->addItem( new BarDiagramItem( obs[i], horoscope->getPlanet( obs[i] )->getAverageVimsopakaBala()));
-	sheet->addItem( diagram5 );
+	grid->addItem( diagram5 );
+	sheet->addItem( grid );
 }
 
 #define RASIDIAGRAM_XMIN 400
@@ -99,17 +101,20 @@ void BarDiagramWriter::writeVargaDiagrams()
 void BarDiagramWriter::writeAvRasiDiagrams( AshtakavargaExpert *expert )
 {
 	Rasi rasi;
+	SheetWidgetGrid *grid = new SheetWidgetGrid( 3 );
+
 	BarDiagramWidget *diagram1 = new BarDiagramWidget( props, _( "Rekha" ), false, RASIDIAGRAM_XMIN, RASIDIAGRAM_XMAX, RASIDIAGRAM_RATIO );
 	for ( rasi = R_ARIES; rasi <= R_PISCES; rasi++ ) diagram1->addItem( new BarDiagramItem( (int)rasi, expert->getSarva( REKHA, rasi )));
-	sheet->addItem( diagram1 );
+	grid->addItem( diagram1 );
 
 	BarDiagramWidget *diagram2 = new BarDiagramWidget( props, _( "Trikona Shodana" ), false, RASIDIAGRAM_XMIN, RASIDIAGRAM_XMAX, RASIDIAGRAM_RATIO  );
 	for ( rasi = R_ARIES; rasi <= R_PISCES; rasi++ ) diagram2->addItem( new BarDiagramItem( (int)rasi, expert->getSarva( TRIKONA, rasi )));
-	sheet->addItem( diagram2 );
+	grid->addItem( diagram2 );
 
 	BarDiagramWidget *diagram3 = new BarDiagramWidget( props, _( "Ekadhipatya Shodana" ), false, RASIDIAGRAM_XMIN, RASIDIAGRAM_XMAX, RASIDIAGRAM_RATIO );
 	for ( rasi = R_ARIES; rasi <= R_PISCES; rasi++ ) diagram3->addItem( new BarDiagramItem( (int)rasi, expert->getSarva( EKADHI, rasi )));
-	sheet->addItem( diagram3 );
+	grid->addItem( diagram3 );
+	sheet->addItem( grid );
 }
 
 /*****************************************************
@@ -121,19 +126,21 @@ void BarDiagramWriter::writeAvPindaDiagrams( AshtakavargaExpert *expert )
 {
 	ObjectArray obs = PlanetList().getVedicPlanetOnlyList();
 	obs.push_back( OASCENDANT );
-
 	uint i;
+
+	SheetWidgetGrid *grid = new SheetWidgetGrid( 3 );
 	BarDiagramWidget *diagram4 = new BarDiagramWidget( props, _( "Graha Pinda" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram4->addItem( new BarDiagramItem( obs[i], expert->getPinda( GRAHAPINDA, i )));
-	sheet->addItem( diagram4 );
+	grid->addItem( diagram4 );
 
 	BarDiagramWidget *diagram5 = new BarDiagramWidget( props, _( "Rasi Pinda" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram5->addItem( new BarDiagramItem( obs[i], expert->getPinda( RASIPINDA, i )));
-	sheet->addItem( diagram5 );
+	grid->addItem( diagram5 );
 
 	BarDiagramWidget *diagram6 = new BarDiagramWidget( props, _( "Sodhya Pinda" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram6->addItem( new BarDiagramItem( obs[i], expert->getPinda( YOGAPINDA, i )));
-	sheet->addItem( diagram6 );
+	grid->addItem( diagram6 );
+	sheet->addItem( grid );
 }
 
 /*****************************************************
@@ -163,28 +170,6 @@ SheetItem *BarDiagramItem::cloneClean()
 
 /*****************************************************
 **
-**   BarDiagramItem   ---   getRefreshRect
-**
-******************************************************/
-MRect BarDiagramItem::getRefreshRect( const bool ismarked, const int /*selectionMode*/ )
-{
-	printf( "HALLO BarDiagramItem::getRelevantRect pointer %ld dozoom %d z %d\n", (long)markedItem, barconfig->doItemZoom, barconfig->itemZoom );
-
-	MRect r = rect;
-	r.width += x3d;
-	r.height += y3d;
-	r.y -= y3d;
-
-	if ( ismarked && barconfig->doItemZoom && barconfig->itemZoom > 0 )
-	{
-		printf( "HALLO BarDiagramItem::getRelevantRect GROW \n" );
-		return r.grow( barconfig->itemZoom );
-	}
-	else return r;
-}
-
-/*****************************************************
-**
 **   BarDiagramWidget   ---   Constructor
 **
 ******************************************************/
@@ -201,9 +186,11 @@ BarDiagramWidget::BarDiagramWidget( ChartProperties *props, wxString title, cons
 {
 	barconfig = bconfig ? bconfig : config->bardiagram;
 	minvalue = maxvalue = 0;
+	/*
 	this->xmin = xmin;
 	this->xmax = xmax;
 	this->ratio = ratio;
+	*/
 }
 
 /*****************************************************
@@ -300,7 +287,7 @@ SheetItem *BarDiagramWidget::getSubitem4Point( const wxPoint &p )
 void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 {
 	printf( "BarDiagramWidget::doPaint\n" );
-	const int graphicfont_scalingfactor = 80;
+	const int graphicfont_scalingfactor = 1.0;
 	wxString s;
 	Lang lang;
 	SymbolProvider sp;
@@ -336,7 +323,7 @@ void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 	painter->drawRectangle( contentRect, cornerRadius );
 
 	// font scaling
-	painter->setGraphicFont( graphicfont_scalingfactor );
+	painter->setGraphicFontZoom( graphicfont_scalingfactor );
 	MPoint p = painter->getTextExtent( wxT( "0" ));
 	text_height = p.imag();
 
@@ -420,13 +407,17 @@ void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 		else
 		{
 			if ( planetmode ) s = lang.getObjectName( (ObjectId)(*iter)->objectId, TF_MEDIUM );
-			else s =	lang.getSignName( (Rasi)(*iter)->objectId, TF_MEDIUM );
+			else s = lang.getSignName( (Rasi)(*iter)->objectId, TF_MEDIUM );
 		}
+		painter->drawTextFormatted( MRect( rulerRect.x + i * xstep, rulerRect.y + rulerRect.height, xstep, 2 * text_height ),
+			s, Align::VCenter + Align::HCenter );
+		/*
 		painter->drawTextFormatted( MRect( rulerRect.x + i * xstep, rulerRect.y + rulerRect.height, xstep, xstep ),
-			s, Align::Top + Align::HCenter );
+			s, Align::VCenter + Align::HCenter );
+		*/
 		i++;
 	}
-	painter->setGraphicFont( graphicfont_scalingfactor );
+	painter->setGraphicFontZoom( graphicfont_scalingfactor );
 }
 
 /*****************************************************
@@ -456,15 +447,6 @@ void BarDiagramWidget::drawBar( Painter *painter, BarDiagramItem *item )
 	}
 
 	MRect rect = item->rect;
-	if ( barconfig->doItemZoom && item == markedItem )
-	//if ( barconfig->doItemZoom )
-	{
-		const int a = barconfig->itemZoom;
-		rect.x -= a;
-		rect.y -= a;
-		rect.width += 2 * a;
-		rect.height += 2 * a;
-	}
 
 	const double xright = rect.x + rect.width;
 	const double ybottom = rect.y + rect.height;

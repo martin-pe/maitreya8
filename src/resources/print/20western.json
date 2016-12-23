@@ -1,0 +1,73 @@
+{
+    "configs": [
+        {
+            "name": "Western Default",
+            "description": "Default Western printout with list of planets and western chart",
+            "vedic": true,
+            "items": [
+                {
+                    "type": "rowset",
+                    "children": [
+                        {
+                            "type": "title"
+                        },
+                        {
+                            "type": "header",
+                            "vedic": false,
+                            "headertype": 1
+                        },
+                        {
+                            "type": "westernchart"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Western Uranian",
+            "description": "Western printout with Uranian planets in the header and western chart",
+            "vedic": true,
+            "items": [
+                {
+                    "type": "rowset",
+                    "children": [
+                        {
+                            "type": "title"
+                        },
+                        {
+                            "type": "header",
+                            "vedic": false,
+                            "headertype": 2
+                        },
+												{
+													"type": "westernchart"
+												}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Western - own planets and columns",
+            "description": "Western printout with planets and columns according to personal configuraton and western chart",
+            "vedic": true,
+            "items": [
+                {
+                    "type": "rowset",
+                    "children": [
+                        {
+                            "type": "title"
+                        },
+                        {
+                            "type": "header",
+                            "vedic": false,
+                            "headertype": 0
+                        },
+                        {
+                            "type": "westernchart"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

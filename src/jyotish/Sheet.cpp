@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Sheet.h"
@@ -29,6 +27,7 @@
 #include "Conf.h"
 #include "Lang.h"
 #include "mathbase.h"
+#include "Painter.h"
 #include "SheetConfig.h"
 #include "SymbolProvider.h"
 #include "Table.h"
@@ -41,16 +40,21 @@ extern Config *config;
 IMPLEMENT_CLASS( SheetItem, wxObject )
 IMPLEMENT_CLASS( SheetTextItem, SheetItem )
 IMPLEMENT_CLASS( SheetWidgetItem, SheetItem )
-IMPLEMENT_CLASS( SheetGridItem, SheetItem )
+IMPLEMENT_CLASS( SheetItemContainer, SheetItem )
+IMPLEMENT_CLASS( SheetColumnSet, SheetItemContainer )
+IMPLEMENT_CLASS( SheetRowSet, SheetItemContainer )
+IMPLEMENT_CLASS( SheetWidgetGrid, SheetItemContainer )
 
 /*****************************************************
 **
-**   SheetItem   ---   getSubitem4Point
+**   SheetItem   ---   moveTo
 **
 ******************************************************/
-SheetItem *SheetItem::getSubitem4Point( const wxPoint &p )
+void SheetItem::moveTo( const double &x, const double &y )
 {
-	return pointInRect( p, rect ) ? (SheetItem*)this : (SheetItem*)NULL;
+	//printf( "SheetItem::moveTo type %d RECT x %f y %f MOVE TO x %f y %f\n", type, rect.x, rect.y, x, y );
+	rect.x = x;
+	rect.y = y;
 }
 
 /*****************************************************
@@ -66,145 +70,100 @@ SheetItem *SheetTextItem::cloneClean()
 
 /*****************************************************
 **
-**   SheetTableItem   ---   Constructor
+**   SheetItemContainer   ---   Constructor
 **
 ******************************************************/
-/*
-SheetTableItem::SheetTableItem( Table *t, const int align )
-	: SheetItem( WiTable, align ),
-	table( t )
+SheetItemContainer::SheetItemContainer( const SHEET_ITEM_TYPE &type )
+	: SheetItem( type )
 {
-	headerItem = (SheetTextItem*)NULL;
-}
-
-SheetTableItem::~SheetTableItem()
-{
-	if ( table ) delete table;
-	if ( headerItem ) delete headerItem;
-	//for( vector<SheetItem*>::iterator iter = rowitems.begin(); rowitems.end(); iter++ ) delete *iter;
-	for( uint i = 0; i < rowitems.size(); i++ ) delete rowitems[i];
-	rowitems.clear();
-}
-
-SheetItem *SheetTableItem::cloneClean()
-{
-	// TODO deep copy of table
-	SheetTableItem *item = new SheetTableItem( table, align );
-	item->table = table->cloneClean();
-	return item;
-}
-
-MRect SheetTableItem::getHeaderRect() const
-{
-	MRect rect;
-	return rect;
-}
-uint SheetTableItem::getItem4Point( const wxPoint &p ) const
-{
-	if ( ! pointInRect( p, rect ))
-	{
-		return NO_ITEM;
-	}
-
-	assert( table );
-
-	double y = rect.y;
-	if ( p.y >= y && p.y <= y + table->headerHeight )
-	{
-		//printf( "YES HEADER\n" );
-		return HEADER_ROW;
-	}
-
-	y += table->headerHeight;
-	for( uint r = 0; r < table->getNbRows(); r++ )
-	{
-		if ( p.y >= y && p.y <= y + table->row_height[r] )
-		{
-			//printf( "YES ROW %d\n", r );
-			return r;
-		}
-		y += table->row_height[r];
-	}
-	//printf( "NO ROW\n" );
-	return NO_ITEM;
-}
-
-MRect SheetTableItem::getRowRect( const unsigned &row ) const
-{
-	assert( table );
-	MRect rowrect = rect;
-
-	if( row == HEADER_ROW )
-	{
-		rowrect.height = table->headerHeight;
-	}
-	else
-	{
-		assert( row < table->getNbRows());
-
-		rowrect.y += table->headerHeight;
-		for( uint r = 0; r < row; r++ )
-		{
-			//printf( "ROW %d\n", r );
-			rowrect.y += table->row_height[r];
-		}
-		rowrect.height = table->row_height[row];
-	}
-	return rowrect;
-}
-
-*/
-
-/*****************************************************
-**
-**   SheetGridItem   ---   Constructor
-**
-******************************************************/
-SheetGridItem::SheetGridItem( const uint &cols, const uint &rows, const int align )
-	: SheetItem( WiGrid, align ),
-	cols( cols ),
-	rows( rows )
-{
+	sheet = new Sheet;
 }
 
 /*****************************************************
 **
-**   SheetGridItem   ---   Destructor
+**   SheetItemContainer   ---   Destructor
 **
 ******************************************************/
-SheetGridItem::~SheetGridItem()
+SheetItemContainer::~SheetItemContainer()
 {
-	for( list<SheetItem*>::iterator iter = items.begin(); iter != items.end(); iter++ )
+	delete sheet;
+}
+
+/*****************************************************
+**
+**   SheetItemContainer   ---   addItem
+**
+******************************************************/
+void SheetItemContainer::addItem( SheetItem *item )
+{
+	assert( item );
+	sheet->addItem( item );
+}
+
+/*****************************************************
+**
+**   SheetItemContainer   ---   getSize
+**
+******************************************************/
+uint SheetItemContainer::getSize() const
+{
+	assert( sheet );
+	return sheet->items.size();
+}
+
+/*****************************************************
+**
+**   SheetItemContainer   ---   moveTo
+**
+******************************************************/
+void SheetItemContainer::moveTo( const double &x, const double &y )
+{
+	const double x0 = rect.x - x;
+	const double y0 = rect.y - y;
+	//printf( "SheetItemContainer::moveTo p %f %f CURRENT %f %f DIFF %f %f\n", x, y, rect.x, rect.y, x0, y0 );
+	rect.x = x;
+	rect.y = y;
+	for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 	{
-		delete *iter;
+		(*iter)->moveTo( (*iter)->rect.x - x0, (*iter)->rect.y - y0 );
+		//printf( "   SheetItemContainer::moveTo ITEM type %d result %f %f\n", (*iter)->type, (*iter)->rect.x, (*iter)->rect.y );
 	}
 }
 
 /*****************************************************
 **
-**   SheetGridItem   ---   cloneClean
+**   SheetWidgetGrid   ---   cloneClean
 **
 ******************************************************/
-SheetItem *SheetGridItem::cloneClean()
+SheetItem *SheetWidgetGrid::cloneClean()
 {
-	SheetGridItem *grid = new SheetGridItem( cols, rows, align );
-		
-	for( list<SheetItem*>::iterator iter = items.begin(); iter != items.end(); iter++ )
-	{
-		grid->addItem( (*iter)->cloneClean());
-	}
-
+	SheetWidgetGrid *grid = new SheetWidgetGrid( nb_cols, x2yratio, wmin, wmax, hmin, hmax );
+	grid->sheet = sheet->cloneClean();
 	return grid;
 }
 
 /*****************************************************
 **
-**   SheetGridItem   ---   addItem
+**   SheetColumnSet   ---   cloneClean
 **
 ******************************************************/
-void SheetGridItem::addItem( SheetItem *item )
+SheetItem *SheetColumnSet::cloneClean()
 {
-	items.push_back( item );
+	SheetColumnSet *colset = new SheetColumnSet( *this );
+	colset->sheet = sheet->cloneClean();
+	return colset;
+}
+
+/*****************************************************
+**
+**   SheetRowSet   ---   cloneClean
+**
+******************************************************/
+SheetItem *SheetRowSet::cloneClean()
+{
+	SheetRowSet *rowset = new SheetRowSet( *this );
+	rowset->sheet = sheet->cloneClean();
+	return rowset;
 }
 
 /*****************************************************
@@ -261,14 +220,22 @@ void Sheet::clear()
 
 /*****************************************************
 **
-**   Sheet   ---   resetMarkup
+**   Sheet   ---   centerItems
 **
 ******************************************************/
-void Sheet::resetMarkup()
+void Sheet::centerItems()
 {
-	for( list<SheetItem*>::iterator iter = items.begin(); iter != items.end(); iter++ )
+	double xrightmax = 0;
+	list<SheetItem*>::iterator iter;
+
+	for( iter = items.begin(); iter != items.end(); iter++ )
 	{
-		(*iter)->resetMarkup();
+		//printf( "Sheet::centerItems xrightmax %f iter width %f size %ld\n", xrightmax, (*iter)->rect.width, items.size() );
+		xrightmax = Max( xrightmax, (*iter)->rect.width );
+	}
+	for( iter = items.begin(); iter != items.end(); iter++ )
+	{
+		(*iter)->rect.x += .5 * xrightmax - .5 * (*iter)->rect.width;
 	}
 }
 
@@ -449,6 +416,21 @@ MString SheetFormatter::getObjectName( const ObjectId &id, const TEXT_FORMAT for
 
 /*****************************************************
 **
+**   SheetFormatter   ---   getObjectNameWithContext
+**
+******************************************************/
+MString SheetFormatter::getObjectNameWithContext( const ObjectId &id, const PlanetContext &ctx, const TEXT_FORMAT format, const bool vedic ) const
+{
+	ASSERT_VALID_PLANET_CONTEXT( ctx );
+	MString t;
+	Lang lang;
+	t.add( MToken( TTSE_PLANET, (int)id, format, vedic ));
+	if ( ctx != PcNone ) t.add( MToken( lang.getPlanetContextSubscriptum( ctx ), TTFF_SUBSCRPTUM ));
+	return t;
+}
+
+/*****************************************************
+**
 **   SheetFormatter   ---   getSignName
 **
 ******************************************************/
@@ -532,7 +514,7 @@ wxString SheetFormatter::token2Html( const MToken &token )
 {
 	Lang lang;
 	wxString t;
-	SymbolProvider sp;
+	SymbolProvider sp( writercfg );
 
 	if ( token.entity != TTSE_NONE )
 	{

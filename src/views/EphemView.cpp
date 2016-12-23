@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "EphemView.h"
@@ -37,7 +35,9 @@
 #include "mathbase.h"
 #include "Painter.h"
 #include "ToolPanel.h"
+#include "SheetWidget.h"
 #include "SymbolProvider.h"
+#include "TextWidget.h"
 
 extern Config *config;
 
@@ -50,7 +50,7 @@ IMPLEMENT_CLASS( GraphicalEphemWidgetItem, SheetWidgetItem )
 **
 ******************************************************/
 EphemView::EphemView( wxWindow *parent, ChildWindow *frame )
-		: SheetView( parent, frame, VIEW_EPHEM, true )
+	: BasicView( parent, frame, VIEW_EPHEM, true )
 {
 	int dummy;
 	DateTimeFormatter::get()->calculateDateIntegers( MDate::getCurrentJD(), dummy, month, year );
@@ -62,24 +62,19 @@ EphemView::EphemView( wxWindow *parent, ChildWindow *frame )
 	mode = config->viewprefs->ephemMode;
 	circleType = config->viewprefs->ephemCircleType;
 
-	twidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
+	swidget = (SheetWidget*)NULL;
+	twidget = (TextWidget*)NULL;
 
 	isLocaltime = config->viewprefs->ephemTimezone;
 
 	expert->prepareMonth( month, year, isLocaltime );
 
+	setDirty();
 	initToolItems();
+	initClientView();
 
+	Connect( wxEVT_IDLE, wxIdleEventHandler( EphemView::OnIdle ));
 	Connect( CMD_NOW, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( EphemView::OnNow ));
-
-	Connect( TBS_YEAR, wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( EphemView::OnYearSpin ));
-	Connect( TBS_MONTH, wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( EphemView::OnMonthSpin ));
-
-	Connect( TBS_EPHEMPLANETS, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( EphemView::OnChoiceCommand ));
-	Connect( TBS_TZ, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( EphemView::OnChoiceTZ ));
-	Connect( TBS_DASA, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( EphemView::OnChoiceCommand ));
-	Connect( TBS_EPHEMMODE, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( EphemView::OnChoiceCommand ));
-	Connect( TBS_EPHEMDEG, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( EphemView::OnChoiceCommand ));
 }
 
 /*****************************************************
@@ -132,6 +127,157 @@ void EphemView::initToolItems()
 
 /*****************************************************
 **
+**   EphemView   ---   initClientView
+**
+******************************************************/
+void EphemView::initClientView()
+{
+	printf( "EphemView::initClientView mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
+	//if ( widget ) delete widget;
+	if ( mode == 1 )
+	{
+		if ( ! swidget )
+		{
+			swidget = new SheetWidget( this, props );
+			setMaxDeg( circleType );
+			swidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
+		}
+		widget = swidget;
+		if ( twidget ) delete twidget;
+		twidget = (TextWidget*)NULL;
+	}
+	else
+	{
+		if ( ! twidget )
+		{
+			twidget = new TextWidget( this, props );
+		}
+		twidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
+		if ( mode == 0 || mode == 3 )
+		{
+			// object toggle enabled for longitudes and ingress
+			twidget->addWidgetOption( WO_MENU_RESTRICTED_OBJECT );
+		}
+		widget = twidget;
+		if ( swidget ) delete swidget;
+		swidget = (SheetWidget*)NULL;
+	}
+	doLayout();
+	printf( "ENDE EphemView::initClientView mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
+}
+
+/**************************************************************
+***
+**   EphemView   ---   write
+***
+***************************************************************/
+void EphemView::write()
+{
+	printf( "EphemView::write mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
+	printf( "EphemView::write mode %d month %d year %d\n", mode, month, year );
+	assert( mode >= 0 && mode < MAX_EPHEM_VIEWTYPES );
+	int ret = 0;
+
+	expert->prepareMonth( month, year, isLocaltime );
+	if ( mode == 1 )
+	{
+		assert( swidget );
+		Sheet *sheet = swidget->getSheet();
+		assert( sheet );
+		sheet->clear();
+		ret = expert->calcMonth();
+
+	/*
+	const uint nb_cols;
+  double x2yratio;
+	const double wmin, hmin, wmax, hmax;
+*/
+		SheetWidgetGrid *grid = new SheetWidgetGrid( 1, .5, 100, 100, 1600, 800 );
+
+		SheetWidgetItem *w = new GraphicalEphemWidgetItem( props, expert, max_deg );
+		grid->addItem( w );
+		sheet->addItem( grid );
+		swidget->OnDataChanged();
+	}
+	else
+	{
+		assert( twidget );
+		Sheet *sheet = twidget->getSheet();
+		sheet->clear();
+		switch ( mode )
+		{
+			case 2:
+				expert->writeDetails( sheet );
+				break;
+			case 3:
+				ret = expert->writeIngress( sheet );
+				break;
+			case 4:
+				expert->writeLunar( sheet );
+				break;
+			case 5:
+				expert->writeKp( sheet, dasaId );
+				break;
+			default:
+				ret = expert->writeLongitudes( sheet );
+			break;
+		}
+		twidget->OnDataChanged();
+	}
+	Refresh();
+
+	if ( ret )
+	{
+		wxCommandEvent event( SHOW_EPHEM_FILE_WARNING );
+		event.SetEventObject( (wxWindow*)this );
+		wxPostEvent( GetParent(), event );
+	}
+}
+
+/*************************************************//**
+*
+*     EphemView   ---   OnDataChanged
+*
+******************************************************/
+void EphemView::OnDataChanged()
+{
+	printf( "EphemView::OnDataChanged\n" );
+	setDirty();
+	BasicView::OnDataChanged();
+}
+
+/*************************************************//**
+*
+*     EphemView   ---   OnIdle
+*
+******************************************************/
+void EphemView::OnIdle( wxIdleEvent& )
+{
+	assert( mode >= 0 && mode < MAX_EPHEM_VIEWTYPES );
+	//static int count = 0;
+	//printf( "EphemView::OnIdle %d mode %d dirty %d\n", count++, mode, dirty[mode] );
+	if ( ! dirty[mode] ) return;
+
+
+	write();
+	dirty[mode] = false;
+}
+
+/*****************************************************
+**
+**   EphemView   ---   setDirty
+**
+******************************************************/
+void EphemView::setDirty( const bool b )
+{
+	for( int i = 0; i < MAX_EPHEM_VIEWTYPES; i++ )
+	{
+		dirty[i] = b;
+	}
+}
+
+/*****************************************************
+**
 **   EphemView   ---   supportsGraphicExport
 **
 ******************************************************/
@@ -152,36 +298,6 @@ bool EphemView::supportsTextExport() const
 
 /*****************************************************
 **
-**   EphemView   ---   OnChoiceTZ
-**
-******************************************************/
-void EphemView::OnChoiceTZ( wxCommandEvent& )
-{
-	OnDataChanged();
-}
-
-/*****************************************************
-**
-**   EphemView   ---   OnYearSpin
-**
-******************************************************/
-void EphemView::OnYearSpin( wxSpinEvent& )
-{
-	OnDataChanged();
-}
-
-/*****************************************************
-**
-**   EphemView   ---   OnMonthSpin
-**
-******************************************************/
-void EphemView::OnMonthSpin( wxSpinEvent& )
-{
-	OnDataChanged();
-}
-
-/*****************************************************
-**
 **   EphemView   ---   OnToolbarCommand
 **
 ******************************************************/
@@ -196,6 +312,7 @@ void EphemView::OnToolbarCommand()
 			{
 				mode = choice_mode->GetSelection();
 				config->viewprefs->ephemMode = mode;
+				initClientView();
 			}
 		}
 
@@ -237,8 +354,8 @@ void EphemView::OnToolbarCommand()
 			dasaId = (DasaId)choice_dasa->GetSelection();
 			choice_dasa->Enable(  mode == 5 );
 		}
-		updateView = true;
 	}
+	OnDataChanged();
 }
 
 /*****************************************************
@@ -304,54 +421,7 @@ void EphemView::OnNow( wxCommandEvent& )
 		}
 		expert->prepareMonth( month, year, isLocaltime );
 	}
-	updateView = true;
-}
-
-/**************************************************************
-***
-**   EphemView   ---   write
-***
-***************************************************************/
-void EphemView::write()
-{
-	int ret = 0;
-	Sheet *sheet = twidget->getSheet();
-	twidget->clearSheet();
-
-	expert->prepareMonth( month, year, isLocaltime );
-	switch ( mode )
-	{
-	case 1:
-	{
-		ret = expert->calcMonth();
-		//writer->addLine( wxT( "HALLO" ));
-		SheetWidgetItem *w = new GraphicalEphemWidgetItem( props, expert, max_deg );
-		sheet->addItem( w );
-	}
-	break;
-	case 2:
-		expert->writeDetails( sheet );
-		break;
-	case 3:
-		ret = expert->writeIngress( sheet );
-		break;
-	case 4:
-		expert->writeLunar( sheet );
-		break;
-	case 5:
-		expert->writeKp( sheet, dasaId );
-		break;
-		default:
-			ret = expert->writeLongitudes( sheet );
-		break;
-	}
-
-	if ( ret )
-	{
-		wxCommandEvent event( SHOW_EPHEM_FILE_WARNING );
-		event.SetEventObject( (wxWindow*)this );
-		wxPostEvent( GetParent(), event );
-	}
+	setDirty();
 }
 
 /**************************************************************
@@ -399,17 +469,6 @@ SheetItem *GraphicalEphemWidgetItem::cloneClean()
 
 /*****************************************************
 **
-**   GraphicalEphemWidgetItem   ---   mouseHasMoved
-**
-******************************************************/
-bool GraphicalEphemWidgetItem::mouseHasMoved( const wxPoint &p, const bool &outside )
-{
-  printf( "GraphicalEphemWidgetItem::mouseHasMoved x %d y %d outside %d\n", p.x, p.y, outside );
-	return false;
-}
-
-/*****************************************************
-**
 **   GraphicalEphemWidgetItem   ---   setLineStyle
 **
 ******************************************************/
@@ -427,6 +486,7 @@ void GraphicalEphemWidgetItem::setLineStyle( Painter *painter, const ObjectId &p
 void GraphicalEphemWidgetItem::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 {
 	assert( painter );
+	printf( "GraphicalEphemWidgetItem::doPaint rect %f %f %f %f\n", rect.x, rect.y, rect.width, rect.height );
 
 	xleft = rect.x;
 	xright = xleft + rect.width;
@@ -524,6 +584,7 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 	int ylshift, yrshift;
 	const int xshiftunit = 15;
 
+	printf( "GraphicalEphemWidgetItem::paintPlanets ybottom %f ytop %f\n", ybottom, ytop );
 	const int ytotal =  (int)(ybottom - ytop);   // total height of interior
 	const int mlen = expert->getNumberOfDays();  // length of month
 	const double dstep = ( xright - xleft ) / mlen;  // daily step in x dimension
@@ -601,6 +662,9 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 		}
 		// Planet name on left side
 		y1 = (int)(ybottom - a_red( expert->getPlanetLongitude( i1, 0 ), max_deg ) * ytotal / max_deg);
+
+		printf( "HALLO %d\n", ytotal );
+		assert( ytotal != 0 );
 		ylshift = a_red( sshift * y1 / ytotal, 60 );
 
 		painter->drawTextFormatted(

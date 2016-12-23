@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 
@@ -37,25 +35,25 @@ DECLARE_EVENT_TYPE( COMMAND_CHART_SKIN_CHANGED, wxID_HIGHEST + 6001 )
 END_DECLARE_EVENT_TYPES()
 
 // widget options
-#define WO_NONE                         0x00000000
-#define WO_SUPPORTS_EW_TOGGLE           0x00000001
-#define WO_IS_MAIN_VIEW                 0x00000002
-#define WO_MENU_FULL_GRAFIC_STYLE       0x00000004
-#define WO_MENU_RESTRICTED_GRAFIC_STYLE 0x00000008
-#define WO_MENU_FULL_OBJECT             0x00000010
-#define WO_MENU_RESTRICTED_OBJECT       0x00000020
-#define WO_MENU_SBC_STYLE               0x00000040
-#define WO_MENU_SKIN                    0x00000080
-#define WO_MENU_TRANSIT                 0x00000100
+#define WO_NONE                          0x00000000
+#define WO_SUPPORTS_EW_TOGGLE            0x00000001
+#define WO_IS_MAIN_VIEW                  0x00000002
+#define WO_MENU_FULL_GRAPHIC_STYLE       0x00000004
+#define WO_MENU_RESTRICTED_GRAPHIC_STYLE 0x00000008
+#define WO_MENU_FULL_OBJECT              0x00000010
+#define WO_MENU_RESTRICTED_OBJECT        0x00000020
+#define WO_MENU_SBC_STYLE                0x00000040
+#define WO_MENU_SKIN                     0x00000080
+#define WO_MENU_TRANSIT                  0x00000100
+#define WO_MENU_EDIT_CHARTDATA           0x00000200
 
-#define WO_EXPORT_GRAFIC                0x00001000
-#define WO_EXPORT_PDF                   0x00002000
-#define WO_EXPORT_PLAINTEXT             0x00004000
-#define WO_EXPORT_CSVTEXT               0x00008000
-#define WO_EXPORT_HTMLTEXT              0x00010000
-#define WO_EXPORT_ALL WO_EXPORT_GRAFIC + WO_EXPORT_PDF + WO_EXPORT_PLAINTEXT + WO_EXPORT_HTMLTEXT + WO_EXPORT_CSVTEXT
+#define WO_EXPORT_GRAPHIC                0x00001000
+#define WO_EXPORT_PDF                    0x00002000
+#define WO_EXPORT_PLAINTEXT              0x00004000
+#define WO_EXPORT_CSVTEXT                0x00008000
+#define WO_EXPORT_HTMLTEXT               0x00010000
+#define WO_EXPORT_ALL WO_EXPORT_GRAPHIC | WO_EXPORT_PDF | WO_EXPORT_PLAINTEXT | WO_EXPORT_HTMLTEXT | WO_EXPORT_CSVTEXT
 
-#define HAS_EXPORT_OPTION( w ) wo & WO_EXPORT_PLAINTEXT || wo & WO_EXPORT_CSVTEXT || wo & WO_EXPORT_HTMLTEXT || wo & WO_EXPORT_PDF || wo & WO_EXPORT_GRAFIC 
 
 /*************************************************//**
 *

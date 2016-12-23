@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _JSONTOOL_H_
@@ -34,6 +32,7 @@
 class wxJSONValue;
 class wxSize;
 class BgPalette;
+class ChartConfig;
 
 #define CFG_CONFIGS wxT( "configs" )
 #define CFG_NAME wxT( "name" )
@@ -41,6 +40,7 @@ class BgPalette;
 #define CFG_EXTENDS wxT( "extends" )
 #define CFG_SELECTED wxT( "selected" )
 #define CFG_ITEMS wxT( "items" )
+#define CFG_PAGES wxT( "pages" )
 #define CFG_STYLE wxT( "style" )
 #define CFG_ROTATEHUE wxT( "rotatehue" )
 #define CFG_MODE wxT( "mode" )
@@ -52,34 +52,36 @@ class BgPalette;
 #define CFG_PEN wxT( "pen" )
 #define CFG_PENS wxT( "pens" )
 #define CFG_PAGEFRAME wxT( "pageframe" )
+#define CFG_IMAGE wxT( "image" )
+#define CFG_ZODIACSTART wxT( "zodiacstart" )
 
 #define CFG_HOUSES wxT( "houses" )
-#define CFG_ZODIACALSIGNS wxT( "zodiacalsigns" )
+#define CFG_SIGNS wxT( "signs" )
+#define CFG_NAKSHATRAS wxT( "nakshatras" )
 #define CFG_USESTOCKBRUSHLIST wxT( "usestockbrushlist" )
-#define CFG_ZODIAC wxT( "zodiac" )
-#define CFG_ZODIAC_1_DEGREE wxT( "zodiac1degree" )
-#define CFG_ZODIAC_5_DEGREE wxT( "zodiac5degree" )
-#define CFG_ZODIAC_10_DEGREE wxT( "zodiac10degree" )
-#define CFG_ZODIAC_SYMBOLS wxT( "zodiacsymbols" )
-#define CFG_OUTER_ZODIAC wxT( "outerzodiac" )
-#define CFG_INNER_HOUSE wxT( "innerhouse" )
-#define CFG_OUTER_HOUSE wxT( "outerhouse" )
-#define CFG_HOUSE_NUMBERS wxT( "housenumbers" )
-#define CFG_PLANETS wxT( "planets" )
+
+#define CFG_RPLANETS wxT( "rplanets" )
+#define CFG_RINNERTRANSITPLANETS wxT( "rinnertransitplanets" )
+#define CFG_ROUTERTRANSITPLANETS wxT( "routertransitplanets" )
 #define CFG_ASPECTS wxT( "aspects" )
-#define CFG_INNER_TRANSIT_ZODIAC wxT( "innertransitzodiac" )
-#define CFG_INNER_TRANSIT_ZODIAC_1_DEGREE wxT( "innertransitzodiac1degree" )
-#define CFG_INNER_TRANSIT_ZODIAC_5_DEGREE wxT( "innertransitzodiac5degree" )
-#define CFG_INNER_TRANSIT_ZODIAC_10_DEGREE wxT( "innertransitzodiac10degree" )
-#define CFG_INNER_TRANSIT_PLANETS wxT( "innertransitplanets" )
-#define CFG_OUTER_TRANSIT_ZODIAC wxT( "outertransitzodiac" )
-#define CFG_OUTER_TRANSIT_ZODIAC_1_DEGREE wxT( "outertransitzodiac1degree" )
-#define CFG_OUTER_TRANSIT_ZODIAC_5_DEGREE wxT( "outertransitzodiac5degree" )
-#define CFG_OUTER_TRANSIT_ZODIAC_10_DEGREE wxT( "outertransitzodiac10degree" )
-#define CFG_OUTER_TRANSIT_PLANETS wxT( "outertransitplanets" )
-//#define CFG_WIDGET_BACKGROUND wxT( "widgetbackground" )
+#define CFG_ANGLES wxT( "angles" )
+
+#define CFG_SHOWINNERFRAME wxT( "showinnerframe" )
+#define CFG_SHOWOUTERFRAME wxT( "showouterframe" )
+#define CFG_SHOWLABELS wxT( "showlabels" )
+#define CFG_EASTINDIANCENTER wxT( "eastindiancenter" )
+#define CFG_SHOW_1DEGREEFRAME wxT( "show1degreeframe" )
+#define CFG_SHOW_5DEGREEFRAME wxT( "show5degreeframe" )
+#define CFG_SHOW_10DEGREEFRAME wxT( "show10degreeframe" )
+#define CFG_WDEGREE1 wxT( "wdegree1" )
+#define CFG_WDEGREE5 wxT( "wdegree1" )
+#define CFG_WDEGREE10 wxT( "wdegree1" )
 
 #define CFG_RADIUS wxT( "radius" )
+#define CFG_WLABELS wxT( "wlabels" )
+#define CFG_LABELSTYLE wxT( "labelstyle" )
+#define CFG_LABELSIZE wxT( "labelsize" )
+#define CFG_ROTATELABELS wxT( "rotatelabels" )
 #define CFG_CORNERRADIUS wxT( "cornerradius" )
 #define CFG_SHOW wxT( "show" )
 #define CFG_FRAME_TYPE wxT( "frametype" )
@@ -93,9 +95,8 @@ class BgPalette;
 #define CFG_MARKED_FIELDS wxT( "markedfields" )
 #define CFG_TEXTCOLOR wxT( "textcolor" )
 #define CFG_GLOBALTEXTCOLOR wxT( "globaltextcolor" )
-#define CFG_SYMBOL_ZOOM_FACTOR wxT( "symbolzoomfactor" )
-#define CFG_ROTATE_SYMBOLS wxT( "rotatesymbols" )
-#define CFG_SYMBOL_TYPE wxT( "symboltype" )
+#define CFG_RELWIDTH wxT( "relwidth" )
+#define CFG_RATIO wxT( "ratio" )
 
 #define CFG_PALETTE wxT( "palette" )
 #define CFG_PATTERNS wxT( "patterns" )
@@ -135,12 +136,6 @@ class BgPalette;
 #define CFG_PLANET_MARKER_LENGTH wxT( "planetmarkerlength" )
 
 
-// TODO
-/*
-#define CFG_OUTER_ANGLE_MARKER wxT( "outeranglemarker" )
-#define CFG_INNER_ANGLE_MARKER wxT( "inneranglemarker" )
-*/
-
 /*************************************************//**
 *
 * 
@@ -154,6 +149,9 @@ public:
 
 	wxJSONValue writeSize( const wxSize& );
 	void readSize( wxJSONValue&, wxSize& );
+
+	wxJSONValue writePoint( const wxPoint& );
+	void readPoint( wxJSONValue&, wxPoint& );
 
 	wxJSONValue writeIntVector( const vector<int>& );
 	void readIntVector( wxJSONValue&, vector<int>& );
@@ -178,21 +176,23 @@ public:
 
 	void readColorList( wxJSONValue&, vector<wxColour>& );
 
-	CHART_FRAME readFrameType( wxString ftype );
+	void readFrameType( wxJSONValue&, CHART_FRAME& );
 
 	void readChartFrame( wxJSONValue&, GcChartFrame& );
 
-	void readRectangle( wxJSONValue&, GcRectangle& );
+	void readChartRing( wxJSONValue&, GcChartRing& );
 
-	void readArrow( wxJSONValue&, GcArrow& );
+	void readObjectRing( wxJSONValue&, GcObjectRing& );
+
+	void readRectangle( wxJSONValue&, GcRectangle& );
 
 	void readRegion( wxJSONValue&, GcRegion& );
 
 	void readPatterns( wxJSONValue&, list<GcChartFrameBgPattern>& );
 
-	void readZodiacalSigns( wxJSONValue&, GcZodiacalSigns& );
+	void readChartConfig( wxJSONValue&, ChartConfig* );
 
-	void readHouses( wxJSONValue&, GcHouses& );
+	void readInlayImage( wxJSONValue&, GcInlayImage& );
 
 private:
 

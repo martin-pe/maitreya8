@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "VedicChart.h"
@@ -65,6 +63,18 @@ void AshtakaVargaChart::setRasiValue( const Rasi &r, const int &value )
 void AshtakaVargaChart::setRasiValues( const Rasi r[] )
 {
 	for ( Rasi i = R_ARIES; i <= R_PISCES; i++ ) rasi_values[i] = r[i];
+}
+
+/*****************************************************
+**
+**   AshtakaVargaChart   ---   getCenterString
+**
+******************************************************/
+vector<wxString> AshtakaVargaChart::getCenterString()
+{
+	vector<wxString> v;
+	v.push_back( centerString );
+	return v;
 }
 
 /*****************************************************
@@ -132,38 +142,45 @@ VedicVargaChart::~VedicVargaChart()
 **   VedicVargaChart   ---   getCenterString
 **
 ******************************************************/
-wxString VedicVargaChart::getCenterString()
+vector<wxString> VedicVargaChart::getCenterString()
 {
-	const int type = chartprops->getVedicChartDisplayConfig().centerInfoType;
-	if ( type == VCC_NOTHING ) return wxEmptyString;
-
-	if ( varga ==  V_BHAVA ) return _( "Bhava" );
-
+	vector<wxString> v;
 	VargaConfigLoader *loader = VargaConfigLoader::get();
 	wxString signification;
+	
+	const int type = chartprops->getVedicChartDisplayConfig().centerInfoType;
+	if ( type == VCC_NOTHING ) return v;
 
-	switch( chartprops->getVedicChartDisplayConfig().centerInfoType )
+	if ( varga ==  V_BHAVA )
 	{
-		case VCC_NAME:
-			return loader->getVargaName( varga );
-		break;
-		case VCC_NAME_SIGNIFICATION:
-			signification = loader->getVargaSignification( varga );
-			if ( signification.IsEmpty() ) return loader->getVargaName( varga );
-			else return wxString::Format( wxT( "%s (%s)" ), loader->getVargaName( varga ).c_str(), signification.c_str()); break;
-		case VCC_DIVISION:
-			return wxString::Format( _( "D-%d" ), loader->getVargaDivision( varga ));
-		break;
-		case VCC_DIVISION_SIGNIFICATION:
-			signification = loader->getVargaSignification( varga );
-			if ( signification.IsEmpty() ) return wxString::Format( _( "D-%d" ), loader->getVargaDivision( varga ));
-			else return wxString::Format( wxT( "D-%d (%s)" ), loader->getVargaDivision( varga ), signification.c_str() );
-		break;
-		case VCC_NOTHING:
-		default:
-		break;
+		v.push_back( _( "Bhava" ));
 	}
-	return wxT( "ERROR VedicVargaChart::getCenterString" );
+	else
+	{
+		switch( type )
+		{
+			case VCC_NAME:
+				v.push_back( loader->getVargaName( varga ));
+			break;
+			case VCC_NAME_SIGNIFICATION:
+				v.push_back( loader->getVargaName( varga ));
+				signification = loader->getVargaSignification( varga );
+				if ( ! signification.IsEmpty() ) v.push_back( signification );
+			break;
+			case VCC_DIVISION:
+				v.push_back( wxString::Format( _( "D-%d" ), loader->getVargaDivision( varga )));
+			break;
+			case VCC_DIVISION_SIGNIFICATION:
+				v.push_back( wxString::Format( _( "D-%d" ), loader->getVargaDivision( varga )));
+				signification = loader->getVargaSignification( varga );
+				if ( ! signification.IsEmpty() ) v.push_back( signification );
+			break;
+			case VCC_NOTHING:
+			default:
+			break;
+		}
+	}
+	return v;
 }
 
 /*****************************************************

@@ -14,7 +14,6 @@ src/base/ConfigStubs.cpp
 src/base/DataSet.cpp
 src/base/FileConfig.cpp
 src/base/FontProvider.cpp
-src/base/GraphConfig.cpp
 src/base/IdConverter.cpp
 src/base/ImageProvider.cpp
 src/base/JSonTool.cpp
@@ -39,6 +38,7 @@ src/dialogs/AtlasDialog.cpp
 src/dialogs/AtlasEditDialog.cpp
 src/dialogs/AtlasImportDialog.cpp
 src/dialogs/AtlasPanel.cpp
+src/dialogs/bmspin.cpp
 src/dialogs/BrushDialog.cpp
 src/dialogs/ColorPanel.cpp
 src/dialogs/ConfigDialog.cpp
@@ -51,6 +51,7 @@ src/dialogs/EphemerisPanel.cpp
 src/dialogs/ExportDialog.cpp
 src/dialogs/FontPanel.cpp
 src/dialogs/GeneralPanel.cpp
+src/dialogs/main.cpp
 src/dialogs/MiscellaneousPanel.cpp
 src/dialogs/mspin.cpp
 src/dialogs/MultipleViewPanel.cpp
@@ -62,6 +63,8 @@ src/dialogs/PrintoutPanel.cpp
 src/dialogs/SheetStylePanel.cpp
 src/dialogs/StyleManagerDialog.cpp
 src/dialogs/ToolbarPanel.cpp
+src/dialogs/UranianPanel.cpp
+src/dialogs/UranianParamPanel.cpp
 src/dialogs/VedicCalculationPanel.cpp
 src/dialogs/VedicChartPanel.cpp
 src/dialogs/VedicPanel.cpp
@@ -71,6 +74,7 @@ src/dialogs/WesternPanel.cpp
 src/dialogs/YogaEditorPanel.cpp
 src/gui/ApplicationWindow.cpp
 src/gui/BarDiagram.cpp
+src/gui/BasicSheetWidget.cpp
 src/gui/BasicVedicChart.cpp
 src/gui/BasicView.cpp
 src/gui/BasicWesternChart.cpp
@@ -94,6 +98,7 @@ src/gui/SheetWidget.cpp
 src/gui/SheetWriter.cpp
 src/gui/SplitterWidget.cpp
 src/gui/Statusbar.cpp
+src/gui/TextWidget.cpp
 src/gui/ToolPanel.cpp
 src/gui/TreeWidget.cpp
 src/gui/VedicChart.cpp
@@ -126,6 +131,7 @@ src/jyotish/Nakshatra.cpp
 src/jyotish/Painter.cpp
 src/jyotish/Partner.cpp
 src/jyotish/PrintoutTextHelper.cpp
+src/jyotish/ShadBala.cpp
 src/jyotish/Sheet.cpp
 src/jyotish/SingletonLifeline.cpp
 src/jyotish/SolarChart.cpp
@@ -133,6 +139,9 @@ src/jyotish/Table.cpp
 src/jyotish/textclient.cpp
 src/jyotish/TextHelper.cpp
 src/jyotish/Transit.cpp
+src/jyotish/UranianBase.cpp
+src/jyotish/Uranian.cpp
+src/jyotish/UranianHelper.cpp
 src/jyotish/Varga.cpp
 src/jyotish/VargaHoroscope.cpp
 src/jyotish/VedicPlanet.cpp
@@ -147,12 +156,13 @@ src/views/EphemView.cpp
 src/views/GraphicView.cpp
 src/views/HoraView.cpp
 src/views/PartnerView.cpp
-src/views/PrintView.cpp
 src/views/SbcView.cpp
+src/views/ShadbalaView.cpp
 src/views/SheetView.cpp
 src/views/SolarView.cpp
 src/views/TextView.cpp
 src/views/TransitView.cpp
+src/views/UranianView.cpp
 src/views/VargaView.cpp
 src/views/YogaView.cpp
 src/wxJSON/jsonreader.cpp

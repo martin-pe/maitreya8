@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include <wx/app.h>
@@ -44,20 +42,13 @@
 #include "mathbase.h"
 #include "Partner.h"
 #include "FileConfig.h"
-
-#ifdef USE_SHADBALA
 #include "ShadBala.h"
-#endif
-
 #include "Sheet.h"
 #include "SolarChart.h"
 #include "TextHelper.h"
 #include "Transit.h"
-
-#ifdef USE_URANIAN_CHART
 #include "Uranian.h"
 #include "UranianHelper.h"
-#endif
 
 #include "Varga.h"
 #include "VargaHoroscope.h"
@@ -147,11 +138,8 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("arabic"), wxT1("Show Arabic parts"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-
-#ifdef USE_SHADBALA
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("shadbala"),   wxT1("Show Shadbala"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-#endif
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("dasas"), wxT1("Show Dasa nb #n (short form)"),
 		wxCMD_LINE_VAL_NUMBER, wxCMD_LINE_PARAM_OPTIONAL },
@@ -175,12 +163,10 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("solar"), wxT1("Show Solar (Tajaka) positions"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
-#ifdef USE_URANIAN_CHART
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("uranian"), wxT1("Show Uranian Analysis"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("uranian-yearlypreview"), wxT1("Show yearly preview (Uranian astrology)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-#endif
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("file2"), wxT1("Open second file for partner chart"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
@@ -333,7 +319,6 @@ protected:
 		writecount++;
 	}
 
-#ifdef USE_SHADBALA
 	/**************************************************************
 	***
 	**    MaitreyaTextclient   ---   showShabala
@@ -346,7 +331,6 @@ protected:
 		expert.write( sheet );
 		writecount++;
 	}
-#endif
 
 	/**************************************************************
 	***
@@ -378,7 +362,7 @@ protected:
 	**    MaitreyaTextclient   ---   showTransits
 	***
 	***************************************************************/
-	void showTransits( const TRANSIT_MODE &transitmode, const double &jd )
+	void showTransits( const PlanetContext &transitmode, const double &jd )
 	{
 		TransitExpert expert( h, chartprops );
 		expert.setTransitMode( transitmode );
@@ -393,7 +377,6 @@ protected:
 		writecount++;
 	}
 
-#ifdef USE_URANIAN_CHART
 	/**************************************************************
 	***
 	**    MaitreyaTextclient   ---   showUranian
@@ -401,8 +384,7 @@ protected:
 	***************************************************************/
 	void showUranian( const int &type, const int year = 0 )
 	{
-		UranianConfig cfg;
-		UranianExpert expert( h, chartprops, &cfg );
+		UranianExpert expert( h, chartprops );
 		expert.OnDataChanged();
 		UranianHelper helper( &expert );
 
@@ -418,7 +400,6 @@ protected:
 		}
 		writecount++;
 	}
-#endif
 
 	/**************************************************************
 	***
@@ -610,24 +591,19 @@ void MaitreyaTextclient::run( int argc, wxChar **argv )
 		    chartprops->isVedic() ? TM_VEDIC_ASPECTARIUM : TM_WESTERN_ASPECTARIUM );
 
 	if ( parser.Found( wxT( "yogas" )))        showYogas();
-
-#ifdef USE_SHADBALA
 	if ( parser.Found( wxT( "shadbala" )))     showShadbala();
-#endif
 
-	if ( parser.Found( wxT( "transits" )))     showTransits( TR_TRANSIT, tjd );
-	if ( parser.Found( wxT( "solar-arc" )))    showTransits( TR_SOLAR_ARC, tjd );
-	if ( parser.Found( wxT( "directions" )))   showTransits( TR_DIRECTION, tjd );
-	if ( parser.Found( wxT( "lunar-arc" )))    showTransits( TR_LUNAR_ARC, tjd );
-	if ( parser.Found( wxT( "constant-arc" ))) showTransits( TR_CONSTANT_ARC, tjd );
+	if ( parser.Found( wxT( "transits" )))     showTransits( PcTransit, tjd );
+	if ( parser.Found( wxT( "solar-arc" )))    showTransits( PcSolarArc, tjd );
+	if ( parser.Found( wxT( "directions" )))   showTransits( PcDirection, tjd );
+	if ( parser.Found( wxT( "lunar-arc" )))    showTransits( PcLunarArc, tjd );
+	if ( parser.Found( wxT( "constant-arc" ))) showTransits( PcConstantArc, tjd );
 
 
 	if ( parser.Found( wxT( "solar" ))) showTajaka( tyear );
 
-#ifdef USE_URANIAN_CHART
 	if ( parser.Found( wxT( "uranian" ))) showUranian( 0 );
 	if ( parser.Found( wxT( "uranian-yearlypreview" ))) showUranian( 1, tyear );
-#endif
 
 	if ( parser.Found( wxT( "partner-vedic" )) || parser.Found( wxT( "partner-composite" )))
 	{

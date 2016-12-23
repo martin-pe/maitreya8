@@ -7,53 +7,91 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include <wx/choice.h>
 
-#include "SheetView.h"
+#include "TextView.h"
+#include "ChildWindow.h"
 #include "Conf.h"
 #include "DialogElements.h"
-#include "maitreya.h"
 #include "Document.h"
+#include "maitreya.h"
 #include "TextHelper.h"
+#include "TextWidget.h"
 #include "ToolPanel.h"
 
-#include "ChildWindow.h"
 extern Config *config;
 
-//#define WO_BUNDLE_SELECTABLETEXTVIEW  ( WO_MENU_FULL_OBJECT ) | ( WO_EXPORT_ALL )
-//#define WO_BUNDLE_PLANETLISTVIEW ( WO_IS_MAIN_VIEW ) | ( WO_MENU_FULL_OBJECT ) | ( WO_EXPORT_ALL ) | ( WO_SUPPORTS_EW_TOGGLE )
-#define WO_BUNDLE_SELECTABLETEXTVIEW  ( WO_MENU_FULL_OBJECT )
-#define WO_BUNDLE_PLANETLISTVIEW ( WO_IS_MAIN_VIEW ) | ( WO_MENU_FULL_OBJECT ) | ( WO_SUPPORTS_EW_TOGGLE )
+IMPLEMENT_CLASS( TextView, BasicView )
+
+/*************************************************//**
+*
+*     TextView   ---   Constructor
+*
+******************************************************/
+TextView::TextView( wxWindow *parent, ChildWindow *frame, const VIEW_ID &viewId, const bool &showToolbar )
+	: BasicView( parent, frame, viewId, showToolbar )
+{
+	twidget = new TextWidget( this, props );
+	widget = twidget;
+	updateView = true;
+	Connect( wxEVT_IDLE, wxIdleEventHandler( TextView::OnIdle ));
+}
+
+/*************************************************//**
+*
+*     TextView   ---   OnDataChanged
+*
+******************************************************/
+void TextView::OnDataChanged()
+{
+	OnToolbarCommand();
+	updateView = true;
+}
+
+/*************************************************//**
+*
+*     TextView   ---   OnIdle
+*
+******************************************************/
+void TextView::OnIdle( wxIdleEvent& )
+{
+	if ( ! updateView ) return;
+
+	assert( twidget );
+
+	write();
+	//twidget->Scroll( 0, 0 );
+	twidget->OnDataChanged();
+	updateView = false;
+}
 
 /*************************************************//**
 *
 * \brief view for various kinds of text output including toolbar controls
 *
 ******************************************************/
-class SelectableTextView : public SheetView
+class SelectableTextView : public TextView
 {
 	DECLARE_CLASS( SelectableTextView )
 public:
 	SelectableTextView( wxWindow *parent, ChildWindow *frame, const bool &toolpanel, const int &mode )
-		: SheetView( parent, frame, VIEW_TEXT, toolpanel )
+		: TextView( parent, frame, VIEW_TEXT, toolpanel )
 	{
 		this->mode = mode;
 		dasa = D_VIMSOTTARI;
 		varga = V_RASI;
-		twidget->setWidgetOptions( WO_BUNDLE_SELECTABLETEXTVIEW );
+		twidget->addWidgetOption( WO_MENU_FULL_OBJECT );
 
 		initToolItems();
 		OnToolbarCommand();
@@ -102,7 +140,6 @@ protected:
 	virtual void write()
 	{
 		twidget->clearSheet();
-		twidget->enableFloatingLayout( mode != TM_DASALONG && mode != TM_JAIMINI && mode != TM_KP );
 		TextHelper helper( doc, props, twidget->getSheet() );
 
 		const int ret = helper.writeTextAnalysis( mode, varga, dasa );
@@ -130,7 +167,7 @@ protected:
 				mode = choice_viewmode->GetSelection();
 				config->viewprefs->textWindowPage = mode;
 				frame->setTitle();
-				doc->emitDocUpdatedEvent();
+				DocumentManager::get()->documentChanged( doc );
 			}
 
 			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_Varga );
@@ -155,14 +192,15 @@ protected:
 	DasaId dasa;
 };
 
-IMPLEMENT_CLASS( SelectableTextView, SheetView )
+IMPLEMENT_CLASS( SelectableTextView, TextView )
 
 /**************************************************************
 ***
 **   ViewFactory   ---   createSelectableTextView
 ***
 ***************************************************************/
-BasicView *ViewFactory::createSelectableTextView( wxWindow *parent, ChildWindow *frame, const bool &toolpanel, const int &mode )
+BasicView *ViewFactory::createSelectableTextView( wxWindow *parent, ChildWindow *frame,
+	const bool &toolpanel, const int &mode )
 {
 	return new SelectableTextView( parent, frame, toolpanel, mode );
 }
@@ -172,15 +210,17 @@ BasicView *ViewFactory::createSelectableTextView( wxWindow *parent, ChildWindow 
 * \brief this is the main view for a chart in single view mode
 *
 ******************************************************/
-class PlanetListView : public SheetView
+class PlanetListView : public TextView
 {
 	DECLARE_CLASS( PlanetListView )
 
 public:
 	PlanetListView( wxWindow *parent, ChildWindow *frame )
-			: SheetView( parent, frame, VIEW_PLANETLIST, false )
+			: TextView( parent, frame, VIEW_PLANETLIST, false )
 	{
-		twidget->setWidgetOptions( WO_BUNDLE_PLANETLISTVIEW );
+		twidget->addWidgetOption( WO_IS_MAIN_VIEW );
+		twidget->addWidgetOption( WO_MENU_FULL_OBJECT );
+		twidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
 
 		OnDataChanged();
 	}
@@ -211,7 +251,7 @@ protected:
 
 };
 
-IMPLEMENT_CLASS( PlanetListView, SheetView )
+IMPLEMENT_CLASS( PlanetListView, TextView )
 
 /**************************************************************
 ***

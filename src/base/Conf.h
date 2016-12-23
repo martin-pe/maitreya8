@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
@@ -119,33 +117,16 @@ public:
 
 	GRADKREIS gradkreis;
 	ASPECT_SORTORDER sortOrder;
-	ObjectFilter objectFilter;
 
 	bool eventsIncludeMidpoints;
 	bool eventsIncludeSums;
 	bool eventsIncludeDifferences;
+	bool eventsIncludeReflectionPoints;
 	bool eventsIncludeTriples;
+	bool eventsIncludeAntiscia;
 
-	bool radixIncludeAntiscia;
 	double orbisRadix;
-
-	int transitIncludeType;
-	ObjectArray transitIncludedObjects;
-	bool transitIncludeAntiscia;
-	bool transitIncludeRunningPairs;
 	double orbisTransit;
-
-	bool solararcIncludeAntiscia;
-	bool solararcIncludeRunningPairs;
-	double orbisSolararc;
-
-	int directionIncludeType;
-	ObjectArray directionIncludedObjects;
-	bool directionIncludeAntiscia;
-	bool directionIncludeRunningPairs;
-	double orbisDirection;
-
-	bool partnerIncludeAntiscia;
 	double orbisPartner;
 };
 
@@ -169,7 +150,7 @@ public:
 	bool showHouseColors;
 	bool showAspectColors;
 	bool showAspectSymbols;
-	int transitStyle;
+	int secondchartStyle;
 	int chartOrientation;
 	int houseNumberStyle;
 	int graphicSkin;
@@ -328,9 +309,6 @@ public:
 	wxSize sVedicGraphicWindow;
 	wxSize sWesternGraphicWindow;
 
-	// TODO currently not supported because view id is the same as graphic view
-	wxSize sUranianGraphicWindow;
-
 	wxSize sTextWindow;
 	wxSize sDasaTreeWindow;
 	wxSize sDasaCompositeWindow;
@@ -338,6 +316,8 @@ public:
 	wxSize sSbcWindow;
 	wxSize sSolarWindow;
 	wxSize sUranianWindow;
+	wxSize sUranianChartWindow;
+
 	wxSize sTransitWindow;
 	wxSize sPrintPreviewWindow;
 	wxSize sYogaWindow;
@@ -357,6 +337,7 @@ public:
 	wxSize sAtlasDialog;
 	wxSize sObjectFilterDialog;
 	wxSize sPrintoutSelectionDialog;
+	wxSize sUranianConfigDialog;
 };
 
 /*************************************************//**
@@ -375,6 +356,7 @@ public:
 
 	wxSize pMasterWindow;
 	wxSize pAdditionalLogWindow;
+	wxSize pConfigDialog;
 	int sashMasterWindowLog;
 
 	int sashPartnerDouble;
@@ -393,7 +375,6 @@ public:
 	int configDialogWChartPanelPage;
 	int configDialogVChartPanelPage;
 	int configDialogVCalculationPanelPage;
-	int configDialogSheetStylePanelPage;
 	int configDialogColorPanelPage;
 
 	int activePagePartner;
@@ -426,12 +407,9 @@ public:
 	int yogaGroupFilter;
 	int yogaCustomFilter;
 
-	TRANSIT_MODE transitmode;
-	int orbisRadix;
-	int orbisTransit;
-	int orbisPartner;
-	int gradkreis;
+	PlanetContext transitmode;
 	int transitTimezone;
+	double transitJD;
 
 	// Ephem view
 	int ephemTimezone;
@@ -462,7 +440,6 @@ public:
 
 	vector<int> mainToolbarItems;
 	int toolbarStyle;
-	int toolbarIconSize;
 };
 
 /*************************************************//**

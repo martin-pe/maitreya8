@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "DataDialog.h"
@@ -98,7 +96,7 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
     text_date = new MDateSpin(this, wxID_ANY);
     label_datefmt = new wxStaticText(this, wxID_ANY, _("YYYY-MM-DD"));
     label_time = new wxStaticText(this, wxID_ANY, _("Local Time"));
-    text_time = new MDegSpin(this, wxID_ANY);
+    text_time = new MDegSpin(this, wxID_ANY, 24);
     label_timefmt = new wxStaticText(this, wxID_ANY, _("HH:MM[:SS]"));
     label_date_formatted = new wxStaticText(panel_date_formatted, wxID_ANY, _("date"));
     label_calendar = new wxStaticText(panel_date_formatted, wxID_ANY, _("calendar"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
@@ -106,7 +104,7 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
     label_locname = new wxStaticText(this, wxID_ANY, _("Name"));
     text_locname = new wxTextCtrl(this, wxID_ANY, wxEmptyString);
     label_long = new wxStaticText(this, wxID_ANY, _("Longitude"));
-    text_longitude = new MDegSpin(this, wxID_ANY);
+    text_longitude = new MDegSpin(this, wxID_ANY, 180);
     label_long_fmt = new wxStaticText(this, wxID_ANY, _("DD:MM[:SS]"));
     const wxString choice_ew_choices[] = {
         _("East"),
@@ -114,7 +112,7 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
     };
     choice_ew = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ew_choices, 0);
     label_lat = new wxStaticText(this, wxID_ANY, _("Latitude"));
-    text_latitude = new MDegSpin(this, wxID_ANY);
+    text_latitude = new MDegSpin(this, wxID_ANY, 90);
     label_lat_fmt = new wxStaticText(this, wxID_ANY, _("DD:MM[:SS]"));
     const wxString choice_ns_choices[] = {
         _("North"),
@@ -124,7 +122,7 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
     button_defloc = new wxButton(this, DD_DEFLOC, _("Standard Location"));
     button_searchloc = new wxButton(this, DD_SEARCHLOC, _("Search Location"));
     label_tz = new wxStaticText(this, wxID_ANY, _("Time Zone"));
-    text_tz = new MDegSpin(this, wxID_ANY);
+    text_tz = new MDegSpin(this, wxID_ANY, 12);
     label_tzfmt = new wxStaticText(this, wxID_ANY, _("HH:MM[:SS]"));
     const wxString choice_tzew_choices[] = {
         _("East"),
@@ -132,7 +130,7 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
     };
     choice_tzew = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_tzew_choices, 0);
     label_dst = new wxStaticText(this, wxID_ANY, _("DST"));
-    text_dst = new MDegSpin(this, wxID_ANY);
+    text_dst = new MDegSpin(this, wxID_ANY, 12);
     label_dstfmt = new wxStaticText(this, wxID_ANY, _("HH:MM[:SS]"));
     button_localtime = new wxButton(this, DD_LOCALTIME, _("Local Time"));
     text_remark = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_WORDWRAP);
@@ -357,7 +355,7 @@ bool DataDialog::doApply()
 	doc->update();
 	doc->updateAllChildWindows();
 	doc->setDirty( true );
-	doc->emitDocUpdatedEvent();
+	DocumentManager::get()->documentChanged( doc );
 
 	return true;
 }

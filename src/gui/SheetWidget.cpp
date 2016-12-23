@@ -7,21 +7,20 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "SheetWidget.h"
 
+#include "ColorConfig.h"
 #include "Conf.h"
 #include "Exporter.h"
 #include "guibase.h"
@@ -37,7 +36,7 @@
 
 extern Config *config;
 
-IMPLEMENT_CLASS( SheetWidget, BasicWidget )
+IMPLEMENT_CLASS( SheetWidget, BasicSheetWidget )
 
 #define SCROLLABLE_PAGE_WIDGET_PAGE_BORDER_X 40
 #define SCROLLABLE_PAGE_WIDGET_PAGE_BORDER_Y 20
@@ -49,30 +48,13 @@ IMPLEMENT_CLASS( SheetWidget, BasicWidget )
 **
 ******************************************************/
 SheetWidget::SheetWidget( wxWindow *parent, ChartProperties *props, SheetConfig *scfg, WriterConfig *wcfg, ColorConfig *ccfg )
-: BasicWidget( parent, props )
+: BasicSheetWidget( parent, props, scfg, wcfg, ccfg )
 {
-	writercfg = wcfg ? wcfg: config->writer;
-
-	colorcfg = ccfg ? ccfg : config->colors;
-	assert( colorcfg );
-	sheetcfg = (SheetConfig*)NULL;
-	minxright = SCROLLABLE_PAGE_WIDGET_MIN_XRIGHT;
-
-	if ( scfg )
-	{
-		sheetcfg = scfg;
-		sheetConfigOverride = true;
-	}
-	else
-	{
-		sheetConfigOverride = false;
-		SheetConfigLoader *loader = SheetConfigLoader::get();
-		sheetcfg = loader->getConfig( config->view->sheetStyle );
-	}
-
-	sheet = new Sheet( writercfg );
 	writer = new DcSheetWriter( sheet, sheetcfg, writercfg, colorcfg );
 	init();
+	setWidgetOptions( WO_EXPORT_GRAPHIC );
+	minxright = 300;
+
 	Connect( wxEVT_SIZE, wxSizeEventHandler( SheetWidget::OnSize ));
 	Connect( CMD_FIRST+1, CMD_GRAPHIC_STYLE+30, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( SheetWidget::OnChildCommand ));
 }
@@ -84,42 +66,6 @@ SheetWidget::SheetWidget( wxWindow *parent, ChartProperties *props, SheetConfig 
 ******************************************************/
 SheetWidget::~SheetWidget()
 {
-	delete sheet;
-	delete writer;
-}
-
-/*****************************************************
-**
-**   SheetWidget   ---   enableFloatingLayout
-**
-******************************************************/
-void SheetWidget::enableFloatingLayout( const bool b )
-{
- printf( "SheetWidget::enableFloatingLayout %d\n", b );
- writer->enableFloatingLayout( b );
-}
-
-/*****************************************************
-**
-**   SheetWidget   ---   setWriterConfig
-**
-******************************************************/
-void SheetWidget::setWriterConfig( WriterConfig *wcfg )
-{
-	writercfg = wcfg;
-	writer->setWriterConfig( writercfg );
-}
-
-/*****************************************************
-**
-**   SheetWidget   ---   setSheetConfig
-**
-******************************************************/
-void SheetWidget::setSheetConfig( SheetConfig *scfg )
-{
-	sheetcfg = scfg;
-	sheetConfigOverride = true;
-	writer->setSheetConfig( sheetcfg );
 }
 
 /*****************************************************
@@ -137,47 +83,6 @@ void SheetWidget::updateSheetConfig()
 
 /*****************************************************
 **
-**   SheetWidget   ---   clearSheet
-**
-******************************************************/
-void SheetWidget::clearSheet()
-{
-	sheet->clear();
-}
-
-/*****************************************************
-**
-**   SheetWidget   ---   getWidgetOptions
-**
-******************************************************/
-int SheetWidget::getWidgetOptions()
-{
-	int wo = BasicWidget::getWidgetOptions();
-
-	if ( sheet->items.size() > 0 ) wo |= WO_EXPORT_GRAFIC;
-
-	for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
-	{
-		SheetItem *item = *iter;
-		switch( item->type )
-		{
-			case WiTable:
-			case WiText:
-				//return WO_EXPORT_ALL;
-				wo |= WO_EXPORT_PLAINTEXT;
-				wo |= WO_EXPORT_CSVTEXT;
-				wo |= WO_EXPORT_HTMLTEXT;
-				wo |= WO_EXPORT_PDF;
-			break;
-			default:
-			break;
-		}
-	}
-	return wo;
-}
-
-/*****************************************************
-**
 **   SheetWidget   ---   init
 **
 ******************************************************/
@@ -188,6 +93,8 @@ void SheetWidget::init()
 
 	wxSize widgetsize = GetVirtualSize();
 	wxSize clientsize = GetSize();
+
+	writer->pageSize = MPoint( clientsize.x, clientsize.y );
 
 	printf( "CLIENT %d %d\n", clientsize.x, clientsize.y );
 
@@ -325,12 +232,8 @@ void SheetWidget::doPaint( const wxRect &rect, const bool eraseBackground )
 		dirty = false;
 	}
 
-	painter->setBrush( sheetcfg->brush );
-	if ( sheetcfg->brush.color.IsOk())
-	{
-		painter->setPen( wxPen( sheetcfg->brush.color, 1, wxSOLID ));
-	}
-	else painter->setTransparentPen();
+	painter->setBrush( config->colors->bgColor );
+	painter->setTransparentPen();
 	painter->drawRectangle( rect );
 
 	painter->setTransparentPen();
@@ -355,100 +258,6 @@ void SheetWidget::OnDataChanged()
 	init();
 	Refresh();
 }
-
-/*****************************************************
-**
-**   SheetWidget   ---   exportAs
-**
-******************************************************/
-void SheetWidget::exportAs( const WidgetExportType &type )
-{
-	printf( "SheetWidget::exportAs %d\n", type );
-
-	switch( type  )
-	{
-		case WeText:
-		case WeCsv:
-		case WeHtml:
-			doTextExport( type );
-		break;
-		case WePdf:
-			doPdfExport();
-		break;
-		case WeImage:
-			doImageExport();
-		break;
-		default:
-			assert( false );
-		break;
-	}
-	OnDataChanged();
-}
-
-/*****************************************************
-**
-**   SheetWidget   ---   doTextExport
-**
-******************************************************/
-void SheetWidget::doTextExport( const WidgetExportType &type )
-{
-	wxString filename, filetypes, title;
-
-	switch( type  )
-	{
-		case WeText:
-			filename = wxT( "out.txt" );
-			filetypes = wxT( "Text (*.txt)|*.txt|All files (*)|*.*" );
-			title = _( "Export as Plain Text" );
-		break;
-		case WeCsv:
-			filename = wxT( "out.csv" );
-			filetypes = wxT( "Text (*.csv)|*.csv|All files (*)|*.*" );
-			title = _( "Export as Csv Text" );
-		break;
-		case WeHtml:
-			filename = wxT( "out.html" );
-			filetypes = wxT( "Html (*.html)|*.html|All files (*)|*.*" );
-			title = _( "Export as HTML Text" );
-		break;
-		default:
-			assert( false );
-		break;
-	}
-	int style = wxFD_SAVE;
-	if ( config->view->exportAskOnOverwrite ) style |= wxFD_OVERWRITE_PROMPT;
-
-	wxFileDialog exportFileDialog( this, title, config->viewprefs->defExportPath, filename, filetypes, style, wxDefaultPosition );
-	if ( exportFileDialog.ShowModal() == wxID_OK )
-	{
-		filename = exportFileDialog.GetPath();
-		config->viewprefs->defExportPath = exportFileDialog.GetDirectory();
-		Exporter *exporter = ExporterFactory().getExporter( type );
-		wxString s =  exporter->exportSheet( sheet );
-		//Cout( s );
-		wxFile file;
-		file.Create( filename, true );
-		file.Write( s );
-		file.Close();
-		doMessageBox( this, wxString::Format( _("Text exported to %s"), filename.c_str()));
-	}
-}
-
-/*****************************************************
-**
-**   SheetWidget   ---   doPdfExport
-**
-******************************************************/
-void SheetWidget::doPdfExport()
-{
-	sheet->resetMarkup();
-	Sheet *pdfsheet = sheet->cloneClean();
-
-	PdfTool tool( (PdfDocumentConfig*)NULL );
-	tool.doSheetExport( pdfsheet );
-	delete pdfsheet;
-}
-
 
 /*****************************************************
 **
@@ -492,64 +301,8 @@ void SheetWidget::onNavigationKeyCommand( wxKeyEvent &event )
 **   SheetWidget   ---   mouseHasMoved
 ***
 ***************************************************************/
-void SheetWidget::mouseHasMoved( const bool &mouseOutside )
+void SheetWidget::mouseHasMoved( const bool& /*mouseOutside*/ )
 {
-	int vx, vy;
-	GetViewStart( &vx, &vy );
-	SheetItem *matchitem = (SheetItem*)NULL;
-
-	// what about bar diagrams
-	if ( ! sheetcfg->selectionMode ) return;
-
-	if ( ! mouseOutside )
-	{
-		for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
-		{
-			SheetItem *item = (SheetItem*)*iter;
-			assert( item );
-
-			//printf( "item rect %f %f %f %f mouse %d %d\n", item->rect.x, item->rect.y, item->rect.width, item->rect.height, mousePosition.x, mousePosition.y );
-			if ( pointInRect( mousePosition, item->rect ))
-			{
-				matchitem = item;
-				break;
-			}
-		}
-	}
-
-	//printf( "SheetWidget::mouseHasMoved %d mouse x %d y %d lastItem %ld matchitem %ld\n", 
-		//mouseOutside, mousePosition.x, mousePosition.y, (long)lastMarkedItem, (long) matchitem );
-
-	if ( matchitem )
-	{
-		SheetItem *subitem = matchitem->getSubitem4Point( mousePosition );
-		if ( subitem != matchitem->markedItem )
-		{
-			wxRect therect;
-			if ( matchitem->markedItem )
-			{
-				therect = matchitem->markedItem->getRefreshRect( true, sheetcfg->selectionMode ).toWxRect();
-			}
-			if ( subitem )
-			{
-				therect.Union( subitem->getRefreshRect( true, sheetcfg->selectionMode ).toWxRect());
-			}
-			matchitem->markItem( subitem );
-			therect.Offset( -vx, -vy );
-			//printf( "REFRESH %d %d %d %d\n", therect.x, therect.y, therect.width, therect.height );
-			RefreshRect( therect );
-			//Refresh();
-		}
-	}
-
-	if ( lastMarkedItem  && lastMarkedItem != matchitem ) // reset old marked item
-	{
-		lastMarkedItem->resetMarkup();
-		wxRect therect = lastMarkedItem->getRefreshRect( true, sheetcfg->selectionMode ).toWxRect();
-		therect.Offset( -vx, -vy );
-		RefreshRect( therect );
-	}
-	lastMarkedItem = matchitem;
 }
 
 

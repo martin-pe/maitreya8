@@ -348,9 +348,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = dasas yogas
-EXTRA_DIST = *.json
-dist_pkgdata_DATA = *.json
+SUBDIRS = dasas yogas wchart vchart print mview 
+dist_pkgdata_DATA = sheet.json
 all: all-recursive
 
 .SUFFIXES:

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "WesternChartPanel.h"
@@ -43,8 +41,8 @@
 extern Config *config;
 
 enum { CD_SKIN_SELECT = wxID_HIGHEST + 1, CD_ASCENDANT, CD_SHOW_ASPECTS, CD_SHOW_RETRO, CD_SHOW_HOUSES, CD_USE_ASPECT_COLORS,
-	CD_USE_SIGN_COLORS, CD_USE_PLANET_COLORS, CD_USE_HOUSE_COLORS, CD_SHOW_ASPECT_SYMBOLS, CD_SHOW_TRANSIT_PREVIEW,
-	CD_TRANSIT_STYLE, CD_HOUSE_NUMBERS, CD_PREVIEW_WINDOW };
+	CD_USE_SIGN_COLORS, CD_USE_PLANET_COLORS, CD_USE_HOUSE_COLORS, CD_SHOW_ASPECT_SYMBOLS, CD_SHOW_SECONDCHART,
+	CD_SECONDCHART_STYLE, CD_HOUSE_NUMBERS, CD_PREVIEW_WINDOW };
 
 IMPLEMENT_CLASS( WesternChartPanel, ConfigPanel )
 
@@ -69,7 +67,7 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
     sizer_colors_staticbox = new wxStaticBox(notebook_pane_color, wxID_ANY, _("Foreground Colors"));
     sizer_mouseover_staticbox = new wxStaticBox(notebook_pane_responsive, wxID_ANY, _("Object Mouse Over Behavior"));
     sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Preview"));
-    sizer_defaultview_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Default View"));
+    sizer_defaultskin_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Skin"));
     const wxString choice_defaultskin_choices[] = {
         _("dummy"),
         _("dummy"),
@@ -83,22 +81,23 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("Ascendant left"),
         _("1st House left"),
         _("Meridian top"),
-        _("0 Aries left"),
-        _("15 Aries left"),
-        _("0 Cancer left"),
-        _("15 Cancer left"),
-        _("0 Libra left"),
-        _("15 Libra left"),
-        _("0 Capricorn left"),
-        _("15 Capricorn left")
+        _("0 Aries top"),
+        _("15 Aries top"),
+        _("0 Cancer top"),
+        _("15 Cancer top"),
+        _("0 Leo top"),
+        _("0 Libra top"),
+        _("15 Libra top"),
+        _("0 Capricorn top"),
+        _("15 Capricorn top")
     };
-    choice_leftside = new wxChoice(notebook_pane_general, CD_ASCENDANT, wxDefaultPosition, wxDefaultSize, 11, choice_leftside_choices, 0);
-    label_transitstyle = new wxStaticText(notebook_pane_general, wxID_ANY, _("Transits"));
-    const wxString choice_transitstyle_choices[] = {
+    choice_leftside = new wxChoice(notebook_pane_general, CD_ASCENDANT, wxDefaultPosition, wxDefaultSize, 12, choice_leftside_choices, 0);
+    label_transitstyle = new wxStaticText(notebook_pane_general, wxID_ANY, _("Secondary Chart"));
+    const wxString choice_secondchart_style_choices[] = {
         _("Outsite"),
         _("Inside")
     };
-    choice_transitstyle = new wxChoice(notebook_pane_general, CD_TRANSIT_STYLE, wxDefaultPosition, wxDefaultSize, 2, choice_transitstyle_choices, 0);
+    choice_secondchart_style = new wxChoice(notebook_pane_general, CD_SECONDCHART_STYLE, wxDefaultPosition, wxDefaultSize, 2, choice_secondchart_style_choices, 0);
     label_house_number_style = new wxStaticText(notebook_pane_general, wxID_ANY, _("House Number Style"));
     const wxString choice_house_number_style_choices[] = {
         _("None"),
@@ -119,7 +118,7 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
     label_percent = new wxStaticText(notebook_pane_responsive, wxID_ANY, _("%"));
     check_magnify_aspects = new wxCheckBox(notebook_pane_responsive, wxID_ANY, _("Magnify Related Aspects"));
     window_preview = new ChartGridWidget(panel_preview, CT_RADIX, chartprops, 1, 1, CD_PREVIEW_WINDOW);
-    check_transit = new wxCheckBox(this, CD_SHOW_TRANSIT_PREVIEW, _("Transit Preview"));
+    check_secondchart = new wxCheckBox(this, CD_SHOW_SECONDCHART, _("Show Secondary Chart"));
 
     set_properties();
     do_layout();
@@ -137,7 +136,7 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
 	choice_defaultskin->Clear();
 	choice_defaultskin->Append( WesternChartConfigLoader::get()->getNamesAsArray());
 
-	check_transit->SetValue( config->viewprefs->configDialogWChartPreviewTransits );
+	check_secondchart->SetValue( config->viewprefs->configDialogWChartPreviewTransits );
 	notebook->SetSelection( config->viewprefs->configDialogWChartPanelPage );
 
 	{
@@ -150,7 +149,7 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
 		check_houses->SetValidator( MCheckValidator( &style.showHouses ));
 
 		choice_leftside->SetValidator( MChoiceValidator( &style.chartOrientation ));
-		choice_transitstyle->SetValidator( MChoiceValidator( &style.transitStyle ));
+		choice_secondchart_style->SetValidator( MChoiceValidator( &style.secondchartStyle ));
 		choice_house_number_style->SetValidator( MChoiceValidator( &style.houseNumberStyle ));
 
 		// color tab
@@ -181,7 +180,7 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
 ******************************************************/
 WesternChartPanel::~WesternChartPanel()
 {
-	config->viewprefs->configDialogWChartPreviewTransits = check_transit->GetValue();
+	config->viewprefs->configDialogWChartPreviewTransits = check_secondchart->GetValue();
 	config->viewprefs->configDialogWChartPanelPage = notebook->GetSelection();
 	delete chartprops;
 	delete horoscope;
@@ -244,7 +243,7 @@ void WesternChartPanel::OnGuiElementChanged( const int id )
 		style.showHouseColors = check_use_house_colors->GetValue();
 		style.showAspectColors = check_use_aspect_colors->GetValue();
 
-		style.transitStyle = choice_transitstyle->GetSelection();
+		style.secondchartStyle = choice_secondchart_style->GetSelection();
 		style.graphicSkin = choice_defaultskin->GetSelection();
 		style.chartOrientation = choice_leftside->GetSelection();
 		style.houseNumberStyle = choice_house_number_style->GetSelection();
@@ -259,7 +258,7 @@ void WesternChartPanel::OnGuiElementChanged( const int id )
 	}
 
 	updateUi();
-	if ( id != CD_SHOW_TRANSIT_PREVIEW )
+	if ( id != CD_SHOW_SECONDCHART )
 	{
 		setDirty();
 	}
@@ -297,7 +296,7 @@ void WesternChartPanel::updateUi()
 	check_use_house_colors->Enable( chartprops->getWesternChartDisplayConfig().showHouses );
 	spin_zoomfactor->Enable( check_zoom->GetValue());
 
-	window_preview->setHoroscopes( horoscope, check_transit->GetValue() ? htransit : (Horoscope*)NULL );
+	window_preview->setHoroscopes( horoscope, check_secondchart->GetValue() ? htransit : (Horoscope*)NULL );
 	window_preview->OnDataChanged();
 	window_preview->Refresh();
 }
@@ -323,7 +322,7 @@ void WesternChartPanel::set_properties()
     // begin wxGlade: WesternChartPanel::set_properties
     choice_defaultskin->SetSelection(0);
     choice_leftside->SetSelection(0);
-    choice_transitstyle->SetSelection(0);
+    choice_secondchart_style->SetSelection(0);
     choice_house_number_style->SetSelection(0);
     panel_preview->SetMinSize(wxSize(100, 100));
     // end wxGlade
@@ -355,17 +354,17 @@ void WesternChartPanel::do_layout()
     sizer_chartoptions_staticbox->Lower();
     wxStaticBoxSizer* sizer_chartoptions = new wxStaticBoxSizer(sizer_chartoptions_staticbox, wxVERTICAL);
     wxGridSizer* grid_options = new wxGridSizer(3, 2, 0, 0);
-    sizer_defaultview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_defaultview = new wxStaticBoxSizer(sizer_defaultview_staticbox, wxVERTICAL);
+    sizer_defaultskin_staticbox->Lower();
+    wxStaticBoxSizer* sizer_defaultskin = new wxStaticBoxSizer(sizer_defaultskin_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_defaultview = new wxFlexGridSizer(4, 1, 3, 3);
     grid_defaultview->Add(choice_defaultskin, 0, wxALL|wxEXPAND, 3);
     grid_defaultview->AddGrowableCol(0);
-    sizer_defaultview->Add(grid_defaultview, 1, wxEXPAND, 0);
-    sizer_general->Add(sizer_defaultview, 0, wxALL|wxEXPAND, 3);
+    sizer_defaultskin->Add(grid_defaultview, 1, wxEXPAND, 0);
+    sizer_general->Add(sizer_defaultskin, 0, wxALL|wxEXPAND, 3);
     grid_options->Add(label_orientation, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_options->Add(choice_leftside, 0, wxALL|wxALIGN_RIGHT, 3);
     grid_options->Add(label_transitstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_options->Add(choice_transitstyle, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_options->Add(choice_secondchart_style, 0, wxALL|wxALIGN_RIGHT, 3);
     grid_options->Add(label_house_number_style, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_options->Add(choice_house_number_style, 0, wxALL|wxALIGN_RIGHT, 3);
     sizer_chartoptions->Add(grid_options, 1, 0, 0);
@@ -402,7 +401,7 @@ void WesternChartPanel::do_layout()
     grid_previewpanel->AddGrowableRow(0);
     grid_previewpanel->AddGrowableCol(0);
     sizer_preview->Add(panel_preview, 1, wxALL|wxEXPAND, 3);
-    sizer_preview->Add(check_transit, 0, wxALL, 3);
+    sizer_preview->Add(check_secondchart, 0, wxALL, 3);
     sizer_right->Add(sizer_preview, 1, wxALL|wxEXPAND, 3);
     sizer_right->AddGrowableRow(0);
     sizer_right->AddGrowableCol(0);

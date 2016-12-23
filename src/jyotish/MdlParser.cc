@@ -62,7 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 23 "MdlParser.yy" /* yacc.c:339  */
+#line 21 "MdlParser.yy" /* yacc.c:339  */
 
 
 #include <stdio.h>
@@ -246,7 +246,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 45 "MdlParser.yy" /* yacc.c:355  */
+#line 43 "MdlParser.yy" /* yacc.c:355  */
 
   int ival;
 	char *sval;
@@ -571,16 +571,16 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    80,    80,    80,    82,    82,    84,    86,    86,    86,
-      87,    88,    89,    90,    91,    92,    93,    94,    97,    99,
-      99,    99,    99,    99,    99,    99,   100,   100,   100,   100,
-     100,   101,   101,   101,   101,   101,   102,   102,   102,   102,
-     102,   102,   102,   105,   106,   107,   108,   109,   110,   111,
-     112,   113,   114,   115,   117,   118,   119,   120,   121,   122,
-     124,   125,   126,   127,   128,   129,   130,   132,   132,   132,
-     132,   132,   132,   132,   132,   132,   133,   133,   133,   133,
-     133,   133,   133,   136,   137,   138,   139,   140,   141,   142,
-     143,   144,   145,   146,   147,   148,   149,   150,   151
+       0,    78,    78,    78,    80,    80,    82,    84,    84,    84,
+      85,    86,    87,    88,    89,    90,    91,    92,    95,    97,
+      97,    97,    97,    97,    97,    97,    98,    98,    98,    98,
+      98,    99,    99,    99,    99,    99,   100,   100,   100,   100,
+     100,   100,   100,   103,   104,   105,   106,   107,   108,   109,
+     110,   111,   112,   113,   115,   116,   117,   118,   119,   120,
+     122,   123,   124,   125,   126,   127,   128,   130,   130,   130,
+     130,   130,   130,   130,   130,   130,   131,   131,   131,   131,
+     131,   131,   131,   134,   135,   136,   137,   138,   139,   140,
+     141,   142,   143,   144,   145,   146,   147,   148,   149
 };
 #endif
 
@@ -1627,307 +1627,307 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 80 "MdlParser.yy" /* yacc.c:1646  */
+#line 78 "MdlParser.yy" /* yacc.c:1646  */
     { rule = new Rule; }
 #line 1633 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 84 "MdlParser.yy" /* yacc.c:1646  */
+#line 82 "MdlParser.yy" /* yacc.c:1646  */
     { rule->addExpression( (yyvsp[-1].expval) ); }
 #line 1639 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 87 "MdlParser.yy" /* yacc.c:1646  */
+#line 85 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = (yyvsp[-1].expval); }
 #line 1645 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 88 "MdlParser.yy" /* yacc.c:1646  */
+#line 86 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new NumericExpression( ED_NUMBER_OF_OCCUPIED_SIGNS ); }
 #line 1651 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 89 "MdlParser.yy" /* yacc.c:1646  */
+#line 87 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new NumericExpression( ED_CONST, (yyvsp[0].ival) ); }
 #line 1657 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 90 "MdlParser.yy" /* yacc.c:1646  */
+#line 88 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new NumericExpression( ED_HOUSE, (yyvsp[0].ival) ); }
 #line 1663 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 91 "MdlParser.yy" /* yacc.c:1646  */
+#line 89 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new NumericExpression( ED_PLANET, (yyvsp[0].ival) ); }
 #line 1669 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 92 "MdlParser.yy" /* yacc.c:1646  */
+#line 90 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new NumericExpression( ED_SIGN, (yyvsp[0].ival) ); }
 #line 1675 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 93 "MdlParser.yy" /* yacc.c:1646  */
+#line 91 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new NumericExpression( ED_NAKSHATRA, (yyvsp[0].ival) ); }
 #line 1681 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 94 "MdlParser.yy" /* yacc.c:1646  */
+#line 92 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new NumericExpression( ED_BOOLEAN, (yyvsp[0].ival) ); }
 #line 1687 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 97 "MdlParser.yy" /* yacc.c:1646  */
+#line 95 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new ReturnExpression( (yyvsp[0].expval) ); }
 #line 1693 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 105 "MdlParser.yy" /* yacc.c:1646  */
+#line 103 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_NOT ); }
 #line 1699 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 106 "MdlParser.yy" /* yacc.c:1646  */
+#line 104 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_RED12 ); }
 #line 1705 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 107 "MdlParser.yy" /* yacc.c:1646  */
+#line 105 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_LORDOFHOUSE ); }
 #line 1711 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 108 "MdlParser.yy" /* yacc.c:1646  */
+#line 106 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_GETRASI ); }
 #line 1717 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 109 "MdlParser.yy" /* yacc.c:1646  */
+#line 107 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_GETLORD ); }
 #line 1723 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 110 "MdlParser.yy" /* yacc.c:1646  */
+#line 108 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_GETBHAVA ); }
 #line 1729 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 111 "MdlParser.yy" /* yacc.c:1646  */
+#line 109 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_PLANETS_INSIGN ); }
 #line 1735 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 112 "MdlParser.yy" /* yacc.c:1646  */
+#line 110 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_PLANETS_INHOUSE ); }
 #line 1741 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 113 "MdlParser.yy" /* yacc.c:1646  */
+#line 111 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_GETNAKSHATRA ); }
 #line 1747 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 114 "MdlParser.yy" /* yacc.c:1646  */
+#line 112 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISBENEFIC ); }
 #line 1753 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 115 "MdlParser.yy" /* yacc.c:1646  */
+#line 113 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISMALEFIC ); }
 #line 1759 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 117 "MdlParser.yy" /* yacc.c:1646  */
+#line 115 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISPLANETINKENDRA ); }
 #line 1765 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 118 "MdlParser.yy" /* yacc.c:1646  */
+#line 116 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISPLANETINAPOKLIMA ); }
 #line 1771 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 119 "MdlParser.yy" /* yacc.c:1646  */
+#line 117 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISPLANETINPANAPHARA ); }
 #line 1777 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 120 "MdlParser.yy" /* yacc.c:1646  */
+#line 118 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISPLANETINDUALRASI ); }
 #line 1783 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 121 "MdlParser.yy" /* yacc.c:1646  */
+#line 119 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISPLANETINFIXEDRASI ); }
 #line 1789 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 122 "MdlParser.yy" /* yacc.c:1646  */
+#line 120 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[-1].expval), E1_ISPLANETINMOVABLERASI ); }
 #line 1795 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 124 "MdlParser.yy" /* yacc.c:1646  */
+#line 122 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_TYPECAST_INT ); }
 #line 1801 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 125 "MdlParser.yy" /* yacc.c:1646  */
+#line 123 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_TYPECAST_DOUBLE ); }
 #line 1807 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 126 "MdlParser.yy" /* yacc.c:1646  */
+#line 124 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_TYPECAST_PLANET ); }
 #line 1813 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 127 "MdlParser.yy" /* yacc.c:1646  */
+#line 125 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_TYPECAST_HOUSE ); }
 #line 1819 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 128 "MdlParser.yy" /* yacc.c:1646  */
+#line 126 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_TYPECAST_NAKSHATRA ); }
 #line 1825 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 129 "MdlParser.yy" /* yacc.c:1646  */
+#line 127 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_TYPECAST_BOOLEAN ); }
 #line 1831 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 130 "MdlParser.yy" /* yacc.c:1646  */
+#line 128 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new UnaryExpression( (yyvsp[0].expval), E1_TYPECAST_SIGN ); }
 #line 1837 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 83:
-#line 136 "MdlParser.yy" /* yacc.c:1646  */
+#line 134 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_LOGICAL_AND ); }
 #line 1843 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 84:
-#line 137 "MdlParser.yy" /* yacc.c:1646  */
+#line 135 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_LOGICAL_OR ); }
 #line 1849 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 85:
-#line 138 "MdlParser.yy" /* yacc.c:1646  */
+#line 136 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_ISEQUAL ); }
 #line 1855 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 86:
-#line 139 "MdlParser.yy" /* yacc.c:1646  */
+#line 137 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_ISNOTEQUAL ); }
 #line 1861 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 87:
-#line 140 "MdlParser.yy" /* yacc.c:1646  */
+#line 138 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_PLUS ); }
 #line 1867 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 88:
-#line 141 "MdlParser.yy" /* yacc.c:1646  */
+#line 139 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_MINUS ); }
 #line 1873 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 89:
-#line 142 "MdlParser.yy" /* yacc.c:1646  */
+#line 140 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_MULT ); }
 #line 1879 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 90:
-#line 143 "MdlParser.yy" /* yacc.c:1646  */
+#line 141 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_DIV ); }
 #line 1885 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 91:
-#line 144 "MdlParser.yy" /* yacc.c:1646  */
+#line 142 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_MOD ); }
 #line 1891 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 92:
-#line 145 "MdlParser.yy" /* yacc.c:1646  */
+#line 143 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_LT ); }
 #line 1897 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 93:
-#line 146 "MdlParser.yy" /* yacc.c:1646  */
+#line 144 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_LE ); }
 #line 1903 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 94:
-#line 147 "MdlParser.yy" /* yacc.c:1646  */
+#line 145 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_GT ); }
 #line 1909 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 95:
-#line 148 "MdlParser.yy" /* yacc.c:1646  */
+#line 146 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-2].expval), (yyvsp[0].expval), E2_GE ); }
 #line 1915 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 96:
-#line 149 "MdlParser.yy" /* yacc.c:1646  */
+#line 147 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-3].expval), (yyvsp[-1].expval), E2_MUTUAL_KENDRA ); }
 #line 1921 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 97:
-#line 150 "MdlParser.yy" /* yacc.c:1646  */
+#line 148 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-3].expval), (yyvsp[-1].expval), E2_PLANETINHOUSE ); }
 #line 1927 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 98:
-#line 151 "MdlParser.yy" /* yacc.c:1646  */
+#line 149 "MdlParser.yy" /* yacc.c:1646  */
     { (yyval.expval) = new DualExpression( (yyvsp[-3].expval), (yyvsp[-1].expval), E2_GRAHA_DRISHTI ); }
 #line 1933 "y.tab.c" /* yacc.c:1646  */
     break;
@@ -2161,7 +2161,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 154 "MdlParser.yy" /* yacc.c:1906  */
+#line 152 "MdlParser.yy" /* yacc.c:1906  */
 
 /*****************************************************
 **

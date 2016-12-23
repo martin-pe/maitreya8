@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "VedicPanel.h"
@@ -66,7 +64,8 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
     check_objects_meridian = new wxCheckBox(this, wxID_ANY, _("Meridian"));
     check_objects_descendant = new wxCheckBox(this, wxID_ANY, _("Descendant"));
     check_objects_imumcoeli = new wxCheckBox(this, wxID_ANY, _("Imum Coeli"));
-    check_objects_uranian = new wxCheckBox(this, wxID_ANY, _("8 Uranian"));
+    check_objects_uranian_inner = new wxCheckBox(this, wxID_ANY, _("4 Uranian (Cupido-Kronos)"));
+    check_objects_uranian_outer = new wxCheckBox(this, wxID_ANY, _("4 Uranian (Apollon-Poseidon)"));
     check_objects_chiron = new wxCheckBox(this, wxID_ANY, _("Chiron"));
     check_objects_pholus = new wxCheckBox(this, wxID_ANY, _("Pholus"));
     check_objects_planetoids = new wxCheckBox(this, wxID_ANY, _("4 Planetoids"));
@@ -110,7 +109,8 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
 	check_objects_meridian->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_MERIDIAN ));
 	check_objects_descendant->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_DESCENDANT ));
 	check_objects_imumcoeli->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_IMUMCOELI ));
-	check_objects_uranian->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_URANIAN ));
+	check_objects_uranian_inner->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_URANIAN_INNER ));
+	check_objects_uranian_outer->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_URANIAN_OUTER ));
 	check_objects_chiron->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_CHIRON ));
 	check_objects_pholus->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_PHOLUS ));
 	check_objects_planetoids->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_PLANETOIDS ));
@@ -213,7 +213,8 @@ void VedicPanel::set_properties()
     check_objects_outer->SetToolTip(_("Uranus, Neptune and Pluto"));
     check_objects_dragonhead->SetToolTip(_("Dragon Head"));
     check_objects_dragontail->SetToolTip(_("Dragon Tail"));
-    check_objects_uranian->SetToolTip(_("Fictitious planets of Uranian astrology: Cupido, Hades, Zeus, Kronos, Apollon, Admetos, Vulkanus and Poseidon "));
+    check_objects_uranian_inner->SetToolTip(_("Fictitious planets of Uranian astrology: Cupido, Hades, Zeus, Kronos, Apollon, Admetos, Vulkanus and Poseidon "));
+    check_objects_uranian_outer->SetToolTip(_("Fictitious planets of Uranian astrology: Cupido, Hades, Zeus, Kronos, Apollon, Admetos, Vulkanus and Poseidon "));
     check_objects_chiron->SetToolTip(_("Asteroid between Saturn and Uranus. Period 50 years"));
     check_objects_pholus->SetToolTip(_("Asteroid crossing the orbits of outer planets. Period 92 years"));
     check_objects_planetoids->SetToolTip(_("Ceres, Pallas, Juno and Vesta"));
@@ -265,7 +266,7 @@ void VedicPanel::do_layout()
     wxFlexGridSizer* sizer_left = new wxFlexGridSizer(2, 1, 0, 0);
     sizer_eobjects_staticbox->Lower();
     wxStaticBoxSizer* sizer_eobjects = new wxStaticBoxSizer(sizer_eobjects_staticbox, wxHORIZONTAL);
-    wxFlexGridSizer* grid_eobjects = new wxFlexGridSizer(13, 1, 3, 3);
+    wxFlexGridSizer* grid_eobjects = new wxFlexGridSizer(14, 1, 3, 3);
     grid_eobjects->Add(check_objects_outer, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_dragonhead, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_dragontail, 0, wxALL|wxEXPAND, 3);
@@ -273,7 +274,8 @@ void VedicPanel::do_layout()
     grid_eobjects->Add(check_objects_meridian, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_descendant, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_imumcoeli, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_uranian, 0, wxALL|wxEXPAND, 3);
+    grid_eobjects->Add(check_objects_uranian_inner, 0, wxALL|wxEXPAND, 3);
+    grid_eobjects->Add(check_objects_uranian_outer, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_chiron, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_pholus, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_planetoids, 0, wxALL|wxEXPAND, 3);

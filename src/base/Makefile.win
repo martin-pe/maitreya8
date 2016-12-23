@@ -10,12 +10,11 @@ CPPFLAGS = -w -g -I. -I.. -I../../ -I../swe -I../pics -I../wxJSON -I../wxsqlite3
 
 LDLIBS = `wx-config --libs` 
 
-OBS = AtlasDao.o AtlasImporter.o AtlasLogic.o BaseDao.o Calculator.o ChartConfig.o \
-	ChartProperties.o ColorConfig.o Commands.o Conf.o DataSet.o FileConfig.o \
-	FontProvider.o GraphConfig.o ImageProvider.o Lang.o LanguageConfig.o mathbase.o \
-	MultipleViewConfig.o PlanetList.o PrintoutConfig.o SymbolProvider.o VedicChartConfig.o \
-	AspectConfig.o ViewNode.o WesternChartConfig.o SheetConfig.o \
-	IdConverter.o JSonTool.o maitreya.o ConfigListLoader.o VargaBase.o ConfigStubs.o \
+OBS = AspectConfig.o AtlasDao.o AtlasImporter.o AtlasLogic.o BaseDao.o Calculator.o ChartConfig.o \
+	ChartProperties.o ColorConfig.o Commands.o Conf.o ConfigListLoader.o ConfigStubs.o DataSet.o \
+	FileConfig.o FontProvider.o IdConverter.o ImageProvider.o JSonTool.o Lang.o LanguageConfig.o \
+	maitreya.o mathbase.o MultipleViewConfig.o PlanetList.o PrintoutConfig.o SheetConfig.o \
+	SymbolProvider.o VargaBase.o VedicChartConfig.o ViewNode.o WesternChartConfig.o
 
 all : $(BASE_LIB)
 

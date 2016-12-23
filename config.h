@@ -33,7 +33,7 @@
 #define PACKAGE_NAME "maitreya8"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "maitreya8 8.0.pre533"
+#define PACKAGE_STRING "maitreya8 8.0.pre581"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "maitreya8"
@@ -42,16 +42,16 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "8.0.pre533"
+#define PACKAGE_VERSION "8.0.pre581"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
 
 /* Package version of system wide Swiss Ephemeris */
-#define SWE_SYSTEM_VERSION "none"
+#define SWE_SYSTEM_VERSION "unknown"
 
 /* Use builtin Swiss Ephemeris */
-#define USE_SWE_BUILTIN 1
+#define USE_SWE_BUILTIN 0
 
 /* Use builtin wxpdfdoc */
 #define USE_WXPDFDOC_BUILTIN 1
@@ -60,7 +60,7 @@
 #define USE_WXSQLITE_BUILTIN 1
 
 /* Version number of package */
-#define VERSION "8.0.pre533"
+#define VERSION "8.0.pre581"
 
 /* CFLAGS for wxpdfdoc */
 #define WXPDFDOC_CFLAGS ""

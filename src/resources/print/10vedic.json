@@ -1,0 +1,232 @@
+{
+    "configs": [
+        {
+            "name": "Vedic Default",
+            "description": "Default Vedic printout with Rasi, Navamsa and Vimsottari Dasa in compact style",
+            "vedic": true,
+            "items": [
+                {
+                    "type": "rowset",
+                    "children": [
+												{
+														"type": "title"
+												},
+                        {
+                            "headertype": 1,
+                            "type": "header",
+                            "vedic": true
+                        },
+                        {
+                            "type": "vedicchartpair"
+                        },
+                        {
+                            "type": "dasasummary"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Vedic KP",
+            "description": "Vedic printout with planets according to KP astrology, Rasi, Navamsa chart and Vimsottari Dasa",
+            "vedic": true,
+            "items": [
+                {
+                    "type": "rowset",
+                    "children": [
+												{
+														"type": "title"
+												},
+                        {
+                            "headertype": 2,
+                            "type": "header",
+                            "vedic": true
+                        },
+                        {
+                            "type": "vedicchartpair"
+                        },
+                        {
+                            "type": "dasasummary"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Vedic KP 3 charts",
+            "description": "Vedic printout with planets according to KP astrology, Rasi, Navamsa and Bhava chart, Vimsottari Dasa",
+            "vedic": true,
+            "items": [
+                {
+                    "type": "rowset",
+                    "children": [
+												{
+														"type": "title"
+												},
+                        {
+                            "headertype": 2,
+                            "type": "header",
+                            "vedic": true
+                        },
+												{
+														"type": "columnset",
+														"children": [
+																{
+																		"type": "chart",
+																		"division": 1,
+																		"vedic": true
+																},
+																{
+																		"type": "chart",
+																		"division": 9,
+																		"vedic": true
+																},
+																{
+																		"type": "chart",
+																		"division": "bhava",
+																		"vedic": true
+																}
+														]
+												},
+                        {
+                            "type": "dasasummary"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Vedic - own planets and columns",
+            "description": "Vedic printout with planets and columns according to personal configuraton, vedic charts (D1+D9) and Dasas",
+            "vedic": true,
+            "items": [
+                {
+                    "type": "rowset",
+                    "children": [
+												{
+														"type": "title"
+												},
+                        {
+                            "headertype": 0,
+                            "type": "header",
+                            "vedic": true
+                        },
+                        {
+                            "type": "vedicchartpair"
+                        },
+                        {
+                            "type": "dasasummary"
+                        }
+                    ]
+                }
+            ]
+        },
+				{
+            "name": "Vedic Comprehensive",
+            "extends": "Vedic Default",
+            "vedic": true,
+            "items": [
+                {
+                    "columns": 3,
+                    "type": "grid",
+                    "children": [
+                        {
+                            "type": "chart",
+                            "division": 2,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 3,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 4,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 7,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 10,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 12,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 16,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 20,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 24,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 30,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 40,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 45,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 60,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": 108,
+                            "vedic": true
+                        },
+                        {
+                            "type": "chart",
+                            "division": "bhava",
+                            "vedic": true
+                        }
+                    ]
+                },
+								{
+										"type": "dasasummary",
+										"dasaid" : 2
+								},
+                {
+                    "type": "columnset",
+                    "ratio": "0.5",
+                    "children": [
+												{
+													"type": "sbc"
+												}
+										]
+                },
+                {
+                    "type": "vedicchartpair",
+                    "division1": 10,
+                    "division2": 12
+                }
+            ]
+        },
+				}
+    ]
+}

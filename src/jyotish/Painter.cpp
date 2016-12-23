@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Painter.h"
@@ -36,7 +34,6 @@
 #include <wx/dc.h>
 #include <wx/log.h>
 #include <wx/stopwatch.h>
-#include <wx/tokenzr.h>
 
 extern Config *config;
 
@@ -177,7 +174,8 @@ void Painter::drawSingleMStringLine( const MRect &r, MString &f, const int& alig
 		}
 		if ( symbol && symbol != SYMBOL_CODE_ERROR )
 		{
-			setSymbolFont();
+			const int pointSize = oldFont.GetPointSize();
+			setFont( *FontProvider::get()->getFontBySize( FONT_GRAPHIC_SYMBOLS, pointSize ));
 			drawTextFormatted( MRect( x0, yy, r.width, r.height ), symbol, drawalign );
 			p = getTextExtent( symbol );
 		}
@@ -290,7 +288,8 @@ MPoint Painter::getTextExtent( const MToken &token )
 	}
 	if ( symbol )
 	{
-		setSymbolFont();
+		const int pointSize = oldFont.GetPointSize();
+		setFont( *FontProvider::get()->getFontBySize( FONT_GRAPHIC_SYMBOLS, pointSize ));
 		p = getTextExtent( symbol );
 	}
 	else
@@ -319,6 +318,28 @@ MPoint Painter::getTextExtent( const MString &f )
 		y = Max( y, p.imag());
 	}
 	return MPoint( x, y );
+}
+
+/*****************************************************
+**
+**   Painter   ---   setSymbolFontZoom
+**
+******************************************************/
+void Painter::setSymbolFontZoom( const double &zoom )
+{
+	currentFont = *FontProvider::get()->getFontZoom( FONT_GRAPHIC_SYMBOLS, zoom );
+	setFont( currentFont );
+}
+
+/*****************************************************
+**
+**   Painter   ---   setGraphicFontZoom
+**
+******************************************************/
+void Painter::setGraphicFontZoom( const double &zoom )
+{
+	currentFont = *FontProvider::get()->getFontZoom( FONT_GRAPHIC_DEFAULT, zoom );
+	setFont( currentFont );
 }
 
 /*****************************************************
@@ -619,28 +640,6 @@ void DcPainter::setPenWidth( const int &i )
 
 /*****************************************************
 **
-**   DcPainter   ---   setSymbolFont
-**
-******************************************************/
-void DcPainter::setSymbolFont( const double zoom )
-{
-	currentFont = *FontProvider::get()->getFontZoom( FONT_GRAPHIC_SYMBOLS, zoom );
-	dc->SetFont( currentFont );
-}
-
-/*****************************************************
-**
-**   DcPainter   ---   setGraphicFont
-**
-******************************************************/
-void DcPainter::setGraphicFont( const double zoom )
-{
-	currentFont = *FontProvider::get()->getFontZoom( FONT_GRAPHIC_DEFAULT, zoom );
-	dc->SetFont( currentFont );
-}
-
-/*****************************************************
-**
 **   DcPainter   ---   setTextColor
 **
 ******************************************************/
@@ -671,58 +670,27 @@ void DcPainter::setTextBackgroundColor( const wxColour &c )
 
 /*****************************************************
 **
-**   DcPainter   ---   drawSignSymbol
+**   DcPainter   ---   drawRotatedText
 **
 ******************************************************/
-void DcPainter::drawSignSymbol( const int&x, const int &y, const Rasi &sign, const int type, const int /* zoom */, const double angle )
+void DcPainter::drawRotatedText( wxString s, const double &x, const double &y, const double &alfa )
 {
-	Lang lang;
-	SymbolProvider sp;
-	MPoint p;
-	wxString s;
-
-	switch( type )
-	{
-		case 1:
-			s = lang.getSignName( sign, TF_SHORT );
-		break;
-		case 2:
-			s = lang.getSignName( sign, TF_MEDIUM );
-		break;
-		case 3:
-			s = lang.getSignName( sign, TF_LONG );
-		break;
-		case 0:
-		default:
-			s = sp.getSignCode( sign );
-		break;
-	}
-
-	p = getTextExtent( s );
-	//printf( "DcPainter::drawSignSymbol Text extent w %f h %f\n", w, h );
-
-	setTransparentBrush();
-	setDefaultPen();
-
+	MPoint p = getTextExtent( s );
 	/*
-	drawRectangle( x-3, y-3, 6, 6 );
-	const int aaa = 15;
-	drawEllipse( x-aaa, y-aaa, 2 * aaa, 2 * aaa );
-	//drawRectangle( x-10, y-10, 20, 20 );
+	const double a = 2;
+	printf( "DcPainter::drawRotatedText angle is %f extent %f %f\n", alfa, p.real(), p.imag());
+	dc->DrawRectangle( x - .5 * p.real(), y - .5 * p.imag(), p.real(), p.imag());
+	dc->DrawRectangle( x - a, y - a, 2 * a, 2 * a );
 	*/
 
-	double x3 = x - .5 * p.real() * cos( 1.75 * PI + angle * DEG2RAD );
-	double y3 = y + .5 * p.imag() * sin( 1.75 * PI+ angle * DEG2RAD );
+	const double w = .5 * p.real();
+	const double h = .5 * p.imag();
 
-	if ( angle )
-	{
-		dc->DrawRotatedText( s, a_rund( x3 ), a_rund( y3 ), angle );
-	}
-	else
-	{
-		dc->DrawText( s, a_rund( x3 ), a_rund( y3 ) );
-	}
-	//dc->DrawRotatedText( s, a_rund( x3 ), a_rund( y3 ), angle );
+	const double px = x - w * cos( alfa * DEG2RAD ) -  h * sin( alfa * DEG2RAD );
+	const double py = y + w * sin( alfa * DEG2RAD ) - h * cos( alfa * DEG2RAD );
+
+	//dc->DrawRectangle( px - a, py - a, 2 * a, 2 * a );
+	dc->DrawRotatedText( s, px, py, alfa );
 }
 
 /*****************************************************

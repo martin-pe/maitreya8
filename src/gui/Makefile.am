@@ -10,7 +10,6 @@ maitreya8_bin_LDADD =  ../views/libmaitreya_views.a ../jyotish/libjyotish.a ../d
 
 if USE_SWE_BUILTIN
 maitreya8_bin_LDADD += ../swe/libswe.a
-# maitreya8_bin_LDADD += ../swe/libswe.la
 else
 maitreya8_bin_LDADD += $(LIBSWE_LIBS)
 endif !USE_SWE_BUILTIN
@@ -25,30 +24,26 @@ endif !USE_WXSQLITE_BUILTIN
 if USE_WXPDFDOC_BUILTIN
 AM_CPPFLAGS += -I../wxpdfdoc
 maitreya8_bin_LDADD += ../wxpdfdoc/libmaitreya_wxpdfdoc.a $(WX_LIBS) $(FONTCONFIG_LIBS) 
-# maitreya8_bin_LDADD += ../wxpdfdoc/libmaitreya_wxpdfdoc.a $(FONTCONFIG_LIBS) 
-# maitreya8_bin_LDADD += $(FONTCONFIG_LIBS) 
 else
 AM_CPPFLAGS += $(WXPDFDOC_CFLAGS)
 maitreya8_bin_LDADD += $(WXPDFDOC_LIBS) $(WX_LIBS)
 endif !USE_WXPDFDOC_BUILTIN
 
 AM_CPPFLAGS += -I../dialogs -DSTRICT
-# maitreya8_bin_LDADD += $(WX_LIBS) $(FONTCONFIG_LIBS) 
 
-maitreya8_bin_SOURCES = ApplicationWindow.cpp ApplicationWindow.h BarDiagram.cpp \
-	BarDiagram.h BasicVedicChart.cpp BasicVedicChart.h BasicView.cpp BasicView.h \
-	BasicWesternChart.cpp BasicWesternChart.h BasicWidget.cpp BasicWidget.h ChartField.cpp \
-	ChartField.h ChildWindow.cpp ChildWindow.h ChildWindowListCtrl.cpp ChildWindowListCtrl.h \
-	DasaTreeWidget.cpp DasaTreeWidget.h Document.cpp Document.h GraphicalChart.cpp \
-	GraphicalChart.h GraphicGrid.cpp GraphicGrid.h guibase.cpp guibase.h MenuProvider.cpp \
-	MenuProvider.h MultipleChildWindow.cpp MultipleChildWindow.h PdfBase.cpp PdfBase.h \
-	PdfPainter.cpp PdfPainter.h PdfTools.cpp PdfTools.h PrintoutSheetCreator.cpp \
+maitreya8_bin_SOURCES = ApplicationWindow.cpp ApplicationWindow.h BarDiagram.cpp BarDiagram.h \
+	BasicSheetWidget.cpp BasicSheetWidget.h BasicVedicChart.cpp BasicVedicChart.h BasicView.cpp \
+	BasicView.h BasicWesternChart.cpp BasicWesternChart.h BasicWidget.cpp BasicWidget.h \
+	ChartField.cpp ChartField.h ChildWindow.cpp ChildWindow.h ChildWindowListCtrl.cpp \
+	ChildWindowListCtrl.h DasaTreeWidget.cpp DasaTreeWidget.h Document.cpp Document.h \
+	GraphicalChart.cpp GraphicalChart.h GraphicGrid.cpp GraphicGrid.h guibase.cpp guibase.h \
+	MenuProvider.cpp MenuProvider.h MultipleChildWindow.cpp MultipleChildWindow.h PdfBase.cpp \
+	PdfBase.h PdfPainter.cpp PdfPainter.h PdfTools.cpp PdfTools.h PrintoutSheetCreator.cpp \
 	PrintoutSheetCreator.h SarvatobhadraChart.cpp SarvatobhadraChart.h SheetWidget.cpp \
 	SheetWidget.h SheetWriter.cpp SheetWriter.h SplitterWidget.cpp SplitterWidget.h \
-	Statusbar.cpp Statusbar.h ToolPanel.cpp ToolPanel.h TreeWidget.cpp TreeWidget.h \
-	VedicChart.cpp VedicChart.h VedicRasiChart.cpp VedicRasiChart.h WesternChart.cpp \
-	WesternChart.h YogaEditor.cpp YogaEditor.h
-
+	Statusbar.cpp Statusbar.h TextWidget.cpp TextWidget.h ToolPanel.cpp ToolPanel.h \
+	TreeWidget.cpp TreeWidget.h VedicChart.cpp VedicChart.h VedicRasiChart.cpp \
+	VedicRasiChart.h WesternChart.cpp WesternChart.h YogaEditor.cpp YogaEditor.h
 
 all-am: maitreya8
 

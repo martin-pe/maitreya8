@@ -46,7 +46,23 @@ create table timezones
 );
 drop index if exists timezones_name;
 create unique index timezones_name on timezones( name );
+drop index if exists timezones_country_code;
 create index timezones_country_code on timezones( country_code );
+
+-- Split Timezones
+drop table if exists stimezones;
+create table stimezones
+(
+	continent text,
+	city text,
+	country_code text,
+	offset real
+);
+drop index if exists stimezones_key;
+ create unique index stimezones_key on stimezones( continent, city );
+-- create index stimezones_key on stimezones( continent, city );
+drop index if exists stimezones_country_code;
+create index stimezones_country_code on stimezones( country_code );
 
 -- Feature Codes
 drop table if exists featurecodes;

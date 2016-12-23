@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _CHARTPROPERTIES_H_
@@ -61,7 +59,7 @@ public:
 
 	void setVedicObjectStyle( const OBJECT_INCLUDES &style )   { setObjectStyle( style, true ); }
 	void setWesternObjectStyle( const OBJECT_INCLUDES &style ) { setObjectStyle( style, false ); }
-	void setObjectStyle( const OBJECT_INCLUDES &style )        { setObjectStyle( style, vedic ); }
+	void setObjectStyle( const OBJECT_INCLUDES &style )        { setObjectStyle( style, isVedic() ); }
 
 	// graphic styles
 	VedicChartDisplayConfig &getVedicChartDisplayConfig() { return vgraphicstyle; }
@@ -81,7 +79,7 @@ public:
 	// skin for graphical charts
 	int getVedicSkin() const { return vgraphicstyle.graphicSkin; }
 	int getWesternSkin() const { return wgraphicstyle.graphicSkin; }
-	int getSkin() const { return vedic ? vgraphicstyle.graphicSkin : wgraphicstyle.graphicSkin; }
+	int getSkin() const { return isVedic() ? vgraphicstyle.graphicSkin : wgraphicstyle.graphicSkin; }
 
 	void setVedicSkin( const int &skin )   { vgraphicstyle.graphicSkin = skin ; }
 	void setWesternSkin( const int &skin )   { wgraphicstyle.graphicSkin = skin ; }
@@ -93,7 +91,7 @@ public:
 	void setWesternChartBehaviorConfig( const WesternChartBehaviorConfig &cfg ) { wchartconfig = cfg; }
 
 	void changeSkin( const bool &increment, const bool &vedic );
-	void changeSkin( const bool &increment ) { changeSkin( increment, vedic ); }
+	void changeSkin( const bool &increment ) { changeSkin( increment, isVedic() ); }
 	void processNavigationKey( const int& );
 
 	// planet lists
@@ -109,14 +107,14 @@ public:
 	ObjectFilter getObjectFilter() const { return filter; }
 	bool isFiltered() const { return filter.size() > 0; }
 
+	UranianConfig &getUranianConfig() { return uconfig; }
+	void setUranianConfig( const UranianConfig &ucfg ) { uconfig = ucfg; }
+
 	bool isAnimated() const { return animated; }
 	void setAnimated( const bool &b ) { animated = b; }
 
 	bool hasDocument() const { return isDocumentProp; }
 	void setHasDocument( const bool &b ) { isDocumentProp = b; }
-
-	bool isTransitmode() const { return transitmode; }
-	void setTransitmode( const bool &b ) { transitmode = b; }
 
 	bool dispatchWidgetPropertyCommand( const int& );
 
@@ -136,7 +134,6 @@ private:
 
 	bool animated;
 	bool isDocumentProp;
-	bool transitmode;
 
 	OBJECT_INCLUDES vobjectstyle, wobjectstyle;
 	VedicChartDisplayConfig vgraphicstyle;
@@ -148,6 +145,8 @@ private:
 	TAB_COLUMN_TYPE vcolumnstyle, wcolumnstyle;
 	ObjectArray vobjects, wobjects;
 	ObjectFilter filter;
+
+	UranianConfig uconfig;
 };
 
 

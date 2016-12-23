@@ -180,11 +180,17 @@ sub insert_timezones
 	$dbh->begin_work;
 	$dbh->do( "DELETE FROM timezones;" );
 	$dbh->commit;
+	$dbh->begin_work;
+	$dbh->do( "DELETE FROM stimezones;" );
+	$dbh->commit;
 
 	$dbh->begin_work;
 	my $statement = "INSERT INTO timezones values (?,?,?);";
 	# print "Statement: " . $statement . "\n";
 	my $sth = $dbh->prepare( $statement );
+
+	my $Sstatement = "INSERT INTO stimezones values (?,?,?,?);";
+	my $Ssth = $dbh->prepare( $Sstatement );
 
 	open FILE, "<$tzfile" or die "Kann Datei $tzfile nicht oeffnen\n";
 	while ( <FILE> )
@@ -194,11 +200,19 @@ sub insert_timezones
 		my ( $country, $name, $offset ) = split /\t/;
 		next if $count++ == 0;
 
-		# print "Name: " . $name . " offset " . $offset . "\n";
+		# print "Country " . $country  . " Name: " . $name . " offset " . $offset . "\n";
 		$sth->bind_param(1, $name );
 		$sth->bind_param(2, $country );
 		$sth->bind_param(3, $offset );
 		$sth->execute();
+
+		my ( $continent, $city ) = split /\//, $name;
+		# print "Continent " . $continent . " city " . $city . "\n";
+		$Ssth->bind_param(1, $continent );
+		$Ssth->bind_param(2, $city );
+		$Ssth->bind_param(3, $country );
+		$Ssth->bind_param(4, $offset );
+		$Ssth->execute();
 	}
 	$dbh->commit;
 

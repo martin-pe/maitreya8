@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "IdConverter.h"
@@ -108,6 +106,9 @@ BitmapId IdConverter::viewId2BitmapId( const VIEW_ID &viewId, const bool vedic, 
 	case VIEW_URANIAN:
 		return BM_URANIAN;
 		break;
+	case VIEW_URANIAN_CHART:
+		return BM_WCHART;
+		break;
 	case VIEW_GRAPHIC:
 	{
 		if ( vedic )
@@ -153,11 +154,9 @@ BitmapId IdConverter::viewId2BitmapId( const VIEW_ID &viewId, const bool vedic, 
 	case VIEW_ASHTAKAVARGA:
 		return BM_ASHTAKAVARGA;
 		break;
-#ifdef USE_SHADBALA
 	case VIEW_SHADBALA:
 		return BM_SHADBALA;
 		break;
-#endif
 	case VIEW_YOGA_EDITOR:
 		return BM_YOGAEDITOR;
 		break;
@@ -223,13 +222,9 @@ VIEW_ID IdConverter::commandId2ViewId( const int &command )
 	case CMD_NEW_VARGA:
 		viewId = VIEW_VARGA;
 		break;
-
-#ifdef USE_SHADBALA
 	case CMD_NEW_SHADBALA:
 		viewId = VIEW_SHADBALA;
 		break;
-#endif
-
 	case CMD_NEW_ASHTAKAVARGA:
 		viewId = VIEW_ASHTAKAVARGA;
 		break;
@@ -257,14 +252,12 @@ VIEW_ID IdConverter::commandId2ViewId( const int &command )
 	case CMD_NEW_WCHART:
 		viewId = VIEW_GRAPHIC;
 		break;
-#ifdef USE_URANIAN_CHART
 	case CMD_NEW_URANIAN:
 		viewId = VIEW_URANIAN;
 		break;
-	case CMD_NEW_URANIANCHART:
-		viewId = VIEW_GRAPHIC;
+	case CMD_NEW_URANIAN_CHART:
+		viewId = VIEW_URANIAN_CHART;
 		break;
-#endif
 	default:
 		if ( command >= CMD_NEW_RASI && command <= CMD_NEW_RASI+30 )
 		{
@@ -316,11 +309,12 @@ wxSize IdConverter::getSizeForViewId( const VIEW_ID &viewId, const bool &vedic )
 	case VIEW_DASA_COMPOSITE:
 		return config->viewprefs->sizes.sDasaCompositeWindow;
 		break;
-#ifdef USE_URANIAN_CHART
+	case VIEW_URANIAN_CHART:
+		return config->viewprefs->sizes.sUranianChartWindow;
+		break;
 	case VIEW_URANIAN:
 		return config->viewprefs->sizes.sUranianWindow;
 		break;
-#endif
 	case VIEW_HORA:
 		return config->viewprefs->sizes.sHoraWindow;
 		break;
@@ -339,13 +333,9 @@ wxSize IdConverter::getSizeForViewId( const VIEW_ID &viewId, const bool &vedic )
 	case VIEW_VARGA:
 		return config->viewprefs->sizes.sVargaSummaryWindow;
 		break;
-
-#ifdef USE_SHADBALA
 	case VIEW_SHADBALA:
 		return config->viewprefs->sizes.sShadbalaWindow;
 		break;
-#endif
-
 	case VIEW_YOGA_EDITOR:
 		return config->viewprefs->sizes.sYogaEditor;
 		break;
@@ -408,11 +398,12 @@ void IdConverter::setConfigSizeForViewId( const VIEW_ID &viewId, const wxSize &s
 	case VIEW_PRINT:
 		config->viewprefs->sizes.sPrintPreviewWindow = size;
 		break;
-#ifdef USE_URANIAN_CHART
+	case VIEW_URANIAN_CHART:
+		config->viewprefs->sizes.sUranianChartWindow = size;
+		break;
 	case VIEW_URANIAN:
 		config->viewprefs->sizes.sUranianWindow = size;
 		break;
-#endif
 	case VIEW_HORA:
 		config->viewprefs->sizes.sHoraWindow = size;
 		break;
@@ -431,13 +422,9 @@ void IdConverter::setConfigSizeForViewId( const VIEW_ID &viewId, const wxSize &s
 	case VIEW_VARGA:
 		config->viewprefs->sizes.sVargaSummaryWindow = size;
 		break;
-
-#ifdef USE_SHADBALA
 	case VIEW_SHADBALA:
 		config->viewprefs->sizes.sShadbalaWindow = size;
 		break;
-#endif
-
 	case VIEW_ASHTAKAVARGA:
 		config->viewprefs->sizes.sAshtakaVargaWindow = size;
 		break;

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "VedicChartConfig.h"
@@ -89,7 +87,7 @@ IMPLEMENT_SINGLETON( VedicChartConfigLoader )
 **
 ******************************************************/
 VedicChartConfigLoader::VedicChartConfigLoader()
-: ConfigListLoader<VedicChartConfig>( CFG_VEDICCHART, CrtGlobalFile )	
+: ConfigListLoader<VedicChartConfig>( CFG_VEDICCHART, CrtCombinedDir )	
 {
 }
 
@@ -111,7 +109,7 @@ void VedicChartConfigLoader::loadSingleConfig( wxJSONValue &v )
 		else wxLogError(
 			wxString::Format( wxT( "could not find base config for extension %s - using default configuration for that entry" ),
 			baseconfig.c_str()));
-		printf( "Found Extend relation: %s pointer is %ld\n", str2char( baseconfig ), (long)basecfg);
+		//printf( "Found Extend relation: %s pointer is %ld\n", str2char( baseconfig ), (long)basecfg);
 	}
 	if ( ! cfg ) cfg = new VedicChartConfig;
 
@@ -121,8 +119,8 @@ void VedicChartConfigLoader::loadSingleConfig( wxJSONValue &v )
 	if ( ! v[ CFG_BRUSH ].IsNull()) tool.readBrush( v[ CFG_BRUSH ], cfg->brush );
 	if ( ! v[ CFG_TEXTCOLOR ].IsNull()) cfg->textColor = wxColour( v[ CFG_TEXTCOLOR ].AsString());
 	if ( ! v[ CFG_OUTER_RECTANGLE ].IsNull()) tool.readRectangle( v[ CFG_OUTER_RECTANGLE ], cfg->outerRectangle );
-	if ( ! v[ CFG_FRAME_TYPE ].IsNull()) cfg->frameType = tool.readFrameType( v[ CFG_FRAME_TYPE ].AsString());
-	if ( ! v[ CFG_ZODIACALSIGNS ].IsNull()) tool.readZodiacalSigns( v[ CFG_ZODIACALSIGNS ], cfg->signs );
+	if ( ! v[ CFG_FRAME_TYPE ].IsNull()) tool.readFrameType( v[ CFG_FRAME_TYPE ], cfg->frameType );
+	if ( ! v[ CFG_SIGNS ].IsNull()) tool.readChartRing( v[ CFG_SIGNS ], cfg->signs );
 	if ( ! v[ CFG_MARKED_FIELDS ].IsNull()) tool.readRegion( v[ CFG_MARKED_FIELDS ], cfg->markedFields );
 
 	if ( ! v[ CFG_PALETTE ].IsNull()) cfg->palette = v[ CFG_PALETTE ].AsString();

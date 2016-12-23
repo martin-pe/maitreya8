@@ -7,24 +7,22 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 
 #ifndef _SHEETWIDGET_H_
 #define _SHEETWIDGET_H_
 
-#include "BasicWidget.h"
+#include "BasicSheetWidget.h"
 #include "FontProvider.h"
 #include "SheetWriter.h"
 
@@ -41,7 +39,7 @@ class WriterConfig;
 *  basic widget for sheet display, with a scrollable page
 *
 ******************************************************/
-class SheetWidget : public BasicWidget
+class SheetWidget : public BasicSheetWidget
 {
 	DECLARE_CLASS( SheetWidget )
 
@@ -52,32 +50,13 @@ public:
 	~SheetWidget();
 
 	virtual void OnDataChanged();
-	virtual void exportAs( const WidgetExportType& );
-
-	virtual int getWidgetOptions();
 
 	GenericSheetWriter *getWriter() const { return writer; }
-
-	Sheet *getSheet() const { return sheet; }
-
-	void clearSheet();
-
-	void enableFloatingLayout( const bool = true );
-
-	void setWriterConfig( WriterConfig* );
-	void setSheetConfig( SheetConfig* );
-	SheetConfig *getSheetConfig() const { return sheetcfg; }
 
 	void setCenterAll( const bool b = true ) { writer->setCenterAll( b ); }
 	void setMinXRight( const int &xr ) { minxright = xr; }
 
 protected:
-
-	WriterConfig *writercfg;
-	SheetConfig *sheetcfg;
-	ColorConfig *colorcfg;
-	Sheet *sheet;
-	bool sheetConfigOverride;
 
 	void paintPage( bool eraseBackground, MRect* refreshRect );
 	void calculateContentSize();
@@ -89,17 +68,14 @@ protected:
 	void initViewPort();
 	void updateSheetConfig();
 
-	// implementation from abstract method in BAsicWidget
+	// implementation of abstract method from BasicWidget
 	virtual void doPaint( const wxRect&, const bool eraseBackground = true );
-	void doPdfExport();
-	void doTextExport( const WidgetExportType& );
 
 	virtual void HandleMouseWheelEvent( wxMouseEvent& );
 
 	void OnChildCommand( wxCommandEvent& );
 
 	GenericSheetWriter *writer;
-	//Writer *
 
 	// total view size
 	int xviewport, yviewport;

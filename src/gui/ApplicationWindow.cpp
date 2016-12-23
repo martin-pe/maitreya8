@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "ApplicationWindow.h"
@@ -26,6 +24,7 @@
 #include <wx/cmdline.h>
 #include <wx/filedlg.h>
 #include <wx/filename.h>
+#include <wx/html/htmlwin.h>
 #include <wx/image.h>
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
@@ -144,7 +143,7 @@ bool MaitreyaApp::OnInit()
 	return true;
 }
 
-#define REPORT_KEY_EVENT
+//#define REPORT_KEY_EVENT
 
 /*****************************************************
 **
@@ -182,6 +181,14 @@ int MaitreyaApp::FilterEvent( wxEvent& event )
 #endif
 				doProcess = true;
 				//wantsArrowKeys = ((KeyEventObserver*)obj)->wantsArrowKeys();
+			}
+
+			if ( wxDynamicCast( obj, wxHtmlWindow ))
+			{
+#ifdef REPORT_KEY_EVENT
+				printf( "wxHtmlWindow\n" );
+#endif
+				doProcess = true;
 			}
 
 			// Workaround: wx3 click in ChildWindowListCtrl has wxListCtrl as source
@@ -276,6 +283,7 @@ ApplicationWindow::ApplicationWindow(const wxChar *title, const wxPoint &pos, co
 
 	docommands = true;
 
+	DocumentManager::get()->subscribe( this );
 
 	switch ( config->view->logMode )
 	{
@@ -311,7 +319,6 @@ ApplicationWindow::ApplicationWindow(const wxChar *title, const wxPoint &pos, co
 	if ( ! listctrl ) listctrl = new ChildWindowListCtrl( this, -1 );
 	SetIcon( ImageProvider::get()->getIcon( BM_MAITREYA  ));
 
-	docmanager = new DocumentManager;
 	menubar = new AppMenuBar( wxMB_DOCKABLE );
 	SetMenuBar( menubar );
 
@@ -348,8 +355,6 @@ ApplicationWindow::ApplicationWindow(const wxChar *title, const wxPoint &pos, co
 	Connect( wxID_ANY, CHILD_SETACTIVE, wxCommandEventHandler( ApplicationWindow::OnChildFocusEvent ));
 	Connect( wxID_ANY, CHILD_CLOSED, wxCommandEventHandler( ApplicationWindow::OnChildCloseEvent ));
 	Connect( wxID_ANY, CREATE_ENTRY_CHART, wxCommandEventHandler( ApplicationWindow::OnCreateEntryChart ));
-	Connect( wxID_ANY, DOC_SAVED, wxCommandEventHandler( ApplicationWindow::OnDocSavedEvent ));
-	Connect( wxID_ANY, DOC_UPDATED, wxCommandEventHandler( ApplicationWindow::OnDocUpdateEvent ));
 
 	Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( ApplicationWindow::OnClose ));
 	Connect( wxEVT_DROP_FILES, wxDropFilesEventHandler( ApplicationWindow::OnDropFilesEvent ));
@@ -367,7 +372,7 @@ ApplicationWindow::ApplicationWindow(const wxChar *title, const wxPoint &pos, co
 ******************************************************/
 ApplicationWindow::~ApplicationWindow()
 {
-	delete docmanager;
+	DocumentManager::get()->unsubscribe( this );
 	//delete config;
 }
 
@@ -459,6 +464,7 @@ void ApplicationWindow::OnChildClose( ChildWindow *child )
 {
 	listctrl->deleteEntry( child );
 	Document *doc = child->getDoc();
+	DocumentManager *docmanager = DocumentManager::get();
 
 	//printf( "ApplicationWindow::OnChildClose\n" );
 
@@ -476,7 +482,7 @@ void ApplicationWindow::OnChildClose( ChildWindow *child )
 void ApplicationWindow::OnFileNew( wxCommandEvent &event )
 {
 	int viewId = -1;
-	printf( "File NEW id %d viewID %d\n", event.GetId(), event.GetId() - APP_NEW_MULTIPLE - 1);
+	printf( "File NEW id %d viewID %d\n", event.GetId(), event.GetId() - APP_NEW_MULTIPLE );
 
 	bool useMultipleView = config->multipleView->useMultipleViews;
 	switch ( event.GetId() )
@@ -502,7 +508,8 @@ void ApplicationWindow::OnFileNew( wxCommandEvent &event )
 	default:
 		useMultipleView = true;
 		
-		viewId = event.GetId() - APP_NEW_MULTIPLE - 1;
+		//printf( "ApplicationWindow::OnFileNew NEW Default\n" );
+		viewId = event.GetId() - APP_NEW_MULTIPLE;
 		break;
 	}
 	NewFile( useMultipleView, viewId );
@@ -516,6 +523,8 @@ void ApplicationWindow::OnFileNew( wxCommandEvent &event )
 void ApplicationWindow::NewFile( const bool &useMultipleView, const int viewId )
 {
 	ChildWindowFactory factory;
+	DocumentManager *docmanager = DocumentManager::get();
+
 	Document *doc = new Document();
 	doc->update();
 	docmanager->addDoc( doc );
@@ -579,6 +588,8 @@ bool ApplicationWindow::OpenFile( wxString filename )
 ******************************************************/
 void ApplicationWindow::CreateNewChild( Document *doc )
 {
+	DocumentManager *docmanager = DocumentManager::get();
+
 	doc->update();
 	docmanager->addDoc( doc );
 	ChildWindow *child = ChildWindowFactory().createMainWindow( this, doc, config->multipleView->useMultipleViews, -1 );
@@ -629,7 +640,7 @@ void ApplicationWindow::OnNewChild( wxCommandEvent &event )
 	switch ( event.GetId() )
 	{
 	case APP_PARTNER:
-		child = factory.createPartnerWindow( this, docmanager );
+		child = factory.createPartnerWindow( this );
 		break;
 	default:
 		child = factory.createChild( this, 0, event.GetId() );
@@ -674,12 +685,8 @@ void ApplicationWindow::OnChildCommand( wxCommandEvent &event )
 		        ( id == CMD_NEW_TEXT || id == CMD_NEW_TRANSIT || id == CMD_NEW_SBC || id == CMD_NEW_SOLAR
 		          || id == CMD_NEW_YOGA || id == CMD_NEW_GRAPHICALDASA
 							|| id == CMD_NEW_DASA_TREE || id == CMD_NEW_DASA_COMPOSITE
-							|| id == CMD_NEW_WCHART || id == CMD_NEW_VARGA
-#ifdef USE_URANIAN_CHART
-		          || id == CMD_NEW_URANIAN
-							|| id == CMD_NEW_URANIANCHART
-#endif
-							|| id == CMD_NEW_MAINVIEW || id >= CMD_NEW_RASI )) return;
+							|| id == CMD_NEW_WCHART || id == CMD_NEW_VARGA || id == CMD_NEW_URANIAN
+							|| id == CMD_NEW_URANIAN_CHART || id == CMD_NEW_MAINVIEW || id >= CMD_NEW_RASI )) return;
 
 		// may be done now
 		addChild( ChildWindowFactory().createChild( this, child->getDoc(), id ));
@@ -714,7 +721,7 @@ void ApplicationWindow::OnClose( wxCloseEvent& )
 {
 	wxLogMessage( wxT( "Start ApplicationWindow::OnClose" ));
 	long i;
-	Document *doc;
+	DocumentManager *docmanager = DocumentManager::get();
 
 	updateTools = true;
 	if ( config->askOnQuit )
@@ -723,17 +730,15 @@ void ApplicationWindow::OnClose( wxCloseEvent& )
 	}
 	wxLogMessage( wxT( "ApplicationWindow::OnClose -- Closing" ));
 
-	for ( i = 0; i < docmanager->getNbDocuments(); i++ )
+	if ( docmanager->queryClose())
 	{
-		doc = docmanager->getDocument( i );
-		if ( ! doc->queryClose() ) return;
+		for ( i = 0; i < listctrl->getNumberOfEntries(); i++ )
+		{
+			if ( ! listctrl->getChild( i )->Close()) return;
+		}
+		prepareSaveConfig();
+		Destroy();
 	}
-	for ( i = 0; i < listctrl->getNumberOfEntries(); i++ )
-	{
-		if ( ! listctrl->getChild( i )->Close()) return;
-	}
-	prepareSaveConfig();
-	Destroy();
 }
 
 /*****************************************************
@@ -927,19 +932,10 @@ void ApplicationWindow::OnDropFilesEvent( wxDropFilesEvent &event )
 void ApplicationWindow::OnConfigChanged( wxCommandEvent& )
 {
 	wxLogMessage( wxT( "ApplicationWindow::OnConfigChanged" ));
-	Document *doc;
 
-	//wxString oldcfg = config->mainToolbarItems;
-	//wxString tb = config->mainToolbarItems;
-	for ( int i = 0; i < docmanager->getNbDocuments(); i++ )
-	{
-		doc = docmanager->getDocument( i );
-		if ( doc )
-		{
-			doc->update();
-			doc->updateAllChildWindows();
-		}
-	}
+	DocumentManager *docmanager = DocumentManager::get();
+	docmanager->updateDocsAndChildren();
+
 	listctrl->onConfigChanged();
 	if ( config->viewprefs->showStatusBar )
 		((MainWindowStatusbar*)GetStatusBar())->StartPlanetTimer( config->view->showStatusInfo );
@@ -997,25 +993,19 @@ void ApplicationWindow::OnListItemSelected( wxListEvent& event )
 
 /*****************************************************
 **
-**   ApplicationWindow   ---   OnDocSavedEvent
+**   ApplicationWindow   ---   DocumentListener im implementations
 **
 ******************************************************/
-void ApplicationWindow::OnDocSavedEvent( wxCommandEvent &event )
+void ApplicationWindow::notifyDocumentChanged( Document* )
 {
-	Document *doc = (Document*)event.GetEventObject();
-	menubar->addToRecentFiles( ((FileDataSet*)doc->getDataSet())->getFilename() );
+	listctrl->updateItemLabels();
 	updateTools = true;
 }
 
-/*****************************************************
-**
-**   ApplicationWindow   ---   OnDocUpdateEvent
-**
-******************************************************/
-void ApplicationWindow::OnDocUpdateEvent( wxCommandEvent& )
+void ApplicationWindow::notifyDocumentSaved( Document *doc )
 {
-	printf( "RECEIVED EVENT DOC UPDATED\n" );
-	listctrl->updateItemLabels();
+	printf( "ApplicationWindow::notifyDocumentSaved\n" );
+	menubar->addToRecentFiles( ((FileDataSet*)doc->getDataSet())->getFilename() );
 	updateTools = true;
 }
 

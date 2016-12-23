@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "SheetWriter.h"
@@ -40,7 +38,7 @@ extern Config *config;
 // extra y factors for line breaks
 #define Y_EXTRA_LINE 0
 #define Y_EXTRA_PARAGRAPH .5
-#define Y_EXTRA_HEADER 1.2
+#define Y_EXTRA_HEADER 1.5
 
 IMPLEMENT_CLASS( GenericSheetWriter, wxObject )
 IMPLEMENT_CLASS( DcSheetWriter, GenericSheetWriter )
@@ -57,9 +55,9 @@ GenericSheetWriter::GenericSheetWriter( Sheet *sheet, SheetConfig *sheetcfg, Wri
 	colorcfg( colorcfg )
 {
 	cornerRadius = 0;
+	pageSize = MPoint( 100, 100 );
 
 	// general config
-	doFloatingLayout = true;
 	doCenterAll = false;
 	doUniformScaling = false;
 }
@@ -84,9 +82,6 @@ void GenericSheetWriter::preformat( Painter *painter, const double &xrm  )
 	xrightmax = xrm;
 
 	//printf( "GenericSheetWriter::preformat xrightmax %f item count %d\n", xrightmax, sheet->items.size() );
-	FontProvider *fc = FontProvider::get();
-	FONT_ID fontid;
-	double h, lineheight;
 
 #ifdef SHOW_STOP_WATCH
 	const wxLongLong starttime = wxGetLocalTimeMillis();
@@ -104,198 +99,296 @@ void GenericSheetWriter::preformat( Painter *painter, const double &xrm  )
 	*
 	*  sheetRect: not used here
 	*
-	* Schritte;
-	*  - Nur die Breiten formatieren
-	*  - Die Breiten der Widget kommen nach den Tables und TextItems (mit Höhe), dann sind all Rects komplett bis auf y
-	*  - Die Rects umfassen nur y=0
-	*  - Höhen im zweiten Schritt
-	*  - Seitenümbrüche nicht vergessen
-	*  
-	*  
-	*  
 	*/
 
 	xSizeContents = 0;
 	//xSizeContents = xrightmax;
 	contentRect.width = xrightmax;
-	numcols = 1;
-
-	// 1st step: determine width of tables and text items
+	ycursor = contentRect.y;
 	for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 	{
-		SheetItem *item = *iter;
-		switch( item->type )
-		{
-			case WiTable:
-				preformatTable( painter, (Table*)item );
-			break;
-			case WiText:
-			{
-				SheetTextItem *ti = (SheetTextItem*)item;
-				fontid = getFontIdForItem( ti->subtype );
-				painter->setFont( *fc->getFont( fontid ));
-
-				SheetFormatter ffmt;
-				formatMString( painter, ti->tf, xrightmax );
-				const uint linecount = ti->tf.formattedLines.size();
-
-				xSizeContents = Max( ti->tf.size.real(), xSizeContents );
-				h = ti->tf.size.imag();
-
-				lineheight = h;
-				if ( linecount > 1 )
-				{
-					lineheight /= linecount;
-				}
-
-				//printf( "h %f Linehight %f linecount %d\n", h, lineheight, linecount );
-
-				switch( ti->subtype )
-				{
-					case WitHeader:
-						h += lineheight * Y_EXTRA_HEADER;
-					break;
-					case WitParagraph:
-						h += lineheight * Y_EXTRA_PARAGRAPH;
-					break;
-					case WitLine:
-						h += lineheight * Y_EXTRA_LINE;
-					break;
-					default:
-						printf( "invalid text item subtype %d\n", ti->subtype );
-						assert( false );
-					break;
-				}
-				//printf( "Item type %d xsize now %f\n", (int)ti->type, xSizeContents );
-				item->rect = MRect( contentRect.x, 0, ti->tf.size.real(), h );
-			}
-			break;
-			case WiWidget:
-			{
-				SheetWidgetItem *w = (SheetWidgetItem*)(*iter);
-				//printf( "WIDGET contentRect.width %f contentRect.height %f xSizeContents %f\n",
-					//contentRect.width, contentRect.height, xSizeContents );
-				w->preformat();
-
-				// check if xmin is set. widget must have this minimal width
-				double ww = w->xmin ? w->xmin : contentRect.width;
-				xSizeContents = Max( ww, xSizeContents );
-
-				// y may be fixed if yfixed is set. otherwise it will be calculated from x and ratio
-				double yy = w->yfixed ? w->yfixed : ww * w->ratio;
-				w->rect = wxRect( contentRect.x, 0, ww, yy );
-			}
-			break;
-			default:
-			break;
-		}
+		preformatItem( painter, *iter );
+		(*iter)->moveTo( contentRect.x, ycursor );
+		ycursor += (*iter)->rect.height;
+		ycursor += table_widget_extra_y;
 	}
 
-	// 3rd step format items in floating layout mode
-	if ( sheet->items.size() > 1 && doFloatingLayout )
-	{
-		if ( xSizeContents > 0 && contentRect.width >= 2 * xSizeContents )
-		{
-			numcols = (int)( contentRect.width / xSizeContents );
-		}
-		if ( numcols > 1 )
-		{
-			const double colwidth = contentRect.width / numcols;
-			//printf( "COLS: %d xSizeContents %f contentRect.width %f xrightmax %fcolwidth %f\n",
-				//numcols, xSizeContents, contentRect.width, xrightmax, colwidth );
-
-			ycursor = contentRect.y;
-			int currentcol = 0;
-			double groupMaxHeight = 0;
-			for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
-			{
-				SheetItem *item = *iter;
-				item->rect.y = ycursor;
-				item->rect.x = contentRect.x + currentcol * colwidth;
-				//printf( "COLS %f\n", item->rect.x );
-
-				// some widget items can be enlarged
-				if ( item->type == WiWidget )
-				{
-					if ( item->rect.width < colwidth )
-					{
-						SheetWidgetItem *wi = (SheetWidgetItem*)item;
-						item->rect.width = Min( wi->xmax, colwidth );
-						item->rect.height = wi->ratio * item->rect.width;
-					}
-				}
-				// tables must reformat subitem rectangles
-				else if ( item->type == WiTable )
-				{
-					Table *table = (Table*)item;
-					table->calculateSubitemRectangles();
-				}
-
-				groupMaxHeight = Max( groupMaxHeight, item->rect.height );
-
-				currentcol++;
-				if ( currentcol >= numcols )
-				{
-					ycursor += groupMaxHeight;
-					ycursor += table_widget_extra_y;
-					groupMaxHeight = 0;
-					currentcol = 0;
-				}
-			}
-
-			// add y space if a non empty row still exists
-			if ( groupMaxHeight > 0 )
-			{
-				ycursor += groupMaxHeight;
-				ycursor += table_widget_extra_y;
-			}
-		}
-	}
-
-	// final formatting if floating layout is disabled or multi column mot possible
-	if ( numcols == 1 )
-	{
-		// 4th step: height and center, if required
-		for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
-		{
-			SheetItem *item = *iter;
-			ycursor += item->rect.height;
-
-			//if ( doCenterAll )
-			if ( doCenterAll && ( item->type == WiTable || item->type == WiWidget ) )
-			{
-				item->rect.x += .5 * xrightmax - .5 * item->rect.width;
-			}
-		}
-
-		// 5th step: set rect.y values
-		ycursor = contentRect.y;
-		for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
-		{
-			SheetItem *item = *iter;
-			item->rect.y = ycursor;
-			if ( item->type == WiTable )
-			{
-				ycursor += item->rect.height + table_widget_extra_y;
-				Table *table = (Table*)item;
-				table->calculateSubitemRectangles();
-			}
-			else if ( item->type == WiText )
-			{
-				ycursor += item->rect.height; // + table_widget_extra_y;
-			}
-			else if ( item->type == WiWidget )
-			{
-				ycursor += item->rect.height;
-			}
-			else assert( false );
-		}
-	}
+	if ( doCenterAll ) sheet->centerItems();
 
 #ifdef SHOW_STOP_WATCH
 	const wxLongLong totaltime = wxGetLocalTimeMillis() - starttime;
 	wxLogMessage( wxString::Format( wxT( "GenericSheetWriter::preformat in %ld millisec" ), totaltime.ToLong() ));
 #endif
+}
+
+/*****************************************************
+**
+**   GenericSheetWriter   ---   preformatItem
+**
+******************************************************/
+void GenericSheetWriter::preformatItem( Painter *painter, SheetItem *item )
+{
+	wxLogMessage( wxT( "START GenericSheetWriter::preformatItem type %d" ), item->type );
+	FontProvider *fc = FontProvider::get();
+	FONT_ID fontid;
+	double h, lineheight;
+
+	switch( item->type )
+	{
+		case WiTable:
+		{
+			Table *table = wxDynamicCast( item, Table );
+			assert( table );
+			preformatTable( painter, table );
+		}
+		break;
+		case WiWidgetGrid:
+		{
+			SheetWidgetGrid *grid = wxDynamicCast( item, SheetWidgetGrid );
+			assert( grid );
+			preformatWidgetGrid( painter, grid );
+		}
+		break;
+		case WiColumnSet:
+		{
+			SheetColumnSet *colset = wxDynamicCast( item, SheetColumnSet );
+			assert( colset );
+			preformatColset( painter, colset );
+		}
+		break;
+		case WiRowSet:
+		{
+			SheetRowSet *rowset = wxDynamicCast( item, SheetRowSet );
+			assert( rowset );
+			preformatRowset( painter, rowset );
+		}
+		break;
+		case WiText:
+		{
+			SheetTextItem *ti = (SheetTextItem*)item;
+			fontid = getFontIdForItem( ti->subtype );
+			painter->setFont( *fc->getFont( fontid ));
+
+			SheetFormatter ffmt;
+			formatMString( painter, ti->tf, xrightmax );
+			const uint linecount = ti->tf.formattedLines.size();
+
+			xSizeContents = Max( ti->tf.size.real(), xSizeContents );
+			h = ti->tf.size.imag();
+
+			lineheight = h;
+			if ( linecount > 1 )
+			{
+				lineheight /= linecount;
+			}
+
+			//printf( "h %f Linehight %f linecount %d\n", h, lineheight, linecount );
+
+			switch( ti->subtype )
+			{
+				case WitHeader:
+					h += lineheight * Y_EXTRA_HEADER;
+				break;
+				case WitParagraph:
+					h += lineheight * Y_EXTRA_PARAGRAPH;
+				break;
+				case WitLine:
+					h += lineheight * Y_EXTRA_LINE;
+				break;
+				default:
+					printf( "invalid text item subtype %d\n", ti->subtype );
+					assert( false );
+				break;
+			}
+			//printf( "Item type %d xsize now %f\n", (int)ti->type, xSizeContents );
+			item->rect = MRect( contentRect.x, ycursor, ti->tf.size.real(), h );
+		}
+		break;
+		case WiWidget:
+			printf( "GenericSheetWriter::preformat WiWidget not allowed here. Use container\n" );
+			//assert( false );
+		break;
+		default:
+			printf( "GenericSheetWriter::preformat invalid type %d\n", item->type );
+			assert( false );
+		break;
+	}
+	//printf( "ENDE GenericSheetWriter::preformatItem type %d\n", item->type );
+}
+
+/*****************************************************
+**
+**   GenericSheetWriter   ---   preformatRowset
+**
+******************************************************/
+void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset )
+{
+	printf( "GenericSheetWriter::preformatRowset\n" );
+	double xmax = pageSize.real() - 2 * contentRect.x;
+	double ymax = pageSize.imag() - 2 * contentRect.y;
+	double y0 = ycursor;
+
+	rowset->rect = MRect( contentRect.x, ycursor, xmax, ymax + 1 );
+	int shrinkrate = 0;
+
+	while ( shrinkrate < 10 && rowset->rect.height > ymax )
+	{
+		y0 = ycursor;
+		for( list<SheetItem*>::iterator iter = rowset->sheet->items.begin(); iter != rowset->sheet->items.end(); iter++ )
+		{
+			SheetItem *item = (SheetItem*)(*iter);
+			//printf( "GenericSheetWriter::preformatRowset GOTO item, type is %d\n", item->type );
+			item->shrinkrate = shrinkrate;
+			preformatItem( painter, item );
+			item->moveTo( contentRect.x, y0 );
+			y0 += item->rect.height;
+		}
+
+		rowset->rect.height = y0 - ycursor;
+		shrinkrate++;
+		//printf( "GenericSheetWriter::preformatRowset after loop rect height %f ymax %f\n", rowset->rect.height, ymax );
+	}
+
+	// arrange vertically
+	y0 = rowset->rect.y + .5 * ( ymax - rowset->rect.height );
+	//printf( "GenericSheetWriter::preformatRowset arrange rect height %f ymax %f y0 %f\n", rowset->rect.height, ymax, y0 );
+	for( list<SheetItem*>::iterator iter = rowset->sheet->items.begin(); iter != rowset->sheet->items.end(); iter++ )
+	{
+		(*iter)->moveTo( (*iter)->rect.x, y0 );
+		y0 += (*iter)->rect.height;
+		//printf( "GenericSheetWriter::preformatRowset after arrange ITEM rect x %f y %f\n", (*iter)->rect.x, (*iter)->rect.y );
+	}
+
+	if ( doCenterAll ) rowset->sheet->centerItems();
+}
+
+/*****************************************************
+**
+**   GenericSheetWriter   ---   preformatColset
+**
+******************************************************/
+void GenericSheetWriter::preformatColset( Painter *painter, SheetColumnSet *colset )
+{
+	printf( "GenericSheetWriter::preformatColset\n" );
+
+	double xmax = pageSize.real() - 2 * contentRect.x;
+	//double ymax = pageSize.imag() - 2 * contentRect.y;
+
+	colset->rect = MRect( contentRect.x, ycursor, xmax, 0 );
+
+	double maxh = 0;
+	double sumx = xrightmax + 1;
+	int shrinkrate = colset->shrinkrate;
+
+	while( sumx > xrightmax && shrinkrate < 10 )
+	{
+		maxh = 0;
+		sumx = 0;
+		for( list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
+		{
+			SheetItem *item = (SheetItem*)(*iter);
+			assert( item );
+			item->shrinkrate = shrinkrate;
+			preformatItem( painter, item );
+			maxh = Max( maxh, item->rect.height );
+			sumx += item->rect.width;
+
+			//item->moveTo( MPoint( currentx, colset->rect.y ));
+			//currentx += xrightmax / colset->getSize();
+		}
+		shrinkrate++;
+		if ( sumx > xrightmax )
+		{
+			printf( "WARN: table ist too large sumx %f contentRect.x %f xrightmax %f, shrinkrate %d\n", sumx, contentRect.x, xrightmax, shrinkrate );
+		}
+	}
+
+	colset->rect.height = maxh + table_widget_extra_y;
+	double diff = 0;
+	if ( colset->getSize() > 1 ) diff = ( colset->rect.width - sumx ) / ( colset->getSize() - 1 );
+
+	//double newx = contentRect.x + .5 * diff;
+	double newx = contentRect.x + .5 * ( colset->rect.width - sumx - ( colset->getSize() - 1 ) * table_widget_extra_y );
+
+	for( list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
+	{
+		//printf( "Adjust table old x %f diff %f newx %f\n", (*iter)->rect.x, diff, (*iter)->rect.x + diff );
+		(*iter)->moveTo( newx, colset->rect.y );
+		newx += (*iter)->rect.width + table_widget_extra_y;
+	}
+
+	// debug output
+	/*
+  for( list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
+	{
+		printf( "finale colset rect x %f y %f w %f h %f\n", 
+			(*iter)->rect.x, (*iter)->rect.y, (*iter)->rect.width, (*iter)->rect.height );
+	}
+	*/
+	//ycursor += colset->rect.height;
+}
+
+/*****************************************************
+**
+**   GenericSheetWriter   ---   preformatWidgetGrid
+**
+******************************************************/
+void GenericSheetWriter::preformatWidgetGrid( Painter* /*painter*/, SheetWidgetGrid *grid )
+{
+	printf( "GenericSheetWriter::preformatWidgetGrid\n" );
+
+	double width = pageSize.real() - 2 * contentRect.x;
+	width = Max( grid->wmin, width );
+	if ( grid->wmax > 0 ) width = Min( grid->wmax, width );
+
+	double height = grid->x2yratio ? width * grid->x2yratio : pageSize.imag() - 2 * contentRect.y;
+	height = Max( grid->hmin, height );
+	if ( grid->hmax > 0 ) height = Min( grid->hmax, height );
+
+	grid->rect = MRect( contentRect.x, ycursor, width, height );
+	//printf( "widget grid rect x %f y %f w %f h %f\n", grid->rect.x, grid->rect.y, grid->rect.width, grid->rect.height );
+
+	double x0 = grid->rect.x;
+  double y0 = grid->rect.y;
+
+	assert( grid->nb_cols > 0 );
+	const double c_width = width / grid->nb_cols;
+	int rows = (int)(grid->sheet->items.size() / grid->nb_cols);
+	if ( grid->sheet->items.size() %  grid->nb_cols ) rows++;
+
+
+	const double r_height = height / rows;
+	printf( "GenericSheetWriter::preformatWidgetGrid grid size %ld rows %d r_height %f\n", grid->sheet->items.size(), rows, r_height );
+	//const double r_height = height / grid->nb_rows;
+  uint c = 0;
+  uint r = 0;
+
+  for( list<SheetItem*>::iterator iter = grid->sheet->items.begin(); iter != grid->sheet->items.end(); iter++ )
+	{
+		SheetWidgetItem *item = (SheetWidgetItem*)*iter;
+    item->rect.x = x0;
+		item->rect.width = c_width;
+		x0 += c_width;
+
+    item->rect.y = y0;
+    if ( ++c == grid->nb_cols )
+    {
+      c = 0;
+      x0 = grid->rect.x;
+      y0 += r_height;
+      r++;
+    }
+		item->rect.height = r_height;
+	}
+
+	/*
+  for( list<SheetItem*>::iterator iter = grid->sheet->items.begin(); iter != grid->sheet->items.end(); iter++ )
+	{
+		printf( "finale widget grid rect x %f y %f w %f h %f\n", 
+			(*iter)->rect.x, (*iter)->rect.y, (*iter)->rect.width, (*iter)->rect.height );
+	}
+	*/
+	//ycursor += grid->rect.height;
 }
 
 /*****************************************************
@@ -319,13 +412,14 @@ void GenericSheetWriter::preformatTable( Painter *painter, Table *table )
 
 	if ( ! table->header.isEmpty())
 	{
-		painter->setFont( *fc->getFont( getFontIdForItem( WitHeader )));
+		painter->setFont( *fc->getFont( getFontIdForItem( WitHeader ), -table->shrinkrate ));
 		p = painter->getTextExtent( table->header.tf );
+
 		xSizeContents = Max( p.real(), xSizeContents );
 		table->header.rect.height = Y_EXTRA_HEADER * p.imag();
 
-		wxFont fff = *fc->getFont( getFontIdForItem( WitHeader ));
-		printf( "HEADER size %f size %d\n", p.imag(), fff.GetPointSize());
+		//wxFont fff = *fc->getFont( getFontIdForItem( WitHeader ));
+		//printf( "HEADER size %f size %d\n", p.imag(), fff.GetPointSize());
 	}
 	table->rect = MRect( contentRect.x, 0, 0, table->header.rect.height );
 	double singleLineTotalWidth = 0;
@@ -345,12 +439,12 @@ void GenericSheetWriter::preformatTable( Painter *painter, Table *table )
 			for ( uint row = 0; row < table->getNbRows(); row++ )
 			{
 				e = &table->contents[row].value[col];
-				painter->setFont( *fc->getFont( getFontIdForItem( e->isHeader ? WitTableHeader : WitTableCell )));
+				painter->setFont( *fc->getFont( getFontIdForItem( e->isHeader ? WitTableHeader : WitTableCell ), -table->shrinkrate ));
 				formatMString( painter, e->text );
 
 				textAmountPerCol[col] += e->text.size.real();
-
 				table->col_width[col] = Max( table->col_width[col], e->text.size.real() + table_cell_delta_x );
+
 				table->contents[row].rect.height = Max( table->contents[row].rect.height, e->text.size.imag() + table_cell_delta_y );
 				maxrowheight = Max( maxrowheight, table->contents[row].rect.height );
 			}
@@ -439,15 +533,15 @@ void GenericSheetWriter::preformatTable( Painter *painter, Table *table )
 			{
 				assert( yvol > 0 );
 				double shrinktarget = singleLineTotalWidth - xrightmax;
-				const double shrinkrate = 1 - shrinktarget / yvol;
+				const double aa = 1 + shrinktarget / yvol;
 				//printf( "Shrink target %f shrinkrate %f\n", shrinktarget, shrinkrate );
 
 				for ( uint col = 0; col < table->getNbCols(); col++ )
 				{
 					if ( table->col_break[col] )
 					{
-						//printf( "COL %d YES target value calculated %f\n", col, table->col_width[col] * shrinkrate );
-						table->col_width[col] = Max( table->col_width[col] * shrinkrate, 200 ); 
+						//printf( "COL %d YES target value calculated %f\n", col, table->col_width[col] * aa );
+						table->col_width[col] = Max( table->col_width[col] * aa, 200 ); 
 						for( uint row = 0; row < table->getNbRows(); row++ )
 						{
 							e = &table->contents[row].value[col];
@@ -509,8 +603,6 @@ void GenericSheetWriter::drawSheet( Painter *painter, const MRect &refreshRect, 
 	const wxLongLong starttime = wxGetLocalTimeMillis();
 #endif
 
-	FontProvider *fc = FontProvider::get();
-	FONT_ID fontid;
 	//printf( "GenericSheetWriter::paintPage contentRect.x %f contentRect.y %f wirter has %lu items\n",
 		//contentRect.x, contentRect.y, sheet->items.size() );
 
@@ -520,47 +612,71 @@ void GenericSheetWriter::drawSheet( Painter *painter, const MRect &refreshRect, 
 		assert( item );
 
 		handlePageBreak( item );
-
-		switch( item->type )
-		{
-			case WiTable:
-				if  ( refreshRect.intersects( item->rect ))
-				{
-					drawTable( painter, (Table*)item, refreshRect );
-				}
-			break;
-			case WiWidget:
-			{
-				SheetWidgetItem *wi = (SheetWidgetItem*)item;
-				wi->doPaint( painter, refreshRect );
-			}
-			break;
-			case WiText:
-			{
-				SheetTextItem *ti = (SheetTextItem*)item;
-				if ( ti->hasMarkup() )
-				{
-					painter->setBrush( sheetcfg->selectedItemBrush );
-					painter->drawRectangle( ti->rect );
-				}
-
-				// draw text item
-				fontid = getFontIdForItem( ti->subtype );
-				painter->setFont( *fc->getFont( fontid ));
-				painter->setTextColor( sheetcfg->textColor );
-				painter->drawMString( ti->rect, ti->tf, Align::Left | Align::Top );
-			}
-			break;
-			default:
-				printf( "Wrong writer item type %d\n", (int)item->type );
-				assert( false );
-			break;
-		}
+		drawItem( painter, item, refreshRect );
 	}
 #ifdef SHOW_STOP_WATCH
 	const wxLongLong totaltime = wxGetLocalTimeMillis() - starttime;
 	wxLogMessage( wxString::Format( wxT( "GenericSheetWriter::drawSheet in %ld millisec" ), totaltime.ToLong() ));
 #endif
+}
+
+/*****************************************************
+**
+**   GenericSheetWriter   ---   drawItem
+**
+******************************************************/
+void GenericSheetWriter::drawItem( Painter *painter, SheetItem *item, const MRect &refreshRect )
+{
+	assert( painter );
+	assert( item );
+
+	if  ( ! refreshRect.intersects( item->rect )) return;
+
+	FontProvider *fc = FontProvider::get();
+	FONT_ID fontid;
+
+	switch( item->type )
+	{
+		case WiTable:
+			drawTable( painter, (Table*)item, refreshRect );
+		break;
+		case WiWidget:
+		{
+			SheetWidgetItem *wi = (SheetWidgetItem*)item;
+			wi->doPaint( painter, refreshRect );
+		}
+		break;
+		case WiColumnSet:
+		case WiWidgetGrid:
+		case WiRowSet:
+		{
+			printf( "CONTAINER ITEM TYPE %d row set %d\n", item->type, WiRowSet );
+			SheetItemContainer *container = wxDynamicCast( item, SheetItemContainer );
+			assert( container );
+			for( list<SheetItem*>::iterator iter = container->sheet->items.begin(); iter != container->sheet->items.end(); iter++ )
+			{
+				painter->setPen( *wxGREEN_PEN );
+				painter->drawRectangle( (*iter)->rect );
+				drawItem( painter, *iter, refreshRect );
+			}
+		}
+		break;
+		case WiText:
+		{
+			SheetTextItem *ti = (SheetTextItem*)item;
+
+			// draw text item
+			fontid = getFontIdForItem( ti->subtype );
+			painter->setFont( *fc->getFont( fontid ));
+			painter->setTextColor( config->colors->fgColor );
+			painter->drawMString( ti->rect, ti->tf, Align::Left | Align::Top );
+		}
+		break;
+		default:
+			printf( "Wrong writer item type %d\n", (int)item->type );
+			assert( false );
+		break;
+	}
 }
 
 /*****************************************************
@@ -578,21 +694,18 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 	double x0, y0;
 	TableEntry *e;
 	FontProvider *fc = FontProvider::get();
-
-	//TableStyle *style = sheetcfg->tablestle;
-	//assert( style );
-
 	MRect tableRect = table->rect;
 
 	/*
 	 * Table header
 	*/
-	painter->setTextColor( sheetcfg->textColor );
+	painter->setTextColor( config->colors->fgColor );
 	if ( ! table->header.isEmpty())
 	{
-		painter->setFont( *fc->getFont( getFontIdForItem( WitHeader )));
+		painter->setFont( *fc->getFont( getFontIdForItem( WitHeader ), -table->shrinkrate ));
 		drawRect = table->rect;
 		drawRect.height = table->header.rect.height;
+		painter->drawRectangle( drawRect );
 
 		tableRect.y += table->header.rect.height;
 		tableRect.height -= table->header.rect.height;
@@ -600,19 +713,9 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 
 		if ( drawRect.intersects( refreshRect ))
 		{
-			SheetFormatter fmt;
-
-			if ( sheetcfg->selectionMode != 0 && table->markedItem == &table->header )
-			{
-				// dummy frame TODO delete or uncomment
-				//painter->setPen( wxPen( *wxCYAN, 1 ));
-
-				painter->setBrush( sheetcfg->selectedItemBrush );
-				painter->drawRectangle( drawRect );
-			}
 			painter->drawMString( drawRect, table->header.tf, Align::Center );
 		}
-		contentRect.y += table->header.rect.height;
+		//contentRect.y += table->header.rect.height;
 	}
 
 	// calculate the table frames depending on empty colums
@@ -625,29 +728,27 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 		// width of individual table frame
 		double xgw = 0;
 		uint c = 0;
+		//double hsegment = 0;
 		while( c < table->getNbCols())
 		{
 			if ( table->isEmptyCol( c ))
 			{
+				// TODO maximale höhe ausrechnen pro Segment
 				tableframes.push_back( MRect( xg0, tableRect.y, xgw, tableRect.height ));
 				xg0 = xg0 + xgw + table_empty_col_width;
 				xgw = 0;
 			}
-			else { xgw += table->col_width[c]; }
+			else
+			{
+				xgw += table->col_width[c];
+				//for( uint r = 0; r
+				//hsegment += table->row_height
+			}
 			c++;
 		}
 		if ( xgw > 0 )
 		{
 			tableframes.push_back( MRect( xg0, tableRect.y, xgw, tableRect.height ));
-		}
-	}
-
-	// draw table shadows
-	if ( sheetcfg->tablestyle.shadowStyle && sheetcfg->tablestyle.shadowWidth != 0 )
-	{
-		for( list<MRect>::iterator iter = tableframes.begin(); iter != tableframes.end(); iter++ )
-		{
-			drawTableShadow( painter, &sheetcfg->tablestyle, *iter );
 		}
 	}
 
@@ -675,79 +776,34 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 				 *  draw cell background
 				 *  no specific colors for markup
 				 */
-				bool domark = false;
-				if ( table->markedItem )
+				if ( e->isHeader )
 				{
-					TableEntry *tme = wxDynamicCast(table->markedItem, TableEntry );
-					if ( tme )
+					if ( sheetcfg->tablestyle.useHeaderColors )
 					{
-						switch( sheetcfg->selectionMode )
-						{
-							case 1: // cell
-								if ( tme->rowid == row && tme->colid == col ) domark = true;
-							break;
-							case 2: // row
-								if ( tme->rowid == row ) domark = true;
-							break;
-							case 3: // row/col
-								if ( tme->isHeader && ( tme->rowid == 0 || tme->rowid == table->getNbRows() - 1 ))
-								{
-									if ( tme->colid == col ) domark = true;
-								}
-								else
-								{
-									if ( tme->rowid == row ) domark = true;
-								}
-							break;
-							case 0: 
-							default:
-							break;
-						}
+						painter->setBrush( sheetcfg->tablestyle.headerBgColor );
 					}
-					else // SheetTextItem = header
+					else
 					{
-						//printf( "ELSE domerk %d\n", domark );
-						//domark = true;
+						painter->setBrush( config->colors->bgColor );
 					}
-					//domark = ( e == me );
 				}
-
-				if ( domark )
+				else // normal cell
 				{
-					painter->setBrush( sheetcfg->selectedItemBrush );
-				}
-				else 
-				{
-					if ( e->isHeader )
+					switch( sheetcfg->tablestyle.cellBgMode )
 					{
-						if ( sheetcfg->tablestyle.useHeaderColors )
-						{
-							painter->setBrush( sheetcfg->tablestyle.headerBrush );
-						}
-						else
-						{
-							painter->setBrush( sheetcfg->brush );
-						}
-					}
-					else // normal cell
-					{
-						switch( sheetcfg->tablestyle.cellBgMode )
-						{
-							case 0:
-								//painter->setBrush( config->colors->bgColor );
-								painter->setBrush( sheetcfg->brush );
-							break;
-							case 1:
-								painter->setBrush( sheetcfg->tablestyle.cellBrush );
-							break;
-							case 2:
-								if ( row % 2 ) painter->setBrush( sheetcfg->tablestyle.oddCellBrush );
-							else painter->setBrush( sheetcfg->tablestyle.evenCellBrush );
-							break;
-							default:
-								wxLogError( wxString::Format( wxT( "wrong table style %d" ), sheetcfg->tablestyle.cellBgMode ));
-							break;
-						}
+						case 0:
+							painter->setBrush( config->colors->bgColor );
+						break;
+						case 1:
+							painter->setBrush( sheetcfg->tablestyle.allCellBgColor );
+						break;
+						case 2:
+							if ( row % 2 ) painter->setBrush( sheetcfg->tablestyle.oddCellBgColor );
+						else painter->setBrush( sheetcfg->tablestyle.evenCellBgColor );
+						break;
+						default:
+							wxLogError( wxString::Format( wxT( "wrong table style %d" ), sheetcfg->tablestyle.cellBgMode ));
+						break;
 					}
 				}
 				painter->setTransparentPen();
@@ -758,13 +814,17 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 				 */
 				if ( e->isHeader )
 				{
-					painter->setFont( *fc->getFont( getFontIdForItem( WitTableHeader )));
-					painter->setTextColor( sheetcfg->tablestyle.useHeaderColors ? sheetcfg->tablestyle.headerTextColor : sheetcfg->textColor );
+					painter->setFont( *fc->getFont( getFontIdForItem( WitTableHeader ), -table->shrinkrate ));
+					painter->setTextColor( sheetcfg->tablestyle.useHeaderColors ?
+						sheetcfg->tablestyle.headerTextColor
+						: config->colors->fgColor );
 				}
 				else
 				{
-					painter->setFont( *fc->getFont( getFontIdForItem( WitTableCell )));
-					painter->setTextColor( sheetcfg->tablestyle.useCellColors ? sheetcfg->tablestyle.cellTextColor : sheetcfg->textColor );
+					painter->setFont( *fc->getFont( getFontIdForItem( WitTableCell ), -table->shrinkrate ));
+					painter->setTextColor( sheetcfg->tablestyle.useCellColors ?
+						sheetcfg->tablestyle.cellTextColor
+						: config->colors->fgColor );
 				}
 
 				// prepare text output
@@ -784,7 +844,7 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 	}
 
 	// second table cell iteration: draw frames
-	if ( sheetcfg->tablestyle.gridStyle )
+	if ( sheetcfg->tablestyle.useGrid )
 	{
 		y0 = tableRect.y;
 		for ( uint row = 0; row < table->getNbRows(); row++ )
@@ -804,40 +864,25 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 					e = &table->contents[row].value[col];
 					if ( e->isHeader )
 					{
-						//if ( sheetcfg->tablestyle.useHeaderColors )
-						painter->setPen( sheetcfg->tablestyle.headerBorderPen );
-						//else painter->setDefaultPen();
+						painter->setDefaultPen();
 
 						// left
-						if ( sheetcfg->tablestyle.headerBorderStyle == 1 || sheetcfg->tablestyle.headerBorderStyle ==  3 )
-						{
-							painter->drawLine( x0, y0, x0, y0 + table->contents[row].rect.height );
-							painter->drawLine( x0 + table->col_width[col], y0, x0 + table->col_width[col], y0 + table->contents[row].rect.height );
-						}
+						painter->drawLine( x0, y0, x0, y0 + table->contents[row].rect.height );
+						painter->drawLine( x0 + table->col_width[col], y0, x0 + table->col_width[col], y0 + table->contents[row].rect.height );
 
 						// top and bottom
-						if ( sheetcfg->tablestyle.headerBorderStyle == 2 || sheetcfg->tablestyle.headerBorderStyle ==  3  )
-						{
-							painter->drawLine( x0, y0, x0 + table->col_width[col], y0 );
-							painter->drawLine( x0, y0 + table->contents[row].rect.height, x0 + table->col_width[col], y0 + table->contents[row].rect.height );
-						}
+						painter->drawLine( x0, y0, x0 + table->col_width[col], y0 );
+						painter->drawLine( x0, y0 + table->contents[row].rect.height, x0 + table->col_width[col], y0 + table->contents[row].rect.height );
 					}
 					else
 					{
-						//if ( sheetcfg->tablestyle.useCellColors )
-						painter->setPen( sheetcfg->tablestyle.cellBorderPen );
-						//else painter->setDefaultPen();
-
-						// top
-						//painter->drawLine( x0, y0, x0 + table->col_width[col], y0 );
+						painter->setDefaultPen();
 
 						// left
-						if (( sheetcfg->tablestyle.cellBorderStyle == 1 || sheetcfg->tablestyle.cellBorderStyle ==  3 ) && col > 0 )
-							painter->drawLine( x0, y0, x0, y0 + table->contents[row].rect.height );
+						painter->drawLine( x0, y0, x0, y0 + table->contents[row].rect.height );
 
 						// bottom
-						if (( sheetcfg->tablestyle.cellBorderStyle == 2 || sheetcfg->tablestyle.cellBorderStyle ==  3 )) // && row < table->getNbRows() - 1 )
-							painter->drawLine( x0, y0, x0 + table->col_width[col], y0 );
+						painter->drawLine( x0, y0, x0 + table->col_width[col], y0 );
 					}
 
 				} // end if rect and rect intersects draw rect
@@ -848,81 +893,15 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 		}
 	}
 
-	// draw outer table frame
-	if ( sheetcfg->tablestyle.gridStyle )
+	// table frame
+	if ( sheetcfg->tablestyle.useGrid )
 	{
-		for( list<MRect>::iterator iter = tableframes.begin(); iter != tableframes.end(); iter++ )
-		{
-			drawTableFrame( painter, &sheetcfg->tablestyle, *iter );
-		}
+		painter->setDefaultPen();
+		painter->setTransparentBrush();
+		painter->drawRectangle( table->rect );
 	}
+
 	wxLogMessage( wxT( "ENDE GenericSheetWriter::drawTable" ));
-}
-
-/*****************************************************
-**
-**   GenericSheetWriter   ---   drawTableShadow
-**
-******************************************************/
-void GenericSheetWriter::drawTableShadow( Painter *painter, TableStyle *style, MRect &r )
-{
-	assert( style );
-	if ( style->shadowStyle && style->shadowWidth != 0 )
-	{
-		painter->setTransparentPen();
-		painter->setBrush( style->shadowBrush );
-
-		if ( style->shadowWidth > 0 )
-		{
-			painter->drawRectangle( MRect( r.x + r.width, r.y + style->shadowWidth, style->shadowWidth, r.height ), cornerRadius );
-			painter->drawRectangle( MRect( r.x + style->shadowWidth, r.y + r.height, r.width, style->shadowWidth ), cornerRadius );
-		}
-		else
-		{
-			painter->drawRectangle( MRect( r.x + style->shadowWidth, r.y + style->shadowWidth, - style->shadowWidth, r.height ), cornerRadius );
-			painter->drawRectangle( MRect( r.x + style->shadowWidth, r.y + style->shadowWidth, r.width, - style->shadowWidth ), cornerRadius );
-		}
-	}
-}
-
-/*****************************************************
-**
-**   GenericSheetWriter   ---   drawTableFrame
-**
-******************************************************/
-void GenericSheetWriter::drawTableFrame( Painter *painter, TableStyle *style, MRect &r )
-{
-	assert( style );
-	if ( ! style->gridStyle ) return;
-
-	painter->setPen( style->outerBorderPen );
-	painter->setTransparentBrush();
-	switch( style->outerBorderStyle )
-	{
-		case 1: // left right
-			painter->drawLine( r.x, r.y, r.x, r.y + r.height );
-			painter->drawLine( r.x + r.width, r.y, r.x + r.width, r.y + r.height );
-		break;
-		case 2: // opt bottom
-			painter->drawLine( r.x, r.y, r.x + r.width, r.y );
-			painter->drawLine( r.x, r.y + r.height, r.x + r.width, r.y + r.height );
-		break;
-		case 3: // all
-			painter->drawRectangle( r ); //, cornerRadius );
-			/*
-			painter->drawLine( r.x, r.y, r.x, r.y + r.height );
-			painter->drawLine( r.x + r.width, r.y, r.x + r.width, r.y + r.height );
-			painter->drawLine( r.x, r.y, r.x + r.width, r.y );
-			painter->drawLine( r.x, r.y + r.height, r.x + r.width, r.y + r.height );
-			*/
-		break;
-		case 0:
-			// nothing
-		break;
-		default:
-			assert( false );
-		break;
-	}
 }
 
 /*****************************************************
@@ -990,6 +969,13 @@ void GenericSheetWriter::formatMString( Painter *painter, MString &f, const doub
 				xcursor += p.real();
 			}
 		}
+		else if ( iter->text == SPACE ) // TODO strings with trailing spaces to not work
+		{
+			//printf( "SINGLE SPACE '%s'\n", str2char( iter->text ));
+			s.add( SPACE );
+			p = painter->getTextExtent( SPACE );
+			xcursor += p.real();
+		}
 		else // token is a plain string
 		{
 			wxString token, line, testline;
@@ -997,6 +983,7 @@ void GenericSheetWriter::formatMString( Painter *painter, MString &f, const doub
 			// x offset for 1st line only, will be reset on line break
 			double xcursor_0 = xcursor;
 
+			//printf( "ITER TEXT '%s'\n", str2char( iter->text ));
 			wxStringTokenizer tk( iter->text, SPACE );
 			while( tk.HasMoreTokens())
 			{
@@ -1010,7 +997,7 @@ void GenericSheetWriter::formatMString( Painter *painter, MString &f, const doub
 
 				p = painter->getTextExtent( testline );
 				currenth = Max( p.imag(), currenth );
-				//printf( "Token %s extent.x %f xcursor_0 %f xcursor %f\n", str2char( token ), p.real(), xcursor_0, xcursor );
+				//printf( "Token '%s' extent.x %f xcursor_0 %f xcursor %f\n", str2char( token ), p.real(), xcursor_0, xcursor );
 
 				if ( xcursor_0 + p.real() >= xmax )
 				{

@@ -41,6 +41,14 @@ release: all
 	$(CP) $(RESOURCES_DIR)/yogas/*.json $(RELEASE_DIR)/resources/yogas
 	$(MKDIR) $(RELEASE_DIR)/resources/dasas
 	$(CP) $(RESOURCES_DIR)/dasas/*.json $(RELEASE_DIR)/resources/dasas
+	$(MKDIR) $(RELEASE_DIR)/resources/vchart
+	$(CP) $(RESOURCES_DIR)/vchart/*.json $(RELEASE_DIR)/resources/vchart
+	$(MKDIR) $(RELEASE_DIR)/resources/wchart
+	$(CP) $(RESOURCES_DIR)/wchart/*.json $(RELEASE_DIR)/resources/wchart
+	$(MKDIR) $(RELEASE_DIR)/resources/mview
+	$(CP) $(RESOURCES_DIR)/mview/*.json $(RELEASE_DIR)/resources/mview
+	$(MKDIR) $(RELEASE_DIR)/resources/print
+	$(CP) $(RESOURCES_DIR)/print/*.json $(RELEASE_DIR)/resources/print
 	$(RMR) $(RELEASE_DIR)/fonts
 	$(MKDIR) $(RELEASE_DIR)/fonts
 	$(CPR) $(SRC_DIR)/fonts/Saravali.ttf $(RELEASE_DIR)/fonts

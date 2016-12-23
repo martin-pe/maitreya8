@@ -7,21 +7,21 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 #ifndef _PRINTOUTCONFIG_H_
 #define _PRINTOUTCONFIG_H_
 
+#include <list>
+#include <map>
 #include <vector>
 
 #include "ConfigListLoader.h"
@@ -32,34 +32,122 @@ class wxJSONValue;
 
 using namespace std;
 
-enum PD_ITEM_TYPE { PD_HEADER = 0, PD_DASA_SUMMARY, PD_VEDIC_CHART_PAIR, PD_WESTERN_CHART,
-	PD_SBC, PD_ASPECTARIUM, PD_ASHTAKAVARGA, PD_URANIAN, PD_YOGAS, PD_VARGA_DIAGRAMS, PD_ERROR };
+enum PD_ITEM_TYPE { PD_TITLE = 0, PD_HEADER, PD_DASA_SUMMARY, PD_CHART, PD_WIDGET_GRID, PD_COLUMN_SET, PD_SBC,
+	PD_ROW_SET, PD_GRID, PD_WESTERN_CHART, PD_VEDIC_CHART_PAIR,
+	PD_ASPECTARIUM, PD_ASHTAKAVARGA, PD_URANIAN, PD_YOGAS, PD_VARGA_DIAGRAMS,
+	PD_EMPTY, PD_ERROR };
 
 /*************************************************//**
 *
 * 
 *
 ******************************************************/
-class PrintoutConfigItem : public ConfigBase
+class PrintoutItem //  : public wxObject
 {
 public:
-	PrintoutConfigItem( wxString = wxEmptyString ) {}
-	PD_ITEM_TYPE getTypeId() const { return typeId; }
+	PrintoutItem( const PD_ITEM_TYPE &type ) : type( type ) {}
 
-	virtual void load( wxJSONValue&, wxString = wxEmptyString );
-	virtual void save( wxJSONValue&, wxString = wxEmptyString );
+	const PD_ITEM_TYPE type;
+};
 
-	wxString type;
+class PrintoutItemHeader  : public PrintoutItem
+{
+public:
+	PrintoutItemHeader( const int &headerType, const bool vedic )
+		: PrintoutItem( PD_HEADER ), headerType( headerType ), vedic( vedic ) {}
+	const int headerType;
+	const bool vedic;
+};
 
-	vector<int> vargaIds;
-	int dasaId;
-	int subtype;
-	bool vedic;
+class PrintoutItemChart  : public PrintoutItem
+{
+public:
+	PrintoutItemChart( const bool &vedic, const int &skin, const Varga varga = V_NONE )
+		: PrintoutItem( PD_CHART ),
+		vedic( vedic ),
+		skin( skin ),
+		varga( varga )
+		{}
 
-	PD_ITEM_TYPE typeId;
+	const bool vedic;
+	const uint skin;
+	const Varga varga;
+};
 
-protected:
+class PrintoutItemSbc  : public PrintoutItem
+{
+public:
+	PrintoutItemSbc( const int &skin )
+		: PrintoutItem( PD_SBC ),
+		skin( skin )
+		{}
 
+	const int skin;
+};
+
+class PrintoutItemContainer : public PrintoutItem
+{
+public:
+	PrintoutItemContainer( const PD_ITEM_TYPE &type )
+		: PrintoutItem( type )
+		{
+			ratio = 0;
+		}
+
+	~PrintoutItemContainer()
+	{
+		for( list<PrintoutItem*>::iterator iter = children.begin(); iter != children.end(); iter++ ) { delete *iter; }
+	}
+
+	list<PrintoutItem*> children;
+	double ratio;
+};
+
+class PrintoutItemColumnSet  : public PrintoutItemContainer
+{
+public:
+	PrintoutItemColumnSet() : PrintoutItemContainer( PD_COLUMN_SET ) {}
+};
+
+class PrintoutItemRowSet  : public PrintoutItemContainer
+{
+public:
+	PrintoutItemRowSet() : PrintoutItemContainer( PD_ROW_SET ) {}
+};
+
+class PrintoutItemGrid  : public PrintoutItemContainer
+{
+public:
+	PrintoutItemGrid( const int &cols )
+		: PrintoutItemContainer( PD_GRID ),
+		nb_cols( cols )
+		{}
+
+	const int nb_cols;
+};
+
+class PrintoutItemDasaSummary  : public PrintoutItem
+{
+public:
+	PrintoutItemDasaSummary( const DasaId &dasaId, const int &tableType )
+		: PrintoutItem( PD_DASA_SUMMARY ),
+		dasaId( dasaId ),
+		tableType( tableType )
+		{}
+
+	const DasaId dasaId;
+	const int tableType;
+};
+
+class PrintoutItemError  : public PrintoutItem
+{
+public:
+	PrintoutItemError( wxString message )
+		: PrintoutItem( PD_ERROR ),
+		message( message )
+		{}
+
+	wxString message;
 };
 
 /*************************************************//**
@@ -72,15 +160,13 @@ class PrintoutConfig : public ConfigBase
 public:
 
 	PrintoutConfig( wxString name = wxEmptyString );
-
 	virtual void load( wxJSONValue&, wxString = wxEmptyString );
 	virtual void save( wxJSONValue&, wxString = wxEmptyString );
 
-	vector<PrintoutConfigItem> items;
+	vector<PrintoutItem*> items;
 	wxString name;
 	wxString description;
 	bool vedic;
-
 };
 
 /*************************************************//**
@@ -99,7 +185,11 @@ public:
 private:
 
 	PrintoutConfigLoader();
-	PD_ITEM_TYPE itemType2Int( wxString );
+
+	PrintoutItem *loadItem( wxJSONValue& );
+	void loadContainer( wxJSONValue&, PrintoutItemContainer* );
+
+	map<wxString, PD_ITEM_TYPE> pd_map;
 
 };
 

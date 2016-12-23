@@ -7,27 +7,26 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include <wx/choice.h>
 #include <wx/spinctrl.h>
 
-#include "SheetView.h"
 #include "Conf.h"
 #include "DataSet.h"
 #include "Eclipse.h"
 #include "mathbase.h"
+#include "TextView.h"
+#include "TextWidget.h"
 #include "ToolPanel.h"
 
 extern Config *config;
@@ -37,21 +36,21 @@ extern Config *config;
 * \brief view containing text output for eclipses
 *
 ******************************************************/
-class EclipseView : public SheetView
+class EclipseView : public TextView
 {
 	DECLARE_CLASS( EclipseView )
 
 public:
 
 	EclipseView( wxWindow *parent, ChildWindow *frame )
-		: SheetView( parent, frame, VIEW_ECLIPSE, true )
+		: TextView( parent, frame, VIEW_ECLIPSE, true )
 	{
 		startyear = getCurrentYear();
 		years = 3;
 		type = 0;
 		isLocaltime = config->viewprefs->ephemTimezone;
 		expert = new EclipseExpert;
-		twidget->enableFloatingLayout( false );
+		twidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
 
 		initToolItems();
 	}
@@ -116,7 +115,6 @@ protected:
 		endjd = d.getJD();
 
 		expert->update( startjd, endjd, type, 0, isVedic() );
-		//expert->write( writer, isLocaltime );
 		twidget->clearSheet();
 		expert->write( twidget->getSheet(), isLocaltime );
 	}
@@ -126,7 +124,7 @@ protected:
 	EclipseExpert *expert;
 };
 
-IMPLEMENT_CLASS( EclipseView, SheetView )
+IMPLEMENT_CLASS( EclipseView, TextView )
 
 /**************************************************************
 ***

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Exporter.h"
@@ -39,24 +37,23 @@ class HtmlExporter : public Exporter
 {
 public:
 
-	HtmlExporter()
+	HtmlExporter( SheetConfig *scfg = (SheetConfig*)NULL, WriterConfig *wcfg = (WriterConfig*)NULL )
+	 : Exporter( scfg, wcfg )
 	{
-		SheetConfigLoader *loader = SheetConfigLoader::get();
-		sheetcfg = loader->getConfig( config->view->sheetStyle );
 	}
 
 	virtual wxString exportSheet( Sheet *sheet )
 	{
 		s.Clear();
 
-		s << wxT( "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//en\">" ) << Endl;
-		s << wxT( "<html>" ) << Endl;
-		s << wxT( "<head/>" ) << Endl;
-		s << wxT( "<meta charset=\"utf-8\"/>" ) << Endl;
-		s << wxT( "<body " );
-		s << wxT( " bgcolor=" ) << config->colors->bgColor.GetAsString( wxC2S_HTML_SYNTAX );
-		s << wxT( " text=" ) << config->colors->fgColor.GetAsString( wxC2S_HTML_SYNTAX );
-		s << wxT( ">" ) << Endl;
+		s << wxT( "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//en\">" ) << Endl
+			<< wxT( "<html>" ) << Endl
+			<< wxT( "<head/>" ) << Endl
+			<< wxT( "<meta charset=\"utf-8\"/>" ) << Endl
+			<< wxT( "<body " )
+			<< wxT( " bgcolor=" ) << config->colors->bgColor.GetAsString( wxC2S_HTML_SYNTAX )
+			<< wxT( " text=" ) << config->colors->fgColor.GetAsString( wxC2S_HTML_SYNTAX )
+			<< wxT( ">" ) << Endl;
 
 		for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 		{
@@ -72,8 +69,7 @@ public:
 			else if ( item->type == WiText )
 			{
 				SheetTextItem *ti = (SheetTextItem*)item;
-				SheetFormatter fmt;
-				wxString t = fmt.fragment2PlainText( ti->tf );
+				wxString t = textFragment2Html( ti->tf );
 
 				switch( ti->subtype )
 				{
@@ -112,53 +108,49 @@ public:
 
 	/*****************************************************
 	**
-	**   HtmlExporter   ---   generateTable
-	**
-	******************************************************/
-	void generateTable( Table *table )
-	{
-		/*
-		TableEntry *e;
-		for ( uint r = 0; r < table->getNbRows(); r++ )
-		{
-			for ( uint c = 0; c < table->getNbCols(); c++ )
-			{
-				e = &table->contents[r].value[c];
-			}
-		}
-		*/
-		generateTableIntern( table, sheetcfg->tablestyle.gridStyle );
-	}
-
-	/*****************************************************
-	**
 	**   HtmlExporter   ---   textFragment2Html
 	**
 	******************************************************/
 	wxString textFragment2Html( const MString f )
 	{
 		wxString s;
-		SheetFormatter formatter;
+		SheetFormatter formatter( writercfg );
 		for( list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
 		{
-			s << formatter.token2Html( *iter );
+			switch( iter->fontFormat )
+			{
+				case TTFF_SUBSCRPTUM:
+					s << wxT( "<sub>" ) << formatter.token2Html( *iter ) << wxT( "</sub>" );
+				break;
+				case TTFF_SUPERSCRPTUM:
+					s << wxT( "<sup>" ) << formatter.token2Html( *iter ) << wxT( "</sup>" );
+				break;
+				default:
+					s << formatter.token2Html( *iter );
+				break;
+			}
 		}
 		return s;
 	}
 
 	/*****************************************************
 	**
-	**   HtmlExporter   ---   generateTableIntern
+	**   HtmlExporter   ---   generateTable
 	**
 	******************************************************/
-	void generateTableIntern( Table *table, const bool &frame )
+	void generateTable( Table *table )
 	{
+		if ( ! table->header.isEmpty())
+		{
+			s << wxT( "<h1>" ) << textFragment2Html( table->header.tf ) << wxT( "</h1>" ) << Endl;
+		}
+
 		uint c, r;
 		TableEntry *entry;
 		Row row( table, table->getNbCols() );
 		wxString cellColor;
 
-		if ( frame ) s << wxT( " <table border=1 cellspacing=0>" ) << Endl;
+		if ( sheetcfg->tablestyle.useGrid ) s << wxT( " <table border=1 cellspacing=0>" ) << Endl;
 		else s << wxT( " <table>" ) << Endl;
 		s << wxT( "		<tr>" ) << Endl;
 
@@ -168,19 +160,18 @@ public:
 			switch( sheetcfg->tablestyle.cellBgMode )
 			{
 				case 1:
-					cellColor = sheetcfg->tablestyle.cellBrush.color.GetAsString( wxC2S_HTML_SYNTAX );
+					cellColor = sheetcfg->tablestyle.allCellBgColor.GetAsString( wxC2S_HTML_SYNTAX );
 				break;
 				case 2:
 					if ( r % 2 )
-						cellColor = sheetcfg->tablestyle.oddCellBrush.color.GetAsString( wxC2S_HTML_SYNTAX );
+						cellColor = sheetcfg->tablestyle.oddCellBgColor.GetAsString( wxC2S_HTML_SYNTAX );
 					else
-						cellColor = sheetcfg->tablestyle.evenCellBrush.color.GetAsString( wxC2S_HTML_SYNTAX );
+						cellColor = sheetcfg->tablestyle.evenCellBgColor.GetAsString( wxC2S_HTML_SYNTAX );
 				break;
 				default:
 				break;
 			}
 
-			// look if it's empty
 			if ( row.isEmpty() ) continue;
 
 			s << wxT( "   <tr>" ) << Endl;
@@ -194,14 +185,12 @@ public:
 
 					if ( sheetcfg->tablestyle.useHeaderColors )
 					{
-						s << wxT( " bgcolor=" ) << sheetcfg->tablestyle.headerBrush.color.GetAsString( wxC2S_HTML_SYNTAX );
+						s << wxT( " bgcolor=" ) << sheetcfg->tablestyle.headerBgColor.GetAsString( wxC2S_HTML_SYNTAX );
 						s << wxT( "><font color=\"") << sheetcfg->tablestyle.headerTextColor.GetAsString( wxC2S_HTML_SYNTAX ) << wxT("\">" );
-						//s << entry.value << wxT ( "</font>" ) << Endl;
 						s << textFragment2Html( entry->text ) << wxT ( "</font>" ) << Endl;
 					}
 					else
 					{
-						//s << wxT("\">" ) << entry.value;
 						s << wxT("\">" ) << textFragment2Html( entry->text );
 					}
 					s << wxT ( "</th>" ) << Endl;
@@ -216,19 +205,18 @@ public:
 					if ( table->col_alignment[c] & Align::Right ) align = wxT( "right" );
 					else if ( table->col_alignment[c] & Align::Left ) align = wxT( "left" );
 
-					if ( sheetcfg->tablestyle.cellBgMode )
+					s << wxT( "<td" );
+					if ( ! table->col_break[c] ) s << wxT( " nowrap" );
+					if ( sheetcfg->tablestyle.useCellColors )
 					{
-						s << wxT( "<td" )
-							<< wxT( "  bgcolor=" ) << cellColor
-							<< wxT( " align=" ) << align
+						if ( ! cellColor.IsEmpty()) s << wxT( "  bgcolor=" ) << cellColor;
+						s << wxT( " align=" ) << align
 							<< wxT( "><font color=\"") << sheetcfg->tablestyle.cellTextColor.GetAsString( wxC2S_HTML_SYNTAX ) << wxT("\">" )
-							//<< entry.value  << wxT ( "</font></td>" ) << Endl;
 							<< textFragment2Html( entry->text )  << wxT ( "</font></td>" ) << Endl;
 					}
 					else
 					{
-						//s << wxT( "<td " ) << wrap << wxT( " align=" ) << align << wxT( ">" ) << entry.value  << wxT ( "</td>" ) << Endl;
-						s << wxT( "<td align=" ) << align << wxT( ">" )
+						s << wxT( " align=" ) << align << wxT( ">" )
 							<< textFragment2Html( entry->text )  << wxT ( "</td>" ) << Endl;
 					}
 				}
@@ -238,8 +226,6 @@ public:
 		s << wxT( "	</table><p>" ) << Endl;
 	}
 
-private:
-	SheetConfig *sheetcfg;
 };
 
 
@@ -248,9 +234,9 @@ private:
 **   ExporterFactory   ---   getHtmlExporter
 **
 ******************************************************/
-Exporter *ExporterFactory::getHtmlExporter()
+Exporter *ExporterFactory::getHtmlExporter( SheetConfig *sheetcfg, WriterConfig *writercfg )
 {
-	return new HtmlExporter;
+	return new HtmlExporter( sheetcfg, writercfg );
 }
 
 

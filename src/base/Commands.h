@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 
@@ -48,7 +46,7 @@ enum { CMD_FIRST = wxID_HIGHEST + 1000,
 
 	// western chart show
 	CMD_WCS_ASPECTS, CMD_WCS_RETRO, CMD_WCS_HOUSES,
-	CMD_WCS_ASPECTSYMBOLS, CMD_WCS_TRANSITS_INSIDE,
+	CMD_WCS_ASPECTSYMBOLS, CMD_WCS_SECONDCHART_INSIDE,
 
 	// western chart colors
 	CMD_WCC_PLANETS, CMD_WCC_SIGNS, CMD_WCC_HOUSES, CMD_WCC_ASPECTS,
@@ -71,7 +69,7 @@ enum { CMD_FIRST = wxID_HIGHEST + 1000,
 	 CMD_SHOWOUTER, CMD_SHOWDRAGONHEAD, CMD_SHOWDRAGONTAIL,
 	 CMD_SHOWASCENDANT, CMD_SHOWMERIDIAN,
 	 CMD_SHOWDESCENDANT, CMD_SHOWIMUMCOELI,
-	 CMD_SHOWURANIAN, CMD_SHOWCHIRON, CMD_SHOWPHOLUS, CMD_SHOWPLANETOIDS, CMD_SHOWLILITH,
+	 CMD_SHOWURANIAN_INNER, CMD_SHOWURANIAN_OUTER, CMD_SHOWCHIRON, CMD_SHOWPHOLUS, CMD_SHOWPLANETOIDS, CMD_SHOWLILITH,
 	 CMD_SHOWUPAGRAHAS, CMD_SHOWKALAVELAS, CMD_SHOWSPECIALLAGNAS, CMD_SHOWARIES, CMD_SHOWD9LAGNA,
 	 CMD_SHOWARABICPARTS,
 	 CMD_SHOW_4HOUSES,
@@ -95,7 +93,7 @@ enum { CMD_FIRST = wxID_HIGHEST + 1000,
 	 CMD_NOW,
 	 CMD_SELECT_DASA,
 	 CMD_GOTO_YEAR,
-	 CMD_FILTER,
+	 CMD_FILTER, CMD_CLEAR_FILTER,
 	 CMD_LAUNCH_VIEWER,
 	 CMD_NEW_ANNUAL_CHART,
 	 CMD_TIP,
@@ -126,14 +124,8 @@ enum { CMD_FIRST = wxID_HIGHEST + 1000,
 	CMD_NEW_GRAPHICGRID, CMD_NEW_VARGA, CMD_NEW_ASHTAKAVARGA, CMD_NEW_PRINTPREVIEW,
 	CMD_NEW_VIMSOPAKABALA, CMD_NEW_WCHART, CMD_NEW_EMPTY,
 
-#ifdef USE_URANIAN_CHART
-	CMD_NEW_URANIAN,
-	CMD_NEW_URANIANCHART,
-#endif
-	 
-#ifdef USE_SHADBALA
-	 CMD_NEW_SHADBALA,
-#endif
+	CMD_NEW_URANIAN, CMD_NEW_URANIAN_CHART,
+	CMD_NEW_SHADBALA,
 
 	CMD_NEW_MAINVIEW,
 

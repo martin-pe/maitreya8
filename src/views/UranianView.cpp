@@ -7,21 +7,20 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include <wx/button.h>
 #include <wx/choice.h>
+#include <wx/choicdlg.h>
 #include <wx/notebook.h>
 #include <wx/spinctrl.h>
 #include <wx/toolbar.h>
@@ -32,22 +31,21 @@
 #include "maitreya.h"
 #include "DialogElements.h"
 #include "Document.h"
-#include "SheetWidget.h"
 #include "Lang.h"
 #include "mathbase.h"
 #include "ObjectFilterDialog.h"
+#include "TextWidget.h"
 #include "ToolPanel.h"
 #include "Uranian.h"
 #include "UranianHelper.h"
-#ifdef USE_URANIAN_CHART
-#include "UranianWidget.h"
-#endif
 
 extern Config *config;
 
 #define MAX_URANIAN_PAGES 8
-enum { UNB_ERROR = -1, UNB_BASIC = 0, UNB_MIDPOINTS, UNB_SUMS, UNB_DIFFERENCES, UNB_CLUSTERS,
-	UNB_EVENT_LIST, UNB_YEARLY_PREVIEW, UNB_PREVIEWWIDGET };
+enum { UNB_ERROR = -1, UNB_MIDPOINTS = 0, UNB_SUMS, UNB_DIFFERENCES, UNB_ANT_MIDPOINTS, UNB_REFLECTION_POINTS,
+	UNB_CLUSTERS, UNB_EVENT_LIST, UNB_YEARLY_PREVIEW };
+
+#define URANIAN_VIEW_WO WO_MENU_FULL_OBJECT | WO_EXPORT_PDF | WO_EXPORT_PLAINTEXT | WO_EXPORT_HTMLTEXT | WO_EXPORT_CSVTEXT
 
 enum { UV_NOTEBOOK = wxID_HIGHEST + 3500 };
 
@@ -71,70 +69,66 @@ public:
 		year = getCurrentYear();
 		printf( "YEAR %d\n", year );
 
-		//supportObjectToggle = true;
-
-		cfg = config->uranian;
-		expert = new UranianExpert( doc, props, cfg );
+		expert = new UranianExpert( doc, props );
 		helper = new UranianHelper( expert );
 
 		initToolItems();
 
-		// UNB_BASIC
-		basicList = new SheetWidget( notebook, props );
-		notebook->AddPage( basicList, _( "Basic" ));
-
 		// UNB_MIDPOINTS
-		midpointTable = new SheetWidget( notebook, props );
+		midpointTable = new TextWidget( notebook, props, URANIAN_VIEW_WO );
 		notebook->AddPage( midpointTable, _( "Midpoints" ));
 
 		// UNB_SUMS
-		sumTable = new SheetWidget( notebook, props );
+		sumTable = new TextWidget( notebook, props, URANIAN_VIEW_WO );
 		notebook->AddPage( sumTable, _( "Sums" ));
 
 		// UNB_DIFFERENCES
-		differenceTable = new SheetWidget( notebook, props );
+		differenceTable = new TextWidget( notebook, props, URANIAN_VIEW_WO );
 		notebook->AddPage( differenceTable, _( "Differences" ));
 
+		// UNB_ANT_MIDPOINTS
+		antMidpointTable = new TextWidget( notebook, props, URANIAN_VIEW_WO );
+		notebook->AddPage( antMidpointTable, _( "Midpoints of Antiscia" ));
+
+		// UNB_REFLECTION_POINT
+		reflectionPointTable = new TextWidget( notebook, props, URANIAN_VIEW_WO );
+		notebook->AddPage( reflectionPointTable, _( "Reflection Points" ));
+
 		// UNB_CLUSTERS
-		clusterWidget = new SheetWidget( notebook, props );
-		notebook->AddPage( clusterWidget, _( "Clusters" ));
+		clusterList = new TextWidget( notebook, props, URANIAN_VIEW_WO );
+		notebook->AddPage( clusterList, _( "Clusters" ));
 
 		// UNB_EVENT_LIST
-		eventList = new SheetWidget( notebook, props );
-		notebook->AddPage( eventList, _( "Events" ));
+		eventList = new TextWidget( notebook, props, URANIAN_VIEW_WO );
+		notebook->AddPage( eventList, _( "Matchings" ));
 
 		// UNB_YEARLY_PREVIEW
-		yearlyPreviewList = new SheetWidget( notebook, props );
+		yearlyPreviewList = new TextWidget( notebook, props, URANIAN_VIEW_WO );
 		notebook->AddPage( yearlyPreviewList, _( "Yearly Preview" ));
 
-#ifdef USE_URANIAN_CHART
-		// UNB_PREVIEWWIDGET
-		yearlyPreviewWidget = new SheetWidget( notebook, props );
-		//yearlyPreviewWidget = new YearlyPreviewWidget( notebook, props, expert, cfg );
-		notebook->AddPage( yearlyPreviewWidget, _( "Preview Graphic" ));
-#endif
-
 		widget = notebook;
-		int pageId = UNB_BASIC;
+		int pageId = UNB_MIDPOINTS;
 		if ( config->viewprefs->activePageUranian >= 0 && config->viewprefs->activePageUranian < (int)notebook->GetPageCount())
 		{
 			pageId = config->viewprefs->activePageUranian;
 		}
 		notebook->SetSelection( pageId );
-		setActiveWidget( pageId );
-
 		OnToolbarCommand(); // does it all, refresh and hide-and-seek for tool items
 
 		Connect( wxEVT_IDLE, wxIdleEventHandler( UranianView::OnIdle ));
 		Connect( UV_NOTEBOOK, wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, wxNotebookEventHandler( UranianView::OnNotebook ));
 		Connect( CMD_FILTER, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UranianView::OnFilter ));
 	  Connect( TBS_YEAR, wxEVT_COMMAND_SPINCTRL_UPDATED, wxCommandEventHandler( UranianView::OnYearSpin ));
+		Connect( APP_CONFIGURE, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( UranianView::OnConfigure ));
 	}
 
 	~UranianView()
 	{
+
 		config->viewprefs->activePageUranian = notebook->GetSelection();
-		config->viewprefs->orbisRadix = 60 * cfg->orbisRadix;
+
+		*config->uranian = props->getUranianConfig();
+
 		delete helper;
 		delete expert;
 	}
@@ -150,21 +144,22 @@ protected:
 	***************************************************************/
 	void initToolItems()
 	{
+		UranianConfig &uconfig = props->getUranianConfig();
 		printf( "initToolItems\n" );
 		if ( toolbar )
 		{
 			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
-			if ( spin_orbis ) spin_orbis->SetValue( (int)(60 * cfg->orbisRadix ));
+			if ( spin_orbis ) spin_orbis->SetValue( (int)(60 * uconfig.orbisRadix ));
 
 			GradkreisChoice *choice_gk = (GradkreisChoice*)toolbar->FindControl( TBS_GRADKREIS );
-			if ( choice_gk ) choice_gk->SetSelection( (int)cfg->gradkreis );
+			if ( choice_gk ) choice_gk->SetSelection( (int)uconfig.gradkreis );
 
 			printf( "initToolItems YEAR %d\n", year );
 			wxSpinCtrl *spin_year = (wxSpinCtrl*)toolbar->FindControl( TBS_YEAR );
 			if ( spin_year ) spin_year->SetValue( year );
 
 			SortChoice *choice_sort = (SortChoice*)toolbar->FindControl( TBS_SORT );
-			if ( choice_sort ) choice_sort->SetSelection( cfg->sortOrder );
+			if ( choice_sort ) choice_sort->SetSelection( uconfig.sortOrder );
 		}
 	}
 
@@ -206,68 +201,8 @@ protected:
 	void OnNotebook( wxNotebookEvent& )
 	{
 		printf( "OnNotebook PAGE %d\n", notebook->GetSelection() );
-		setActiveWidget( notebook->GetSelection());
 		activateControls();
 		updateView = true;
-	}
-
-	/*****************************************************
-	**
-	**   UranianView   ---   setActiveWidget
-	**
-	******************************************************/
-	void setActiveWidget( const int &page )
-	{
-		switch( page )
-		{
-			case UNB_BASIC:
-				activeWidget = basicList;
-			break;
-			case UNB_MIDPOINTS:
-				activeWidget = midpointTable;
-			break;
-			case UNB_SUMS:
-				activeWidget = sumTable;
-			break;
-			case UNB_DIFFERENCES:
-				activeWidget = differenceTable;
-			break;
-			case UNB_CLUSTERS:
-				activeWidget = clusterWidget;
-			break;
-			case UNB_EVENT_LIST:
-				activeWidget = eventList;
-			break;
-			case UNB_YEARLY_PREVIEW:
-				activeWidget = yearlyPreviewList;
-			break;
-#ifdef USE_URANIAN_CHART
-			case UNB_PREVIEWWIDGET:
-				activeWidget = yearlyPreviewWidget;
-			break;
-#endif
-			default:
-				assert( false );
-			break;
-		}
-
-		/*
-		assert( notebook->GetSelection() >= 0 && notebook->GetSelection() < MAX_URANIAN_PAGES );
-
-
-		TODO
-		1. DOEN alle UNB* sortieren wie auf der GUI
-		2. DONE *Text umbenennen in Widget
-		3. DONE activeWidget hier definieren
-		4. PARTLY Preview Widget portieren nach WidgetItem
-		5. Export bauen für alle Widgets -> geht auch nach BasicView oder Widget
-		6. Subscriptum und Super implementieren
-
-		switch ( notebook->GetSelection() )
-		{
-		}
-		//if ( dirty[notebook->GetSelection()] ) updatePage( notebook->GetSelection() );
-		*/
 	}
 
 	/*****************************************************
@@ -288,76 +223,104 @@ protected:
 	void write()
 	{
 
-		const int sel = notebook->GetSelection();
 		const int pageId = notebook->GetSelection();
-
-		printf( "WRITE active page %d ID %d dirty is %d\n", sel, pageId, dirty[sel] );
 		assert( pageId >= 0 && pageId < MAX_URANIAN_PAGES );
-
-		if ( ! activeWidget )
-		{
-			doMessageBox( this, wxT( "UranianView: no active widget" ));
-			return;
-		}
-
 
 		if ( dirty[pageId] )
 		{
-			assert( activeWidget );
-			activeWidget->clearSheet();
 			switch( pageId )
 			{
-				case UNB_BASIC:
-					helper->writeRadixAnalysis( basicList->getSheet());
-				break;
 				case UNB_MIDPOINTS:
-					helper->writeTupleTable( midpointTable->getSheet(), UTT_MIDPOINTS, PC_RADIX );
+					midpointTable->clearSheet();
+					helper->writeTupleTable( midpointTable->getSheet(), UTT_MIDPOINTS, PcRadix );
+					midpointTable->OnDataChanged();
 				break;
 				case UNB_SUMS:
-					helper->writeTupleTable( sumTable->getSheet(), UTT_SUMS, PC_RADIX );
+					sumTable->clearSheet();
+					helper->writeTupleTable( sumTable->getSheet(), UTT_SUMS, PcRadix );
+					sumTable->OnDataChanged();
 				break;
 				case UNB_DIFFERENCES:
-					helper->writeTupleTable( differenceTable->getSheet(), UTT_DIFFERENCES, PC_RADIX );
+					differenceTable->clearSheet();
+					helper->writeTupleTable( differenceTable->getSheet(), UTT_DIFFERENCES, PcRadix );
+					differenceTable->OnDataChanged();
+				break;
+				case UNB_REFLECTION_POINTS:
+					reflectionPointTable->clearSheet();
+					helper->writeTupleTable( reflectionPointTable->getSheet(), UTT_REFLECTION_POINTS, PcRadix );
+					reflectionPointTable->OnDataChanged();
+				break;
+				case UNB_ANT_MIDPOINTS:
+					antMidpointTable->clearSheet();
+					helper->writeTupleTable( antMidpointTable->getSheet(), UTT_ANT_MIDPOINTS, PcRadix );
+					antMidpointTable->OnDataChanged();
 				break;
 				case UNB_CLUSTERS:
-					helper->writeMatchingClusters( clusterWidget->getSheet(), PC_RADIX );
+					clusterList->clearSheet();
+					helper->writeMatchingClusters( clusterList->getSheet(), PcRadix );
+					clusterList->OnDataChanged();
 				break;
 				case UNB_EVENT_LIST:
-					helper->writeUEvents( eventList->getSheet(), PC_RADIX );
+					eventList->clearSheet();
+					helper->writeUEvents( eventList->getSheet(), PcRadix );
+					eventList->OnDataChanged();
 				break;
 				case UNB_YEARLY_PREVIEW:
+					yearlyPreviewList->clearSheet();
 					helper->writeYearlyPreview( yearlyPreviewList->getSheet());
+					yearlyPreviewList->OnDataChanged();
 				break;
-#ifdef USE_URANIAN_CHART
-				case UNB_PREVIEWWIDGET:
-					//yearlyPreviewWidget->Refresh();
-					yearlyPreviewWidget->getSheet()->addItem( new YearlyPreviewWidgetItem( props, expert ));
-				break;
-#endif
 				default:
 					assert( false );
 				break;
 			}
-			activeWidget->OnDataChanged();
 			dirty[pageId] = false;
 		}
-		/*
-		else
-		{
-			printf( "Active page %d (id %d) is not dirty\n", sel, pageId );
-			switch( sel )
-			{
-#ifdef USE_URANIAN_CHART
-				case UNB_PREVIEWWIDGET:
-					yearlyPreviewWidget->Refresh();
-				break;
-#endif
-				default:
-				break;
-			}
-		}
-		*/
 		notebook->Refresh();
+	}
+
+	/*****************************************************
+	**
+	**   UranianView   ---   OnConfigure
+	**
+	******************************************************/
+	void OnConfigure( wxCommandEvent& )
+	{
+		printf( "URANIAN\n" );
+
+		wxArrayString l;
+		l.Add( wxT( "Midpoints" ));
+		l.Add( wxT( "Reflection Points" ));
+		l.Add( wxT( "Sums" ));
+		l.Add( wxT( "Differences" ));
+		//l.Add( wxT( "Triples" ));
+		l.Add( wxT( "Antiscia" ));
+		wxMultiChoiceDialog dialog( this, _( "Included Event Configuration" ), GUI_APP_NAME, l );
+
+		UranianConfig &ucfg = props->getUranianConfig();
+		wxArrayInt a;
+		if( ucfg.eventsIncludeMidpoints ) a.Add( 0 );
+		if( ucfg.eventsIncludeSums ) a.Add( 1 );
+		if( ucfg.eventsIncludeDifferences ) a.Add( 2 );
+		if( ucfg.eventsIncludeReflectionPoints ) a.Add( 3 );
+		//if( ucfg.eventsIncludeTriples ) a.Add( 4 );
+		if( ucfg.eventsIncludeAntiscia ) a.Add( 5 );
+		dialog.SetSelections( a );
+		if ( IS_VALID_SIZE( config->viewprefs->sizes.sUranianConfigDialog )) dialog.SetSize( config->viewprefs->sizes.sUranianConfigDialog );
+
+		if ( dialog.ShowModal() == wxID_OK )
+		{
+			a = dialog.GetSelections();
+			ucfg.eventsIncludeMidpoints        = ( a.Index( 0 ) != wxNOT_FOUND );
+			ucfg.eventsIncludeReflectionPoints = ( a.Index( 1 ) != wxNOT_FOUND );
+			ucfg.eventsIncludeSums             = ( a.Index( 2 ) != wxNOT_FOUND );
+			ucfg.eventsIncludeDifferences      = ( a.Index( 3 ) != wxNOT_FOUND );
+			//ucfg.eventsIncludeTriples          = ( a.Index( 4 ) != wxNOT_FOUND );
+			ucfg.eventsIncludeAntiscia         = ( a.Index( 5 ) != wxNOT_FOUND );
+			config->viewprefs->sizes.sUranianConfigDialog = dialog.GetSize();
+			OnDataChanged();
+			updateView = true;
+		}
 	}
 
 	/*****************************************************
@@ -367,20 +330,15 @@ protected:
 	******************************************************/
 	void OnFilter( wxCommandEvent& )
 	{
-		ObjectFilterDialog dialog( this, expert->getPlanetList( PC_RADIX ), cfg->objectFilter);
+
+		//ObjectFilterDialog dialog( this, expert->getPlanetList( PcRadix ), props->getObjectFilter());
+		ObjectFilterDialog dialog( this, props->getPlanetList(), props->getObjectFilter());
 		if ( dialog.ShowModal() == wxID_OK )
 		{
-			cfg->objectFilter = dialog.getFilter();
+			props->setObjectFilter( dialog.getFilter());
 			OnDataChanged();
 			updateView = true;
 		}
-/*
-		if ( configureObjectFilter( this, expert->getPlanetList( PC_RADIX ), cfg->objectFilter ))
-		{
-			OnDataChanged();
-			updateView = true;
-		}
-	*/
 	}
 
 	/*****************************************************
@@ -396,10 +354,6 @@ protected:
 		expert->calculateYearlyPreview( year );
 		dirty[UNB_YEARLY_PREVIEW] = true;
 
-#ifdef USE_URANIAN_CHART
-		dirty[UNB_PREVIEWWIDGET] = true;
-#endif
-
 		updateView = true;
 	}
 
@@ -413,18 +367,19 @@ protected:
 		if ( toolbar )
 		{
 			const int pageId = notebook->GetSelection();
-			printf( "activateControls activateControls pageId %d\n", pageId );
+			//printf( "activateControls activateControls pageId %d\n", pageId );
 
 			SortChoice *choice_sort = (SortChoice*)toolbar->FindControl( TBS_SORT );
-			if ( choice_sort ) choice_sort->Enable( pageId == UNB_BASIC || pageId == UNB_EVENT_LIST );
+			if ( choice_sort ) choice_sort->Enable( pageId == UNB_EVENT_LIST );
 
-			toolbar->EnableTool( CMD_FILTER, pageId != UNB_MIDPOINTS && pageId != UNB_SUMS && pageId != UNB_DIFFERENCES );
+			toolbar->EnableTool( CMD_FILTER, pageId == UNB_EVENT_LIST );
+			toolbar->EnableTool( APP_CONFIGURE, pageId == UNB_EVENT_LIST || pageId == UNB_CLUSTERS ||  pageId == UNB_YEARLY_PREVIEW );
 
 			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
-			if ( spin_orbis ) spin_orbis->Enable( pageId == UNB_BASIC || pageId == UNB_CLUSTERS || pageId == UNB_EVENT_LIST );
+			if ( spin_orbis ) spin_orbis->Enable( pageId == UNB_CLUSTERS || pageId == UNB_EVENT_LIST );
 
 			wxSpinCtrl *spin_year = (wxSpinCtrl*)toolbar->FindControl( TBS_YEAR );
-			if ( spin_year ) spin_year->Enable( pageId == UNB_YEARLY_PREVIEW || pageId == UNB_PREVIEWWIDGET );
+			if ( spin_year ) spin_year->Enable( pageId == UNB_YEARLY_PREVIEW );
 		}
 	}
 
@@ -435,6 +390,7 @@ protected:
 	******************************************************/
 	void OnToolbarCommand()
 	{
+		UranianConfig &uconfig = props->getUranianConfig();
 		if ( toolbar )
 		{
 			printf( "OnToolbarCommand\n" );
@@ -442,15 +398,15 @@ protected:
 			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
 			if ( spin_orbis )
 			{
-				cfg->orbisRadix = spin_orbis->GetValue();
-				cfg->orbisRadix /= 60;
+				uconfig.orbisRadix = spin_orbis->GetValue();
+				uconfig.orbisRadix /= 60;
 			}
 
 			SortChoice *choice_sort = (SortChoice*)toolbar->FindControl( TBS_SORT );
-			if ( choice_sort ) cfg->sortOrder = (ASPECT_SORTORDER)choice_sort->GetSelection();
+			if ( choice_sort ) uconfig.sortOrder = (ASPECT_SORTORDER)choice_sort->GetSelection();
 
 			GradkreisChoice *choice_gk = (GradkreisChoice*)toolbar->FindControl( TBS_GRADKREIS );
-			if ( choice_gk ) cfg->gradkreis = choice_gk->getGradkreis();
+			if ( choice_gk ) uconfig.gradkreis = choice_gk->getGradkreis();
 
 			wxSpinCtrl *spin_year = (wxSpinCtrl*)toolbar->FindControl( TBS_YEAR );
 			if ( spin_year ) year = spin_year->GetValue();
@@ -463,25 +419,16 @@ protected:
 	bool updateView;
 	bool dirty[MAX_URANIAN_PAGES];
 	int year;
-	UranianConfig *cfg;
 	UranianExpert *expert;
 	UranianHelper *helper;
 	wxNotebook *notebook;
 
-	SheetWidget *basicList, *midpointTable, *sumTable, *differenceTable, *clusterWidget, *eventList,
-		*yearlyPreviewList;
-	SheetWidget *activeWidget;
-
-#ifdef USE_URANIAN_CHART
-	//YearlyPreviewWidget *yearlyPreviewWidget;
-	SheetWidget *yearlyPreviewWidget;
-#endif
-
+	TextWidget *midpointTable, *sumTable, *differenceTable, *antMidpointTable, *reflectionPointTable,
+		*clusterList, *eventList, *yearlyPreviewList;
 };
 
 IMPLEMENT_CLASS( UranianView, BasicView )
 
-#ifdef USE_URANIAN_CHART
 /**************************************************************
 ***
 **   ViewFactory   ---   createUranianView
@@ -491,6 +438,5 @@ BasicView *ViewFactory::createUranianView( wxWindow *parent, ChildWindow *frame 
 {
 	return new UranianView( parent, frame );
 }
-#endif
 
 

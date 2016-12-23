@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "mspin.h"
@@ -44,6 +42,11 @@ IMPLEMENT_CLASS( MBaseSpin, wxControl )
 IMPLEMENT_CLASS( MDateSpin, MBaseSpin )
 IMPLEMENT_CLASS( MDegSpin, MBaseSpin )
 
+/*************************************************//**
+*
+*  delegates transfer* and validate stuff to text control
+*
+******************************************************/
 class DelegatingSpinValidator : public wxValidator
 {
 public:
@@ -86,8 +89,8 @@ private:
 **   MBaseSpin   ---   Constructor
 **
 ******************************************************/
-MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize size )
-	: wxControl( parent, id, pos, size, wxBORDER_NONE ), // | wxTAB_TRAVERSAL )
+MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize size, const bool showLabel )
+	: wxControl( parent, id, pos, size, wxBORDER_NONE | wxTAB_TRAVERSAL ),
 	value( 0 ),
 	maxvalue( 0 )
 {
@@ -100,6 +103,12 @@ MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize 
 	sizer->Add( text, 1, wxALL|wxEXPAND, 3 );
 	sizer->Add( spin, 0, wxALL|wxEXPAND, 3 );
 
+	if ( showLabel )
+	{
+		label = new wxStaticText( this, BDT_LABEL, wxT( "--" ), wxDefaultPosition, wxSize( 30, -1 ));
+		sizer->Add( label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	}
+
 	SetAutoLayout( true );
 	SetSizer( sizer );
 	sizer->Fit( this );
@@ -111,7 +120,9 @@ MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize 
 	Connect( wxEVT_SCROLL_LINEUP, wxSpinEventHandler( MBaseSpin::OnSpinUp ));
 	Connect( wxEVT_SCROLL_LINEDOWN, wxSpinEventHandler( MBaseSpin::OnSpinDown ));
 	Connect( wxEVT_MOUSEWHEEL, wxMouseEventHandler( MBaseSpin::OnMouseWheelEvent ));
+	Connect( BDT_TEXT, wxEVT_CHAR, wxKeyEventHandler( MBaseSpin::OnChar ));
 	Connect( wxEVT_CHAR, wxKeyEventHandler( MBaseSpin::OnChar ));
+	Connect( BDT_TEXT, wxEVT_COMMAND_TEXT_ENTER, wxTextEventHandler( MBaseSpin::OnTextEnter ));
 	Connect( wxEVT_SET_FOCUS, wxFocusEventHandler( MBaseSpin::OnSetFocus ));
 	Connect( wxEVT_KILL_FOCUS, wxFocusEventHandler( MBaseSpin::OnKillFocus ));
 }
@@ -129,29 +140,6 @@ MBaseSpin::~MBaseSpin()
 
 /*****************************************************
 **
-**   MBaseSpin   ---   SetValidator
-**
-******************************************************/
-void MBaseSpin::SetValidator( const wxValidator &val )
-{
-	printf( "MBaseSpin::SetValidator\n" );
-
-	MBaseDoubleValidator *dval = wxDynamicCast( &val, MBaseDoubleValidator );
-	assert( dval );
-	value = dval->getValue();
-
-	MDegreeValidator *degval = wxDynamicCast( &val, MDegreeValidator );
-	if ( degval )
-	{
-		maxvalue = degval->getMaxValue();
-	}
-
-	text->SetValidator( val );
-	wxWindow::SetValidator( DelegatingSpinValidator( text ));
-}
-
-/*****************************************************
-**
 **   MBaseSpin   ---   OnMouseWheelEvent
 **
 ******************************************************/
@@ -163,27 +151,12 @@ void MBaseSpin::OnMouseWheelEvent( wxMouseEvent &event )
 
 /*****************************************************
 **
-**   MBaseSpin   ---   add
-**
-******************************************************/
-void MBaseSpin::add( const double &v )
-{
-	long cursorpos = text->GetInsertionPoint();
-	printf( "MBaseSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
-	*value += v;
-	TransferDataToWindow();
-	text->SetInsertionPoint( cursorpos );
-
-	sendChangeEvent();
-}
-
-/*****************************************************
-**
 **   MBaseSpin   ---   sendChangeEvent
 **
 ******************************************************/
 void MBaseSpin::sendChangeEvent()
 {
+	updateLabel();
 	wxCommandEvent e( COMMAND_SPIN_CHANGED, GetId());
 	wxPostEvent( GetParent(), e );
 }
@@ -198,6 +171,44 @@ void MBaseSpin::sendWrapEvent( const bool forward )
 	wxCommandEvent e( COMMAND_SPIN_WRAP, GetId());
 	e.SetInt( forward ? 1 : -1 );
 	wxPostEvent( GetParent(), e );
+}
+
+/*****************************************************
+**
+**   MBaseSpin   ---   SetValidator
+**
+******************************************************/
+void MBaseSpin::SetValidator( const wxValidator &val )
+{
+	wxString s = val.GetClassInfo()->GetClassName();
+	printf( "MBaseSpin::SetValidator class %s\n", str2char( s ));
+
+	MBaseDoubleValidator *dval = wxDynamicCast( &val, MBaseDoubleValidator );
+	assert( dval );
+	value = dval->getValue();
+
+	// does not happen if val is MDateValidator
+	MDegreeValidator *degval = wxDynamicCast( &val, MDegreeValidator );
+	if ( degval )
+	{
+		maxvalue = degval->getMaxValue();
+	}
+
+	text->SetValidator( val );
+	wxWindow::SetValidator( DelegatingSpinValidator( text ));
+	updateLabel();
+}
+
+/*****************************************************
+**
+**   MBaseSpin   ---   OnTextEnter
+**
+******************************************************/
+void MBaseSpin::OnTextEnter( wxCommandEvent& )
+{
+	printf( "TEXT ENTER\n" );
+	TransferDataToWindow();
+	sendChangeEvent();
 }
 
 /*****************************************************
@@ -218,6 +229,8 @@ void MBaseSpin::OnChar(wxKeyEvent &event )
 			//GetParent()->GetParent()->Navigate( ! shiftpressed );
 			//text->KillFocus();
 			doSkipSetFocus = true;
+			TransferDataToWindow();
+			sendChangeEvent();
 			Navigate( ! shiftpressed );
     }
     break;
@@ -225,6 +238,7 @@ void MBaseSpin::OnChar(wxKeyEvent &event )
     {
       printf( "SPIN RETURN\n" );
 			TransferDataToWindow();
+			sendChangeEvent();
     }
     break;
     case WXK_DOWN:
@@ -266,6 +280,20 @@ void MBaseSpin::OnSetFocus( wxFocusEvent &event )
 	if ( ! doSkipSetFocus ) text->SetFocus();
 	else event.Skip();
 }
+
+/*****************************************************
+**
+**   MDateSpin   ---   MBaseSpin
+**
+******************************************************/
+/*
+void MBaseSpin::update()
+{
+	printf( "MBaseSpin::update\n" );
+	InitDialog();
+	sendChangeEvent();
+}
+*/
 
 /*****************************************************
 **
@@ -315,6 +343,45 @@ int MBaseSpin::findToken4add()
 
 /*****************************************************
 **
+**   MDateSpin   ---   Constructor
+**
+******************************************************/
+MDateSpin::MDateSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize size  )
+	: MBaseSpin( parent, id, pos, size, true )
+{
+	token = '-';
+}
+
+
+/*****************************************************
+**
+**   MDateSpin   ---   updateLabel
+**
+******************************************************/
+void MDateSpin::updateLabel()
+{
+	Lang lang;
+	assert( label );
+	label->SetLabel( lang.getWeekdayName( ((int)(*value + 1.5 )) % 7).Left( 2 ));
+}
+
+/*****************************************************
+**
+**   MDateSpin   ---   setValue
+**
+******************************************************/
+/*
+void MDateSpin::setValue( double *v )
+{
+	value = v;
+	text->SetValidator( MDateValidator( v ));
+	printf( "MDateSpin::setValue %f\n", *v );
+	update();
+}
+*/
+
+/*****************************************************
+**
 **   MDateSpin   ---   add
 **
 ******************************************************/
@@ -329,6 +396,7 @@ void MDateSpin::add( const double &v )
 
 	formatter->parseDateString( s, day, month, year );
 	const int tokenpos = findToken4add();
+	printf( "token pos %d\n", tokenpos );
 
 	switch( tokenpos )
 	{
@@ -344,6 +412,7 @@ void MDateSpin::add( const double &v )
 		break;
 	}
 
+	assert( value );
 	*value = calculator->calc_jd( year, month, day, 12 );
 
 	printf( "MDateSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
@@ -352,6 +421,20 @@ void MDateSpin::add( const double &v )
 	sendChangeEvent();
 }
 
+/*****************************************************
+**
+**   MDegSpin   ---   setValue
+**
+******************************************************/
+/*
+void MDegSpin::setValue( double *v )
+{
+	value = v;
+	text->SetValidator( MDegreeValidator( v, maxvalue ));
+	printf( "MDegSpin::setValue %f\n", *v );
+	update();
+}
+*/
 
 /*****************************************************
 **
@@ -364,7 +447,6 @@ void MDegSpin::add( const double &v )
 	int deg, min, sec;
 	deg = min = sec = 0;
 
-	//Calculator *calculator = CalculatorFactory().getCalculator();
 	Formatter *formatter = Formatter::get();
 
 	formatter->parseDegreeString( s, deg, min, sec, 360 );

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _BASICVIEW_H_
@@ -34,7 +32,6 @@ using namespace std;
 class ChildWindow;
 
 class Document;
-class DocumentManager;
 struct WidgetNode;
 
 class wxBoxSizer;
@@ -139,7 +136,7 @@ class ViewFactory
 {
 public:
 
-	BasicView *createPartnerView( wxWindow*, ChildWindow*, DocumentManager* );
+	BasicView *createPartnerView( wxWindow*, ChildWindow* );
 	BasicView *createView( wxWindow*, ChildWindow*, WidgetNode* );
 
 private:
@@ -152,21 +149,24 @@ private:
 	BasicView *createSelectableTextView( wxWindow*, ChildWindow*, const bool &toolpanel, const int &mode );
 	BasicView *createYogaView( wxWindow*, ChildWindow* );
 	BasicView *createMainView( wxWindow*, ChildWindow* );
-#ifdef USE_URANIAN_CHART
-	BasicView *createUranianView( wxWindow*, ChildWindow* );
-#endif
 	BasicView *createTransitView( wxWindow*, ChildWindow* );
 	BasicView *createVargaView( wxWindow*, ChildWindow* );
 	BasicView *createGraphicGridView( wxWindow*, ChildWindow*, const int &rows, const int &cols, vector<int> vargas );
+
+#ifdef USE_PRINT_VIEW
 	BasicView *createPrintView( wxWindow*, ChildWindow* );
+#endif
 
 	BasicView *createVimsopakaBalaView( wxWindow*, ChildWindow* );
 	BasicView *createAshtakaVargaView( wxWindow*, ChildWindow* );
-	BasicView *createGraphicView( wxWindow*, ChildWindow*, const Varga &varga, const bool& uranian );
+	BasicView *createGraphicView( wxWindow*, ChildWindow*, const Varga &varga );
 
-#ifdef USE_SHADBALA
-	BasicView *createShadbalaView( wxWindow*, ChildWindow* );
+#ifdef USE_URANIAN_CHART
+	BasicView *createUranianChartView( wxWindow*, ChildWindow* );
 #endif
+
+	BasicView *createUranianView( wxWindow*, ChildWindow* );
+	BasicView *createShadbalaView( wxWindow*, ChildWindow* );
 
 	// non doc views
 	BasicView *createEclipseView( wxWindow*, ChildWindow* );

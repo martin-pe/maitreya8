@@ -7,30 +7,28 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "PlanetSignDisplayPanel.h"
 
 #include "Conf.h"
 #include "ChartProperties.h"
-#include "SheetWidget.h"
 #include "guibase.h"
 #include "Horoscope.h"
 #include "Lang.h"
 #include "mvalidator.h"
 #include "PlanetList.h"
 #include "Table.h"
+#include "TextWidget.h"
 
 #include <wx/checkbox.h>
 #include <wx/choice.h>
@@ -83,7 +81,7 @@ PlanetSignDisplayPanel::PlanetSignDisplayPanel( wxWindow* parent ) : ConfigPanel
         _("Symbol 2")
     };
     choice_capricorn = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_capricorn_choices, 0);
-    theText = new SheetWidget(panel_preview, props, 0, cfg);
+    theText = new TextWidget(panel_preview, props, 0, cfg);
 
     set_properties();
     do_layout();
@@ -153,7 +151,7 @@ void PlanetSignDisplayPanel::writeTextContents()
 
 	horoscope->setCurrentDate();
 	horoscope->update();
-	ObjectArray obs = PlanetList().getVedicObjectList( OI_OUTER );
+	ObjectArray obs = PlanetList().getVedicObjectList( OI_INNER | OI_OUTER );
 	Table *table = new Table( 2, 10 );
 
 	int line = 0;

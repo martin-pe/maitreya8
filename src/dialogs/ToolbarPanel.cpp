@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "ToolbarPanel.h"
@@ -71,19 +69,12 @@ ToolbarPanel::ToolbarPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("Text and Icon")
     };
     choice_toolstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_toolstyle_choices, 0);
-    label_iconsize = new wxStaticText(this, wxID_ANY, _("Icon Size"));
-    const wxString choice_iconsize_choices[] = {
-        _("24x24"),
-        _("32x32")
-    };
-    choice_iconsize = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_iconsize_choices, 0);
 
     set_properties();
     do_layout();
     // end wxGlade
 
 	choice_toolstyle->SetValidator( MChoiceValidator( &tconfig->toolbarStyle ));
-	choice_iconsize->SetValidator( MChoiceValidator( &tconfig->toolbarIconSize ));
 
 	initToolItems();
 	initRightControl();
@@ -138,7 +129,6 @@ void ToolbarPanel::model2config()
 ******************************************************/
 void ToolbarPanel::updateUi()
 {
-	choice_iconsize->Enable( choice_toolstyle->GetSelection() != 0 );
 }
 
 /*****************************************************
@@ -436,7 +426,6 @@ void ToolbarPanel::set_properties()
     button_down->SetToolTip(_("Move selected item down"));
     list2->SetMinSize(wxSize(200,250));
     choice_toolstyle->SetSelection(0);
-    choice_iconsize->SetSelection(0);
     // end wxGlade
 }
 
@@ -451,7 +440,6 @@ void ToolbarPanel::do_layout()
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(2, 1, 3, 3);
     sizer_options_staticbox->Lower();
     wxStaticBoxSizer* sizer_options = new wxStaticBoxSizer(sizer_options_staticbox, wxHORIZONTAL);
-    wxFlexGridSizer* grid_options = new wxFlexGridSizer(2, 2, 0, 0);
     wxFlexGridSizer* sizer_listbox = new wxFlexGridSizer(1, 3, 3, 3);
     sizer_selected_staticbox->Lower();
     wxStaticBoxSizer* sizer_selected = new wxStaticBoxSizer(sizer_selected_staticbox, wxVERTICAL);
@@ -479,11 +467,8 @@ void ToolbarPanel::do_layout()
     sizer_listbox->AddGrowableCol(0);
     sizer_listbox->AddGrowableCol(2);
     sizer_main->Add(sizer_listbox, 1, wxALL|wxEXPAND, 3);
-    grid_options->Add(label_toolstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_options->Add(choice_toolstyle, 0, wxALL, 3);
-    grid_options->Add(label_iconsize, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_options->Add(choice_iconsize, 0, wxALL|wxALIGN_RIGHT, 3);
-    sizer_options->Add(grid_options, 1, wxEXPAND, 0);
+    sizer_options->Add(label_toolstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_options->Add(choice_toolstyle, 0, wxALL, 3);
     sizer_main->Add(sizer_options, 1, wxEXPAND, 0);
     SetSizer(sizer_main);
     sizer_main->Fit(this);

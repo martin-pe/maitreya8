@@ -23,13 +23,13 @@ CPPFLAGS = -g -I. -I../.. -I../base -I../jyotish -I../dialogs -I../swe -I../wxpd
 LDLIBS = -lstdc++ $(VIEW_LIB) $(JYOTISH_LIB) $(DIALOG_LIB) $(BASE_LIB) $(SWE_LIB) $(DB_LIB)\
 	$(JSON_LIB) $(PDF_LIB) `wx-config --libs` 
 
-OBS = ApplicationWindow.o BasicVedicChart.o BasicView.o BasicWidget.o ChartField.o \
-	ChildWindow.o DasaTreeWidget.o BarDiagram.o Document.o GraphicalChart.o SheetWriter.o \
-	GraphicGrid.o guibase.o ChildWindowListCtrl.o MenuProvider.o MultipleChildWindow.o \
-	PrintoutSheetCreator.o PdfBase.o PdfPainter.o SarvatobhadraChart.o SplitterWidget.o \
-	Statusbar.o ToolPanel.o TreeWidget.o VedicChart.o VedicRasiChart.o \
-	WesternChart.o YogaEditor.o BasicWesternChart.o SheetWidget.o PdfTools.o \
-	maitreya_resources.o
+OBS = ApplicationWindow.o BarDiagram.o BasicSheetWidget.o BasicVedicChart.o BasicView.o \
+	BasicWesternChart.o BasicWidget.o ChartField.o ChildWindow.o ChildWindowListCtrl.o \
+	DasaTreeWidget.o Document.o GraphicalChart.o GraphicGrid.o guibase.o MenuProvider.o \
+	MultipleChildWindow.o PdfBase.o PdfPainter.o PdfTools.o PrintoutSheetCreator.o \
+	SarvatobhadraChart.o SheetWidget.o SheetWriter.o SplitterWidget.o Statusbar.o \
+	TextWidget.o ToolPanel.o TreeWidget.o VedicChart.o VedicRasiChart.o WesternChart.o \
+	YogaEditor.o maitreya_resources.o
 
 $(MAITREYA_PROG) : $(OBS)
 	test -f geonames1000.sql || ln -s ../atlas/geonames1000.sql

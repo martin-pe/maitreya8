@@ -107,9 +107,9 @@ am_libmaitreya_views_a_OBJECTS = AshtakaVargaView.$(OBJEXT) \
 	DasaGraphicView.$(OBJEXT) DasaView.$(OBJEXT) \
 	EclipseView.$(OBJEXT) EphemView.$(OBJEXT) \
 	GraphicView.$(OBJEXT) HoraView.$(OBJEXT) PartnerView.$(OBJEXT) \
-	PrintView.$(OBJEXT) SbcView.$(OBJEXT) SheetView.$(OBJEXT) \
+	SbcView.$(OBJEXT) ShadbalaView.$(OBJEXT) SheetView.$(OBJEXT) \
 	SolarView.$(OBJEXT) TextView.$(OBJEXT) TransitView.$(OBJEXT) \
-	VargaView.$(OBJEXT) YogaView.$(OBJEXT)
+	UranianView.$(OBJEXT) VargaView.$(OBJEXT) YogaView.$(OBJEXT)
 libmaitreya_views_a_OBJECTS = $(am_libmaitreya_views_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -325,11 +325,11 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = $(WX_CPPFLAGS) -I. -I../gui -I../base -I../jyotish -I../dialogs
 noinst_LIBRARIES = libmaitreya_views.a
-libmaitreya_views_a_SOURCES = AshtakaVargaView.cpp DasaGraphicView.cpp \
-	DasaGraphicView.h DasaView.cpp DasaView.h EclipseView.cpp EphemView.cpp \
-	EphemView.h GraphicView.cpp HoraView.cpp PartnerView.cpp PrintView.cpp \
-	SbcView.cpp SheetView.cpp SheetView.h SolarView.cpp TextView.cpp \
-	TransitView.cpp VargaView.cpp YogaView.cpp
+libmaitreya_views_a_SOURCES = AshtakaVargaView.cpp DasaGraphicView.cpp DasaGraphicView.h \
+	DasaView.cpp DasaView.h EclipseView.cpp EphemView.cpp EphemView.h GraphicView.cpp \
+	HoraView.cpp PartnerView.cpp SbcView.cpp ShadbalaView.cpp SheetView.cpp SheetView.h \
+	SolarView.cpp TextView.cpp TextView.h TransitView.cpp UranianView.cpp VargaView.cpp \
+	YogaView.cpp
 
 EXTRA_DIST = Makefile.win 
 all: all-am
@@ -389,12 +389,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GraphicView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HoraView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PartnerView.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PrintView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SbcView.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShadbalaView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SheetView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SolarView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TextView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TransitView.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UranianView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VargaView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/YogaView.Po@am__quote@
 

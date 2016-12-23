@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "BasicView.h"
@@ -25,9 +23,10 @@
 #include "Conf.h"
 #include "BarDiagram.h"
 #include "Document.h"
-#include "SheetWidget.h"
 #include "GraphicGrid.h"
 #include "PlanetList.h"
+#include "SheetWidget.h"
+#include "TextWidget.h"
 #include "Varga.h"
 #include "VargaHoroscope.h"
 #include "VedicPlanet.h"
@@ -72,7 +71,7 @@ public:
 		notebook->AddPage( dwidget, _( "Diagram" ));
 
 		// VNB_TEXT
-		twidget = new SheetWidget( notebook, props );
+		twidget = new TextWidget( notebook, props );
 		notebook->AddPage( twidget, _( "Text" ));
 
 		widget = notebook;
@@ -113,7 +112,7 @@ protected:
 
 	ChartGridWidget *varga1, *varga2, *varga3;
 
-	SheetWidget *twidget;
+	TextWidget *twidget;
 	SheetWidget *dwidget;
 
 	wxNotebook *notebook;

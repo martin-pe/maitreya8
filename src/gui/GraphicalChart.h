@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef GRAPHICALCHART_H_
@@ -87,6 +85,7 @@ protected:
   ChartProperties *chartprops;
 	Horoscope *h1, *h2;
 	AspectExpert *aexpert;
+	uint skin;
 
 	virtual void updateAspects() = 0;
 
@@ -102,6 +101,8 @@ protected:
 
 	void paintChartFrame( const GcChartFrame& );
 	void paintMarkerLine( const double &alfa, const GcChartFrame&, const GcChartFrame& );
+	void paintObjectRing( const double &angle, const GcObjectRing& );
+
 	void paintDegreeMarkers( const double &aries,
 		const GcChartFrame &zodiacFrame,
 		const GcChartFrame &degree1Frame,
@@ -110,12 +111,17 @@ protected:
 		);
 
 	MPoint frameBorderPointToXy( const double &alfa, const GcChartFrame& );
-	void paintArrow( const double &alfa, GcArrow& );
+	void paintArrow( const double &alfa, GcChartRing& );
 	void paintArrow( const MPoint&, const MPoint& );
 
 	void setDefaultTextColor( const FIELD_PART = FP_ALL );
-	void setGraphicFont( const double zoom = 1.0 );
-	void setSymbolFont( const double zoom = 1.0 );
+
+	void setGraphicFontZoom( const double &zoom );
+	void setGraphicFont() { setGraphicFontZoom( 1.0 ); }
+	void setSymbolFontZoom( const double &zoom );
+	void setSymbolFont() { setSymbolFontZoom( 1.0 ); }
+
+	void tryToSetPen( const wxPen& );
 
 	MRect rect;
 	wxRect *refreshRect;
@@ -156,7 +162,6 @@ class ChartFactory
 {
 public:
 	GraphicalChart *createWesternChart( const ChartType&, ChartProperties*, Horoscope*, Horoscope* );
-	GraphicalChart *createUranianChart( const ChartType&, ChartProperties*, Horoscope*, Horoscope*, UranianExpert* );
 	GraphicalChart *createSarvatobhadraChart( const ChartType&, ChartProperties*, Horoscope*, Horoscope* );
 	GraphicalChart *createVedicChart( const ChartType&, ChartProperties*, Horoscope*, Horoscope*, const Varga& );
 };

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "ChartProperties.h"
@@ -39,7 +37,6 @@ ChartProperties::ChartProperties( const bool readFromConfig )
 	fixedVedic = fixedWestern = false;
 	animated = false;
 	isDocumentProp = false;
-	transitmode = false;
 
 	if ( readFromConfig ) init();
 }
@@ -67,6 +64,8 @@ void ChartProperties::init()
 
 	vchartconfig = *config->vedicChartBehavior;
 	wchartconfig = *config->westernChartBehavior;
+
+	uconfig = *config->uranian;
 }
 
 /*****************************************************
@@ -209,7 +208,7 @@ const ObjectArray ChartProperties::getWesternPlanetList( const ObjectFilter &fil
 ******************************************************/
 void ChartProperties::setObjectStyle( const OBJECT_INCLUDES &style, const bool &vedic )
 {
-	isVedic() ? vobjectstyle = style : wobjectstyle = style;
+	vedic ? vobjectstyle = style : wobjectstyle = style;
 	updatePlanetList( vedic );
 }
 
@@ -230,17 +229,17 @@ void ChartProperties::updatePlanetList( const bool &v )
 **   ChartProperties   ---   changeSkin
 **
 ******************************************************/
-void ChartProperties::changeSkin( const bool &increment, const bool &vedic )
+void ChartProperties::changeSkin( const bool &increment, const bool &v )
 {
-	//printf( "BEFORE vgraphicstyle.graphicSkin %d vedic %d\n", vgraphicstyle.graphicSkin, vedic );
-	int skin = vedic ? vgraphicstyle.graphicSkin : wgraphicstyle.graphicSkin;
+	//printf( "BEFORE vgraphicstyle.graphicSkin %d vedic %d\n", vgraphicstyle.graphicSkin, v );
+	int skin = v ? vgraphicstyle.graphicSkin : wgraphicstyle.graphicSkin;
 	if ( increment ) skin--;
 	else skin++;
-	const int size = vedic ? (int)VedicChartConfigLoader::get()->getConfigs().size()
+	const int size = v ? (int)VedicChartConfigLoader::get()->getConfigs().size()
 		: (int)WesternChartConfigLoader::get()->getConfigs().size();
 	if ( skin < 0 ) skin = size - 1;
 	if ( skin >= size ) skin = 0;
-	vedic ? vgraphicstyle.graphicSkin = skin : wgraphicstyle.graphicSkin = skin;
+	v ? vgraphicstyle.graphicSkin = skin : wgraphicstyle.graphicSkin = skin;
 	//printf( "AFTER vgraphicstyle.graphicSkin %d\n", vgraphicstyle.graphicSkin );
 }
 
@@ -256,11 +255,11 @@ void ChartProperties::processNavigationKey( const int &code )
 	{
 		case WXK_UP:
 		case WXK_DOWN:
-			changeSkin( code == WXK_UP );
+			changeSkin( code == WXK_UP, isVedic() );
 			break;
 		case WXK_LEFT:
 		case WXK_RIGHT:
-			if ( vedic )
+			if ( isVedic() )
 			{
 				if ( code == WXK_RIGHT ) vgraphicstyle.indianChartType++;
 				else vgraphicstyle.indianChartType--;
@@ -307,7 +306,7 @@ bool ChartProperties::dispatchWidgetPropertyCommand( const int &command )
 
 		case CMD_KEY_LEFT:
 		case CMD_KEY_RIGHT:
-			if ( vedic )
+			if ( isVedic() )
 			{
 				if ( command == CMD_KEY_RIGHT ) vgraphicstyle.indianChartType++;
 				else vgraphicstyle.indianChartType--;
@@ -366,8 +365,8 @@ bool ChartProperties::dispatchWidgetPropertyCommand( const int &command )
 			wgraphicstyle.showAspectSymbols = ! wgraphicstyle.showAspectSymbols;
 		break;
 
-		case CMD_WCS_TRANSITS_INSIDE:
-			wgraphicstyle.transitStyle = ! wgraphicstyle.transitStyle;
+		case CMD_WCS_SECONDCHART_INSIDE:
+			wgraphicstyle.secondchartStyle = ! wgraphicstyle.secondchartStyle;
 		break;
 
 		case CMD_VCT_SOUTH:
@@ -447,7 +446,8 @@ bool ChartProperties::dispatchWidgetPropertyCommand( const int &command )
 			SETOBJECTFLAG( CMD_SHOWMERIDIAN, OI_MERIDIAN )
 			SETOBJECTFLAG( CMD_SHOWDESCENDANT, OI_DESCENDANT )
 			SETOBJECTFLAG( CMD_SHOWIMUMCOELI, OI_IMUMCOELI )
-			SETOBJECTFLAG( CMD_SHOWURANIAN, OI_URANIAN )
+			SETOBJECTFLAG( CMD_SHOWURANIAN_INNER, OI_URANIAN_INNER )
+			SETOBJECTFLAG( CMD_SHOWURANIAN_OUTER, OI_URANIAN_OUTER )
 			SETOBJECTFLAG( CMD_SHOWCHIRON, OI_CHIRON )
 			SETOBJECTFLAG( CMD_SHOWPHOLUS, OI_PHOLUS )
 			SETOBJECTFLAG( CMD_SHOWPLANETOIDS, OI_PLANETOIDS )

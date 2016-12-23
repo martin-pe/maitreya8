@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Commands.h"
@@ -281,17 +279,17 @@ void CommandHandler::init()
 	cmds[CMD_NEW_SBC] = new MCommand( BM_SBC, _( "SBC" ), _( "Sarvatobhadra" ), new MaitreyaShortcut( 'S', 0, 0 ));
 	cmds[CMD_NEW_SOLAR] = new MCommand( BM_SOLAR, _( "Solar" ), new MaitreyaShortcut( 'T', 0, 1 ));
 	cmds[CMD_NEW_VARGA] = new MCommand( BM_VARGA, _( "Varga" ), _( "Varga Summary" ), new MaitreyaShortcut( 'V', 0, 1 ));
-	cmds[CMD_NEW_PRINTPREVIEW] = new MCommand( BM_PRINT, _( "Print Preview" ), new MaitreyaShortcut( 'X', 0, 0 ));
 
-#ifdef USE_SHADBALA
-	cmds[CMD_NEW_SHADBALA] = new MCommand( BM_SHADBALA, _( "Shadbala" ), new MaitreyaShortcut( 'B', 0, 1 ));
+#ifdef USE_PRINT_VIEW
+	cmds[CMD_NEW_PRINTPREVIEW] = new MCommand( BM_PRINT, _( "Print Preview" ), new MaitreyaShortcut( 'X', 0, 0 ));
 #endif
 
+	cmds[CMD_NEW_SHADBALA] = new MCommand( BM_SHADBALA, _( "Shadbala" ), new MaitreyaShortcut( 'B', 0, 1 ));
 	cmds[CMD_NEW_WCHART] = new MCommand( BM_WCHART, _( "WChart" ), _( "Western Chart" ), new MaitreyaShortcut( '0', 0, 0 ));
+	cmds[CMD_NEW_URANIAN] = new MCommand( BM_URANIAN, _( "Uranian" ), new MaitreyaShortcut( 'U', 0, 0 ));
 
 #ifdef USE_URANIAN_CHART
-	cmds[CMD_NEW_URANIAN] = new MCommand( BM_URANIAN, _( "Uranian" ), new MaitreyaShortcut( 'U', 0, 0 ));
-	cmds[CMD_NEW_URANIANCHART] = new MCommand( BM_WCHART, _( "UChart" ), _( "Uranian Chart" ), new MaitreyaShortcut( 'U', 0, 1 ));
+	cmds[CMD_NEW_URANIAN_CHART] = new MCommand( BM_WCHART, _( "Uranian Chart" ), new MaitreyaShortcut( 'U', 0, 1 ));
 #endif
 
 	cmds[CMD_NEW_ASHTAKAVARGA] = new MCommand( BM_ASHTAKAVARGA, _( "AV" ), _( "Ashtakavarga" ), new MaitreyaShortcut( 'A', 0, 0 ));
@@ -334,6 +332,7 @@ void CommandHandler::init()
 	cmds[ CMD_SELECT_DASA ] = new MCommand( BM_DASA, _( "Dasa" ), _( "Select Dasa" ));
 	cmds[ CMD_GOTO_YEAR ] = new MCommand( BM_GOTO, _( "Goto" ), _( "Goto Year" ));
 	cmds[ CMD_FILTER ] = new MCommand( BM_FILTER, _( "Filter" ));
+	cmds[ CMD_CLEAR_FILTER ] = new MCommand( BM_CLOSE, _( "Clear Filter" ));
 	cmds[ CMD_LAUNCH_VIEWER ] = new MCommand( BM_PRINT, _( "Launch" ), _( "Lanuch Viewer" ));
 	cmds[ CMD_NEW_ANNUAL_CHART ] = new MCommand( BM_NEW, _( "Annual" ), _( "Annual Chart" ));
 	cmds[ CMD_TIP ] = new MCommand( BM_TIP, _( "Tip" ));

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "MenuProvider.h"
@@ -160,26 +158,19 @@ void MyMenu::addVargaMenu()
 AppMenuBar::AppMenuBar( int style )
 		: wxMenuBar( style )
 {
-	const static int fileitems[] = { 0, CMD_SAVE, CMD_SAVEAS, CMD_CLOSE_DOC, 0,
-		//CMD_NEW_PRINTPREVIEW, CMD_PRINT, CMD_QUICKPRINT, 0,
-		APP_EXIT, -1 };
+	const static int fileitems[] = { 0, CMD_SAVE, CMD_SAVEAS, CMD_CLOSE_DOC, 0, APP_EXIT, -1 };
 	const static int vedicitems[] = { CMD_NEW_VARGA, CMD_NEW_SBC, CMD_NEW_TEXT, 0,
 		CMD_NEW_DASA_TREE, CMD_NEW_DASA_COMPOSITE,
 		CMD_NEW_GRAPHICALDASA, CMD_NEW_TRANSIT, 0, CMD_NEW_YOGA,
-		CMD_NEW_ASHTAKAVARGA,
-
-#ifdef USE_SHADBALA
-		CMD_NEW_SHADBALA,
-#endif
-		CMD_NEW_SOLAR, -1 };
+		CMD_NEW_ASHTAKAVARGA, CMD_NEW_SHADBALA, CMD_NEW_SOLAR, -1 };
 
 #ifdef USE_URANIAN_CHART
-	const static int westernitems[9] = { CMD_NEW_WCHART, CMD_NEW_URANIANCHART, CMD_NEW_TEXT, 0, CMD_NEW_URANIAN,
+	const static int westernitems[9] = { CMD_NEW_WCHART, CMD_NEW_TEXT, 0, CMD_NEW_URANIAN, CMD_NEW_URANIAN_CHART,
 		CMD_NEW_TRANSIT, 0, CMD_NEW_SOLAR, -1 };
 #else
-	const static int westernitems[7] = { CMD_NEW_WCHART, CMD_NEW_TEXT, 0, CMD_NEW_TRANSIT, 0, CMD_NEW_SOLAR, -1 };
+	const static int westernitems[8] = { CMD_NEW_WCHART, CMD_NEW_TEXT, 0, CMD_NEW_URANIAN, 
+		CMD_NEW_TRANSIT, 0, CMD_NEW_SOLAR, -1 };
 #endif
-
 
 	filemenu = new MyMenu;
 	newDefaultItem = filemenu->addItem( APP_NEW );
@@ -225,9 +216,12 @@ AppMenuBar::AppMenuBar( int style )
 	Export ->BasicWidget
 */
 
-	const static int windowitems[] = { 0,
-		CMD_NEW_PRINTPREVIEW, CMD_PRINT, CMD_QUICKPRINT, 0,
-		CMD_CLOSE, -1 };
+#ifdef USE_PRINT_VIEW
+	const static int windowitems[] = { 0, CMD_NEW_PRINTPREVIEW, CMD_PRINT, CMD_QUICKPRINT, 0, CMD_CLOSE, -1 };
+#else
+	const static int windowitems[] = { 0, CMD_PRINT, CMD_QUICKPRINT, 0, CMD_CLOSE, -1 };
+#endif
+
 	windowmenu = new MyMenu;
 	windowmenu->addItem( CMD_EDITDATA );
 	windowmenu->addCheckItem( CMD_ANIMATE );
@@ -297,7 +291,10 @@ void AppMenuBar::updateMenus( ChildWindow *child )
 	windowmenu->Enable( CMD_VEDICMODE, hasEwOption );
 	windowmenu->Check( CMD_VEDICMODE, isVedic );
 
+#ifdef USE_PRINT_VIEW
 	windowmenu->Enable( CMD_NEW_PRINTPREVIEW, isDoc );
+#endif
+
 	windowmenu->Enable( CMD_PRINT, isDoc );
 	windowmenu->Enable( CMD_QUICKPRINT, isDoc );
 
@@ -381,15 +378,11 @@ wxMenu *ContextMenuProvider::getChildWindowListCtrlMenu( ChildWindow *child )
 
 	MyMenu *menu = new MyMenu;
 
-	if ( props->hasDocument())
+	if ( child->getDoc())
 	{
 		menu->Append( -1, _( "Horoscope" ), getChartMenu( props, child->isMainWindow()));
 	}
-	else
-	{
-		menu->addItem( CMD_CLOSE );
-	}
-	if ( props->hasDocument()) menu->addItem( CMD_EDITDATA );
+	if ( child->getDoc()) menu->addItem( CMD_EDITDATA );
 	menu->addItem( CMD_CLOSE );
 
 	menu->AppendSubMenu( getNewViewMenu( props ), _( "New View"));
@@ -426,17 +419,26 @@ wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &w
 	menu->Enable( CMD_ANIMATE, props->hasDocument() );
 	menu->AppendSeparator();
 
+	if ( wo & WO_SUPPORTS_EW_TOGGLE )
+	{
+		menu->addCheckItem( CMD_VEDICMODE, props->isVedic());
+		menu->addCheckItem( CMD_WESTERNMODE, ! props->isVedic());
+		menu->AppendSeparator();
+	}
+
+	/*
 	menu->addCheckItem( CMD_VEDICMODE, props->isVedic());
 	menu->Enable( CMD_VEDICMODE, ( wo & WO_SUPPORTS_EW_TOGGLE ));
 	menu->addCheckItem( CMD_WESTERNMODE, ! props->isVedic());
 	menu->Enable( CMD_WESTERNMODE, ( wo & WO_SUPPORTS_EW_TOGGLE ));
 	menu->AppendSeparator();
+	*/
 
-	if ( wo & WO_MENU_FULL_OBJECT || wo & WO_MENU_RESTRICTED_OBJECT )
+	if (( wo & WO_MENU_FULL_OBJECT ) | ( wo & WO_MENU_RESTRICTED_OBJECT ))
 	{
 		menu->AppendSubMenu( getObjectSubMenu( wo, props ), _( "Objects"));
 	}
-	if ( wo & WO_MENU_FULL_GRAFIC_STYLE || wo & WO_MENU_RESTRICTED_GRAFIC_STYLE )
+	if (( wo & WO_MENU_FULL_GRAPHIC_STYLE ) | ( wo & WO_MENU_RESTRICTED_GRAPHIC_STYLE ))
 	{
 		menu->AppendSubMenu( getGraphicStyleMenu( wo, props ), _( "Graphic Options"));
 	}
@@ -452,7 +454,12 @@ wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &w
 	{
 		menu->AppendSubMenu( getMainViewColumnMenu( props ), _( "Columns"));
 	}
-	if ( HAS_EXPORT_OPTION( wo ))
+	if (
+		( wo & WO_EXPORT_PLAINTEXT )
+		| ( wo & WO_EXPORT_CSVTEXT )
+		| ( wo & WO_EXPORT_HTMLTEXT )
+		| ( wo & WO_EXPORT_PDF )
+		| ( wo & WO_EXPORT_GRAPHIC ))
 	{
 		menu->AppendSubMenu( getExportMenu( wo ), _( "Export As ..."));
 	}
@@ -473,8 +480,12 @@ wxMenu *ContextMenuProvider::getExportMenu( const int &wo )
 	if ( wo & WO_EXPORT_PLAINTEXT ) exportmenu->addItem( CMD_EXPORT_TEXT );
 	if ( wo & WO_EXPORT_CSVTEXT ) exportmenu->addItem( CMD_EXPORT_CSV );
 	if ( wo & WO_EXPORT_HTMLTEXT ) exportmenu->addItem( CMD_EXPORT_HTML );
+
+#ifdef USE_PDF_EXPORT
 	if ( wo & WO_EXPORT_PDF ) exportmenu->addItem( CMD_EXPORT_PDF );
-	if ( wo & WO_EXPORT_GRAFIC ) exportmenu->addItem( CMD_EXPORT_IMAGE );
+#endif
+
+	if ( wo & WO_EXPORT_GRAPHIC ) exportmenu->addItem( CMD_EXPORT_IMAGE );
 	return exportmenu;
 }
 
@@ -526,8 +537,7 @@ wxMenu *ContextMenuProvider::getObjectSubMenu( const int &wo, ChartProperties *p
 	menu->addCheckItem( CMD_SHOWDRAGONTAIL, lang.getObjectName( OMEANDESCNODE, format, props->isVedic() ),
 		props->getObjectStyle() & OI_DRAGONTAIL );
 
-	//if ( ! wo & WO_MENU_RESTRICTED_OBJECT )
-	if ( true )
+	if ( wo & WO_MENU_FULL_OBJECT )
 	{
 		menu->addCheckItem( CMD_SHOWASCENDANT, lang.getObjectName( OASCENDANT, format, props->isVedic() ),
 			props->getObjectStyle() & OI_ASCENDANT );
@@ -538,7 +548,9 @@ wxMenu *ContextMenuProvider::getObjectSubMenu( const int &wo, ChartProperties *p
 		menu->addCheckItem( CMD_SHOWIMUMCOELI, lang.getObjectName( OIMUMCOELI, format, props->isVedic() ),
 			props->getObjectStyle() & OI_IMUMCOELI );
 	}
-	menu->addCheckItem( CMD_SHOWURANIAN, _( "8 Uranian"), props->getObjectStyle() & OI_URANIAN );
+
+	menu->addCheckItem( CMD_SHOWURANIAN_INNER, _( "4 Uranian (Cupido-Kronos)"), props->getObjectStyle() & OI_URANIAN_INNER );
+	menu->addCheckItem( CMD_SHOWURANIAN_OUTER, _( "4 Uranian (Apollon-Poseidon)"), props->getObjectStyle() & OI_URANIAN_OUTER );
 	menu->addCheckItem( CMD_SHOWCHIRON, lang.getObjectName( OCHIRON, format, props->isVedic() ),
 		props->getObjectStyle() & OI_CHIRON );
 	menu->addCheckItem( CMD_SHOWPHOLUS, lang.getObjectName( OPHOLUS, format, props->isVedic() ),
@@ -547,7 +559,7 @@ wxMenu *ContextMenuProvider::getObjectSubMenu( const int &wo, ChartProperties *p
 	menu->addCheckItem( CMD_SHOWLILITH, lang.getObjectName( OLILITH, format, props->isVedic() ),
 		props->getObjectStyle() & OI_LILITH );
 
-	if ( ! wo & WO_MENU_RESTRICTED_OBJECT )
+	if ( wo & WO_MENU_FULL_OBJECT )
 	{
 		if ( props->isVedic())
 		{
@@ -679,7 +691,7 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 			northmenu->Check( CMD_VCN_SYMBOL, props->getVedicChartDisplayConfig().northIndianSignDisplayType == VCN_SYMBOL );
 			menu->Append( -1, _( "Display Signs" ), northmenu );
 		}
-		if ( wo & WO_MENU_FULL_GRAFIC_STYLE )
+		if ( wo & WO_MENU_FULL_GRAPHIC_STYLE )
 		{
 			MyMenu *centermenu = new MyMenu( _( "Chart Center" ));
 			centermenu->Append( CMD_VCC_NOTHING, _("Nothing"), wxT( "" ), true );
@@ -696,7 +708,7 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 		}
 		menu->AppendSeparator();
 
-		if ( wo & WO_MENU_FULL_GRAFIC_STYLE )
+		if ( wo & WO_MENU_FULL_GRAPHIC_STYLE )
 		{
 			menu->Append( CMD_VCS_RETRO, _( "Retrograde Planets"), wxT( "" ), true );
 			menu->Check( CMD_VCS_RETRO, props->getVedicChartDisplayConfig().showRetro );
@@ -712,21 +724,21 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 		menu->Append( CMD_VCS_PLANETCOLORS, _( "Colors for Planet Symbols"), wxT( "" ), true );
 		menu->Check( CMD_VCS_PLANETCOLORS, props->getVedicChartDisplayConfig().showPlanetColors );
 	}
-	else
+	else // western
 	{
-		menu->Append( CMD_WCS_RETRO, _( "Show Retrograde Planets"), wxT( "" ), true );
+		menu->Append( CMD_WCS_RETRO, _( "Retrograde Planets"), wxT( "" ), true );
 		menu->Check( CMD_WCS_RETRO, props->getWesternChartDisplayConfig().showRetro );
-		menu->Append( CMD_WCS_ASPECTS, _( "Show Aspects"), wxT( "" ), true );
+		menu->Append( CMD_WCS_ASPECTS, _( "Aspects"), wxT( "" ), true );
 		menu->Check( CMD_WCS_ASPECTS, props->getWesternChartDisplayConfig().showAspects );
-		menu->Append( CMD_WCS_ASPECTSYMBOLS, _( "Show Aspect Symbols"), wxT( "" ), true );
+		menu->Append( CMD_WCS_ASPECTSYMBOLS, _( "Aspect Symbols"), wxT( "" ), true );
 		menu->Check( CMD_WCS_ASPECTSYMBOLS, props->getWesternChartDisplayConfig().showAspectSymbols );
-		menu->Append( CMD_WCS_HOUSES, _( "Show Houses"), wxT( "" ), true );
+		menu->Append( CMD_WCS_HOUSES, _( "Houses"), wxT( "" ), true );
 		menu->Check( CMD_WCS_HOUSES, props->getWesternChartDisplayConfig().showHouses );
 
-		if ( props->isTransitmode())
+		if ( wo & WO_MENU_TRANSIT )
 		{
-			menu->Append( CMD_WCS_TRANSITS_INSIDE, _( "Transits Inside"), wxT( "" ), true );
-			menu->Check( CMD_WCS_TRANSITS_INSIDE, props->getWesternChartDisplayConfig().transitStyle );
+			menu->Append( CMD_WCS_SECONDCHART_INSIDE, _( "Transits Inside"), wxT( "" ), true );
+			menu->Check( CMD_WCS_SECONDCHART_INSIDE, props->getWesternChartDisplayConfig().secondchartStyle );
 		}
 
 	}
@@ -805,7 +817,11 @@ wxMenu *ContextMenuProvider::getChartMenu( ChartProperties *props, const bool &i
 		menu->addItem( CMD_SAVEAS );
 		menu->addItem( CMD_PRINT );
 		menu->addItem( CMD_QUICKPRINT );
+
+#ifdef USE_PRINT_VIEW
 		menu->addItem( CMD_NEW_PRINTPREVIEW );
+#endif
+
 	}
 	return menu;
 }
@@ -819,19 +835,9 @@ wxMenu *ContextMenuProvider::getNewViewMenu( ChartProperties *props )
 {
 	const int vedicitems[] = { 0, CMD_NEW_DASA_TREE, CMD_NEW_DASA_COMPOSITE, CMD_NEW_GRAPHICALDASA,
 		CMD_NEW_TRANSIT, 0, CMD_NEW_YOGA, CMD_NEW_ASHTAKAVARGA,
+		CMD_NEW_SHADBALA, CMD_NEW_SOLAR, -1 };
 
-#ifdef USE_SHADBALA
-		CMD_NEW_SHADBALA,
-#endif
-
-		CMD_NEW_SOLAR, -1 };
-
-#ifdef USE_URANIAN_CHART
 	const int westernitems[5] = { 0, CMD_NEW_URANIAN, CMD_NEW_TRANSIT, CMD_NEW_SOLAR, -1 };
-#else
-	const int westernitems[4] = { 0, CMD_NEW_TRANSIT, CMD_NEW_SOLAR, -1 };
-#endif
-
 	const int appitems[5] = { APP_EPHEMERIS, APP_ECLIPSE, APP_HORA, APP_PARTNER, -1 };
 
 	MyMenu *menu = new MyMenu( _( "New View" ) );

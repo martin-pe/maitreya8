@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "GraphicGrid.h"
@@ -44,7 +42,7 @@ IMPLEMENT_CLASS( ShadVargaChartGridWidget, ChartGridWidget )
 IMPLEMENT_CLASS( VargaTab2ChartGridWidget, ChartGridWidget )
 IMPLEMENT_CLASS( VargaTab3ChartGridWidget, ChartGridWidget )
 
-#define WO_BUNDLE_GRAPHICGRID WO_MENU_FULL_GRAFIC_STYLE | WO_MENU_FULL_OBJECT | WO_MENU_SKIN | WO_EXPORT_GRAFIC
+#define WO_BUNDLE_GRAPHICGRID WO_MENU_FULL_GRAPHIC_STYLE | WO_MENU_FULL_OBJECT | WO_MENU_SKIN | WO_EXPORT_GRAPHIC
 
 /*****************************************************
 **
@@ -61,14 +59,7 @@ ChartGridWidget::ChartGridWidget( wxWindow *parent, const ChartType &charttype, 
 	printf( "ChartGridWidget::ChartGridWidget VEDIC %d\n", chartprops->isVedic());
 	lastMouseOverChart = NO_CHART_ID;
 	wchart = (BasicWesternChart*)NULL;
-	uexpert = (UranianExpert*)NULL;
-
 	setWidgetOptions( WO_BUNDLE_GRAPHICGRID );
-	if ( charttype == CT_TRANSIT )
-	{
-		addWidgetOption( WO_MENU_TRANSIT );
-	}
-
 	Connect( wxEVT_SIZE, wxSizeEventHandler( ChartGridWidget::OnSize ));
 	Connect( wxEVT_LEFT_DOWN, wxMouseEventHandler( ChartGridWidget::OnMouseLeftDown ));
 }
@@ -81,22 +72,6 @@ ChartGridWidget::ChartGridWidget( wxWindow *parent, const ChartType &charttype, 
 ChartGridWidget::~ChartGridWidget()
 {
 	deleteCharts();
-}
-
-/**************************************************************
-***
-**   ChartGridWidget   ---   getWidgetOptions
-***
-***************************************************************/
-int ChartGridWidget::getWidgetOptions()
-{
-	printf( "ChartGridWidget::getWidgetOptions\n" );
-	int wo = WO_BUNDLE_GRAPHICGRID;
-	if ( wchart && charts.size() > 0 )
-	{
-		wo |= WO_SUPPORTS_EW_TOGGLE;
-	}
-	return wo;
 }
 
 /**************************************************************
@@ -153,7 +128,7 @@ void ChartGridWidget::setHoroscopes( Horoscope *h1, Horoscope *h2 )
 ******************************************************/
 void ChartGridWidget::addVedicChart( Varga varga, Horoscope *h1, Horoscope *h2 )
 {
-	printf( "ChartGridWidget::addVedicChart Varga %d rows %d cols %d size %d\n", (int)varga, rows, cols, (int)charts.size() );
+	//printf( "ChartGridWidget::addVedicChart Varga %d rows %d cols %d size %d\n", (int)varga, rows, cols, (int)charts.size() );
 	//assert( charts.size() < rows * cols );
 
 	if ( ! IS_VALID_VARGA( varga ))
@@ -179,7 +154,6 @@ void ChartGridWidget::addVedicChart( Varga varga, Horoscope *h1, Horoscope *h2 )
 void ChartGridWidget::addSarvatobhadraChart( Horoscope *h1, Horoscope *h2 )
 {
 	charts.push_back( ChartFactory().createSarvatobhadraChart( charttype, chartprops, h1, h2 ));
-	addWidgetOption( WO_MENU_SBC_STYLE );
 	setFixedVedic();
 }
 
@@ -193,20 +167,6 @@ void ChartGridWidget::addWesternChart( Horoscope *h1, Horoscope *h2 )
 	wchart = ChartFactory().createWesternChart( charttype, chartprops, h1, h2 );
 	wchart->OnDataChanged();
 }
-
-/*****************************************************
-**
-**   ChartGridWidget   ---   addUranianChart
-**
-******************************************************/
-#ifdef USE_URANIAN_CHART
-void ChartGridWidget::addUranianChart( UranianExpert *expert, Horoscope *h1, Horoscope *h2 )
-{
-	wchart = ChartFactory().createUranianChart( charttype, chartprops, h1, h2, expert );
-	setFixedWestern();
-	wchart->OnDataChanged();
-}
-#endif
 
 /*****************************************************
 **
@@ -230,7 +190,7 @@ AspectExpert *ChartGridWidget::getAspectExpert() const
 ******************************************************/
 void ChartGridWidget::changeChartType( const ChartType &ct )
 {
-	printf( "ChartGridWidget::changeChartType NEW type %d OLD was %d\n", (int)ct, (int)charttype );
+	//printf( "ChartGridWidget::changeChartType NEW type %d OLD was %d\n", (int)ct, (int)charttype );
 	ASSERT_VALID_CHARTTYPE( ct );
 
 	if ( ct != charttype )

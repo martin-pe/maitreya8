@@ -7,34 +7,37 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _EPHEMVIEW_H_
 #define _EPHEMVIEW_H_
 
-#include "SheetView.h"
+#include "BasicView.h"
+#include "Sheet.h"
 
 class ChartProperties;
 class EphemExpert;
 class EphemWidget;
+class SheetWidget;
+class TextWidget;
+
+#define MAX_EPHEM_VIEWTYPES 6
 
 /*************************************************//**
 *
 * \brief ephemeris view containing various text tabs and graphical ephemeris
 *
 ******************************************************/
-class EphemView : public SheetView
+class EphemView : public BasicView
 {
 	DECLARE_CLASS( EphemView )
 
@@ -47,20 +50,27 @@ public:
 	virtual bool supportsGraphicExport() const;
 	virtual bool supportsTextExport() const;
 
+	virtual void OnDataChanged();
+
 protected:
 	EphemExpert *expert;
 	int month, lastmonth, year, planets, mode, circleType;
 	DasaId dasaId;
 	bool isLocaltime;
 	double max_deg;
+	bool dirty[MAX_EPHEM_VIEWTYPES];
+
+	SheetWidget *swidget;
+	TextWidget *twidget;
 
 	virtual void write();
+	void initClientView();
+	void setDirty( const bool = true );
+	//virtual void OnDataChanged();
 
+	void OnIdle( wxIdleEvent& );
 	virtual void OnToolbarCommand();
-	void OnYearSpin( wxSpinEvent& );
-	void OnMonthSpin( wxSpinEvent& );
 	void OnNow( wxCommandEvent& );
-	void OnChoiceTZ( wxCommandEvent& );
 	void setMaxDeg( const int& );
 	virtual void initToolItems();
 };
@@ -79,8 +89,6 @@ public:
 	~GraphicalEphemWidgetItem();
 
   virtual SheetItem *cloneClean();
-
-	virtual bool mouseHasMoved( const wxPoint &p, const bool &outside );
 
 	virtual void doPaint( Painter *painter, const MRect &refreshRect );
 

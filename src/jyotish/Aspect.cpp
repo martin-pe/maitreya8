@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Aspect.h"
@@ -109,7 +107,7 @@ public:
 	{
 		switch ( order )
 		{
-		case AS_PLANET2:
+		case AS_RPLANET:
 			if ( e1.planet2 != e2.planet2 ) return ( e1.planet2 < e2.planet2 );
 			return ( e1.planet1 < e2.planet1 );
 		break;
@@ -123,11 +121,11 @@ public:
 			if ( e1.aspectType != e2.aspectType ) return( e1.aspectType < e2.aspectType );
 			return( fabs( e1.orbis ) < fabs( e2.orbis ));
 		break;
-		case AS_TYPE_REV:
+		case AS_TYPE_REVERSE:
 			if ( e1.aspectType != e2.aspectType ) return( e1.aspectType > e2.aspectType );
 			return( fabs( e1.orbis ) > fabs( e2.orbis ));
 		break;
-		case AS_PLANET1:
+		case AS_LPLANET:
 		default:
 			if ( e1.planet1 != e2.planet1 ) return ( e1.planet1 < e2.planet1 );
 			return ( e1.planet2 < e2.planet2 );
@@ -147,7 +145,7 @@ private:
 AspectExpert:: AspectExpert()
 	: Expert()
 {
-	sortorder = AS_PLANET1;
+	sortorder = AS_RPLANET;
 }
 
 /*****************************************************
@@ -159,7 +157,7 @@ AspectExpert::AspectExpert( Horoscope *h, Horoscope *h2 )
 	: Expert( h )
 {
 	setHoroscopes( h, h2 );
-	sortorder = AS_PLANET1;
+	sortorder = AS_RPLANET;
 }
 
 /*****************************************************
@@ -506,7 +504,7 @@ Table *AspectExpert::getWesternAspectariumTable( Sheet* /*sheet*/, ChartProperti
 	OBJECT_INCLUDES style = chartprops->getWesternObjectStyle();
 	style &= ~OI_ALL_HOUSES;
 	style &= ~OI_4_HOUSES;
-	style &= ~OI_ARIES;
+	//style &= ~OI_ARIES;
 
 	ObjectArray plist = PlanetList().getWesternObjectList( style );
 	Table *table = new Table( plist.size() + 1, plist.size() + 1 );
@@ -562,7 +560,7 @@ void AspectExpert::writeVedicAspectarium( Sheet *sheet, ChartProperties *chartpr
 	OBJECT_INCLUDES style = chartprops->getVedicObjectStyle();
 	style &= ~OI_ALL_HOUSES;
 	style &= ~OI_4_HOUSES;
-	style &= ~OI_ARIES;
+	//style &= ~OI_ARIES;
 
 	ObjectArray plist = PlanetList().getVedicObjectList( style );
 	Table *table = new Table( plist.size() + 1, plist.size() + 1 );
@@ -601,7 +599,7 @@ void AspectExpert::writeWesternAspectList( Sheet *sheet, ChartProperties*, const
 	SheetFormatter fmt;
 	int line = 1;
 
-	setSortOrder( AS_PLANET1 );
+	setSortOrder( AS_RPLANET );
 	sort();
 
 	Table *table = new Table( 4, al.size() + 1 );

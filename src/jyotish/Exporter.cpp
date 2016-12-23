@@ -7,23 +7,41 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Exporter.h"
 
+#include "Conf.h"
 #include "Sheet.h"
+#include "SheetConfig.h"
 #include "Table.h"
+
+extern Config *config;
+
+/*****************************************************
+**
+**   Exporter   ---   Constructor
+**
+******************************************************/
+Exporter::Exporter( SheetConfig *scfg, WriterConfig *wcfg )
+{
+	if ( scfg ) { sheetcfg = scfg; }
+	else
+	{
+		SheetConfigLoader *loader = SheetConfigLoader::get();
+		sheetcfg = loader->getConfig( config->view->sheetStyle );
+	}
+	writercfg = wcfg ? wcfg : config->writer;
+}
 
 /*************************************************//**
 *
@@ -33,6 +51,8 @@
 class ExporterText : public Exporter
 {
 public:
+
+	ExporterText( SheetConfig *scfg, WriterConfig *wcfg ) : Exporter( scfg, wcfg ) {}
 
 	virtual wxString exportSheet( Sheet *sheet )
 	{
@@ -165,6 +185,10 @@ protected:
 ******************************************************/
 class ExporterCsv : public ExporterText
 {
+public:
+
+	ExporterCsv( SheetConfig *scfg, WriterConfig *wcfg ) : ExporterText( scfg, wcfg ) {}
+
 protected:
 
 	/*****************************************************
@@ -205,19 +229,19 @@ protected:
 **   ExporterFactory   ---   getExporter
 **
 ******************************************************/
-Exporter *ExporterFactory::getExporter( const WidgetExportType &type )
+Exporter *ExporterFactory::getExporter( const WidgetExportType &type, SheetConfig *scfg, WriterConfig *wcfg )
 {
 	Exporter *e = (Exporter*)NULL;
 	switch( type )
 	{
 		case WeText:
-			e = new ExporterText;
+			e = new ExporterText( scfg, wcfg );
 		break;
 		case WeHtml:
-			e = getHtmlExporter();
+			e = getHtmlExporter( scfg, wcfg );
 		break;
 		case WeCsv:
-			e = new ExporterCsv;
+			e = new ExporterCsv( scfg, wcfg );
 		break;
 		default:
 			assert( false );

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Transit.h"
@@ -47,6 +45,7 @@ IMPLEMENT_CLASS( TransitHoroscope, Horoscope )
 TransitHoroscope::TransitHoroscope()
 		: Horoscope()
 {
+	context = PcTransit;
 }
 
 /*****************************************************
@@ -55,8 +54,12 @@ TransitHoroscope::TransitHoroscope()
 **
 ******************************************************/
 double TransitHoroscope::calcTransitPositions( const Horoscope *hbase, const double &transitJD,
-        const bool &vedic, const double &yl, const TRANSIT_MODE &mode )
+	const bool &vedic, const double &yl, const PlanetContext &mode )
 {
+	printf( "TransitHoroscope::calcTransitPositions mode %d\n", mode );
+	ASSERT_VALID_TRANSIT_CONTEXT( mode );
+
+	context = mode;
 	double posdelta = 0.0;
 	double len, dummy;
 	int i;
@@ -68,15 +71,18 @@ double TransitHoroscope::calcTransitPositions( const Horoscope *hbase, const dou
 
 	switch ( mode )
 	{
-		case TR_TRANSIT:
+		case PcTransit:
 			setDate( transitJD );
 		break;
-		case TR_SOLAR_ARC:
-		case TR_CONSTANT_ARC:
-		case TR_LUNAR_ARC:
+		case PcSolarArc:
+		case PcSolarArcReverse:
+		case PcShiftedGravitationPoint:
+		case PcShiftedMeridian:
+		case PcConstantArc:
+		case PcLunarArc:
 			setDate( hbase->getJD() );
 		break;
-		case TR_DIRECTION:
+		case PcDirection:
 			setDate( directionJD );
 		break;
 		default:
@@ -85,23 +91,50 @@ double TransitHoroscope::calcTransitPositions( const Horoscope *hbase, const dou
 	}
 	update();
 
-	// TODO: date before birth
-	// TODO: big Lunar arc can be > 360
-	if ( mode == TR_SOLAR_ARC )
+	switch ( mode )
 	{
-		ds.setDate( directionJD );
-		calculator->calcPosition( &ds, OSUN, len, dummy, true, vedic );
-		posdelta = red_deg( len - getLongitude( OSUN, vedic ));
-	}
-	else if ( mode == TR_CONSTANT_ARC )
-	{
-		posdelta = ( transitJD - hbase->getJD() ) / yl;
-	}
-	else if ( mode == TR_LUNAR_ARC )
-	{
-		ds.setDate( directionJD );
-		calculator->calcPosition( &ds, OMOON, len, dummy, true, vedic );
-		posdelta = red_deg( len - getLongitude( OMOON, vedic ));
+		case PcSolarArc:
+			ds.setDate( directionJD );
+			calculator->calcPosition( &ds, OSUN, len, dummy, true, vedic );
+			posdelta = red_deg( len - getLongitude( OSUN, vedic ));
+		break;
+		case PcSolarArcReverse:
+			ds.setDate( directionJD );
+			calculator->calcPosition( &ds, OSUN, len, dummy, true, vedic );
+			posdelta = red_deg( getLongitude( OSUN, vedic ) - len );
+		break;
+		case PcShiftedGravitationPoint:
+		{
+			ds.setDate( directionJD );
+			Location *loc = ds.getLocation();
+
+			// len = progressive sun position
+			calculator->calcPosition( &ds, OSUN, len, dummy, true, vedic );
+			//posdelta = red_deg( 180 + len - calculator->calcMCAya( directionJD, loc->getLatitude(), loc->getLongitude(), vedic ));
+
+			// sun + iv + arc
+			// sun(r) - p(r) - IC(V) = 2 * sun(r) + sun(p) - IC(R)
+			posdelta = red_deg( 2 * getLongitude( OSUN, vedic ) - len - getLongitude( OIMUMCOELI, vedic ));
+		}
+		break;
+		case PcShiftedMeridian:
+		{
+			ds.setDate( directionJD );
+			Location *loc = ds.getLocation();
+			calculator->calcPosition( &ds, OSUN, len, dummy, true, vedic );
+			posdelta = red_deg( 180 + len - calculator->calcMCAya( directionJD, loc->getLatitude(), loc->getLongitude(), vedic ));
+		}
+		break;
+		case PcConstantArc:
+			posdelta = ( transitJD - hbase->getJD() ) / yl;
+		break;
+		case PcLunarArc:
+			ds.setDate( directionJD );
+			calculator->calcPosition( &ds, OMOON, len, dummy, true, vedic );
+			posdelta = red_deg( len - getLongitude( OMOON, vedic ));
+		break;
+		default:
+		break;
 	}
 	if ( posdelta != 0 )
 	{
@@ -110,7 +143,7 @@ double TransitHoroscope::calcTransitPositions( const Horoscope *hbase, const dou
 			object_len[i] = red_deg( object_len[i] + posdelta );
 
 			// no retrogression for most modes
-			if ( mode != TR_TRANSIT ) object_speed[i] = 1;
+			if ( mode != PcTransit ) object_speed[i] = 1;
 		}
 
 		for ( i = 0; i < NUM_LAGNA; i++ ) lagna_len[i] = red_deg( lagna_len[ i ] + posdelta );
@@ -118,6 +151,7 @@ double TransitHoroscope::calcTransitPositions( const Horoscope *hbase, const dou
 
 		for ( i = HOUSE1; i <= HOUSE12; i++ )
 		{
+			//printf( "HOUSE %d old %f new %f posdelta %f\n", i, whousecusp[i], red_deg( whousecusp[i] + posdelta ), posdelta );
 			whousecusp[i] = red_deg( whousecusp[i] + posdelta );
 			ihousecusp[i] = red_deg( ihousecusp[i] + posdelta );
 			ihousesandhi[i] = red_deg( ihousesandhi[i] + posdelta );
@@ -146,10 +180,12 @@ TransitExpert::TransitExpert( Horoscope *h, const ChartProperties *chartprops )
 		: Expert( h ),
 		chartprops( chartprops )
 {
-	transitmode = TR_TRANSIT;
+	transitmode = PcTransit;
 	init();
 
 	htransit = new TransitHoroscope();
+	htransit->setDate( h->getJD());
+	htransit->setLocation( *h->getLocation());
 	transitJD = MDate::getCurrentJD();
 	tzoffset = 0;
 }
@@ -204,49 +240,104 @@ void TransitExpert::setTransitDate( const double &jd, const double tzoffset )
 ******************************************************/
 void TransitExpert::writeTransitHeader( Sheet *sheet )
 {
-	ASSERT_VALID_TRANSIT_MODE( transitmode );
+	ASSERT_VALID_TRANSIT_CONTEXT( transitmode );
 	Formatter *formatter = Formatter::get();
-	DateTimeFormatter *dfformatter = DateTimeFormatter::get();
-	wxString s;
+	SheetFormatter sf;
+	Lang lang;
+	DateTimeFormatter *df = DateTimeFormatter::get();
+	wxString header;
+	MString rule;
+	bool showdate = false;
+	bool showarc = false;
 
-	const static wxString theader[5]  = { _( "Transit" ), _( "Solar Arc" ),
-		_( "Progressive Directions" ), _( "Constant Arc" ), _( "Lunar Arc" ) };
-	sheet->addHeader( theader[(int)transitmode] );
+	switch( transitmode )
+	{
+		case PcTransit:
+			header = _( "Transits" );
+			rule.add( _( "running planets" ));
+		break;
+		case PcDirection:
+			header = _( "Directions" );
+			showdate = true;
 
-	/* obsolete
-	if ( transitmode == TR_TRANSIT )
-	{
-		s << _( "Event date" ) << wxT( ": " )
-			<< formatter->getFullDateStringFromJD( htransit->getJD(), tzoffset );
-		writer->addLine( s );
-	}
-	*/
-	if ( transitmode == TR_DIRECTION )
-	{
-		s << _( "Event date" ) << wxT( ": " )
-			//<< formatter->getFullDateStringFromJD( htransit->getDirectionJD() );
-			<< dfformatter->formatDateString( htransit->getDirectionJD(), 0, DF_INCLUDE_YEAR_BC_AD | DF_INCLUDE_TIME );
-		sheet->addLine( s );
-	}
+			rule.add( wxT( "1year = 1day" ));
+		break;
+		case PcSolarArc:
+			header = _( "Solar Arc" );
+			showdate = true;
+			showarc = true;
 
-	// Location
-	s.Clear();
-	s <<  _( "Location" ) << wxT( ": " ) <<  htransit->getLocation()->getLocName();
-	sheet->addLine( s );
+			rule.add( sf.getObjectNameWithContext( OSUN, PcDirection ));
+			rule.add( wxT( " + p - " ));
+			rule.add( sf.getObjectNameWithContext( OSUN, PcRadix ));
+		break;
+		case PcSolarArcReverse:
+			header = _( "Reverse Solar Arc" );
+			showdate = true;
+			showarc = true;
 
-	// Year Length
-	if ( transitmode != TR_TRANSIT )
-	{
-		s.Clear();
-		s << _( "Year Length" ) << wxT( ": " ) << yearlength;
-		sheet->addLine( s );
+			rule.add( sf.getObjectNameWithContext( OSUN, PcRadix ));
+			rule.add( wxT( " + p - " ));
+			rule.add( sf.getObjectNameWithContext( OSUN, PcDirection ));
+		break;
+		case PcShiftedGravitationPoint:
+			header = _( "Shifted Gravitation Point" );
+			showdate = true;
+			showarc = true;
+
+			rule.add( sf.getObjectNameWithContext( OSUN, PcDirection ));
+			rule.add( wxT( " + p - " ));
+			rule.add( sf.getObjectNameWithContext( OIMUMCOELI, PcSolarArc ));
+		break;
+		break;
+		case PcShiftedMeridian:
+			header = _( "Shifted MC" );
+			showdate = true;
+			showarc = true;
+
+			rule.add( sf.getObjectNameWithContext( OSUN, PcDirection ));
+			rule.add( wxT( " + p - " ));
+			rule.add( sf.getObjectNameWithContext( OIMUMCOELI, PcDirection ));
+		break;
+		case PcLunarArc:
+			header = _( "Lunar Arc" );
+			showdate = true;
+			showarc = true;
+
+			rule.add( sf.getObjectNameWithContext( OMOON, PcDirection ));
+			rule.add( wxT( " + p - " ));
+			rule.add( sf.getObjectNameWithContext( OMOON, PcRadix ));
+		break;
+		case PcConstantArc:
+			header = _( "Constant Arc" );
+			showarc = true;
+
+			rule.add( wxT( "1year = 1deg" ));
+		break;
+		default:
+			assert( false );
+		break;
 	}
-	if ( posdelta != 0 )
+	sheet->addHeader( header );
+	if ( showdate )
 	{
-		s.Clear();
-		s << _( "Arc" ) << wxT( ": " ) << formatter->getLenFormatted( posdelta );
-		sheet->addLine( s );
+		wxString thedate;
+		thedate << _( "Date" ) << wxT( ": " ) << df->formatFullDateString( getTransitHoroscope()->getDirectionJD());
+		sheet->addLine( thedate );
 	}
-	sheet->addLine( wxEmptyString );
+	if ( showarc )
+	{
+		wxString thearc;
+		thearc << _( "Arc" ) << wxT( ": " ) << formatter->getDegreesFormatted( getPosDelta());
+		sheet->addLine( thearc );
+	}
+	if ( ! rule.isEmpty())
+	{
+		MString r;
+		r.add( _( "Rule" ));
+		r.add( wxT( ": " ));
+		r.add( rule );
+		sheet->addParagraph( r );
+	}
 }
 

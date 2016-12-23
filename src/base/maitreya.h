@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 #ifndef _MAITREYA_H_
 #define _MAITREYA_H_
@@ -48,7 +46,7 @@ MPoint findOrthogonalPoint( const MPoint&, const double length = 1.0 );
 class MRect
 {
 public:
-	MRect() { x = y = width = height = 0; }
+	MRect() { reset(); }
 	MRect( const double &x0, const double &y0, const double &w, const double &h ) { x = x0; y = y0; width = w; height = h; }
 	MRect( const MPoint &p, const double &w, const double &h ) { x = p.real(); y = p.imag(); width = w; height = h; }
 	MRect( const MPoint &p, const MPoint &q ) { x = p.real(); y = p.imag(); width = q.real(); height = q.imag(); }
@@ -60,6 +58,7 @@ public:
 
 	wxString toString();
 	bool isNil() { return width <= 0 || height <= 0; }
+	void reset() { x = y = width = height = 0; }
 
 	double getRight() const { return x + width; }
 	double getBottom() const { return y + height; }
@@ -178,6 +177,7 @@ const wxString getApplicationVersion();
 #define MAX_EPHEM_YEAR 3000
 #define MIN_EPHEM_JD 0
 #define MAX_EPHEM_JD 5000000
+#define EPHEM_JD_2000 2451544.5
 /*
 #define MIN_EPHEM_JD 625674.5
 #define MAX_EPHEM_JD 2817151.5
@@ -193,6 +193,7 @@ const wxString getApplicationVersion();
 
 #define UINT_FOR_NOT_FOUND UINT_MAX - 1
 #define UINT_FOR_OUTSIDE UINT_MAX - 2
+#define UINT_FOR_NOT_SET UINT_MAX - 3
 
 #define APP_NAME wxT( "maitreya8" )
 #define CONFIG_DIR_NAME wxT( "maitreya-8.0" )
@@ -219,10 +220,10 @@ const wxString getApplicationVersion();
 #define CFG_JSON_EXTENSION wxT( ".json" )
 #define CONFIG_FILE_NAME wxT( "config.json" )
 #define CFG_SHEET wxT( "sheet" )
-#define CFG_WESTERNCHART wxT( "westernchart" )
-#define CFG_VEDICCHART wxT( "vedicchart" )
-#define CFG_MULTIPLEVIEW wxT( "multipleview" )
-#define CFG_PRINTOUT wxT( "printout" )
+#define CFG_WESTERNCHART wxT( "wchart" )
+#define CFG_VEDICCHART wxT( "vchart" )
+#define CFG_MULTIPLEVIEW wxT( "mview" )
+#define CFG_PRINTOUT wxT( "print" )
 
 // Atlas
 #define ATLAS_MAX_GRID_ELEMENTS 50
@@ -233,8 +234,6 @@ const wxString getApplicationVersion();
 #define AUTHOR wxT( "Martin Pettau" )
 #define SARAVALI_URL wxT( "http://www.saravali.de" )
 #define SARAVALI_HELP_URL wxT( "http://www.saravali.de/documentation.html" )
-
-enum { WRITER_TEXT, WRITER_HTML, WRITER_CSV, WRITER_PDF, WRITER_GUI };
 
 enum ChartType { CT_RADIX, CT_TRANSIT, CT_PARTNER };
 #define ASSERT_VALID_CHARTTYPE( t ) assert( t == CT_RADIX || t == CT_TRANSIT || t == CT_PARTNER );
@@ -258,7 +257,20 @@ ASPECT_TYPE operator++ ( ASPECT_TYPE&, int );
 #define ASSERT_VALID_ASPECT( p ) assert( p >= AT_CONJUNCTION && p <= AT_SEMIQUAVER );
 
 // Sort orders for aspects
-enum ASPECT_SORTORDER { AS_PLANET1 = 0, AS_ORBIS, AS_ORBIS_ABSOLUTE, AS_PLANET2, AS_TYPE, AS_TYPE_REV, AS_DATE, AS_ORBIS_REVERSE, AS_JD, AS_VALUE, AS_SCORE };
+enum ASPECT_SORTORDER {
+	AS_NONE = -1,
+	AS_RPLANET = 0,     // planet on right side of equation p1 = p2
+	AS_LPLANET,         // left side of p1 = p2
+	AS_ORBIS,           // negativve values first i.e. matchings in the past for e.g. solar arc
+	AS_ORBIS_ABSOLUTE,  // smallest value (i.e. best matching) first
+	AS_ORBIS_REVERSE,   // see orbis
+	AS_TYPE,            // conjunction, opposition etc. also used in uranian astrology (gradkreis)
+	AS_TYPE_REVERSE,    // same as above, but reverse
+	AS_DATE,            // matching date
+	AS_JD,
+	AS_VALUE,           // unused
+	AS_SCORE            // unused
+};
 
 #define MAX_BARDIAGRAM_COLORS 22 // 12 + 10
 #define ASSERT_VALID_DASA_COLOR( p ) assert( p >= 0 && p < MAX_DASA_COLORS );
@@ -372,9 +384,7 @@ enum AYANAMSA { AY_NONE = 0, AY_LAHIRI, AY_RAMAN, AY_KRISHNAMURTI, AY_CUSTOM };
 
 #define ASSERT_VALID_DEGREE( l ) assert( l >= 0 && l < 360 );
 
-#ifdef USE_SHADBALA
 #define ASSERT_VALID_SHADBALA_INDEX( p ) assert( p >= 0 && p <= OSATURN )
-#endif
 
 // planetary friendship
 enum FRIENDSHIP { PF_NONE = -1, PF_BEST_FRIEND = 0, PF_FRIEND, PF_NEUTRAL, PF_ENEMY, PF_SWORN_ENEMY };
@@ -399,8 +409,25 @@ Rasi operator+ ( const Rasi&, const Rasi& );
 
 #define IS_AVPLANET( p ) ( ( p >= OSUN && p <= OSATURN ) || p == OASCENDANT )
 
-enum TRANSIT_MODE { TR_TRANSIT, TR_SOLAR_ARC, TR_DIRECTION, TR_LUNAR_ARC, TR_CONSTANT_ARC };
-#define ASSERT_VALID_TRANSIT_MODE( m ) assert( m >= TR_TRANSIT && m <= TR_CONSTANT_ARC );
+enum PlanetContext {
+	PcNone = -1,
+	PcRadix = 0,
+	PcRadixAntiscia,
+	PcTransit,
+	PcDirection,
+	PcSolarArc,
+	PcSolarArcReverse,
+	PcShiftedGravitationPoint,
+	PcShiftedMeridian,
+	PcLunarArc,
+	PcConstantArc,
+	PcPeriod,
+	PcPartner1,
+	PcPartner2
+};
+#define ASSERT_VALID_PLANET_CONTEXT( m ) assert( m >= PcRadix && m <= PcPartner2 );
+#define ASSERT_VALID_TRANSIT_CONTEXT( m ) assert( m >= PcTransit && m <= PcConstantArc );
+#define MAX_PLANET_CONTEXT 13
 
 /**************************************************************
 ***
@@ -417,20 +444,21 @@ enum OBJECT_INCLUDES {
 	OI_MERIDIAN      = 0x00000020,
 	OI_DESCENDANT    = 0x00000040,
 	OI_IMUMCOELI     = 0x00000080,
-	OI_URANIAN       = 0x00000100,
-	OI_CHIRON        = 0x00000200,
-	OI_PHOLUS        = 0x00000400,
-	OI_PLANETOIDS    = 0x00000880,
-	OI_LILITH        = 0x00001000,
+	OI_URANIAN_INNER = 0x00000100,
+	OI_URANIAN_OUTER = 0x00000200,
+	OI_CHIRON        = 0x00000400,
+	OI_PHOLUS        = 0x00000800,
+	OI_PLANETOIDS    = 0x00001000,
+	OI_LILITH        = 0x00002000,
 
-	OI_ARIES         = 0x00002000,
-	OI_KALAVELAS     = 0x00004000,
-	OI_UPAGRAHAS     = 0x00008000,
-	OI_SPECIALLAGNAS = 0x00010000,
-	OI_D9_LAGNA      = 0x00020000,
-	OI_ARABICPARTS   = 0x00040000,
-	OI_ALL_HOUSES    = 0x00080000,
-	OI_4_HOUSES      = 0x00100000
+	OI_ARIES         = 0x00004000,
+	OI_KALAVELAS     = 0x00008000,
+	OI_UPAGRAHAS     = 0x00010000,
+	OI_SPECIALLAGNAS = 0x00020000,
+	OI_D9_LAGNA      = 0x00040000,
+	OI_ARABICPARTS   = 0x00080000,
+	OI_ALL_HOUSES    = 0x00100000,
+	OI_4_HOUSES      = 0x00200000
 };
 
 OBJECT_INCLUDES operator~ ( const OBJECT_INCLUDES& a );
@@ -615,13 +643,10 @@ GRADKREIS operator++ ( GRADKREIS&, int );
 ***
 ***************************************************************/
 enum VIEW_ID { VIEW_TEXT = 0, VIEW_TRANSIT, VIEW_SBC, VIEW_SOLAR, VIEW_YOGA, VIEW_GRAPHICALDASA,
-	VIEW_DASA_TREE, VIEW_DASA_COMPOSITE, VIEW_URANIAN, VIEW_VARGA, VIEW_ASHTAKAVARGA,
+	VIEW_DASA_TREE, VIEW_DASA_COMPOSITE, VIEW_URANIAN, VIEW_URANIAN_CHART, VIEW_VARGA, VIEW_ASHTAKAVARGA,
 	VIEW_VIMSOPAKABALA, VIEW_GRAPHIC, VIEW_GRAPHICGRID, VIEW_PRINT, VIEW_PLANETLIST, VIEW_HORA, VIEW_ECLIPSE,
 	VIEW_PARTNER, VIEW_EPHEM, VIEW_MULTIPLE, VIEW_DIAGRAM,
-#ifdef USE_SHADBALA
-	VIEW_SHADBALA,
-#endif
-	VIEW_YOGA_EDITOR, VIEW_EMPTY
+	VIEW_SHADBALA, VIEW_YOGA_EDITOR, VIEW_EMPTY
 };
 
 #define LAST_VIEW_ID VIEW_EMPTY
@@ -651,6 +676,25 @@ struct Align
 
 // writer export options
 enum WidgetExportType { WeNone = 0, WeText, WeCsv, WeHtml, WePdf, WeImage };
+
+/*************************************************//**
+*
+* \brief direction to the center of the chart resp. page
+*
+******************************************************/
+enum GRAVITATION
+{
+	GRAVITATION_ERROR = -1,
+	GRAVITATION_S = 0,
+	GRAVITATION_SW,
+	GRAVITATION_W,
+	GRAVITATION_NW,
+	GRAVITATION_N,
+	GRAVITATION_NE,
+	GRAVITATION_E,
+	GRAVITATION_SE,
+	GRAVITATION_CENTER
+};
 
 /*****************************************************
 *
@@ -691,7 +735,7 @@ protected: \
 #define NO_COL NO_ROW 
 #define NO_ITEM NO_ROW 
 
-enum TAB_LIST_CONTEXT { TAB_LC_NONE = -1, TAB_LC_EMPTY, TAB_LC_PLANETS, TAB_LC_HOUSE_CUSPS, TAB_LC_ERROR };
+enum TAB_LIST_CONTEXT { TAB_LC_NONE = -1, TAB_LC_EMPTY, TAB_LC_PLANETS, TAB_LC_HOUSE_CUSPS, TAB_LC_URANIAN, TAB_LC_ERROR };
 
 #define MAX_TC_COLUMN_TYPE 24
 enum TAB_COLUMN_TYPE
@@ -794,9 +838,10 @@ public:
 class TcColumnSet 
 {
 public:
-	TcColumnSet( const TAB_LIST_CONTEXT l = TAB_LC_NONE, const bool v = true )
+	TcColumnSet( const TAB_LIST_CONTEXT l = TAB_LC_NONE, const bool v = true, wxString header = wxEmptyString )
 	  : listcontext( l ),
-	   vedic( v )
+	   vedic( v ),
+		 header( header )
 	{
 		ok = true;
 	}
@@ -804,6 +849,7 @@ public:
 	TAB_LIST_CONTEXT listcontext;
 	bool vedic;
 
+	wxString header;
 	wxString errorMsg;
 	bool ok;
 

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _SHEETWRITER_H_
@@ -51,8 +49,6 @@ public:
 	void preformat( Painter *painter, const double &xrightmax );
 	void drawSheet( Painter *painter, const MRect&, const bool eraseBackground = true );
 
-	void enableFloatingLayout( const bool b = true ) { doFloatingLayout = b; }
-
 	void setWriterConfig( WriterConfig *wcfg ) { writercfg = wcfg; }
 	void setSheetConfig( SheetConfig *scfg ) { sheetcfg = scfg; }
 
@@ -63,14 +59,20 @@ public:
 	double xSizeContents;
 	double ycursor;
 
+	MPoint pageSize;
+
 protected:
 
 	virtual FONT_ID getFontIdForItem( const SHEET_TEXT_ITEM_SUBTYPE& ) = 0;
 
+	void preformatItem( Painter*, SheetItem* );
 	void preformatTable( Painter*, Table* );
+	void preformatWidgetGrid( Painter*, SheetWidgetGrid* );
+	void preformatColset( Painter*, SheetColumnSet* );
+	void preformatRowset( Painter*, SheetRowSet* );
+
+	void drawItem( Painter*, SheetItem*, const MRect &refreshRect );
 	void drawTable( Painter*, Table*, const MRect &refreshRect );
-	void drawTableFrame( Painter*, TableStyle*, MRect &r );
-	void drawTableShadow( Painter*, TableStyle*, MRect &r );
 
 	void formatMString( Painter *painter, MString&, const double xmax = 0 );
 
@@ -90,19 +92,11 @@ protected:
 	double xrightmax;
 	bool doUniformScaling;
 
-	/*
-	* contents will be arranged in multiple columns if possible.
-	* is enabled by default. 
-	*/
-	bool doFloatingLayout;
-
 	bool doCenterAll;
-
-	// number of colums in floating layout
-	int numcols;
 
 	// corners of retangles (tables)
 	int cornerRadius;
+
 
 };
 

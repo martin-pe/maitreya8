@@ -1,0 +1,126 @@
+{
+    "configs": [
+        {
+            "name": "Houses Outside",
+            "angles": {
+                "innercircle": {
+                    "radius": 50
+                },
+                "outercircle": {
+                    "radius": 97
+                }
+            },
+            "aspects": {
+                "radius": 50
+            },
+            "houses": {
+                "radius": 85,
+                "width": 8,
+                "wLabels": 3
+            },
+            "signs": {
+                "radius": 72,
+                "width": 13,
+                "wLabels": 8
+            },
+            "rplanets": {
+                "radius": 72
+            },
+            "zodiac": {
+                "radius": 72
+						}
+        },
+        {
+            "name": "Alternative",
+            "rplanets": {
+                "radius": 69
+            },
+            "aspects": {
+                "radius": 40
+            },
+            "houses": {
+                "radius": 40,
+                "width": 29
+            },
+            "rinnertransitplanets": {
+                "radius": 40
+            },
+            "routertransitplanets": {
+                "radius": 92
+            },
+            "signs": {
+                "radius": 69,
+                "width": 23,
+                "wlabels": 12,
+								"pen": {
+										"style": "wxSOLID",
+										"color": "grey",
+										"width": 3
+								},
+                "rotatelabels": true,
+                "labelstyle": 0,
+                "labelsize": 150
+            }
+        },
+        {
+            "name": "Alternative/ colored",
+            "extends": "Alternative",
+						"patterns" : [
+							{
+								"innerFrame" : "zodiac",
+								"outerFrame" : "zodiac10Degree",
+								"palette" : "signstock",
+								"aligntohouses" : false
+							}
+						]
+        },
+        {
+            "name": "Alternative/ Desert",
+            "extends": "Alternative",
+            "signs": {
+								"palette" : "desert",
+                "globaltextcolor": "black"
+							}
+        },
+        {
+            "name": "Ellipse",
+            "frametype": "ellipse"
+        },
+        {
+            "name": "Aquarius",
+            "angles": {
+                "innercircle": {
+                    "radius": "28"
+                },
+                "outercircle": {
+                    "radius": "97"
+                }
+            },
+            "aspects": {
+                "radius": 75
+            },
+            "pen": {
+                "style": "wxSOLID",
+                "width": 3
+            },
+            "planetmarkerlength": 2,
+            "rplanets": {
+                "radius": 75
+            },
+            "signs": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "House numbers inside",
+            "houses": {
+                "radius": 25,
+                "wlabels": 20,
+								"brush": {
+									"color": "#a6a6a6"
+								}
+            }
+        }
+    ]
+}

@@ -10,14 +10,14 @@ BASE_LIB = ../base/libmaitreya_base.a
 JYOTISH_LIB = libjyotish.a
 JYOTISH_PROG = textclient.exe
 
-OBS = ArabicParts.o Ashtakavarga.o AshtottariDasa.o Aspect.o astrobase.o Dasa.o \
-	Eclipse.o Ephemeris.o Expert.o Expression.o GenericDasa.o GenericTableWriter.o \
-	Hora.o Horoscope.o Jaimini.o KalachakraDasa.o MdlInterpreter.o \
-	MdlLexer.o MdlParser.o Nakshatra.o Partner.o VedicPlanet.o BasicHoroscope.o \
-	SingletonLifeline.o SolarChart.o TextHelper.o Transit.o \
-	Varga.o VargaHoroscope.o \
-	VimsottariDasa.o YogaConfig.o Yoga.o DasaConfig.o DasaTool.o \
-	Table.o Sheet.o Painter.o Exporter.o HtmlExporter.o PrintoutTextHelper.o
+OBS = ArabicParts.o Ashtakavarga.o AshtottariDasa.o Aspect.o astrobase.o \
+	BasicHoroscope.o DasaConfig.o Dasa.o DasaTool.o Eclipse.o Ephemeris.o \
+	Expert.o Exporter.o Expression.o GenericDasa.o GenericTableWriter.o Hora.o \
+	Horoscope.o HtmlExporter.o Jaimini.o KalachakraDasa.o MdlInterpreter.o \
+	MdlLexer.o MdlParser.o Nakshatra.o Painter.o Partner.o PrintoutTextHelper.o \
+	ShadBala.o Sheet.o SingletonLifeline.o SolarChart.o Table.o TextHelper.o \
+	Transit.o UranianBase.o Uranian.o UranianHelper.o Varga.o VargaHoroscope.o \
+	VedicPlanet.o VimsottariDasa.o YogaConfig.o Yoga.o
 
 all : $(JYOTISH_LIB)
 

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Lang.h"
@@ -628,6 +626,18 @@ const wxString Lang::getSignQualityName( const int &sign ) const
 
 /*****************************************************
 **
+**   Lang   ---   getPlanetContextSubscriptum
+**
+******************************************************/
+wxChar Lang::getPlanetContextSubscriptum( const PlanetContext &ctx ) const
+{
+	ASSERT_VALID_PLANET_CONTEXT( ctx );
+	static wxChar s[MAX_PLANET_CONTEXT] = { 'r', 'a', 't', 'd', 's', 's', 'g', 'm', 'l', 'c', 's', '1', '2' };
+	return s[ctx];
+}
+
+/*****************************************************
+**
 **   Lang   ---   getObjectSignification
 **
 ******************************************************/
@@ -1037,7 +1047,8 @@ bool Formatter::parseDegreeString( const wxString &value, int &deg, int &minute,
 	second = 0;
 	bool ok = true;
 
-	int ret = wxSscanf( value, wxT( "%d:%d:%d" ), &deg, &minute, &second );
+	//int ret = 
+	wxSscanf( value, wxT( "%d:%d:%d" ), &deg, &minute, &second );
 	//printf( "Formatter::parseDegreeString ret %d\n", ret );
 
 	// value is >= 1 if anything found, otherwise -1

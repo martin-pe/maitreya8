@@ -7,26 +7,27 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "DasaTreeWidget.h"
+
+#include <wx/sizer.h>
 
 #include "Conf.h"
 #include "DasaTool.h"
 #include "ImageProvider.h"
 #include "Lang.h"
 #include "MenuProvider.h"
+#include "TreeWidget.h"
 
 IMPLEMENT_CLASS( DasaTreeWidget, TreeWidget )
 
@@ -44,10 +45,9 @@ extern Config *config;
 **   DasaTreeWidget   ---   Constructor
 **
 ******************************************************/
-DasaTreeWidget::DasaTreeWidget( wxWindow *parent, wxWindowID winid, Horoscope *horoscope, ChartProperties *props )
- : TreeWidget( parent, winid, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxSUNKEN_BORDER ),
-	 horoscope( horoscope ),
-	 props( props )
+DasaTreeWidget::DasaTreeWidget( wxWindow *parent, ChartProperties *props, wxWindowID winid, Horoscope *horoscope )
+	: BasicWidget( parent, props, winid ),
+	 horoscope( horoscope )
 {
 	uint i;
 	DasaTreeItemClientData *item;
@@ -58,17 +58,26 @@ DasaTreeWidget::DasaTreeWidget( wxWindow *parent, wxWindowID winid, Horoscope *h
 	DasaExpertFactory factory;
 	for( int d = 0; d < MAX_DASAEXPERTS; d++ ) experts[d] = factory.getDasaExpert( (DasaId)d, horoscope );
 
-	SetIndent( 30 );
-	SetImageList( ImageProvider::get()->getDasaImageList());
+	twidget = new TreeWidget( this, winid, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxSUNKEN_BORDER );
+	twidget->SetIndent( 30 );
+	twidget->SetImageList( ImageProvider::get()->getDasaImageList());
 
-	rootid = AddRoot( _( "Dasa Tree View" ), PIC_DASA );
-	SetItemImage( rootid, PIC_DASA, wxTreeItemIcon_Expanded );
-	baseid = AppendItem( rootid, _( "Standard" ), PIC_FOLDER );
-	SetItemImage( baseid, PIC_FOLDERE, wxTreeItemIcon_Expanded );
-	conditionalid = AppendItem( rootid, _( "Conditional" ), PIC_FOLDER );
-	SetItemImage( conditionalid, PIC_FOLDERE, wxTreeItemIcon_Expanded );
-	specialid = AppendItem( rootid, _( "Special" ), PIC_FOLDER );
-	SetItemImage( specialid, PIC_FOLDERE, wxTreeItemIcon_Expanded );
+	wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 1, 0, 0);
+	sizer_main->Add( twidget, 0, wxALL|wxEXPAND, 3);
+	sizer_main->AddGrowableRow(0);
+	sizer_main->AddGrowableCol(0);
+	SetSizer(sizer_main);
+	sizer_main->Fit(this);
+	Layout();
+
+	rootid = twidget->AddRoot( _( "Dasa Tree View" ), PIC_DASA );
+	twidget->SetItemImage( rootid, PIC_DASA, wxTreeItemIcon_Expanded );
+	baseid = twidget->AppendItem( rootid, _( "Standard" ), PIC_FOLDER );
+	twidget->SetItemImage( baseid, PIC_FOLDERE, wxTreeItemIcon_Expanded );
+	conditionalid = twidget->AppendItem( rootid, _( "Conditional" ), PIC_FOLDER );
+	twidget->SetItemImage( conditionalid, PIC_FOLDERE, wxTreeItemIcon_Expanded );
+	specialid = twidget->AppendItem( rootid, _( "Special" ), PIC_FOLDER );
+	twidget->SetItemImage( specialid, PIC_FOLDERE, wxTreeItemIcon_Expanded );
 
 	for ( i = 0; i < MAX_DASAEXPERTS; i++ )
 	{
@@ -77,21 +86,20 @@ DasaTreeWidget::DasaTreeWidget( wxWindow *parent, wxWindowID winid, Horoscope *h
 		else root = specialid;
 
 		item = new DasaTreeItemClientData( experts[i], (Dasa*)NULL );
-		id = AppendItem( root, getItemLabel( item ),  PIC_DASAROOT, PIC_DASAROOT, item );
+		id = twidget->AppendItem( root, getItemLabel( item ),  PIC_DASAROOT, PIC_DASAROOT, item );
 		if ( i == D_VIMSOTTARI ) vimsotid = id;
-		SetItemImage( id, PIC_DASAROOTE, wxTreeItemIcon_Expanded );
-		SetItemHasChildren( id );
-		SetItemBold( id, true );
+		twidget->SetItemImage( id, PIC_DASAROOTE, wxTreeItemIcon_Expanded );
+		twidget->SetItemHasChildren( id );
+		twidget->SetItemBold( id, true );
 	}
 
 	Connect( wxEVT_COMMAND_TREE_ITEM_COLLAPSING, MyTreeEventHandler( DasaTreeWidget::collapse ));
 	Connect( wxEVT_COMMAND_TREE_ITEM_EXPANDING, MyTreeEventHandler( DasaTreeWidget::expand ));
 	Connect( wxEVT_COMMAND_TREE_SEL_CHANGING, MyTreeEventHandler( DasaTreeWidget::OnSelChanging ));
-	Connect( wxEVT_RIGHT_DOWN, wxMouseEventHandler( DasaTreeWidget::OnContextMenuEvent ));
 
-	Expand( rootid );
-	Expand( baseid );
-	Expand( vimsotid );
+	twidget->Expand( rootid );
+	twidget->Expand( baseid );
+	twidget->Expand( vimsotid );
 }
 
 /*****************************************************
@@ -123,13 +131,13 @@ void DasaTreeWidget::expand( MyTreeEvent &event )
 	int epic = PIC_DASATREE1E;
 
 	id = event.GetItem();
-	DasaTreeItemClientData *data = (DasaTreeItemClientData*)GetItemData( id );
+	DasaTreeItemClientData *data = (DasaTreeItemClientData*)twidget->GetItemData( id );
 
 	// Root item
 	if ( ! data ) return;
 
 	// Children already there
-	if ( GetChildrenCount( id ) > 0 ) return;
+	if ( twidget->GetChildrenCount( id ) > 0 ) return;
 
 	
 	ASSERT_VALID_DASA_ID( data->getDasaId() );
@@ -172,10 +180,10 @@ void DasaTreeWidget::expand( MyTreeEvent &event )
 	for ( i = 0; i < divector.size(); i++ )
 	{
 		ditem = new DasaTreeItemClientData( data->getExpert(), divector[i] );
-		id2 = AppendItem( id, getItemLabel( ditem ), pic, pic, ditem );
-		SetItemImage( id2, epic, wxTreeItemIcon_Expanded );
-		SetItemHasChildren( id2 );
-		SetItemHidden( id2, (divector[i]->getEndJD() < horoscope->getJD() ));
+		id2 = twidget->AppendItem( id, getItemLabel( ditem ), pic, pic, ditem );
+		twidget->SetItemImage( id2, epic, wxTreeItemIcon_Expanded );
+		twidget->SetItemHasChildren( id2 );
+		twidget->SetItemHidden( id2, (divector[i]->getEndJD() < horoscope->getJD() ));
 	}
 }
 
@@ -199,7 +207,7 @@ void DasaTreeWidget::OnSelChanging( MyTreeEvent &event )
 {
 	printf( "OnSelChanging\n" );
 	wxTreeItemId id = event.GetItem();
-	DasaTreeItemClientData *item = (DasaTreeItemClientData*)GetItemData( id );
+	DasaTreeItemClientData *item = (DasaTreeItemClientData*)twidget->GetItemData( id );
 
 	if ( item && item->getDasa() )
 	{
@@ -291,15 +299,15 @@ void DasaTreeWidget::updateDasa( const wxTreeItemId &masterid )
 	int i = 0;
 	long cook;
 
-	if ( GetChildrenCount( masterid ) == 0 ) return;
-	data = GetItemData( masterid );
+	if ( twidget->GetChildrenCount( masterid ) == 0 ) return;
+	data = twidget->GetItemData( masterid );
 	if ( ! data )
 	{
-		id = GetFirstChild( masterid, cook );
+		id = twidget->GetFirstChild( masterid, cook );
 		while ( id.IsOk() )
 		{
 			updateDasa( id );
-			id = GetNextSibling( id );
+			id = twidget->GetNextSibling( id );
 		}
 		return;
 	}
@@ -312,43 +320,32 @@ void DasaTreeWidget::updateDasa( const wxTreeItemId &masterid )
 	else
 		vdasa = expert->getNextLevel( item->getDasa() );
 
-	id = GetFirstChild( masterid, cook );
+	id = twidget->GetFirstChild( masterid, cook );
 	while ( id.IsOk() )
 	{
-		depitem = (DasaTreeItemClientData*)GetItemData( id );
+		depitem = (DasaTreeItemClientData*)twidget->GetItemData( id );
 		assert( depitem );
 		delete depitem->getDasa();
 		depitem->setDasa( vdasa[i] );
-		SetItemText( id, getItemLabel( depitem ));
-		SetItemHidden( id, vdasa[i]->getEndJD() < horoscope->getJD() );
+		twidget->SetItemText( id, getItemLabel( depitem ));
+		twidget->SetItemHidden( id, vdasa[i]->getEndJD() < horoscope->getJD() );
 		updateDasa( id );
 
 		assert( i < 100 && i >= 0 );
 		i++;
-		id = GetNextSibling( id );
+		id = twidget->GetNextSibling( id );
 	}
 }
 
 /*****************************************************
 **
-**   DasaTreeWidget   ---   OnContextMenuEvent
+**   DasaTreeWidget   ---   doPaint
 **
 ******************************************************/
-void DasaTreeWidget::OnContextMenuEvent( wxMouseEvent& event)
+void DasaTreeWidget::doPaint( const wxRect &rect, const bool eraseBackground )
 {
-	int x, y;
-	x = event.m_x;
-	y = event.m_y;
-	wxWindow *window = (wxWindow*)event.GetEventObject();
-	window->ClientToScreen( &x, &y );
-	this->ScreenToClient( &x, &y );
-
-	wxMenu *menu = ContextMenuProvider().getWidgetMenu( props, 0 );
-	//wxMenu *menu = ContextMenuProvider().getWidgetMenu( this );
-
-	PopupMenu( menu, x, y );
-	delete menu;
-	printf( "OnContextMenuEvent x %d y %d\n", x, y );
+	//printf( "DasaTreeWidget::doPaint\n" );
+	twidget->RefreshRect( rect, eraseBackground );
 }
 
 

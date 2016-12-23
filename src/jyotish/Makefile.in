@@ -121,10 +121,12 @@ am_libjyotish_a_OBJECTS = ArabicParts.$(OBJEXT) Ashtakavarga.$(OBJEXT) \
 	MdlInterpreter.$(OBJEXT) MdlLexer.$(OBJEXT) MdlLexer.$(OBJEXT) \
 	MdlParser.$(OBJEXT) MdlParser.$(OBJEXT) Nakshatra.$(OBJEXT) \
 	Painter.$(OBJEXT) Partner.$(OBJEXT) \
-	PrintoutTextHelper.$(OBJEXT) Sheet.$(OBJEXT) \
-	SingletonLifeline.$(OBJEXT) SolarChart.$(OBJEXT) \
-	Table.$(OBJEXT) TextHelper.$(OBJEXT) Transit.$(OBJEXT) \
-	Varga.$(OBJEXT) VargaHoroscope.$(OBJEXT) VedicPlanet.$(OBJEXT) \
+	PrintoutTextHelper.$(OBJEXT) ShadBala.$(OBJEXT) \
+	Sheet.$(OBJEXT) SingletonLifeline.$(OBJEXT) \
+	SolarChart.$(OBJEXT) Table.$(OBJEXT) textclient.$(OBJEXT) \
+	TextHelper.$(OBJEXT) Transit.$(OBJEXT) UranianBase.$(OBJEXT) \
+	Uranian.$(OBJEXT) UranianHelper.$(OBJEXT) Varga.$(OBJEXT) \
+	VargaHoroscope.$(OBJEXT) VedicPlanet.$(OBJEXT) \
 	VimsottariDasa.$(OBJEXT) YogaConfig.$(OBJEXT) Yoga.$(OBJEXT)
 libjyotish_a_OBJECTS = $(am_libjyotish_a_OBJECTS)
 am__installdirs = "$(DESTDIR)$(bindir)"
@@ -375,16 +377,17 @@ libjyotish_a_SOURCES = ArabicParts.cpp ArabicParts.h Ashtakavarga.cpp Ashtakavar
 	AshtottariDasa.cpp AshtottariDasa.h Aspect.cpp Aspect.h astrobase.cpp astrobase.h \
 	BasicHoroscope.cpp BasicHoroscope.h DasaConfig.cpp DasaConfig.h Dasa.cpp Dasa.h \
 	DasaTool.cpp DasaTool.h Eclipse.cpp Eclipse.h Ephemeris.cpp Ephemeris.h Expert.cpp \
-	Expert.h Exporter.cpp Exporter.h Expression.cpp Expression.h GenericDasa.cpp \
-	GenericDasa.h GenericTableWriter.cpp GenericTableWriter.h Hora.cpp Hora.h Horoscope.cpp \
-	Horoscope.h HtmlExporter.cpp Jaimini.cpp Jaimini.h KalachakraDasa.cpp KalachakraDasa.h \
+	Expert.h Exporter.cpp Exporter.h Expression.cpp Expression.h GenericDasa.cpp GenericDasa.h \
+	GenericTableWriter.cpp GenericTableWriter.h Hora.cpp Hora.h Horoscope.cpp Horoscope.h \
+	HtmlExporter.cpp Jaimini.cpp Jaimini.h KalachakraDasa.cpp KalachakraDasa.h \
 	MdlInterpreter.cpp MdlInterpreter.h MdlLexer.cc MdlLexer.ll MdlParser.cc MdlParser.yy \
-	Nakshatra.cpp Nakshatra.h Painter.cpp Painter.h Partner.cpp Partner.h \
-	PrintoutTextHelper.cpp PrintoutTextHelper.h Sheet.cpp Sheet.h SingletonLifeline.cpp \
-	SingletonLifeline.h SolarChart.cpp SolarChart.h Table.cpp Table.h TextHelper.cpp \
-	TextHelper.h Transit.cpp Transit.h Varga.cpp Varga.h VargaHoroscope.cpp \
-	VargaHoroscope.h VedicPlanet.cpp VedicPlanet.h VimsottariDasa.cpp VimsottariDasa.h \
-	YogaConfig.cpp YogaConfig.h Yoga.cpp Yoga.h
+	Nakshatra.cpp Nakshatra.h Painter.cpp Painter.h Partner.cpp Partner.h PrintoutTextHelper.cpp \
+	PrintoutTextHelper.h ShadBala.cpp ShadBala.h Sheet.cpp Sheet.h SingletonLifeline.cpp \
+	SingletonLifeline.h SolarChart.cpp SolarChart.h Table.cpp Table.h textclient.cpp \
+	TextHelper.cpp TextHelper.h Transit.cpp Transit.h UranianBase.cpp UranianBase.h \
+	Uranian.cpp Uranian.h UranianHelper.cpp UranianHelper.h Varga.cpp Varga.h \
+	VargaHoroscope.cpp VargaHoroscope.h VedicPlanet.cpp VedicPlanet.h VimsottariDasa.cpp \
+	VimsottariDasa.h YogaConfig.cpp YogaConfig.h Yoga.cpp Yoga.h
 
 EXTRA_DIST = Makefile.win MdlParser.h*
 all: $(BUILT_SOURCES)
@@ -510,12 +513,16 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Painter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Partner.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PrintoutTextHelper.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShadBala.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Sheet.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SingletonLifeline.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SolarChart.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Table.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TextHelper.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Transit.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Uranian.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UranianBase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UranianHelper.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Varga.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VargaHoroscope.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VedicPlanet.Po@am__quote@

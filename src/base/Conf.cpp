@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Conf.h"
@@ -86,32 +84,18 @@ WesternConfig::WesternConfig()
 ******************************************************/
 UranianConfig::UranianConfig()
 {
-	sortOrder = AS_PLANET1;
+	sortOrder = AS_RPLANET;
 	gradkreis = GK_360;
 
 	eventsIncludeMidpoints = true;
 	eventsIncludeSums = false;
 	eventsIncludeDifferences = false;
+	eventsIncludeReflectionPoints = false;
 	eventsIncludeTriples = false;
+	eventsIncludeAntiscia = false;
 
-	radixIncludeAntiscia = false;
 	orbisRadix = 1.5;
-
-	transitIncludeType = 0;
-	transitIncludeAntiscia = false;
-	transitIncludeRunningPairs = false;
 	orbisTransit = .5;
-
-	solararcIncludeAntiscia = false;
-	solararcIncludeRunningPairs = false;
-	orbisSolararc = .1;
-
-	directionIncludeType = 0;
-	directionIncludeAntiscia = false;
-	directionIncludeRunningPairs = false;
-	orbisDirection = .5;
-
-	partnerIncludeAntiscia = false;
 	orbisPartner = 1.5;
 };
 
@@ -130,7 +114,7 @@ WesternChartDisplayConfig::WesternChartDisplayConfig()
 	showHouseColors = true;
 	showAspectColors = true;
 	showAspectSymbols = false;
-	transitStyle = 0;
+	secondchartStyle = 0;
 	chartOrientation = 0;
 	houseNumberStyle = 2;
 	graphicSkin = 0;
@@ -296,7 +280,6 @@ ViewPreferencesConfig::ViewPreferencesConfig()
 	configDialogWChartPanelPage = 0;
 	configDialogVChartPanelPage = 0;
 	configDialogVCalculationPanelPage = 0;
-	configDialogSheetStylePanelPage = 0;
 	configDialogColorPanelPage = 0;
 
 	activePagePartner= 0;
@@ -331,12 +314,9 @@ ViewPreferencesConfig::ViewPreferencesConfig()
 	yogaCustomFilter = 0;
 
 	// transit view
-	transitmode = TR_TRANSIT;
-	orbisRadix = 90;
-	orbisTransit = 30;
-	orbisPartner = 30;
-	gradkreis = GK_45;
+	transitmode = PcTransit;
 	transitTimezone = 0;
+	transitJD = 0;
 
 	// Ephem view
 	ephemTimezone = 0;
@@ -353,7 +333,6 @@ ToolbarConfig::ToolbarConfig()
 {
 	// valid values are text - icon - text and icon
 	toolbarStyle = 1; // text and Icons
-	toolbarIconSize = 0; // 24x24 vs. 32x32
 }
 
 /*****************************************************
@@ -404,7 +383,7 @@ ViewSizeConfig::ViewSizeConfig()
 	sMainWindow = wxSize( xSmallWindow, ySmallWindow );
 	sVedicGraphicWindow = wxSize( rVedicChart, rVedicChart );
 	sWesternGraphicWindow = wxSize( rWesternChart, rWesternChart );
-	sUranianGraphicWindow = wxSize( rWesternChart, rWesternChart );
+	sUranianChartWindow = wxSize( rWesternChart, rWesternChart );
 	sTextWindow = wxSize( xBigWindow, yBigWindow );
 	sDasaTreeWindow = wxSize( xSmallWindow, yMediumWindow );
 	sDasaCompositeWindow = wxSize( xMediumWindow, yMediumWindow );

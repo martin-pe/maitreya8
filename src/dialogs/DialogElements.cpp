@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "DialogElements.h"
@@ -31,6 +29,7 @@
 
 #include <math.h>
 
+#include <wx/log.h>
 #include <wx/sizer.h>
 #include <wx/settings.h>
 #include <wx/statbox.h>
@@ -43,6 +42,7 @@ extern Config *config;
 IMPLEMENT_CLASS( MyGrid, wxGrid )
 IMPLEMENT_CLASS( ToolbarLabel, wxControl )
 IMPLEMENT_CLASS( MultiLineStaticText, wxPanel )
+IMPLEMENT_CLASS( TransitModeChoice, wxChoice )
 
 /*****************************************************
 **
@@ -154,13 +154,88 @@ SortChoice::SortChoice( wxWindow *parent, int id, int selected )
 		: wxChoice( parent, id, wxDefaultPosition, wxSize( 110, -1 ))
 {
 	SetToolTip( _( "Sort Order" ));
-	Append( _( "1st Planet" ));
+	Append( _( "Right Side" ));
+	Append( _( "Left Side" ));
 	Append( _( "Orbis" ));
 	Append( _( "Orbis Absolute" ));
-	Append( _( "2nd Planet" ));
-	Append( _( "Aspects" ));
+	Append( _( "Orbis Reverse" ));
+	Append( _( "Gradkreis" ));
 	SetSize( GetBestSize());
 	SetSelection( selected );
+}
+
+/*****************************************************
+**
+**   SortChoice   ---   getSortOrder
+**
+******************************************************/
+ASPECT_SORTORDER SortChoice::getSortOrder() const
+{
+	switch( GetSelection())
+	{
+		case 0:
+			return AS_RPLANET;
+		break;
+		case 1:
+			return AS_LPLANET;
+		break;
+		case 2:
+			return AS_ORBIS;
+		break;
+		case 3:
+			return AS_ORBIS_ABSOLUTE;
+		break;
+		case 4:
+			return AS_ORBIS_REVERSE;
+		break;
+		case 5:
+			return AS_TYPE;
+		break;
+		default:
+			wxLogError( wxString::Format( wxT( "wrong sort order value %d in choice box" ), GetSelection()));
+		break;
+		
+	}
+	return AS_NONE;
+}
+
+/*****************************************************
+**
+**   UranianReferenceObjectChoice   ---   Constructor
+**
+******************************************************/
+UranianReferenceObjectChoice::UranianReferenceObjectChoice( wxWindow *parent, int id, int selected )
+		: wxChoice( parent, id, wxDefaultPosition ) //, wxSize( 110, -1 ))
+{
+	SetToolTip( _( "Reference Object" ));
+	Append( _( "Sun on Cap" ));
+	Append( _( "Sun on Cap (m)" ));
+	Append( _( "Cap on Sun" ));
+	Append( _( "Cap on Sun (m)" ));
+
+	SetSize( GetBestSize());
+	SetSelection( selected );
+}
+
+/*****************************************************
+**
+**   UranianReferenceObjectChoice   ---   getReferenceObject
+**
+******************************************************/
+ObjectId UranianReferenceObjectChoice::getReferenceObject() const
+{
+	switch( GetSelection())
+	{
+		case 0:
+			return OSUN;
+		break;
+		case 1:
+			return OMOON;
+		break;
+		default:
+			return ONONE;
+		break;
+	}
 }
 
 /*****************************************************
@@ -168,18 +243,44 @@ SortChoice::SortChoice( wxWindow *parent, int id, int selected )
 **   TransitModeChoice   ---   Constructor
 **
 ******************************************************/
-TransitModeChoice::TransitModeChoice( wxWindow *parent, int id, int selected )
-		: wxChoice( parent, id ) //, wxDefaultPosition, wxSize( 110, -1 ))
+TransitModeChoice::TransitModeChoice( wxWindow *parent, int id )
+	: wxChoice( parent, id ) 
 {
 	SetToolTip( _( "Mode" ));
 	Append( _( "Transits" ));
-	Append( _( "Solar Arc" ));
 	Append( _( "Directions" ));
+	Append( _( "Solar Arc" ));
+	Append( _( "Reverse Solar Arc" ));
+	Append( _( "Shifted Gravitation Point" ));
+	Append( _( "Shifted Meridian" ));
 	Append( _( "Lunar Arc" ));
 	Append( _( "Constant Arc" ));
 	SetSize( GetBestSize());
-	SetSelection( selected );
 }
+
+/*****************************************************
+**
+**   TransitModeChoice   ---   setTransitMode
+**
+******************************************************/
+void TransitModeChoice::setTransitMode( const PlanetContext &ctx )
+{
+	ASSERT_VALID_TRANSIT_CONTEXT( ctx );
+	SetSelection( ctx - PcTransit );
+}
+
+/*****************************************************
+**
+**   TransitModeChoice   ---   getTransitMode
+**
+******************************************************/
+PlanetContext TransitModeChoice::getTransitMode() const
+{
+	const PlanetContext ctx = (PlanetContext)(GetSelection() + (int)PcTransit);
+	ASSERT_VALID_TRANSIT_CONTEXT( ctx );
+	return ctx;
+}
+
 
 #define MAX_TEXT_VIEW_MODES 16
 

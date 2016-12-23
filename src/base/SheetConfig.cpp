@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "SheetConfig.h"
@@ -45,12 +43,6 @@ extern Config *config;
 SheetConfig::SheetConfig()
 {
   name =  _( "Default" );
-
-	textColor = config->colors->fgColor;
-	brush = MBrush( config->colors->bgColor );
-
-	selectionMode = 3;
-	selectedItemBrush = MBrush( *wxLIGHT_GREY );
 }
 
 /*****************************************************
@@ -61,53 +53,7 @@ SheetConfig::SheetConfig()
 SheetConfig::SheetConfig( wxString n )
  : name( n )
 {
-	textColor = config->colors->fgColor;
-	brush = MBrush( config->colors->bgColor );
-
-	selectionMode = 2;
-	selectedItemBrush = MBrush( *wxLIGHT_GREY );
 }
-
-/*****************************************************
-**
-**   SheetConfig   ---   Constructor
-**
-******************************************************/
-/*
-SheetConfig::SheetConfig( const SheetConfig &s )
-{
-	printf( "SheetConfig::SheetConfig COPY\n" );
-	name = s.name;
-
-	textColor = s.textColor;
-	brush = s.brush;
-	selectionMode = s.selectionMode;
-	selectedItemBrush = s.selectedItemBrush;
-
-	tablestyle = s.tablestyle;
-}
-*/
-
-/*****************************************************
-**
-**   SheetConfig   ---   operator=
-**
-******************************************************/
-/*
-void SheetConfig::operator=( const SheetConfig &s )
-{
-	printf( "SheetConfig::operator=\n" );
-	name = s.name;
-
-	textColor = s.textColor;
-	brush = s.brush;
-	selectionMode = s.selectionMode;
-	selectedItemBrush = s.selectedItemBrush;
-
-	//tablestyle = new TableStyle( *s.tablestyle );
-	*tablestyle = *s.tablestyle;
-}
-*/
 
 /*****************************************************
 **
@@ -131,29 +77,17 @@ TableStyle::TableStyle()
 {
 	useHeaderColors = true;
 	headerTextColor = config->colors->fgColor;
-	headerBrush = MBrush( wxColour( wxT( "#92BCD5" )));
+	headerBgColor = wxColour( wxT( "#92BCD5" ));
 
 	useCellColors = true;
 	cellTextColor = config->colors->fgColor;
 
 	cellBgMode = 0;
-	cellBrush = MBrush( wxColour( wxT( "#EFEFD4" )));
-	oddCellBrush = MBrush( wxColour( wxT( "#E9E1BB" )));
-	evenCellBrush = MBrush( wxColour( wxT( "#F1EBD3" )));
+	allCellBgColor = wxColour( wxT( "#EFEFD4" ));
+	oddCellBgColor = wxColour( wxT( "#E9E1BB" ));
+	evenCellBgColor = wxColour( wxT( "#F1EBD3" ));
 
-	gridStyle = 1;
-	outerBorderStyle = 3;
-	outerBorderPen = *wxBLACK_PEN;
-
-	cellBorderStyle = 1;
-	cellBorderPen = *wxBLACK_PEN;
-
-	headerBorderStyle = 2;
-	headerBorderPen = *wxBLACK_PEN;
-
-	shadowStyle = 1;
-	shadowWidth = 5;
-	shadowBrush = MBrush( *wxLIGHT_GREY );
+	useGrid = true;
 }
 
 IMPLEMENT_SINGLETON( SheetConfigLoader )
@@ -164,7 +98,7 @@ IMPLEMENT_SINGLETON( SheetConfigLoader )
 **
 ******************************************************/
 SheetConfigLoader::SheetConfigLoader()
-: ConfigListLoader<SheetConfig>( CFG_SHEET, CrtPrivateFile )	
+: ConfigListLoader<SheetConfig>( CFG_SHEET, CrtLocalFile )	
 {
 }
 
@@ -197,14 +131,14 @@ void SheetConfigLoader::saveConfigs()
 	}
 
 	wxJSONWriter writer;
-	fc->backupFile( privateResourcename );
-	wxFileOutputStream stream( privateResourcename );
+	fc->backupFile( localResourcename );
+	wxFileOutputStream stream( localResourcename );
 	writer.Write( root, stream );
 
 	wxStreamError err = stream.GetLastError();
 	if ( err != wxSTREAM_NO_ERROR )
 	{
-		wxLogError( wxString::Format( wxT ( "cannot write to output to file %s" ), privateResourcename.c_str() ));
+		wxLogError( wxString::Format( wxT ( "cannot write to output to file %s" ), localResourcename.c_str() ));
 	}
 
 }

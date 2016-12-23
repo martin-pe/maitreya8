@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _PDFPAINTER_H_
@@ -68,15 +66,15 @@ public:
 	virtual void drawArc( const double &x0, const double &y0, const double &xmax, const double &ymax,
 	                      const double &w1, const double &w2 );
 	virtual void drawPoint( const double &x, const double &y );
+	virtual void drawBitmap( const wxBitmap&, const double&, const double&, const bool& );
 
 	// text
 	virtual void drawTextFormatted( const MRect&, const wxString &t, const int& align );
 	virtual MPoint getTextExtent( const wxString &s );
-	virtual void drawSignSymbol( const int&x, const int &y, const Rasi&, const int type = 0, const int zoom = 100, const double angle = 0 );
+	virtual void drawRotatedText( wxString /*text*/, const double& /*x*/, const double& /*y*/, const double& /*angle*/ );
+
 
 	// fonts and text properties
-	virtual void setSymbolFont( const double = 1.0 );
-	void setGraphicFont( const double = 1.0 );
 	virtual void setTextBackgroundColor( const wxColour& ) {}
 	virtual void setTextColor( const wxColour& );
 	virtual wxColour getDefaultTextColor();

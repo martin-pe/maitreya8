@@ -2864,19 +2864,17 @@ char *yytext;
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
-#line 29 "MdlLexer.ll"
+#line 27 "MdlLexer.ll"
 #include "Conf.h"
 #include "maitreya.h"
 #include "Expression.h"
@@ -2885,7 +2883,7 @@ char *yytext;
 extern Config *config;
 
 
-#line 2889 "<stdout>"
+#line 2887 "<stdout>"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -3076,10 +3074,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 44 "MdlLexer.ll"
+#line 42 "MdlLexer.ll"
 
 
-#line 3083 "<stdout>"
+#line 3081 "<stdout>"
 
 	if ( !(yy_init) )
 		{
@@ -3175,702 +3173,702 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 46 "MdlLexer.ll"
+#line 44 "MdlLexer.ll"
 { BEGIN COMMENT; }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 47 "MdlLexer.ll"
+#line 45 "MdlLexer.ll"
 {}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 49 "MdlLexer.ll"
+#line 47 "MdlLexer.ll"
 { BEGIN 0; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 50 "MdlLexer.ll"
+#line 48 "MdlLexer.ll"
 { BEGIN 0;  }
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 51 "MdlLexer.ll"
+#line 49 "MdlLexer.ll"
 {}
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 52 "MdlLexer.ll"
+#line 50 "MdlLexer.ll"
 {}
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 54 "MdlLexer.ll"
+#line 52 "MdlLexer.ll"
 {}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 56 "MdlLexer.ll"
+#line 54 "MdlLexer.ll"
 return LORDOF;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 57 "MdlLexer.ll"
+#line 55 "MdlLexer.ll"
 return GETRASI;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 58 "MdlLexer.ll"
+#line 56 "MdlLexer.ll"
 return GETBHAVA;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 59 "MdlLexer.ll"
+#line 57 "MdlLexer.ll"
 return GETLORD;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 60 "MdlLexer.ll"
+#line 58 "MdlLexer.ll"
 return GETNAKSHATRA;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 62 "MdlLexer.ll"
+#line 60 "MdlLexer.ll"
 return ISPLANETINHOUSE;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 63 "MdlLexer.ll"
+#line 61 "MdlLexer.ll"
 return ISPLANETINRASI;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 64 "MdlLexer.ll"
+#line 62 "MdlLexer.ll"
 return ISPLANETINKENDRA;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 65 "MdlLexer.ll"
+#line 63 "MdlLexer.ll"
 return ISPLANETINAPOKLIMA;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 66 "MdlLexer.ll"
+#line 64 "MdlLexer.ll"
 return ISPLANETINPANAPHARA;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 67 "MdlLexer.ll"
+#line 65 "MdlLexer.ll"
 return ISPLANETINDUALRASI;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 68 "MdlLexer.ll"
+#line 66 "MdlLexer.ll"
 return ISPLANETINFIXEDRASI;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 69 "MdlLexer.ll"
+#line 67 "MdlLexer.ll"
 return ISPLANETINMOVABLERASI;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 70 "MdlLexer.ll"
+#line 68 "MdlLexer.ll"
 return ISBENEFIC;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 71 "MdlLexer.ll"
+#line 69 "MdlLexer.ll"
 return ISMALEFIC;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 72 "MdlLexer.ll"
+#line 70 "MdlLexer.ll"
 return MUTUAL_KENDRA;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 73 "MdlLexer.ll"
+#line 71 "MdlLexer.ll"
 return GRAHA_DRISHTI;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 75 "MdlLexer.ll"
+#line 73 "MdlLexer.ll"
 return PLANETS_INSIGN;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 76 "MdlLexer.ll"
+#line 74 "MdlLexer.ll"
 return PLANETS_INHOUSE;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 77 "MdlLexer.ll"
+#line 75 "MdlLexer.ll"
 return NUMBER_OF_OCCUPIED_SIGNS;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 79 "MdlLexer.ll"
+#line 77 "MdlLexer.ll"
 { yylval.ival = OSUN; return PLANET; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 80 "MdlLexer.ll"
+#line 78 "MdlLexer.ll"
 { yylval.ival = OMOON; return PLANET; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 81 "MdlLexer.ll"
+#line 79 "MdlLexer.ll"
 { yylval.ival = OMARS; return PLANET; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 82 "MdlLexer.ll"
+#line 80 "MdlLexer.ll"
 { yylval.ival = OMERCURY; return PLANET; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 83 "MdlLexer.ll"
+#line 81 "MdlLexer.ll"
 { yylval.ival = OJUPITER; return PLANET; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 84 "MdlLexer.ll"
+#line 82 "MdlLexer.ll"
 { yylval.ival = OVENUS; return PLANET; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 85 "MdlLexer.ll"
+#line 83 "MdlLexer.ll"
 { yylval.ival = OSATURN; return PLANET; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 86 "MdlLexer.ll"
+#line 84 "MdlLexer.ll"
 { yylval.ival = ( config->vedicCalculation->lunarNodeMode == LUNAR_NODE_TRUE ? OTRUENODE : OMEANNODE ); return PLANET; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 87 "MdlLexer.ll"
+#line 85 "MdlLexer.ll"
 { yylval.ival = ( config->vedicCalculation->lunarNodeMode == LUNAR_NODE_TRUE ? OTRUEDESCNODE : OMEANDESCNODE ); return PLANET; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 89 "MdlLexer.ll"
+#line 87 "MdlLexer.ll"
 { yylval.ival = ODHUMA; return PLANET; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 90 "MdlLexer.ll"
+#line 88 "MdlLexer.ll"
 { yylval.ival = OVYATIPATA; return PLANET; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 91 "MdlLexer.ll"
+#line 89 "MdlLexer.ll"
 { yylval.ival = OPARIVESHA; return PLANET; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 92 "MdlLexer.ll"
+#line 90 "MdlLexer.ll"
 { yylval.ival = OCHAPA; return PLANET; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 93 "MdlLexer.ll"
+#line 91 "MdlLexer.ll"
 { yylval.ival = OUPAKETU; return PLANET; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 94 "MdlLexer.ll"
+#line 92 "MdlLexer.ll"
 { yylval.ival = OKALA; return PLANET; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 95 "MdlLexer.ll"
+#line 93 "MdlLexer.ll"
 { yylval.ival = OMRITYU; return PLANET; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 96 "MdlLexer.ll"
+#line 94 "MdlLexer.ll"
 { yylval.ival = OARDHAPRAHARA; return PLANET; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 97 "MdlLexer.ll"
+#line 95 "MdlLexer.ll"
 { yylval.ival = OYAMAGHANTAKA; return PLANET; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 98 "MdlLexer.ll"
+#line 96 "MdlLexer.ll"
 { yylval.ival = OGULIKA; return PLANET; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 99 "MdlLexer.ll"
+#line 97 "MdlLexer.ll"
 { yylval.ival = OMANDI; return PLANET; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 101 "MdlLexer.ll"
+#line 99 "MdlLexer.ll"
 { yylval.ival = R_ARIES; return SIGN; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 102 "MdlLexer.ll"
+#line 100 "MdlLexer.ll"
 { yylval.ival = R_TAURUS; return SIGN; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 103 "MdlLexer.ll"
+#line 101 "MdlLexer.ll"
 { yylval.ival = R_GEMINI; return SIGN; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 104 "MdlLexer.ll"
+#line 102 "MdlLexer.ll"
 { yylval.ival = R_CANCER; return SIGN; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 105 "MdlLexer.ll"
+#line 103 "MdlLexer.ll"
 { yylval.ival = R_LEO; return SIGN; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 106 "MdlLexer.ll"
+#line 104 "MdlLexer.ll"
 { yylval.ival = R_VIRGO; return SIGN; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 107 "MdlLexer.ll"
+#line 105 "MdlLexer.ll"
 { yylval.ival = R_LIBRA; return SIGN; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 108 "MdlLexer.ll"
+#line 106 "MdlLexer.ll"
 { yylval.ival = R_SCORPIO; return SIGN; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 109 "MdlLexer.ll"
+#line 107 "MdlLexer.ll"
 { yylval.ival = R_SAGITTARIUS; return SIGN; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 110 "MdlLexer.ll"
+#line 108 "MdlLexer.ll"
 { yylval.ival = R_CAPRICORN; return SIGN; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 111 "MdlLexer.ll"
+#line 109 "MdlLexer.ll"
 { yylval.ival = R_AQUARIUS; return SIGN; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 112 "MdlLexer.ll"
+#line 110 "MdlLexer.ll"
 { yylval.ival = R_PISCES; return SIGN; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 114 "MdlLexer.ll"
+#line 112 "MdlLexer.ll"
 { yylval.ival = HOUSE1; return HOUSE; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 115 "MdlLexer.ll"
+#line 113 "MdlLexer.ll"
 { yylval.ival = HOUSE2; return HOUSE; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 116 "MdlLexer.ll"
+#line 114 "MdlLexer.ll"
 { yylval.ival = HOUSE3; return HOUSE; }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 117 "MdlLexer.ll"
+#line 115 "MdlLexer.ll"
 { yylval.ival = HOUSE4; return HOUSE; }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 118 "MdlLexer.ll"
+#line 116 "MdlLexer.ll"
 { yylval.ival = HOUSE5; return HOUSE; }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 119 "MdlLexer.ll"
+#line 117 "MdlLexer.ll"
 { yylval.ival = HOUSE6; return HOUSE; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 120 "MdlLexer.ll"
+#line 118 "MdlLexer.ll"
 { yylval.ival = HOUSE7; return HOUSE; }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 121 "MdlLexer.ll"
+#line 119 "MdlLexer.ll"
 { yylval.ival = HOUSE8; return HOUSE; }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 122 "MdlLexer.ll"
+#line 120 "MdlLexer.ll"
 { yylval.ival = HOUSE9; return HOUSE; }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 123 "MdlLexer.ll"
+#line 121 "MdlLexer.ll"
 { yylval.ival = HOUSE10; return HOUSE; }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 124 "MdlLexer.ll"
+#line 122 "MdlLexer.ll"
 { yylval.ival = HOUSE11; return HOUSE; }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 125 "MdlLexer.ll"
+#line 123 "MdlLexer.ll"
 { yylval.ival = HOUSE12; return HOUSE; }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 127 "MdlLexer.ll"
+#line 125 "MdlLexer.ll"
 { yylval.ival = OASCENDANT; return PLANET; }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 128 "MdlLexer.ll"
+#line 126 "MdlLexer.ll"
 { yylval.ival = OASCENDANT; return PLANET; }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 129 "MdlLexer.ll"
+#line 127 "MdlLexer.ll"
 { yylval.ival = HOUSE10; return PLANET; }
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 130 "MdlLexer.ll"
+#line 128 "MdlLexer.ll"
 { yylval.ival = HOUSE10; return PLANET; }
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 131 "MdlLexer.ll"
+#line 129 "MdlLexer.ll"
 { yylval.ival = HOUSE7; return PLANET; }
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 132 "MdlLexer.ll"
+#line 130 "MdlLexer.ll"
 { yylval.ival = HOUSE4; return PLANET; }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 133 "MdlLexer.ll"
+#line 131 "MdlLexer.ll"
 { yylval.ival = HOUSE4; return PLANET; }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 135 "MdlLexer.ll"
+#line 133 "MdlLexer.ll"
 { yylval.ival = N27_ASWINI; return NAKSHATRA; }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 136 "MdlLexer.ll"
+#line 134 "MdlLexer.ll"
 { yylval.ival = N27_BHARANI; return NAKSHATRA; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 137 "MdlLexer.ll"
+#line 135 "MdlLexer.ll"
 { yylval.ival = N27_KRITTIKA; return NAKSHATRA; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 138 "MdlLexer.ll"
+#line 136 "MdlLexer.ll"
 { yylval.ival = N27_ROHINI; return NAKSHATRA; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 139 "MdlLexer.ll"
+#line 137 "MdlLexer.ll"
 { yylval.ival = N27_MRIGASIRA; return NAKSHATRA; }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 140 "MdlLexer.ll"
+#line 138 "MdlLexer.ll"
 { yylval.ival = N27_ARUDRA; return NAKSHATRA; }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 141 "MdlLexer.ll"
+#line 139 "MdlLexer.ll"
 { yylval.ival = N27_PUNARVASU; return NAKSHATRA; }
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 142 "MdlLexer.ll"
+#line 140 "MdlLexer.ll"
 { yylval.ival = N27_PUSHYAMI; return NAKSHATRA; }
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 143 "MdlLexer.ll"
+#line 141 "MdlLexer.ll"
 { yylval.ival = N27_ASLESHA; return NAKSHATRA; }
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 144 "MdlLexer.ll"
+#line 142 "MdlLexer.ll"
 { yylval.ival = N27_MAKHA; return NAKSHATRA; }
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 145 "MdlLexer.ll"
+#line 143 "MdlLexer.ll"
 { yylval.ival = N27_PPHALGUNI; return NAKSHATRA; }
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 146 "MdlLexer.ll"
+#line 144 "MdlLexer.ll"
 { yylval.ival = N27_UPHALGUNI; return NAKSHATRA; }
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 147 "MdlLexer.ll"
+#line 145 "MdlLexer.ll"
 { yylval.ival = N27_HASTHA; return NAKSHATRA; }
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 148 "MdlLexer.ll"
+#line 146 "MdlLexer.ll"
 { yylval.ival = N27_CHITTA; return NAKSHATRA; }
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 149 "MdlLexer.ll"
+#line 147 "MdlLexer.ll"
 { yylval.ival = N27_SWATI; return NAKSHATRA; }
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 150 "MdlLexer.ll"
+#line 148 "MdlLexer.ll"
 { yylval.ival = N27_VISAKHA; return NAKSHATRA; }
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 151 "MdlLexer.ll"
+#line 149 "MdlLexer.ll"
 { yylval.ival = N27_ANURADHA; return NAKSHATRA; }
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 152 "MdlLexer.ll"
+#line 150 "MdlLexer.ll"
 { yylval.ival = N27_JYESHTA; return NAKSHATRA; }
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 153 "MdlLexer.ll"
+#line 151 "MdlLexer.ll"
 { yylval.ival = N27_MULA; return NAKSHATRA; }
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 154 "MdlLexer.ll"
+#line 152 "MdlLexer.ll"
 { yylval.ival = N27_PSHADHA; return NAKSHATRA; }
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 155 "MdlLexer.ll"
+#line 153 "MdlLexer.ll"
 { yylval.ival = N27_USHADHA; return NAKSHATRA; }
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 156 "MdlLexer.ll"
+#line 154 "MdlLexer.ll"
 { yylval.ival = N27_SRAVANA; return NAKSHATRA; }
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 157 "MdlLexer.ll"
+#line 155 "MdlLexer.ll"
 { yylval.ival = N27_DHANISHTA; return NAKSHATRA; }
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 158 "MdlLexer.ll"
+#line 156 "MdlLexer.ll"
 { yylval.ival = N27_SATHABISHAK; return NAKSHATRA; }
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 159 "MdlLexer.ll"
+#line 157 "MdlLexer.ll"
 { yylval.ival = N27_PBHADRA; return NAKSHATRA; }
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 160 "MdlLexer.ll"
+#line 158 "MdlLexer.ll"
 { yylval.ival = N27_UBHADRA; return NAKSHATRA; }
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 161 "MdlLexer.ll"
+#line 159 "MdlLexer.ll"
 { yylval.ival = N27_REVATI; return NAKSHATRA; }
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 163 "MdlLexer.ll"
+#line 161 "MdlLexer.ll"
 { yylval.ival = 1; return BOOLEAN; }
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 164 "MdlLexer.ll"
+#line 162 "MdlLexer.ll"
 { yylval.ival = 1; return BOOLEAN; }
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 165 "MdlLexer.ll"
+#line 163 "MdlLexer.ll"
 { yylval.ival = 0; return BOOLEAN; }
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 166 "MdlLexer.ll"
+#line 164 "MdlLexer.ll"
 { yylval.ival = 0; return BOOLEAN; }
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 168 "MdlLexer.ll"
+#line 166 "MdlLexer.ll"
 return AND;
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 169 "MdlLexer.ll"
+#line 167 "MdlLexer.ll"
 return OR;
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 170 "MdlLexer.ll"
+#line 168 "MdlLexer.ll"
 return NOT;
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 172 "MdlLexer.ll"
+#line 170 "MdlLexer.ll"
 return TYPE_INT;
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 173 "MdlLexer.ll"
+#line 171 "MdlLexer.ll"
 return TYPE_DOUBLE;
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 174 "MdlLexer.ll"
+#line 172 "MdlLexer.ll"
 return TYPE_PLANET;
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 175 "MdlLexer.ll"
+#line 173 "MdlLexer.ll"
 return TYPE_SIGN;
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 176 "MdlLexer.ll"
+#line 174 "MdlLexer.ll"
 return TYPE_NAKSHATRA;
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 177 "MdlLexer.ll"
+#line 175 "MdlLexer.ll"
 return TYPE_HOUSE;
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 178 "MdlLexer.ll"
+#line 176 "MdlLexer.ll"
 return TYPE_BOOLEAN;
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 179 "MdlLexer.ll"
+#line 177 "MdlLexer.ll"
 return TYPE_BOOLEAN;
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 181 "MdlLexer.ll"
+#line 179 "MdlLexer.ll"
 return LPAR;
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 182 "MdlLexer.ll"
+#line 180 "MdlLexer.ll"
 return RPAR;
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 184 "MdlLexer.ll"
+#line 182 "MdlLexer.ll"
 return RETURN;
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 185 "MdlLexer.ll"
+#line 183 "MdlLexer.ll"
 return SEMICOLON;
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 186 "MdlLexer.ll"
+#line 184 "MdlLexer.ll"
 return COMMA;
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 188 "MdlLexer.ll"
+#line 186 "MdlLexer.ll"
 return ISEQUAL;
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 189 "MdlLexer.ll"
+#line 187 "MdlLexer.ll"
 return ISNOTEQUAL;
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 191 "MdlLexer.ll"
+#line 189 "MdlLexer.ll"
 return PLUS;
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 192 "MdlLexer.ll"
+#line 190 "MdlLexer.ll"
 return MINUS;
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 193 "MdlLexer.ll"
+#line 191 "MdlLexer.ll"
 return MULT;
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 194 "MdlLexer.ll"
+#line 192 "MdlLexer.ll"
 return DIV;
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 195 "MdlLexer.ll"
+#line 193 "MdlLexer.ll"
 return MOD;
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 197 "MdlLexer.ll"
+#line 195 "MdlLexer.ll"
 return LT;
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 198 "MdlLexer.ll"
+#line 196 "MdlLexer.ll"
 return LE;
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 199 "MdlLexer.ll"
+#line 197 "MdlLexer.ll"
 return GT;
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 200 "MdlLexer.ll"
+#line 198 "MdlLexer.ll"
 return GE;
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 202 "MdlLexer.ll"
+#line 200 "MdlLexer.ll"
 return RED12;
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 203 "MdlLexer.ll"
+#line 201 "MdlLexer.ll"
 return RED27;
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 205 "MdlLexer.ll"
+#line 203 "MdlLexer.ll"
 {
 		yylval.ival = atoi( yytext );
 		return DIGIT;
@@ -3879,44 +3877,44 @@ YY_RULE_SETUP
 case 140:
 /* rule 140 can match eol */
 YY_RULE_SETUP
-#line 210 "MdlLexer.ll"
+#line 208 "MdlLexer.ll"
 { yylval.sval = strdup( yytext+1 ); yylval.sval[ strlen( yylval.sval )-1] = 0; return STRING; }
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 213 "MdlLexer.ll"
+#line 211 "MdlLexer.ll"
 { yylval.sval = strdup( yytext ); return IDENT; }
 	YY_BREAK
 case 142:
 /* rule 142 can match eol */
 YY_RULE_SETUP
-#line 215 "MdlLexer.ll"
+#line 213 "MdlLexer.ll"
 {}
 	YY_BREAK
 case 143:
 /* rule 143 can match eol */
 YY_RULE_SETUP
-#line 217 "MdlLexer.ll"
+#line 215 "MdlLexer.ll"
 {}
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 219 "MdlLexer.ll"
+#line 217 "MdlLexer.ll"
 {}
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 222 "MdlLexer.ll"
+#line 220 "MdlLexer.ll"
 {
 		fprintf( stderr, "Lexical error at line %d near token \"%s\"", yylineno, yytext );
 	}
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 226 "MdlLexer.ll"
+#line 224 "MdlLexer.ll"
 ECHO;
 	YY_BREAK
-#line 3920 "<stdout>"
+#line 3918 "<stdout>"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -4929,7 +4927,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 226 "MdlLexer.ll"
+#line 224 "MdlLexer.ll"
 
 
 

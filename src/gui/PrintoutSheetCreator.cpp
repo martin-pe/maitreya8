@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "PrintoutSheetCreator.h"
@@ -32,12 +30,42 @@
 #include "PrintoutConfig.h"
 #include "PrintoutTextHelper.h"
 #include "Sheet.h"
+#include "Uranian.h"
+#include "UranianHelper.h"
 #include "VargaBase.h"
 #include "WesternChart.h"
+#include "WesternChartConfig.h"
 
 extern Config *config;
 
-enum PrintoutChartType { PcTypeWestern = 0, PcTypeVedicPair, PcTypeSbc };
+/*************************************************//**
+*
+*  
+*
+******************************************************/
+class EmptySheetItem : public SheetWidgetItem
+{ 
+public:
+	EmptySheetItem( ChartProperties *props, wxString m ) : SheetWidgetItem( props ), message( m ) {}
+
+	virtual SheetItem *cloneClean() { return new EmptySheetItem( props, message ); }
+
+	virtual void doPaint( Painter *painter, const MRect& /*refreshRect*/ )
+	{ 
+		//painter->setDefaultBrush();
+		painter->setTransparentBrush();
+		painter->setPen( *wxRED );
+		painter->drawRectangle( rect );
+		painter->drawLine( rect.x, rect.y, rect.x + rect.width, rect.y + rect.height );
+		painter->drawLine( rect.x, rect.y + rect.height, rect.x + rect.width, rect.y );
+		painter->setTextColor( *wxRED );
+		painter->drawTextFormatted( rect, message, Align::Center );
+		painter->setDefaults();
+	}
+
+private:
+	wxString message;
+};
 
 /*************************************************//**
 *
@@ -47,77 +75,49 @@ enum PrintoutChartType { PcTypeWestern = 0, PcTypeVedicPair, PcTypeSbc };
 class PrintoutChart : public SheetWidgetItem
 {
 public:
-	PrintoutChart( ChartProperties *props, Horoscope *h, const PrintoutChartType &mode, const Varga v1 = V_RASI, const Varga v2 = V_NAVAMSA )
-	 : SheetWidgetItem( props ), horoscope( h ), mode( mode ), varga1( v1 ), varga2( v2 )
-	{
-		//printf( "skin %d\n", props->getWesternSkin());
-		switch( mode )
-		{
-			case PcTypeWestern:
-				ratio = 1;
-			break;
-			case PcTypeVedicPair:
-				ratio = .4;
-			break;
-			case PcTypeSbc:
-				ratio = .4;
-			break;
-			default:
-				assert( false );
-			break;
-		}
-	}
+	PrintoutChart( ChartProperties *props, Horoscope *h, PrintoutItem *item )
+	 : SheetWidgetItem( props ), horoscope( h ), item( item ) {}
 
-	virtual SheetWidgetItem *cloneClean()
-	{
-		return new PrintoutChart( props, horoscope, mode, varga1, varga2 );
-	}
+	virtual SheetWidgetItem *cloneClean() { return new PrintoutChart( props, horoscope, item ); }
 
-	virtual void doPaint( Painter *painter, const MRect& /*refreshRect*/ )
+	virtual void doPaint( Painter *painter, const MRect& refreshRect )
 	{
-		//printf( "PrintoutChart::doPaint RECT %f %f %f %f\n", refreshRect.x, refreshRect.y, refreshRect.width, refreshRect.height );
-		GraphicalChart *chart;
-		switch( mode )
+		printf( "PrintoutChart::doPaint type %d RECT %f %f %f %f\n", item->type, refreshRect.x, refreshRect.y, refreshRect.width, refreshRect.height );
+		GraphicalChart *chart = (GraphicalChart*)NULL;
+		switch( item->type )
 		{
-			case PcTypeWestern:
+			case PD_CHART:
 			{
-				chart = ChartFactory().createWesternChart( CT_RADIX, props, horoscope, 0 );
-				chart->OnDataChanged();
-				chart->paint( painter, rect );
-				delete chart;
+				PrintoutItemChart *pi = (PrintoutItemChart*)item;
+				if ( pi->vedic )
+				{
+					chart = ChartFactory().createVedicChart( CT_RADIX, props, horoscope, 0, pi->varga );
+				}
+				else
+				{
+					//props->setWesternSkin( pi->skin != UINT_FOR_NOT_SET ? pi->skin : props->wGraphicSkin );
+					if ( pi->skin != UINT_FOR_NOT_SET ) props->setWesternSkin( pi->skin );
+					chart = ChartFactory().createWesternChart( CT_RADIX, props, horoscope, 0 );
+				}
 			}
 			break;
-			case PcTypeVedicPair:
-			{
-				GraphicalChart *chart1 = ChartFactory().createVedicChart( CT_RADIX, props, horoscope, 0, varga1 );
-				chart1->OnDataChanged();
-				chart1->paint( painter, MRect( rect.x, rect.y, .5 * rect.width, rect.height ));
-				delete chart1;
-
-				GraphicalChart *chart2 = ChartFactory().createVedicChart( CT_RADIX, props, horoscope, 0, varga2 );
-				chart2->OnDataChanged();
-				chart2->paint( painter, MRect( rect.x + .5 * rect.width, rect.y, .5 * rect.width, rect.height ));
-				delete chart2;
-			}
-			break;
-			case PcTypeSbc:
-			{
+			case PD_SBC:
 				chart = ChartFactory().createSarvatobhadraChart( CT_RADIX, props, horoscope, 0 );
-				chart->OnDataChanged();
-				chart->paint( painter, rect );
-				delete chart;
-			}
 			break;
 			default:
 				assert( false );
 			break;
 		}
+		assert( chart );
+		chart->OnDataChanged();
+		//printf( "PrintoutChart::doPaint type %d RECT %f %f %f %f\n", item.typeId, rect.x, rect.y, rect.width, rect.height );
+		chart->paint( painter, rect );
+		delete chart;
 	}
 
 private:
 	Horoscope *horoscope;
-	const PrintoutChartType mode;
-	const Varga varga1, varga2;
+	PrintoutItem *item;
 };
 
 /*****************************************************
@@ -125,11 +125,129 @@ private:
 **   PrintoutSheetCreator   ---   Constructor
 **
 ******************************************************/
-PrintoutSheetCreator::PrintoutSheetCreator( Horoscope *h, ChartProperties *chartprops, Sheet *sheet )
+PrintoutSheetCreator::PrintoutSheetCreator( Horoscope *h, ChartProperties *chartprops )
  : horoscope( h ),
-  chartprops( chartprops ),
-  sheet( sheet )
+  chartprops( chartprops )
 {
+}
+
+/*****************************************************
+**
+**   PrintoutSheetCreator   ---   addItem
+**
+******************************************************/
+void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
+{
+	assert( item );
+	printf( "PrintoutSheetCreator::addItem type %d\n", item->type );
+	PrintoutTextHelper helper( horoscope, chartprops, sheet );
+
+	switch( item->type )
+	{
+		case PD_TITLE:
+			printf( "TITLE\n" );
+			helper.writeTitle();
+		break;
+		case PD_HEADER:
+		{
+			printf( "HEADER\n" );
+			PrintoutItemHeader *pi = (PrintoutItemHeader*)item;
+			helper.writePrintoutHeader( pi->headerType, pi->vedic );
+		}
+		break;
+		case PD_CHART:
+		case PD_SBC:
+			sheet->addItem( new PrintoutChart( chartprops, horoscope, item ));
+		break;
+		case PD_EMPTY:
+			sheet->addItem( new EmptySheetItem( chartprops, wxT( "Empty" )));
+		break;
+		case PD_DASA_SUMMARY:
+		{
+			DasaTool *tool = DasaTool::get();
+			PrintoutItemDasaSummary *ditem = (PrintoutItemDasaSummary*)item;
+			switch( ditem->tableType )
+			{
+				case 1:
+					tool->writeShortReport( sheet, horoscope, ditem->dasaId, true );
+				break;
+				case 2:
+					tool->writeComprehensiveReport( sheet, horoscope, ditem->dasaId, true );
+				break;
+				case 0:
+				default:
+					tool->writeCompactReport( sheet, horoscope, ditem->dasaId, true );
+				break;
+			}
+		}
+		break;
+		case PD_COLUMN_SET:
+		{
+			PrintoutItemColumnSet *cs = (PrintoutItemColumnSet*)item;
+			printf( "COLUMN SET size %ld ratio %f\n", cs->children.size(), cs->ratio );
+			double ratio = cs->ratio;
+			if ( ratio == 0 )
+			{
+				if ( cs->children.size() > 1 ) ratio = .4;
+				else ratio = 1;
+			}
+			SheetWidgetGrid *grid = new SheetWidgetGrid( cs->children.size(), ratio );
+			for( list<PrintoutItem*>::iterator iter = cs->children.begin(); iter != cs->children.end(); iter++ )
+			{
+				addItem( grid->sheet, *iter );
+			}
+			sheet->addItem( grid );
+		}
+		break;
+		case PD_ROW_SET:
+		{
+			PrintoutItemRowSet *cs = (PrintoutItemRowSet*)item;
+			printf( "ROW SET size %ld\n", cs->children.size() );
+			SheetRowSet *rowset = new SheetRowSet();
+			for( list<PrintoutItem*>::iterator iter = cs->children.begin(); iter != cs->children.end(); iter++ )
+			{
+				addItem( rowset->sheet, *iter );
+			}
+			sheet->addItem( rowset );
+		}
+		break;
+		case PD_GRID:
+		{
+			PrintoutItemGrid *g = (PrintoutItemGrid*)item;
+			printf( "GRID size %ld\n", g->children.size() );
+			SheetWidgetGrid *grid = new SheetWidgetGrid( g->nb_cols );
+			for( list<PrintoutItem*>::iterator iter = g->children.begin(); iter != g->children.end(); iter++ )
+			{
+				addItem( grid->sheet, *iter );
+			}
+			sheet->addItem( grid );
+		}
+		break;
+		case PD_URANIAN:
+		{
+			UranianExpert expert( horoscope, chartprops );
+			expert.OnDataChanged();
+			UranianHelper helper( &expert );
+
+			SheetColumnSet *sc = new SheetColumnSet;
+			SheetItem *t = (SheetItem*)helper.createTupleTable( UTT_MIDPOINTS, PcRadix );
+			sc->addItem( t );
+			sheet->addItem( sc );
+		}
+		break;
+		case PD_ERROR:
+		{
+			PrintoutItemError *eitem = (PrintoutItemError*)item;
+			wxString s = wxT( "Error: " );
+			s << eitem->message;
+			sheet->addHeader( s );
+		}
+		break;
+		default:
+			printf( "PrintoutSheetCreator::addItem wrong item with id %d\n", item->type );
+			sheet->addHeader( wxString::Format( wxT( "Error: unsupported item id %d" ), item->type ));
+		break;
+	}
 }
 
 /*****************************************************
@@ -137,57 +255,19 @@ PrintoutSheetCreator::PrintoutSheetCreator( Horoscope *h, ChartProperties *chart
 **   PrintoutSheetCreator   ---   write
 **
 ******************************************************/
-void PrintoutSheetCreator::write( const int &id )
+void PrintoutSheetCreator::write( Sheet *sheet, const int &id )
 {
 	PrintoutConfigLoader *loader = PrintoutConfigLoader::get();
 	PrintoutConfig *cfg = loader->getConfig( id );
+	PrintoutTextHelper helper( horoscope, chartprops, sheet );
 
 	for( uint i = 0; i < cfg->items.size(); i++ )
 	{
-		switch( cfg->items[i].typeId )
-		{
-			case PD_HEADER:
-				PrintoutTextHelper( horoscope, chartprops, sheet ).writePrintoutHeader( cfg->items[i].subtype, cfg->items[i].vedic );
-			break;
-			case PD_VEDIC_CHART_PAIR:
-			{
-				VargaConfigLoader *loader = VargaConfigLoader::get();
-				Varga v1 = V_RASI;
-				Varga v2 = V_NAVAMSA;
-				if ( cfg->items[i].vargaIds.size() > 0 )
-				{
-					v1 = loader->getVargaIndexByDivision( cfg->items[i].vargaIds[0]);
-					if ( cfg->items[i].vargaIds.size() > 1 )
-					{
-						v2 = loader->getVargaIndexByDivision( cfg->items[i].vargaIds[1]);
-					}
-				}
-				sheet->addItem( new PrintoutChart( chartprops, horoscope, PcTypeVedicPair, v1, v2 ));
-			}
-			break;
-			case PD_DASA_SUMMARY:
-			{
-				DasaTool *tool = DasaTool::get();
-				switch( cfg->items[i].subtype )
-				{
-					case 1:
-						tool->writeShortReport( sheet, horoscope, (DasaId)cfg->items[i].dasaId, true );
-					break;
-					case 2:
-						tool->writeComprehensiveReport( sheet, horoscope, (DasaId)cfg->items[i].dasaId, true );
-					break;
-					case 0:
-					default:
-						tool->writeCompactReport( sheet, horoscope, (DasaId)cfg->items[i].dasaId, true );
-					break;
-				}
-			}
-			break;
-			case PD_WESTERN_CHART:
-				sheet->addItem( new PrintoutChart( chartprops, horoscope, PcTypeWestern ));
-			break;
-			case PD_SBC:
-				sheet->addItem( new PrintoutChart( chartprops, horoscope, PcTypeSbc ));
+		if ( ! cfg->items[i] ) continue;
+		addItem( sheet, cfg->items[i] );
+	}
+
+/*
 			break;
 			case PD_ASPECTARIUM:
 			break;
@@ -210,6 +290,7 @@ void PrintoutSheetCreator::write( const int &id )
 			break;
 		}
 	}
+*/
 }
 
 

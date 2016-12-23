@@ -118,10 +118,11 @@ am_libmaitreya_dialogs_a_OBJECTS = AboutDialog.$(OBJEXT) \
 	ObjectFilterDialog.$(OBJEXT) PenDialog.$(OBJEXT) \
 	PlanetSignDisplayPanel.$(OBJEXT) PrintoutPanel.$(OBJEXT) \
 	SheetStylePanel.$(OBJEXT) StyleManagerDialog.$(OBJEXT) \
-	ToolbarPanel.$(OBJEXT) VedicCalculationPanel.$(OBJEXT) \
-	VedicChartPanel.$(OBJEXT) VedicPanel.$(OBJEXT) \
-	WesternCalculationPanel.$(OBJEXT) WesternChartPanel.$(OBJEXT) \
-	WesternPanel.$(OBJEXT) YogaEditorPanel.$(OBJEXT)
+	ToolbarPanel.$(OBJEXT) UranianParamPanel.$(OBJEXT) \
+	VedicCalculationPanel.$(OBJEXT) VedicChartPanel.$(OBJEXT) \
+	VedicPanel.$(OBJEXT) WesternCalculationPanel.$(OBJEXT) \
+	WesternChartPanel.$(OBJEXT) WesternPanel.$(OBJEXT) \
+	YogaEditorPanel.$(OBJEXT)
 libmaitreya_dialogs_a_OBJECTS = $(am_libmaitreya_dialogs_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -338,20 +339,20 @@ top_srcdir = @top_srcdir@
 AM_CPPFLAGS = $(WX_CPPFLAGS) -I. -I../base -I../jyotish -I../gui 
 noinst_LIBRARIES = libmaitreya_dialogs.a
 libmaitreya_dialogs_a_SOURCES = AboutDialog.cpp AboutDialog.h AnimationPanel.cpp AnimationPanel.h \
-	AspectPanel.cpp AspectPanel.h AtlasAliasDialog.cpp AtlasAliasDialog.h AtlasDialog.cpp \
-	AtlasDialog.h AtlasEditDialog.cpp AtlasEditDialog.h AtlasImportDialog.cpp AtlasImportDialog.h \
-	AtlasPanel.cpp AtlasPanel.h BrushDialog.cpp BrushDialog.h ColorPanel.cpp ColorPanel.h \
-	ConfigDialog.cpp ConfigDialog.h ConfigPanel.cpp ConfigPanel.h DasaPanel.cpp DasaPanel.h \
-	DataDialog.cpp DataDialog.h DialogElements.cpp DialogElements.h DragChart.cpp DragChart.h \
-	EphemerisPanel.cpp EphemerisPanel.h ExportDialog.cpp ExportDialog.h FontPanel.cpp FontPanel.h \
-	GeneralPanel.cpp GeneralPanel.h MiscellaneousPanel.cpp MiscellaneousPanel.h mspin.cpp mspin.h \
-	MultipleViewPanel.cpp MultipleViewPanel.h mvalidator.cpp mvalidator.h ObjectFilterDialog.cpp \
-	ObjectFilterDialog.h PenDialog.cpp PenDialog.h PlanetSignDisplayPanel.cpp \
-	PlanetSignDisplayPanel.h PrintoutPanel.cpp PrintoutPanel.h SheetStylePanel.cpp \
-	SheetStylePanel.h StyleManagerDialog.cpp StyleManagerDialog.h ToolbarPanel.cpp ToolbarPanel.h \
-	VedicCalculationPanel.cpp VedicCalculationPanel.h VedicChartPanel.cpp VedicChartPanel.h VedicPanel.cpp \
-	VedicPanel.h WesternCalculationPanel.cpp WesternCalculationPanel.h WesternChartPanel.cpp \
-	WesternChartPanel.h WesternPanel.cpp WesternPanel.h YogaEditorPanel.cpp YogaEditorPanel.h
+	AspectPanel.cpp AspectPanel.h AtlasAliasDialog.cpp AtlasAliasDialog.h AtlasDialog.cpp AtlasDialog.h \
+	AtlasEditDialog.cpp AtlasEditDialog.h AtlasImportDialog.cpp AtlasImportDialog.h AtlasPanel.cpp \
+	AtlasPanel.h BrushDialog.cpp BrushDialog.h ColorPanel.cpp ColorPanel.h ConfigDialog.cpp \
+	ConfigDialog.h ConfigPanel.cpp ConfigPanel.h DasaPanel.cpp DasaPanel.h DataDialog.cpp DataDialog.h \
+	DialogElements.cpp DialogElements.h DragChart.cpp DragChart.h EphemerisPanel.cpp EphemerisPanel.h \
+	ExportDialog.cpp ExportDialog.h FontPanel.cpp FontPanel.h GeneralPanel.cpp GeneralPanel.h \
+	MiscellaneousPanel.cpp MiscellaneousPanel.h mspin.cpp mspin.h MultipleViewPanel.cpp \
+	MultipleViewPanel.h mvalidator.cpp mvalidator.h ObjectFilterDialog.cpp ObjectFilterDialog.h \
+	PenDialog.cpp PenDialog.h PlanetSignDisplayPanel.cpp PlanetSignDisplayPanel.h \
+	PrintoutPanel.cpp PrintoutPanel.h SheetStylePanel.cpp SheetStylePanel.h StyleManagerDialog.cpp \
+	StyleManagerDialog.h ToolbarPanel.cpp ToolbarPanel.h UranianParamPanel.cpp UranianParamPanel.h \
+	VedicCalculationPanel.cpp VedicCalculationPanel.h VedicChartPanel.cpp VedicChartPanel.h \
+	VedicPanel.cpp VedicPanel.h WesternCalculationPanel.cpp WesternCalculationPanel.h WesternChartPanel.cpp \
+	WesternChartPanel.h WesternPanel.cpp WesternPanel.h YogaEditorPanel.cpp YogaEditorPanel.h 
 
 EXTRA_DIST = Makefile.win
 all: all-am
@@ -432,6 +433,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SheetStylePanel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StyleManagerDialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ToolbarPanel.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UranianParamPanel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VedicCalculationPanel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VedicChartPanel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VedicPanel.Po@am__quote@

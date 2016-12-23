@@ -1,10 +1,8 @@
-SUBDIRS = dasas yogas
+SUBDIRS = dasas yogas wchart vchart print mview 
 
 pkgdatadir = ${datarootdir}/maitreya8
 
-EXTRA_DIST = *.json
-
-dist_pkgdata_DATA = *.json
+dist_pkgdata_DATA = sheet.json
 
 clean:
 	rm -f *~ *.bak

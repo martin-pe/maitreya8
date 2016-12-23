@@ -10,17 +10,14 @@ CPPFLAGS = -g -I. -I.. -I../.. -I../base -I../gui -I../jyotish `wx-config --cppf
 
 LDLIBS = `wx-config --libs` 
 
-OBS = AboutDialog.o AnimationPanel.o AspectPanel.o AtlasAliasDialog.o \
-	AtlasDialog.o AtlasEditDialog.o AtlasImportDialog.o AtlasPanel.o \
-	ColorPanel.o ConfigDialog.o ConfigPanel.o DataDialog.o mspin.o \
-	DragChart.o EphemerisPanel.o ExportDialog.o \
-	FontPanel.o GeneralPanel.o MultipleViewPanel.o \
-	PrintoutPanel.o ToolbarPanel.o \
-	VedicCalculationPanel.o VedicChartPanel.o VedicPanel.o PlanetSignDisplayPanel.o \
-	WesternCalculationPanel.o WesternChartPanel.o WesternPanel.o YogaEditorPanel.o \
-	MiscellaneousPanel.o SheetStylePanel.o \
-	ObjectFilterDialog.o DialogElements.o PenDialog.o BrushDialog.o \
-	StyleManagerDialog.o mvalidator.o
+OBS = AboutDialog.o AnimationPanel.o AspectPanel.o AtlasAliasDialog.o AtlasDialog.o \
+	AtlasEditDialog.o AtlasImportDialog.o AtlasPanel.o BrushDialog.o ColorPanel.o \
+	ConfigDialog.o ConfigPanel.o DasaPanel.o DataDialog.o DialogElements.o DragChart.o \
+	EphemerisPanel.o ExportDialog.o FontPanel.o GeneralPanel.o MiscellaneousPanel.o \
+	mspin.o MultipleViewPanel.o mvalidator.o ObjectFilterDialog.o PenDialog.o \
+	PlanetSignDisplayPanel.o PrintoutPanel.o SheetStylePanel.o StyleManagerDialog.o \
+	ToolbarPanel.o UranianParamPanel.o VedicCalculationPanel.o VedicChartPanel.o \
+	VedicPanel.o WesternCalculationPanel.o WesternChartPanel.o WesternPanel.o YogaEditorPanel.o
 
 all : $(DIALOG_LIB)
 

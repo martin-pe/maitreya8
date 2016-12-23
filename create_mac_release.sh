@@ -15,6 +15,18 @@ contentsdir="${appdir}/Contents"
 macosdir="${contentsdir}/MacOS"
 resourcesdir="${contentsdir}/Resources"
 
+copy_resources()
+{
+	rname=$1
+	echo "copy resources of type $rname ..."
+	if [[ ! -d src/resources/${rname} ]]
+	then
+		echo "FATAL: directory src/resources/${rname} does not exist"
+		exit 1
+	fi
+	mkdir -p $resourcesdir/$rname
+	cp -r src/resources/${rname}/*.json $resourcesdir/${rname}
+}
 
 create_dmg()
 {
@@ -79,13 +91,12 @@ create_targetdir()
 	echo "resource files ..."
 	cp -r src/resources/*.json $resourcesdir
 
-	echo "Yoga files ..."
-	mkdir -p $resourcesdir/yogas
-	cp -r src/resources/yogas/*.json $resourcesdir/yogas
-
-	echo "Dasa files ..."
-	mkdir -p $resourcesdir/dasas
-	cp -r src/resources/dasas/*.json $resourcesdir/dasas
+	copy_resources "dasas"
+	copy_resources "yogas"
+	copy_resources "wchart"
+	copy_resources "vchart"
+	copy_resources "print"
+	copy_resources "mview"
 
 	if test -L ${appname} 
 	then

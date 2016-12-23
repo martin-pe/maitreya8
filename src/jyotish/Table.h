@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _TABLE_H_
@@ -48,7 +46,6 @@ public:
 		rowid( rowid )
 	{
 		isHeader = false;
-		width = 0;
 	}
 
 	TableEntry( const Table *t, const uint &colid, const uint &rowid, const wxString &v, const bool header = false )
@@ -59,7 +56,6 @@ public:
 	{
 		text = MString( v );
 		isHeader = header;
-		width = 0;
 	}
 
 	TableEntry( const Table *t, const uint &colid, const uint &rowid, const MString &f, const bool header = false )
@@ -70,7 +66,6 @@ public:
 	{
 		text = f;
 		isHeader = header;
-		width = 0;
 	}
 
 	SheetItem *cloneClean();
@@ -80,7 +75,6 @@ public:
 	MString text;
 	wxString plainText;
 	bool isHeader;
-	double width;
 
 	const Table *table;
 	uint colid, rowid;
@@ -102,6 +96,8 @@ public:
 
 	void addValue( const TableEntry& );
 
+	void resetRectangles();
+
 	vector<TableEntry> value;
 	bool isEmpty();
 
@@ -121,9 +117,6 @@ public:
 
 	Table( const uint &cols, const uint &rows );
 	SheetItem *cloneClean();
-
-	virtual SheetItem *getSubitem4Point( const wxPoint& );
-	void calculateSubitemRectangles();
 
 	void setHeader( const wxString &s ) { setHeader( MToken( s )); }
 	void setHeader( const MString& );

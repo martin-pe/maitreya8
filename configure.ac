@@ -5,7 +5,7 @@ dnl  File: configure.ac
 dnl
 dnl
 
-AC_INIT(maitreya8, 8.0.pre533)
+AC_INIT(maitreya8, 8.0.pre581)
 AM_INIT_AUTOMAKE()
 
 dnl should be included according to documentation, but not supported by older versions of automake
@@ -180,6 +180,10 @@ AC_OUTPUT( Makefile po/Makefile.in
   src/resources/Makefile
   src/resources/yogas/Makefile
   src/resources/dasas/Makefile
+  src/resources/wchart/Makefile
+  src/resources/vchart/Makefile
+  src/resources/mview/Makefile
+  src/resources/print/Makefile
   src/dialogs/Makefile
 )
 

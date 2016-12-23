@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "PdfTools.h"
@@ -62,9 +60,10 @@ public:
 		pdfdoc = new BasePdfDocument( h, pcfg );
 
 		//const double pw = pdf->GetPageWidth() - pdf->GetLeftMargin() - pdf->GetRightMargin();
-		printf( "PDF width %f left %f right %f\n", pdfdoc->GetPageWidth(), pdfdoc->GetLeftMargin(), pdfdoc->GetRightMargin());
+		//printf( "PDF width %f left %f right %f\n", pdfdoc->GetPageWidth(), pdfdoc->GetLeftMargin(), pdfdoc->GetRightMargin());
 
-		table_cell_delta_x = 7;
+		pageSize = MPoint( pdfdoc->GetPageWidth(), pdfdoc->GetPageHeight());
+		table_cell_delta_x = 2;
 		//table_cell_delta_y = 7;
 		table_cell_delta_y = 4;
 		table_widget_extra_y = 20;
@@ -108,6 +107,7 @@ public:
 		contentRect.y = pdfdoc->GetTopMargin();
 		contentRect.width = pdfdoc->GetPageWidth() - pdfdoc->GetLeftMargin() - pdfdoc->GetRightMargin();
 		contentRect.height = 100000;
+		//contentRect = MRect( 0, 0, 100000, 100000 );
 
 		Painter *painter = new PdfPainter( pdfdoc );
 
@@ -130,78 +130,38 @@ protected:
 	******************************************************/
 	void handlePageBreak( SheetItem *item0 )
 	{
-		printf( "PdfSheetWriter::handlePageBreak\n" );
-		if ( item0->rect.y + item0->rect.height > pdfdoc->GetPageHeight() - pdfdoc->GetTopMargin() )
+		bool dobreak =
+			item0->rect.y > pdfdoc->GetTopMargin() // do not break if page is still empty
+			&& item0->rect.y + item0->rect.height > pdfdoc->GetPageHeight() - pdfdoc->GetTopMargin(); // break if item would be too large
+
+		printf( "PdfSheetWriter::handlePageBreak dobreak %d\n", dobreak );
+
+		if ( dobreak )
 		{
-			bool dobreak = true;
-
-			// try to decrease size
-			//if ( item0->type == WiWidget )
-			if ( false )
-			{
-				SheetWidgetItem *wi = (SheetWidgetItem*)item0;
-
-				const double oversize = item0->rect.y + item0->rect.height - pdfdoc->GetPageHeight() + pdfdoc->GetTopMargin();
-				const double osp = oversize / item0->rect.height;
-				printf( "Try to decrease widget item height is %f oversize is %f percentage %f\n", item0->rect.height, oversize, osp * 100.0 );
-				if ( osp < wi->minDecreaseRatio )
-				{
-					printf( "(1) item oversize -> shift wi->rect.height %fi wi->rect.width %f\n", wi->rect.height, wi->rect.width );
-					const double decreaseFactor = 1 - osp;
-					wi->rect.height *= decreaseFactor;
-					wi->rect.width *= decreaseFactor;
-					wi->rect.x += .5 * xrightmax - .5 * wi->rect.width;
-					printf( "(2) item oversize -> shift wi->rect.height %fi wi->rect.width %f\n", wi->rect.height, wi->rect.width );
-					dobreak = false;
-				}
-			}
-
 			double y0 = item0->rect.y + item0->rect.height;
 			if ( dobreak )
 			{
 				pdfdoc->AddPage();
-				//y0 = contentRect.y;
 				y0 = pdfdoc->GetTopMargin();
+				ycursor = y0;
 			}
 
-			// shift all items after item0
-			list<SheetItem*>::iterator iter, iter0 = sheet->items.end();
-			for( iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
-			{
-				if ( *iter == item0 )
-				{
-					iter0 = iter;
-					break;
-				}
-			}
-
-			for( iter = iter0; iter != sheet->items.end(); iter++ )
-			{
-				SheetItem *item = (SheetItem*)*iter;
-
-				// TODO translate method on sheet item
-				item->rect.y = y0;
-				y0 += item->rect.height;
-			}
-
-			/*
-			bool doit = false;
+			// shift all items beginning with item0
+			bool doshift = false;
 			for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 			{
 				if ( *iter == item0 )
 				{
-					doit = true;
-
-					// item0 hasn't be shifted if it was decrease 
-					if ( ! dobreak ) continue;
+					doshift = true;
 				}
-				if ( ! doit ) continue;
-
-				SheetItem *item = (SheetItem*)*iter;
-				item->rect.y = y0;
-				y0 += item->rect.height;
+				if ( doshift )
+				{
+					//printf( "START MOVE after page break\n" );
+					(*iter)->moveTo( (*iter)->rect.x, y0 );
+					y0 += (*iter)->rect.height;
+					//printf( "FINISHED MOVE after page break\n" );
+				}
 			}
-		*/
 		}
 	}
 
@@ -212,7 +172,7 @@ protected:
 	******************************************************/
 	FONT_ID getFontIdForItem( const SHEET_TEXT_ITEM_SUBTYPE &type )
 	{
-		printf( "PdfSheetWriter   ---   getFontIdForItem %d\n", (int)type );
+		//printf( "PdfSheetWriter   ---   getFontIdForItem %d\n", (int)type );
 		switch( type )
 		{
 			case WitHeader:
@@ -287,8 +247,8 @@ void PdfTool::printTestpage( Horoscope *horoscope, ChartProperties *props )
 	SheetConfigLoader *sloader = SheetConfigLoader::get();
 	wxString filename = wxFileName::CreateTempFileName( wxT( "testpage" ));
 
-	PrintoutSheetCreator c( horoscope, props, sheet );
-	c.write( pcfg->defaultPrintout );
+	PrintoutSheetCreator c( horoscope, props );
+	c.write( sheet, pcfg->defaultPrintout );
 
 	PdfSheetWriter *pdfwriter = new PdfSheetWriter( sheet, sloader->getConfig( pcfg->sheetStyle ), config->writer );
 	pdfwriter->doPrint( filename );
@@ -308,7 +268,8 @@ void PdfTool::printTestpage( Horoscope *horoscope, ChartProperties *props )
 bool PdfTool::doSheetExport( Sheet *sheet )
 {
   SheetConfigLoader *loader = SheetConfigLoader::get();
-	SheetConfig *sheetcfg = loader->getConfig( config->view->sheetStyle );
+	//SheetConfig *sheetcfg = loader->getConfig( config->view->sheetStyle );
+	SheetConfig *sheetcfg = loader->getConfig( config->print->sheetStyle );
 
 	//wxString filename = wxFileName::CreateTempFileName( wxT( "testpage" ));
 	wxString filename;
@@ -316,6 +277,7 @@ bool PdfTool::doSheetExport( Sheet *sheet )
 	if ( ! b ) return false;
 
 	PdfSheetWriter *pdfwriter = new PdfSheetWriter( sheet, sheetcfg, config->writer );
+	pdfwriter->setCenterAll();
 	pdfwriter->doPrint( filename );
 
 	if ( pcfg->launchPdfViewer ) launchBrowser( filename );
@@ -368,12 +330,7 @@ bool PdfTool::selectFilename( wxString &fullname, wxString basename )
 	int style = wxFD_SAVE;
 	if ( pcfg->askOverwrite )
 	{
-		printf( "GUNNAR\n" );
 		style |= wxFD_OVERWRITE_PROMPT;
-	}
-	else
-	{
-		printf( "GUNNAR2\n" );
 	}
 
 	wxFileDialog exportFileDialog( NULL, _("Save Document" ), config->viewprefs->defExportPath, filename, filetypes, style, wxDefaultPosition );
@@ -434,13 +391,13 @@ void PdfTool::printHoroscope( Horoscope *horoscope, wxString filename )
 	PrintoutConfigLoader *loader = PrintoutConfigLoader::get();
 	PrintoutConfig *theconfig = loader->getConfig( pcfg->defaultPrintout );
 	props->setVedic( theconfig->vedic );
-	printf( "VEDIC %d vierwer %s\n", theconfig->vedic, str2char( pcfg->pdfViewerCommand ) );
+	printf( "VEDIC %d viewer %s\n", theconfig->vedic, str2char( pcfg->pdfViewerCommand ) );
 
 	Sheet *sheet = new Sheet;
 	SheetConfigLoader *sloader = SheetConfigLoader::get();
 
-	PrintoutSheetCreator c( horoscope, props, sheet );
-	c.write( pcfg->defaultPrintout );
+	PrintoutSheetCreator c( horoscope, props );
+	c.write( sheet, pcfg->defaultPrintout );
 
 	PdfSheetWriter *pdfwriter = new PdfSheetWriter( sheet, sloader->getConfig( pcfg->sheetStyle ), config->writer );
 	pdfwriter->doPrint( filename );
@@ -481,7 +438,7 @@ bool PdfTool::launchBrowser( wxString filename )
 	{
 		command = filetype->GetOpenCommand( filename );
 	}
-	else
+	if ( filetype == 0 || command.IsEmpty())
 	{
 		doMessageBox( 0, _( "Cannot launch pdf viewer." ), wxOK | wxICON_ERROR | wxCENTRE );
 		return false;

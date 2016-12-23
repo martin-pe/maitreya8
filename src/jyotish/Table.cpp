@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Table.h"
@@ -34,7 +32,6 @@ IMPLEMENT_CLASS( TableEntry, SheetItem )
 SheetItem *TableEntry::cloneClean()
 {
 	TableEntry *entry = new TableEntry( *this );
-	entry->width = 0;
 	return entry;
 }
 
@@ -127,6 +124,20 @@ void Row::addValue( const TableEntry &e )
 
 /*****************************************************
 **
+**   Row   ---  resetRectangles
+**
+******************************************************/
+void Row::resetRectangles()
+{
+	rect.reset();
+	for( uint i = 0; i < value.size(); i++ )
+	{
+		value[i].rect.reset();
+	}
+}
+
+/*****************************************************
+**
 **   Table   ---   Constructor
 **
 ******************************************************/
@@ -187,51 +198,21 @@ SheetItem *Table::cloneClean()
 
 /*****************************************************
 **
-**   Table   ---   getSubitem4Point
-**
-******************************************************/
-SheetItem *Table::getSubitem4Point( const wxPoint &p )
-{
-	//printf( "Table::getSubitem4Point %d %d\n", p.x, p.y );
-	if ( ! header.rect.isNil() && pointInRect( p, header.rect )) return &header;
-
-	//static int ccc = 0;
-
-	for( uint r = 0; r < contents.size(); r++ )
-	{
-		//printf( "Table::getSubitem4Point %f %f %f %f\n", contents[r].rect.x, contents[r].rect.y, contents[r].rect.width, contents[r].rect.height );
-		if ( pointInRect( p, contents[r].rect ))
-		{
-			for( uint c = 0; c < contents[r].value.size(); c++ )
-			{
-				TableEntry &e = contents[r].value[c];
-				//wxRect rr = e.rect.toWxRect();
-				//printf( "Col %d rect x %d y %d w %d h %d\n", (int)c, rr.x, rr.y, rr.width, rr.height );
-				if ( pointInRect( p, e.rect ))
-				{
-					//printf( "FOUND %d row %d col %d RECT %f %f %f %f\n", ccc++, (int)r, (int)c, e.rect.x, e.rect.y, e.rect.width, e.rect.height );
-					return &e;
-				}
-			}
-			//return &contents[r];
-		}
-	}
-	return (SheetItem*)NULL;
-}
-
-/*****************************************************
-**
 **   Table   ---   resetRectangles
 **
 ******************************************************/
 void Table::resetRectangles()
 {
   //printf( "Table::resetRectangles( NOW \n" );
-  rect = MRect();
-  header.rect = MRect();
+  rect.reset();
+  header.rect.reset();
+  for( uint c = 0; c < nb_cols; c++ )
+  {
+		col_width[c] = 0;
+	}
   for( uint r = 0; r < contents.size(); r++ )
   {
-    contents[r].rect = MRect();
+    contents[r].resetRectangles();
   }
 }
 
@@ -245,44 +226,6 @@ void Table::setCenterAll()
 	for ( uint col = 0; col < getNbCols(); col++ )
 	{
 		col_alignment[col] = Align::Center;
-	}
-}
-
-/*****************************************************
-**
-**   Table   ---   calculateSubitemRectangles
-**
-******************************************************/
-void Table::calculateSubitemRectangles()
-{
-	header.rect.x = rect.x;
-	header.rect.width = rect.width;
-	header.rect.y = rect.y;
-
-	double y = rect.y + header.rect.height;
-	for( uint r = 0; r < contents.size(); r++ )
-	{
-		contents[r].rect.x = rect.x;
-		contents[r].rect.width = rect.width;
-		contents[r].rect.y = y;
-
-		double x = rect.x;
-		for ( uint col = 0; col < getNbCols(); col++ )
-		{
-			TableEntry &e = contents[r].value[col];
-
-			e.rect.x = x;
-			x += col_width[col];
-			e.rect.width = col_width[col];
-
-			e.rect.y = y;
-			e.rect.height = contents[r].rect.height;
-
-			e.colid = col;
-			e.rowid = r;
-		}
-
-		y += contents[r].rect.height;
 	}
 }
 

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "WesternChart.h"
@@ -32,13 +30,15 @@
 #include "ChartProperties.h"
 #include "ColorConfig.h"
 #include "Conf.h"
-#include "maitreya.h"
+#include "Dasa.h"
+#include "GenericDasa.h"
 #include "GraphConfig.h"
 #include "guibase.h"
 #include "Horoscope.h"
 #include "ImageProvider.h"
-#include "mathbase.h"
 #include "Lang.h"
+#include "maitreya.h"
+#include "mathbase.h"
 #include "Painter.h"
 #include "Sheet.h"
 #include "SymbolProvider.h"
@@ -71,13 +71,26 @@ WesternChart::~WesternChart()
 **   WesternChart   ---   OnDataChanged
 **
 ******************************************************/
+/*
 void WesternChart::OnDataChanged()
 {
-
 	GraphicalChart::OnDataChanged();
+}
+*/
 
+/*****************************************************
+**
+**   WesternChart   ---   setupAries
+**
+******************************************************/
+void WesternChart::setupAries()
+{
 	/*
-	* Note: if ! h1set: aries will be left (i.e. aries = 180
+	* Aries is the angle relative to the right side (y=0) of the chart.
+	* direction is counter-clockwise - like the coordinate system in the plane.
+	* Example: is 0 Leo is on top then aries will be at 330 deg.
+	*
+	* Note: if ! h1set: aries will be left (i.e. aries = 180)
 	*/
 	switch( chartprops->getWesternChartDisplayConfig().chartOrientation )
 	{
@@ -92,28 +105,31 @@ void WesternChart::OnDataChanged()
 		break;
 
 		// Aries 0
-		case 3: aries = 180; break;
+		case 3: aries = 90; break;
 
 		// Aries 15
-		case 4: aries = 165; break;
+		case 4: aries = 75; break;
 
 		// Cancer 0
-		case 5: aries = 90; break;
+		case 5: aries = 0; break;
 
 		// Cancer 15
-		case 6: aries = 75; break;
+		case 6: aries = 345; break;
+
+		// Leo 0
+		case 7: aries = 330; break;
 
 		// Libra 0
-		case 7: aries = 0; break;
+		case 8: aries = 270; break;
 
 		// Libra 15
-		case 8: aries = 345; break;
+		case 9: aries = 255; break;
 
 		// Capricorn 0
-		case 9: aries = 270; break;
+		case 10: aries = 180; break;
 
 		// Capricorn 15
-		case 10: aries = 255; break;
+		case 11: aries = 165; break;
 
 		// Ascendant left
 		case 0:
@@ -121,6 +137,9 @@ void WesternChart::OnDataChanged()
 			aries = h1 ? red_deg( 180 - h1->getWesternLongitude( OASCENDANT )) : 180;
 		break;
 	}
+	WesternChartConfig *wconf = getWChartConfig();
+	//printf( "Zodiac start at %f\n", wconf->forcedZodiacStart );
+	if ( wconf->forcedZodiacStart >= 0 && wconf->forcedZodiacStart < 360 ) aries = wconf->forcedZodiacStart;
 }
 
 /*****************************************************
@@ -132,7 +151,7 @@ void WesternChart::updateAspects()
 {
 	assert( aexpert );
 	aexpert->updateWesternAspects( chartprops, charttype );
-	aexpert->setSortOrder( AS_TYPE_REV );
+	aexpert->setSortOrder( AS_TYPE_REVERSE );
 	aexpert->sort();
 }
 
@@ -154,30 +173,33 @@ double WesternChart::getVisualObjectLongitude( const Horoscope *h, const ObjectI
 ******************************************************/
 void WesternChart::paintInternal( ChartConfig* )
 {
-	paintPalettes();
+	WesternChartConfig *wconf = getWChartConfig();
+	setupAries();
+	drawPalettes();
+
+	if ( wconf->image.show == true && ! wconf->image.filename.IsEmpty()) drawInlayImage();
 
 	if ( h1 )
 	{
-		if ( chartprops->getWesternChartDisplayConfig().showHouses ) paintHouses();
+		//if ( chartprops->getWesternChartDisplayConfig().showHouses ) drawHouses();
 	}
-	paintZodiac();
+	if ( wconf->eastIndianCenter.show ) drawEastIndianChartCenter();
+	if ( wconf->signs.show ) drawSigns();
+	if ( wconf->nakshatras.show ) drawNakshatras();
+
+	paintObjectRing( aries, wconf->rPlanets );
 	if ( h1 )
 	{
-		if ( chartprops->getWesternChartDisplayConfig().showAspects ) paintAspects();
-		if ( chartprops->getWesternChartDisplayConfig().showHouses ) paintHouseBordersAndAngles();
-		paintAllPlanets( h1 );
+		if ( chartprops->getWesternChartDisplayConfig().showAspects ) drawAspects();
+		if ( chartprops->getWesternChartDisplayConfig().showHouses ) drawHouses();
+		drawAllPlanets( h1 );
 
 		if ( h2 )
 		{
 			WesternChartConfig *wconf = getWChartConfig();
-			const int tstyle = chartprops->getWesternChartDisplayConfig().transitStyle;
-			paintChartFrame( tstyle > 0 ? wconf->innerTransitZodiac : wconf->outerTransitZodiac );
-			paintDegreeMarkers( aries, tstyle > 0 ? wconf->innerTransitZodiac : wconf->outerTransitZodiac,
-				tstyle > 0 ? wconf->innerTransitZodiac1Degree : wconf->outerTransitZodiac1Degree,
-				tstyle > 0 ? wconf->innerTransitZodiac5Degree : wconf->outerTransitZodiac5Degree,
-				tstyle > 0 ? wconf->innerTransitZodiac10Degree : wconf->outerTransitZodiac10Degree
-			);
-			paintAllPlanets( h2, charttype == CT_TRANSIT && chartprops->isFiltered() );
+			const int tstyle = chartprops->getWesternChartDisplayConfig().secondchartStyle;
+			paintObjectRing( aries, tstyle > 0 ? wconf->rInnerTransitPlanets : wconf->rOuterTransitPlanets );
+			drawAllPlanets( h2, charttype == CT_TRANSIT && chartprops->isFiltered() );
 		}
 	}
 }
@@ -202,12 +224,12 @@ double WesternChart::getLongitude4FrameSegment( const int &i, const bool alignTo
 
 /*****************************************************
 **
-**   WesternChart   ---   paintPalettes
+**   WesternChart   ---   drawPalettes
 **
 ******************************************************/
-void WesternChart::paintPalettes()
+void WesternChart::drawPalettes()
 {
-	//printf( "START WesternChart::paintPalettes\n" );
+	//printf( "START WesternChart::drawPalettes\n" );
 	WesternChartConfig *wconf = getWChartConfig();
 	double d0, d1;
 	int i;
@@ -216,12 +238,6 @@ void WesternChart::paintPalettes()
 
 	for( list<GcChartFrameBgPattern>::iterator iter = wconf->patterns.begin(); iter != wconf->patterns.end(); iter++ )
 	{
-		/*
-		GcChartFrame &frame0 = getFrameByName( iter->innerFrameName );
-		GcChartFrame &frame1 = getFrameByName( iter->outerFrameName );
-		*/
-		GcChartFrame &frame0 = wconf->getFrameByName( iter->innerFrameName );
-		GcChartFrame &frame1 = wconf->getFrameByName( iter->outerFrameName );
 		palette = man->getPalette( iter->paletteName );
 
 		if ( palette )
@@ -232,7 +248,7 @@ void WesternChart::paintPalettes()
 				d1 = getLongitude4FrameSegment( i + 1, iter->alignToHouses );
 
 				painter->setBrush( palette->getBrush( i ));
-				drawChartFrameField( d0, d1, frame0, frame1 );
+				drawChartFrameField( d0, d1, iter->innerFrame, iter->outerFrame );
 				d0 = d1;
 			}
 		}
@@ -241,15 +257,15 @@ void WesternChart::paintPalettes()
 			wxLogError( wxT( "palette '%s' in chart '%s' not available" ), iter->paletteName.c_str(), wconf->name.c_str() );
 		}
 	}
-	//printf( "ENDE WesternChart::paintPalettes\n" );
+	//printf( "ENDE WesternChart::drawPalettes\n" );
 }
 
 /*****************************************************
 **
-**   WesternChart   ---   paintSingleAspect
+**   WesternChart   ---   drawSingleAspect
 **
 ******************************************************/
-void WesternChart::paintSingleAspect( const double &len1, const double &len2, const ASPECT_TYPE &type )
+void WesternChart::drawSingleAspect( const double &len1, const double &len2, const ASPECT_TYPE &type )
 {
 	double glen1, glen2;
 	wxString s;
@@ -292,10 +308,10 @@ void WesternChart::paintSingleAspect( const double &len1, const double &len2, co
 
 /*****************************************************
 **
-**   WesternChart   ---   paintAspects
+**   WesternChart   ---   drawAspects
 **
 ******************************************************/
-void WesternChart::paintAspects()
+void WesternChart::drawAspects()
 {
 	int zoom;
 	assert( h1 );
@@ -303,6 +319,8 @@ void WesternChart::paintAspects()
 	ObjectPosition pos1, pos2;
 	list<AspectEvent>::iterator iter;
 	WesternChartConfig *wconf = getWChartConfig();
+
+	if ( ! wconf->aspects.show ) return;
 
 	const int smallzoom = 1;
 	const int bigzoom = 2;
@@ -383,127 +401,103 @@ void WesternChart::paintAspects()
 			zoom * config->aspects[ iter->aspectType ].pen.GetWidth(),
 			config->aspects[ iter->aspectType ].pen.GetStyle() ));
 		painter->setTextColor( color );
-		paintSingleAspect(
+		drawSingleAspect(
 			haspecting->getWesternLongitude( iter->planet1 ),
 			haspected->getWesternLongitude( iter->planet2 ),
 			iter->aspectType );
 	}
+	tryToSetPen( wconf->rPlanets.pen );
 	for ( iter = al.begin(); iter != al.end(); iter++ )
 	{
 		paintLengthMarker( aries + haspecting->getWesternLongitude( (*iter).planet1 ), wconf->aspects.radius );
 		paintLengthMarker( aries + haspected->getWesternLongitude( (*iter).planet2 ), wconf->aspects.radius );
 	}
-
 }
 
 /*****************************************************
 **
-**   WesternChart   ---   paintHouses
+**   WesternChart   ---   drawHouses
 **
 ******************************************************/
-void WesternChart::paintHouses()
+void WesternChart::drawHouses()
 {
 	double len, houselen;
 	MPoint p;
-	Lang lang;
 	WesternChartConfig *wconf = getWChartConfig();
-
-	bool showColors = chartprops->getWesternChartDisplayConfig().showHouseColors;
-
 	assert( h1 );
-	//painter->setTransparentPen();
 
-	painter->setPen( defaultPen );
-
-	// 
-	setGraphicFont( .8 );
-	//setGraphicFont();
-
-	paintChartFrame( wconf->innerHouse );
+	tryToSetPen( wconf->houses.pen );
+	setGraphicFontZoom( .8 );
+	paintChartFrame( wconf->houses );
 
 	// House numbers: leave them if transits are on inner house circle
 	const int houseNumberStyle = chartprops->getWesternChartDisplayConfig().houseNumberStyle;
-	bool paintHousenumbers = wconf->houses.paintHouseNumbers && houseNumberStyle;
+	bool paintHousenumbers = wconf->houses.showLabels && houseNumberStyle;
 	if ( paintHousenumbers )
 	{
 		if ( h2 && ! transitsoutside ) paintHousenumbers = false;
 	}
 	if ( paintHousenumbers )
 	{
-		wxColour textColor;
-		if ( ! showColors )
-		{
-			setDefaultTextColor();
-		}
-
 		for ( int i = HOUSE1; i <= HOUSE12; i++ )
 		{
+			if ( wconf->textColor.IsOk())
+			{
+				painter->setTextColor( wconf->textColor );
+			}
+			else if ( chartprops->getWesternChartDisplayConfig().showHouseColors )
+			{
+				painter->setTextColor( config->chartColors->getHouseFgColor( i ));
+			}
+			else painter->setTextColor( defaultPen.GetColour() );
+
 			houselen = red_deg( h1->getHouse( i == HOUSE12 ? HOUSE1 : i + 1, false ) - h1->getHouse( i, false ));
 			len = red_deg( aries + h1->getHouse( i, false ) + .5 * houselen );
 
-			p = frameBorderPointToXy( len, wconf->houseNumbers );
-			if ( showColors )
-			{
-				if ( wconf->houses.globalTextColor.IsOk() )
-				{
-					painter->setTextColor( wconf->houses.globalTextColor );
-				}
-				else
-				{
-					painter->setTextColor( config->chartColors->getHouseFgColor( i ));
-				}
-			}
-			painter->drawTextFormatted( MRect( p.real() - psize/2, p.imag() - psize/2, psize, psize), getHouseNumberFormatted( i, houseNumberStyle ), Align::Center );
+			p = frameBorderPointToXy( len, GcChartFrame( wconf->houses.radius + wconf->houses.wLabels, wconf->houses.frameType ));
+			painter->drawTextFormatted(
+				MRect( p.real() - psize/2, p.imag() - psize/2, psize, psize),
+				getHouseNumberFormatted( i, houseNumberStyle ),
+				Align::Center );
 		}
 	}
-}
 
-/*****************************************************
-**
-**   WesternChart   ---   paintHouseBordersAndAngles
-**
-******************************************************/
-void WesternChart::paintHouseBordersAndAngles()
-{
-	double len;
-	WesternChartConfig *wconf = getWChartConfig();
-
-	painter->setPen( defaultPen );
-	if ( ! transitsoutside )
-	{
-		// Ascendant and Descendant
-		paintArrow( red_deg( aries + h1->getWesternLongitude( OASCENDANT )), wconf->angles );
-		if ( chartprops->getWesternObjectStyle() & OI_ASCENDANT ) { paintAngleSymbol( OASCENDANT ); }
-		if ( chartprops->getWesternObjectStyle() & OI_DESCENDANT ) { paintAngleSymbol( ODESCENDANT ); }
-
-		// Meridian and Imum Coeli
-		paintArrow( red_deg( aries + h1->getWesternLongitude( OMERIDIAN )), wconf->angles );
-		if ( chartprops->getWesternObjectStyle() & OI_MERIDIAN ) { paintAngleSymbol( OMERIDIAN ); }
-		if ( chartprops->getWesternObjectStyle() & OI_IMUMCOELI ) { paintAngleSymbol( OIMUMCOELI ); }
-	}
-
-	painter->setPen( defaultPen );
+	// house borders
 	for ( int i = HOUSE1; i <= HOUSE12; i++ )
 	{
-		//if ( ! transitsoutside && ( i == HOUSE1 || i == HOUSE4 || i == HOUSE7 || i == HOUSE10 )) continue;
 		len = h1->getHouse( i, false );
-		paintMarkerLine( aries + len, wconf->innerHouse, wconf->outerHouse );
+		paintMarkerLine( aries + len, wconf->houses, GcChartFrame( wconf->houses.radius + wconf->houses.width, wconf->houses.frameType ));
+	}
+	paintChartFrame( wconf->houses.magnify( wconf->houses.width ));
+
+	// arrows for angles
+	tryToSetPen( wconf->angles.pen );
+	if ( ! transitsoutside )
+	{
+		paintArrow( red_deg( aries + h1->getWesternLongitude( OASCENDANT )), wconf->angles );
+		if ( chartprops->getWesternObjectStyle() & OI_ASCENDANT ) drawAngleSymbol( OASCENDANT );
+		if ( chartprops->getWesternObjectStyle() & OI_DESCENDANT ) drawAngleSymbol( ODESCENDANT );
+
+		paintArrow( red_deg( aries + h1->getWesternLongitude( OMERIDIAN )), wconf->angles );
+		if ( chartprops->getWesternObjectStyle() & OI_MERIDIAN ) drawAngleSymbol( OMERIDIAN );
+		if ( chartprops->getWesternObjectStyle() & OI_IMUMCOELI ) drawAngleSymbol( OIMUMCOELI );
 	}
 }
 
 /*****************************************************
 **
-**   WesternChart   ---   paintAngleSymbol
+**   WesternChart   ---   drawAngleSymbol
 **
 ******************************************************/
-void WesternChart::paintAngleSymbol( const ObjectId &planet )
+void WesternChart::drawAngleSymbol( const ObjectId &planet )
 {
 	const int degOffset = 3;
 	WesternChartConfig *wconf = getWChartConfig();
 	SymbolProvider sp;
 
 	double len = red_deg( degOffset + aries + h1->getWesternLongitude( planet ));
-	MPoint point = frameBorderPointToXy( len, wconf->angles.outerFrame );
+	MPoint point = frameBorderPointToXy( len, wconf->angles.magnify( wconf->angles.wLabels ));
+	//h1rect[planet] = MRect( point.real() - psize/2, point.imag() - psize/2, psize, psize);
 	h1rect[planet] = MRect( point.real() - psize/2, point.imag() - psize/2, psize, psize);
 
 	double zoom = 1.0;
@@ -512,7 +506,7 @@ void WesternChart::paintAngleSymbol( const ObjectId &planet )
 	{
 		zoom = .01 * chartprops->getWesternChartBehaviorConfig().zoomFactor;
 	}
-	setSymbolFont( zoom );
+	setSymbolFontZoom( zoom );
 	//setGraphicFont( zoom );
 
 	if ( chartprops->getWesternChartDisplayConfig().showPlanetColors ) painter->setTextColor( wconf->getPlanetColor( planet ) );
@@ -543,6 +537,15 @@ bool WesternChart::shouldBeMagnified( const ObjectId &p, const Horoscope *h )
 				if ( iter->planet2 == h1marked && iter->planet1 == p ) return true;
 			break;
 			case CT_PARTNER:
+				if ( h == h1 )
+				{
+					if ( iter->planet2 == h2marked && iter->planet1 == p ) return true;
+				}
+				else if ( h == h2 )
+				{
+					if ( iter->planet1 == h1marked && iter->planet2 == p ) return true;
+				}
+			break;
 			case CT_TRANSIT:
 				if ( h == h1 )
 				{
@@ -564,10 +567,10 @@ bool WesternChart::shouldBeMagnified( const ObjectId &p, const Horoscope *h )
 
 /*****************************************************
 **
-**   WesternChart   ---   paintAllPlanets
+**   WesternChart   ---   drawAllPlanets
 **
 ******************************************************/
-void WesternChart::paintAllPlanets( const Horoscope *h, const bool applyFilter )
+void WesternChart::drawAllPlanets( const Horoscope *h, const bool applyFilter )
 {
 	int align;
 	ObjectId planet;
@@ -580,25 +583,33 @@ void WesternChart::paintAllPlanets( const Horoscope *h, const bool applyFilter )
 	SheetFormatter fmt;
 	WesternChartConfig *wconf = getWChartConfig();
 
+	const bool doSkipAries = h->getPlanetContext() == PcRadix || h->getPlanetContext() == PcTransit || h->getPlanetContext() == PcDirection;
+
 	painter->setPen( defaultPen );
 	painter->setTextColor( defaultPen.GetColour());
 
 	// decrease size for ppain text items eg arabic points
 	const double text_zoom_addon = .7;
 
-	/*
-	ObjectId mp = ONONE;
-	if ( h == h1 && h1marked != ONONE ) mp = h1marked;
-	else if ( h == h2 && h2marked != ONONE ) mp = h2marked;
-	//printf( "WesternChart::paintAllPlanets MARKED %d\n", (int)mp );
-	*/
-
 	ObjectArray o = applyFilter ? chartprops->getWesternPlanetList( chartprops->getObjectFilter()) : obs;
+
+	// mark planet positions on zodiac
+	GcObjectRing frame;
+	if ( h == h2 )
+	{
+		if ( transitsoutside ) frame = wconf->rOuterTransitPlanets;
+		else frame = wconf->rInnerTransitPlanets;
+	}
+	else frame = wconf->rPlanets;
+	//tryToSetPen( frame.pen );
 
 	for ( uint i = 0; i < o.size(); i++ )
 	{
 		setDefaultTextColor();
 		planet = o[i];
+		//printf( "drawAllPlanets i %u planet %d\n", i, planet );
+
+		if ( planet == OARIES && doSkipAries ) continue;
 
 		MRect &therect = ( h == h2 ? h2rect[planet] : h1rect[planet] );
 
@@ -607,18 +618,6 @@ void WesternChart::paintAllPlanets( const Horoscope *h, const bool applyFilter )
 
 		// loop for radix angles in transit horoscope depends on position of transit planets (outer/inner)
 		if ( IS_ANGLE_OBJECT( planet ) && h == h1 && h2 && ! transitsoutside ) continue;
-
-		// mark planet positions on zodiac
-		GcChartFrame frame;
-		if ( h == h2 )
-		{
-			if ( transitsoutside ) frame = wconf->outerTransitZodiac;
-			else frame = wconf->innerTransitZodiac;
-		}
-		else
-		{
-			frame = wconf->zodiac;
-		}
 
 		paintLengthMarker( aries + getVisualObjectLongitude( h, planet ), frame );
 		point = getCoordinatesForPlanet( planet, h );
@@ -632,16 +631,21 @@ void WesternChart::paintAllPlanets( const Horoscope *h, const bool applyFilter )
 			zoom = .01 * chartprops->getWesternChartBehaviorConfig().zoomFactor;
 		}
 
-		if ( chartprops->getWesternChartDisplayConfig().showPlanetColors )
+		if ( wconf->textColor.IsOk())
+		{
+			painter->setTextColor( wconf->textColor );
+		}
+		else if ( chartprops->getWesternChartDisplayConfig().showPlanetColors )
 		{
 			painter->setTextColor( wconf->getPlanetColor( planet ));
 		}
+		else painter->setTextColor( defaultPen.GetColour() );
 
 		psymbol = sp.getPlanetCode( planet );
 		//if ( psymbol.IsEmpty() )
 		if ( psymbol == SYMBOL_CODE_ERROR )
 		{
-			setGraphicFont( zoom * text_zoom_addon );
+			setGraphicFontZoom( zoom * text_zoom_addon );
 			align = Align::Center;
 			//painter->drawTextFormatted( therect, writer->getObjectName( planet, TF_LONG ), align );
 			//painter->drawTextFormatted( therect, fmt.getObjectName( planet, TF_LONG ), align );
@@ -652,14 +656,14 @@ void WesternChart::paintAllPlanets( const Horoscope *h, const bool applyFilter )
 		}
 		else
 		{
-			setSymbolFont( zoom );
+			setSymbolFontZoom( zoom );
 			painter->drawTextFormatted( therect, psymbol, Align::Center );
 		}
 
 		// Retrogression
 		if (( chartprops->getWesternChartDisplayConfig().showRetro ) && h->isRetrograde( planet ))
 		{
-			setSymbolFont( zoom );
+			setSymbolFontZoom( zoom );
 
 			align = Align::Right+Align::Bottom;
 			painter->drawTextFormatted( MRect( point.real(), point.imag() + psize/2, psize, psize),
@@ -673,73 +677,223 @@ void WesternChart::paintAllPlanets( const Horoscope *h, const bool applyFilter )
 
 /*****************************************************
 **
-**   WesternChart   ---   paintZodiac
+**   WesternChart   ---   drawInlayImage
 **
 ******************************************************/
-void WesternChart::paintZodiac()
+void WesternChart::drawInlayImage()
+{
+	ImageProvider *ip = ImageProvider::get();
+	WesternChartConfig *wconf = getWChartConfig();
+
+	if ( wconf->image.show && ! wconf->image.filename.IsEmpty())
+	{
+		//paintChartFrame( wconf->image );
+		wxImage img = ip->getFileBasedBitmap( wconf->image.filename ).ConvertToImage();
+
+		// not in wx 2.8
+		//const wxSize size = img.GetSize();
+		const wxSize size ( img.GetWidth(), img.GetHeight());
+
+		const double height = rymax * wconf->image.radius / 50.0;
+		const double xnew = size.x * height / size.y;
+		img.Rescale( xnew, height );
+		painter->drawBitmap( wxBitmap( img ), xcenter - .5 * xnew, ycenter - .5 * height, 0 );
+	}
+}
+
+/*****************************************************
+**
+**   WesternChart   ---   drawNakshatras
+**
+******************************************************/
+void WesternChart::drawNakshatras()
 {
 	int i;
-	double a;
+	MPoint pos, p;
+	wxString s;
+	Lang lang;
+	WesternChartConfig *wconf = getWChartConfig();
+	GenericNakshatraDasaExpert *expert = (GenericNakshatraDasaExpert*)DasaExpertFactory().getDasaExpert( D_VIMSOTTARI );
+
+	setGraphicFontZoom( .01 * wconf->nakshatras.labelSize );
+	tryToSetPen( wconf->nakshatras.pen );
+	/*
+	painter->drawRotatedText( wxT( "planet" ), 50, 50, 45 );
+	painter->drawRotatedText( wxT( "planet" ), 100, 50, 60 );
+	painter->drawRotatedText( wxT( "planet" ), 200, 50, 90 );
+	painter->drawRotatedText( wxT( "planet" ), 300, 50, 135 );
+	painter->drawRotatedText( wxT( "planet" ), 400, 50, 180 );
+	painter->drawRotatedText( wxT( "planet" ), 500, 50, 270 );
+	painter->drawRotatedText( wxT( "planet" ), 600, 50, 0 );
+	painter->drawRotatedText( wxT( "planet" ), 700, 50, 210 );
+	static double aa = 0;
+	painter->drawRotatedText( wxT( "planet" ), 100, 50, 5 * aa++ );
+	*/
+
+	if ( wconf->nakshatras.show )
+	{
+		paintChartFrame( wconf->nakshatras );
+		paintChartFrame( wconf->nakshatras.magnify( wconf->nakshatras.width ));
+		double a = aries;
+		setDefaultTextColor();
+		//setGraphicFont( .5 );
+
+		for ( i = 0; i < 27; i++ )
+		{
+			// a is now at start of Nakshatra and will be shifted to the center then
+			paintMarkerLine( a, wconf->nakshatras, wconf->nakshatras.magnify( wconf->nakshatras.width ));
+			a += .5 * NAKSHATRA_LEN;
+
+			pos = frameBorderPointToXy( a, wconf->nakshatras.magnify( wconf->nakshatras.wLabels ));
+			s = lang.getNakshatra27Name( (NakshatraId_27)i, TF_MEDIUM );
+			painter->drawRotatedText( s, pos.real(), pos.imag(), a - 90 );
+
+			pos = frameBorderPointToXy( a, wconf->nakshatras.magnify( .5 * wconf->nakshatras.wLabels ));
+			int dasaindex = expert->getDasaIndex4Nakshatra( (NakshatraId_27)i );
+			int years = expert->getDasaDuration( dasaindex );
+
+			//printf( "I %d dasaindex %d years %d\n", i, dasaindex, years );
+
+			s.Clear();
+			s <<  expert->getDasaLordName( expert->getDasaLordByIndex( dasaindex ), TF_LONG ) << SPACE << years;
+			painter->drawRotatedText( s, pos.real(), pos.imag(), a - 90 );
+
+			a += .5 * NAKSHATRA_LEN;
+		}
+	}
+}
+
+/*****************************************************
+**
+**   WesternChart   ---   drawEastIndianChartCenter
+**
+******************************************************/
+void WesternChart::drawEastIndianChartCenter()
+{
+	WesternChartConfig *wconf = getWChartConfig();
+	if ( wconf->eastIndianCenter.show )
+	{
+		tryToSetPen( wconf->eastIndianCenter.pen );
+
+		GcChartFrame &frame = wconf->eastIndianCenter;
+		const MPoint aries0 = frameBorderPointToXy( aries, frame );
+		const MPoint cancer0 = frameBorderPointToXy( aries + 90, frame );
+		const MPoint libra0 = frameBorderPointToXy( aries + 180, frame );
+		const MPoint capricorn0 = frameBorderPointToXy( aries + 270, frame );
+
+		painter->drawLine(
+			frameBorderPointToXy( aries, frame ),
+			frameBorderPointToXy( aries + 210, frame )
+		);
+		painter->drawLine(
+			frameBorderPointToXy( aries + 30, frame ),
+			frameBorderPointToXy( aries + 180, frame )
+		);
+		painter->drawLine(
+			frameBorderPointToXy( aries + 90, frame ),
+			frameBorderPointToXy( aries + 300, frame )
+		);
+		painter->drawLine(
+			frameBorderPointToXy( aries + 120, frame ),
+			frameBorderPointToXy( aries + 270, frame )
+		);
+
+		painter->drawLine(
+			MPoint( aries0.real(), cancer0.imag() ),
+			frameBorderPointToXy( aries + 330, frame )
+		);
+		painter->drawLine(
+			MPoint( libra0.real(), cancer0.imag() ),
+			frameBorderPointToXy( aries + 60, frame )
+		);
+		painter->drawLine(
+			MPoint( libra0.real(), capricorn0.imag() ),
+			frameBorderPointToXy( aries + 150, frame )
+		);
+		painter->drawLine(
+			MPoint( aries0.real(), capricorn0.imag() ),
+			frameBorderPointToXy( aries + 240, frame )
+		);
+	}
+}
+
+/*****************************************************
+**
+**   WesternChart   ---   drawSigns
+**
+******************************************************/
+void WesternChart::drawSigns()
+{
+	Lang lang;
+	wxString s;
+	SymbolProvider sp;
 	MPoint signpos;
 
 	WesternChartConfig *wconf = getWChartConfig();
-	GcZodiacalSigns *signs = &wconf->signs;
+	GcChartRing &signs = wconf->signs;
+	tryToSetPen( wconf->signs.pen );
 
 	painter->setPen( defaultPen );
-
 	bool showColors = chartprops->getWesternChartDisplayConfig().showSignColors;
-
-	// Sign background, if required
-	a = aries;
-
-	if ( ! showColors )
-	{
-		setDefaultTextColor();
-	}
+	//if ( ! showColors ) setDefaultTextColor();
 
 	//printf( "signs->symbolZoomFactor %d\n", signs->symbolZoomFactor );
-	if ( signs->symbolType == 0 ) setSymbolFont( .01 * signs->symbolZoomFactor );
+	if ( signs.labelStyle == 0 ) setSymbolFontZoom( .01 * signs.labelSize );
+	else setGraphicFontZoom( .01 * signs.labelSize );
 	//if ( signs->symbolType != 2 ) painter->setSymbolFont( .01 * signs->symbolZoomFactor );
 	//printf( "WesternChart::paintZodiac zoom factor %d\n", signs->symbolZoomFactor );
-	a = aries + 15;
-	for ( i = 0; i < 12; i++ )
+
+	double a = aries + 15;
+	for ( int i = 0; i < 12; i++ )
 	{
-		signpos = frameBorderPointToXy( a, wconf->zodiacSymbols );
+		signpos = frameBorderPointToXy( a, signs.magnify( signs.wLabels ));
+		if ( wconf->textColor.IsOk())
+		{
+			painter->setTextColor( wconf->textColor );
+		}
+		else if ( chartprops->getWesternChartDisplayConfig().showSignColors )
+		{
+			painter->setTextColor( signs.globalTextColor.IsOk() ? signs.globalTextColor : config->chartColors->getSignFgColor( i ));
+		}
+		else painter->setTextColor( defaultPen.GetColour() );
+		
+		/*
 		if ( chartprops->getWesternChartDisplayConfig().showSignColors )
 		{
 			if ( showColors )
 			{
-				if ( wconf->signs.globalTextColor.IsOk() )
-				{
-					painter->setTextColor( wconf->signs.globalTextColor );
-				}
-				else
-				{
-					painter->setTextColor( config->chartColors->getSignFgColor( i ));
-				}
+				painter->setTextColor( signs.globalTextColor.IsOk() ? signs.globalTextColor : config->chartColors->getSignFgColor( i ));
 			}
 		}
-		painter->drawSignSymbol( signpos.real(), signpos.imag(), (Rasi)i,
-			signs->symbolType, signs->symbolZoomFactor, signs->rotateSymbols ? a - 90 : 0 );
+		*/
+		switch( signs.labelStyle )
+		{
+			case 1:
+				s = lang.getSignName( (Rasi)i, TF_SHORT );
+			break;
+			case 2:
+				s = lang.getSignName( (Rasi)i, TF_MEDIUM );
+			break;
+			case 3:
+				s = lang.getSignName( (Rasi)i, TF_LONG );
+			break;
+			case 0:
+			default:
+				s = sp.getSignCode( (Rasi)i );
+			break;
+		}
+		painter->drawRotatedText( s, signpos.real(), signpos.imag(), signs.rotateLabels ? a - 90 : 0 );
 		a += 30.0;
 	}
 
-	paintChartFrame( wconf->zodiac );
-	painter->setPen( defaultPen );
-	a = aries;
-	for ( i = 0; i < 12; i++ )
+	if ( signs.showInnerFrame ) paintChartFrame( signs );
+
+	// draw markers between signs if either inner or outer frame is shown, i.e. do not draw if both are hidden
+	if ( signs.showInnerFrame || signs.showOuterFrame )
 	{
-		paintMarkerLine( a, wconf->zodiac, wconf->outerZodiac );
-		a += 30.0;
+		for ( int i = 0; i < 12; i++ ) paintMarkerLine( aries + i * 30, signs, signs.magnify( signs.width ));
 	}
-
-	paintDegreeMarkers( aries, wconf->zodiac, wconf->zodiac1Degree, wconf->zodiac5Degree, wconf->zodiac10Degree );
-	paintChartFrame( wconf->zodiac1Degree );
-	paintChartFrame( wconf->zodiac5Degree );
-	paintChartFrame( wconf->zodiac10Degree );
-
-	paintChartFrame( wconf->outerHouse );
-	paintChartFrame( getWChartConfig()->outerZodiac );
+	if ( signs.showOuterFrame ) paintChartFrame( signs.magnify( signs.width ));
 }
 
 /*****************************************************

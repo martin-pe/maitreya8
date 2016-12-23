@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "ToolPanel.h"
@@ -39,6 +37,7 @@
 #include "Lang.h"
 #include "MenuProvider.h"
 #include "mspin.h"
+//#include "spintest.h"
 #include "PrintoutConfig.h"
 #include "SheetConfig.h"
 #include "VargaBase.h"
@@ -66,33 +65,17 @@ const int tb_eclipsewindow[] = { TBS_YEAR, TBS_NBYEARS, TBS_ECL_TYPE, TBS_TZ, -1
 const int tb_printpreviewwindow[] = { TBS_PRINTOUTTYPE, TBS_SHEETSTYLE, TBS_VEDICCHARTSTYLE,
 	TBS_WESTERNCHARTSTYLE, CMD_LAUNCH_VIEWER, -1 };
 
-#ifdef USE_URANIAN_CHART
-const int tb_transitwindow[] = { TBS_DATE, TBS_TIME, CMD_NOW, TBS_TZ, TBS_DATE_PROGRESS, TB_SEPARATOR,
-	TBS_TRANSITMODE, TBS_SORT, CMD_FILTER, TBS_ORBIS, TBS_GRADKREIS, -1 };
-
-const int tb_partnerwindow[] = { TBS_PARTNER1, TBS_PARTNER2, TBS_ORBIS, CMD_FILTER, TBS_SORT, TBS_GRADKREIS, -1 };
-
-#else
 const int tb_transitwindow[] = { TBS_DATE, TBS_TIME, CMD_NOW, TBS_TZ, TBS_DATE_PROGRESS, TB_SEPARATOR,
 	TBS_TRANSITMODE, -1 };
 
-const int tb_partnerwindow[] = { TBS_PARTNER1, TBS_PARTNER2, -1 };
-#endif
+const int tb_partnerwindow[] = { TBS_PARTNER1, TB_SEPARATOR, TBS_PARTNER2, -1 };
 
-const int tb_uranianwindow[] = { TBS_SORT, CMD_FILTER, TBS_ORBIS, TBS_GRADKREIS, TBS_YEAR, -1 };
+const int tb_uranianwindow[] = { TBS_SORT, CMD_FILTER, TBS_ORBIS, TBS_GRADKREIS, TBS_YEAR, APP_CONFIGURE, -1 };
 
-/*
-// wx 2 does not support right aligned buttons in toolbar
-#ifdef _WX_V2_
+const int tb_uranianchartwindow[] = { TBS_URANIAN_CHART_REFOBJECT, TBS_ORBIS, -1 };
+
 const int tb_gdasawindow[] = { CMD_GOTO_YEAR, CMD_NOW, CMD_SELECT_DASA, TB_SEPARATOR, TBC_DASA_ZOOM, CMD_ZOOM_ORIGINAL,
-	CMD_ZOOM_IN, CMD_ZOOM_OUT, TB_SEPARATOR, TBS_ANTARDASALEVEL, CMD_TIP, TB_TEXT, -1 };
-#else
-const int tb_gdasawindow[] = { CMD_GOTO_YEAR, CMD_NOW, CMD_SELECT_DASA, TB_SEPARATOR, TBC_DASA_ZOOM, CMD_ZOOM_ORIGINAL,
-	CMD_ZOOM_IN, CMD_ZOOM_OUT, TB_SEPARATOR, TBS_ANTARDASALEVEL, TB_TEXT, CMD_TIP, -1 };
-#endif
-*/
-const int tb_gdasawindow[] = { CMD_GOTO_YEAR, CMD_NOW, CMD_SELECT_DASA, TB_SEPARATOR, TBC_DASA_ZOOM, CMD_ZOOM_ORIGINAL,
-	CMD_ZOOM_IN, CMD_ZOOM_OUT, TB_SEPARATOR, TBS_ANTARDASALEVEL, TB_TEXT, CMD_TIP, -1 };
+	CMD_ZOOM_IN, CMD_ZOOM_OUT, TB_SEPARATOR, TBS_ANTARDASALEVEL, TB_TEXT, -1 };
 
 const int tb_ephemwindow[] = { TBS_YEAR, TBS_MONTH, CMD_NOW, TB_SEPARATOR, TBS_EPHEMMODE, TBS_TZ, TBS_DASA, TBS_EPHEMDEG, -1 };
 const int tb_solarwindow[] = { TBS_YEAR, CMD_NOW, CMD_NEW_ANNUAL_CHART, TB_TEXT, -1 };
@@ -131,6 +114,9 @@ wxToolBar *ToolbarFactory::createToolbar( wxWindow *parent, const int &type )
 	{
 	case VIEW_URANIAN:
 		a = tb_uranianwindow;
+		break;
+	case VIEW_URANIAN_CHART:
+		a = tb_uranianchartwindow;
 		break;
 	case VIEW_TRANSIT:
 		a = tb_transitwindow;
@@ -248,16 +234,18 @@ void ToolbarFactory::createComboItem( wxToolBar *toolbar, const int &item )
 	const static wxString zoom_choices[] = { wxT("10"), wxT("25"), wxT("50"), wxT("100"),
 		wxT("150"), wxT("200"), wxT("250"), wxT("300"), wxT("400"), wxT("500"), wxT( "1000" ), wxT( "3000" ) };
 	wxComboBox *combo = 0;
+	wxString label;
 	
 	if ( item == TBC_DASA_ZOOM )
 	{
 		//NumericValidator val( 10, 100000 );
 		combo = new wxComboBox( toolbar, item, wxT( "100" ), wxDefaultPosition, wxSize( 120, -1 ), 12, zoom_choices,
 			wxTE_PROCESS_ENTER );
+		label = _( "Change Zoom (Ctrl+MouseWheel)" );
 		//combo->SetValidator( MIntegerValidator( &model.population ));
 	}
 	assert( combo );
-	addControl( toolbar, combo, _( "Zoom" ));
+	addControl( toolbar, combo, label );
 }
 
 /*****************************************************
@@ -293,6 +281,10 @@ void ToolbarFactory::createChoiceItem( wxToolBar *toolbar, const int &item )
 
 	switch ( item )
 	{
+	case TBS_URANIAN_CHART_REFOBJECT:
+		control = new UranianReferenceObjectChoice( toolbar, item );
+		label = _( "Reference Object" );
+	break;
 	case TBS_TEXTMODE:
 		control = new TextViewModeChoice( toolbar, item );
 		label = _( "Mode" );
@@ -366,10 +358,11 @@ void ToolbarFactory::createChoiceItem( wxToolBar *toolbar, const int &item )
 		break;
 	case TBS_DATE:
 		control = new MDateSpin( toolbar, item );
+		//control = new MSpinDate( toolbar, item, wxDefaultPosition, wxSize( 150, -1 )); 
 		label = _( "Date" );
 		break;
 	case TBS_TIME:
-		control = new MDegSpin( toolbar, item );
+		control = new MDegSpin( toolbar, item, 24 );
 		label = _( "Time" );
 		break;
 	case TBS_TRANSITMODE:
@@ -408,7 +401,7 @@ void ToolbarFactory::createChoiceItem( wxToolBar *toolbar, const int &item )
 		wxChoice *c = new wxChoice( toolbar, item, wxDefaultPosition, wxDefaultSize, 5, antardasa_choices, 0);
 		c->SetSelection( 1 );
 		control = c;
-		label = _( "Dasa Level" );
+		label = _( "Dasa Level (Shift+MouseWheel)" );
 	}
 	break;
 	case TBS_MONTH:
@@ -423,7 +416,7 @@ void ToolbarFactory::createChoiceItem( wxToolBar *toolbar, const int &item )
 		break;
 	case TBS_TZ:
 		control = new wxChoice( toolbar, item, wxDefaultPosition, wxDefaultSize, 2, tz_choices, 0);
-		label = _( "time Zone" );
+		label = _( "Time Zone" );
 		break;
 	case TBS_EPHEMDEG:
 		control = new wxChoice( toolbar, item, wxDefaultPosition, wxSize( 120, -1 ), 9, ephemdeg_choices, 0);
@@ -449,6 +442,10 @@ void ToolbarFactory::createChoiceItem( wxToolBar *toolbar, const int &item )
 	}
 	else
 	{
+		if ( item == TBS_PARTNER1 || item == TBS_PARTNER2 )
+		{
+			toolbar->AddControl( new wxStaticText( toolbar, -1, label ));
+		}
 		assert( control );
 		addControl( toolbar, control, label );
 	}
@@ -507,10 +504,7 @@ theIdList[] =
 	{ CMD_NEW_TRANSIT, true },
 	{ CMD_NEW_YOGA, true },
 	{ CMD_NEW_SOLAR, false },
-
-#ifdef USE_URANIAN_CHART
 	{ CMD_NEW_URANIAN, false },
-#endif
 	{ 0, true },
 
 	{ APP_HORA, false },
@@ -587,11 +581,12 @@ vector<int> ToolbarFactory::getFullCommandIdList()
 void ToolbarFactory::populateMainToolbar( wxToolBar *tb )
 {
 	assert( tb );
-	const int bmpsize = ImageProvider::get()->getToolBitmapSize();
+	//const int bmpsize = ImageProvider::get()->getToolBitmapSize();
 	//printf( "bmpsize %d\n", bmpsize );
 
 	tb->ClearTools();
-	tb->SetToolBitmapSize( wxSize( bmpsize, bmpsize ));
+	//tb->SetToolBitmapSize( wxSize( bmpsize, bmpsize ));
+	tb->SetToolBitmapSize( wxSize( 24, 24 ));
 
 	for( uint i = 0; i < config->toolbar->mainToolbarItems.size(); i++ )
 	{
@@ -657,6 +652,8 @@ void ToolbarFactory::addTool( wxToolBar *tb, const int &id,  const wxItemKind ki
 	}
 	else
 	{
+		tb->AddTool( id, command->getShortText(), ip->getBitmap( command->getBitmapId() ), command->getText(), kind );
+		/*
 		if ( config->toolbar->toolbarIconSize )
 		{
 			// 32x32
@@ -667,6 +664,7 @@ void ToolbarFactory::addTool( wxToolBar *tb, const int &id,  const wxItemKind ki
 			// 24x24
 			tb->AddTool( id, command->getShortText(), ip->getScaledBitmap( command->getBitmapId(), 24 ), command->getText(), kind );
 		}
+		*/
 	}
 }
 

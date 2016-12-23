@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "PlanetList.h"
@@ -38,7 +36,8 @@ void PlanetList::addOuterObjectList( const OBJECT_INCLUDES &style, const bool &v
 	uint j;
 	for ( i = OCUPIDO; i <= OLILITH; i++ )
 	{
-		if ( ! ( style & OI_URANIAN ) && i >= OCUPIDO && i <= OPOSEIDON ) continue;
+		if ( ! ( style & OI_URANIAN_INNER ) && i >= OCUPIDO && i <= OKRONOS ) continue;
+		if ( ! ( style & OI_URANIAN_OUTER ) && i >= OAPOLLON && i <= OPOSEIDON ) continue;
 		if ( ! ( style & OI_CHIRON ) && i == OCHIRON ) continue;
 		if ( ! ( style & OI_PHOLUS ) && i == OPHOLUS ) continue;
 		if ( ! ( style & OI_PLANETOIDS ) && i >= OCERES && i <= OVESTA ) continue;
@@ -115,7 +114,7 @@ bool isObjectIdLessThan( const ObjectId &p1, const ObjectId &p2, const bool &ved
 		else if ( p2 == OSUN ) return false;
 		else if ( p1 == OASCENDANT ) return p2 != OASCENDANT;
 		else if ( p2 == OASCENDANT ) return false;
-		else if ( p1 == OMOON ) return p2 != OSUN;
+		else if ( p1 == OMOON ) return p2 != OMOON;
 		else if ( p2 == OMOON ) return false;
 		else if ( IS_ASC_NODE( p1 )) return ! IS_ASC_NODE( p2 );
 		else if ( IS_ASC_NODE( p2 )) return false;
@@ -299,7 +298,8 @@ void PlanetList::dumpObjectStyle( const OBJECT_INCLUDES &style )
 	wxLogMessage( wxT( " OI_MERIDIAN      %d " ), (bool)(style &  OI_MERIDIAN));
 	wxLogMessage( wxT( " OI_DESCENDANT    %d " ), (bool)(style &  OI_DESCENDANT));
 	wxLogMessage( wxT( " OI_IMUMCOELI     %d " ), (bool)(style &  OI_IMUMCOELI));
-	wxLogMessage( wxT( " OI_URANIAN       %d " ), (bool)(style &  OI_URANIAN));
+	wxLogMessage( wxT( " OI_URANIAN_INNER %d " ), (bool)(style &  OI_URANIAN_INNER));
+	wxLogMessage( wxT( " OI_URANIAN_OUTER %d " ), (bool)(style &  OI_URANIAN_OUTER));
 	wxLogMessage( wxT( " OI_CHIRON        %d " ), (bool)(style &  OI_CHIRON));
 	wxLogMessage( wxT( " OI_PHOLUS        %d " ), (bool)(style &  OI_PHOLUS));
 	wxLogMessage( wxT( " OI_PLANETOIDS    %d " ), (bool)(style &  OI_PLANETOIDS));

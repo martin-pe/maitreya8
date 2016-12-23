@@ -7,28 +7,22 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "BasicView.h"
 #include "ChildWindow.h"
-#include "Commands.h"
 #include "Conf.h"
 #include "Document.h"
 #include "GraphicGrid.h"
-#ifdef USE_URANIAN_CHART
-#include "Uranian.h"
-#endif
 #include "VargaBase.h"
 
 extern Config *config;
@@ -47,30 +41,22 @@ public:
 	**   GraphicView   ---   Constructor
 	**
 	******************************************************/
-	GraphicView( wxWindow *parent, ChildWindow *frame, const Varga &varga, const bool &uranian )
+	GraphicView( wxWindow *parent, ChildWindow *frame, const Varga &varga )
 			: BasicView( parent, frame, VIEW_GRAPHIC, false ),
 			varga( varga )
 	{
-		printf( "GraphicView   ---   Constructor vedic %d uranian %d\n", props->isVedic(), uranian );
 		props->freezeEwStatus();
-#ifdef USE_URANIAN_CHART
-		uexpert = (UranianExpert*)NULL;
-#endif
 
 		gwidget = new ChartGridWidget( this, CT_RADIX, props, 1, 1 );
-		if ( props->isVedic() ) gwidget->addVedicChart( varga, doc );
+		if ( props->isVedic())
+		{
+			gwidget->addVedicChart( varga, doc );
+			props->setFixedVedic();
+		}
 		else
 		{
-#ifdef USE_URANIAN_CHART
-			if ( uranian )
-			{
-				uexpert = new UranianExpert( doc, props, config->uranian );
-				gwidget->addUranianChart( uexpert, doc );
-			}
-			else gwidget->addWesternChart( doc, 0 );
-#else
 			gwidget->addWesternChart( doc, 0 );
-#endif
+			props->setFixedWestern();
 		}
 		widget = gwidget;
 		OnDataChanged();
@@ -83,9 +69,6 @@ public:
 	******************************************************/
 	~GraphicView()
 	{
-#ifdef USE_URANIAN_CHART
-		if ( uexpert ) delete uexpert;
-#endif
 	}
 
 	/**************************************************************
@@ -152,9 +135,6 @@ public:
 	virtual void OnDataChanged()
 	{
 		//printf( "GraphicView::OnDataChanged\n" );
-#ifdef USE_URANIAN_CHART
-		if ( uexpert ) uexpert->OnDataChanged();
-#endif
 		BasicView::OnDataChanged();
 		gwidget->OnDataChanged();
 	}
@@ -163,9 +143,6 @@ public:
 private:
 
 	ChartGridWidget *gwidget;
-#ifdef USE_URANIAN_CHART
-	UranianExpert *uexpert;
-#endif
 	Varga varga;
 
 	DECLARE_CLASS( GraphicView )
@@ -178,8 +155,10 @@ IMPLEMENT_CLASS( GraphicView, BasicView )
 **   ViewFactory   ---   createGraphicView
 **
 ******************************************************/
-BasicView *ViewFactory::createGraphicView( wxWindow *parent, ChildWindow *frame, const Varga &varga, const bool &uranian )
+BasicView *ViewFactory::createGraphicView( wxWindow *parent, ChildWindow *frame, const Varga &varga )
 {
-	return new GraphicView( parent, frame, varga, uranian );
+	return new GraphicView( parent, frame, varga );
 }
+
+
 

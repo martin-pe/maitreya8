@@ -4,7 +4,7 @@
             "description": "Simple view for Vedic astrologers: planets, Rasi/Navamasa chart and tree view of Dasas",
             "name": "Vedic Simple",
             "splitter": {
-                "sashpos": 300,
+								"sashpospercent": 30,
                 "splitdirection": "Vertical",
                 "window1": {
                     "widget": {
@@ -40,7 +40,7 @@
             "description": "Simple view for Vedic astrologers: planets, Rasi/Bhava chart and tree view of Dasas",
             "name": "Vedic Bhava",
             "splitter": {
-                "sashpos": 300,
+								"sashpospercent": 30,
                 "splitdirection": "Vertical",
                 "window1": {
                     "widget": {
@@ -225,6 +225,12 @@
                         }
                     },
                     {
+                        "name": "Shadbala",
+                        "widget": {
+                            "viewtype": "shadbala"
+                        }
+                    },
+                    {
                         "name": "Solar",
                         "widget": {
                             "vedic": true,
@@ -269,7 +275,9 @@
                         },
                         "window2": {
                             "widget": {
-                                "viewtype": "text"
+                                "viewtype": "text",
+																"showtoolbar": false,
+																"textmode": 14
                             }
                         }
                     }
@@ -305,7 +313,7 @@
                                     "window2": {
                                         "widget": {
                                             "showtoolbar": false,
-                                            "textmode": "15",
+                                            "textmode": 14,
                                             "vedic": false,
                                             "viewtype": "text"
                                         }

@@ -114,9 +114,9 @@ am_libmaitreya_base_a_OBJECTS = AspectConfig.$(OBJEXT) \
 	ColorConfig.$(OBJEXT) Commands.$(OBJEXT) Conf.$(OBJEXT) \
 	ConfigListLoader.$(OBJEXT) ConfigStubs.$(OBJEXT) \
 	DataSet.$(OBJEXT) FileConfig.$(OBJEXT) FontProvider.$(OBJEXT) \
-	GraphConfig.$(OBJEXT) IdConverter.$(OBJEXT) \
-	ImageProvider.$(OBJEXT) JSonTool.$(OBJEXT) Lang.$(OBJEXT) \
-	LanguageConfig.$(OBJEXT) maitreya.$(OBJEXT) mathbase.$(OBJEXT) \
+	IdConverter.$(OBJEXT) ImageProvider.$(OBJEXT) \
+	JSonTool.$(OBJEXT) Lang.$(OBJEXT) LanguageConfig.$(OBJEXT) \
+	maitreya.$(OBJEXT) mathbase.$(OBJEXT) \
 	MultipleViewConfig.$(OBJEXT) PlanetList.$(OBJEXT) \
 	PrintoutConfig.$(OBJEXT) SheetConfig.$(OBJEXT) \
 	SymbolProvider.$(OBJEXT) VargaBase.$(OBJEXT) \
@@ -341,19 +341,17 @@ AM_CPPFLAGS = $(WX_CPPFLAGS) -I. -I../pics -I../wxJSON $(am__append_1) \
 	$(am__append_2) $(am__append_3) $(am__append_4) \
 	-Wno-write-strings
 noinst_LIBRARIES = libmaitreya_base.a
-libmaitreya_base_a_SOURCES = AspectConfig.cpp AspectConfig.h AtlasDao.cpp AtlasDao.h \
-	AtlasImporter.cpp AtlasImporter.h AtlasLogic.cpp AtlasLogic.h BaseDao.cpp BaseDao.h \
-	Calculator.cpp Calculator.h ChartConfig.cpp ChartConfig.h chart_images.h ChartProperties.cpp \
-	ChartProperties.h ColorConfig.cpp ColorConfig.h Commands.cpp Commands.h Conf.cpp Conf.h \
-	ConfigBase.h ConfigListLoader.cpp ConfigListLoader.h ConfigLoader.h ConfigStubs.cpp \
-	DataSet.cpp DataSet.h FileConfig.cpp FileConfig.h FontProvider.cpp FontProvider.h \
-	GraphConfig.cpp GraphConfig.h IdConverter.cpp IdConverter.h ImageProvider.cpp ImageProvider.h \
-	JSonTool.cpp JSonTool.h Lang.cpp Lang.h LanguageConfig.cpp LanguageConfig.h maitreya.cpp \
-	maitreya.h mathbase.cpp mathbase.h MultipleViewConfig.cpp MultipleViewConfig.h PlanetList.cpp \
-	PlanetList.h PrintoutConfigBase.h PrintoutConfig.cpp PrintoutConfig.h SheetConfig.cpp \
-	SheetConfig.h SymbolProvider.cpp SymbolProvider.h VargaBase.cpp VargaBase.h \
-	VedicChartConfig.cpp VedicChartConfig.h ViewNode.cpp ViewNode.h WesternChartConfig.cpp \
-	WesternChartConfig.h xpm_images.h
+libmaitreya_base_a_SOURCES = AspectConfig.cpp AspectConfig.h AtlasDao.cpp AtlasDao.h AtlasImporter.cpp \
+	AtlasImporter.h AtlasLogic.cpp AtlasLogic.h BaseDao.cpp BaseDao.h Calculator.cpp Calculator.h \
+	ChartConfig.cpp ChartConfig.h chart_images.h ChartProperties.cpp ChartProperties.h ColorConfig.cpp \
+	ColorConfig.h Commands.cpp Commands.h Conf.cpp Conf.h ConfigBase.h ConfigListLoader.cpp ConfigListLoader.h \
+	ConfigLoader.h ConfigStubs.cpp DataSet.cpp DataSet.h FileConfig.cpp FileConfig.h FontProvider.cpp \
+	FontProvider.h GraphConfig.h IdConverter.cpp IdConverter.h ImageProvider.cpp ImageProvider.h \
+	JSonTool.cpp JSonTool.h Lang.cpp Lang.h LanguageConfig.cpp LanguageConfig.h maitreya.cpp maitreya.h \
+	mathbase.cpp mathbase.h MultipleViewConfig.cpp MultipleViewConfig.h PlanetList.cpp PlanetList.h \
+	PrintoutConfigBase.h PrintoutConfig.cpp PrintoutConfig.h SheetConfig.cpp SheetConfig.h \
+	SymbolProvider.cpp SymbolProvider.h VargaBase.cpp VargaBase.h VedicChartConfig.cpp VedicChartConfig.h \
+	ViewNode.cpp ViewNode.h WesternChartConfig.cpp WesternChartConfig.h xpm_images.h
 
 EXTRA_DIST = Makefile.win 
 all: all-am
@@ -421,7 +419,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DataSet.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FileConfig.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FontProvider.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GraphConfig.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IdConverter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ImageProvider.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/JSonTool.Po@am__quote@

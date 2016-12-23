@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Ephemeris.h"
@@ -94,7 +92,8 @@ EphemExpert::EphemExpert( const ChartProperties *props )
 {
 	d = new DataSet();
 	d->setLocation( *config->defaultLocation );
-	show_header = config->view->showTextViewHeaders;
+	//show_header = config->view->showTextViewHeaders;
+	show_header = true;
 	init();
 }
 
@@ -268,6 +267,7 @@ void EphemExpert::writeKp( Sheet *sheet, const DasaId &dasaId )
 	DasaExpert *expert = DasaExpertFactory().getDasaExpert( dasaId );
 	SheetFormatter fmt;
 
+	writeHeaderInfo( sheet );
 	Table *table = (Table*)NULL;
 
 	const wxLongLong starttime = wxGetLocalTimeMillis();
@@ -285,7 +285,6 @@ void EphemExpert::writeKp( Sheet *sheet, const DasaId &dasaId )
 		return;
 	}
 	if ( ! ckp || mydasa != dasaId ) calcKP( dasaId, expert );
-	writeHeaderInfo( sheet );
 
 	lord = ONONE;
 	int index = -1;
@@ -587,8 +586,8 @@ void EphemExpert::writeLunar( Sheet *sheet )
 		else	table->setEntry( 0, line, s );
 
 		table->setEntry( 1, line, thetime );
-		table->setEntry( 2, line, fmt.getPosFormatted( e->slen, MD_DIRECT ) );
-		table->setEntry( 3, line, fmt.getPosFormatted( e->mlen, MD_DIRECT ) );
+		table->setEntry( 2, line, fmt.getPosFormatted( e->slen, MD_DIRECT, DEG_PRECISION_SECOND, TF_MEDIUM ));
+		table->setEntry( 3, line, fmt.getPosFormatted( e->mlen, MD_DIRECT, DEG_PRECISION_SECOND, TF_MEDIUM ));
 
 		int angle = (int)( red_deg( e->mlen - e->slen ) + .00001 );
 		if ( angle >= 360 ) angle -= 360;
@@ -657,6 +656,7 @@ void EphemExpert::writeDetails( Sheet *sheet )
 	TzUtil tzu;
 
 	if ( ! cdetails ) calcDetails();
+	writeHeaderInfo( sheet );
 
 	int line = 1;
 	int nb_leaps = 0;
@@ -665,7 +665,7 @@ void EphemExpert::writeDetails( Sheet *sheet )
 		if ( i > 0 && weekday[i] == 0 ) nb_leaps++;
 	}
 	Table *table = new Table( 5, nb_days+1+nb_leaps );
-	table->setHeader(  wxString::Format( wxT ( "%s %d" ), lang.getMonthName( month-1 ).c_str(), year ));
+	//table->setHeader(  wxString::Format( wxT ( "%s %d" ), lang.getMonthName( month-1 ).c_str(), year ));
 
 	table->setHeader( 0, _( "Day" ));
 	table->setHeader( 1, _( "Sidereal Time" ));
@@ -787,7 +787,6 @@ int EphemExpert::writeLongitudes( Sheet *sheet )
 	writeHeaderInfo( sheet );
 	numcols = planetdata.size() + 1;
 
-	int line = 1;
 	int nb_leaps = 0;
 	for ( i = 0; i < nb_days; i++ )
 	{
@@ -796,14 +795,8 @@ int EphemExpert::writeLongitudes( Sheet *sheet )
 	Table *table = new Table( numcols, nb_days+nb_leaps+2 );
 	table->setHeader( 0, _( "Day" ));
 
-	// Header
 	int col = 1;
-	for ( i1 = 0; i1 < planetdata.size(); i1++ )
-	{
-		table->setHeader( col, fmt.getObjectName( planetdata[i1].pindex, TF_LONG, chartprops->isVedic() ));
-		col++;
-	}
-	line = 1;
+	int line = 1;
 	for ( i = 0; i < nb_days; i++ )
 	{
 		if ( i > 0 && weekday[i] == 0 )
@@ -845,7 +838,9 @@ int EphemExpert::writeLongitudes( Sheet *sheet )
 	col = 1;
 	for ( i1 = 0; i1 < planetdata.size(); i1++ )
 	{
-		table->setHeaderEntry( col, line, fmt.getObjectName( planetdata[i1].pindex, TF_LONG, chartprops->isVedic() ));
+		f = fmt.getObjectName( planetdata[i1].pindex, TF_MEDIUM, chartprops->isVedic() );
+		table->setHeaderEntry( col, line, f );
+		table->setHeaderEntry( col, 0, f );
 		col++;
 	}
 	sheet->addItem( table );

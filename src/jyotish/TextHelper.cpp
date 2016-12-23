@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "TextHelper.h"
@@ -189,7 +187,8 @@ int TextHelper::writeTextAnalysis( const int &mode, const Varga varga, const Das
 
 	default:
 		printf( "TextHelper::writeTextAnalysis: invalid view mode %d\n", mode );
-		assert( false );
+		writeBaseData();
+		//assert( false );
 		break;
 	}
 	if ( ret ) printf( "Warn: %d objects couldn't be calculated\n", ret );
@@ -201,9 +200,9 @@ int TextHelper::writeTextAnalysis( const int &mode, const Varga varga, const Das
 **   TextHelper   ---   writePlanets
 **
 ******************************************************/
-int TextHelper::writePlanets()
+int TextHelper::writePlanets( const OBJECT_INCLUDES excludes )
 {
-	return chartprops->isVedic() ? writeVedicPlanets() : writeWesternPlanets();
+	return chartprops->isVedic() ? writeVedicPlanets( excludes ) : writeWesternPlanets( excludes );
 }
 
 /*****************************************************
@@ -211,11 +210,12 @@ int TextHelper::writePlanets()
 **   TextHelper   ---   writeVedicPlanets
 **
 ******************************************************/
-int TextHelper::writeVedicPlanets()
+int TextHelper::writeVedicPlanets( const OBJECT_INCLUDES excludes )
 {
 	GenericTableWriter tw( horoscope );
 
-	Table *table = tw.createObjectListTableByConfigKeys( chartprops->getVedicObjectStyle(),
+	OBJECT_INCLUDES obs = chartprops->getVedicObjectStyle() & ~excludes;
+	Table *table = tw.createObjectListTableByConfigKeys( obs,
 		chartprops->getVedicColumnStyle(), true, TF_LONG );
 	sheet->addItem( table );
 	return table->errorcount;
@@ -226,10 +226,11 @@ int TextHelper::writeVedicPlanets()
 **   TextHelper   ---   writeWesternPlanets
 **
 ******************************************************/
-int TextHelper::writeWesternPlanets()
+int TextHelper::writeWesternPlanets( const OBJECT_INCLUDES excludes )
 {
 	GenericTableWriter tw( horoscope );
-	Table *table = tw.createObjectListTableByConfigKeys( chartprops->getWesternObjectStyle(),
+	OBJECT_INCLUDES obs = chartprops->getWesternObjectStyle() & ~excludes;
+	Table *table = tw.createObjectListTableByConfigKeys( obs,
 		chartprops->getWesternColumnStyle(), false, TF_LONG );
 	sheet->addItem( table );
 	return table->errorcount;
@@ -643,31 +644,13 @@ int TextHelper::writeWesternPlanetReport()
 **   TextHelper   ---   writeTransitReport
 **
 ******************************************************/
-int TextHelper::writeTransitReport( Horoscope *h2, AspectExpert* /*aexpert*/ )
+int TextHelper::writeTransitReport( const PlanetContext &ctx )
 {
 	assert( horoscope );
-	assert( h2 );
 
-	Horoscope *htmp = horoscope;
-	horoscope = h2;
-	writePlanets();
-	horoscope = htmp;
-
-	/*
-	printf( "TextHelper::writeTransitRepor\n" );
-
-	if ( chartprops->isVedic() )
-	{
-		sheet->addLine( wxT( "TODO" ));
-	}
-	else
-	{
-		assert( aexpert );
-		list<AspectEvent> al = aexpert->getAspectList();
-		aexpert->writeWesternAspectList( sheet, chartprops, CT_TRANSIT );
-	}
-	*/
-	return 0;
+	OBJECT_INCLUDES obs = OI_NONE;
+	if ( ctx == PcTransit || ctx == PcDirection ) obs = OI_ARIES;
+	return writePlanets( obs );
 }
 
 /*****************************************************

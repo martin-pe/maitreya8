@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include <wx/spinctrl.h>
@@ -29,12 +27,12 @@
 #include "Conf.h"
 #include "DialogElements.h"
 #include "Document.h"
-#include "SheetWidget.h"
 #include "GraphicGrid.h"
 #include "Lang.h"
 #include "SolarChart.h"
 #include "SplitterWidget.h"
 #include "TextHelper.h"
+#include "TextWidget.h"
 #include "ToolPanel.h"
 
 extern Config *config;
@@ -57,10 +55,8 @@ public:
 		expert->update();
 
 		splitter = new SplitterWidget( this );
-		textWidget = new SheetWidget( splitter, props );
+		textWidget = new TextWidget( splitter, props );
 		textWidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
-		textWidget->setMinXRight( 300 );
-		textWidget->enableFloatingLayout( false );
 
 		gwidget = new DefaultEwChartGridWidget( splitter, CT_RADIX, props, expert->getSolarChart() );
 		gwidget->addWesternChart( doc, expert->getSolarChart());
@@ -195,7 +191,7 @@ protected:
 	DefaultEwChartGridWidget *gwidget;
 	SolarChartExpert *expert;
 	SplitterWidget *splitter;
-	SheetWidget *textWidget;
+	TextWidget *textWidget;
 	int year;
 
 };

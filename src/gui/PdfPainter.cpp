@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "PdfPainter.h"
@@ -37,7 +35,7 @@
 extern Config *config;
 
 //#define PDF_TEXT_ZOOMFACTOR 1
-#define PDF_TEXT_ZOOMFACTOR .1
+#define PDF_TEXT_ZOOMFACTOR .004
 #define PDF_DEFAULT_FGCOLOR *wxBLACK
 #define PDF_DEFAULT_BGCOLOR *wxWHITE
 #define PDF_PEN_PENWIDTH_FACTOR .5
@@ -252,28 +250,6 @@ void PdfPainter::setDefaults()
 
 /*****************************************************
 **
-**   PdfPainter   ---   setGraphicFont
-**
-******************************************************/
-void PdfPainter::setGraphicFont( const double zoom )
-{
-	currentFont = *FontProvider::get()->getFont( FONT_GRAPHIC_DEFAULT, zoom );
-	pdf->SetFont( currentFont );
-}
-
-/*****************************************************
-**
-**   PdfPainter   ---   setSymbolFont
-**
-******************************************************/
-void PdfPainter::setSymbolFont( const double zoom )
-{
-	currentFont = *FontProvider::get()->getFont( FONT_GRAPHIC_SYMBOLS, zoom );
-	pdf->SetFont( currentFont );
-}
-
-/*****************************************************
-**
 **   PdfPainter   ---  setTextColor
 **
 ******************************************************/
@@ -310,9 +286,9 @@ MPoint PdfPainter::getTextExtent( const wxString &s )
 **   PdfPainter   ---   getTextZoomFactor
 **
 ******************************************************/
-double PdfPainter::getTextZoomFactor( const double& )
+double PdfPainter::getTextZoomFactor( const double &z )
 {
-	return PDF_TEXT_ZOOMFACTOR;
+	return PDF_TEXT_ZOOMFACTOR * z;
 }
 
 /*****************************************************
@@ -368,6 +344,16 @@ void PdfPainter::drawPolygon(int n, MPoint points[], wxCoord xoffset, wxCoord yo
 void PdfPainter::drawLine( const double &x1, const double &y1, const double &x2, const double &y2 )
 {
 	pdf->Line( x1, y1, x2, y2 );
+}
+
+/*****************************************************
+**
+**   PdfPainter   ---  drawBitmap
+**
+******************************************************/
+void PdfPainter::drawBitmap( const wxBitmap &bmp, const double &x, const double &y, const bool& /*transparent*/ )
+{
+	pdf->Image( wxT( "image" ), bmp.ConvertToImage(), x, y );
 }
 
 /*****************************************************
@@ -444,45 +430,28 @@ void PdfPainter::drawPoint( const double &x, const double &y )
 
 /*****************************************************
 **
-**   PdfPainter   ---   drawSignSymbol
+**   PdfPainter   ---   drawRotatedText
 **
 ******************************************************/
-void PdfPainter::drawSignSymbol( const int&x, const int &y, const Rasi &sign, const int type, const int /* zoom */, const double angle )
+void PdfPainter::drawRotatedText( wxString s, const double &x, const double &y, const double &alfa )
 {
-	SymbolProvider sp;
-	wxString s;
-	Lang lang;
-
-  switch( type )
-  {
-    case 1:
-      s = lang.getSignName( sign, TF_SHORT );
-    break;
-    case 2:
-      s = lang.getSignName( sign, TF_MEDIUM );
-    break;
-    case 3:
-      s = lang.getSignName( sign, TF_LONG );
-    break;
-    case 0:
-    default:
-      s = sp.getSignCode( sign );
-    break;
-  }
 	MPoint p = getTextExtent( s );
 
+	const double w = .5 * p.real();
+	const double h = .5 * p.imag();
+
+	// in pdf mode the anchor is located at the left sid of the text. y value is in the middle
+	const double px = x - w * cos( alfa * DEG2RAD ) +  h * sin( alfa * DEG2RAD );
+	const double py = y + w * sin( alfa * DEG2RAD ) + h * cos( alfa * DEG2RAD );
 
 	/*
-	setTransparentBrush();
+	const int rw = 1;
 	setDefaultPen();
-	drawRectangle( x-3, y-3, 6, 6 );
-	drawRectangle( x-10, y-10, 20, 20 );
+	//drawRectangle( x - rw, y - rw, 2 * rw, 2 * rw );
+	drawRectangle( px - rw, py - rw, 2 * rw, 2 * rw );
 	*/
 
-	double x4 = x - .5 * p.real() * cos( .25 * PI + angle * DEG2RAD );
-	double y4 = y + .5 * p.imag() * sin( .25 * PI + angle * DEG2RAD );
-
-	pdf->RotatedText( x4, y4, s, angle );
+	pdf->RotatedText( px, py, s, alfa );
 }
 
 /*****************************************************

@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "BasicWesternChart.h"
@@ -54,12 +52,8 @@ BasicWesternChart::BasicWesternChart( const ChartType &charttype, ChartPropertie
 	//printf( "BasicWesternChart::BasicWesternChart h1 %ld h2 %ld\n", (long)h1, (long)h2 );
 
 	OBJECT_INCLUDES ss = chartprops->getWesternObjectStyle();
-	//printf( "Style 1 %d\n", (int)ss );
 	ss |= OI_ALL_HOUSES;
 	ss |= OI_4_HOUSES;
-	//chartprops->setWesternObjectStyle( ss );
-	//printf( "Style 2 %d\n", (int)ss );
-
 	setup();
 }
 
@@ -114,8 +108,8 @@ void BasicWesternChart::setup()
 
 	// reduce radius if second chart has planets outside outerZodiac
 	// transit style 0 = outside, 1 = inside
-	//if ( transitmode && chartprops->getWesternChartDisplayConfig().transitStyle == 0 )
-	if ( h2 && chartprops->getWesternChartDisplayConfig().transitStyle == 0 )
+	//if ( transitmode && chartprops->getWesternChartDisplayConfig().secondchartStyle == 0 )
+	if ( h2 && chartprops->getWesternChartDisplayConfig().secondchartStyle == 0 )
 	{
 		rmax *= .9;
 		rxmax *= .9;
@@ -183,13 +177,13 @@ double BasicWesternChart::getPRadius( const ObjectId &planet, const Horoscope *h
 	const int factor = 1;
 	WesternChartConfig *wconf = getWChartConfig();
 
-	double ret = rmax * wconf->planets.radius / 100;
+	double ret = rmax * ( wconf->rPlanets.radius + wconf->rPlanets.width ) / 100;
 	if ( h == h2 )
 	{
-		if ( chartprops->getWesternChartDisplayConfig().transitStyle > 0 )
-			ret = rmax * wconf->innerTransitPlanets.radius / 100;
+		if ( chartprops->getWesternChartDisplayConfig().secondchartStyle > 0 )
+			ret = rmax * ( wconf->rInnerTransitPlanets.radius + wconf->rInnerTransitPlanets.width ) / 100;
 		else
-			ret = rmax * wconf->outerTransitPlanets.radius / 100;
+			ret = rmax * ( wconf->rOuterTransitPlanets.radius + wconf->rOuterTransitPlanets.width ) / 100;
 	}
 
 	double len, dist;

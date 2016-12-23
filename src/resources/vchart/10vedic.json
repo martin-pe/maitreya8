@@ -70,6 +70,7 @@
 						"palette" : "redstyle"
         },
         {
+            "name": "Yellow",
             "brush": {
                 "color": "black",
                 "style": "wxSOLID"
@@ -80,7 +81,6 @@
                     "style": "wxcross_hatch"
                 }
             },
-            "name": "Yellow",
             "outerrectangle": {
                 "doubleouterline": false,
                 "pen": {
@@ -91,7 +91,8 @@
             "pen": {
                 "color": "yellow",
                 "width": 2
-            }
+            },
+						"textcolor": "yellow"
         },
         {
             "brush": {
@@ -196,10 +197,6 @@
             "globaltextcolor": "black",
             "name": "Desert",
 					  "palette": "desert"
-        },
-        {
-				  	"name": "Test Palette",
-					  "palette": "madera"
         }
     ]
 }

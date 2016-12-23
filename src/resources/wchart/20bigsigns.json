@@ -1,0 +1,123 @@
+{
+    "configs": [
+        {
+            "name": "Big Signs",
+            "angles": {
+                "innercircle": {
+                    "radius": "40"
+                },
+                "outercircle": {
+                    "radius": "97"
+                }
+            },
+            "aspects": {
+                "radius": 40
+            },
+						"houses": {
+							"radius": 40,
+							"width": 29
+						},
+            "rinnertransitplanets": {
+                "radius": 40
+            },
+            "outerhouse": {
+                "radius": 69
+            },
+            "planetmarkerlength": 2,
+            "rplanets": {
+                "radius": 69
+            },
+            "signs": {
+                "radius": 69,
+                "width": 23,
+                "wlabels": 16,
+                "rotatelabels": true,
+                "labelstyle": 0,
+                "labelsize": 200
+            }
+        },
+        {
+            "name": "Big Signs Version 2",
+            "extends": "Big Signs",
+            "signs": {
+								"pen": {
+										"color" : "grey",
+										"style": "wxSOLID",
+										"width": 2
+								}
+            }
+				},
+        {
+            "name": "Big Signs Colored",
+            "extends": "Big Signs",
+            "houses": {
+                "palette": "housestock"
+            },
+            "signs": {
+                "palette": "signstock"
+            }
+        },
+        {
+            "name": "Big Signs Desert",
+            "extends": "Big Signs",
+            "signs": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Big Signs / Desert 2",
+            "extends": "Big Signs Desert",
+            "houses": {
+                "palette": "desert"
+            }
+        },
+        {
+            "name": "Big Signs Rainbow",
+            "extends": "Big Signs",
+            "signs": {
+                "palette": "rainbow",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Big Signs / Rainbow 2",
+            "extends": "Big Signs Rainbow",
+            "houses": {
+                "palette": "rainbow"
+            }
+        },
+        {
+            "name": "Big Signs/Colored",
+            "extends": "Big Signs",
+            "houses": {
+                "globaltextcolor": "grey",
+                "palette": "signstock"
+            },
+            "signs": {
+                "globaltextcolor": "white",
+                "palette": "housestock"
+            }
+        },
+        {
+            "name": "Big Signs/Grobi",
+            "extends": "Big Signs",
+            "signs": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            },
+            "houses": {
+                "palette": "desert",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Big Signs/Rainbow",
+            "extends": "Big Signs",
+            "signs": {
+                "palette": "rainbow",
+                "globaltextcolor": "black"
+            }
+        }
+    ]
+}

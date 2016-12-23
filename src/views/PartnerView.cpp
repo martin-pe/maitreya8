@@ -7,23 +7,22 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
+#include <wx/checkbox.h>
 #include <wx/choice.h>
 #include <wx/notebook.h>
+#include <wx/sizer.h>
 #include <wx/spinctrl.h>
-#include <wx/notebook.h>
 #include <wx/toolbar.h>
 
 #include "Aspect.h"
@@ -33,65 +32,28 @@
 #include "DataSet.h"
 #include "DialogElements.h"
 #include "Document.h"
-#include "SheetWidget.h"
 #include "GraphicGrid.h"
 #include "guibase.h"
 #include "Lang.h"
 #include "maitreya.h"
 #include "Partner.h"
+#include "ObjectFilterDialog.h"
+#include "Sheet.h"
 #include "SplitterWidget.h"
 #include "TextHelper.h"
+#include "TextWidget.h"
 #include "ToolPanel.h"
-
-#ifdef USE_URANIAN_CHART
 #include "Uranian.h"
 #include "UranianHelper.h"
-#endif
-
+#include "UranianParamPanel.h"
 #include "Varga.h"
 
 extern Config *config;
 
 // PNB = Partner Notebook
 enum { PNB_SYNASTRY = 0, PNB_ASTAKOOTA, PNB_COMPOSITE, PNB_SBC, PNB_SHADVARGA, PNB_VARGA2, PNB_VARGA3, PNB_URANIAN };
-enum { PV_NOTEBOOK = wxID_HIGHEST + 3500 };
-
-class PartnerView;
-
-/*************************************************//**
-*
-* \brief manages documents for the PartnerView
-*
-******************************************************/
-class PartnerViewDocListener : public DocumentListener
-{
-	DECLARE_CLASS( PartnerViewDocListener )
-
-public:
-
-	PartnerViewDocListener( DocumentManager *manager, PartnerView *view )
-			:  DocumentListener( manager )
-	{
-		this->manager = manager;
-		this->view = view;
-		manager->addClient( this );
-	}
-
-	~PartnerViewDocListener() { manager->deleteClient( this ); }
-
-protected:
-
-	void updateAllDocs() {}
-	void documentListChanged();
-
-private:
-
-	DocumentManager *manager;
-	PartnerView *view;
-
-};
-
-IMPLEMENT_CLASS( PartnerViewDocListener, DocumentListener )
+enum { PV_NOTEBOOK = wxID_HIGHEST + 3500, PV_UPANEL };
+#define URANIAN_VIEW_WO WO_MENU_FULL_OBJECT | WO_EXPORT_PDF | WO_EXPORT_PLAINTEXT | WO_EXPORT_HTMLTEXT | WO_EXPORT_CSVTEXT
 
 #define MAX_PARTNER_PAGES 8
 
@@ -100,10 +62,9 @@ IMPLEMENT_CLASS( PartnerViewDocListener, DocumentListener )
 * \brief view for widgets related to partner charts
 *
 ******************************************************/
-class PartnerView : public BasicView
+class PartnerView : public BasicView, public DocumentListener
 {
 	DECLARE_CLASS( PartnerView )
-	friend class PartnerViewDocListener;
 
 public:
 
@@ -112,47 +73,46 @@ public:
 	**   PartnerView   ---   Constructor
 	**
 	******************************************************/
-	PartnerView( wxWindow *parent, ChildWindow *frame, DocumentManager *manager )
-			: BasicView( parent, frame, VIEW_PARTNER, true ),
-			docmanager( manager )
+	PartnerView( wxWindow *parent, ChildWindow *frame )
+			: BasicView( parent, frame, VIEW_PARTNER, true )
 	{
 		h1 = h2 = (Horoscope*)NULL;
-		activetext = (SheetWidget*)NULL;
+		activetext = (TextWidget*)NULL;
 		activewidget = (ChartGridWidget*)NULL;
+		DocumentManager::get()->subscribe( this );;
 
-#ifdef USE_URANIAN_CHART
-		uconfig = new UranianConfig( *config->uranian );
-		uexpert = new UranianExpert( props, config->uranian );
-#endif
+		uexpert = new UranianExpert( props );
+		UranianConfig &uconfig = props->getUranianConfig();
 
-		listener = new PartnerViewDocListener( manager, this );
 		notebook = new wxNotebook( this, PV_NOTEBOOK );
 
 		// PNB_SYNASTRY
 		synastrysplitter = new SplitterWidget( notebook );
 		synastrywidget = new ChartGridWidget( synastrysplitter, CT_PARTNER, props, 1, 1 );
+		synastrywidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
 		synastrywidget->addVedicChart();
 		synastrywidget->addWesternChart();
-#ifdef USE_URANIAN_CHART
-		synastrywidget->getAspectExpert()->setSortOrder( uconfig->sortOrder );
-#endif
-		swidget = new SheetWidget( synastrysplitter, props );
+		synastrywidget->getAspectExpert()->setSortOrder( uconfig.sortOrder );
+		swidget = new TextWidget( synastrysplitter, props );
 		swidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
+		swidget->addWidgetOption( WO_MENU_FULL_OBJECT );
 
 		synastrysplitter->SplitVertically( swidget, synastrywidget );
 		notebook->AddPage( synastrysplitter, _( "Synastry" ));
 
 		// PNB_ASTAKOOTA
-		awidget = new SheetWidget( notebook, props );
+		awidget = new TextWidget( notebook, props );
 		notebook->AddPage( awidget, _( "Ashtakoota" ));
 
 		// PNB_COMPOSITE
 		ch = new CompositHoroscope();
 		compositesplitter = new SplitterWidget( notebook );
-		cwidget = new SheetWidget( compositesplitter, props );
+		cwidget = new TextWidget( compositesplitter, props );
 		cwidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
+		cwidget->addWidgetOption( WO_MENU_FULL_OBJECT );
 
 		compositewidget = new ChartGridWidget( compositesplitter, CT_RADIX, props, 2, 2 );
+		compositewidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
 		compositewidget->addVedicChart( V_RASI );
 		compositewidget->addVedicChart( V_BHAVA );
 		compositewidget->addVedicChart( V_NAVAMSA );
@@ -178,11 +138,17 @@ public:
 		varga3widget = new VargaTab3ChartGridWidget( notebook, CT_PARTNER, props );
 		notebook->AddPage( varga3widget, _( "Varga (3)" ));
 
-#ifdef USE_URANIAN_CHART
 		// PNB_URANIAN
-		uwidget = new SheetWidget( notebook, props );
-		notebook->AddPage( uwidget, _( "Uranian" ));
-#endif
+		wxPanel *panel = new wxPanel( notebook );
+		uwidget = new TextWidget( panel, props, URANIAN_VIEW_WO );
+		printf( "ORBIS 1 %f\n", uconfig.orbisPartner );
+		upanel = new UranianParamPanel( panel, PV_UPANEL, props, &uconfig.orbisPartner );
+		wxBoxSizer* usizer = new wxBoxSizer( wxHORIZONTAL );
+		usizer->Add( upanel, 0, wxALL, 3);
+		usizer->Add( uwidget, 1, wxEXPAND | wxALL, 3);
+		panel->SetSizer( usizer );
+		usizer->Fit( panel );
+		notebook->AddPage( panel, _( "Uranian" ));
 
 		widget = notebook;
 		notebook->SetSelection( config->viewprefs->activePagePartner );
@@ -195,13 +161,8 @@ public:
 
 		Connect( TBS_PARTNER1, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( PartnerView::OnPartnerChoice ));
 		Connect( TBS_PARTNER2, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( PartnerView::OnPartnerChoice ));
-#ifdef USE_URANIAN_CHART
-		Connect( TBS_ORBIS, wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( PartnerView::OnSpinCommand ));
-		Connect( TBS_SORT, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( PartnerView::OnChoiceCommand ));
-		Connect( TBS_GRADKREIS, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( PartnerView::OnChoiceCommand ));
-		Connect( CMD_FILTER, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( PartnerView::OnFilter ));
-#endif
 		Connect( PV_NOTEBOOK, wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, wxNotebookEventHandler( PartnerView::OnNotebook ));
+		Connect( PV_UPANEL, COMMAND_UPANEL_CHANGED, wxCommandEventHandler( PartnerView::OnGeneralCommand ));
 	}
 
 	/*****************************************************
@@ -215,17 +176,12 @@ public:
 		config->viewprefs->sashPartnerComposite = compositesplitter->GetSashPosition();
 		config->viewprefs->activePagePartner = notebook->GetSelection();
 
-#ifdef USE_URANIAN_CHART
-		config->uranian->orbisTransit = uconfig->orbisTransit;
-		config->uranian->gradkreis = uconfig->gradkreis;
-		config->uranian->sortOrder = uconfig->sortOrder;
+		printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisPartner );
+		*config->uranian = props->getUranianConfig();
 
 		delete uexpert;
-		delete uconfig;
-#endif
-
 		delete ch;
-		docmanager->deleteClient( listener );
+		DocumentManager::get()->subscribe( this );
 	}
 
 	wxString getWindowLabel( const bool shortname ) { return shortname ? _( "Partner" ) : _( "Partner View" ); }
@@ -251,22 +207,16 @@ protected:
 	**   PartnerView   ---   initToolItems
 	**
 	******************************************************/
-#ifdef USE_URANIAN_CHART
+	/*
 	virtual void initToolItems()
 	{
-		if ( toolbar )
-		{
-			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
-			if ( spin_orbis ) spin_orbis->SetValue( 60 * uconfig->orbisPartner );
+		assert( upanel );
+		UranianConfig &uconfig = props->getUranianConfig();
 
-			wxChoice *choice_sort = (wxChoice*)toolbar->FindControl( TBS_SORT );
-			if ( choice_sort ) choice_sort->SetSelection( uconfig->sortOrder );
-
-			GradkreisChoice *choice_gk = (GradkreisChoice*)toolbar->FindControl( TBS_GRADKREIS );
-			if ( choice_gk ) choice_gk->SetSelection( (int)uconfig->gradkreis );
-		}
+		upanel->setOrbis( uconfig.orbisPartner );
+		upanel->load( uconfig );
 	}
-#endif
+	*/
 
 	/*****************************************************
 	**
@@ -275,65 +225,8 @@ protected:
 	******************************************************/
 	void OnToolbarCommand()
 	{
-		if ( toolbar )
-		{
-			setupCharts();
-#ifdef USE_URANIAN_CHART
-			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
-			if ( spin_orbis ) uconfig->orbisPartner = (double)(spin_orbis->GetValue()) / 60.0;
-
-			wxChoice *choice_sort = (wxChoice*)toolbar->FindControl( TBS_SORT );
-			if ( choice_sort )
-			{
-				uconfig->sortOrder = (ASPECT_SORTORDER)choice_sort->GetSelection();
-				synastrywidget->getAspectExpert()->setSortOrder( uconfig->sortOrder );
-			}
-
-			GradkreisChoice *choice_gk = (GradkreisChoice*)toolbar->FindControl( TBS_GRADKREIS );
-			if ( choice_gk ) uconfig->gradkreis = choice_gk->getGradkreis();
-#endif
-		}
+		printf( "OnToolbarCommand\n" );
 		OnDataChanged();
-	}
-
-#ifdef USE_URANIAN_CHART
-	/*****************************************************
-	**
-	**   PartnerView   ---   OnFilter
-	**
-	******************************************************/
-	void OnFilter( wxCommandEvent& )
-	{
-		if ( setupObjectFilter( this, uexpert->getPlanetList( PC_RADIX ), uconfig->objectFilter ))
-		{
-			OnDataChanged();
-		}
-	}
-#endif
-
-	/*****************************************************
-	**
-	**   PartnerView   ---   updateToolItems
-	**
-	******************************************************/
-	void updateToolItems()
-	{
-#ifdef USE_URANIAN_CHART
-		if ( ! toolbar ) return;
-		const bool showExtraItems = ( notebook->GetSelection() == PNB_URANIAN );
-		const bool showSortChoice = ( notebook->GetSelection() == PNB_URANIAN || ( ! isVedic() && notebook->GetSelection() == PNB_SYNASTRY ));
-
-		wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
-		if ( spin_orbis ) spin_orbis->Enable( showExtraItems );
-
-		wxChoice *choice_sort = (wxChoice*)toolbar->FindControl( TBS_SORT );
-		if ( choice_sort ) choice_sort->Enable( showSortChoice );
-
-		GradkreisChoice *choice_gk = (GradkreisChoice*)toolbar->FindControl( TBS_GRADKREIS );
-		if ( choice_gk ) choice_gk->Enable( showExtraItems );
-
-		toolbar->EnableTool( CMD_FILTER, showExtraItems );
-#endif
 	}
 
 	/*****************************************************
@@ -355,7 +248,7 @@ protected:
 	******************************************************/
 	void setActiveItems()
 	{
-		activetext = (SheetWidget*)NULL;
+		activetext = (TextWidget*)NULL;
 		activewidget = (ChartGridWidget*)NULL;
 
 		switch ( notebook->GetSelection() )
@@ -371,11 +264,9 @@ protected:
 			activetext = cwidget;
 			activewidget = compositewidget;
 			break;
-#ifdef USE_URANIAN_CHART
 		case PNB_URANIAN:
 			activetext = uwidget;
 			break;
-#endif
 		case PNB_SBC:
 			activewidget = sbcwidget;
 			break;
@@ -398,7 +289,6 @@ protected:
 		{
 			if ( activewidget ) activewidget->Refresh();
 		}
-		updateToolItems();
 	}
 
 	/*****************************************************
@@ -421,8 +311,6 @@ protected:
 		assert( page >= 0 && page < MAX_PARTNER_PAGES );
 		printf( "PartnerView::updatePage nummer %d h1 %ld h2 %ld page %ld widget %ld\n",
 			notebook->GetSelection(), (long)h1, (long)h2, (long)activetext, (long)activewidget );
-
-		updateToolItems();
 
 		if ( activewidget )
 		{
@@ -483,7 +371,6 @@ protected:
 			cwidget->OnDataChanged();
 		}
 		break;
-#ifdef USE_URANIAN_CHART
 		case PNB_URANIAN:
 		{
 			uwidget->clearSheet();
@@ -496,7 +383,6 @@ protected:
 			uwidget->OnDataChanged();
 		}
 		break;
-#endif
 		default:
 				//assert( false );
 		break;
@@ -562,6 +448,7 @@ protected:
 	void setupCharts()
 	{
 		int sel1 = -1, sel2 = -1;
+		DocumentManager *docmanager = DocumentManager::get();
 
 		wxChoice *choice_partner1 = (wxChoice*)toolbar->FindControl( TBS_PARTNER1 );
 		if ( choice_partner1 ) sel1 = choice_partner1->GetSelection();
@@ -595,8 +482,9 @@ protected:
 		if ( ! toolbar ) return;
 		int sel1 = -1, sel2 = -1;
 		wxString docname;
+		DocumentManager *docmanager = DocumentManager::get();
 
-		int docnum = docmanager->getNbDocuments();
+		const int docnum = (int)docmanager->getDocumentCount();
 		wxChoice *choice_partner1 = (wxChoice*)toolbar->FindControl( TBS_PARTNER1 );
 		wxChoice *choice_partner2 = (wxChoice*)toolbar->FindControl( TBS_PARTNER2 );
 
@@ -613,18 +501,15 @@ protected:
 		if ( sel1 == -1 && docnum > 0 ) sel1 = 0;
 		if ( ( sel2 == sel1 || sel2 == -1 ) && docnum > 0 ) sel2 = docnum - 1;
 
+		wxArrayString a = docmanager->getNamesArray();
 		choice_partner1->Clear();
+		choice_partner1->Append( a );
 		choice_partner2->Clear();
+		choice_partner2->Append( a );
 
-		int i = 1;
-		for ( i = 0; i < docnum; i++ )
-		{
-			docname = docmanager->getDocument( i )->getHName();
-			choice_partner1->Append( docname );
-			choice_partner2->Append( docname );
-		}
 		choice_partner1->SetSelection( sel1 );
 		choice_partner2->SetSelection( sel2 );
+		printf( "sel1 %d sel2 %d\n", sel1, sel2 );
 		if ( sel1 != -1 && docnum > 0 ) h1 = docmanager->getDocument( Min( sel1, docnum ));
 		else h1 = 0;
 		if ( sel2 != -1 && docnum > 0 ) h2 = docmanager->getDocument( Min( sel2, docnum ));
@@ -633,26 +518,37 @@ protected:
 
 	/*****************************************************
 	**
-	**   PartnerView   ---   documentListChanged
+	**   PartnerView   ---   notifyDocumentListChanged
 	**
 	******************************************************/
-	void documentListChanged()
+	virtual void notifyDocumentListChanged()
 	{
 		updatePartnerChoices();
 		OnDataChanged();
 	}
 
+	/*****************************************************
+	**
+	**   PartnerView   ---   notifyDocumentChanged
+	**
+	******************************************************/
+	virtual void notifyDocumentChanged( Document* )
+	{
+		OnDataChanged();
+	}
+	virtual void notifyDocumentSaved( Document* ) {}
+
 	// synastry chart
 	SplitterWidget *synastrysplitter;
-	SheetWidget *swidget;
+	TextWidget *swidget;
 	ChartGridWidget *synastrywidget;
 
-	// Vedic
-	SheetWidget *awidget;
+	// Asta Koota
+	TextWidget *awidget;
 
 	// Composite
 	SplitterWidget *compositesplitter;
-	SheetWidget *cwidget;
+	TextWidget *cwidget;
 	ChartGridWidget *compositewidget;
 
 	// Sbc
@@ -663,40 +559,33 @@ protected:
 	VargaTab2ChartGridWidget *varga2widget;
 	VargaTab3ChartGridWidget *varga3widget;
 
-	SheetWidget *activetext;
-	//PartnerViewBaseTextWidget *activetext;
-	//BasicWidget *activewidget;
+	TextWidget *activetext;
 	ChartGridWidget *activewidget;
 	bool dirty[MAX_PARTNER_PAGES];
 
 	Horoscope *h1, *h2;
 	CompositHoroscope *ch;
 
-#ifdef USE_URANIAN_CHART
 	// Uranian, no splitter
-	SheetWidget *uwidget;
+	TextWidget *uwidget;
 
-	UranianConfig *uconfig;
 	UranianExpert *uexpert;
-#endif
+	UranianParamPanel *upanel;
+	ObjectFilter filter;
 
-	DocumentManager *docmanager;
-	PartnerViewDocListener *listener;
 	wxNotebook *notebook;
 };
 
 IMPLEMENT_CLASS( PartnerView, BasicView )
-
-void PartnerViewDocListener::documentListChanged() { view->documentListChanged(); }
 
 /**************************************************************
 ***
 **    ViewFactory   ---   createPartnerView
 ***
 ***************************************************************/
-BasicView *ViewFactory::createPartnerView( wxWindow *parent, ChildWindow *frame, DocumentManager *manager )
+BasicView *ViewFactory::createPartnerView( wxWindow *parent, ChildWindow *frame )
 {
-	return new PartnerView( parent, frame, manager );
+	return new PartnerView( parent, frame );
 }
 
 

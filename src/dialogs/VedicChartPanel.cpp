@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "VedicChartPanel.h"
@@ -78,7 +76,7 @@ VedicChartPanel::VedicChartPanel( wxWindow* parent ) : ConfigPanel( parent )
     sizer_sbc_options_staticbox = new wxStaticBox(notebook_pane_sbc, wxID_ANY, _("View Options"));
     sizer_aspect_options_staticbox = new wxStaticBox(notebook_pane_responsive, wxID_ANY, _("Aspect Display"));
     sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Preview"));
-    sizer_defaultview_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Default View"));
+    sizer_defaultskin_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Skin"));
     const wxString choice_defaultskin_choices[] = {
         _("dummy"),
         _("dummy"),
@@ -482,10 +480,10 @@ void VedicChartPanel::do_layout()
     wxFlexGridSizer* grid_zoom = new wxFlexGridSizer(1, 3, 0, 0);
     sizer_viewoptions_staticbox->Lower();
     wxStaticBoxSizer* sizer_viewoptions = new wxStaticBoxSizer(sizer_viewoptions_staticbox, wxVERTICAL);
-    sizer_defaultview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_defaultview = new wxStaticBoxSizer(sizer_defaultview_staticbox, wxVERTICAL);
-    sizer_defaultview->Add(choice_defaultskin, 0, wxALL, 3);
-    sizer_general->Add(sizer_defaultview, 1, wxALL|wxEXPAND, 3);
+    sizer_defaultskin_staticbox->Lower();
+    wxStaticBoxSizer* sizer_defaultskin = new wxStaticBoxSizer(sizer_defaultskin_staticbox, wxVERTICAL);
+    sizer_defaultskin->Add(choice_defaultskin, 0, wxALL, 3);
+    sizer_general->Add(sizer_defaultskin, 1, wxALL|wxEXPAND, 3);
     sizer_viewoptions->Add(check_retro, 0, wxALL|wxEXPAND, 3);
     sizer_viewoptions->Add(check_use_colors, 0, wxALL|wxEXPAND, 3);
     sizer_general->Add(sizer_viewoptions, 1, wxEXPAND, 0);

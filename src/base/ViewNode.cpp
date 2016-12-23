@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "ViewNode.h"
@@ -83,7 +81,6 @@ WidgetNode::WidgetNode( ViewNode *parent )
 	viewId = VIEW_EMPTY;
 	textmode = config->viewprefs->textWindowPage;
 	toolpanel = true;
-	uranian = false;
 	vedic = config->preferVedic;
 
 	basicview = (BasicView*)NULL;
@@ -100,7 +97,6 @@ WidgetNode::WidgetNode( const int &command )
 	subtype = varga = rows = cols = 0;
 	textmode = config->viewprefs->textWindowPage;
 	toolpanel = true;
-	uranian = false;
 	vedic = config->preferVedic;
 	basicview = (BasicView*)NULL;
 
@@ -113,17 +109,6 @@ WidgetNode::WidgetNode( const int &command )
 		vedic = false;
 		varga = 0;
 		break;
-#ifdef USE_URANIAN_CHART
-	case CMD_NEW_URANIAN:
-		uranian = true;
-		break;
-	case CMD_NEW_URANIANCHART:
-		vedic = false;
-		subtype = 1;
-		uranian = true;
-		varga = 0;
-		break;
-#endif
 	default:
 		if ( command >= CMD_NEW_RASI && command <= CMD_NEW_RASI+30 )
 		{

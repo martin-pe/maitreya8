@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "GraphicalChart.h"
@@ -164,7 +162,7 @@ bool GraphicalChart::isPlanetBenefic( const ObjectId &planet, const int &chart_i
 ******************************************************/
 void GraphicalChart::calculateObjectList()
 {
-	const OBJECT_INCLUDES excludes = OI_ALL_HOUSES | OI_4_HOUSES | OI_ARIES;
+	const OBJECT_INCLUDES excludes = OI_ALL_HOUSES | OI_4_HOUSES; // | OI_ARIES;
   obs = vedic ? 
 	chartprops->getVedicPlanetList( excludes ) : chartprops->getWesternPlanetList( excludes );
 }
@@ -221,24 +219,24 @@ void GraphicalChart::paint( Painter *painter, const MRect &r, const wxRect *rrec
 
 /*****************************************************
 **
-**   GraphicalChart   ---   setGraphicFont
+**   GraphicalChart   ---   setGraphicFontZoom
 **
 ******************************************************/
-void GraphicalChart::setGraphicFont( const double zoom )
+void GraphicalChart::setGraphicFontZoom( const double &zoom )
 {
 	//printf( "GraphicalChart::setGraphicFont %f %f %f\n", zoom, extrazoom, painterzoom );
-	painter->setGraphicFont( zoom * extrazoom * painterzoom );
+	painter->setGraphicFontZoom( zoom * extrazoom * painterzoom );
 }
 
 /*****************************************************
 **
-**   GraphicalChart   ---   setSymbolFont
+**   GraphicalChart   ---   setSymbolFontZoom
 **
 ******************************************************/
-void GraphicalChart::setSymbolFont( const double zoom )
+void GraphicalChart::setSymbolFontZoom( const double &zoom )
 {
 	//printf( "GraphicalChart::setSymbolFont  zoom %f extrazoom %f painterzoom %f\n",  zoom, extrazoom, painterzoom );
-	painter->setSymbolFont( zoom * extrazoom * painterzoom );
+	painter->setSymbolFontZoom( zoom * extrazoom * painterzoom );
 }
 
 /*****************************************************
@@ -258,12 +256,23 @@ void GraphicalChart::setDefaultTextColor( const FIELD_PART part )
 
 /*****************************************************
 **
+**   GraphicalChart   ---   tryToSetPen
+**
+******************************************************/
+void GraphicalChart::tryToSetPen( const wxPen &pen )
+{
+	if ( pen.IsOk() ) painter->setPen( pen );
+	else painter->setPen( defaultPen );
+}
+
+/*****************************************************
+**
 **   GraphicalChart   ---   paintMarkerLine
 **
 ******************************************************/
 void GraphicalChart::paintMarkerLine( const double &alfa, const GcChartFrame &c1, const GcChartFrame &c2 )
 {
-	painter->setPen( defaultPen );
+	//printf( "GraphicalChart::paintMarkerLine frametype is %d c1 %d c2 %d\n", cfg->frameType, c1.frameType, c2.frameType );
 	const MPoint p1 = frameBorderPointToXy( alfa, c1 );
 	const MPoint p2 = frameBorderPointToXy( alfa, c2 );
 	painter->drawLine( p1, p2 );
@@ -271,9 +280,35 @@ void GraphicalChart::paintMarkerLine( const double &alfa, const GcChartFrame &c1
 
 /*****************************************************
 **
+**   GraphicalChart   ---   paintObjectRing
+**
+******************************************************/
+void GraphicalChart::paintObjectRing( const double &angle, const GcObjectRing &r )
+{
+	//printf( "GraphicalChart::paintObjectRing frametype is frame %d cfg  %d\n", r.frameType, cfg->frameType );
+	if ( r.show )
+	{
+		tryToSetPen( r.pen );
+		for ( int i = 0; i < 360; i++ )
+		{
+			if ( ! ( i % 10 )) paintMarkerLine( angle + i, r, r.magnify( r.wdegree10 ));
+			else if ( ! ( i % 5 )) paintMarkerLine( angle + i, r, r.magnify( r.wdegree5 ));
+			else paintMarkerLine( angle + i, r, r.magnify( r.wdegree1 ));
+		}
+		if ( r.showInnerFrame ) paintChartFrame( r );
+		if ( r.show1DegreeFrame ) paintChartFrame( r.magnify( r.wdegree1 ));
+		if ( r.show5DegreeFrame ) paintChartFrame( r.magnify( r.wdegree5 ));
+		if ( r.show10DegreeFrame ) paintChartFrame( r.magnify( r.wdegree10 ));
+		if ( r.showOuterFrame ) paintChartFrame( r.magnify( r.width ));
+	}
+}
+
+/*****************************************************
+**
 **   GraphicalChart   ---   paintDegreeMarkers
 **
 ******************************************************/
+// TODO braucht man den noch
 void GraphicalChart::paintDegreeMarkers( const double &aries,
 	const GcChartFrame &zodiacFrame,
 	const GcChartFrame &degree1Frame,
@@ -299,6 +334,8 @@ MPoint GraphicalChart::frameBorderPointToXy( const double &angle, const GcChartF
 	const double alfa = red_deg( angle );
 	const double a = alfa * PI / 180;
 	double lambda;
+
+	//printf( "GraphicalChart::frameBorderPointToXy frametype is frame %d cfg  %d\n", frame.frameType, cfg->frameType );
 
 	CHART_FRAME type = ( frame.frameType != CF_INHERITED ) ? frame.frameType : cfg->frameType;
 	switch( type )
@@ -390,7 +427,7 @@ MPoint GraphicalChart::frameBorderPointToXy( const double &angle, const GcChartF
 		break;
 
 		default:
-			printf( "Invalid chart frame type %d\n", cfg->frameType );
+			printf( "GraphicalChart::frameBorderPointToXy Invalid chart frame types %d/%d\n", cfg->frameType, frame.frameType );
 			assert( false );
 		break;
 	}
@@ -462,7 +499,7 @@ void GraphicalChart::drawChartFrameField( const double &alfa0, const double &alf
 			printf( "TODO: Invalid chart frame type %d\n", cfg->frameType );
 		break;
 		default:
-			printf( "Invalid chart frame type %d\n", cfg->frameType );
+			printf( "GraphicalChart::drawChartFrameField Invalid chart frame type %d\n", cfg->frameType );
 			assert( false );
 		break;
 	}
@@ -531,7 +568,7 @@ void GraphicalChart::paintChartFrame( const GcChartFrame &frame )
 		}
 		break;
 		default:
-			printf( "Invalid chart frame type %d\n", cfg->frameType );
+			printf( "GraphicalChart::paintChartFrame Invalid chart frame types %d/%d\n", cfg->frameType, frame.frameType );
 			assert( false );
 		break;
 	}
@@ -566,23 +603,23 @@ void GraphicalChart::paintArrow( const MPoint &p, const MPoint &q )
 **   GraphicalChart   ---   paintArrow
 **
 ******************************************************/
-void GraphicalChart::paintArrow( const double &a, GcArrow &arrow )
+void GraphicalChart::paintArrow( const double &a, GcChartRing &arrow )
 {
-	MPoint p = frameBorderPointToXy( a, arrow.outerFrame );
+	MPoint p = frameBorderPointToXy( a, arrow.magnify( arrow.width ));
 
 	const wxPen pen = arrow.pen.IsOk() ? arrow.pen : defaultPen;
 	painter->setPen( pen );
 	painter->setBrush( pen.GetColour() );
 
-	if ( arrow.innerFrame.radius == 0 )
+	if ( arrow.radius == 0 )
 	{
 		// TODO methodeframeBorderPointToXy ersetzen
-		paintArrow( frameBorderPointToXy( a+180, arrow.outerFrame ), p );	
+		paintArrow( frameBorderPointToXy( a + 180, arrow.magnify( arrow.width )), p );	
 	}
 	else
 	{
-		paintArrow( frameBorderPointToXy( a, arrow.innerFrame ), p );	
-		paintMarkerLine( a+180, arrow.innerFrame, arrow.outerFrame );
+		paintArrow( frameBorderPointToXy( a, arrow ), p );	
+		paintMarkerLine( a+180, arrow.radius, arrow.radius + arrow.width );
 	}
 }
 

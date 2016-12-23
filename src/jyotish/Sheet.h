@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #ifndef _SHEET_H_
@@ -39,7 +37,7 @@ class SheetConfig;
 class SheetItem;
 class WriterConfig;
 
-enum SHEET_ITEM_TYPE { WiTable, WiWidget, WiText, WiBar, WiGrid, WiRow, WiCell };
+enum SHEET_ITEM_TYPE { WiTable = 0, WiWidget, WiText, WiBar, WiColumnSet, WiRowSet, WiWidgetGrid, WiRow, WiCell };
 enum SHEET_TEXT_ITEM_SUBTYPE { WitNone = -1, WitHeader = 0, WitParagraph, WitLine, WitTableCell, WitTableHeader };
 
 // add bold, italic etc if required
@@ -152,10 +150,13 @@ public:
 		const TEXT_FORMAT format = TF_LONG
 	);
 
-	MString getObjectName( const ObjectId &num, const TEXT_FORMAT format = TF_MEDIUM, const bool vedic = false );
-	wxString getObjectNamePlain( const ObjectId &id, const TEXT_FORMAT format = TF_MEDIUM, const bool vedic = false );
+	MString getObjectName( const ObjectId&, const TEXT_FORMAT = TF_MEDIUM, const bool vedic = false );
+	wxString getObjectNamePlain( const ObjectId&, const TEXT_FORMAT = TF_MEDIUM, const bool vedic = false );
 
-	MString getSignName( const Rasi&, const TEXT_FORMAT format = TF_MEDIUM );
+	MString getSignName( const Rasi&, const TEXT_FORMAT = TF_MEDIUM );
+
+	// with subscriptum for context
+	MString getObjectNameWithContext( const ObjectId&, const PlanetContext&, const TEXT_FORMAT = TF_MEDIUM, const bool vedic = false ) const;
 
 	wxString token2PlainText( const MToken& );
 
@@ -204,27 +205,18 @@ public:
 	 : type( type ),
 	 align( align )
 	{
-		resetMarkup();
+		shrinkrate = 0;
 	}
 
 	virtual ~SheetItem() {}
 
 	virtual SheetItem *cloneClean() = 0;
 
-	virtual void resetMarkup() { markedItem = (SheetItem*)NULL;; }
-
-	virtual void markItem( SheetItem *item, const bool b = true ) { markedItem = b ? item : (SheetItem*)NULL; }
-
-	virtual SheetItem *getSubitem4Point( const wxPoint& );
-
-	virtual bool hasMarkup() const { return markedItem != (SheetItem*)NULL; }
-
-	virtual MRect getRefreshRect( const bool /*ismarked*/ = false, const int /*selectionMode*/ = 0 ) { return rect; }
-
-	SheetItem *markedItem;
+	virtual void moveTo( const double &x, const double &y );
 
 	SHEET_ITEM_TYPE type;
 	int align;
+	int shrinkrate;
 
 	MRect rect;
 };
@@ -269,31 +261,6 @@ public:
 * 
 *
 ******************************************************/
-/*
-class SheetTableItem : public SheetItem
-{
-	DECLARE_CLASS( SheetTableItem )
-
-public:
-	SheetTableItem( Table *t, const int align = Align::Center );
-
-	virtual ~SheetTableItem();
-
-	virtual SheetItem *cloneClean();
-
-	virtual SheetItem *getSubitem4Point( const wxPoint& );
-
-	Table *table;
-	vector<SheetItem*> rowitems;
-	SheetTextItem *headerItem;
-};
-*/
-
-/*************************************************//**
-*
-* 
-*
-******************************************************/
 class SheetWidgetItem : public SheetItem
 {
 	DECLARE_CLASS( SheetWidgetItem )
@@ -301,29 +268,9 @@ class SheetWidgetItem : public SheetItem
 public:
 
 	SheetWidgetItem( ChartProperties *props, const int align = Align::Center )
-	 : SheetItem( WiWidget, align ), props( props )
-	{
-		ratio = .7;
-		xmin = xmax = yfixed = 0;
-		minDecreaseRatio = .8;
-	}
-
-	virtual void preformat() {}
+	 : SheetItem( WiWidget, align ), props( props ) {}
 
 	virtual void doPaint( Painter *painter, const MRect &refreshRect ) = 0;
-
-	/*
-	*  Size hints
-	*  ----------
-	*  ratio: y = ratio * x
-	*  xmin = 0 will be maximum width
-	*  xbreak will cause column break at that width, zero means no break
-	*/
-	double ratio, xmin, xmax, yfixed;
-	
-	// item size can be decrease if page break required (pdf only)
-	double minDecreaseRatio;
-
 
 protected:
 
@@ -335,30 +282,82 @@ protected:
 * 
 *
 ******************************************************/
-class SheetGridItem : public SheetItem
+class SheetItemContainer : public SheetItem
 {
-	DECLARE_CLASS( SheetGridItem )
+	DECLARE_CLASS( SheetItemContainer )
 
 public:
 
-	//virtual bool handleMouseMoveEvent( MouseEventContext& );
-	SheetGridItem( const uint &cols, const uint &rows, const int align = Align::Center );
-	~SheetGridItem();
+	SheetItemContainer( const SHEET_ITEM_TYPE &type );
+	~SheetItemContainer();
+
+	void addItem( SheetItem* );
+	uint getSize() const;
+
+	virtual void moveTo( const double &x, const double &y );
+
+	Sheet *sheet;
+};
+
+/*************************************************//**
+*
+* 
+*
+******************************************************/
+class SheetWidgetGrid : public SheetItemContainer
+{
+	DECLARE_CLASS( SheetWidgetGrid )
+
+public:
+
+	SheetWidgetGrid( const uint &ncols, const double x2yratio = 0,
+			const double wmin = 0, const double hmin = 0,
+			const double wmax = 0, const double hmax = 0 )
+		: SheetItemContainer( WiWidgetGrid ),
+			nb_cols( ncols ),
+			x2yratio( x2yratio ),
+			wmin( wmin ),
+			hmin( hmin ),
+			wmax( wmax ),
+			hmax( hmax )
+		{
+		}
 
 	virtual SheetItem *cloneClean();
 
-	virtual void resetMarkup() { /* TODO */ }
+	const uint nb_cols;
+	double x2yratio;
+	const double wmin, hmin, wmax, hmax;
+};
 
-	//virtual void doPaint( Painter *painter, const MRect &refreshRect ) = 0;
+/*************************************************//**
+*
+* 
+*
+******************************************************/
+class SheetColumnSet : public SheetItemContainer
+{
+	DECLARE_CLASS( SheetColumnSet )
 
-	void addItem( SheetItem* );
+public:
 
-protected:
+	SheetColumnSet() : SheetItemContainer( WiColumnSet ) {}
+	virtual SheetItem *cloneClean();
+};
 
-	const uint cols;
-	const uint rows;
-	list<SheetItem*> items;
+/*************************************************//**
+*
+* 
+*
+******************************************************/
+class SheetRowSet : public SheetItemContainer
+{
+	DECLARE_CLASS( SheetRowSet )
 
+public:
+
+	SheetRowSet() : SheetItemContainer( WiRowSet ) {}
+	virtual SheetItem *cloneClean();
 };
 
 /*************************************************//**
@@ -379,7 +378,7 @@ public:
 
 	void clear();
 	void addItem( SheetItem* );
-	void resetMarkup();
+	void centerItems();
 
 	void addHeader( const wxString&, const int align = Align::Left + Align::VCenter );
 	void addParagraph( const wxString&, const int align = Align::Left + Align::VCenter );

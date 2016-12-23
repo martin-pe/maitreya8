@@ -7,17 +7,15 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "GenericTableWriter.h"
@@ -160,7 +158,6 @@ void GenericTableWriter::appendObjectListTcByConfigKeys( Tc &tc, const OBJECT_IN
 	if ( style & TAB_CT_NAKSHATRA ) colset.cols.push_back( TcColumn( TAB_CT_NAKSHATRA, vedic ));
 	if ( style & TAB_CT_NAKSHATRA_PADA ) colset.cols.push_back( TcColumn( TAB_CT_NAKSHATRA_PADA, vedic ));
 	if ( style & TAB_CT_KP_LORDS ) colset.cols.push_back( TcColumn( TAB_CT_KP_LORDS, vedic ));
-	if ( style & TAB_CT_CHARA_KARAKA ) colset.cols.push_back( TcColumn( TAB_CT_CHARA_KARAKA, vedic ));
 	if ( style & TAB_CT_SHASTIAMSA_LORD ) colset.cols.push_back( TcColumn( TAB_CT_SHASTIAMSA_LORD, vedic ));
 	if ( style & TAB_CT_CHARA_KARAKA ) colset.cols.push_back( TcColumn( TAB_CT_CHARA_KARAKA, vedic ));
 	if ( style & TAB_CT_HOUSE_POSITION ) colset.cols.push_back( TcColumn( TAB_CT_HOUSE_POSITION, vedic ));
@@ -181,15 +178,22 @@ Table *GenericTableWriter::createTable( Tc *conf )
 
 	// calculate number of cols and rows
 	uint cols = 0;
-	uint rows = 2;
+	uint rows = 0;
+	bool hasHeader = false;
 	for( i = 0; i < tcfg->colsets.size(); i++ )
 	{
+		if ( ! tcfg->colsets[i].header.IsEmpty() ) hasHeader = true;
+		//printf( "HEADER %s hasHeader %d\n", str2char( tcfg->colsets[i].header ), hasHeader );
+
 		rows = Max( rows, calcRowCount( tcfg->colsets[i] ) + 1 );
 		for( j = 0; j < tcfg->colsets[i].cols.size(); j++ )
 		{
 			cols +=  getNumCols4ColumnType( tcfg->colsets[i], tcfg->colsets[i].cols[j].type );
+			if ( ! tcfg->colsets[i].cols[j].title.IsEmpty() ) hasHeader = true;
+			//printf( "HEADERTITLE %s hasHeader %d maxrow %u\n", str2char( tcfg->colsets[i].cols[j].title ), hasHeader, rows );
 		}
 	}
+	//if ( hasHeader ) rows++;
 	if ( cols == 0 )
 	{
 		wxLogError( wxT( "ERROR: table has no cols" ));
@@ -211,6 +215,7 @@ Table *GenericTableWriter::createTable( Tc *conf )
 				case TAB_CT_NONE:
 				break;
 				case TAB_CT_CUSTOM_KEY_VALUE:
+					//printf( "HEADER tcfg->colsets[i].cols[j]size %ld rows %u\n", tcfg->colsets[i].cols[j].cells.size(), rows );
 					writeCustomKeyValueList( currentcol, tcfg->colsets[i].cols[j] );
 				break;
 				case TAB_CT_OBJECT_NAME:
@@ -283,7 +288,7 @@ Table *GenericTableWriter::createTable( Tc *conf )
 					writeErrorColumn( currentcol, tcfg->colsets[i].cols[j] );
 				break;
 				case TAB_CT_EMPTY:
-					printf( "TODO EMPTY COL\n" );
+					//printf( "TODO EMPTY COL\n" );
 				break;
 				default:
 					assert( false );
@@ -305,6 +310,7 @@ ObjectPosition GenericTableWriter::getObjectPosition( const int &id, const TcCol
 	switch( set.listcontext )
 	{
 		case TAB_LC_PLANETS:
+		case TAB_LC_URANIAN:
 		case TAB_LC_HOUSE_CUSPS:
 		{
 			return h->getObjectPosition( (ObjectId)id, set.vedic );
@@ -331,6 +337,9 @@ uint GenericTableWriter::calcRowCount( const TcColumnSet &set )
 		case TAB_LC_PLANETS:
 			obs = set.vedic ?  PlanetList().getVedicObjectList( vobjects ) : PlanetList().getWesternObjectList( wobjects );
 			return obs.size();
+		break;
+		case TAB_LC_URANIAN:
+			return 8;
 		break;
 		case TAB_LC_HOUSE_CUSPS:
 			return 12;
@@ -375,6 +384,9 @@ void GenericTableWriter::calcObjectList( const TcColumnSet& set )
 		case TAB_LC_HOUSE_CUSPS:
 			for( ObjectId i = OHOUSE1; i <= OHOUSE12; i++ ) obs.push_back( i );
 		break;
+		case TAB_LC_URANIAN:
+			for( ObjectId i = OCUPIDO; i <= OPOSEIDON; i++ ) obs.push_back( i );
+		break;
 		default:
 		break;
 	}
@@ -387,24 +399,32 @@ void GenericTableWriter::calcObjectList( const TcColumnSet& set )
 ******************************************************/
 void GenericTableWriter::writeCustomKeyValueList( const uint &i0, const TcColumn &c )
 {
+	int row = 1;
+	/*
 	wxString title = wxT( "Untitled" );
 	if ( ! c.title.IsEmpty()) title = c.title;
 	
 	//table->setHeader( i0,  title, 1);
 	table->setHeader( i0,  title );
 	table->setHeader( i0 + 1, wxEmptyString );
+	table->setHeader( i0, wxEmptyString );
+	table->setHeader( i0 + 1, wxEmptyString );
+	*/
+	table->setHeader( i0, wxT( " " ));
+	table->setHeader( i0 + 1, wxT( " " ));
 
 	for( uint i = 0; i < c.cells.size(); i++ )
 	{
 		if ( c.cells[i].type != TAB_CELL_ERROR )
 		{
-			writeCustomDataEntry( i0, i + 1, c.cells[i]. type );
+			writeCustomDataEntry( i0, row, c.cells[i]. type );
 		}
 		else
 		{
 			table->setEntry( i0, i + 1, wxT( "Error" ));
 			table->setEntry( i0 + 1, i + 1, c.cells[i].errorMsg );
 		}
+		row++;
 	}
 }
 
@@ -415,7 +435,7 @@ void GenericTableWriter::writeCustomKeyValueList( const uint &i0, const TcColumn
 ******************************************************/
 void GenericTableWriter::writeObjectName( const uint &i0, const TcColumnSet &set )
 {
-	printf( "GenericTableWriter::writeObjectName %d, listcontext %d rows %d size %d\n", i0, (int)set.listcontext,  (int)table->getNbRows(), (int)obs.size());
+	//printf( "GenericTableWriter::writeObjectName %d, listcontext %d rows %d size %d\n", i0, (int)set.listcontext,  (int)table->getNbRows(), (int)obs.size());
 	assert( table->getNbCols() >= i0 + 1 );
 	assert( table->getNbRows() > obs.size());
 
@@ -439,6 +459,7 @@ MString GenericTableWriter::getObjectName( const int &objid, const TcColumnSet &
 	switch( set.listcontext )
 	{
 		case TAB_LC_PLANETS:
+		case TAB_LC_URANIAN:
 			return fmt.getObjectName( (ObjectId)objid, format, set.vedic );
 		break;
 		case TAB_LC_HOUSE_CUSPS:
@@ -464,7 +485,10 @@ void GenericTableWriter::writeObjectLongitude( const uint &colid, const TcColumn
 	ObjectPosition pos;
 	SheetFormatter fmt;
 
+	if ( set.header.IsEmpty())
 	table->setHeader( colid,  _( "Longitude" ));
+	else
+	table->setHeader( colid,  set.header );
 	for ( uint p = 0; p < obs.size(); p++ )
 	{
 		pos = getObjectPosition( obs[p], set );
@@ -529,7 +553,8 @@ void GenericTableWriter::writeAntiscia( const uint &colid, const TcColumnSet &se
 	for ( uint p = 0; p < obs.size(); p++ )
 	{
 		pos = getObjectPosition( obs[p], set );
-		table->setEntry( colid, p + 1, fmt.getPosFormatted( getAntiscium( pos.longitude )));
+		table->setEntry( colid, p + 1, fmt.getPosFormatted( getAntiscium( pos.longitude ),
+			pos.direction, DEG_PRECISION_SECOND, TF_SHORT ));
 		if ( IS_EPHEM_OBJECT( obs[p] ) && h->getTropicalLongitude( obs[p] ) == 0 ) table->errorcount++;
 	}
 }
@@ -555,6 +580,9 @@ void GenericTableWriter::writeObjectNameAndLongitude( const uint &colid, const T
 		break;
 		case TAB_LC_HOUSE_CUSPS:
 			s = _( "House Cusp" );
+		break;
+		case TAB_LC_URANIAN:
+			s = _( "Uranian" );
 		break;
 		default:
 			s = wxT( "ERROR" );
@@ -858,7 +886,7 @@ void GenericTableWriter::writeKpLords( const uint &i0, const TcColumnSet &set, c
 	assert( table->getNbRows() > obs.size() );
 	SheetFormatter fmt;
 
-	printf( "GenericTableWriter::writeKpLords format %d\n", format );
+	//printf( "GenericTableWriter::writeKpLords format %d\n", format );
 
   table->setHeader( i0,  _( "L" ));
   if ( depth > 1 ) table->setHeader( i0 + 1,  _( "SL" ));
@@ -1027,9 +1055,9 @@ void GenericTableWriter::writeCustomDataEntry( const uint &col, const uint &row,
 			table->setEntry( col, row,  _( "Sunrise" ));
 			Location *loc = h->getLocation();
 			if ( h->getSunrise() != 0 )
-				//s = f->getFullDateStringFromJD( h->getSunrise() + ( loc->getTimeZone() + loc->getDST() ) / 24.0 );
-				s = df->formatDateString( h->getSunrise(), loc->getTimeZone() + loc->getDST(),
-				DF_INCLUDE_YEAR_BC_AD | DF_INCLUDE_TIME | DF_INCLUDE_TZOFFSET );
+			{
+				s = f->getTimeFormatted( getTimeFromJD( h->getSunrise() + ( loc->getTimeZone() + loc->getDST()) / 24.0 ));
+			}
 			else s = _( "n.a." );
 			table->setEntry( col + 1, row, s );
 		}
@@ -1039,9 +1067,9 @@ void GenericTableWriter::writeCustomDataEntry( const uint &col, const uint &row,
 			table->setEntry( col, row,  _( "Sunset" ));
 			Location *loc = h->getLocation();
 			if ( h->getSunset() != 0 )
-				//s = f->getFullDateStringFromJD( h->getSunset() + ( loc->getTimeZone() + loc->getDST() ) / 24.0 );
-				s = df->formatDateString( h->getSunset(), loc->getTimeZone() + loc->getDST(),
-				DF_INCLUDE_YEAR_BC_AD | DF_INCLUDE_TIME | DF_INCLUDE_TZOFFSET );
+			{
+				s = f->getTimeFormatted( getTimeFromJD( h->getSunset() + ( loc->getTimeZone() + loc->getDST()) / 24.0 ));
+			}
 			else s = _( "n.a." );
 			table->setEntry( col + 1, row, s );
 		}

@@ -79,14 +79,11 @@ build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = maitreya8.bin$(EXEEXT) maitreya8$(EXEEXT)
 @USE_SWE_BUILTIN_TRUE@am__append_1 = ../swe/libswe.a
-# maitreya8_bin_LDADD += ../swe/libswe.la
 @USE_SWE_BUILTIN_FALSE@am__append_2 = $(LIBSWE_LIBS)
 @USE_WXSQLITE_BUILTIN_TRUE@am__append_3 = ../wxsqlite3/libmaitreya_wxsqlite3.a
 @USE_WXSQLITE_BUILTIN_FALSE@am__append_4 = $(WXSQLITE3_LIBS)
 @USE_WXPDFDOC_BUILTIN_TRUE@am__append_5 = -I../wxpdfdoc
 @USE_WXPDFDOC_BUILTIN_TRUE@am__append_6 = ../wxpdfdoc/libmaitreya_wxpdfdoc.a $(WX_LIBS) $(FONTCONFIG_LIBS) 
-# maitreya8_bin_LDADD += ../wxpdfdoc/libmaitreya_wxpdfdoc.a $(FONTCONFIG_LIBS) 
-# maitreya8_bin_LDADD += $(FONTCONFIG_LIBS) 
 @USE_WXPDFDOC_BUILTIN_FALSE@am__append_7 = $(WXPDFDOC_CFLAGS)
 @USE_WXPDFDOC_BUILTIN_FALSE@am__append_8 = $(WXPDFDOC_LIBS) $(WX_LIBS)
 subdir = src/gui
@@ -111,21 +108,21 @@ am_maitreya8_OBJECTS =
 maitreya8_OBJECTS = $(am_maitreya8_OBJECTS)
 maitreya8_LDADD = $(LDADD)
 am_maitreya8_bin_OBJECTS = ApplicationWindow.$(OBJEXT) \
-	BarDiagram.$(OBJEXT) BasicVedicChart.$(OBJEXT) \
-	BasicView.$(OBJEXT) BasicWesternChart.$(OBJEXT) \
-	BasicWidget.$(OBJEXT) ChartField.$(OBJEXT) \
-	ChildWindow.$(OBJEXT) ChildWindowListCtrl.$(OBJEXT) \
-	DasaTreeWidget.$(OBJEXT) Document.$(OBJEXT) \
-	GraphicalChart.$(OBJEXT) GraphicGrid.$(OBJEXT) \
-	guibase.$(OBJEXT) MenuProvider.$(OBJEXT) \
+	BarDiagram.$(OBJEXT) BasicSheetWidget.$(OBJEXT) \
+	BasicVedicChart.$(OBJEXT) BasicView.$(OBJEXT) \
+	BasicWesternChart.$(OBJEXT) BasicWidget.$(OBJEXT) \
+	ChartField.$(OBJEXT) ChildWindow.$(OBJEXT) \
+	ChildWindowListCtrl.$(OBJEXT) DasaTreeWidget.$(OBJEXT) \
+	Document.$(OBJEXT) GraphicalChart.$(OBJEXT) \
+	GraphicGrid.$(OBJEXT) guibase.$(OBJEXT) MenuProvider.$(OBJEXT) \
 	MultipleChildWindow.$(OBJEXT) PdfBase.$(OBJEXT) \
 	PdfPainter.$(OBJEXT) PdfTools.$(OBJEXT) \
 	PrintoutSheetCreator.$(OBJEXT) SarvatobhadraChart.$(OBJEXT) \
 	SheetWidget.$(OBJEXT) SheetWriter.$(OBJEXT) \
 	SplitterWidget.$(OBJEXT) Statusbar.$(OBJEXT) \
-	ToolPanel.$(OBJEXT) TreeWidget.$(OBJEXT) VedicChart.$(OBJEXT) \
-	VedicRasiChart.$(OBJEXT) WesternChart.$(OBJEXT) \
-	YogaEditor.$(OBJEXT)
+	TextWidget.$(OBJEXT) ToolPanel.$(OBJEXT) TreeWidget.$(OBJEXT) \
+	VedicChart.$(OBJEXT) VedicRasiChart.$(OBJEXT) \
+	WesternChart.$(OBJEXT) YogaEditor.$(OBJEXT)
 maitreya8_bin_OBJECTS = $(am_maitreya8_bin_OBJECTS)
 am__DEPENDENCIES_1 =
 @USE_SWE_BUILTIN_FALSE@am__DEPENDENCIES_2 = $(am__DEPENDENCIES_1)
@@ -365,20 +362,19 @@ maitreya8_bin_LDADD = ../views/libmaitreya_views.a \
 	../base/libmaitreya_base.a ../wxJSON/libmaitreya_wxJSON.a \
 	$(am__append_1) $(am__append_2) $(am__append_3) \
 	$(am__append_4) $(am__append_6) $(am__append_8)
-# maitreya8_bin_LDADD += $(WX_LIBS) $(FONTCONFIG_LIBS) 
-maitreya8_bin_SOURCES = ApplicationWindow.cpp ApplicationWindow.h BarDiagram.cpp \
-	BarDiagram.h BasicVedicChart.cpp BasicVedicChart.h BasicView.cpp BasicView.h \
-	BasicWesternChart.cpp BasicWesternChart.h BasicWidget.cpp BasicWidget.h ChartField.cpp \
-	ChartField.h ChildWindow.cpp ChildWindow.h ChildWindowListCtrl.cpp ChildWindowListCtrl.h \
-	DasaTreeWidget.cpp DasaTreeWidget.h Document.cpp Document.h GraphicalChart.cpp \
-	GraphicalChart.h GraphicGrid.cpp GraphicGrid.h guibase.cpp guibase.h MenuProvider.cpp \
-	MenuProvider.h MultipleChildWindow.cpp MultipleChildWindow.h PdfBase.cpp PdfBase.h \
-	PdfPainter.cpp PdfPainter.h PdfTools.cpp PdfTools.h PrintoutSheetCreator.cpp \
+maitreya8_bin_SOURCES = ApplicationWindow.cpp ApplicationWindow.h BarDiagram.cpp BarDiagram.h \
+	BasicSheetWidget.cpp BasicSheetWidget.h BasicVedicChart.cpp BasicVedicChart.h BasicView.cpp \
+	BasicView.h BasicWesternChart.cpp BasicWesternChart.h BasicWidget.cpp BasicWidget.h \
+	ChartField.cpp ChartField.h ChildWindow.cpp ChildWindow.h ChildWindowListCtrl.cpp \
+	ChildWindowListCtrl.h DasaTreeWidget.cpp DasaTreeWidget.h Document.cpp Document.h \
+	GraphicalChart.cpp GraphicalChart.h GraphicGrid.cpp GraphicGrid.h guibase.cpp guibase.h \
+	MenuProvider.cpp MenuProvider.h MultipleChildWindow.cpp MultipleChildWindow.h PdfBase.cpp \
+	PdfBase.h PdfPainter.cpp PdfPainter.h PdfTools.cpp PdfTools.h PrintoutSheetCreator.cpp \
 	PrintoutSheetCreator.h SarvatobhadraChart.cpp SarvatobhadraChart.h SheetWidget.cpp \
 	SheetWidget.h SheetWriter.cpp SheetWriter.h SplitterWidget.cpp SplitterWidget.h \
-	Statusbar.cpp Statusbar.h ToolPanel.cpp ToolPanel.h TreeWidget.cpp TreeWidget.h \
-	VedicChart.cpp VedicChart.h VedicRasiChart.cpp VedicRasiChart.h WesternChart.cpp \
-	WesternChart.h YogaEditor.cpp YogaEditor.h
+	Statusbar.cpp Statusbar.h TextWidget.cpp TextWidget.h ToolPanel.cpp ToolPanel.h \
+	TreeWidget.cpp TreeWidget.h VedicChart.cpp VedicChart.h VedicRasiChart.cpp \
+	VedicRasiChart.h WesternChart.cpp WesternChart.h YogaEditor.cpp YogaEditor.h
 
 EXTRA_DIST = Makefile.win maitreya8.rc maitreya8.template
 all: all-am
@@ -470,6 +466,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ApplicationWindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BarDiagram.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BasicSheetWidget.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BasicVedicChart.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BasicView.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BasicWesternChart.Po@am__quote@
@@ -492,6 +489,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SheetWriter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SplitterWidget.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Statusbar.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TextWidget.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ToolPanel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TreeWidget.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VedicChart.Po@am__quote@

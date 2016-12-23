@@ -1,0 +1,100 @@
+{
+    "configs": [
+        {
+            "name": "Default"
+        },
+        {
+            "name": "Default/signs in plain text",
+            "signs": {
+                "labelstyle": 1
+            }
+        },
+        {
+            "name": "Default/signs plain text, rotated/short",
+            "signs": {
+                "labelstyle": 1,
+                "rotatelabels": true
+            }
+        },
+        {
+            "name": "Default/signs plain text, rotated/medium length",
+            "signs": {
+                "labelstyle": 2,
+                "rotatelabels": true
+            }
+        },
+        {
+            "name": "Default/signs rotated",
+            "signs": {
+                "rotatelabels": true
+            }
+        },
+        {
+            "name": "Default/Colored Signs and Houses",
+            "houses": {
+                "palette": "housestock"
+            },
+            "signs": {
+                "palette": "signstock"
+            }
+        },
+        {
+            "name": "Madera",
+            "brush": {
+                "filename": "madera.jpg",
+                "style": "wxSTIPPLE"
+            }
+        },
+        {
+            "name": "Astrolog",
+            "pen": {
+                "color": "yellow"
+            },
+            "brush": {
+                "color": "black"
+            }
+        },
+        {
+            "name": "Yellow",
+            "pen": {
+                "color": "yellow",
+								"width" : 2
+            },
+            "brush": {
+                "color": "black"
+            },
+						"textcolor" : "yellow"
+        },
+        {
+            "name": "Linux Console",
+            "brush": {
+                "color": "#000000",
+                "style": "wxSOLID"
+            },
+            "pen": {
+                "color": "#00ff00",
+                "style": "wxSOLID",
+                "width": 2
+            },
+						"textcolor": "#00ff00"
+        },
+        {
+            "name": "Madera/colored signs",
+            "brush": {
+                "filename": "madera.jpg",
+                "style": "wxSTIPPLE"
+            },
+            "signs": {
+                "palette": "madera",
+                "globaltextcolor": "black"
+            }
+        },
+        {
+            "name": "Rainbow",
+            "signs": {
+                "palette": "rainbow",
+                "globaltextcolor": "black"
+            }
+        }
+    ]
+}

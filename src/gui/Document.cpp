@@ -7,22 +7,19 @@
  Author     Martin Pettau
  Copyright  2003-2016 by the author
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
 ************************************************************************/
 
 #include "Document.h"
 
-#include <wx/app.h>
 #include <wx/choice.h>
 #include <wx/filedlg.h>
 #include <wx/filename.h>
@@ -43,11 +40,7 @@ extern Config *config;
 enum { DOCUMENT_TIMER = wxID_HIGHEST + 1 };
 
 IMPLEMENT_CLASS( Document, Horoscope )
-IMPLEMENT_CLASS( DocumentListener, wxObject )
-
-DEFINE_EVENT_TYPE( DOC_SAVED )
-DEFINE_EVENT_TYPE( DOC_UPDATED )
-DEFINE_EVENT_TYPE( CREATE_ENTRY_CHART )
+IMPLEMENT_SINGLETON( DocumentManager )
 
 /*****************************************************
 **
@@ -186,9 +179,8 @@ bool Document::save()
 		return false;
 	}
 	dirty = false;
-	wxCommandEvent event( DOC_SAVED, mainwindow->GetId() );
-	event.SetEventObject( this );
-	wxPostEvent( mainwindow->GetParent(), event );
+
+	DocumentManager::get()->documentSaved( this );
 	return true;
 }
 
@@ -223,9 +215,8 @@ bool Document::saveAs()
 			return false;
 		}
 		dirty = false;
-		wxCommandEvent event( DOC_SAVED, mainwindow->GetId() );
-		event.SetEventObject( this );
-		wxPostEvent( mainwindow->GetParent(), event );
+
+		DocumentManager::get()->documentSaved( this );
 		config->viewprefs->defSavePath = saveFileDialog.GetDirectory();
 	}
 	else
@@ -244,20 +235,7 @@ void Document::editData()
 {
 	DataDialog dialog( mainwindow, this );
 	dialog.ShowModal();
-	emitDocUpdatedEvent();
-}
-
-/*****************************************************
-**
-**   Document   ---   editData
-**
-******************************************************/
-void Document::emitDocUpdatedEvent()
-{
-	printf( "SEND EVENT DOC UPDATED\n" );
-	wxCommandEvent event( DOC_UPDATED, mainwindow->GetId() );
-	event.SetEventObject( this );
-	wxPostEvent( mainwindow->GetParent(), event );
+	DocumentManager::get()->documentChanged( this );
 }
 
 /*****************************************************
@@ -359,7 +337,10 @@ void Document::OnTimer( wxTimerEvent& )
 void DocumentManager::addDoc( Document *doc )
 {
 	docs.push_back( doc );
-	for ( uint i = 0; i < clients.size(); i++ ) clients[i]->documentListChanged();
+	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	{
+		(*iter)->notifyDocumentListChanged();
+	}
 }
 
 /*****************************************************
@@ -377,7 +358,52 @@ void DocumentManager::deleteDoc( Document *doc )
 			break;
 		}
 	}
-	for ( uint i = 0; i < clients.size(); i++ ) clients[i]->documentListChanged();
+	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	{
+		(*iter)->notifyDocumentListChanged();
+	}
+}
+
+/*****************************************************
+**
+**   DocumentManager   ---   subscribe
+**
+******************************************************/
+void DocumentManager::subscribe( DocumentListener *l )
+{
+	clients.push_back( l );
+}
+
+/*****************************************************
+**
+**   DocumentManager   ---   unsubscribe
+**
+******************************************************/
+void DocumentManager::unsubscribe( DocumentListener *l )
+{
+	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	{
+		if ( (*iter) == l )
+		{
+			clients.erase( iter );
+			return;
+		}
+	}
+	//assert( 0 );
+}
+
+/*****************************************************
+**
+**   DocumentManager   ---   queryClose
+**
+******************************************************/
+bool DocumentManager::queryClose()
+{
+	for( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
+	{
+		if ( ! (*iter)->queryClose() ) return false;
+	}
+	return true;
 }
 
 /*****************************************************
@@ -393,43 +419,42 @@ void DocumentManager::updateAllDocs()
 
 /*****************************************************
 **
-**   DocumentManager   ---   addClient
+**   DocumentManager   ---   updateDocsAndChildren
 **
 ******************************************************/
-void DocumentManager::addClient( DocumentListener *l )
+void DocumentManager::updateDocsAndChildren()
 {
-	clients.push_back( l );
-}
-
-/*****************************************************
-**
-**   DocumentManager   ---   deleteClient
-**
-******************************************************/
-void DocumentManager::deleteClient( DocumentListener *l )
-{
-	vector<DocumentListener*>::iterator iter;
-	for ( iter = clients.begin(); iter != clients.end(); iter++ )
+	for( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
 	{
-		if ( (*iter) == l )
-		{
-			clients.erase( iter );
-			return;
-		}
+		(*iter)->update();
+		(*iter)->updateAllChildWindows();
 	}
-	// FIXME: What's that
-	//delete l;
-	//assert( 0 );
 }
 
 /*****************************************************
 **
-**   DocumentManager   ---   getNbDocuments
+**   DocumentManager   ---   documentChanged
 **
 ******************************************************/
-int DocumentManager::getNbDocuments()
+void DocumentManager::documentChanged( Document *d )
 {
-	return docs.size();
+	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	{
+		(*iter)->notifyDocumentChanged( d );
+	}
+}
+
+/*****************************************************
+**
+**   DocumentManager   ---   documentSaved
+**
+******************************************************/
+void DocumentManager::documentSaved( Document *d )
+{
+	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	{
+		(*iter)->notifyDocumentSaved( d );
+	}
 }
 
 /**************************************************************
@@ -437,9 +462,25 @@ int DocumentManager::getNbDocuments()
 **  DocumentManager   ---   getDocument
 ***
 ***************************************************************/
-Document *DocumentManager::getDocument( const int &i )
+Document *DocumentManager::getDocument( const uint &i )
 {
+	assert( i < docs.size());
 	return docs[i];
+}
+
+/**************************************************************
+***
+**  DocumentManager   ---   getNamesArray
+***
+***************************************************************/
+wxArrayString DocumentManager::getNamesArray()
+{
+	wxArrayString a;
+	for( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
+	{
+		a.Add( (*iter)->getHName());
+	}
+	return a;
 }
 
 
