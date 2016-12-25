@@ -36,11 +36,11 @@ sqlite> .read db_ddl.sql
 sqlite> 
 sqlite> 
 sqlite> .quit
-~/.maitreya-7.0> 
+~/.maitreya-8.0> 
 
 Import data
 -----------
-Edit Perl script geoname.pl if necessary
+Edit Pythoon script import_geoname.py if necessary
 - name of city file
 - name of database
 
