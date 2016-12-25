@@ -101,7 +101,8 @@ void BarDiagramWriter::writeVargaDiagrams()
 void BarDiagramWriter::writeAvRasiDiagrams( AshtakavargaExpert *expert )
 {
 	Rasi rasi;
-	SheetWidgetGrid *grid = new SheetWidgetGrid( 3 );
+	//SheetWidgetGrid *grid = new SheetWidgetGrid( 3 );
+	SheetWidgetGrid *grid = new SheetWidgetGrid( 3, .3, 400, 200, 1600, 800 );
 
 	BarDiagramWidget *diagram1 = new BarDiagramWidget( props, _( "Rekha" ), false, RASIDIAGRAM_XMIN, RASIDIAGRAM_XMAX, RASIDIAGRAM_RATIO );
 	for ( rasi = R_ARIES; rasi <= R_PISCES; rasi++ ) diagram1->addItem( new BarDiagramItem( (int)rasi, expert->getSarva( REKHA, rasi )));
@@ -128,7 +129,8 @@ void BarDiagramWriter::writeAvPindaDiagrams( AshtakavargaExpert *expert )
 	obs.push_back( OASCENDANT );
 	uint i;
 
-	SheetWidgetGrid *grid = new SheetWidgetGrid( 3 );
+	//SheetWidgetGrid *grid = new SheetWidgetGrid( 3 );
+	SheetWidgetGrid *grid = new SheetWidgetGrid( 3, .3, 400, 200, 1600, 800 );
 	BarDiagramWidget *diagram4 = new BarDiagramWidget( props, _( "Graha Pinda" ));
 	for ( i = 0; i < obs.size(); i++ ) diagram4->addItem( new BarDiagramItem( obs[i], expert->getPinda( GRAHAPINDA, i )));
 	grid->addItem( diagram4 );
@@ -173,8 +175,8 @@ SheetItem *BarDiagramItem::cloneClean()
 **   BarDiagramWidget   ---   Constructor
 **
 ******************************************************/
-BarDiagramWidget::BarDiagramWidget( ChartProperties *props, wxString title, const bool planetmode, const double xmin,
-	const double xmax, const double ratio, BarDiagramConfig *bconfig )
+BarDiagramWidget::BarDiagramWidget( ChartProperties *props, wxString title, const bool planetmode, const double /*xmin*/,
+	const double /*xmax*/, const double /*ratio*/, BarDiagramConfig *bconfig )
  : SheetWidgetItem( props ),
 	title( title ),
 	planetmode( planetmode ),
@@ -247,35 +249,6 @@ void BarDiagramWidget::addItem( BarDiagramItem *item )
 	minvalue = Min( item->value, minvalue );
 }
 
-/*****************************************************
-**
-**   BarDiagramWidget   ---   mouseHasMoved
-**
-******************************************************/
-bool BarDiagramWidget::mouseHasMoved( const wxPoint &p, const bool &outside )
-{
-	printf( "BarDiagramWidget::mouseHasMoved x %d y %d outside %d\n", p.x, p.y, outside );
-	return false;
-}
-
-/*****************************************************
-**
-**   BarDiagramWidget   ---   getSubitem4Point
-**
-******************************************************/
-SheetItem *BarDiagramWidget::getSubitem4Point( const wxPoint &p )
-{
-	printf( "BarDiagramWidget::getItem4Point p %d %d\n", p.x, p.y );
-	for ( list<BarDiagramItem*>::const_iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
-	{
-		if ( pointInRect( p, (*iter)->rect ))
-		{
-			return *iter;
-		}
-	}
-	return (SheetItem*)NULL;
-}
-
 #define BAR_DIAGRAM_CONTENTRECT_TOL .01
 #define BAR_DIAGRAM_CONTENTRECT_CORNER_RADIUS .01
 
@@ -286,7 +259,7 @@ SheetItem *BarDiagramWidget::getSubitem4Point( const wxPoint &p )
 ******************************************************/
 void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 {
-	printf( "BarDiagramWidget::doPaint\n" );
+	//printf( "BarDiagramWidget::doPaint\n" );
 	const int graphicfont_scalingfactor = 1.0;
 	wxString s;
 	Lang lang;
@@ -303,7 +276,7 @@ void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 
 	// Total y value
 	const double valuespan = dmaxvalue - minvalue;
-	printf( "maxvalue %f minvalue %f span %f\n", dmaxvalue, minvalue, valuespan );
+	//printf( "maxvalue %f minvalue %f span %f\n", dmaxvalue, minvalue, valuespan );
 
 	// calculate content rect
 	const double xm0 = rect.width * BAR_DIAGRAM_CONTENTRECT_TOL;

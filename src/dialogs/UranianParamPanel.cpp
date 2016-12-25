@@ -110,6 +110,7 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 ******************************************************/
 void UranianParamPanel::OnCommand( wxCommandEvent& )
 {
+	*orbis = (double)iorbis / 60.0;
 	printf( "UranianParamPanel::OnCommand\n" );
 	emitChangeEvent();
 }
@@ -217,7 +218,6 @@ void UranianParamPanel::updateFilterLabel()
 void UranianParamPanel::set_properties()
 {
     // begin wxGlade: UranianParamPanel::set_properties
-    spin_orbis->SetMinSize(wxSize(40, -1));
     // end wxGlade
 }
 

@@ -142,7 +142,7 @@ void MultipleViewPanel::updateUi()
 	text_view_description->Wrap( (int)w - 12 );
 
 	const bool multipleMode = check_use_mviews->GetValue();
-	printf( "MultipleViewPanel::enableMViewConfigItems mode %d\n", multipleMode );
+	//printf( "MultipleViewPanel::enableMViewConfigItems mode %d\n", multipleMode );
 
 	label_defview->Enable( multipleMode );
 	choice_viewlist->Enable( multipleMode );

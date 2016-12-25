@@ -96,6 +96,7 @@ DasaTreeWidget::DasaTreeWidget( wxWindow *parent, ChartProperties *props, wxWind
 	Connect( wxEVT_COMMAND_TREE_ITEM_COLLAPSING, MyTreeEventHandler( DasaTreeWidget::collapse ));
 	Connect( wxEVT_COMMAND_TREE_ITEM_EXPANDING, MyTreeEventHandler( DasaTreeWidget::expand ));
 	Connect( wxEVT_COMMAND_TREE_SEL_CHANGING, MyTreeEventHandler( DasaTreeWidget::OnSelChanging ));
+	//Connect( wxEVT_MOUSEWHEEL, wxMouseEventHandler( DasaTreeWidget::OnMouseWheelEvent ));
 
 	twidget->Expand( rootid );
 	twidget->Expand( baseid );
@@ -114,12 +115,23 @@ DasaTreeWidget::~DasaTreeWidget()
 
 /*****************************************************
 **
+**   DasaTreeWidget   ---   HandleMouseWheelEvent
+**
+******************************************************/
+void DasaTreeWidget::HandleMouseWheelEvent( wxMouseEvent &event )
+{
+	//printf( "WHEEL\n" );
+	event.Skip();
+}
+
+/*****************************************************
+**
 **   DasaTreeWidget   ---   expand
 **
 ******************************************************/
 void DasaTreeWidget::expand( MyTreeEvent &event )
 {
-	printf( "expand\n" );
+	//printf( "expand\n" );
 	uint i;
 	wxString s;
 	vector<Dasa*> divector;
@@ -194,7 +206,7 @@ void DasaTreeWidget::expand( MyTreeEvent &event )
 ******************************************************/
 void DasaTreeWidget::collapse( MyTreeEvent& )
 {
-	printf( "collapse\n" );
+	//printf( "collapse\n" );
 	//updateTextWidget( 0 );
 }
 
@@ -205,7 +217,7 @@ void DasaTreeWidget::collapse( MyTreeEvent& )
 ******************************************************/
 void DasaTreeWidget::OnSelChanging( MyTreeEvent &event )
 {
-	printf( "OnSelChanging\n" );
+	//printf( "OnSelChanging\n" );
 	wxTreeItemId id = event.GetItem();
 	DasaTreeItemClientData *item = (DasaTreeItemClientData*)twidget->GetItemData( id );
 
@@ -279,7 +291,7 @@ void DasaTreeWidget::OnDataChanged()
 void DasaTreeWidget::emitItemChanged( DasaTreeItemClientData *item )
 {
 	// TODO POST
-	printf( "EMIT\n" );
+	//printf( "EMIT\n" );
 	wxCommandEvent event( DASATREE_CHANGED, GetId() );
 	event.SetClientObject( item );
 	wxPostEvent( GetParent(), event );

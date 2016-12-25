@@ -78,7 +78,7 @@ protected:
 
 	virtual void write()
 	{
-		printf( "WRITE JD %f\n", jd );
+		//printf( "WRITE JD %f\n", jd );
 		expert->update( jd - .5 );
 		twidget->clearSheet();
 		expert->write( twidget->getSheet(), isLocaltime );
@@ -93,7 +93,7 @@ protected:
 
 	void OnDateCtrlChanged( wxCommandEvent& )
 	{
-		printf( "HoraView::OnDateCtrlChanged\n" );
+		//printf( "HoraView::OnDateCtrlChanged\n" );
 		OnDataChanged();
 	}
 

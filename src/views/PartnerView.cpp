@@ -141,7 +141,7 @@ public:
 		// PNB_URANIAN
 		wxPanel *panel = new wxPanel( notebook );
 		uwidget = new TextWidget( panel, props, URANIAN_VIEW_WO );
-		printf( "ORBIS 1 %f\n", uconfig.orbisPartner );
+		//printf( "ORBIS 1 %f\n", uconfig.orbisPartner );
 		upanel = new UranianParamPanel( panel, PV_UPANEL, props, &uconfig.orbisPartner );
 		wxBoxSizer* usizer = new wxBoxSizer( wxHORIZONTAL );
 		usizer->Add( upanel, 0, wxALL, 3);
@@ -176,7 +176,7 @@ public:
 		config->viewprefs->sashPartnerComposite = compositesplitter->GetSashPosition();
 		config->viewprefs->activePagePartner = notebook->GetSelection();
 
-		printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisPartner );
+		//printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisPartner );
 		*config->uranian = props->getUranianConfig();
 
 		delete uexpert;
@@ -225,7 +225,7 @@ protected:
 	******************************************************/
 	void OnToolbarCommand()
 	{
-		printf( "OnToolbarCommand\n" );
+		//printf( "OnToolbarCommand\n" );
 		OnDataChanged();
 	}
 
@@ -236,7 +236,7 @@ protected:
 	******************************************************/
 	void OnNotebook( wxNotebookEvent& )
 	{
-		printf( "ON NOTEBOOK PAGE %d\n", notebook->GetSelection() );
+		//printf( "ON NOTEBOOK PAGE %d\n", notebook->GetSelection() );
 		assert( notebook->GetSelection() >= 0 && notebook->GetSelection() < MAX_PARTNER_PAGES );
 		setActiveItems();
 	}
@@ -283,7 +283,7 @@ protected:
 			assert( false );
 			break;
 		}
-		printf( "VOR UPDATE PAGE %d dirty %d\n", notebook->GetSelection(), dirty[notebook->GetSelection()] );
+		//printf( "VOR UPDATE PAGE %d dirty %d\n", notebook->GetSelection(), dirty[notebook->GetSelection()] );
 		if ( dirty[notebook->GetSelection()] ) updatePage( notebook->GetSelection() );
 		else
 		{
@@ -309,20 +309,20 @@ protected:
 	void updatePage( const int &page )
 	{
 		assert( page >= 0 && page < MAX_PARTNER_PAGES );
-		printf( "PartnerView::updatePage nummer %d h1 %ld h2 %ld page %ld widget %ld\n",
-			notebook->GetSelection(), (long)h1, (long)h2, (long)activetext, (long)activewidget );
+		//printf( "PartnerView::updatePage nummer %d h1 %ld h2 %ld page %ld widget %ld\n",
+			//notebook->GetSelection(), (long)h1, (long)h2, (long)activetext, (long)activewidget );
 
 		if ( activewidget )
 		{
 			if ( notebook->GetSelection() == PNB_COMPOSITE )
 			{
-				printf( "updatePage set COMPOSITE\n" );
+				//printf( "updatePage set COMPOSITE\n" );
 				assert( activewidget == compositewidget );
 				activewidget->setHoroscopes( h1 && h2 && h1 != h2 ? ch : (Horoscope*)NULL, (Horoscope*)NULL );
 			}
 			else
 			{
-				printf( "updatePage set BOTH\n" );
+				//printf( "updatePage set BOTH\n" );
 				assert( activewidget != compositewidget );
 
 				// set NULL horoscopes if there is no partner context
@@ -400,12 +400,7 @@ protected:
 		setAllDirty();
 		if ( h1 && h2 && h1 != h2 )
 		{
-			printf( "Fall 1 h1 %ld h2 %ld\n", (long)h1, (long)h2 );
 			ch->update( h1, h2 );
-		}
-		else
-		{
-			printf( "Fall 2 h1 %ld h2 %ld\n", (long)h1, (long)h2 );
 		}
 		updatePage( notebook->GetSelection() );
 	}
@@ -435,7 +430,7 @@ protected:
 	virtual void OnEWToggle( const bool& )
 	{
 		// maybe obsolet
-		printf( "PartnerView   ---   OnEWToggle\n" );
+		//printf( "PartnerView   ---   OnEWToggle\n" );
 		OnDataChanged();
 		//setAllDirty();
 	}
@@ -509,7 +504,7 @@ protected:
 
 		choice_partner1->SetSelection( sel1 );
 		choice_partner2->SetSelection( sel2 );
-		printf( "sel1 %d sel2 %d\n", sel1, sel2 );
+		//printf( "sel1 %d sel2 %d\n", sel1, sel2 );
 		if ( sel1 != -1 && docnum > 0 ) h1 = docmanager->getDocument( Min( sel1, docnum ));
 		else h1 = 0;
 		if ( sel2 != -1 && docnum > 0 ) h2 = docmanager->getDocument( Min( sel2, docnum ));

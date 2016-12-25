@@ -834,7 +834,7 @@ void WesternChart::drawSigns()
 	tryToSetPen( wconf->signs.pen );
 
 	painter->setPen( defaultPen );
-	bool showColors = chartprops->getWesternChartDisplayConfig().showSignColors;
+	//bool showColors = chartprops->getWesternChartDisplayConfig().showSignColors;
 	//if ( ! showColors ) setDefaultTextColor();
 
 	//printf( "signs->symbolZoomFactor %d\n", signs->symbolZoomFactor );

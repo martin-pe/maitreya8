@@ -75,7 +75,7 @@ wxString DasaTool::getDasaName( const DasaId &dasa )
 ******************************************************/
 wxString DasaTool::getDasaLevelName( const int &level )
 {
-	printf( "DasaTool::getLevelName level %d\n", level );
+	//printf( "DasaTool::getLevelName level %d\n", level );
 	static wxString k_levelname[5] = { _( "Mahadasa" ), _( "Antardasa" ),
 		_( "Pratyantardasa" ), _( "Sooksmantardasa" ), _( "Pranadasa" ) };
 
@@ -103,7 +103,7 @@ wxString DasaTool::getDasaLordChain( Dasa *dasa, const bool addStartAndEndDate )
 	{
 		if ( count ) s.Prepend( wxT( "-" ));
 		//s.Prepend( AllTrim( expert->getDasaLordName( d, TF_LONG, cfg )));
-		PrintLn( s );
+		//PrintLn( s );
 		s.Prepend( AllTrim( expert->getDasaDescription( d, TF_LONG, cfg )));
 		d = d->getParent();
 		count++;
@@ -188,7 +188,7 @@ DasaId DasaTool::dasa2DasaId( const wxString s )
 ******************************************************/
 void DasaTool::writeDasaEffect( Sheet *sheet, Dasa *dasa, const wxString sourcefilter  )
 {
-	printf( "getDasaEffect filter \"%s\"\n", str2char( sourcefilter ));
+	//printf( "getDasaEffect filter \"%s\"\n", str2char( sourcefilter ));
 
 	vector<DasaConfig*> &defs = DasaConfigLoader::get()->getConfigs();
 	for ( uint i = 0; i < defs.size(); i++ )
@@ -225,13 +225,13 @@ void DasaTool::writeDasaDocumentation( Sheet *sheet, DasaExpert *expert, Dasa *d
 	{
 		const DasaId dasaId = expert->getDasaId();
 		ASSERT_VALID_DASA_ID( dasaId );
-		printf( "Dasa id %d\n", dasaId );
+		//printf( "Dasa id %d\n", dasaId );
 		expert->writeDasaHeader( sheet, dasaId, dasa );
 
 		if ( dasa )
 		{
 			calculateMahaAntarLords( dasa, lord, sublord );
-			printf( "Lords: %d %d\n", lord, sublord );
+			//printf( "Lords: %d %d\n", lord, sublord );
 			writeDasaEffect( sheet, dasa, sourcefilter );
 		}
 	}

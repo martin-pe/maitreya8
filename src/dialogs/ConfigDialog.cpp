@@ -133,7 +133,7 @@ ConfigBaseDialog::ConfigBaseDialog( wxWindow* parent )
 ******************************************************/
 void ConfigBaseDialog::OnConfigPanelChanged( wxCommandEvent &e )
 {
-	printf( "ConfigBaseDialog::OnConfigPanelChanged int is %d\n", e.GetInt() );
+	//printf( "ConfigBaseDialog::OnConfigPanelChanged int is %d\n", e.GetInt() );
 	apply_button->Enable( e.GetInt() );
 }
 
@@ -211,7 +211,7 @@ ConfigDialog::~ConfigDialog()
 {
 	config->viewprefs->configDialogActivePage = notebook->GetSelection();
 	config->viewprefs->sizes.sConfigDialog = GetSize();
-	wxPoint p = GetPosition();
+	const wxPoint p = GetPosition();
 	config->viewprefs->pConfigDialog = wxSize( p.x, p.y );
 }
 
@@ -231,7 +231,6 @@ void ConfigDialog::saveData()
 
 			if ( i == CONFIGPANEL_TOOLBAR )
 			{
-				printf( "FIRE CONFIG_TOOLBAR_CHANGED\n" );
 				wxCommandEvent e( CONFIG_TOOLBAR_CHANGED, GetId() );
 				wxPostEvent( GetParent(), e );
 			}
@@ -335,7 +334,7 @@ void ConfigDialog::OnTreebookChanged( wxTreebookEvent &event )
 void ConfigDialog::OnTreebookChanged( wxBookCtrlEvent &event )
 #endif
 {
-	printf( "ConfigDialog::OnTreebookChanged sel %d old sel %d\n", event.GetOldSelection(), event.GetSelection());
+	//printf( "ConfigDialog::OnTreebookChanged sel %d old sel %d\n", event.GetOldSelection(), event.GetSelection());
 	showPanel( event.GetSelection());
 }
 
@@ -411,7 +410,7 @@ void ConfigBaseDialog::OnCancel( wxCommandEvent& )
 void ConfigDialog::OnRestoreDefaults( wxCommandEvent& )
 {
 	const int sel = notebook->GetSelection();
-	printf( "ConfigDialog::OnRestoreDefaults sel %d\n", sel );
+	//printf( "ConfigDialog::OnRestoreDefaults sel %d\n", sel );
 	if ( sel != wxNOT_FOUND )
 	{
 		assert( sel >= 0 && sel < NB_PANELS );

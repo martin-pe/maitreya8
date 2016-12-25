@@ -113,7 +113,7 @@ BitmapId IdConverter::viewId2BitmapId( const VIEW_ID &viewId, const bool vedic, 
 	{
 		if ( vedic )
 		{
-			printf( "VARGA in idconverter %d\n", (int)varga );
+			//printf( "VARGA in idconverter %d\n", (int)varga );
 			//if ( (int)varga == -1 ) sleep( 10 );
 			//ASSERT_VALID_VARGA( varga );
 			if ( varga >= V_FIRST && varga <= V_LAST )

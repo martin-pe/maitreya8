@@ -179,21 +179,14 @@ Table *GenericTableWriter::createTable( Tc *conf )
 	// calculate number of cols and rows
 	uint cols = 0;
 	uint rows = 0;
-	bool hasHeader = false;
 	for( i = 0; i < tcfg->colsets.size(); i++ )
 	{
-		if ( ! tcfg->colsets[i].header.IsEmpty() ) hasHeader = true;
-		//printf( "HEADER %s hasHeader %d\n", str2char( tcfg->colsets[i].header ), hasHeader );
-
 		rows = Max( rows, calcRowCount( tcfg->colsets[i] ) + 1 );
 		for( j = 0; j < tcfg->colsets[i].cols.size(); j++ )
 		{
 			cols +=  getNumCols4ColumnType( tcfg->colsets[i], tcfg->colsets[i].cols[j].type );
-			if ( ! tcfg->colsets[i].cols[j].title.IsEmpty() ) hasHeader = true;
-			//printf( "HEADERTITLE %s hasHeader %d maxrow %u\n", str2char( tcfg->colsets[i].cols[j].title ), hasHeader, rows );
 		}
 	}
-	//if ( hasHeader ) rows++;
 	if ( cols == 0 )
 	{
 		wxLogError( wxT( "ERROR: table has no cols" ));

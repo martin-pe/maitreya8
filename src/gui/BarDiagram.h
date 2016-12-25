@@ -114,11 +114,7 @@ public:
 	void clear();
 	void addItem( BarDiagramItem* );
 
-	virtual SheetItem *getSubitem4Point( const wxPoint& );
-
 	virtual void doPaint( Painter *painter, const MRect &refreshRect );
-
-	virtual bool mouseHasMoved( const wxPoint&, const bool &outside );
 
 protected:
 

@@ -343,7 +343,8 @@ ToolbarLabel::ToolbarLabel( wxWindow *parent, wxWindowID id, wxPoint pos, wxSize
 	//wxBoxSizer* sizert = new wxBoxSizer( wxHORIZONTAL );
 	wxBoxSizer* sizert = new wxBoxSizer( wxVERTICAL );
 	//sizerp->Add( panel, 1, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3 );
-	sizerp->Add( panel, 1, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3 );
+	//sizerp->Add( panel, 1, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3 );
+	sizerp->Add( panel, 1, wxEXPAND | wxALIGN_CENTER_VERTICAL );
 
 	theText = new wxStaticText( panel, -1, wxEmptyString, wxDefaultPosition, size );
 	sizert->Add( theText, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3 );

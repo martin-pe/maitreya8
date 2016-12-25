@@ -227,8 +227,9 @@ void ChildWindow::OnCommand( wxCommandEvent &event )
 	if ( ! isvalid ) return; // nothing to do for closing views
 
 	const int command = event.GetId();
-	printf( "ChildWindow::OnCommand command is %d\n", command );
+	//printf( "ChildWindow::OnCommand command is %d\n", command );
 
+	/*
 	wxObject *obj = event.GetEventObject();
 	if ( obj )
 	{
@@ -236,19 +237,18 @@ void ChildWindow::OnCommand( wxCommandEvent &event )
 		printf( "CLASSNAME %s\n", str2char( cname ));
 	}
 	else printf( "CLASS NADA\n" );
+	*/
 
 	//if (IS_NAVIGATION_KEY_COMMAND( event.GetId())) printf( "NAVIGATION KAY COMMAND\n" );
 
 	if ( command >= CMD_NEW_TEXT && command <= CMD_NEW_RASI+30 )
 	{
-		printf( "1\n" );
 		event.Skip(); // Delegate to parent
 	}
 	else
 	{
-		printf( "1\n" );
 		bool ret = props->dispatchWidgetPropertyCommand( command );
-		printf( "ChildWindow::dispatchCommand dispatchWidgetPropertyCommand return is %d\n", ret );
+		//printf( "ChildWindow::dispatchCommand dispatchWidgetPropertyCommand return is %d\n", ret );
 		if ( ret ) OnDataChanged();
 		else dispatchCommand( event.GetId() );
 	}
@@ -309,9 +309,9 @@ bool SimpleChildWindow::dispatchCommand( const int& command )
 	bool ret = false;
 	assert( view );
 
-	if ( view )
-	printf( "SimpleChildWindow::dispatchCommand VIEWID %d\n", view->getViewId() );
-	else assert( false );
+	//if ( view )
+	//printf( "SimpleChildWindow::dispatchCommand VIEWID %d\n", view->getViewId() );
+	//else assert( false );
 
 	if ( view ) ret = view->dispatchCommand( command );
 	else wxLogError( wxT( "SimpleChildWindow::dispatchCommand - view not set" ));
@@ -459,7 +459,6 @@ ChildWindow *ChildWindowFactory::createChild( wxFrame *parent, Document *doc, co
 	child->insertView( view );
 	view->doLayout();
 
-	printf( "Varga3 ist %d\n", node.varga );
 	return child;
 }
 

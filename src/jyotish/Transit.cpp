@@ -106,7 +106,7 @@ double TransitHoroscope::calcTransitPositions( const Horoscope *hbase, const dou
 		case PcShiftedGravitationPoint:
 		{
 			ds.setDate( directionJD );
-			Location *loc = ds.getLocation();
+			//Location *loc = ds.getLocation();
 
 			// len = progressive sun position
 			calculator->calcPosition( &ds, OSUN, len, dummy, true, vedic );

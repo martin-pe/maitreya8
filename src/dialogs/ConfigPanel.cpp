@@ -56,7 +56,7 @@ ConfigPanel::ConfigPanel( wxWindow* parent, const bool showRestoreDefaultButton 
 ******************************************************/
 void ConfigPanel::setDirty( const bool b )
 {
-	printf( "ConfigPanel::setDirty %d\n", b );
+	//printf( "ConfigPanel::setDirty %d\n", b );
 	if ( dirty != b )
 	{
 		wxCommandEvent e( CONFIG_PANEL_CHANGED, GetId() );
@@ -85,7 +85,7 @@ void ConfigPanel::OnSize( wxSizeEvent &event )
 ******************************************************/
 void ConfigPanel::OnCommand( wxCommandEvent &event )
 {
-	printf( "ConfigPanel::OnCommand\n" );
+	//printf( "ConfigPanel::OnCommand\n" );
 	setDirty();
 	event.Skip();
 }
@@ -97,7 +97,7 @@ void ConfigPanel::OnCommand( wxCommandEvent &event )
 ******************************************************/
 void ConfigPanel::OnSpin( wxSpinEvent &event )
 {
-	printf( "ConfigPanel::OnSpin\n" );
+	//printf( "ConfigPanel::OnSpin\n" );
 	setDirty();
 	event.Skip();
 }
@@ -109,7 +109,7 @@ void ConfigPanel::OnSpin( wxSpinEvent &event )
 ******************************************************/
 void ConfigPanel::OnText( wxCommandEvent &event )
 {
-	printf( "ConfigPanel::OnText\n" );
+	//printf( "ConfigPanel::OnText\n" );
 	setDirty();
 	event.Skip();
 }
@@ -121,7 +121,7 @@ void ConfigPanel::OnText( wxCommandEvent &event )
 ******************************************************/
 void ConfigPanel::onActivate()
 {
-	printf( "ConfigPanel::onActivate\n" );
+	//printf( "ConfigPanel::onActivate\n" );
 	updateUi();
 }
 
@@ -132,7 +132,7 @@ void ConfigPanel::onActivate()
 ******************************************************/
 void ConfigPanel::onPassivate()
 {
-	printf( "ConfigPanel::onPassivate\n" );
+	//printf( "ConfigPanel::onPassivate\n" );
 }
 
 /*****************************************************

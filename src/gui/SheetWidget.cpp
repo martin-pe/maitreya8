@@ -96,7 +96,7 @@ void SheetWidget::init()
 
 	writer->pageSize = MPoint( clientsize.x, clientsize.y );
 
-	printf( "CLIENT %d %d\n", clientsize.x, clientsize.y );
+	//printf( "CLIENT %d %d\n", clientsize.x, clientsize.y );
 
 	xviewport = widgetsize.x;// - sb_ysize;
 	yviewport = widgetsize.y;// - sb_xsize;
@@ -127,7 +127,7 @@ void SheetWidget::initViewPort()
 
 	if ( xviewport != oldViewport.x || yviewport != oldViewport.y )
 	{
-		printf( "SET VIEWPORT %d ---- %d\n", xviewport, yviewport );
+		//printf( "SET VIEWPORT %d ---- %d\n", xviewport, yviewport );
 		SetVirtualSize( xviewport, yviewport );
 	}
 }
@@ -269,7 +269,7 @@ void SheetWidget::calculateContentSize()
 	wxSize p = GetSize();
 
 	const double xrightmax = Max( p.x - 4.0 * SCROLLABLE_PAGE_WIDGET_PAGE_BORDER_X, minxright );
-	printf( "SheetWidget::calculateContentSize size x %d xrightmax %f minxright %d\n", p.x, xrightmax, minxright );
+	//printf( "SheetWidget::calculateContentSize size x %d xrightmax %f minxright %d\n", p.x, xrightmax, minxright );
 	writer->preformat( painter, xrightmax );
 }
 

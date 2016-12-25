@@ -132,7 +132,7 @@ void EphemView::initToolItems()
 ******************************************************/
 void EphemView::initClientView()
 {
-	printf( "EphemView::initClientView mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
+	//printf( "EphemView::initClientView mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
 	//if ( widget ) delete widget;
 	if ( mode == 1 )
 	{
@@ -163,7 +163,7 @@ void EphemView::initClientView()
 		swidget = (SheetWidget*)NULL;
 	}
 	doLayout();
-	printf( "ENDE EphemView::initClientView mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
+	//printf( "ENDE EphemView::initClientView mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
 }
 
 /**************************************************************
@@ -173,8 +173,8 @@ void EphemView::initClientView()
 ***************************************************************/
 void EphemView::write()
 {
-	printf( "EphemView::write mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
-	printf( "EphemView::write mode %d month %d year %d\n", mode, month, year );
+	//printf( "EphemView::write mode %d widget %ld swidget %ld twidget %ld\n", mode, (long)widget, (long)swidget, (long)twidget ); 
+	//printf( "EphemView::write mode %d month %d year %d\n", mode, month, year );
 	assert( mode >= 0 && mode < MAX_EPHEM_VIEWTYPES );
 	int ret = 0;
 
@@ -241,7 +241,7 @@ void EphemView::write()
 ******************************************************/
 void EphemView::OnDataChanged()
 {
-	printf( "EphemView::OnDataChanged\n" );
+	//printf( "EphemView::OnDataChanged\n" );
 	setDirty();
 	BasicView::OnDataChanged();
 }
@@ -486,7 +486,7 @@ void GraphicalEphemWidgetItem::setLineStyle( Painter *painter, const ObjectId &p
 void GraphicalEphemWidgetItem::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 {
 	assert( painter );
-	printf( "GraphicalEphemWidgetItem::doPaint rect %f %f %f %f\n", rect.x, rect.y, rect.width, rect.height );
+	//printf( "GraphicalEphemWidgetItem::doPaint rect %f %f %f %f\n", rect.x, rect.y, rect.width, rect.height );
 
 	xleft = rect.x;
 	xright = xleft + rect.width;
@@ -584,7 +584,7 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 	int ylshift, yrshift;
 	const int xshiftunit = 15;
 
-	printf( "GraphicalEphemWidgetItem::paintPlanets ybottom %f ytop %f\n", ybottom, ytop );
+	//printf( "GraphicalEphemWidgetItem::paintPlanets ybottom %f ytop %f\n", ybottom, ytop );
 	const int ytotal =  (int)(ybottom - ytop);   // total height of interior
 	const int mlen = expert->getNumberOfDays();  // length of month
 	const double dstep = ( xright - xleft ) / mlen;  // daily step in x dimension
@@ -663,7 +663,6 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 		// Planet name on left side
 		y1 = (int)(ybottom - a_red( expert->getPlanetLongitude( i1, 0 ), max_deg ) * ytotal / max_deg);
 
-		printf( "HALLO %d\n", ytotal );
 		assert( ytotal != 0 );
 		ylshift = a_red( sshift * y1 / ytotal, 60 );
 

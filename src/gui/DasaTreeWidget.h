@@ -89,6 +89,7 @@ protected:
 	void updateDasa( const wxTreeItemId& );
 	void emitItemChanged( DasaTreeItemClientData* );
 
+	virtual void HandleMouseWheelEvent( wxMouseEvent& );
 	virtual void doPaint( const wxRect&, const bool eraseBackground = true );
 
 	TreeWidget *twidget;

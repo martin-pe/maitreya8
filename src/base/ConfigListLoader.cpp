@@ -133,7 +133,8 @@ bool ConfigBaseLoader::traverseConfigDir( wxString dirname, const bool mustExist
 		return false;
 	}
 
-	size_t l = wxDir::GetAllFiles( dirname, &files, wxT( "*.json" ));
+	//size_t l = 
+	wxDir::GetAllFiles( dirname, &files, wxT( "*.json" ));
 	files.Sort();
 	for ( uint i = 0; i < files.GetCount(); i++ )
 	{

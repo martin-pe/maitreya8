@@ -392,7 +392,7 @@ bool SarvatobhadraChart::isChartFieldMarked( const int &nak )
 ******************************************************/
 bool SarvatobhadraChart::handleMouseLeftEvent( int x, int y, wxRect &rect )
 {
-	printf( "MOUSE LEF IN SBC\n" );
+	//printf( "MOUSE LEF IN SBC\n" );
 	if ( getFieldIndex( &x, &y ))
 	{
 		mark[x][y] = ! mark[x][y];

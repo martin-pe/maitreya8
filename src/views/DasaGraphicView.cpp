@@ -223,7 +223,7 @@ void DasaGraphicView::applyZoom()
 ******************************************************/
 void DasaGraphicView::OnZoomCombo( wxCommandEvent& )
 {
-	printf( "OnZoomCombo\n" );
+	//printf( "OnZoomCombo\n" );
 	if ( toolbar )
 	{
 		wxComboBox *combo_zoom = (wxComboBox*)toolbar->FindControl( TBC_DASA_ZOOM );
@@ -251,7 +251,7 @@ void DasaGraphicView::OnZoomCombo( wxCommandEvent& )
 ******************************************************/
 void DasaGraphicView::OnMouseWheelEvent( wxMouseEvent &event )
 {
-	printf( "DasaGraphicView::OnMouseWheelEvent\n" );
+	//printf( "DasaGraphicView::OnMouseWheelEvent\n" );
 	const bool shiftpressed = event.m_shiftDown;
 
 	if ( shiftpressed )
@@ -487,7 +487,7 @@ void DasaGraphicWidget::doPaint( const wxRect &rect, const bool eraseBackground 
 	painter->setPen( wxPen( config->colors->bgColor ));
 	wxRect r = sheetRect;
 	r.Intersect( rect );
-	printf( "DasaGraphicWidget::doPaint: background rect x %d y %d w %d h %d MODE %d\n", r.x, r.y, r.width, r.height, exportMode );
+	//printf( "DasaGraphicWidget::doPaint: background rect x %d y %d w %d h %d MODE %d\n", r.x, r.y, r.width, r.height, exportMode );
 	painter->drawRectangle( r );
 
 	paintRuler( rect );
@@ -615,17 +615,14 @@ void DasaGraphicWidget::calcDasaLevel( GraphicalDasaItem *item )
 	//printf( "DasaGraphicWidget::calcDasaLevel level %d dasa %ld\n", item->getLevel(), (long)item->dasa );
 	if ( ! item->dasa )
 	{
-		printf( "LEVEL OHNE %d\n", item->getLevel());
 		assert( item->getLevel() == -1 );
 		v = experts[item->dasaId]->getFirstLevel();
 	}
 	// Antardasa or deeper
 	else
 	{
-		printf( "LEVEL %d lord %d\n", item->getLevel(), item->dasa->getDasaLord());
 		assert( item->getLevel() >= 0 );
 		v = experts[item->dasaId]->getNextLevel( item->dasa );
-		printf( "Fertig\n" );
 	}
 	for ( antardasa = 0; antardasa < v.size(); antardasa++ )
 	{

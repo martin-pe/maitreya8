@@ -101,7 +101,7 @@ public:
 		pdfdoc->SetCompression( pcfg->compressPdf );
 		pdfdoc->AddPage();
 
-		printf( "START PdfSheetWriter::doPrint\n" );
+		//printf( "START PdfSheetWriter::doPrint\n" );
 
 		contentRect.x = pdfdoc->GetLeftMargin();
 		contentRect.y = pdfdoc->GetTopMargin();
@@ -117,7 +117,7 @@ public:
 
 		pdfdoc->SaveAsFile( filename );
 
-		printf( "ENDE PdfSheetWriter::doPrint\n" );
+		//printf( "ENDE PdfSheetWriter::doPrint\n" );
 		return ret;
 	}
 
@@ -134,7 +134,7 @@ protected:
 			item0->rect.y > pdfdoc->GetTopMargin() // do not break if page is still empty
 			&& item0->rect.y + item0->rect.height > pdfdoc->GetPageHeight() - pdfdoc->GetTopMargin(); // break if item would be too large
 
-		printf( "PdfSheetWriter::handlePageBreak dobreak %d\n", dobreak );
+		//printf( "PdfSheetWriter::handlePageBreak dobreak %d\n", dobreak );
 
 		if ( dobreak )
 		{
@@ -344,7 +344,7 @@ bool PdfTool::selectFilename( wxString &fullname, wxString basename )
 	}
 	config->viewprefs->defExportPath = exportFileDialog.GetDirectory();
 
-	printf( "FULLNAME %s\n", str2char( fullname ));
+	//printf( "FULLNAME %s\n", str2char( fullname ));
 
 	return true;
 }
@@ -391,7 +391,7 @@ void PdfTool::printHoroscope( Horoscope *horoscope, wxString filename )
 	PrintoutConfigLoader *loader = PrintoutConfigLoader::get();
 	PrintoutConfig *theconfig = loader->getConfig( pcfg->defaultPrintout );
 	props->setVedic( theconfig->vedic );
-	printf( "VEDIC %d viewer %s\n", theconfig->vedic, str2char( pcfg->pdfViewerCommand ) );
+	//printf( "VEDIC %d viewer %s\n", theconfig->vedic, str2char( pcfg->pdfViewerCommand ) );
 
 	Sheet *sheet = new Sheet;
 	SheetConfigLoader *sloader = SheetConfigLoader::get();

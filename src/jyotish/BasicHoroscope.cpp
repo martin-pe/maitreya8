@@ -281,7 +281,7 @@ double BasicHoroscope::getHouse( const int& housenb, const bool& vedic, const bo
 ******************************************************/
 double BasicHoroscope::getHouse4Longitude( const double &len, const bool &vedic ) const
 {
-	printf( "BasicHoroscope::getHouse4Longitude len %f\n", len );
+	//printf( "BasicHoroscope::getHouse4Longitude len %f\n", len );
 	double hstart, hend, hlen, hpart, ret;
 	for ( int i = HOUSE1; i <= HOUSE12; i++ )
 	{
@@ -303,7 +303,7 @@ double BasicHoroscope::getHouse4Longitude( const double &len, const bool &vedic 
 				hend = ihousesandhi[red12(i)];
 			}
 		}
-		printf( "hstart %f end %f\n", hstart, hend );
+		//printf( "hstart %f end %f\n", hstart, hend );
 		if (( hstart <= len && len < hend ) || ( hstart > hend && ( len >= hstart || len < hend )))
 		{
 			hlen = red_deg( hend - hstart );

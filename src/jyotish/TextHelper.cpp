@@ -658,7 +658,7 @@ int TextHelper::writeTransitReport( const PlanetContext &ctx )
 **   TextHelper   ---   writeSynastryReport
 **
 ******************************************************/
-int TextHelper::writeSynastryReport( Horoscope *h2, AspectExpert *aexpert )
+int TextHelper::writeSynastryReport( Horoscope *h2, AspectExpert* /*aexpert*/ )
 {
 	assert( horoscope );
 	assert( h2 );

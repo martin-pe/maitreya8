@@ -267,7 +267,7 @@ void AshtakootaExpert::update()
 		 //assert( false );
 	 }
 
-	 printf( "RAJJU1 aroha %d type %d Rajju2 aroha %d type %d\n", rajju1.aroha, rajju1.type, rajju2.aroha, rajju2.type );
+	 //printf( "RAJJU1 aroha %d type %d Rajju2 aroha %d type %d\n", rajju1.aroha, rajju1.type, rajju2.aroha, rajju2.type );
 
 	/*
 	 * Final
@@ -616,7 +616,7 @@ void CompositHoroscope::update( Horoscope *horoscope, Horoscope *h2 )
 **   CompositHoroscope   ---   dump
 **
 ******************************************************/
-void CompositHoroscope::dump( Sheet *sheet, const ChartProperties* chartprops, bool show_header )
+void CompositHoroscope::dump( Sheet *sheet, const ChartProperties* chartprops, bool /*show_header*/ )
 {
 	vector<int> obs;
 	ObjectPosition pos;

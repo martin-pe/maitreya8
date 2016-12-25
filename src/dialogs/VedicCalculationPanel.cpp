@@ -329,7 +329,7 @@ void VedicCalculationPanel::model2config()
 ******************************************************/
 void VedicCalculationPanel::updateUi()
 {
-	printf( "VedicCalculationPanel::updateUi\n" );
+	//printf( "VedicCalculationPanel::updateUi\n" );
 	text_custom_yl->Enable( choice_yl->GetSelection() == 4 );
 	//updateVargaSignification( choice_vargas->GetSelection());
 
@@ -341,7 +341,7 @@ void VedicCalculationPanel::updateUi()
 	//choice_kalaportion->Enable( cconfig->kalavela.portion[0] != -1 );
 
 	int selkala = choice_kalavela->GetSelection();
-	printf(  "VedicCalculationPanel::OnKalaVelaChoice selkala %d\n", selkala );
+	//printf(  "VedicCalculationPanel::OnKalaVelaChoice selkala %d\n", selkala );
 	assert( selkala >= 0 && selkala < 6 );
 	choice_kalalord->SetSelection( cconfig->kalavela.lord[selkala] + 1 );
 	choice_kalaportion->SetSelection( cconfig->kalavela.portion[selkala] );
@@ -395,7 +395,7 @@ void VedicCalculationPanel::OnVargaSignificationText( wxCommandEvent& )
 void VedicCalculationPanel::OnKalaVelaLordChoice( wxCommandEvent& )
 {
 	int selkala = choice_kalavela->GetSelection();
-	printf(  "VedicCalculationPanel::OnKalaVelaLordChoice selkala %d\n", selkala  );
+	//printf(  "VedicCalculationPanel::OnKalaVelaLordChoice selkala %d\n", selkala  );
 	assert( selkala >= 0 && selkala < 6 );
 	cconfig->kalavela.lord[selkala] = choice_kalalord->GetSelection() - 1;
 	setDirty();
@@ -409,7 +409,7 @@ void VedicCalculationPanel::OnKalaVelaLordChoice( wxCommandEvent& )
 void VedicCalculationPanel::OnKalaVelaPortionChoice( wxCommandEvent& )
 {
 	int selkala = choice_kalavela->GetSelection();
-	printf(  "VedicCalculationPanel::OnKalaVelaPortionChoice selkala %d\n", selkala  );
+	//printf(  "VedicCalculationPanel::OnKalaVelaPortionChoice selkala %d\n", selkala  );
 	assert( selkala >= 0 && selkala < 6 );
 	cconfig->kalavela.portion[selkala] = choice_kalaportion->GetSelection();
 	setDirty();

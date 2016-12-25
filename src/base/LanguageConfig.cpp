@@ -77,7 +77,7 @@ void LanguageConfig::setLanguage( const int& language )
 	locale->AddCatalog( wxT( "maitreya8" ));
 
 	wxString ss = locale->GetInfo( wxLOCALE_DECIMAL_POINT, wxLOCALE_CAT_NUMBER );
-	printf( "LOCALE %s\n", str2char( ss ) );
+	//printf( "LOCALE %s\n", str2char( ss ) );
 }
 
 /*****************************************************

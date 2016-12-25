@@ -175,18 +175,20 @@ protected:
 
 	void OnDasaTreeChanged( wxCommandEvent &event )
 	{
-		printf( "OnDasaTreeChanged\n" );
+		//printf( "OnDasaTreeChanged\n" );
 		bool b = (bool)event.GetClientObject();
 		if ( toolbar )
 		{
 			wxButton *entry_chart_button = (wxButton*)toolbar->FindControl( CMD_ENTRY_CHART );
 			if ( entry_chart_button ) entry_chart_button->Enable( b );
-			else printf( "Error: button not found\n" );
+			//else printf( "Error: button not found\n" );
 		}
-		else
+		/*
+		else  // ok for single tree view without text view
 		{
 			printf( "Error: no toolpanel\n" );
 		}
+		*/
 		treeChanged( (DasaTreeItemClientData*)event.GetClientObject());
 	}
 
@@ -197,7 +199,7 @@ protected:
 	******************************************************/
 	void OnEntryChart( wxCommandEvent& )
 	{
-		printf( "DasaBaseTreeView::OnEntryChart\n" );
+		//printf( "DasaBaseTreeView::OnEntryChart\n" );
 		assert( treewidget );
 		const double currentjd = treewidget->getCurrentJD();
 
@@ -278,7 +280,7 @@ public:
 	virtual void treeChanged( DasaTreeItemClientData *item )
 	{
 		updateDetailPanel( item );
-		printf( "DasaTreeView::treeChanged\n" );
+		//printf( "DasaTreeView::treeChanged\n" );
 	}
 
 	/*****************************************************
@@ -464,7 +466,7 @@ protected:
 	******************************************************/
 	virtual void treeChanged( DasaTreeItemClientData *item )
 	{
-		printf( "DasaCompositeView::treeChanged\n" );
+		//printf( "DasaCompositeView::treeChanged\n" );
 		currentItem = item;
 
 		toolbar->EnableTool( CMD_ENTRY_CHART, item && item->getDasa() );
@@ -478,7 +480,7 @@ protected:
 	******************************************************/
 	void updateText()
 	{
-		printf( "DasaCompositeView::updateText\n" );
+		//printf( "DasaCompositeView::updateText\n" );
 		DasaTool *tool = DasaTool::get();
 		theText->clearSheet();
 		if ( currentItem )
@@ -495,7 +497,7 @@ protected:
 	******************************************************/
 	void split( const bool &b )
 	{
-		printf( "Split param checked %di splitter isplit %d\n", b, splitter->IsSplit() );
+		//printf( "Split param checked %di splitter isplit %d\n", b, splitter->IsSplit() );
 		if ( b )
 		{
 			splitter->SplitVertically( treewidget, theText );
@@ -505,9 +507,9 @@ protected:
 		{
 			config->viewprefs->sashDasaTree = splitter->GetSashPosition();
 			splitter->Unsplit();
-			printf( "Unsplit finished\n" );
+			//printf( "Unsplit finished\n" );
 		}
-		printf( "Sash2 %d\n", config->viewprefs->sashDasaTree );
+		//printf( "Sash2 %d\n", config->viewprefs->sashDasaTree );
 	}
 
 	/*****************************************************
@@ -517,7 +519,7 @@ protected:
 	******************************************************/
 	void OnSplitUnsplit( wxCommandEvent &event )
 	{
-		printf( "Split/Unsplit checked %d\n", event.IsChecked() );
+		//printf( "Split/Unsplit checked %d\n", event.IsChecked() );
 		config->viewprefs->doSplitDasaTree = event.IsChecked();
 		split( event.IsChecked());
 	}
@@ -541,7 +543,7 @@ protected:
 	******************************************************/
 	void OnSplitterDoubleClick(wxSplitterEvent& )
 	{
-		printf( "OnSplitterDoubleClick\n" );
+		//printf( "OnSplitterDoubleClick\n" );
 		if ( toolbar ) toolbar->ToggleTool( CMD_TOGGLE_SPLIT, false );
 	}
 

@@ -357,6 +357,7 @@ public:
 	wxSize pMasterWindow;
 	wxSize pAdditionalLogWindow;
 	wxSize pConfigDialog;
+	wxSize pDataDialog;
 	int sashMasterWindowLog;
 
 	int sashPartnerDouble;

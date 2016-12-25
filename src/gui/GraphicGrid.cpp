@@ -56,7 +56,7 @@ ChartGridWidget::ChartGridWidget( wxWindow *parent, const ChartType &charttype, 
 		rows( rows ),
 		cols( cols )
 {
-	printf( "ChartGridWidget::ChartGridWidget VEDIC %d\n", chartprops->isVedic());
+	//printf( "ChartGridWidget::ChartGridWidget VEDIC %d\n", chartprops->isVedic());
 	lastMouseOverChart = NO_CHART_ID;
 	wchart = (BasicWesternChart*)NULL;
 	setWidgetOptions( WO_BUNDLE_GRAPHICGRID );

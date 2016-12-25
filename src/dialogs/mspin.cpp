@@ -63,7 +63,7 @@ public:
 
 	virtual bool TransferToWindow()
 	{
-		printf( "DelegatingSpinValidator::TransferToWindow\n" );
+		//printf( "DelegatingSpinValidator::TransferToWindow\n" );
 		assert( ctrl );
 		wxValidator *val = ctrl->GetValidator();
 		assert( val );
@@ -72,7 +72,7 @@ public:
 
 	virtual bool TransferFromWindow()
 	{
-		printf( "DelegatingSpinValidator::TransferFromWindow\n" );
+		//printf( "DelegatingSpinValidator::TransferFromWindow\n" );
 		assert( ctrl );
 		wxValidator *val = ctrl->GetValidator();
 		assert( val );
@@ -145,7 +145,7 @@ MBaseSpin::~MBaseSpin()
 ******************************************************/
 void MBaseSpin::OnMouseWheelEvent( wxMouseEvent &event )
 {
-	printf( "MBaseSpin::OnMouseWheelEvent rotation %d\n", event.GetWheelRotation() );
+	//printf( "MBaseSpin::OnMouseWheelEvent rotation %d\n", event.GetWheelRotation() );
 	add( event.GetWheelRotation() > 0 ? 1 : -1 );
 }
 
@@ -181,7 +181,7 @@ void MBaseSpin::sendWrapEvent( const bool forward )
 void MBaseSpin::SetValidator( const wxValidator &val )
 {
 	wxString s = val.GetClassInfo()->GetClassName();
-	printf( "MBaseSpin::SetValidator class %s\n", str2char( s ));
+	//printf( "MBaseSpin::SetValidator class %s\n", str2char( s ));
 
 	MBaseDoubleValidator *dval = wxDynamicCast( &val, MBaseDoubleValidator );
 	assert( dval );
@@ -206,7 +206,7 @@ void MBaseSpin::SetValidator( const wxValidator &val )
 ******************************************************/
 void MBaseSpin::OnTextEnter( wxCommandEvent& )
 {
-	printf( "TEXT ENTER\n" );
+	//printf( "TEXT ENTER\n" );
 	TransferDataToWindow();
 	sendChangeEvent();
 }
@@ -225,7 +225,7 @@ void MBaseSpin::OnChar(wxKeyEvent &event )
     case WXK_TAB:
     {
       const bool shiftpressed = wxGetKeyState( WXK_SHIFT );
-      printf( "MBaseSpin::OnChar SPIN TAB shift %d\n", shiftpressed );
+      //printf( "MBaseSpin::OnChar SPIN TAB shift %d\n", shiftpressed );
 			//GetParent()->GetParent()->Navigate( ! shiftpressed );
 			//text->KillFocus();
 			doSkipSetFocus = true;
@@ -236,21 +236,21 @@ void MBaseSpin::OnChar(wxKeyEvent &event )
     break;
     case WXK_RETURN:
     {
-      printf( "SPIN RETURN\n" );
+      //printf( "SPIN RETURN\n" );
 			TransferDataToWindow();
 			sendChangeEvent();
     }
     break;
     case WXK_DOWN:
-      printf( "SPIN DOWN\n" );
+      //printf( "SPIN DOWN\n" );
 			add( -1 );
     break;
     case WXK_UP:
-      printf( "SPIN UP\n" );
+      //printf( "SPIN UP\n" );
 			add( 1 );
     break;
     default:
-      printf( "SPIN DETAULT\n" );
+      //printf( "SPIN DETAULT\n" );
 			event.Skip();
     break;
   }
@@ -263,7 +263,7 @@ void MBaseSpin::OnChar(wxKeyEvent &event )
 ******************************************************/
 void MBaseSpin::OnKillFocus( wxFocusEvent &event )
 {
-	printf( "MBaseSpin::OnKillFocus\n" );
+	//printf( "MBaseSpin::OnKillFocus\n" );
 	event.Skip();
 	doSkipSetFocus = false;
 }
@@ -275,7 +275,7 @@ void MBaseSpin::OnKillFocus( wxFocusEvent &event )
 ******************************************************/
 void MBaseSpin::OnSetFocus( wxFocusEvent &event )
 {
-	printf( "MBaseSpin::OnSetFocus doSkipSetFocus %d\n", doSkipSetFocus );
+	//printf( "MBaseSpin::OnSetFocus doSkipSetFocus %d\n", doSkipSetFocus );
 
 	if ( ! doSkipSetFocus ) text->SetFocus();
 	else event.Skip();
@@ -304,7 +304,7 @@ int MBaseSpin::findToken4add()
 {
 	assert( text );
 	wxString s = text->GetValue();
-	printf( "MBaseSpin::findToken4add %s MAX %f insert point %ld\n", str2char( s ), maxvalue, text->GetInsertionPoint());
+	//printf( "MBaseSpin::findToken4add %s MAX %f insert point %ld\n", str2char( s ), maxvalue, text->GetInsertionPoint());
 
 	// for datespin potential first '-' does not count, so replace it
 	if ( s[0] == '-' ) s[0] = '0';
@@ -317,7 +317,7 @@ int MBaseSpin::findToken4add()
 	const int t1 = s.Find( token );
 	const bool hasfocus = ( wxWindow::FindFocus() == text ) ? true : false;
 	long cursorpos = text->GetInsertionPoint();
-	printf( "t1 %d --- FOCUS %d cursor %ld\n", t1, hasfocus, cursorpos );
+	//printf( "t1 %d --- FOCUS %d cursor %ld\n", t1, hasfocus, cursorpos );
 
 	if ( hasfocus )
 	{
@@ -396,7 +396,7 @@ void MDateSpin::add( const double &v )
 
 	formatter->parseDateString( s, day, month, year );
 	const int tokenpos = findToken4add();
-	printf( "token pos %d\n", tokenpos );
+	//printf( "token pos %d\n", tokenpos );
 
 	switch( tokenpos )
 	{
@@ -415,7 +415,7 @@ void MDateSpin::add( const double &v )
 	assert( value );
 	*value = calculator->calc_jd( year, month, day, 12 );
 
-	printf( "MDateSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
+	//printf( "MDateSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
 	TransferDataToWindow();
 	text->SetInsertionPoint( cursorpos );
 	sendChangeEvent();
@@ -450,7 +450,7 @@ void MDegSpin::add( const double &v )
 	Formatter *formatter = Formatter::get();
 
 	formatter->parseDegreeString( s, deg, min, sec, 360 );
-	printf( "HALLO 1 s %s deg %d min %d sec %d\n", str2char( s ), deg, min, sec );
+	//printf( "HALLO 1 s %s deg %d min %d sec %d\n", str2char( s ), deg, min, sec );
 
 	const long cursorpos = text->GetInsertionPoint();
 	//int freq = s.Freq( token );
@@ -490,7 +490,7 @@ void MDegSpin::add( const double &v )
 		}
 	}
 
-	printf( "MDegSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
+	//printf( "MDegSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
 	TransferDataToWindow();
 	text->SetInsertionPoint( cursorpos );
 	sendChangeEvent();

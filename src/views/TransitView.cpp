@@ -102,12 +102,12 @@ public:
 		{
 			transitdate = MDate::getCurrentJD();
 		}
-		printf( "transitdate %f stored %f\n", transitdate, config->viewprefs->transitJD );
+		//printf( "transitdate %f stored %f\n", transitdate, config->viewprefs->transitJD );
 		calcTzOffset();
 
 		thedate = (int)(transitdate + .5 );
 		thetime = ( transitdate - (long)transitdate ) + .5;
-		printf( "TIME IS %f\n", thetime );
+		//printf( "TIME IS %f\n", thetime );
 
 		notebook = new wxNotebook( this, TRANSIT_NOTEBOOK );
 
@@ -145,7 +145,7 @@ public:
 		wxPanel *panel = new wxPanel( notebook );
 		uwidget = new TextWidget( panel, props, URANIAN_VIEW_TEXT_WO );
 		upanel = new UranianParamPanel( panel, TRANSIT_UPANEL, props, &uconfig.orbisTransit );
-		printf( "ORBIS 1 %f\n", uconfig.orbisTransit );
+		//printf( "ORBIS 1 %f\n", uconfig.orbisTransit );
 		wxBoxSizer* usizer = new wxBoxSizer( wxHORIZONTAL );
 		usizer->Add( upanel, 0, wxALL, 3);
 		usizer->Add( uwidget, 1, wxEXPAND | wxALL, 3);
@@ -202,7 +202,7 @@ public:
 		config->viewprefs->transitmode = transitmode;
 		config->viewprefs->transitJD = transitdate;
 
-		printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisTransit );
+		//printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisTransit );
 		*config->uranian = props->getUranianConfig();
 
 		delete expert;
@@ -216,7 +216,7 @@ public:
 	******************************************************/
 	void setDirty( const bool b = true )
 	{
-		printf( "TransitView   ---   setDirty %d\n", b );
+		//printf( "TransitView   ---   setDirty %d\n", b );
 		dirty = b;
 		udirty = b;
 	}
@@ -422,7 +422,7 @@ protected:
 	******************************************************/
 	virtual void OnDataChanged()
 	{
-		printf( "TransitView::OnDataChanged\n" );
+		//printf( "TransitView::OnDataChanged\n" );
 		BasicView::OnDataChanged();
 
 		// must be called each time because dst may have changed
@@ -441,9 +441,7 @@ protected:
 			TransitModeChoice *choice_mode = wxDynamicCast( toolbar->FindControl( TBS_TRANSITMODE ), TransitModeChoice );
 			if ( choice_mode )
 			{
-				PlanetContext otto = transitmode;
 				transitmode = choice_mode->getTransitMode();
-				printf( "CONTEXT %d old was %d\n", transitmode, otto );
 				expert->setTransitMode( transitmode );
 			}
 		}
@@ -463,7 +461,7 @@ protected:
 	void updateCurrentPage()
 	{
 		const int sel = notebook->GetSelection();
-		printf( "TransitView   ---   updateCurrentPage sel %d\n", sel );
+		//printf( "TransitView   ---   updateCurrentPage sel %d\n", sel );
 
 		switch ( sel )
 		{
@@ -485,7 +483,7 @@ protected:
 				varga3widget->OnDataChanged();
 			break;
 			case TNB_URANIAN:
-				printf( "updateCurrentPage uranian\n" );
+				//printf( "updateCurrentPage uranian\n" );
 				if ( udirty ) updateUranian();
 			break;
 		default:
@@ -613,8 +611,8 @@ protected:
 	******************************************************/
 	void writeTransitPlanetList()
 	{
-		Formatter *formatter = Formatter::get();
-		DateTimeFormatter *df = DateTimeFormatter::get();
+		//Formatter *formatter = Formatter::get();
+		//DateTimeFormatter *df = DateTimeFormatter::get();
 		wxString s;
 
 		Sheet *sheet = twidget->getSheet();
@@ -680,12 +678,9 @@ protected:
 	{
 		thedate = (int)(transitdate + .5 );
 		thetime = ( transitdate - (long)transitdate );
-		printf( "thetime %f\n", thetime );
 		thetime += .5;
 		if ( thetime > 1 ) thetime--;
-		printf( "thetime %f\n", thetime );
 		thetime *= 24;
-		printf( "thetime %f\n", thetime );
 		toolbar->TransferDataToWindow();
 
 		if ( toolbar ) toolbar->TransferDataToWindow();
@@ -715,7 +710,7 @@ protected:
 	******************************************************/
   virtual void OnEWToggle( const bool &vedic )
 	{
-		printf( "TransitView::OnEWToggle %d\n", vedic );
+		//printf( "TransitView::OnEWToggle %d\n", vedic );
 		props->setVedic( vedic );
 		gwidget->OnEWToggle( vedic );
 	}

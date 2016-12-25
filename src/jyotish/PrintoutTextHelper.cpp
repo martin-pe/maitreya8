@@ -190,7 +190,7 @@ void  PrintoutTextHelper::writePrintoutHeader( const int &mode, const bool &vedi
 **   PrintoutTextHelper   ---   writeBaseData
 **
 ******************************************************/
-Table *PrintoutTextHelper::writeBaseData( const int &mode, const bool &vedic )
+Table *PrintoutTextHelper::writeBaseData( const int& /*mode*/, const bool &vedic )
 {
 	Tc tc;
 	GenericTableWriter tw( horoscope );
@@ -198,7 +198,7 @@ Table *PrintoutTextHelper::writeBaseData( const int &mode, const bool &vedic )
 	TcColumnSet colset( TAB_LC_NONE );
 	TcColumn col( TAB_CT_CUSTOM_KEY_VALUE );
 
-	col.cells.push_back( TcCell( TAB_CELL_NAME ));
+	//col.cells.push_back( TcCell( TAB_CELL_NAME ));
 	col.cells.push_back( TcCell( TAB_CELL_FULL_DATE ));
 	col.cells.push_back( TcCell( TAB_CELL_LOCAL_TIME ));
 	col.cells.push_back( TcCell( TAB_CELL_LOCATION_NAME ));

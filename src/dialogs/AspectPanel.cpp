@@ -106,7 +106,6 @@ private:
 			painter->drawLine( xleft, y, xleft + w/2 - xh, y );
 			painter->drawLine( xleft + w/2 + xh, y, xright, y );
 			c = SymbolProvider().getAspectCode( (ASPECT_TYPE)aspectindex );
-			printf( "Index %d code %c\n", aspectindex, c );
 
 			if ( ! c )
 			{

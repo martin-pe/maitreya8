@@ -482,7 +482,7 @@ void ApplicationWindow::OnChildClose( ChildWindow *child )
 void ApplicationWindow::OnFileNew( wxCommandEvent &event )
 {
 	int viewId = -1;
-	printf( "File NEW id %d viewID %d\n", event.GetId(), event.GetId() - APP_NEW_MULTIPLE );
+	//printf( "File NEW id %d viewID %d\n", event.GetId(), event.GetId() - APP_NEW_MULTIPLE );
 
 	bool useMultipleView = config->multipleView->useMultipleViews;
 	switch ( event.GetId() )
@@ -663,7 +663,7 @@ void ApplicationWindow::OnChildCommand( wxCommandEvent &event )
 	if ( obj )
 	{
 		wxString classname = obj->GetClassInfo()->GetClassName();
-		printf( "ApplicationWindow::OnChildCommand %d object %s\n", id, str2char( classname ));
+		//printf( "ApplicationWindow::OnChildCommand %d object %s\n", id, str2char( classname ));
 	}
 	if ( ! docommands ) return;
 	ChildWindow *child = listctrl->getActiveChild();
@@ -890,7 +890,7 @@ void ApplicationWindow::recreateToolbar()
 	delete toolbar;
 	SetToolBar( NULL );
 
-	printf( "ApplicationWindow::recreateToolbar style i %d\n", factory->getToolbarStyle());
+	//printf( "ApplicationWindow::recreateToolbar style i %d\n", factory->getToolbarStyle());
 	toolbar = CreateToolBar( factory->getToolbarStyle());
 	factory->populateMainToolbar( toolbar );
 	updateTools = true;
@@ -1004,7 +1004,7 @@ void ApplicationWindow::notifyDocumentChanged( Document* )
 
 void ApplicationWindow::notifyDocumentSaved( Document *doc )
 {
-	printf( "ApplicationWindow::notifyDocumentSaved\n" );
+	//printf( "ApplicationWindow::notifyDocumentSaved\n" );
 	menubar->addToRecentFiles( ((FileDataSet*)doc->getDataSet())->getFilename() );
 	updateTools = true;
 }

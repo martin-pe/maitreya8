@@ -98,7 +98,7 @@ public:
 		//if ( ! config->ephem->sePath.IsEmpty() )
 		if ( true )
 		{
-			printf( "SEPATH %s\n", str2char( config->ephem->sePath ));
+			//printf( "SEPATH %s\n", str2char( config->ephem->sePath ));
 			swe_set_ephe_path( (char*)str2char( config->ephem->sePath ));
 			wxLogMessage( wxString::Format( wxT( "Ephem path: %s\n" ), config->ephem->sePath.c_str()));
 		}

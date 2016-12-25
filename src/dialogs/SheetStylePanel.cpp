@@ -249,7 +249,7 @@ void SheetStylePanel::populateStyleChoice()
 ******************************************************/
 SheetConfig *SheetStylePanel::getSheetConfig( const int &sel )
 {
-	printf( "SheetStylePanel::getSheetConfig sel %d size %d\n", sel, (int)v.size());
+	//printf( "SheetStylePanel::getSheetConfig sel %d size %d\n", sel, (int)v.size());
 	//assert( sel >= 0 && sel < (int)v.size());
 	if( sel < 0 || sel >= (int)v.size())
 	{
@@ -338,7 +338,7 @@ void SheetStylePanel::updateUi()
 ******************************************************/
 void SheetStylePanel::OnManageStyles( wxCommandEvent& )
 {
-	printf( "SheetStylePanel::OnManageStyles size %d\n", (int)v.size() );
+	//printf( "SheetStylePanel::OnManageStyles size %d\n", (int)v.size() );
 
 	StyleManagerDialog dialog( this, v, selected );
 	dialog.ShowModal();
@@ -349,7 +349,7 @@ void SheetStylePanel::OnManageStyles( wxCommandEvent& )
 	model2gui( selected );
 
 	setDirty();
-	printf( "END SheetStylePanel::OnManageStyles size %d\n", (int)v.size() );
+	//printf( "END SheetStylePanel::OnManageStyles size %d\n", (int)v.size() );
 }
 
 /*****************************************************
@@ -376,7 +376,6 @@ void SheetStylePanel::restoreDefaults()
 
 	if ( answer == wxID_YES )
 	{
-		printf( "YES\n" );
 		for( vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
 		{
 			delete *iter;

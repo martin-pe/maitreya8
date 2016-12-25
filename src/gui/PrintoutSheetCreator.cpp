@@ -80,9 +80,9 @@ public:
 
 	virtual SheetWidgetItem *cloneClean() { return new PrintoutChart( props, horoscope, item ); }
 
-	virtual void doPaint( Painter *painter, const MRect& refreshRect )
+	virtual void doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 	{
-		printf( "PrintoutChart::doPaint type %d RECT %f %f %f %f\n", item->type, refreshRect.x, refreshRect.y, refreshRect.width, refreshRect.height );
+		//printf( "PrintoutChart::doPaint type %d RECT %f %f %f %f\n", item->type, refreshRect.x, refreshRect.y, refreshRect.width, refreshRect.height );
 		GraphicalChart *chart = (GraphicalChart*)NULL;
 		switch( item->type )
 		{
@@ -139,18 +139,16 @@ PrintoutSheetCreator::PrintoutSheetCreator( Horoscope *h, ChartProperties *chart
 void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
 {
 	assert( item );
-	printf( "PrintoutSheetCreator::addItem type %d\n", item->type );
+	//printf( "PrintoutSheetCreator::addItem type %d\n", item->type );
 	PrintoutTextHelper helper( horoscope, chartprops, sheet );
 
 	switch( item->type )
 	{
 		case PD_TITLE:
-			printf( "TITLE\n" );
 			helper.writeTitle();
 		break;
 		case PD_HEADER:
 		{
-			printf( "HEADER\n" );
 			PrintoutItemHeader *pi = (PrintoutItemHeader*)item;
 			helper.writePrintoutHeader( pi->headerType, pi->vedic );
 		}
@@ -184,7 +182,7 @@ void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
 		case PD_COLUMN_SET:
 		{
 			PrintoutItemColumnSet *cs = (PrintoutItemColumnSet*)item;
-			printf( "COLUMN SET size %ld ratio %f\n", cs->children.size(), cs->ratio );
+			//printf( "COLUMN SET size %ld ratio %f\n", cs->children.size(), cs->ratio );
 			double ratio = cs->ratio;
 			if ( ratio == 0 )
 			{
@@ -202,7 +200,7 @@ void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
 		case PD_ROW_SET:
 		{
 			PrintoutItemRowSet *cs = (PrintoutItemRowSet*)item;
-			printf( "ROW SET size %ld\n", cs->children.size() );
+			//printf( "ROW SET size %ld\n", cs->children.size() );
 			SheetRowSet *rowset = new SheetRowSet();
 			for( list<PrintoutItem*>::iterator iter = cs->children.begin(); iter != cs->children.end(); iter++ )
 			{
@@ -214,7 +212,7 @@ void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
 		case PD_GRID:
 		{
 			PrintoutItemGrid *g = (PrintoutItemGrid*)item;
-			printf( "GRID size %ld\n", g->children.size() );
+			//printf( "GRID size %ld\n", g->children.size() );
 			SheetWidgetGrid *grid = new SheetWidgetGrid( g->nb_cols );
 			for( list<PrintoutItem*>::iterator iter = g->children.begin(); iter != g->children.end(); iter++ )
 			{

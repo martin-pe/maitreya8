@@ -313,7 +313,7 @@ void VedicChartPanel::calculateStyle()
 ******************************************************/
 void VedicChartPanel::OnNotebook( wxNotebookEvent &event )
 {
-	printf( "VedicChartPanel::OnNotebook id %d\n", event.GetSelection());
+	//printf( "VedicChartPanel::OnNotebook id %d\n", event.GetSelection());
 	updateUi();
 }
 
@@ -324,7 +324,7 @@ void VedicChartPanel::OnNotebook( wxNotebookEvent &event )
 ******************************************************/
 void VedicChartPanel::OnSpin( wxSpinEvent& )
 {
-	printf( "VedicChartPanel::OnSpin\n" );
+	//printf( "VedicChartPanel::OnSpin\n" );
 	updateUi();
 	setDirty();
 }
@@ -337,10 +337,9 @@ void VedicChartPanel::OnSpin( wxSpinEvent& )
 void VedicChartPanel::OnChartSkinChanged( wxCommandEvent& )
 {
 	int skin = window_preview->getChartProperties()->getSkin();
-	printf( "CHART SKIN CHANGED skin %d\n", skin );
+	//printf( "CHART SKIN CHANGED skin %d\n", skin );
 	if ( skin != choice_defaultskin->GetSelection())
 	{
-		printf( "YES\n" );
     choice_defaultskin->SetSelection( skin );
 	}
 	setDirty();
@@ -353,7 +352,7 @@ void VedicChartPanel::OnChartSkinChanged( wxCommandEvent& )
 ******************************************************/
 void VedicChartPanel::OnCommand( wxCommandEvent &event )
 {
-	printf( "VedicChartPanel::OnCommand ID %d\n", event.GetId() );
+	//printf( "VedicChartPanel::OnCommand ID %d\n", event.GetId() );
 	TransferDataFromWindow();
 	if ( event.GetId() != CD_TRANSIT )
 	{
@@ -389,7 +388,7 @@ void VedicChartPanel::updateUi()
 	Horoscope *ht = ( checktransit->GetValue() ? htransit : (Horoscope*)NULL );
 	window_preview->changeChartType( ht ? CT_TRANSIT : CT_RADIX );
 
-	printf( "REFRESH CHART\n" );
+	//printf( "REFRESH CHART\n" );
 
 	if ( notebook->GetSelection() == 2 )
 	{

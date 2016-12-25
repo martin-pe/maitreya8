@@ -141,7 +141,6 @@ void PlanetSignDisplayPanel::model2config()
 ******************************************************/
 void PlanetSignDisplayPanel::writeTextContents()
 {
-	printf( "WRITE\n" );
 	wxString s;
 	Lang lang( cfg );
 	SheetFormatter fmt( cfg );

@@ -154,7 +154,7 @@ MBrush PdfPainter::getDefaultBrush()
 ******************************************************/
 void PdfPainter:: setPen( const wxPen &p )
 {
-	const double defaultWidth = 1;
+	//const double defaultWidth = 1;
 
 	double width = p.GetWidth() * PDF_PEN_PENWIDTH_FACTOR;
 

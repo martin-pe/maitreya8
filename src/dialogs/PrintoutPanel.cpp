@@ -211,7 +211,7 @@ void PrintoutPanel::restoreDefaults() { *pconfig = PdfDocumentConfig(); }
 ******************************************************/
 void PrintoutPanel::updateUi()
 {
-	printf ( "PrintoutPanel::updateUi\n" );
+	//printf ( "PrintoutPanel::updateUi\n" );
 
 	// 1st step: update text filed of printout type selection
 	wxString s;
@@ -375,7 +375,7 @@ void PrintoutPanel::OnPrintTestPage( wxCommandEvent& )
 	ChartProperties props;
 	props.setWesternSkin( pconfig->wGraphicSkin );
 	props.setVedicSkin( pconfig->vGraphicSkin );
-	printf( "PROPS wskin %d vskin %d\n", pconfig->wGraphicSkin, pconfig->vGraphicSkin );
+	//printf( "PROPS wskin %d vskin %d\n", pconfig->wGraphicSkin, pconfig->vGraphicSkin );
 
 	PdfTool tool( &p );
 	tool.printTestpage( &h, &props );

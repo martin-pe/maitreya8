@@ -95,7 +95,7 @@ StyleManagerDialog::~StyleManagerDialog()
 ******************************************************/
 void StyleManagerDialog::populateChoice()
 {
-	printf( "START populateChoice\n" );
+	//printf( "START populateChoice\n" );
 	list->Clear();
 
 	for( vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
@@ -103,7 +103,7 @@ void StyleManagerDialog::populateChoice()
 		list->Append( (*iter)->name );
 	}
 	list->Refresh();
-	printf( "ENDE populateChoice \n" );
+	//printf( "ENDE populateChoice \n" );
 }
 
 /*****************************************************
@@ -131,7 +131,7 @@ int StyleManagerDialog::getSelection() const
 void StyleManagerDialog::updateUi()
 {
 	const int sel = getSelection();
-	printf( "updateUi %d\n", sel );
+	//printf( "updateUi %d\n", sel );
 	button_copy->Enable( sel != -1 );
 	button_rename->Enable( sel != -1 );
 	button_delete->Enable( sel != -1 );
@@ -146,7 +146,7 @@ void StyleManagerDialog::updateUi()
 ******************************************************/
 void StyleManagerDialog::OnListbox( wxCommandEvent& )
 {
-	printf( "StyleManagerDialog::OnListbox\n" );
+	//printf( "StyleManagerDialog::OnListbox\n" );
 	updateUi();
 }
 
@@ -157,7 +157,7 @@ void StyleManagerDialog::OnListbox( wxCommandEvent& )
 ******************************************************/
 void StyleManagerDialog::OnListboxDoubleClick( wxCommandEvent& )
 {
-	printf( "StyleManagerDialog::OnListboxDoubleClick %d\n", getSelection() );
+	//printf( "StyleManagerDialog::OnListboxDoubleClick %d\n", getSelection() );
 	renameEntry( getSelection() );
 }
 
@@ -168,11 +168,10 @@ void StyleManagerDialog::OnListboxDoubleClick( wxCommandEvent& )
 ******************************************************/
 void StyleManagerDialog::OnNew( wxCommandEvent& )
 {
-	printf( "New\n" );
+	//printf( "New\n" );
 	wxTextEntryDialog dialog( this, _( "Enter Name" ), _( "New Entry" ), _( "New Entry" ));
 	if ( dialog.ShowModal() == wxID_OK )
 	{
-		printf( "Okay\n" );
 		SheetConfig *cfg = new SheetConfig( dialog.GetValue() );
 		v.push_back( cfg );
 		populateChoice();
@@ -188,7 +187,7 @@ void StyleManagerDialog::OnNew( wxCommandEvent& )
 ******************************************************/
 void StyleManagerDialog::OnCopy( wxCommandEvent& )
 {
-	printf( "StyleManagerDialog::OnCopy TODO\n" );
+	//printf( "StyleManagerDialog::OnCopy TODO\n" );
 	SheetConfig *cfg = new SheetConfig( *v[getSelection()] );
 	cfg->name << wxT( " (copy)" );
 	v.push_back( cfg );
@@ -207,7 +206,7 @@ void StyleManagerDialog::OnUp( wxCommandEvent& )
 	const int sel = getSelection();
 	const int target = sel - 1;
 	assert( target >= 0 );
-	printf( "On Up selected %d target %d\n", sel, target );
+	//printf( "On Up selected %d target %d\n", sel, target );
 	SheetConfig *cfg = v[sel];
 	v[sel] = v[target];
 	v[target] = cfg;
@@ -226,7 +225,7 @@ void StyleManagerDialog::OnDown( wxCommandEvent& )
 	const int sel = getSelection();
 	const int target = sel + 1;
 	assert( target >= 0 );
-	printf( "On Down selected %d target %d\n", sel, target );
+	//printf( "On Down selected %d target %d\n", sel, target );
 	SheetConfig *cfg = v[sel];
 	v[sel] = v[target];
 	v[target] = cfg;
@@ -242,11 +241,10 @@ void StyleManagerDialog::OnDown( wxCommandEvent& )
 ******************************************************/
 void StyleManagerDialog::renameEntry( const int &sel )
 {
-	printf( "renameEntry\n" );
+	//printf( "renameEntry\n" );
 	wxTextEntryDialog dialog( this, _( "Enter New Name" ), _( "Rename Entry" ), v[sel]->name );
 	if ( dialog.ShowModal() == wxID_OK )
 	{
-		printf( "Okay\n" );
 		v[sel]->name = dialog.GetValue();
 		populateChoice();
 		list->SetSelection( sel );
@@ -262,7 +260,7 @@ void StyleManagerDialog::renameEntry( const int &sel )
 ******************************************************/
 void StyleManagerDialog::OnRename( wxCommandEvent& )
 {
-	printf( "Rename\n" );
+	//printf( "Rename\n" );
 	renameEntry( getSelection() );
 }
 
@@ -273,7 +271,7 @@ void StyleManagerDialog::OnRename( wxCommandEvent& )
 ******************************************************/
 void StyleManagerDialog::OnDelete( wxCommandEvent& )
 {
-	printf( "Delete size at start %d\n", (int)v.size() );
+	//printf( "Delete size at start %d\n", (int)v.size() );
 	int sel = getSelection();
 	assert( sel >= 0 && sel < (int)v.size());
 

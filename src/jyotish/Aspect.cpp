@@ -178,10 +178,10 @@ void AspectExpert::setHoroscopes( Horoscope *h1, Horoscope *h2 )
 ******************************************************/
 list<AspectEvent> &AspectExpert::updateSbcAspects( ChartProperties *chartprops, const bool &swapCharts )
 {
-	printf( "AspectExpert::updateSbcAspects\n" );
+	//printf( "AspectExpert::updateSbcAspects\n" );
 	if ( ! horoscope )
 	{
-		printf( "WARN: AspectExpert::update: horoscope is NULL\n" );
+		printf( "WARN: AspectExpert::updateSbcAspects horoscope is NULL\n" );
 		clear();
 		return al;
 	}
@@ -218,10 +218,10 @@ list<AspectEvent> &AspectExpert::updateSbcAspects( ChartProperties *chartprops, 
 list<AspectEvent> &AspectExpert::updateVedicRasiChartAspects( ChartProperties *chartprops, const Varga &varga,
 	const bool &swapCharts )
 {
-	printf( "AspectExpert::updateVedicRasiChartAspects\n" );
+	//printf( "AspectExpert::updateVedicRasiChartAspects\n" );
 	if ( ! horoscope )
 	{
-		printf( "WARN: AspectExpert::update: horoscope is NULL\n" );
+		printf( "WARN: AspectExpert::updateVedicRasiChartAspects horoscope is NULL\n" );
 		clear();
 		return al;
 	}
@@ -322,7 +322,7 @@ list<AspectEvent> &AspectExpert::updateWesternAspects( ChartProperties *chartpro
 {
 	if ( ! horoscope )
 	{
-		printf( "WARN: AspectExpert::update: horoscope is NULL\n" );
+		printf( "WARN: AspectExpert::updateWesternAspects horoscope is NULL\n" );
 		clear();
 		return al;
 	}
@@ -339,9 +339,9 @@ list<AspectEvent> &AspectExpert::updateWesternAspects( ChartProperties *chartpro
 	{
 		horoscope2 = horoscope;
 	}
-	const bool doubleSided = charttype == CT_PARTNER;
+	//const bool doubleSided = charttype == CT_PARTNER;
 
-	printf( "&AspectExpert::update doubleSided %d h2 %ld\n", doubleSided, (long)horoscope2 );
+	//printf( "&AspectExpert::update doubleSided %d h2 %ld\n", doubleSided, (long)horoscope2 );
 
 	al.clear();
 
@@ -550,7 +550,7 @@ void AspectExpert::writeVedicAspectarium( Sheet *sheet, ChartProperties *chartpr
 	wxString s, s1;
 	SheetFormatter fmt;
 
-	printf( "AspectExpert::writeVedicAspectarium h1 set %d h2set %d\n", horoscope != 0, horoscope2 != 0 );
+	//printf( "AspectExpert::writeVedicAspectarium h1 set %d h2set %d\n", horoscope != 0, horoscope2 != 0 );
 	if ( ! horoscope || ! horoscope2  )
 	{
 		sheet->addHeader( _( "No horoscope set" ));

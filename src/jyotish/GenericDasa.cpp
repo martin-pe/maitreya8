@@ -73,7 +73,7 @@ vector<Dasa*> GenericNakshatraDasaExpert::getNextLevel( Dasa *dasa )
 	assert( lord != -1 );
 
 	parent = dasa;
-	printf( "GenericNakshatraDasaExpert::getNextLevel level %d parent %ld dasa %ld\n", dasa->getLevel(), (long)parent, (long)dasa );
+	//printf( "GenericNakshatraDasaExpert::getNextLevel level %d parent %ld dasa %ld\n", dasa->getLevel(), (long)parent, (long)dasa );
 
 	for ( int i = 0; i < getNbLords(); i++ )
 	{
@@ -279,7 +279,7 @@ vector<Dasa*> GenericNakshatraDasaExpert::getSolarDasa( const Horoscope *solarch
 	for( int i = 0; i < 9; i++ )
 	{
 		currentdasa = ( basedasa + i ) % 9;
-		printf( "DASA %d basedasa %d numyears %d\n", currentdasa, basedasa, numyears );
+		//printf( "DASA %d basedasa %d numyears %d\n", currentdasa, basedasa, numyears );
 		end_jd = start_jd + duration_factor * getDasaDuration( currentdasa );
 
 		ret.push_back( new Dasa( dasaId, getDasaLordByIndex( currentdasa ), start_jd, end_jd, (Dasa*)NULL ));

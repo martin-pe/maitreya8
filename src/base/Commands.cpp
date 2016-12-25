@@ -191,7 +191,7 @@ MCommand *CommandHandler::getCommand( const int &id )
 bool CommandHandler::processKeyEvent( wxKeyEvent *event, wxWindow *window, const bool isTextWidget )
 {
 	int i = 0;
-	printf( "CommandHandler::processKeyEvent START\n" );
+	//printf( "CommandHandler::processKeyEvent START\n" );
 	if ( event->GetKeyCode() == WXK_ESCAPE ) i = CMD_CLOSE;
 	if ( ! isTextWidget )
 	{
@@ -214,7 +214,7 @@ bool CommandHandler::processKeyEvent( wxKeyEvent *event, wxWindow *window, const
 
 	if ( i )
 	{
-		printf( "CommandHandler::processKeyEvent: POST\n" );
+		//printf( "CommandHandler::processKeyEvent: POST\n" );
 		wxMenuEvent evt( wxEVT_COMMAND_MENU_SELECTED, i );
 		wxPostEvent( window, evt );
 	}

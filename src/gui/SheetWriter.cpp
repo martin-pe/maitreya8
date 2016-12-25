@@ -78,7 +78,7 @@ GenericSheetWriter::~GenericSheetWriter()
 ******************************************************/
 void GenericSheetWriter::preformat( Painter *painter, const double &xrm  )
 {
-	wxLogMessage( wxT( "START GenericSheetWriter::preformat xrightmax %f" ), xrm );
+	//wxLogMessage( wxT( "START GenericSheetWriter::preformat xrightmax %f" ), xrm );
 	xrightmax = xrm;
 
 	//printf( "GenericSheetWriter::preformat xrightmax %f item count %d\n", xrightmax, sheet->items.size() );
@@ -128,7 +128,7 @@ void GenericSheetWriter::preformat( Painter *painter, const double &xrm  )
 ******************************************************/
 void GenericSheetWriter::preformatItem( Painter *painter, SheetItem *item )
 {
-	wxLogMessage( wxT( "START GenericSheetWriter::preformatItem type %d" ), item->type );
+	//wxLogMessage( wxT( "START GenericSheetWriter::preformatItem type %d" ), item->type );
 	FontProvider *fc = FontProvider::get();
 	FONT_ID fontid;
 	double h, lineheight;
@@ -223,7 +223,7 @@ void GenericSheetWriter::preformatItem( Painter *painter, SheetItem *item )
 ******************************************************/
 void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset )
 {
-	printf( "GenericSheetWriter::preformatRowset\n" );
+	//printf( "GenericSheetWriter::preformatRowset\n" );
 	double xmax = pageSize.real() - 2 * contentRect.x;
 	double ymax = pageSize.imag() - 2 * contentRect.y;
 	double y0 = ycursor;
@@ -269,7 +269,7 @@ void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset 
 ******************************************************/
 void GenericSheetWriter::preformatColset( Painter *painter, SheetColumnSet *colset )
 {
-	printf( "GenericSheetWriter::preformatColset\n" );
+	//printf( "GenericSheetWriter::preformatColset\n" );
 
 	double xmax = pageSize.real() - 2 * contentRect.x;
 	//double ymax = pageSize.imag() - 2 * contentRect.y;
@@ -304,8 +304,8 @@ void GenericSheetWriter::preformatColset( Painter *painter, SheetColumnSet *cols
 	}
 
 	colset->rect.height = maxh + table_widget_extra_y;
-	double diff = 0;
-	if ( colset->getSize() > 1 ) diff = ( colset->rect.width - sumx ) / ( colset->getSize() - 1 );
+	//double diff = 0;
+	//if ( colset->getSize() > 1 ) diff = ( colset->rect.width - sumx ) / ( colset->getSize() - 1 );
 
 	//double newx = contentRect.x + .5 * diff;
 	double newx = contentRect.x + .5 * ( colset->rect.width - sumx - ( colset->getSize() - 1 ) * table_widget_extra_y );
@@ -335,7 +335,7 @@ void GenericSheetWriter::preformatColset( Painter *painter, SheetColumnSet *cols
 ******************************************************/
 void GenericSheetWriter::preformatWidgetGrid( Painter* /*painter*/, SheetWidgetGrid *grid )
 {
-	printf( "GenericSheetWriter::preformatWidgetGrid\n" );
+	//printf( "GenericSheetWriter::preformatWidgetGrid\n" );
 
 	double width = pageSize.real() - 2 * contentRect.x;
 	width = Max( grid->wmin, width );
@@ -358,7 +358,7 @@ void GenericSheetWriter::preformatWidgetGrid( Painter* /*painter*/, SheetWidgetG
 
 
 	const double r_height = height / rows;
-	printf( "GenericSheetWriter::preformatWidgetGrid grid size %ld rows %d r_height %f\n", grid->sheet->items.size(), rows, r_height );
+	//printf( "GenericSheetWriter::preformatWidgetGrid grid size %ld rows %d r_height %f\n", grid->sheet->items.size(), rows, r_height );
 	//const double r_height = height / grid->nb_rows;
   uint c = 0;
   uint r = 0;
@@ -398,7 +398,7 @@ void GenericSheetWriter::preformatWidgetGrid( Painter* /*painter*/, SheetWidgetG
 ******************************************************/
 void GenericSheetWriter::preformatTable( Painter *painter, Table *table )
 {
-	wxLogMessage( wxT( "START GenericSheetWriter::preformatTable" ));
+	//wxLogMessage( wxT( "START GenericSheetWriter::preformatTable" ));
 	assert( table );
 	SheetFormatter formatter;
 
@@ -587,8 +587,8 @@ void GenericSheetWriter::preformatTable( Painter *painter, Table *table )
 
 	xSizeContents = Max( xSizeContents, table->rect.width );
 
-	printf( "FINISHED GenericSheetWriter::preformatTable tableWidth %f tableHeight %f\n", table->rect.width, table->rect.height );
-	wxLogMessage( wxT( "ENDE GenericSheetWriter::preformatTable" ));
+	//printf( "FINISHED GenericSheetWriter::preformatTable tableWidth %f tableHeight %f\n", table->rect.width, table->rect.height );
+	//wxLogMessage( wxT( "ENDE GenericSheetWriter::preformatTable" ));
 }
 
 /*****************************************************
@@ -650,13 +650,13 @@ void GenericSheetWriter::drawItem( Painter *painter, SheetItem *item, const MRec
 		case WiWidgetGrid:
 		case WiRowSet:
 		{
-			printf( "CONTAINER ITEM TYPE %d row set %d\n", item->type, WiRowSet );
+			//printf( "CONTAINER ITEM TYPE %d row set %d\n", item->type, WiRowSet );
 			SheetItemContainer *container = wxDynamicCast( item, SheetItemContainer );
 			assert( container );
 			for( list<SheetItem*>::iterator iter = container->sheet->items.begin(); iter != container->sheet->items.end(); iter++ )
 			{
-				painter->setPen( *wxGREEN_PEN );
-				painter->drawRectangle( (*iter)->rect );
+				//painter->setPen( *wxGREEN_PEN );
+				//painter->drawRectangle( (*iter)->rect );
 				drawItem( painter, *iter, refreshRect );
 			}
 		}
@@ -686,8 +686,8 @@ void GenericSheetWriter::drawItem( Painter *painter, SheetItem *item, const MRec
 ******************************************************/
 void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect &refreshRect )
 {
-	wxLogMessage( wxT( "START GenericSheetWriter::drawTable refresh x %f y %f w %f h %f" ),
-		refreshRect.x, refreshRect.y, refreshRect.width, refreshRect.height );
+	//wxLogMessage( wxT( "START GenericSheetWriter::drawTable refresh x %f y %f w %f h %f" ),
+		//refreshRect.x, refreshRect.y, refreshRect.width, refreshRect.height );
 	assert( table );
 	MRect drawRect;
 
@@ -705,7 +705,7 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 		painter->setFont( *fc->getFont( getFontIdForItem( WitHeader ), -table->shrinkrate ));
 		drawRect = table->rect;
 		drawRect.height = table->header.rect.height;
-		painter->drawRectangle( drawRect );
+		//painter->drawRectangle( drawRect );
 
 		tableRect.y += table->header.rect.height;
 		tableRect.height -= table->header.rect.height;
@@ -901,7 +901,7 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 		painter->drawRectangle( table->rect );
 	}
 
-	wxLogMessage( wxT( "ENDE GenericSheetWriter::drawTable" ));
+	//wxLogMessage( wxT( "ENDE GenericSheetWriter::drawTable" ));
 }
 
 /*****************************************************

@@ -138,7 +138,7 @@ void ShadBalaExpert::updateSthaanaBala()
 		a = red_deg( k_exaltation[p] - horoscope->getVedicLongitude( p ) - 180 );
 		if ( a > 180 ) a = 360 - a;
 		uchchabala[p] = a / 3;
-		printf( "Uchcha: p %d a %f uchcha %f\n", p, a, uchchabala[p] );
+		//printf( "Uchcha: p %d a %f uchcha %f\n", p, a, uchchabala[p] );
 	}
 
 	// Sapta Vargaja Bala
@@ -302,13 +302,13 @@ void ShadBalaExpert::updateKalaBala()
 	{
 		tribhagabala[OJUPITER] = 60; // Jupiter has always Tribhaga Bala of 1 Rupa
 		daybirth = horoscope->getDayBirth();
-		printf( "Day %d sunrise %9.9f sunset %9.9f JD %9.9f\n", daybirth, sunrise, sunset, horoscope->getJD());
+		//printf( "Day %d sunrise %9.9f sunset %9.9f JD %9.9f\n", daybirth, sunrise, sunset, horoscope->getJD());
 		if ( daybirth )
 		{
 			assert( sunrise < horoscope->getJD() && sunset > horoscope->getJD());
 			d =  ( horoscope->getJD() - sunrise ) / ( sunset - sunrise );
 			daypart = (int)( d * 3 );
-			printf( "Daypart: %d\n", daypart );
+			//printf( "Daypart: %d\n", daypart );
 			if ( daypart == 0 ) {
 				tribhagabala[OMERCURY] = 60;
 			}
@@ -324,7 +324,7 @@ void ShadBalaExpert::updateKalaBala()
 			assert( sunrise > horoscope->getJD() && sunset < horoscope->getJD());
 			d =  ( horoscope->getJD() - sunset ) / ( sunrise - sunset );
 			nightpart = (int)( d * 3 );
-			printf( "Nightpart: %d\n", nightpart );
+			//printf( "Nightpart: %d\n", nightpart );
 			if ( nightpart == 0 ) {
 				tribhagabala[OMOON] = 60;
 			}

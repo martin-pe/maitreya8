@@ -362,12 +362,13 @@ void UranianHelper::writePartner( Sheet *sheet )
 	s.Clear();
 
 	// TODO aus expert result und dann horoskop ziehen
-	//s << _( "Partner1" ) << wxT( ": " ) << expert->h1->getHName();
+	s << _( "Partner1" ) << wxT( "/" ) << _( "Partner2" );
 	sheet->addHeader( s );
 	writeUEvents( sheet, PcPartner1 );
 	writeMatchingClusters( sheet, PcPartner1 );
 
 	s.Clear();
+	s << _( "Partner2" ) << wxT( "/" ) << _( "Partner1" );
 	//s << _( "Partner2" ) << wxT( ": " ) << h2->getHName();
 	sheet->addHeader( s );
 	writeUEvents( sheet, PcPartner2 );
@@ -529,39 +530,6 @@ Table *UranianHelper::createTupleTable( const URANIAN_TUPLE_TYPE &utt, const Pla
 	UranianTool *tool = UranianTool::get();
 	double mod_degrees = tool->getDegrees4Gradkreis( cfg.gradkreis );
 
-	printf( "DEGRESS %f GRADKREIS %d otto %d\n", mod_degrees,
-		expert->getChartProperties()->getUranianConfig().gradkreis, GK_360 );
-
-	/*
-	//wxString s, s1;
-	s1.Clear();
-	switch( utt )
-	{
-		case UTT_SUMS:
-			s = _( "Sums" );
-		break;
-		case UTT_DIFFERENCES:
-			s = _( "Differences" );
-			s1 = _( "Row - column" );
-		break;
-		case UTT_MIDPOINTS:
-			s = _( "Midpoints" );
-			if ( cfg.gradkreis == GK_360 ) mod_degrees = 180.0;
-		break;
-		case UTT_ANT_MIDPOINTS:
-			s = _( "Midpoints of Antiscia" );
-		break;
-		case UTT_REFLECTION_POINTS:
-			s = _( "Reflection Points" );
-			s1 = _( "Row + row - column" );
-		break;
-		default:
-			assert( false );
-		break;
-	}
-	//sheet->addHeader( s );
-	//if ( ! s.IsEmpty()) sheet->addLine( s1 );
-*/
 	const bool symmetric = ( utt == UTT_DIFFERENCES || utt == UTT_REFLECTION_POINTS );
 
 	Table *table = new Table( pmax + 2, pmax + 2 );
@@ -638,9 +606,9 @@ Table *UranianHelper::createTupleTable( const URANIAN_TUPLE_TYPE &utt, const Pla
 void UranianHelper::writeTupleTable( Sheet *sheet, const URANIAN_TUPLE_TYPE &utt, const PlanetContext &ctx )
 {
 	wxString s, s1;
-	UranianConfig &cfg = expert->getChartProperties()->getUranianConfig();
-	UranianTool *tool = UranianTool::get();
-	double mod_degrees = tool->getDegrees4Gradkreis( cfg.gradkreis );
+	//UranianConfig &cfg = expert->getChartProperties()->getUranianConfig();
+	//UranianTool *tool = UranianTool::get();
+	//double mod_degrees = tool->getDegrees4Gradkreis( cfg.gradkreis );
 
 	switch( utt )
 	{
@@ -653,7 +621,7 @@ void UranianHelper::writeTupleTable( Sheet *sheet, const URANIAN_TUPLE_TYPE &utt
 		break;
 		case UTT_MIDPOINTS:
 			s = _( "Midpoints" );
-			if ( cfg.gradkreis == GK_360 ) mod_degrees = 180.0;
+			//if ( cfg.gradkreis == GK_360 ) mod_degrees = 180.0;
 		break;
 		case UTT_ANT_MIDPOINTS:
 			s = _( "Midpoints of Antiscia" );

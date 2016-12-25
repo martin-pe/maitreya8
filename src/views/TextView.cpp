@@ -239,7 +239,7 @@ protected:
 		twidget->clearSheet();
 		TextHelper th( doc, props, twidget->getSheet() );
 		const int ret = th.writePlanets();
-		printf( "RET %d\n", ret );
+		//printf( "RET %d\n", ret );
 		if ( ret )
 		{
 			wxCommandEvent event( SHOW_EPHEM_FILE_WARNING );

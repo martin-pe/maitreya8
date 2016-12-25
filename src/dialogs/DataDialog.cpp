@@ -174,6 +174,10 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
 	Connect( wxID_ANY, COMMAND_SPIN_CHANGED, wxCommandEventHandler( DataDialog::OnInputControlChanged ));
 
 	if ( IS_VALID_SIZE( config->viewprefs->sizes.sDataDialog )) SetSize( config->viewprefs->sizes.sDataDialog );
+	if ( config->viewprefs->pDataDialog.x > 0 || config->viewprefs->pDataDialog.y > 0 )
+	{
+		SetPosition( wxPoint( config->viewprefs->pDataDialog.x, config->viewprefs->pDataDialog.y ));
+	}
 }
 
 /*****************************************************
@@ -184,6 +188,8 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
 DataDialog::~DataDialog()
 {
 	config->viewprefs->sizes.sDataDialog = GetSize();
+	const wxPoint p = GetPosition();
+	config->viewprefs->pDataDialog = wxSize( p.x, p.y );
 	delete model;
 }
 
@@ -194,7 +200,7 @@ DataDialog::~DataDialog()
 ******************************************************/
 void DataDialog::model2gui()
 {
-	printf( "DataDialog::model2gui\n" );
+	//printf( "DataDialog::model2gui\n" );
 	TransferDataToWindow();
 }
 
@@ -205,7 +211,7 @@ void DataDialog::model2gui()
 ******************************************************/
 void DataDialog::gui2model()
 {
-	printf( "DataDialog::gui2model\n" );
+	//printf( "DataDialog::gui2model\n" );
 	TransferDataFromWindow();
 }
 
@@ -253,10 +259,7 @@ void DataDialog::model2doc()
 ******************************************************/
 void DataDialog::OnInputControlChanged( wxCommandEvent &event )
 {
-	printf( "1111 DataDialog :::: OnInputControlChanged\n" );
 	bool b = Validate();
-	printf( "2222 DataDialog :::: OnInputControlChanged b is %d\n", b );
-
 	if ( b )
 	{
 		// valid
@@ -273,7 +276,7 @@ void DataDialog::OnInputControlChanged( wxCommandEvent &event )
 ******************************************************/
 void DataDialog::updateDateDetailFields( const bool isvalid )
 {
-	printf( "DataDialog::updateDateDetailFields b %d\n", isvalid );
+	//printf( "DataDialog::updateDateDetailFields b %d\n", isvalid );
 	if ( isvalid )
 	{
 		DateTimeFormatter *formatter = DateTimeFormatter::get();
@@ -281,7 +284,7 @@ void DataDialog::updateDateDetailFields( const bool isvalid )
 
 		const double jd = model->date + ( model->time - model->getTimezone() - model->dst ) / 24.0;
 
-		printf( "JD %9.9f\n", jd );
+		//printf( "JD %9.9f\n", jd );
 		const int format = DF_INCLUDE_YEAR_BC_AD | DF_INCLUDE_TIME | DF_INCLUDE_TZOFFSET;
 
 		//printf( "DATA: %s\n", str2char( formatter->getFullDateStringWithTzOffset( jd , model->tz + model->dst, DF_SIGNS_STRING)));
@@ -291,7 +294,7 @@ void DataDialog::updateDateDetailFields( const bool isvalid )
 	}
 	else
 	{
-		printf( "SET TO INVLAID\n" );
+		//printf( "SET TO INVLAID\n" );
 		label_date_formatted->SetLabel( _( "invalid value" ));
 		label_calendar->SetLabel( wxEmptyString );
 	}
@@ -400,11 +403,9 @@ void DataDialog::OnSearchLocation( wxCommandEvent& )
 	if ( dialog.run() == wxID_OK )
 	{
 		AtlasEntry *e = dialog.getSelectedEntry();
-		printf( "HALLO %s\n", str2char( e->name ));
 
 		gui2model();
 		model->locname = e->name;
-		printf( "HALLO2 %s\n", str2char( model->locname ));
 
 		model->longitude = e->a_longitude;
 		model->c_longitude = e->c_longitude;
@@ -414,9 +415,7 @@ void DataDialog::OnSearchLocation( wxCommandEvent& )
 		model->tz = fabs( e->tzoffset );
 		model->c_tz = e->tzoffset < 0 ? 1 : 0;
 
-		printf( "HALLO1\n" );
 		model2gui();
-		printf( "HALLO2\n" );
 		updateDateDetailFields();
 	}
 }

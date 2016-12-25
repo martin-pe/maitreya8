@@ -227,7 +227,7 @@ void ChildWindowListCtrl::updateItemLabel( ChildWindow *child, const int &pos )
 		label = view->getWindowLabel();
 	}
 	else label = _( "Multiple View" );
-	printf( "LABEL is %s\n", str2char( label ));
+	//printf( "LABEL is %s\n", str2char( label ));
 
 	wxString title = wxT( "ERROR" );
 	if ( config->viewprefs->listStyle == 2 )

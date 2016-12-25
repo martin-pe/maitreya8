@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maitreya (all releases)\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2016-12-23 15:46+0100\n"
+"POT-Creation-Date: 2016-12-25 15:49+0100\n"
 "PO-Revision-Date: 2011-01-08 11:03+0300\n"
 "Last-Translator: Sergey Panasenko <sergey.panasenko@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -182,7 +182,7 @@ msgstr "Новый"
 #: src/base/Commands.cpp:250 src/base/Commands.cpp:251
 #: src/base/VargaBase.cpp:78 src/dialogs/DialogElements.cpp:316
 #: src/gui/MenuProvider.cpp:629 src/gui/VedicChart.cpp:156
-#: src/jyotish/GenericTableWriter.cpp:871 src/jyotish/TextHelper.cpp:390
+#: src/jyotish/GenericTableWriter.cpp:864 src/jyotish/TextHelper.cpp:390
 #: src/jyotish/TextHelper.cpp:410 src/jyotish/TextHelper.cpp:464
 msgid "Bhava"
 msgstr "Бхава"
@@ -268,7 +268,7 @@ msgstr "Транзит"
 msgid "Yoga"
 msgstr "Йоги"
 
-#: src/base/Commands.cpp:279 src/dialogs/VedicChartPanel.cpp:544
+#: src/base/Commands.cpp:279 src/dialogs/VedicChartPanel.cpp:543
 msgid "SBC"
 msgstr ""
 
@@ -314,7 +314,7 @@ msgid "Western Chart"
 msgstr "Западная карта"
 
 #: src/base/Commands.cpp:289 src/dialogs/WesternPanel.cpp:79
-#: src/jyotish/GenericTableWriter.cpp:585
+#: src/jyotish/GenericTableWriter.cpp:578
 #: src/jyotish/PrintoutTextHelper.cpp:156
 #: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:151
 #: src/views/TransitView.cpp:154 src/views/UranianView.cpp:136
@@ -326,7 +326,7 @@ msgstr "Уранические"
 msgid "Uranian Chart"
 msgstr "Напечатать карту"
 
-#: src/base/Commands.cpp:295 src/jyotish/GenericTableWriter.cpp:927
+#: src/base/Commands.cpp:295 src/jyotish/GenericTableWriter.cpp:920
 #: src/views/AshtakaVargaView.cpp:216
 msgid "AV"
 msgstr "AV"
@@ -356,7 +356,7 @@ msgstr "Даша (короткая)"
 msgid "G-Dasa"
 msgstr "Даша"
 
-#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1133
+#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1130
 #, fuzzy
 msgid "Graphical Dasa"
 msgstr "Географические данные"
@@ -393,7 +393,7 @@ msgstr "Настройки"
 
 #: src/base/Commands.cpp:308 src/base/Commands.cpp:310
 #: src/dialogs/ConfigDialog.cpp:66 src/dialogs/ConfigDialog.cpp:112
-#: src/dialogs/ConfigDialog.cpp:254
+#: src/dialogs/ConfigDialog.cpp:253
 msgid "Configuration"
 msgstr "Настройки"
 
@@ -465,7 +465,7 @@ msgstr "Изображение"
 msgid "Entry"
 msgstr "Добавить страну"
 
-#: src/base/Commands.cpp:329 src/views/DasaView.cpp:213
+#: src/base/Commands.cpp:329 src/views/DasaView.cpp:215
 msgid "Entry Chart"
 msgstr "Входная карта"
 
@@ -484,7 +484,7 @@ msgstr "Сейчас"
 #: src/base/Commands.cpp:332 src/gui/ToolPanel.cpp:316
 #: src/jyotish/DasaTool.cpp:280 src/jyotish/DasaTool.cpp:370
 #: src/jyotish/DasaTool.cpp:488 src/jyotish/TextHelper.cpp:451
-#: src/views/DasaGraphicView.cpp:1133
+#: src/views/DasaGraphicView.cpp:1130
 msgid "Dasa"
 msgstr "Даша"
 
@@ -572,15 +572,15 @@ msgstr "Строка состояния"
 
 #: src/base/DataSet.cpp:201 src/dialogs/AtlasDialog.cpp:249
 #: src/dialogs/DataDialog.cpp:90 src/gui/ChildWindowListCtrl.cpp:144
-#: src/jyotish/GenericTableWriter.cpp:1009
+#: src/jyotish/GenericTableWriter.cpp:1002
 msgid "Location"
 msgstr "Местоположение"
 
 #: src/base/DataSet.cpp:202 src/dialogs/AtlasDialog.cpp:225
 #: src/dialogs/AtlasDialog.cpp:274 src/dialogs/AtlasEditDialog.cpp:70
 #: src/dialogs/DataDialog.cpp:106 src/dialogs/GeneralPanel.cpp:115
-#: src/jyotish/ArabicParts.cpp:596 src/jyotish/GenericTableWriter.cpp:489
-#: src/jyotish/GenericTableWriter.cpp:1014 src/jyotish/Nakshatra.cpp:229
+#: src/jyotish/ArabicParts.cpp:596 src/jyotish/GenericTableWriter.cpp:482
+#: src/jyotish/GenericTableWriter.cpp:1007 src/jyotish/Nakshatra.cpp:229
 #: src/jyotish/Nakshatra.cpp:323 src/jyotish/Partner.cpp:630
 #: src/jyotish/TextHelper.cpp:332 src/jyotish/TextHelper.cpp:409
 #: src/jyotish/TextHelper.cpp:462 src/jyotish/TextHelper.cpp:530
@@ -591,7 +591,7 @@ msgstr "Долгота"
 #: src/base/DataSet.cpp:203 src/dialogs/AtlasDialog.cpp:222
 #: src/dialogs/AtlasDialog.cpp:278 src/dialogs/AtlasEditDialog.cpp:77
 #: src/dialogs/DataDialog.cpp:114 src/dialogs/GeneralPanel.cpp:122
-#: src/jyotish/GenericTableWriter.cpp:1021
+#: src/jyotish/GenericTableWriter.cpp:1014
 msgid "Latitude"
 msgstr "Широта"
 
@@ -605,21 +605,21 @@ msgstr "Имя"
 #: src/dialogs/AtlasEditDialog.cpp:58 src/dialogs/DataDialog.cpp:93
 #: src/dialogs/DataDialog.cpp:104 src/dialogs/VedicChartPanel.cpp:104
 #: src/gui/ChildWindowListCtrl.cpp:136 src/gui/MenuProvider.cpp:699
-#: src/jyotish/ArabicParts.cpp:595 src/jyotish/GenericTableWriter.cpp:991
+#: src/jyotish/ArabicParts.cpp:595 src/jyotish/GenericTableWriter.cpp:984
 #: src/jyotish/TextHelper.cpp:359
 msgid "Name"
 msgstr "Имя"
 
 #: src/base/DataSet.cpp:392 src/dialogs/DataDialog.cpp:98
 #: src/dialogs/DataDialog.cpp:135 src/dialogs/GeneralPanel.cpp:129
-#: src/jyotish/GenericTableWriter.cpp:1003
+#: src/jyotish/GenericTableWriter.cpp:996
 msgid "Local Time"
 msgstr "Местное время"
 
 #: src/base/DataSet.cpp:393 src/dialogs/AtlasDialog.cpp:282
 #: src/dialogs/AtlasEditDialog.cpp:84 src/dialogs/DataDialog.cpp:91
 #: src/dialogs/DataDialog.cpp:124 src/gui/ToolPanel.cpp:419
-#: src/jyotish/GenericTableWriter.cpp:1028
+#: src/jyotish/GenericTableWriter.cpp:1021
 msgid "Time Zone"
 msgstr "Часовой пояс"
 
@@ -2260,9 +2260,9 @@ msgstr "Программа"
 #: src/dialogs/AboutDialog.cpp:201 src/dialogs/AboutDialog.cpp:203
 #: src/dialogs/AboutDialog.cpp:205 src/dialogs/AboutDialog.cpp:207
 #: src/dialogs/AboutDialog.cpp:209 src/dialogs/AboutDialog.cpp:211
-#: src/dialogs/AboutDialog.cpp:213 src/dialogs/AspectPanel.cpp:248
-#: src/dialogs/AspectPanel.cpp:249 src/dialogs/AspectPanel.cpp:250
-#: src/dialogs/AspectPanel.cpp:251 src/dialogs/AspectPanel.cpp:252
+#: src/dialogs/AboutDialog.cpp:213 src/dialogs/AspectPanel.cpp:247
+#: src/dialogs/AspectPanel.cpp:248 src/dialogs/AspectPanel.cpp:249
+#: src/dialogs/AspectPanel.cpp:250 src/dialogs/AspectPanel.cpp:251
 #: src/dialogs/AtlasDialog.cpp:256 src/dialogs/AtlasDialog.cpp:257
 #: src/dialogs/AtlasDialog.cpp:258 src/dialogs/AtlasDialog.cpp:259
 #: src/dialogs/AtlasDialog.cpp:270 src/dialogs/AtlasDialog.cpp:273
@@ -2421,29 +2421,29 @@ msgstr "месяцев"
 msgid "years"
 msgstr "лет"
 
-#: src/dialogs/AspectPanel.cpp:244
+#: src/dialogs/AspectPanel.cpp:243
 msgid "Options"
 msgstr "Функции"
 
-#: src/dialogs/AspectPanel.cpp:245
+#: src/dialogs/AspectPanel.cpp:244
 msgid "Preview and Aspect Selection"
 msgstr ""
 
-#: src/dialogs/AspectPanel.cpp:246
+#: src/dialogs/AspectPanel.cpp:245
 #, fuzzy
 msgid "Aspect Type"
 msgstr "Аспектировало"
 
-#: src/dialogs/AspectPanel.cpp:255
+#: src/dialogs/AspectPanel.cpp:254
 #, fuzzy
 msgid "Active"
 msgstr "Действия"
 
-#: src/dialogs/AspectPanel.cpp:256 src/dialogs/ColorPanel.cpp:436
+#: src/dialogs/AspectPanel.cpp:255 src/dialogs/ColorPanel.cpp:436
 msgid "Pen ..."
 msgstr ""
 
-#: src/dialogs/AspectPanel.cpp:257
+#: src/dialogs/AspectPanel.cpp:256
 msgid "Orbis (deg)"
 msgstr "Орбис (град)"
 
@@ -2877,11 +2877,11 @@ msgstr "Панель инструментов"
 msgid "Dasa Bar Corner Radius"
 msgstr "Радиус углов"
 
-#: src/dialogs/ColorPanel.cpp:754 src/gui/BarDiagram.cpp:132
+#: src/dialogs/ColorPanel.cpp:754 src/gui/BarDiagram.cpp:134
 msgid "Graha Pinda"
 msgstr "Пинда Граха"
 
-#: src/dialogs/ColorPanel.cpp:763 src/gui/BarDiagram.cpp:106
+#: src/dialogs/ColorPanel.cpp:763 src/gui/BarDiagram.cpp:107
 #: src/jyotish/Ashtakavarga.cpp:224 src/views/AshtakaVargaView.cpp:175
 msgid "Rekha"
 msgstr "Рекха"
@@ -2892,7 +2892,7 @@ msgstr "Знак или хозяин даши."
 
 #: src/dialogs/ColorPanel.cpp:966 src/dialogs/ConfigPanel.cpp:149
 #: src/dialogs/GeneralPanel.cpp:96 src/dialogs/VedicCalculationPanel.cpp:607
-#: src/dialogs/VedicChartPanel.cpp:542 src/dialogs/WesternChartPanel.cpp:395
+#: src/dialogs/VedicChartPanel.cpp:541 src/dialogs/WesternChartPanel.cpp:395
 msgid "General"
 msgstr "Общие"
 
@@ -2914,7 +2914,7 @@ msgstr "Применить"
 msgid "Restore Defaults"
 msgstr "Вернуть умолчания"
 
-#: src/dialogs/ConfigDialog.cpp:302
+#: src/dialogs/ConfigDialog.cpp:301
 #, fuzzy
 msgid "Configuration has changed. Do you want to save?"
 msgstr "В базу данных внесены изменения. Сохранить их?"
@@ -2966,7 +2966,7 @@ msgstr "Вычисления"
 msgid "Western Astrology"
 msgstr "Западная астрология"
 
-#: src/dialogs/ConfigPanel.cpp:172 src/dialogs/VedicChartPanel.cpp:545
+#: src/dialogs/ConfigPanel.cpp:172 src/dialogs/VedicChartPanel.cpp:544
 #: src/dialogs/WesternChartPanel.cpp:109 src/dialogs/WesternChartPanel.cpp:115
 #: src/gui/MenuProvider.cpp:731 src/jyotish/Aspect.cpp:606
 msgid "Aspects"
@@ -2999,7 +2999,7 @@ msgstr "длительность"
 
 #: src/dialogs/DataDialog.cpp:89 src/dialogs/DataDialog.cpp:95
 #: src/gui/ChildWindowListCtrl.cpp:140 src/gui/ToolPanel.cpp:362
-#: src/jyotish/Eclipse.cpp:134 src/jyotish/GenericTableWriter.cpp:996
+#: src/jyotish/Eclipse.cpp:134 src/jyotish/GenericTableWriter.cpp:989
 #: src/jyotish/Transit.cpp:325
 msgid "Date"
 msgstr "Дата"
@@ -3041,49 +3041,49 @@ msgstr "Поиск местоположения"
 msgid "Search Location"
 msgstr "Поиск местоположения"
 
-#: src/dialogs/DataDialog.cpp:290
+#: src/dialogs/DataDialog.cpp:293
 msgid "Gregorian Calendar"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:290
+#: src/dialogs/DataDialog.cpp:293
 #, fuzzy
 msgid "Julian Calendar"
 msgstr "Юлианская дата"
 
-#: src/dialogs/DataDialog.cpp:295
+#: src/dialogs/DataDialog.cpp:298
 msgid "invalid value"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:449
+#: src/dialogs/DataDialog.cpp:448
 msgid "Birth Data"
 msgstr "Информация о рождении"
 
-#: src/dialogs/DataDialog.cpp:451
+#: src/dialogs/DataDialog.cpp:450
 msgid "Set current date"
 msgstr "Установить текущую дату"
 
-#: src/dialogs/DataDialog.cpp:454
+#: src/dialogs/DataDialog.cpp:453
 #, fuzzy
 msgid "Set standard location"
 msgstr "Установить местоположение по умолчанию"
 
-#: src/dialogs/DataDialog.cpp:455
+#: src/dialogs/DataDialog.cpp:454
 msgid "Search location in database"
 msgstr "Поиск местоположения в базе данных"
 
-#: src/dialogs/DataDialog.cpp:457
+#: src/dialogs/DataDialog.cpp:456
 msgid "Set time zone for local time"
 msgstr "Установить часовой пояс для местного времени"
 
-#: src/dialogs/DataDialog.cpp:459
+#: src/dialogs/DataDialog.cpp:458
 msgid "Apply data and close dialog"
 msgstr "Применить изменения и закрыть диалог"
 
-#: src/dialogs/DataDialog.cpp:461
+#: src/dialogs/DataDialog.cpp:460
 msgid "Apply changes and recalculate chart with new data"
 msgstr "Применить изменения и произвести вычисления с новыми данными"
 
-#: src/dialogs/DataDialog.cpp:462
+#: src/dialogs/DataDialog.cpp:461
 msgid "Cancel changes and close dialog"
 msgstr "Отменить изменения и закрыть диалог"
 
@@ -3230,7 +3230,7 @@ msgid "Krishnamurti Paddhati"
 msgstr "Кришнамурти Паддхати"
 
 #: src/dialogs/DialogElements.cpp:322 src/dialogs/VedicPanel.cpp:92
-#: src/gui/MenuProvider.cpp:615 src/jyotish/GenericTableWriter.cpp:628
+#: src/gui/MenuProvider.cpp:615 src/jyotish/GenericTableWriter.cpp:621
 #: src/jyotish/Nakshatra.cpp:230 src/jyotish/Nakshatra.cpp:324
 #: src/jyotish/Partner.cpp:504 src/jyotish/Partner.cpp:534
 #: src/jyotish/TextHelper.cpp:533 src/jyotish/TextHelper.cpp:585
@@ -3491,7 +3491,7 @@ msgstr "Найти местоположение ..."
 msgid "00:00:00"
 msgstr "00:00:00"
 
-#: src/dialogs/GeneralPanel.cpp:131 src/jyotish/GenericTableWriter.cpp:1042
+#: src/dialogs/GeneralPanel.cpp:131 src/jyotish/GenericTableWriter.cpp:1035
 msgid "Universal Time"
 msgstr "Всемирное время"
 
@@ -3505,7 +3505,7 @@ msgstr "Часовой пояс"
 msgid "+00:00"
 msgstr "00:00:00"
 
-#: src/dialogs/GeneralPanel.cpp:135 src/jyotish/GenericTableWriter.cpp:1036
+#: src/dialogs/GeneralPanel.cpp:135 src/jyotish/GenericTableWriter.cpp:1029
 msgid "Daylight Saving"
 msgstr "Летнее время"
 
@@ -3578,7 +3578,7 @@ msgid "Fatal"
 msgstr ""
 
 #: src/dialogs/MiscellaneousPanel.cpp:79 src/gui/YogaEditor.cpp:332
-#: src/gui/YogaEditor.cpp:343 src/jyotish/GenericTableWriter.cpp:1190
+#: src/gui/YogaEditor.cpp:343 src/jyotish/GenericTableWriter.cpp:1183
 msgid "Error"
 msgstr "Ошибка"
 
@@ -4006,21 +4006,21 @@ msgstr "Удалить"
 msgid "Enter Name"
 msgstr "Развлечения"
 
-#: src/dialogs/StyleManagerDialog.cpp:246
+#: src/dialogs/StyleManagerDialog.cpp:245
 msgid "Enter New Name"
 msgstr ""
 
-#: src/dialogs/StyleManagerDialog.cpp:246
+#: src/dialogs/StyleManagerDialog.cpp:245
 #, fuzzy
 msgid "Rename Entry"
 msgstr "Удалить страну"
 
-#: src/dialogs/StyleManagerDialog.cpp:281
+#: src/dialogs/StyleManagerDialog.cpp:279
 #, fuzzy, c-format
 msgid "Do you want to delete the entry %s?"
 msgstr "Вы хотите удалить запись"
 
-#: src/dialogs/StyleManagerDialog.cpp:307
+#: src/dialogs/StyleManagerDialog.cpp:305
 #, fuzzy
 msgid "Manage Styles"
 msgstr "Стиль линии"
@@ -4161,23 +4161,23 @@ msgstr "Порядок"
 msgid "Include"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:69 src/jyotish/UranianHelper.cpp:655
+#: src/dialogs/UranianParamPanel.cpp:69 src/jyotish/UranianHelper.cpp:623
 #: src/views/UranianView.cpp:79
 msgid "Midpoints"
 msgstr "Полусуммы"
 
-#: src/dialogs/UranianParamPanel.cpp:70 src/jyotish/UranianHelper.cpp:662
+#: src/dialogs/UranianParamPanel.cpp:70 src/jyotish/UranianHelper.cpp:630
 #: src/views/UranianView.cpp:95
 #, fuzzy
 msgid "Reflection Points"
 msgstr "Ориентир"
 
-#: src/dialogs/UranianParamPanel.cpp:71 src/jyotish/UranianHelper.cpp:648
+#: src/dialogs/UranianParamPanel.cpp:71 src/jyotish/UranianHelper.cpp:616
 #: src/views/UranianView.cpp:83
 msgid "Sums"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:72 src/jyotish/UranianHelper.cpp:651
+#: src/dialogs/UranianParamPanel.cpp:72 src/jyotish/UranianHelper.cpp:619
 #: src/views/UranianView.cpp:87
 msgid "Differences"
 msgstr ""
@@ -4187,7 +4187,7 @@ msgstr ""
 msgid "Antiscia"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:74 src/dialogs/UranianParamPanel.cpp:189
+#: src/dialogs/UranianParamPanel.cpp:74 src/dialogs/UranianParamPanel.cpp:190
 msgid "No Filter"
 msgstr "Нет фильтра"
 
@@ -4395,7 +4395,7 @@ msgid "Yogini"
 msgstr ""
 
 #: src/dialogs/VedicCalculationPanel.cpp:164 src/jyotish/Ashtakavarga.cpp:184
-#: src/jyotish/Ephemeris.cpp:443 src/jyotish/GenericTableWriter.cpp:579
+#: src/jyotish/Ephemeris.cpp:443 src/jyotish/GenericTableWriter.cpp:572
 #: src/jyotish/Jaimini.cpp:200 src/jyotish/Nakshatra.cpp:228
 #: src/jyotish/Nakshatra.cpp:322 src/jyotish/Partner.cpp:629
 #: src/jyotish/TextHelper.cpp:331 src/jyotish/TextHelper.cpp:408
@@ -4433,7 +4433,7 @@ msgstr "Яма Гхантака"
 
 #: src/dialogs/VedicCalculationPanel.cpp:186 src/jyotish/Dasa.cpp:154
 #: src/jyotish/DasaTool.cpp:525 src/jyotish/Ephemeris.cpp:306
-#: src/jyotish/GenericTableWriter.cpp:650 src/jyotish/Hora.cpp:173
+#: src/jyotish/GenericTableWriter.cpp:643 src/jyotish/Hora.cpp:173
 #: src/jyotish/Hora.cpp:177 src/jyotish/SolarChart.cpp:113
 #: src/views/DasaView.cpp:90
 msgid "Lord"
@@ -4493,7 +4493,7 @@ msgstr "Только планеты"
 msgid "With Lagna"
 msgstr "Вместе с лагной"
 
-#: src/dialogs/VedicCalculationPanel.cpp:225 src/gui/BarDiagram.cpp:140
+#: src/dialogs/VedicCalculationPanel.cpp:225 src/gui/BarDiagram.cpp:142
 msgid "Sodhya Pinda"
 msgstr "Содхья пинда"
 
@@ -4754,11 +4754,11 @@ msgstr ""
 msgid "Show Transits"
 msgstr "Транзиты"
 
-#: src/dialogs/VedicChartPanel.cpp:426 src/dialogs/VedicChartPanel.cpp:427
+#: src/dialogs/VedicChartPanel.cpp:425 src/dialogs/VedicChartPanel.cpp:426
 msgid "Cmd + Mouse Over"
 msgstr ""
 
-#: src/dialogs/VedicChartPanel.cpp:543
+#: src/dialogs/VedicChartPanel.cpp:542
 msgid "Varga Chart"
 msgstr "Карта Варга"
 
@@ -4841,7 +4841,7 @@ msgid "After Planets"
 msgstr "Дальние Планеты"
 
 #: src/dialogs/VedicPanel.cpp:85 src/dialogs/WesternPanel.cpp:82
-#: src/jyotish/GenericTableWriter.cpp:609
+#: src/jyotish/GenericTableWriter.cpp:602
 msgid "Declination"
 msgstr "Отклонения"
 
@@ -4853,7 +4853,7 @@ msgstr "Правитель знака"
 
 #: src/dialogs/VedicPanel.cpp:87 src/dialogs/WesternPanel.cpp:88
 #: src/gui/MenuProvider.cpp:602 src/gui/MenuProvider.cpp:651
-#: src/jyotish/GenericTableWriter.cpp:702
+#: src/jyotish/GenericTableWriter.cpp:695
 #, fuzzy
 msgid "Element"
 msgstr "Развлечения"
@@ -4868,7 +4868,7 @@ msgid "Basic Signification"
 msgstr "Основные вычисления"
 
 #: src/dialogs/VedicPanel.cpp:90 src/gui/MenuProvider.cpp:611
-#: src/jyotish/GenericTableWriter.cpp:666
+#: src/jyotish/GenericTableWriter.cpp:659
 msgid "Dignity"
 msgstr "Достоинства"
 
@@ -5349,17 +5349,17 @@ msgstr "Шодаша-Варга"
 msgid "Average"
 msgstr "В среднем"
 
-#: src/gui/BarDiagram.cpp:110 src/jyotish/Ashtakavarga.cpp:227
+#: src/gui/BarDiagram.cpp:111 src/jyotish/Ashtakavarga.cpp:227
 #: src/views/AshtakaVargaView.cpp:179
 msgid "Trikona Shodana"
 msgstr "Трикона Шодана"
 
-#: src/gui/BarDiagram.cpp:114 src/jyotish/Ashtakavarga.cpp:230
+#: src/gui/BarDiagram.cpp:115 src/jyotish/Ashtakavarga.cpp:230
 #: src/views/AshtakaVargaView.cpp:183
 msgid "Ekadhipatya Shodana"
 msgstr "Екадхипатйа Шодана"
 
-#: src/gui/BarDiagram.cpp:136
+#: src/gui/BarDiagram.cpp:138
 msgid "Rasi Pinda"
 msgstr "Пинда Раси"
 
@@ -6389,7 +6389,7 @@ msgstr "Незаинтересованность и скука"
 msgid "Accomplishment"
 msgstr "Достижения"
 
-#: src/jyotish/ArabicParts.cpp:239 src/jyotish/GenericTableWriter.cpp:1114
+#: src/jyotish/ArabicParts.cpp:239 src/jyotish/GenericTableWriter.cpp:1107
 msgid "Influence"
 msgstr "Влияние"
 
@@ -6624,7 +6624,7 @@ msgstr "Хозяин вершины"
 msgid "No."
 msgstr "№"
 
-#: src/jyotish/ArabicParts.cpp:597 src/jyotish/GenericTableWriter.cpp:871
+#: src/jyotish/ArabicParts.cpp:597 src/jyotish/GenericTableWriter.cpp:864
 #: src/jyotish/Jaimini.cpp:230 src/jyotish/TextHelper.cpp:624
 msgid "House"
 msgstr "Дом"
@@ -6830,27 +6830,27 @@ msgstr "Чатваримшамша"
 msgid "Lagna Vimsottari"
 msgstr ""
 
-#: src/jyotish/DasaTool.cpp:79 src/views/DasaView.cpp:293
+#: src/jyotish/DasaTool.cpp:79 src/views/DasaView.cpp:295
 msgid "Mahadasa"
 msgstr "Маха-Даша"
 
-#: src/jyotish/DasaTool.cpp:79 src/views/DasaView.cpp:293
+#: src/jyotish/DasaTool.cpp:79 src/views/DasaView.cpp:295
 msgid "Antardasa"
 msgstr "Антар-Даша"
 
-#: src/jyotish/DasaTool.cpp:80 src/views/DasaView.cpp:294
+#: src/jyotish/DasaTool.cpp:80 src/views/DasaView.cpp:296
 msgid "Pratyantardasa"
 msgstr "Пратйянтар-Даша"
 
-#: src/jyotish/DasaTool.cpp:80 src/views/DasaView.cpp:294
+#: src/jyotish/DasaTool.cpp:80 src/views/DasaView.cpp:296
 msgid "Sooksmantardasa"
 msgstr "Суксмантар-Даша"
 
-#: src/jyotish/DasaTool.cpp:80 src/views/DasaView.cpp:294
+#: src/jyotish/DasaTool.cpp:80 src/views/DasaView.cpp:296
 msgid "Pranadasa"
 msgstr "Прана-Даша"
 
-#: src/jyotish/DasaTool.cpp:83 src/views/DasaView.cpp:336
+#: src/jyotish/DasaTool.cpp:83 src/views/DasaView.cpp:338
 #, c-format
 msgid "Antardasa Level %d"
 msgstr "Уровень Антар-Даши %d"
@@ -6931,15 +6931,15 @@ msgstr "Ущерб Луны"
 msgid "Semi Square"
 msgstr "Полуквадратура"
 
-#: src/jyotish/Ephemeris.cpp:671 src/jyotish/GenericTableWriter.cpp:1046
+#: src/jyotish/Ephemeris.cpp:671 src/jyotish/GenericTableWriter.cpp:1039
 msgid "Sidereal Time"
 msgstr "Сидерическое время"
 
-#: src/jyotish/Ephemeris.cpp:672 src/jyotish/GenericTableWriter.cpp:1055
+#: src/jyotish/Ephemeris.cpp:672 src/jyotish/GenericTableWriter.cpp:1048
 msgid "Sunrise"
 msgstr "Восход"
 
-#: src/jyotish/Ephemeris.cpp:673 src/jyotish/GenericTableWriter.cpp:1067
+#: src/jyotish/Ephemeris.cpp:673 src/jyotish/GenericTableWriter.cpp:1060
 msgid "Sunset"
 msgstr "Закат"
 
@@ -6975,148 +6975,148 @@ msgstr "Сиддха"
 msgid "Sankata"
 msgstr "Санката"
 
-#: src/jyotish/GenericTableWriter.cpp:512
+#: src/jyotish/GenericTableWriter.cpp:505
 #, fuzzy
 msgid "90 Degree"
 msgstr "градусов"
 
-#: src/jyotish/GenericTableWriter.cpp:531
+#: src/jyotish/GenericTableWriter.cpp:524
 #, fuzzy
 msgid "45 Degree"
 msgstr "градусов"
 
-#: src/jyotish/GenericTableWriter.cpp:552
+#: src/jyotish/GenericTableWriter.cpp:545
 msgid "Antiscium"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:582
+#: src/jyotish/GenericTableWriter.cpp:575
 #, fuzzy
 msgid "House Cusp"
 msgstr "Угловые дома (кендры)"
 
-#: src/jyotish/GenericTableWriter.cpp:687 src/jyotish/ShadBala.cpp:653
+#: src/jyotish/GenericTableWriter.cpp:680 src/jyotish/ShadBala.cpp:653
 msgid "D-9"
 msgstr "D-9"
 
-#: src/jyotish/GenericTableWriter.cpp:719
+#: src/jyotish/GenericTableWriter.cpp:712
 #, fuzzy
 msgid "Signification"
 msgstr "Организация"
 
-#: src/jyotish/GenericTableWriter.cpp:735 src/jyotish/Partner.cpp:440
+#: src/jyotish/GenericTableWriter.cpp:728 src/jyotish/Partner.cpp:440
 #: src/jyotish/Partner.cpp:501 src/jyotish/Partner.cpp:531
 #: src/jyotish/TextHelper.cpp:561 src/jyotish/TextHelper.cpp:582
 msgid "Quality"
 msgstr "Качество"
 
-#: src/jyotish/GenericTableWriter.cpp:794 src/jyotish/TextHelper.cpp:593
+#: src/jyotish/GenericTableWriter.cpp:787 src/jyotish/TextHelper.cpp:593
 msgid "Pada"
 msgstr "Пада"
 
-#: src/jyotish/GenericTableWriter.cpp:825
+#: src/jyotish/GenericTableWriter.cpp:818
 msgid "D-60 Lords"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:849
+#: src/jyotish/GenericTableWriter.cpp:842
 msgid "D-10"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:891
+#: src/jyotish/GenericTableWriter.cpp:884
 msgid "L"
 msgstr "L"
 
-#: src/jyotish/GenericTableWriter.cpp:892
+#: src/jyotish/GenericTableWriter.cpp:885
 msgid "SL"
 msgstr "SL"
 
-#: src/jyotish/GenericTableWriter.cpp:893
+#: src/jyotish/GenericTableWriter.cpp:886
 #, fuzzy
 msgid "SSL"
 msgstr "SL"
 
-#: src/jyotish/GenericTableWriter.cpp:953 src/jyotish/Jaimini.cpp:199
+#: src/jyotish/GenericTableWriter.cpp:946 src/jyotish/Jaimini.cpp:199
 #: src/jyotish/TextHelper.cpp:531
 msgid "Karaka"
 msgstr "Карака"
 
-#: src/jyotish/GenericTableWriter.cpp:1031
+#: src/jyotish/GenericTableWriter.cpp:1024
 msgid "UT"
 msgstr "UT"
 
-#: src/jyotish/GenericTableWriter.cpp:1050
+#: src/jyotish/GenericTableWriter.cpp:1043
 msgid "Julian Date"
 msgstr "Юлианская дата"
 
-#: src/jyotish/GenericTableWriter.cpp:1061
-#: src/jyotish/GenericTableWriter.cpp:1073
+#: src/jyotish/GenericTableWriter.cpp:1054
+#: src/jyotish/GenericTableWriter.cpp:1066
 msgid "n.a."
 msgstr "н.а."
 
-#: src/jyotish/GenericTableWriter.cpp:1078
+#: src/jyotish/GenericTableWriter.cpp:1071
 msgid "Vedic Ayanamsa"
 msgstr "Ведическая Айанамша"
 
-#: src/jyotish/GenericTableWriter.cpp:1082
+#: src/jyotish/GenericTableWriter.cpp:1075
 msgid "Western Ayanamsa"
 msgstr "Западная Айанамша"
 
-#: src/jyotish/GenericTableWriter.cpp:1086 src/jyotish/Partner.cpp:301
+#: src/jyotish/GenericTableWriter.cpp:1079 src/jyotish/Partner.cpp:301
 #: src/jyotish/Partner.cpp:443 src/jyotish/Partner.cpp:508
 #: src/jyotish/Partner.cpp:537 src/jyotish/TextHelper.cpp:566
 msgid "Varna"
 msgstr "Варна"
 
-#: src/jyotish/GenericTableWriter.cpp:1090 src/jyotish/Nakshatra.cpp:232
+#: src/jyotish/GenericTableWriter.cpp:1083 src/jyotish/Nakshatra.cpp:232
 #: src/jyotish/Partner.cpp:361 src/jyotish/Partner.cpp:468
 #: src/jyotish/Partner.cpp:515 src/jyotish/Partner.cpp:544
 #: src/jyotish/TextHelper.cpp:573
 msgid "Gana"
 msgstr "Гана"
 
-#: src/jyotish/GenericTableWriter.cpp:1096 src/jyotish/Nakshatra.cpp:231
+#: src/jyotish/GenericTableWriter.cpp:1089 src/jyotish/Nakshatra.cpp:231
 #: src/jyotish/Partner.cpp:458 src/jyotish/Partner.cpp:512
 #: src/jyotish/Partner.cpp:541 src/jyotish/TextHelper.cpp:570
 msgid "Yoni"
 msgstr "Йони"
 
-#: src/jyotish/GenericTableWriter.cpp:1101 src/jyotish/Nakshatra.cpp:233
+#: src/jyotish/GenericTableWriter.cpp:1094 src/jyotish/Nakshatra.cpp:233
 #: src/jyotish/Partner.cpp:382 src/jyotish/Partner.cpp:478
 #: src/jyotish/Partner.cpp:518 src/jyotish/Partner.cpp:547
 #: src/jyotish/TextHelper.cpp:576
 msgid "Nadi"
 msgstr "Нади"
 
-#: src/jyotish/GenericTableWriter.cpp:1107 src/jyotish/Nakshatra.cpp:235
+#: src/jyotish/GenericTableWriter.cpp:1100 src/jyotish/Nakshatra.cpp:235
 #: src/jyotish/Partner.cpp:394 src/jyotish/Partner.cpp:483
 #: src/jyotish/Partner.cpp:521 src/jyotish/Partner.cpp:550
 msgid "Rajju"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:1122
+#: src/jyotish/GenericTableWriter.cpp:1115
 #, fuzzy
 msgid "Lunar Tithi"
 msgstr "Положение лунара"
 
-#: src/jyotish/GenericTableWriter.cpp:1127
+#: src/jyotish/GenericTableWriter.cpp:1120
 msgid "Weekday"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:1160
+#: src/jyotish/GenericTableWriter.cpp:1153
 #, fuzzy
 msgid "Hora Lord"
 msgstr "Хора-Лагна"
 
-#: src/jyotish/GenericTableWriter.cpp:1164
+#: src/jyotish/GenericTableWriter.cpp:1157
 #, fuzzy
 msgid "Dina Lord"
 msgstr "Правитель знака"
 
-#: src/jyotish/GenericTableWriter.cpp:1168
+#: src/jyotish/GenericTableWriter.cpp:1161
 #, fuzzy
 msgid "Masa Lord"
 msgstr "КП Правитель"
 
-#: src/jyotish/GenericTableWriter.cpp:1172
+#: src/jyotish/GenericTableWriter.cpp:1165
 #, fuzzy
 msgid "Varsha Lord"
 msgstr "Правители Кришнамурти"
@@ -7702,40 +7702,48 @@ msgstr ""
 msgid "1/64"
 msgstr ""
 
-#: src/jyotish/UranianHelper.cpp:384
+#: src/jyotish/UranianHelper.cpp:365 src/jyotish/UranianHelper.cpp:371
+msgid "Partner1"
+msgstr "Партнер 1"
+
+#: src/jyotish/UranianHelper.cpp:365 src/jyotish/UranianHelper.cpp:371
+msgid "Partner2"
+msgstr "Партнер 2"
+
+#: src/jyotish/UranianHelper.cpp:385
 #, fuzzy
 msgid "Yearly Preview for Solar Arc"
 msgstr "Предварительный просмотр солнечной карты на год"
 
-#: src/jyotish/UranianHelper.cpp:405 src/views/UranianView.cpp:103
+#: src/jyotish/UranianHelper.cpp:406 src/views/UranianView.cpp:103
 #, fuzzy
 msgid "Matchings"
 msgstr "Ключ"
 
-#: src/jyotish/UranianHelper.cpp:412 src/jyotish/UranianHelper.cpp:748
+#: src/jyotish/UranianHelper.cpp:413 src/jyotish/UranianHelper.cpp:716
 #, fuzzy
 msgid "No Matchings"
 msgstr "Ничего"
 
-#: src/jyotish/UranianHelper.cpp:459
+#: src/jyotish/UranianHelper.cpp:460
 #, fuzzy
 msgid "No events found"
 msgstr "Событий не найдено"
 
-#: src/jyotish/UranianHelper.cpp:652
+#: src/jyotish/UranianHelper.cpp:620
 msgid "Row - column"
 msgstr ""
 
-#: src/jyotish/UranianHelper.cpp:659 src/views/UranianView.cpp:91
+#: src/jyotish/UranianHelper.cpp:627 src/views/UranianView.cpp:91
 #, fuzzy
 msgid "Midpoints of Antiscia"
 msgstr "События средней точки"
 
-#: src/jyotish/UranianHelper.cpp:663
+#: src/jyotish/UranianHelper.cpp:631
 msgid "Row + row - column"
 msgstr ""
 
-#: src/jyotish/UranianHelper.cpp:745 src/views/UranianView.cpp:99
+#: src/jyotish/UranianHelper.cpp:713 src/views/UranianView.cpp:99
 msgid "Clusters"
 msgstr ""
 
@@ -7820,32 +7828,32 @@ msgstr ""
 msgid "To"
 msgstr "Вверху"
 
-#: src/views/DasaView.cpp:255
+#: src/views/DasaView.cpp:257
 #, fuzzy
 msgid "Dasa/Tree"
 msgstr "Даша (Дерево)"
 
-#: src/views/DasaView.cpp:305
+#: src/views/DasaView.cpp:307
 #, fuzzy
 msgid "Dasa Details"
 msgstr "Уровень даши"
 
-#: src/views/DasaView.cpp:313
+#: src/views/DasaView.cpp:315
 #, c-format
 msgid "%s Dasa"
 msgstr "%s-Даша"
 
-#: src/views/DasaView.cpp:337
+#: src/views/DasaView.cpp:339
 #, c-format
 msgid "%s of %s Dasa"
 msgstr "%s %s-Даши"
 
-#: src/views/DasaView.cpp:397
+#: src/views/DasaView.cpp:399
 #, fuzzy
 msgid "Dasa/Composite"
 msgstr "Даша (короткая)"
 
-#: src/views/DasaView.cpp:425 src/views/YogaView.cpp:105
+#: src/views/DasaView.cpp:427 src/views/YogaView.cpp:105
 msgid "All Sources"
 msgstr "Все источники"
 
@@ -7878,12 +7886,12 @@ msgstr "Варга (3)"
 msgid "Partner View"
 msgstr "Партнеры"
 
-#: src/views/PartnerView.cpp:422
+#: src/views/PartnerView.cpp:417
 #, fuzzy
 msgid "No chart opened"
 msgstr "Карта не загружена"
 
-#: src/views/PartnerView.cpp:426
+#: src/views/PartnerView.cpp:421
 msgid "Charts identical"
 msgstr "Карты одинаковы"
 
@@ -8414,12 +8422,6 @@ msgstr "Все группы"
 
 #~ msgid "Uranian Partner Analysis"
 #~ msgstr "Уранический анализ партнера"
-
-#~ msgid "Partner1"
-#~ msgstr "Партнер 1"
-
-#~ msgid "Partner2"
-#~ msgstr "Партнер 2"
 
 #~ msgid "Conjunctions"
 #~ msgstr "Конъюнкции"
