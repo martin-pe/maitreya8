@@ -667,7 +667,7 @@ wxMenu *ContextMenuProvider::getMainViewColumnMenu( ChartProperties *props )
 ***************************************************************/
 wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties *props )
 {
-	wxMenu *menu = new MyMenu( _( "Graphic Options" ));
+	wxMenu *menu = new MyMenu( _( "Chart Options" ));
 
 	if ( props->isVedic())
 	{

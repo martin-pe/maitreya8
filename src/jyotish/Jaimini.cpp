@@ -204,7 +204,7 @@ void JaiminiExpert::write( Sheet *sheet, const bool show_header )
 		t1->setEntry( 0, line, lang.getKarakaName( i ) );
 		k_id = getCharaKaraka(i);
 		if ( k_id > OSATURN ) k_id = OMEANNODE;
-		t1->setEntry( 1, line, fmt.getObjectName( k_id, TF_LONG ));
+		t1->setEntry( 1, line, fmt.getObjectName( k_id, TF_LONG, true ));
 		line++;
 	}
 	sheet->addItem( t1 );

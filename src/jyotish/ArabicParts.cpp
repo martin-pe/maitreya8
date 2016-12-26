@@ -392,7 +392,7 @@ void ArabicPartsExpert::updatePart( const int &p )
 			// longitude of lord of a planet's house cusp (0..MAX_EPHEM_OBJECTS) = R
 		case AR_PLANETS_HOUSECUSP_LORD_LEN:
 			ASSERT_VALID_EPHEM_OBJECT( obj )
-			printf( "HALLO obj %d\n", (int)obj );
+			//printf( "HALLO obj %d\n", (int)obj );
 			vlen = h->getObjectPosition( getLord( getRasi( h->getHouse( (int)h->getHouse4Longitude(
 				h->getObjectPosition( (ObjectId)obj, true ).longitude, true ), true )), true ), true ).longitude;
 			wlen = h->getObjectPosition( getLord( getRasi( h->getHouse( (int)h->getHouse4Longitude(

@@ -947,20 +947,29 @@ void GenericTableWriter::writeCharaKarakas( const uint &i0, const TcColumnSet &s
 	if ( set.listcontext != TAB_LC_PLANETS || ! set.vedic ) return;
 
 	Lang lang;
+	ObjectId p;
+	const bool cmode = config->vedicCalculation->charaKarakaMode; // 0: Parasara, 1: Raman
+
 	JaiminiExpert jexpert( h, V_RASI );
 	jexpert.calcCharaKarakas();
 
-	uint line = 1;
-	for ( uint p = 0; p < obs.size(); p++ )
+	for ( uint i = 0; i < obs.size(); i++ )
 	{
-		assert( table->getNbRows() > line );
+		assert( table->getNbRows() > i );
 
-		// TODO Raman
-		if ( obs[p] < 8 )
+		// map planet id to karaka index - quite ugly
+		p = obs[i];
+		if ( cmode ) // Raman
 		{
-			table->setEntry( i0, line, lang.getKarakaName( jexpert.getCharaKarakaProperty( obs[p] )) );
+			if ( p > OSATURN ) continue;
 		}
-		line++;
+		else // Parasara
+		{
+			if ( p == OURANUS ) continue;
+			if ( p == OMEANNODE || p == OTRUENODE ) p = (ObjectId)7;
+			if ( p > 7 ) continue;
+		}
+		table->setEntry( i0, i + 1, lang.getKarakaName( jexpert.getCharaKarakaProperty( p )));
 	}
 }
 

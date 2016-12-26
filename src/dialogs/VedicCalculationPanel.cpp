@@ -146,7 +146,7 @@ VedicCalculationPanel::VedicCalculationPanel( wxWindow* parent ) : ConfigPanel( 
     text_varga_signification = new wxTextCtrl(notebook_pane2, CD_VARGA_SIGNIFICATION_TEXT, wxEmptyString);
     label_nakdasa = new wxStaticText(notebook_pane3, wxID_ANY, _("Nakshatra Dasa Calculation"));
     const wxString choice_nakdasa_choices[] = {
-        _("Length"),
+        _("Longitude"),
         _("Entry Time")
     };
     choice_nakdasa = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_nakdasa_choices, 0);

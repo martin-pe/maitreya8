@@ -573,6 +573,7 @@ void ShadBalaExpert::write( Sheet *sheet )
 {
 	Formatter *formatter = Formatter::get();
 	uint i, j;
+	wxString s;
 	ObjectId p;
 	Lang lang;
 	SheetFormatter fmt;
@@ -649,13 +650,13 @@ void ShadBalaExpert::write( Sheet *sheet )
 	Table *t2 = new Table( 11, 8 );
 	t2->setHeader( _( "Saptavargaja Bala" ));
 	t2->setHeader( 0, wxEmptyString );
-	t2->setHeader( 1, _( "D-1" ));
-	t2->setHeader( 2, _( "D-9" ));
-	t2->setHeader( 3, _( "D-2" ));
-	t2->setHeader( 4, _( "D-3" ));
-	t2->setHeader( 5, _( "D-7" ));
-	t2->setHeader( 6, _( "D-12" ));
-	t2->setHeader( 7, _( "D-30" ));
+	t2->setHeader( 1, wxT( "D-1" ));
+	t2->setHeader( 2, wxT( "D-9" ));
+	t2->setHeader( 3, wxT( "D-2" ));
+	t2->setHeader( 4, wxT( "D-3" ));
+	t2->setHeader( 5, wxT( "D-7" ));
+	t2->setHeader( 6, wxT( "D-12" ));
+	t2->setHeader( 7, wxT( "D-30" ));
 	t2->setHeader( 8, wxEmptyString );
 	t2->setHeader( 9, _( "Total Virupas" ));
 	t2->setHeader( 10, wxEmptyString );
@@ -707,10 +708,22 @@ void ShadBalaExpert::write( Sheet *sheet )
 
 	if ( ! sunriseStatusOk ) sheet->addLine( _( "Remark: no Tribhaga Bala, sunrise and sunset not found." ));
 
-	sheet->addLine( wxString::Format( _( "Lord of year: %s" ), (const wxChar*)lang.getObjectName( varshalord, TF_LONG )));
-	sheet->addLine( wxString::Format( _( "Lord of month: %s" ), (const wxChar*)lang.getObjectName( masalord, TF_LONG )));
-	sheet->addLine( wxString::Format( _( "Lord of day: %s" ), (const wxChar*)lang.getObjectName( dinalord, TF_LONG )));
-	sheet->addLine( wxString::Format( _( "Lord of hour: %s" ), (const wxChar*)lang.getObjectName( horalord, TF_LONG )));
+
+	s.Clear();
+	s << _( "Lord of year" ) << wxT( ": " ) << lang.getObjectName( varshalord, TF_LONG );
+	sheet->addLine( s );
+
+	s.Clear();
+	s << _( "Lord of month" ) << wxT( ": " ) << lang.getObjectName( masalord, TF_LONG );
+	sheet->addLine( s );
+
+	s.Clear();
+	s << _( "Lord of day" ) << wxT( ": " ) << lang.getObjectName( dinalord, TF_LONG );
+	sheet->addLine( s );
+
+	s.Clear();
+	s << _( "Lord of hour" ) << wxT( ": " ) << lang.getObjectName( horalord, TF_LONG );
+	sheet->addLine( s );
 
 	Table *t4 = new Table( 6, 6 );
 	t4->setHeader( _( "Cheshta Bala" ));

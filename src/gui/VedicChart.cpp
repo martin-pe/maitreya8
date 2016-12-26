@@ -168,10 +168,10 @@ vector<wxString> VedicVargaChart::getCenterString()
 				if ( ! signification.IsEmpty() ) v.push_back( signification );
 			break;
 			case VCC_DIVISION:
-				v.push_back( wxString::Format( _( "D-%d" ), loader->getVargaDivision( varga )));
+				v.push_back( wxString::Format( wxT( "D-%d" ), loader->getVargaDivision( varga )));
 			break;
 			case VCC_DIVISION_SIGNIFICATION:
-				v.push_back( wxString::Format( _( "D-%d" ), loader->getVargaDivision( varga )));
+				v.push_back( wxString::Format( wxT( "D-%d" ), loader->getVargaDivision( varga )));
 				signification = loader->getVargaSignification( varga );
 				if ( ! signification.IsEmpty() ) v.push_back( signification );
 			break;
@@ -264,7 +264,7 @@ void VedicVargaChart::writeChartContents( const int &chart_id, const bool applyF
 			}
 			else
 			{
-				sname.Printf( _( "A%d" ), i+1 );
+				sname.Printf( wxT( "A%d" ), i+1 );
 				lname = sname;
 			}
 			fields[rasi].getContents( chart_id ).textitems.push_back( ChartTextItem( lname, sname, false ));

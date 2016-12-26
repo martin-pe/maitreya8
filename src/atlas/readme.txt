@@ -40,7 +40,7 @@ sqlite> .quit
 
 Import data
 -----------
-Edit Pythoon script import_geoname.py if necessary
+Edit Python script import_geoname.py if necessary
 - name of city file
 - name of database
 

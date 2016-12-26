@@ -173,8 +173,8 @@ const wxString Lang::getObjectName( const ObjectId &num, const TEXT_FORMAT &form
 	{
 		if ( ! vedic )
 		{
-			if ( num == OTRUENODE || num == OMEANNODE ) ret = _( "Nod" );
-			if ( num == OTRUEDESCNODE || num == OMEANDESCNODE ) ret = _( "SNo" );
+			if ( num == OTRUENODE || num == OMEANNODE ) ret = wxT( "Nod" );
+			else if ( num == OTRUEDESCNODE || num == OMEANDESCNODE ) ret = wxT( "DNo" );
 		}
 		return ret.Left( 3 );
 	}
@@ -182,7 +182,8 @@ const wxString Lang::getObjectName( const ObjectId &num, const TEXT_FORMAT &form
 	{
 		if ( ! vedic )
 		{
-			if ( num == OTRUEDESCNODE || num == OMEANDESCNODE ) ret = _( "SN" );
+			if ( num == OTRUENODE || num == OMEANNODE ) ret = wxT( "Nd" );
+			else if ( num == OTRUEDESCNODE || num == OMEANDESCNODE ) ret = wxT( "DN" );
 		}
 		return ret.Left( 2 );
 	}
@@ -646,7 +647,7 @@ const wxString Lang::getObjectSignification( const ObjectId &p, const TEXT_FORMA
 	const static wxString k_vedic_signification[7] = { _( "Atma" ), _( "Mind" ), _( "Speech" ), _( "Semen" ),
 		_( "Strength" ), _( "Guru" ), _( "Grief" ) };
 	if ( vedic && p >= OSUN && p <= OSATURN ) return k_vedic_signification[int(p)];
-	else return wxT( "-" );
+	else return wxEmptyString;
 };
 
 /*****************************************************

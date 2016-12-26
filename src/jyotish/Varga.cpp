@@ -386,13 +386,13 @@ void VargaExpert::write( Sheet *sheet, const OBJECT_INCLUDES &style, const bool 
 	t4->setHeader( 1, _( "V-6" ));
 	t4->setHeader( 2, _( "Own Vargas" ));
 	t4->setHeader( 3, wxEmptyString );
-	t4->setHeader( 4, _( "V-7" ));
+	t4->setHeader( 4, wxT( "V-7" ));
 	t4->setHeader( 5, _( "Own Vargas" ));
 	t4->setHeader( 6, wxEmptyString );
-	t4->setHeader( 7, _( "V-10" ));
+	t4->setHeader( 7, wxT( "V-10" ));
 	t4->setHeader( 8, _( "Own Vargas" ));
 	t4->setHeader( 9, wxEmptyString );
-	t4->setHeader( 10, _( "V-16" ));
+	t4->setHeader( 10, wxT( "V-16" ));
 	t4->setHeader( 11, _( "Own Vargas" ));
 	t4->setHeader( 12, wxEmptyString );
 	t4->setHeader( 13, _( "Average" ));
