@@ -1,9 +1,20 @@
 Maitreya is a free software for western and Vedic astrology (Jyotish).
 
-Supports classic Vedic astrology, KP system and parts of Jaimini system.
+Platforms: Win32, Mac OS X, Linux and UNIX.
 
-Platforms: Win32, Linux and UNIX.
+Website http://www.saravali.de
 
-You can find information on http://www.saravali.de
+Avalaible Github repos
+
+Version 8: current release
+https://github.com/martin-pe/maitreya8
+
+Version 7: stable release, to be replaced by version 8
+https://github.com/martin-pe/maitreya7 
+
+Version 6: legacy release, still included in some older Linux or UNIX distributions
+https://github.com/martin-pe/maitreya6
+
+
 
 
