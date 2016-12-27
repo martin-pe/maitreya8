@@ -577,7 +577,7 @@ void ShadBalaExpert::write( Sheet *sheet )
 	ObjectId p;
 	Lang lang;
 	SheetFormatter fmt;
-	const wxChar *cheshtabala_name[9] = { wxEmptyString, _( "Vakra" ), _( "Anuvakra" ),
+	const static wxString cheshtabala_name[9] = { wxEmptyString, _( "Vakra" ), _( "Anuvakra" ),
 		_( "Vikala" ), _( "Manda" ), _( "Mandatara" ), _( "Sama" ), _( "Chara" ), _( "Atichara" ) };
 
 	// get correct order for planets
