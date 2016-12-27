@@ -12,7 +12,8 @@
 #define _WX_JSONREADER_H
 
 #ifdef __GNUG__
-    #pragma interface "jsonreader.h"
+		// mp avoid compiler warnings
+    //#pragma interface "jsonreader.h"
 #endif
 
 // For compilers that support precompilation, includes "wx/wx.h".

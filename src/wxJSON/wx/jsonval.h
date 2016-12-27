@@ -12,7 +12,8 @@
 #define _WX_JSONVAL_H
 
 #ifdef __GNUG__
-    #pragma interface "jsonval.h"
+		// mp avoid compiler warnings
+    //#pragma interface "jsonval.h"
 #endif
 
 // For compilers that support precompilation, includes "wx/wx.h".

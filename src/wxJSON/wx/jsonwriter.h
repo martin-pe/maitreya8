@@ -12,7 +12,8 @@
 #define _WX_JSONWRITER_H
 
 #ifdef __GNUG__
-    #pragma interface "jsonwriter.h"
+		// mp avoid compiler warnings
+    //#pragma interface "jsonwriter.h"
 #endif
 
 // For compilers that support precompilation, includes "wx/wx.h".
