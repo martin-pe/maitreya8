@@ -66,7 +66,7 @@ protected:
 
 	void init();
 	void initViewPort();
-	void updateSheetConfig();
+	//void updateSheetConfig();
 
 	// implementation of abstract method from BasicWidget
 	virtual void doPaint( const wxRect&, const bool eraseBackground = true );

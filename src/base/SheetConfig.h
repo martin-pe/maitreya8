@@ -65,8 +65,8 @@ class SheetConfig : public ConfigBase
 {
 public:
 
-	SheetConfig();
-	SheetConfig( wxString name );
+	SheetConfig( const SheetConfig& );
+	SheetConfig( wxString name = wxEmptyString );
 
 	virtual ~SheetConfig();
 

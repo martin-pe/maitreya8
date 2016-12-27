@@ -56,8 +56,9 @@ public:
 	void clearSheet();
 
 	void setWriterConfig( WriterConfig* );
+
 	void setSheetConfig( SheetConfig* );
-	SheetConfig *getSheetConfig() const { return sheetcfg; }
+	SheetConfig *getSheetConfig();
 
 protected:
 
@@ -65,9 +66,6 @@ protected:
 	SheetConfig *sheetcfg;
 	ColorConfig *colorcfg;
 	Sheet *sheet;
-
-	// TODO REMOVE
-	bool sheetConfigOverride;
 
 	void doPdfExport();
 	void doTextExport( const WidgetExportType& );

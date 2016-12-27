@@ -110,7 +110,7 @@ void TextWidget::init()
 ******************************************************/
 void TextWidget::OnDataChanged()
 {
-	Exporter *exporter = ExporterFactory().getExporter( WeHtml, sheetcfg, writercfg );
+	Exporter *exporter = ExporterFactory().getExporter( WeHtml, getSheetConfig(), writercfg );
 	wxString s = exporter->exportSheet( sheet );
 	html->SetPage( s );
 	//printf( "Finished TextWidget::OnDataChanged %s\n", str2char( s ));

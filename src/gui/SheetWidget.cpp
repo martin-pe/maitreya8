@@ -50,7 +50,7 @@ IMPLEMENT_CLASS( SheetWidget, BasicSheetWidget )
 SheetWidget::SheetWidget( wxWindow *parent, ChartProperties *props, SheetConfig *scfg, WriterConfig *wcfg, ColorConfig *ccfg )
 : BasicSheetWidget( parent, props, scfg, wcfg, ccfg )
 {
-	writer = new DcSheetWriter( sheet, sheetcfg, writercfg, colorcfg );
+	writer = new DcSheetWriter( sheet, getSheetConfig(), writercfg, colorcfg );
 	init();
 	setWidgetOptions( WO_EXPORT_GRAPHIC );
 	minxright = 300;
@@ -73,6 +73,7 @@ SheetWidget::~SheetWidget()
 **   SheetWidget   ---   updateSheetConfig
 **
 ******************************************************/
+/*
 void SheetWidget::updateSheetConfig()
 {
 	SheetConfigLoader *loader = SheetConfigLoader::get();
@@ -80,6 +81,7 @@ void SheetWidget::updateSheetConfig()
 	assert( sheetcfg );
 	writer->setSheetConfig( sheetcfg );
 }
+*/
 
 /*****************************************************
 **
@@ -101,7 +103,7 @@ void SheetWidget::init()
 	xviewport = widgetsize.x;// - sb_ysize;
 	yviewport = widgetsize.y;// - sb_xsize;
 
-	assert( sheetcfg );
+	//assert( sheetcfg );
 
 	// TODO das kann man sicherlich an den Writer delegieren
 	writer->contentRect.x = SCROLLABLE_PAGE_WIDGET_PAGE_BORDER_X;
@@ -211,9 +213,9 @@ void SheetWidget::doPaint( const wxRect &rect, const bool eraseBackground )
 	const wxLongLong starttime = wxGetLocalTimeMillis();
 #endif
 
-	assert( sheetcfg );
+	// may have changed
+	writer->setSheetConfig( getSheetConfig() );
 	
-	if ( ! sheetConfigOverride ) updateSheetConfig();
 	assert( painter );
 	painter->writercfg = sheet->writercfg;
 	painter->colorcfg = colorcfg;

@@ -40,19 +40,22 @@ extern Config *config;
 **   SheetConfig   ---   Constructor
 **
 ******************************************************/
-SheetConfig::SheetConfig()
+SheetConfig::SheetConfig( wxString name )
 {
-  name =  _( "Default" );
+  if ( name.IsEmpty() ) this->name =  _( "Default" );
+	else this->name = name;
 }
 
 /*****************************************************
 **
-**   SheetConfig   ---   Constructor
+**   SheetConfig   ---   Copy Constructor
 **
 ******************************************************/
-SheetConfig::SheetConfig( wxString n )
- : name( n )
+SheetConfig::SheetConfig( const SheetConfig &sc )
 {
+	printf( "SheetConfig::SheetConfig COPY\n" );
+	name = sc.name;
+	tablestyle = sc.tablestyle;
 }
 
 /*****************************************************
@@ -65,7 +68,6 @@ SheetConfig::~SheetConfig()
 #ifdef DEB_VIEWMODE_DESTRUCTORS
 	cout << "Destructor SheetConfig" << Endl;
 #endif
-	//delete tablestyle;
 }
 
 /*****************************************************

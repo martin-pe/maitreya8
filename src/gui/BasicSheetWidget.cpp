@@ -51,17 +51,6 @@ BasicSheetWidget::BasicSheetWidget( wxWindow *parent, ChartProperties *props,
 	assert( colorcfg );
 	sheetcfg = (SheetConfig*)NULL;
 
-	if ( scfg )
-	{
-		sheetcfg = scfg;
-		sheetConfigOverride = true;
-	}
-	else
-	{
-		SheetConfigLoader *loader = SheetConfigLoader::get();
-		sheetcfg = loader->getConfig( config->view->sheetStyle );
-		sheetConfigOverride = false;
-	}
 	sheet = new Sheet( writercfg );
 
 	setWidgetOptions( WO_EXPORT_PDF | WO_EXPORT_PLAINTEXT | WO_EXPORT_HTMLTEXT | WO_EXPORT_CSVTEXT );
@@ -94,8 +83,20 @@ void BasicSheetWidget::setWriterConfig( WriterConfig *wcfg )
 ******************************************************/
 void BasicSheetWidget::setSheetConfig( SheetConfig *scfg )
 {
+	assert( scfg );
 	sheetcfg = scfg;
-	sheetConfigOverride = true;
+	//sheetConfigOverride = true;
+}
+
+/*****************************************************
+**
+**   BasicSheetWidget   ---   getSheetConfig
+**
+******************************************************/
+SheetConfig *BasicSheetWidget::getSheetConfig()
+{
+	SheetConfig *sc = ( sheetcfg ? sheetcfg : SheetConfigLoader::get()->getConfig( config->view->sheetStyle ));
+	return sc;
 }
 
 /*****************************************************
