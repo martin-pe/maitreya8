@@ -53,7 +53,7 @@ SheetConfig::SheetConfig( wxString name )
 ******************************************************/
 SheetConfig::SheetConfig( const SheetConfig &sc )
 {
-	printf( "SheetConfig::SheetConfig COPY\n" );
+	//printf( "SheetConfig::SheetConfig COPY\n" );
 	name = sc.name;
 	tablestyle = sc.tablestyle;
 }
