@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-01-07 08:01+0100\n"
+"POT-Creation-Date: 2017-01-07 09:44+0100\n"
 "PO-Revision-Date: 2010-08-19 00:09+0200\n"
 "Last-Translator: Gabriel Bente <alter_idem@freemail.hu>\n"
 "Language-Team: LANGUAGE <alter.idem@freemail.hu>\n"
@@ -63,7 +63,7 @@ msgid "unknown"
 msgstr "necunoscut"
 
 #: src/base/ColorConfig.cpp:250 src/base/Lang.cpp:133 src/base/Lang.cpp:479
-#: src/dialogs/WesternPanel.cpp:73 src/gui/MenuProvider.cpp:571
+#: src/dialogs/WesternPanel.cpp:73 src/gui/MenuProvider.cpp:567
 #: src/gui/ToolPanel.cpp:274
 msgid "Aries"
 msgstr "Berbec"
@@ -185,7 +185,7 @@ msgstr "Nou"
 
 #: src/base/Commands.cpp:250 src/base/Commands.cpp:251
 #: src/base/VargaBase.cpp:78 src/dialogs/DialogElements.cpp:316
-#: src/gui/MenuProvider.cpp:629 src/gui/VedicChart.cpp:156
+#: src/gui/MenuProvider.cpp:625 src/gui/VedicChart.cpp:156
 #: src/jyotish/GenericTableWriter.cpp:864 src/jyotish/TextHelper.cpp:390
 #: src/jyotish/TextHelper.cpp:410 src/jyotish/TextHelper.cpp:464
 msgid "Bhava"
@@ -277,7 +277,7 @@ msgid "SBC"
 msgstr ""
 
 #: src/base/Commands.cpp:279 src/gui/MenuProvider.cpp:443
-#: src/gui/MenuProvider.cpp:755 src/views/PartnerView.cpp:125
+#: src/gui/MenuProvider.cpp:751 src/views/PartnerView.cpp:125
 #: src/views/SbcView.cpp:65 src/views/TransitView.cpp:130
 msgid "Sarvatobhadra"
 msgstr "Sarvatobhadra"
@@ -336,7 +336,7 @@ msgid "AV"
 msgstr "AV"
 
 #: src/base/Commands.cpp:295 src/dialogs/VedicCalculationPanel.cpp:611
-#: src/gui/MenuProvider.cpp:631 src/gui/MenuProvider.cpp:720
+#: src/gui/MenuProvider.cpp:627 src/gui/MenuProvider.cpp:716
 msgid "Ashtakavarga"
 msgstr "Ashtakavarga"
 
@@ -609,7 +609,7 @@ msgstr "nn"
 #: src/dialogs/AtlasDialog.cpp:264 src/dialogs/AtlasDialog.cpp:272
 #: src/dialogs/AtlasEditDialog.cpp:58 src/dialogs/DataDialog.cpp:93
 #: src/dialogs/DataDialog.cpp:104 src/dialogs/VedicChartPanel.cpp:104
-#: src/gui/ChildWindowListCtrl.cpp:136 src/gui/MenuProvider.cpp:699
+#: src/gui/ChildWindowListCtrl.cpp:136 src/gui/MenuProvider.cpp:695
 #: src/jyotish/ArabicParts.cpp:595 src/jyotish/GenericTableWriter.cpp:993
 #: src/jyotish/TextHelper.cpp:359
 msgid "Name"
@@ -2777,7 +2777,7 @@ msgid "Signs"
 msgstr "Zodii"
 
 #: src/dialogs/ColorPanel.cpp:363 src/dialogs/WesternChartPanel.cpp:111
-#: src/dialogs/WesternChartPanel.cpp:114 src/gui/MenuProvider.cpp:735
+#: src/dialogs/WesternChartPanel.cpp:114 src/gui/MenuProvider.cpp:731
 #: src/jyotish/PrintoutTextHelper.cpp:116
 #: src/jyotish/PrintoutTextHelper.cpp:138
 msgid "Houses"
@@ -2972,7 +2972,7 @@ msgstr "Astrologie Occidentală"
 
 #: src/dialogs/ConfigPanel.cpp:172 src/dialogs/VedicChartPanel.cpp:544
 #: src/dialogs/WesternChartPanel.cpp:109 src/dialogs/WesternChartPanel.cpp:115
-#: src/gui/MenuProvider.cpp:731 src/jyotish/Aspect.cpp:607
+#: src/gui/MenuProvider.cpp:727 src/jyotish/Aspect.cpp:607
 msgid "Aspects"
 msgstr "Aspecte"
 
@@ -3200,7 +3200,7 @@ msgid "Base Data"
 msgstr "Date de bază"
 
 #: src/dialogs/DialogElements.cpp:313 src/dialogs/VedicPanel.cpp:56
-#: src/dialogs/WesternPanel.cpp:54 src/gui/MenuProvider.cpp:579
+#: src/dialogs/WesternPanel.cpp:54 src/gui/MenuProvider.cpp:575
 msgid "Arabic Parts"
 msgstr "Puncte Arabice"
 
@@ -3235,7 +3235,7 @@ msgid "Krishnamurti Paddhati"
 msgstr "Krishnamurti Paddhati"
 
 #: src/dialogs/DialogElements.cpp:322 src/dialogs/VedicPanel.cpp:92
-#: src/gui/MenuProvider.cpp:615 src/jyotish/GenericTableWriter.cpp:621
+#: src/gui/MenuProvider.cpp:611 src/jyotish/GenericTableWriter.cpp:621
 #: src/jyotish/Nakshatra.cpp:230 src/jyotish/Nakshatra.cpp:324
 #: src/jyotish/Partner.cpp:504 src/jyotish/Partner.cpp:534
 #: src/jyotish/TextHelper.cpp:533 src/jyotish/TextHelper.cpp:585
@@ -4188,7 +4188,7 @@ msgid "Differences"
 msgstr ""
 
 #: src/dialogs/UranianParamPanel.cpp:73 src/dialogs/WesternPanel.cpp:85
-#: src/gui/MenuProvider.cpp:645
+#: src/gui/MenuProvider.cpp:641
 msgid "Antiscia"
 msgstr ""
 
@@ -4473,7 +4473,7 @@ msgid "Benefic points"
 msgstr "Puncte benefice"
 
 #: src/dialogs/VedicCalculationPanel.cpp:214
-#: src/dialogs/VedicChartPanel.cpp:115 src/gui/MenuProvider.cpp:686
+#: src/dialogs/VedicChartPanel.cpp:115 src/gui/MenuProvider.cpp:682
 msgid "Number"
 msgstr "Număr"
 
@@ -4501,7 +4501,7 @@ msgstr "Sodhya Pinda"
 msgid "Mantreswar"
 msgstr "Mantreswar"
 
-#: src/dialogs/VedicCalculationPanel.cpp:231 src/gui/MenuProvider.cpp:715
+#: src/dialogs/VedicCalculationPanel.cpp:231 src/gui/MenuProvider.cpp:711
 msgid "Arudhas"
 msgstr "Arudha-uri"
 
@@ -4557,7 +4557,7 @@ msgid "Aspect Display"
 msgstr "Vizualizarea aspectelor"
 
 #: src/dialogs/VedicChartPanel.cpp:79 src/dialogs/WesternChartPanel.cpp:70
-#: src/gui/MenuProvider.cpp:447 src/gui/MenuProvider.cpp:500
+#: src/gui/MenuProvider.cpp:447 src/gui/MenuProvider.cpp:496
 msgid "Skin"
 msgstr "Skin"
 
@@ -4597,11 +4597,11 @@ msgstr "Indian de Est"
 msgid "Center of Chart"
 msgstr "Centrul hărţii"
 
-#: src/dialogs/VedicChartPanel.cpp:103 src/gui/MenuProvider.cpp:697
+#: src/dialogs/VedicChartPanel.cpp:103 src/gui/MenuProvider.cpp:693
 msgid "Nothing"
 msgstr "Nimica"
 
-#: src/dialogs/VedicChartPanel.cpp:105 src/gui/MenuProvider.cpp:701
+#: src/dialogs/VedicChartPanel.cpp:105 src/gui/MenuProvider.cpp:697
 #, fuzzy
 msgid "Name + Signification"
 msgstr "Faimă şi recunoaştere(publică)"
@@ -4628,15 +4628,15 @@ msgstr "Puncte Ashtakavarga"
 msgid "Sign Display"
 msgstr "Vizualizarea aspectelor"
 
-#: src/dialogs/VedicChartPanel.cpp:114 src/gui/MenuProvider.cpp:684
+#: src/dialogs/VedicChartPanel.cpp:114 src/gui/MenuProvider.cpp:680
 msgid "Ascendant Only"
 msgstr "Doar Ascendentul"
 
-#: src/dialogs/VedicChartPanel.cpp:116 src/gui/MenuProvider.cpp:688
+#: src/dialogs/VedicChartPanel.cpp:116 src/gui/MenuProvider.cpp:684
 msgid "Short String"
 msgstr "Şir scurt"
 
-#: src/dialogs/VedicChartPanel.cpp:117 src/gui/MenuProvider.cpp:690
+#: src/dialogs/VedicChartPanel.cpp:117 src/gui/MenuProvider.cpp:686
 msgid "Symbol"
 msgstr "Simbol"
 
@@ -4654,7 +4654,7 @@ msgstr "Solid"
 msgid "Dotted Line"
 msgstr ""
 
-#: src/dialogs/VedicChartPanel.cpp:127 src/gui/MenuProvider.cpp:761
+#: src/dialogs/VedicChartPanel.cpp:127 src/gui/MenuProvider.cpp:757
 msgid "Sanskrit Symbols"
 msgstr "Simbole Sanscrite"
 
@@ -4787,22 +4787,22 @@ msgid "Ephemeris Objects"
 msgstr "Obiecte efemeridice"
 
 #: src/dialogs/VedicPanel.cpp:60 src/dialogs/WesternPanel.cpp:58
-#: src/gui/MenuProvider.cpp:533
+#: src/gui/MenuProvider.cpp:529
 msgid "3 Outer Planets"
 msgstr "3 planete externe"
 
 #: src/dialogs/VedicPanel.cpp:67 src/dialogs/WesternPanel.cpp:65
-#: src/gui/MenuProvider.cpp:552
+#: src/gui/MenuProvider.cpp:548
 msgid "4 Uranian (Cupido-Kronos)"
 msgstr ""
 
 #: src/dialogs/VedicPanel.cpp:68 src/dialogs/WesternPanel.cpp:66
-#: src/gui/MenuProvider.cpp:553
+#: src/gui/MenuProvider.cpp:549
 msgid "4 Uranian (Apollon-Poseidon)"
 msgstr ""
 
 #: src/dialogs/VedicPanel.cpp:71 src/dialogs/WesternPanel.cpp:69
-#: src/gui/MenuProvider.cpp:558
+#: src/gui/MenuProvider.cpp:554
 msgid "4 Planetoids"
 msgstr "4 asteroizi"
 
@@ -4815,19 +4815,19 @@ msgstr "Lilith (Luna neagră)"
 msgid "House Cusps/Sandhis"
 msgstr "Cuspidele caselor"
 
-#: src/dialogs/VedicPanel.cpp:74 src/gui/MenuProvider.cpp:566
+#: src/dialogs/VedicPanel.cpp:74 src/gui/MenuProvider.cpp:562
 msgid "5 Upagrahas"
 msgstr "5 Upagrahas"
 
-#: src/dialogs/VedicPanel.cpp:75 src/gui/MenuProvider.cpp:567
+#: src/dialogs/VedicPanel.cpp:75 src/gui/MenuProvider.cpp:563
 msgid "Kalavelas"
 msgstr "Kalavelas"
 
-#: src/dialogs/VedicPanel.cpp:76 src/gui/MenuProvider.cpp:568
+#: src/dialogs/VedicPanel.cpp:76 src/gui/MenuProvider.cpp:564
 msgid "3 Special Lagnas"
 msgstr "3 Lagna-uri speciale"
 
-#: src/dialogs/VedicPanel.cpp:77 src/gui/MenuProvider.cpp:569
+#: src/dialogs/VedicPanel.cpp:77 src/gui/MenuProvider.cpp:565
 msgid "Sphuta Navamsa Lagna"
 msgstr "Sphuta Navamsa Lagna"
 
@@ -4849,13 +4849,13 @@ msgid "Declination"
 msgstr "Declinaţie"
 
 #: src/dialogs/VedicPanel.cpp:86 src/dialogs/WesternPanel.cpp:87
-#: src/gui/MenuProvider.cpp:599 src/gui/MenuProvider.cpp:648
+#: src/gui/MenuProvider.cpp:595 src/gui/MenuProvider.cpp:644
 #: src/jyotish/TextHelper.cpp:463
 msgid "Sign Lord"
 msgstr "Guvernatorul zodiei"
 
 #: src/dialogs/VedicPanel.cpp:87 src/dialogs/WesternPanel.cpp:88
-#: src/gui/MenuProvider.cpp:602 src/gui/MenuProvider.cpp:651
+#: src/gui/MenuProvider.cpp:598 src/gui/MenuProvider.cpp:647
 #: src/jyotish/GenericTableWriter.cpp:695
 #, fuzzy
 msgid "Element"
@@ -4865,12 +4865,12 @@ msgstr "Divertisment"
 msgid "Quality (Movable etc.)"
 msgstr ""
 
-#: src/dialogs/VedicPanel.cpp:89 src/gui/MenuProvider.cpp:608
+#: src/dialogs/VedicPanel.cpp:89 src/gui/MenuProvider.cpp:604
 #, fuzzy
 msgid "Basic Signification"
 msgstr "Calcul basic"
 
-#: src/dialogs/VedicPanel.cpp:90 src/gui/MenuProvider.cpp:611
+#: src/dialogs/VedicPanel.cpp:90 src/gui/MenuProvider.cpp:607
 #: src/jyotish/GenericTableWriter.cpp:659
 msgid "Dignity"
 msgstr "Regent"
@@ -4884,7 +4884,7 @@ msgstr "Navamsa D9"
 msgid "Nakshatra Pada"
 msgstr "Nakshatra Padas"
 
-#: src/dialogs/VedicPanel.cpp:94 src/gui/MenuProvider.cpp:622
+#: src/dialogs/VedicPanel.cpp:94 src/gui/MenuProvider.cpp:618
 msgid "Krishnamurti Lords"
 msgstr "Regent Krishnamurti"
 
@@ -5029,7 +5029,7 @@ msgstr "Opţiuni de calcul"
 msgid "Western astrologers most likely use True Node"
 msgstr "Astrologii Occidentali folosesc in mod normal Nodul Adevarat(True)"
 
-#: src/dialogs/WesternChartPanel.cpp:65 src/gui/MenuProvider.cpp:670
+#: src/dialogs/WesternChartPanel.cpp:65 src/gui/MenuProvider.cpp:666
 msgid "Chart Options"
 msgstr "Opţiuniile hărţii"
 
@@ -5138,7 +5138,7 @@ msgstr "Uranian"
 msgid "Retrogression (R)"
 msgstr "Arată retrogradaţie (R)"
 
-#: src/dialogs/WesternChartPanel.cpp:110 src/gui/MenuProvider.cpp:733
+#: src/dialogs/WesternChartPanel.cpp:110 src/gui/MenuProvider.cpp:729
 #, fuzzy
 msgid "Aspect Symbols"
 msgstr "Arată pictogramele aspectelor"
@@ -5514,16 +5514,16 @@ msgstr "&Extra"
 msgid "&Help"
 msgstr "&Ajutor"
 
-#: src/gui/MenuProvider.cpp:381 src/gui/MenuProvider.cpp:811
-msgid "Horoscope"
-msgstr ""
-
-#: src/gui/MenuProvider.cpp:386 src/gui/MenuProvider.cpp:456
-#: src/gui/MenuProvider.cpp:843
+#: src/gui/MenuProvider.cpp:378 src/gui/MenuProvider.cpp:416
+#: src/gui/MenuProvider.cpp:839
 msgid "New View"
 msgstr "Nou mod de a vizualiza"
 
-#: src/gui/MenuProvider.cpp:435 src/gui/MenuProvider.cpp:531
+#: src/gui/MenuProvider.cpp:401
+msgid "Context Menu"
+msgstr ""
+
+#: src/gui/MenuProvider.cpp:435 src/gui/MenuProvider.cpp:527
 msgid "Objects"
 msgstr "Obiecte"
 
@@ -5531,116 +5531,120 @@ msgstr "Obiecte"
 msgid "Graphic Options"
 msgstr "Opţiuni grafice"
 
-#: src/gui/MenuProvider.cpp:451 src/gui/MenuProvider.cpp:592
+#: src/gui/MenuProvider.cpp:451 src/gui/MenuProvider.cpp:588
 msgid "Columns"
 msgstr "Columne"
 
-#: src/gui/MenuProvider.cpp:464
+#: src/gui/MenuProvider.cpp:461
 #, fuzzy
 msgid "Export As ..."
 msgstr "Salvează textul ca ..."
 
-#: src/gui/MenuProvider.cpp:479
+#: src/gui/MenuProvider.cpp:475
 #, fuzzy
 msgid "Export As"
 msgstr "Bază de date cu locaţii"
 
-#: src/gui/MenuProvider.cpp:573
+#: src/gui/MenuProvider.cpp:569
 #, fuzzy
 msgid "All Houses"
 msgstr "Toate sursele"
 
-#: src/gui/MenuProvider.cpp:574
+#: src/gui/MenuProvider.cpp:570
 msgid "4 Houses (2, 3, 11, 12)"
 msgstr ""
 
-#: src/gui/MenuProvider.cpp:596 src/gui/MenuProvider.cpp:636
+#: src/gui/MenuProvider.cpp:592 src/gui/MenuProvider.cpp:632
 msgid "Declinations"
 msgstr "Declinaţii"
 
-#: src/gui/MenuProvider.cpp:605 src/gui/MenuProvider.cpp:654
+#: src/gui/MenuProvider.cpp:601 src/gui/MenuProvider.cpp:650
 #, fuzzy
 msgid "Sign Quality"
 msgstr "Calitate"
 
-#: src/gui/MenuProvider.cpp:613
+#: src/gui/MenuProvider.cpp:609
 msgid "Navamsa (D-9)"
 msgstr "Navamsa (D-9)"
 
-#: src/gui/MenuProvider.cpp:617
+#: src/gui/MenuProvider.cpp:613
 msgid "Nakshatra Padas"
 msgstr "Nakshatra Padas"
 
-#: src/gui/MenuProvider.cpp:620
+#: src/gui/MenuProvider.cpp:616
 msgid "Jaimini Karaka"
 msgstr "Jaimini Karaka"
 
-#: src/gui/MenuProvider.cpp:625
+#: src/gui/MenuProvider.cpp:621
 msgid "Shastiamsa (D-60)"
 msgstr "Shastiamsa (D-60)"
 
-#: src/gui/MenuProvider.cpp:627
+#: src/gui/MenuProvider.cpp:623
 msgid "Dasa Varga Dignity"
 msgstr "Regent Dasa Varga"
 
-#: src/gui/MenuProvider.cpp:639
+#: src/gui/MenuProvider.cpp:635
 #, fuzzy
 msgid "90 Degrees"
 msgstr "grade"
 
-#: src/gui/MenuProvider.cpp:642
+#: src/gui/MenuProvider.cpp:638
 #, fuzzy
 msgid "45 Degrees"
 msgstr "grade"
 
-#: src/gui/MenuProvider.cpp:657
+#: src/gui/MenuProvider.cpp:653
 msgid "House Positions"
 msgstr "Poziţia caselor"
 
-#: src/gui/MenuProvider.cpp:674
+#: src/gui/MenuProvider.cpp:670
 msgid "South Indian Style"
 msgstr "Stil indian de sud"
 
-#: src/gui/MenuProvider.cpp:676
+#: src/gui/MenuProvider.cpp:672
 msgid "North Indian Style"
 msgstr "Stil indian nordic"
 
-#: src/gui/MenuProvider.cpp:678
+#: src/gui/MenuProvider.cpp:674
 msgid "East Indian Style"
 msgstr "Stil indian de est"
 
-#: src/gui/MenuProvider.cpp:692
+#: src/gui/MenuProvider.cpp:688
 msgid "Display Signs"
 msgstr "Arată zodiile"
 
-#: src/gui/MenuProvider.cpp:696 src/gui/MenuProvider.cpp:707
+#: src/gui/MenuProvider.cpp:692 src/gui/MenuProvider.cpp:703
 msgid "Chart Center"
 msgstr "Centrul hărţii"
 
-#: src/gui/MenuProvider.cpp:703
+#: src/gui/MenuProvider.cpp:699
 msgid "Division"
 msgstr "Divizie"
 
-#: src/gui/MenuProvider.cpp:705
+#: src/gui/MenuProvider.cpp:701
 msgid "Division + Signification"
 msgstr ""
 
-#: src/gui/MenuProvider.cpp:713 src/gui/MenuProvider.cpp:729
-#: src/gui/MenuProvider.cpp:757
+#: src/gui/MenuProvider.cpp:709 src/gui/MenuProvider.cpp:725
+#: src/gui/MenuProvider.cpp:753
 msgid "Retrograde Planets"
 msgstr "Planete retrograde"
 
-#: src/gui/MenuProvider.cpp:724 src/gui/MenuProvider.cpp:759
+#: src/gui/MenuProvider.cpp:720 src/gui/MenuProvider.cpp:755
 msgid "Colors for Planet Symbols"
 msgstr "Culori pentru simbolele planetare"
 
-#: src/gui/MenuProvider.cpp:740
+#: src/gui/MenuProvider.cpp:736
 #, fuzzy
 msgid "Transits Inside"
 msgstr "Vizualizare tranzit"
 
-#: src/gui/MenuProvider.cpp:763
+#: src/gui/MenuProvider.cpp:759
 msgid "Benefic/Malefic Nakshatras"
+msgstr ""
+
+#: src/gui/MenuProvider.cpp:807
+msgid "Horoscope"
 msgstr ""
 
 #: src/gui/PdfTools.cpp:259 src/gui/PdfTools.cpp:286 src/gui/PdfTools.cpp:422

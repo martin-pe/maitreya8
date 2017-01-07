@@ -318,7 +318,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CPPFLAGS = $(WX_CPPFLAGS) -DSTRICT 
+AM_CPPFLAGS = $(WX_CPPFLAGS) -w -DSTRICT 
 noinst_LIBRARIES = libmaitreya_wxJSON.a
 libmaitreya_wxJSON_a_SOURCES = jsonreader.cpp jsonval.cpp jsonwriter.cpp \
 	wx/json_defs.h wx/jsonreader.h wx/jsonval.h wx/jsonwriter.h

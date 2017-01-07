@@ -76,7 +76,9 @@ MultipleChildWindow::MultipleChildWindow( wxFrame *parent, Document *doc, const 
 MultipleChildWindow::~MultipleChildWindow()
 {
 	//printf( "Destructor MultipleChildWindow size is %d\n", (int)viewlist.size());
-	saveViewStatus( viewconfig->viewnode );
+
+	// TODO not finished
+	//saveViewStatus( viewconfig->viewnode );
 	delete viewconfig;
 	viewlist.clear();
 }
@@ -185,7 +187,14 @@ void MultipleChildWindow::initViews( MultipleViewConfig *cfg )
 {
 	assert( cfg );
 	viewconfig = cfg->clone();
-	props->setVedic( viewconfig->vedic );
+	if ( viewconfig->vedic )
+	{
+		props->setFixedVedic();
+	}
+	else
+	{
+		props->setFixedWestern();
+	}
 
 	// prevent empty views
 	if ( ! viewconfig->viewnode )
@@ -241,7 +250,6 @@ wxWindow *MultipleChildWindow::insertNode( wxWindow *parent, ViewNode *node )
 			wn->basicview = f.createView( parent, this, wn );
 			//wn->parent = node;
 			assert( wn->basicview );
-			wn->guified = true;
 
 			wn->basicview->doLayout();
 			viewlist.push_back( wn->basicview );

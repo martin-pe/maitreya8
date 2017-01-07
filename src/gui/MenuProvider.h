@@ -86,7 +86,6 @@ class ContextMenuProvider : public wxObject
 {
 public:
 	wxMenu *getWidgetMenu( BasicWidget* );
-	wxMenu *getWidgetMenu( ChartProperties*, const int &widgetOptions );
 
 	wxMenu *getChildWindowListCtrlMenu( ChildWindow* );
 	wxMenu *getAppWindowContextMenu();
@@ -94,6 +93,8 @@ public:
 	wxMenu *getToolbarNewMenu();
 
 private:
+	wxMenu *getWidgetMenu( ChartProperties*, const int &widgetOptions, wxString title = wxEmptyString );
+
 	wxMenu *getSkinMenu( ChartProperties* );
 	wxMenu *getObjectSubMenu( const int &wo, ChartProperties* );
 	wxMenu *getMainViewColumnMenu( ChartProperties* );

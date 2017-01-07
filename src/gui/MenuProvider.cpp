@@ -374,16 +374,17 @@ wxMenu *ContextMenuProvider::getChildWindowListCtrlMenu( ChildWindow *child )
 	assert( child );
 	ChartProperties *props = child->getProps();
 
-	MyMenu *menu = new MyMenu;
+	MyMenu *menu = new MyMenu( child->GetTitle());
+	menu->AppendSubMenu( getNewViewMenu( props ), _( "New View"));
+	menu->AppendSeparator();
 
 	if ( child->getDoc())
 	{
-		menu->Append( -1, _( "Horoscope" ), getChartMenu( props, child->isMainWindow()));
+		menu->addItem( CMD_EDITDATA );
+		menu->addCheckItem( CMD_ANIMATE, props->isAnimated() );
+		menu->AppendSeparator();
 	}
-	if ( child->getDoc()) menu->addItem( CMD_EDITDATA );
 	menu->addItem( CMD_CLOSE );
-
-	menu->AppendSubMenu( getNewViewMenu( props ), _( "New View"));
 
 	return menu;
 }
@@ -396,7 +397,8 @@ wxMenu *ContextMenuProvider::getChildWindowListCtrlMenu( ChildWindow *child )
 wxMenu *ContextMenuProvider::getWidgetMenu( BasicWidget *widget )
 {
 	assert( widget );
-	return getWidgetMenu( widget->getChartProperties(), widget->getWidgetOptions());
+	//return getWidgetMenu( widget->getChartProperties(), widget->getWidgetOptions(), widget->GetClassInfo()->GetClassName() );
+	return getWidgetMenu( widget->getChartProperties(), widget->getWidgetOptions(), _( "Context Menu" ));
 }
 
 /**************************************************************
@@ -404,31 +406,29 @@ wxMenu *ContextMenuProvider::getWidgetMenu( BasicWidget *widget )
 **   ContextMenuProvider   ---   getWidgetMenu
 ***
 ***************************************************************/
-wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &wo )
+wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &wo, wxString title )
 {
 	assert( props );
 	//printf( "WO %d & WO_SUPPORTS_EW_TOGGLE %d\n", wo, wo & WO_SUPPORTS_EW_TOGGLE );
 
-	MyMenu *menu = new MyMenu;
+	MyMenu *menu = new MyMenu( title );
 
-	menu->addItem( CMD_EDITDATA );
-	menu->Enable( CMD_EDITDATA, props->hasDocument() );
+	menu->AppendSubMenu( getNewViewMenu( props ), _( "New View"));
 	menu->AppendSeparator();
 
-	if ( wo & WO_SUPPORTS_EW_TOGGLE )
+	if ( props->hasDocument() )
+	{
+		menu->addItem( CMD_EDITDATA );
+		menu->addCheckItem( CMD_ANIMATE, props->isAnimated() );
+		menu->AppendSeparator();
+	}
+
+	if ( ! props->isEwFixed() && ( wo & WO_SUPPORTS_EW_TOGGLE ))
 	{
 		menu->addCheckItem( CMD_VEDICMODE, props->isVedic());
 		menu->addCheckItem( CMD_WESTERNMODE, ! props->isVedic());
 		menu->AppendSeparator();
 	}
-
-	/*
-	menu->addCheckItem( CMD_VEDICMODE, props->isVedic());
-	menu->Enable( CMD_VEDICMODE, ( wo & WO_SUPPORTS_EW_TOGGLE ));
-	menu->addCheckItem( CMD_WESTERNMODE, ! props->isVedic());
-	menu->Enable( CMD_WESTERNMODE, ( wo & WO_SUPPORTS_EW_TOGGLE ));
-	menu->AppendSeparator();
-	*/
 
 	if (( wo & WO_MENU_FULL_OBJECT ) | ( wo & WO_MENU_RESTRICTED_OBJECT ))
 	{
@@ -450,10 +450,7 @@ wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &w
 	{
 		menu->AppendSubMenu( getMainViewColumnMenu( props ), _( "Columns"));
 	}
-	menu->AppendSeparator();
-	menu->addCheckItem( CMD_ANIMATE, props->isAnimated() );
-	menu->Enable( CMD_ANIMATE, props->hasDocument() );
-	menu->AppendSubMenu( getNewViewMenu( props ), _( "New View"));
+
 	if (
 		( wo & WO_EXPORT_PLAINTEXT )
 		| ( wo & WO_EXPORT_CSVTEXT )
@@ -464,7 +461,6 @@ wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &w
 		menu->AppendSubMenu( getExportMenu( wo ), _( "Export As ..."));
 	}
 
-	menu->AppendSeparator();
 	menu->addItem( CMD_CLOSE );
 	return menu;
 }

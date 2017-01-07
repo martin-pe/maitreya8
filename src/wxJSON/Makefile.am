@@ -1,4 +1,4 @@
-AM_CPPFLAGS = $(WX_CPPFLAGS) -DSTRICT 
+AM_CPPFLAGS = $(WX_CPPFLAGS) -w -DSTRICT 
 
 noinst_LIBRARIES = libmaitreya_wxJSON.a
 libmaitreya_wxJSON_a_SOURCES = jsonreader.cpp jsonval.cpp jsonwriter.cpp \
