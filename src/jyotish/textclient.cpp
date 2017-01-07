@@ -5,7 +5,7 @@
  File       src/jyotish/textclient.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -70,12 +70,12 @@ Config *config;
 
 static const wxCmdLineEntryDesc cmdLineDesc[] =
 {
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("help"), wxT1("show this help message"), wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
+	//{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("help"), wxT1("show this help message"), wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("help"), wxT1("show this help message"), wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("date"), wxT1("Set UT date YYYY-MM-DD HH:MM:SS"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("location"), wxT1("Set location \"name LL:LL BB:BB ZZ\""),
+	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("location"), wxT1("Set location \"name LL:LL BB:BB (+/-)TZ\""),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("vedic"), wxT1("Force Vedic mode (instead of default)"),

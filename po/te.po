@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maitreya 4.1\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2016-12-26 10:34+0100\n"
+"POT-Creation-Date: 2017-01-07 08:01+0100\n"
 "PO-Revision-Date: 2006-07-09 23:34+0530\n"
 "Last-Translator: Santhosh <astrosanthosh@gmail.com>\n"
 "Language-Team: te <info@onlinejyotish.com>\n"
@@ -173,7 +173,7 @@ msgstr "లగ్నం"
 
 #: src/base/Commands.cpp:138 src/base/Commands.cpp:148
 #: src/base/Commands.cpp:261 src/dialogs/StyleManagerDialog.cpp:54
-#: src/gui/MenuProvider.cpp:186
+#: src/gui/MenuProvider.cpp:184
 msgid "New"
 msgstr "కొత్త"
 
@@ -271,8 +271,8 @@ msgstr "యోగము"
 msgid "SBC"
 msgstr ""
 
-#: src/base/Commands.cpp:279 src/gui/MenuProvider.cpp:447
-#: src/gui/MenuProvider.cpp:755 src/views/PartnerView.cpp:127
+#: src/base/Commands.cpp:279 src/gui/MenuProvider.cpp:443
+#: src/gui/MenuProvider.cpp:755 src/views/PartnerView.cpp:125
 #: src/views/SbcView.cpp:65 src/views/TransitView.cpp:130
 msgid "Sarvatobhadra"
 msgstr "సర్వతోభద్ర"
@@ -315,7 +315,7 @@ msgstr "పాశ్చాత్య కుండలి"
 #: src/base/Commands.cpp:289 src/dialogs/WesternPanel.cpp:79
 #: src/jyotish/GenericTableWriter.cpp:578
 #: src/jyotish/PrintoutTextHelper.cpp:156
-#: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:151
+#: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:150
 #: src/views/TransitView.cpp:154 src/views/UranianView.cpp:136
 #, fuzzy
 msgid "Uranian"
@@ -356,7 +356,7 @@ msgstr "దశ (కురచ)"
 msgid "G-Dasa"
 msgstr "దశ"
 
-#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1130
+#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1141
 #, fuzzy
 msgid "Graphical Dasa"
 msgstr "ప్రదేశముల వివరములు"
@@ -491,7 +491,7 @@ msgstr "ఇప్పుడు"
 #: src/base/Commands.cpp:332 src/gui/ToolPanel.cpp:316
 #: src/jyotish/DasaTool.cpp:280 src/jyotish/DasaTool.cpp:370
 #: src/jyotish/DasaTool.cpp:488 src/jyotish/TextHelper.cpp:451
-#: src/views/DasaGraphicView.cpp:1130
+#: src/views/DasaGraphicView.cpp:1141
 msgid "Dasa"
 msgstr "దశ"
 
@@ -3036,7 +3036,7 @@ msgstr "పాశ్చాత్య జ్యోతిషం"
 
 #: src/dialogs/ConfigPanel.cpp:172 src/dialogs/VedicChartPanel.cpp:544
 #: src/dialogs/WesternChartPanel.cpp:109 src/dialogs/WesternChartPanel.cpp:115
-#: src/gui/MenuProvider.cpp:731 src/jyotish/Aspect.cpp:606
+#: src/gui/MenuProvider.cpp:731 src/jyotish/Aspect.cpp:607
 msgid "Aspects"
 msgstr "వీక్షణలు"
 
@@ -3191,7 +3191,7 @@ msgstr ""
 
 #: src/dialogs/DialogElements.cpp:159 src/dialogs/UranianPanel.cpp:64
 #: src/dialogs/UranianParamPanel.cpp:62 src/gui/ToolPanel.cpp:375
-#: src/jyotish/Aspect.cpp:625 src/jyotish/UranianHelper.cpp:341
+#: src/jyotish/Aspect.cpp:626 src/jyotish/UranianHelper.cpp:341
 msgid "Orbis"
 msgstr "కక్ష్య"
 
@@ -3313,7 +3313,7 @@ msgstr "నక్షత్రము"
 msgid "Vargas"
 msgstr "వర్గలు"
 
-#: src/dialogs/DialogElements.cpp:324 src/jyotish/Aspect.cpp:568
+#: src/dialogs/DialogElements.cpp:324 src/jyotish/Aspect.cpp:569
 #, fuzzy
 msgid "Vedic Aspectarium"
 msgstr "వీక్షణలు"
@@ -3466,7 +3466,7 @@ msgstr "నిలువు కొలత"
 msgid "Don't show this dialog again"
 msgstr ""
 
-#: src/dialogs/ExportDialog.cpp:94 src/gui/BasicWidget.cpp:321
+#: src/dialogs/ExportDialog.cpp:94 src/gui/BasicWidget.cpp:323
 #, fuzzy
 msgid "Export Picture"
 msgstr "చిత్రములు ఎగుమతి చెయ్యి"
@@ -3821,7 +3821,7 @@ msgstr ""
 msgid "Deselect All"
 msgstr "మొత్తము ఎంచు"
 
-#: src/dialogs/ObjectFilterDialog.cpp:169
+#: src/dialogs/ObjectFilterDialog.cpp:167
 msgid "Configure Object Filter"
 msgstr ""
 
@@ -4168,7 +4168,7 @@ msgid "Item already in toolbar at position %ld"
 msgstr ""
 
 #: src/dialogs/ToolbarPanel.cpp:405 src/gui/ChildWindowListCtrl.cpp:132
-#: src/gui/ToolPanel.cpp:352 src/jyotish/Aspect.cpp:624
+#: src/gui/ToolPanel.cpp:352 src/jyotish/Aspect.cpp:625
 #: src/jyotish/Eclipse.cpp:133 src/jyotish/ShadBala.cpp:734
 msgid "Type"
 msgstr "పద్ధతి"
@@ -4228,7 +4228,7 @@ msgstr ""
 msgid "Include Shifted Antiscia"
 msgstr ""
 
-#: src/dialogs/UranianPanel.cpp:76 src/jyotish/Aspect.cpp:611
+#: src/dialogs/UranianPanel.cpp:76 src/jyotish/Aspect.cpp:612
 msgid "Radix"
 msgstr "జన్మ "
 
@@ -4294,7 +4294,7 @@ msgstr ""
 msgid "Antiscia"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:74 src/dialogs/UranianParamPanel.cpp:190
+#: src/dialogs/UranianParamPanel.cpp:74 src/dialogs/UranianParamPanel.cpp:209
 msgid "No Filter"
 msgstr "వడపోయ వద్దు"
 
@@ -4686,7 +4686,7 @@ msgid "Aspect Display"
 msgstr "వీక్షణలు"
 
 #: src/dialogs/VedicChartPanel.cpp:79 src/dialogs/WesternChartPanel.cpp:70
-#: src/gui/MenuProvider.cpp:451 src/gui/MenuProvider.cpp:500
+#: src/gui/MenuProvider.cpp:447 src/gui/MenuProvider.cpp:500
 #, fuzzy
 msgid "Skin"
 msgstr "రాశి పేరు"
@@ -5533,19 +5533,19 @@ msgstr "ఏకాధిపత్య శోధన"
 msgid "Rasi Pinda"
 msgstr "పిండము"
 
-#: src/gui/BasicSheetWidget.cpp:154
+#: src/gui/BasicSheetWidget.cpp:155
 msgid "Export as Plain Text"
 msgstr ""
 
-#: src/gui/BasicSheetWidget.cpp:159
+#: src/gui/BasicSheetWidget.cpp:160
 msgid "Export as Csv Text"
 msgstr ""
 
-#: src/gui/BasicSheetWidget.cpp:164
+#: src/gui/BasicSheetWidget.cpp:165
 msgid "Export as HTML Text"
 msgstr ""
 
-#: src/gui/BasicSheetWidget.cpp:185
+#: src/gui/BasicSheetWidget.cpp:186
 #, fuzzy, c-format
 msgid "Text exported to %s"
 msgstr "జాతకం ఎగుమతి"
@@ -5558,13 +5558,13 @@ msgstr "(వ)"
 msgid "R"
 msgstr "వ"
 
-#: src/gui/BasicWidget.cpp:365
+#: src/gui/BasicWidget.cpp:367
 #, c-format
 msgid "Can't determine image handler for extension \"%s\", using default (PNG)"
 msgstr ""
 "Can't determine image handler for extension \"%s\", using default (PNG)"
 
-#: src/gui/BasicWidget.cpp:383
+#: src/gui/BasicWidget.cpp:385
 #, fuzzy, c-format
 msgid "Picture exported to %s"
 msgstr "జాతకం ఎగుమతి"
@@ -5653,58 +5653,59 @@ msgstr "పట్టిక"
 msgid "Window List"
 msgstr "గవాక్షం లిస్ట్"
 
-#: src/gui/MenuProvider.cpp:196
+#: src/gui/MenuProvider.cpp:194
 #, fuzzy
 msgid "Open Recent"
 msgstr "తాజా జాతకాలను ఓపెన్ చెయ్యి"
 
-#: src/gui/MenuProvider.cpp:199
+#: src/gui/MenuProvider.cpp:197
 msgid "&File"
 msgstr "ఫైల్"
 
-#: src/gui/MenuProvider.cpp:204
+#: src/gui/MenuProvider.cpp:202
 msgid "&Vedic"
 msgstr "వేదిక్"
 
-#: src/gui/MenuProvider.cpp:208
+#: src/gui/MenuProvider.cpp:206
 msgid "&Western"
 msgstr "పాశ్చాత్య"
 
-#: src/gui/MenuProvider.cpp:234
+#: src/gui/MenuProvider.cpp:232
 #, fuzzy
 msgid "&Window"
 msgstr "గవాక్షం లిస్ట్"
 
-#: src/gui/MenuProvider.cpp:243
+#: src/gui/MenuProvider.cpp:241
 #, fuzzy
 msgid "&Extras"
 msgstr "ఇతరములు"
 
-#: src/gui/MenuProvider.cpp:249
+#: src/gui/MenuProvider.cpp:247
 #, fuzzy
 msgid "&Help"
 msgstr "సహాయం"
 
-#: src/gui/MenuProvider.cpp:383 src/gui/MenuProvider.cpp:811
+#: src/gui/MenuProvider.cpp:381 src/gui/MenuProvider.cpp:811
 msgid "Horoscope"
 msgstr ""
 
-#: src/gui/MenuProvider.cpp:388 src/gui/MenuProvider.cpp:843
+#: src/gui/MenuProvider.cpp:386 src/gui/MenuProvider.cpp:456
+#: src/gui/MenuProvider.cpp:843
 #, fuzzy
 msgid "New View"
 msgstr "కొత్త జాతకం"
 
-#: src/gui/MenuProvider.cpp:439 src/gui/MenuProvider.cpp:531
+#: src/gui/MenuProvider.cpp:435 src/gui/MenuProvider.cpp:531
 #, fuzzy
 msgid "Objects"
 msgstr "విషయము"
 
-#: src/gui/MenuProvider.cpp:443
+#: src/gui/MenuProvider.cpp:439
 #, fuzzy
 msgid "Graphic Options"
 msgstr "టైం జోన్ ఐచ్ఛికములు"
 
-#: src/gui/MenuProvider.cpp:455 src/gui/MenuProvider.cpp:592
+#: src/gui/MenuProvider.cpp:451 src/gui/MenuProvider.cpp:592
 #, fuzzy
 msgid "Columns"
 msgstr "గంటలు"
@@ -5981,20 +5982,20 @@ msgstr "భాగస్వామి 1"
 msgid "Partner 2"
 msgstr "భాగస్వామి 2"
 
-#: src/gui/VedicChart.cpp:257
+#: src/gui/VedicChart.cpp:260
 msgid "AL"
 msgstr "ఆ.ల"
 
-#: src/gui/VedicChart.cpp:258
+#: src/gui/VedicChart.cpp:261
 #, fuzzy
 msgid "Arudha L"
 msgstr "ఆరూఢములు"
 
-#: src/gui/VedicChart.cpp:262
+#: src/gui/VedicChart.cpp:265
 msgid "UL"
 msgstr "ఉ.ల"
 
-#: src/gui/VedicChart.cpp:263
+#: src/gui/VedicChart.cpp:266
 msgid "Upapada L"
 msgstr ""
 
@@ -6985,26 +6986,26 @@ msgstr ""
 msgid "Quadnovile"
 msgstr ""
 
-#: src/jyotish/Aspect.cpp:488
+#: src/jyotish/Aspect.cpp:489
 #, fuzzy
 msgid "Aspectarium"
 msgstr "వీక్షణలు"
 
-#: src/jyotish/Aspect.cpp:556
+#: src/jyotish/Aspect.cpp:557
 msgid "No horoscope set"
 msgstr ""
 
-#: src/jyotish/Aspect.cpp:610
+#: src/jyotish/Aspect.cpp:611
 #, fuzzy
 msgid "Running"
 msgstr "ప్రారంభం"
 
-#: src/jyotish/Aspect.cpp:620
+#: src/jyotish/Aspect.cpp:621
 #, fuzzy
 msgid "Aspecting"
 msgstr "వీక్షణలు"
 
-#: src/jyotish/Aspect.cpp:621
+#: src/jyotish/Aspect.cpp:622
 #, fuzzy
 msgid "Aspected"
 msgstr "వీక్షణలు"
@@ -7998,7 +7999,7 @@ msgstr "దశవర్గ ఆధిపత్యములు"
 msgid "Varga Viswa"
 msgstr "వర్గలు"
 
-#: src/jyotish/Varga.cpp:384 src/views/VargaView.cpp:173
+#: src/jyotish/Varga.cpp:384 src/views/VargaView.cpp:179
 #, fuzzy
 msgid "Vimsopaka Bala"
 msgstr "వింశోపక బలము"
@@ -8027,7 +8028,7 @@ msgstr "నెలవంక"
 msgid "Rule successfully parsed"
 msgstr ""
 
-#: src/jyotish/Yoga.cpp:240
+#: src/jyotish/Yoga.cpp:241
 msgid "No matching Yogas found."
 msgstr ""
 
@@ -8093,30 +8094,30 @@ msgstr "దశ (కురచ)"
 msgid "All Sources"
 msgstr ""
 
-#: src/views/PartnerView.cpp:101
+#: src/views/PartnerView.cpp:99
 msgid "Synastry"
 msgstr ""
 
-#: src/views/PartnerView.cpp:105
+#: src/views/PartnerView.cpp:103
 #, fuzzy
 msgid "Ashtakoota"
 msgstr "భకూట"
 
-#: src/views/PartnerView.cpp:122
+#: src/views/PartnerView.cpp:120
 msgid "Composite Chart"
 msgstr "గుణ మేళన చక్రం"
 
-#: src/views/PartnerView.cpp:131 src/views/TransitView.cpp:134
+#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:134
 #, fuzzy
 msgid "Shadvarga"
 msgstr "షడ్వర్గ"
 
-#: src/views/PartnerView.cpp:135 src/views/TransitView.cpp:138
+#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:138
 #, fuzzy
 msgid "Varga (2)"
 msgstr "వర్గ(2)"
 
-#: src/views/PartnerView.cpp:139 src/views/TransitView.cpp:142
+#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:142
 #, fuzzy
 msgid "Varga (3)"
 msgstr "వర్గ(2)"
@@ -8125,12 +8126,12 @@ msgstr "వర్గ(2)"
 msgid "Partner View"
 msgstr "భాగస్వామ్య వీక్షణ"
 
-#: src/views/PartnerView.cpp:417
+#: src/views/PartnerView.cpp:401
 #, fuzzy
 msgid "No chart opened"
 msgstr "ఏ కుండలి లేదు"
 
-#: src/views/PartnerView.cpp:421
+#: src/views/PartnerView.cpp:405
 msgid "Charts identical"
 msgstr "జాతకాలు ఒకేలాంటివి"
 
@@ -8226,7 +8227,7 @@ msgstr "ప్రధాన గవాక్షం"
 msgid "Yearly Preview"
 msgstr "సంవత్సర వీక్షణం"
 
-#: src/views/UranianView.cpp:298
+#: src/views/UranianView.cpp:296
 #, fuzzy
 msgid "Included Event Configuration"
 msgstr "మార్పులను సేవ్ చేయండి"

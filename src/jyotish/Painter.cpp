@@ -5,7 +5,7 @@
  File       src/jyotish/Painter.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -202,12 +202,18 @@ void Painter::drawMString( const MRect &r, MString &f, const int& align )
 	const wxLongLong starttime = wxGetLocalTimeMillis();
 #endif
 
+	static int count = 0;
+	SheetFormatter sfmt;
+	wxString s;
+
 	if ( f.formattedLines.size() == 0 )
 	{
 		if ( ! f.isEmpty() && f.size.real() == 0 )
 		{
-			printf( "Painter::drawMString - size not set\n" );
+			s = sfmt.fragment2PlainText( f );
+			//printf( "Painter::drawMString - old size %f %f\n", f.size.real(), f.size.imag());
 			f.size = getTextExtent( f );
+			printf( "Painter::drawMString - size not set #%d contents was %s, size now %f %f\n", count++, str2char( s ), f.size.real(), f.size.imag());
 		}
 		drawSingleMStringLine( r, f, align );
 		//return;

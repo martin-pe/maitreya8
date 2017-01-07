@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maitreya 6\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2016-12-26 10:34+0100\n"
+"POT-Creation-Date: 2017-01-07 08:01+0100\n"
 "PO-Revision-Date: 2012-07-18 20:46+0100\n"
 "Last-Translator: Mariusz Gajowniczek <yogamaya@yogamaya.pl>\n"
 "Language-Team: http://yogamaya.pl <yogamaya@yogamaya.pl>\n"
@@ -171,7 +171,7 @@ msgstr "Ascendent"
 
 #: src/base/Commands.cpp:138 src/base/Commands.cpp:148
 #: src/base/Commands.cpp:261 src/dialogs/StyleManagerDialog.cpp:54
-#: src/gui/MenuProvider.cpp:186
+#: src/gui/MenuProvider.cpp:184
 msgid "New"
 msgstr "Nowy"
 
@@ -268,8 +268,8 @@ msgstr "Jogi"
 msgid "SBC"
 msgstr ""
 
-#: src/base/Commands.cpp:279 src/gui/MenuProvider.cpp:447
-#: src/gui/MenuProvider.cpp:755 src/views/PartnerView.cpp:127
+#: src/base/Commands.cpp:279 src/gui/MenuProvider.cpp:443
+#: src/gui/MenuProvider.cpp:755 src/views/PartnerView.cpp:125
 #: src/views/SbcView.cpp:65 src/views/TransitView.cpp:130
 msgid "Sarvatobhadra"
 msgstr "Sarvatobhadra"
@@ -312,7 +312,7 @@ msgstr "Diagram zachodni"
 #: src/base/Commands.cpp:289 src/dialogs/WesternPanel.cpp:79
 #: src/jyotish/GenericTableWriter.cpp:578
 #: src/jyotish/PrintoutTextHelper.cpp:156
-#: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:151
+#: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:150
 #: src/views/TransitView.cpp:154 src/views/UranianView.cpp:136
 msgid "Uranian"
 msgstr "Uraniczne"
@@ -351,7 +351,7 @@ msgstr "Dasas w formie drzewa"
 msgid "G-Dasa"
 msgstr "Dasa"
 
-#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1130
+#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1141
 msgid "Graphical Dasa"
 msgstr "Grafika das"
 
@@ -478,7 +478,7 @@ msgstr "Czas teraźniejszy"
 #: src/base/Commands.cpp:332 src/gui/ToolPanel.cpp:316
 #: src/jyotish/DasaTool.cpp:280 src/jyotish/DasaTool.cpp:370
 #: src/jyotish/DasaTool.cpp:488 src/jyotish/TextHelper.cpp:451
-#: src/views/DasaGraphicView.cpp:1130
+#: src/views/DasaGraphicView.cpp:1141
 msgid "Dasa"
 msgstr "Dasa"
 
@@ -2929,7 +2929,7 @@ msgstr "Astrologia zachodnia"
 
 #: src/dialogs/ConfigPanel.cpp:172 src/dialogs/VedicChartPanel.cpp:544
 #: src/dialogs/WesternChartPanel.cpp:109 src/dialogs/WesternChartPanel.cpp:115
-#: src/gui/MenuProvider.cpp:731 src/jyotish/Aspect.cpp:606
+#: src/gui/MenuProvider.cpp:731 src/jyotish/Aspect.cpp:607
 msgid "Aspects"
 msgstr "Aspekty"
 
@@ -3081,7 +3081,7 @@ msgstr "Lewa strona"
 
 #: src/dialogs/DialogElements.cpp:159 src/dialogs/UranianPanel.cpp:64
 #: src/dialogs/UranianParamPanel.cpp:62 src/gui/ToolPanel.cpp:375
-#: src/jyotish/Aspect.cpp:625 src/jyotish/UranianHelper.cpp:341
+#: src/jyotish/Aspect.cpp:626 src/jyotish/UranianHelper.cpp:341
 msgid "Orbis"
 msgstr "Orby"
 
@@ -3203,7 +3203,7 @@ msgstr "Nakszatra"
 msgid "Vargas"
 msgstr "Diagramy"
 
-#: src/dialogs/DialogElements.cpp:324 src/jyotish/Aspect.cpp:568
+#: src/dialogs/DialogElements.cpp:324 src/jyotish/Aspect.cpp:569
 msgid "Vedic Aspectarium"
 msgstr "Aspekty wedyjskie"
 
@@ -3348,7 +3348,7 @@ msgstr "Wielkość pionowa"
 msgid "Don't show this dialog again"
 msgstr "Nie pokazuj więcej tego okna"
 
-#: src/dialogs/ExportDialog.cpp:94 src/gui/BasicWidget.cpp:321
+#: src/dialogs/ExportDialog.cpp:94 src/gui/BasicWidget.cpp:323
 msgid "Export Picture"
 msgstr "Eksportuj grafikę"
 
@@ -3685,7 +3685,7 @@ msgstr ""
 msgid "Deselect All"
 msgstr ""
 
-#: src/dialogs/ObjectFilterDialog.cpp:169
+#: src/dialogs/ObjectFilterDialog.cpp:167
 msgid "Configure Object Filter"
 msgstr ""
 
@@ -4022,7 +4022,7 @@ msgid "Item already in toolbar at position %ld"
 msgstr "Element zawarty w pozycji %ld"
 
 #: src/dialogs/ToolbarPanel.cpp:405 src/gui/ChildWindowListCtrl.cpp:132
-#: src/gui/ToolPanel.cpp:352 src/jyotish/Aspect.cpp:624
+#: src/gui/ToolPanel.cpp:352 src/jyotish/Aspect.cpp:625
 #: src/jyotish/Eclipse.cpp:133 src/jyotish/ShadBala.cpp:734
 msgid "Type"
 msgstr "Typ"
@@ -4084,7 +4084,7 @@ msgstr ""
 msgid "Include Shifted Antiscia"
 msgstr ""
 
-#: src/dialogs/UranianPanel.cpp:76 src/jyotish/Aspect.cpp:611
+#: src/dialogs/UranianPanel.cpp:76 src/jyotish/Aspect.cpp:612
 msgid "Radix"
 msgstr "Podstawowy system obliczeń (Radix)"
 
@@ -4149,7 +4149,7 @@ msgstr ""
 msgid "Antiscia"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:74 src/dialogs/UranianParamPanel.cpp:190
+#: src/dialogs/UranianParamPanel.cpp:74 src/dialogs/UranianParamPanel.cpp:209
 msgid "No Filter"
 msgstr "Bez filtra"
 
@@ -4515,7 +4515,7 @@ msgid "Aspect Display"
 msgstr "Wyświetlanie aspektów"
 
 #: src/dialogs/VedicChartPanel.cpp:79 src/dialogs/WesternChartPanel.cpp:70
-#: src/gui/MenuProvider.cpp:451 src/gui/MenuProvider.cpp:500
+#: src/gui/MenuProvider.cpp:447 src/gui/MenuProvider.cpp:500
 msgid "Skin"
 msgstr "Skórka"
 
@@ -5321,20 +5321,20 @@ msgstr "Ekadhipatja Szodana"
 msgid "Rasi Pinda"
 msgstr "Rasi Pinda"
 
-#: src/gui/BasicSheetWidget.cpp:154
+#: src/gui/BasicSheetWidget.cpp:155
 msgid "Export as Plain Text"
 msgstr ""
 
-#: src/gui/BasicSheetWidget.cpp:159
+#: src/gui/BasicSheetWidget.cpp:160
 #, fuzzy
 msgid "Export as Csv Text"
 msgstr "Eksportuj diagram"
 
-#: src/gui/BasicSheetWidget.cpp:164
+#: src/gui/BasicSheetWidget.cpp:165
 msgid "Export as HTML Text"
 msgstr ""
 
-#: src/gui/BasicSheetWidget.cpp:185
+#: src/gui/BasicSheetWidget.cpp:186
 #, c-format
 msgid "Text exported to %s"
 msgstr "Tekst eksportowano do %s"
@@ -5347,14 +5347,14 @@ msgstr "(R)"
 msgid "R"
 msgstr "R"
 
-#: src/gui/BasicWidget.cpp:365
+#: src/gui/BasicWidget.cpp:367
 #, c-format
 msgid "Can't determine image handler for extension \"%s\", using default (PNG)"
 msgstr ""
 "Nie mogę wykonać polecenia dla tego typu rozszerzenia grafiki \"%s\", użyję "
 "domyślnie (PNG)"
 
-#: src/gui/BasicWidget.cpp:383
+#: src/gui/BasicWidget.cpp:385
 #, c-format
 msgid "Picture exported to %s"
 msgstr "Grafik eksportowano do %s"
@@ -5441,53 +5441,54 @@ msgstr "Tabela"
 msgid "Window List"
 msgstr "Lista okien"
 
-#: src/gui/MenuProvider.cpp:196
+#: src/gui/MenuProvider.cpp:194
 msgid "Open Recent"
 msgstr "Otwórz poprzednie"
 
-#: src/gui/MenuProvider.cpp:199
+#: src/gui/MenuProvider.cpp:197
 msgid "&File"
 msgstr "&Plik"
 
-#: src/gui/MenuProvider.cpp:204
+#: src/gui/MenuProvider.cpp:202
 msgid "&Vedic"
 msgstr "&Wedyjski"
 
-#: src/gui/MenuProvider.cpp:208
+#: src/gui/MenuProvider.cpp:206
 msgid "&Western"
 msgstr "&Zachodni"
 
-#: src/gui/MenuProvider.cpp:234
+#: src/gui/MenuProvider.cpp:232
 #, fuzzy
 msgid "&Window"
 msgstr "&Lista okien"
 
-#: src/gui/MenuProvider.cpp:243
+#: src/gui/MenuProvider.cpp:241
 msgid "&Extras"
 msgstr "&Dodatkowe"
 
-#: src/gui/MenuProvider.cpp:249
+#: src/gui/MenuProvider.cpp:247
 msgid "&Help"
 msgstr "&Pomoc"
 
-#: src/gui/MenuProvider.cpp:383 src/gui/MenuProvider.cpp:811
+#: src/gui/MenuProvider.cpp:381 src/gui/MenuProvider.cpp:811
 #, fuzzy
 msgid "Horoscope"
 msgstr "Horoskop partnera"
 
-#: src/gui/MenuProvider.cpp:388 src/gui/MenuProvider.cpp:843
+#: src/gui/MenuProvider.cpp:386 src/gui/MenuProvider.cpp:456
+#: src/gui/MenuProvider.cpp:843
 msgid "New View"
 msgstr "Nowy wygląd"
 
-#: src/gui/MenuProvider.cpp:439 src/gui/MenuProvider.cpp:531
+#: src/gui/MenuProvider.cpp:435 src/gui/MenuProvider.cpp:531
 msgid "Objects"
 msgstr "Obiekty"
 
-#: src/gui/MenuProvider.cpp:443
+#: src/gui/MenuProvider.cpp:439
 msgid "Graphic Options"
 msgstr "Ustawienia grafiki"
 
-#: src/gui/MenuProvider.cpp:455 src/gui/MenuProvider.cpp:592
+#: src/gui/MenuProvider.cpp:451 src/gui/MenuProvider.cpp:592
 msgid "Columns"
 msgstr "Kolumny"
 
@@ -5745,19 +5746,19 @@ msgstr "Partner 1"
 msgid "Partner 2"
 msgstr "Partner 2"
 
-#: src/gui/VedicChart.cpp:257
+#: src/gui/VedicChart.cpp:260
 msgid "AL"
 msgstr "AL"
 
-#: src/gui/VedicChart.cpp:258
+#: src/gui/VedicChart.cpp:261
 msgid "Arudha L"
 msgstr "Arudha L"
 
-#: src/gui/VedicChart.cpp:262
+#: src/gui/VedicChart.cpp:265
 msgid "UL"
 msgstr "UL"
 
-#: src/gui/VedicChart.cpp:263
+#: src/gui/VedicChart.cpp:266
 msgid "Upapada L"
 msgstr "Upapada L"
 
@@ -6663,24 +6664,24 @@ msgstr "Binovile"
 msgid "Quadnovile"
 msgstr "Quadnovile"
 
-#: src/jyotish/Aspect.cpp:488
+#: src/jyotish/Aspect.cpp:489
 msgid "Aspectarium"
 msgstr "Aspekty (Jogi)"
 
-#: src/jyotish/Aspect.cpp:556
+#: src/jyotish/Aspect.cpp:557
 msgid "No horoscope set"
 msgstr ""
 
-#: src/jyotish/Aspect.cpp:610
+#: src/jyotish/Aspect.cpp:611
 #, fuzzy
 msgid "Running"
 msgstr "Początek"
 
-#: src/jyotish/Aspect.cpp:620
+#: src/jyotish/Aspect.cpp:621
 msgid "Aspecting"
 msgstr "Aspektująca"
 
-#: src/jyotish/Aspect.cpp:621
+#: src/jyotish/Aspect.cpp:622
 msgid "Aspected"
 msgstr "Aspektowana"
 
@@ -7662,7 +7663,7 @@ msgstr "Godności"
 msgid "Varga Viswa"
 msgstr "Varga Viswa"
 
-#: src/jyotish/Varga.cpp:384 src/views/VargaView.cpp:173
+#: src/jyotish/Varga.cpp:384 src/views/VargaView.cpp:179
 msgid "Vimsopaka Bala"
 msgstr "Vimsopaka Bala"
 
@@ -7688,7 +7689,7 @@ msgstr "Nów"
 msgid "Rule successfully parsed"
 msgstr "Znaczenia prawidłowo przyporządkowane"
 
-#: src/jyotish/Yoga.cpp:240
+#: src/jyotish/Yoga.cpp:241
 msgid "No matching Yogas found."
 msgstr "Nie odnaleziono żadnej Jogi."
 
@@ -7750,28 +7751,28 @@ msgstr "Dasa (krótko)"
 msgid "All Sources"
 msgstr "Wszystkie źródła"
 
-#: src/views/PartnerView.cpp:101
+#: src/views/PartnerView.cpp:99
 msgid "Synastry"
 msgstr ""
 
-#: src/views/PartnerView.cpp:105
+#: src/views/PartnerView.cpp:103
 #, fuzzy
 msgid "Ashtakoota"
 msgstr "Bhakuta"
 
-#: src/views/PartnerView.cpp:122
+#: src/views/PartnerView.cpp:120
 msgid "Composite Chart"
 msgstr "Diagram wielostopniowy"
 
-#: src/views/PartnerView.cpp:131 src/views/TransitView.cpp:134
+#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:134
 msgid "Shadvarga"
 msgstr "Szadvarga"
 
-#: src/views/PartnerView.cpp:135 src/views/TransitView.cpp:138
+#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:138
 msgid "Varga (2)"
 msgstr "Varga (2)"
 
-#: src/views/PartnerView.cpp:139 src/views/TransitView.cpp:142
+#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:142
 msgid "Varga (3)"
 msgstr "Varga (3)"
 
@@ -7779,12 +7780,12 @@ msgstr "Varga (3)"
 msgid "Partner View"
 msgstr "Podgląd partnera"
 
-#: src/views/PartnerView.cpp:417
+#: src/views/PartnerView.cpp:401
 #, fuzzy
 msgid "No chart opened"
 msgstr "Żaden diagram nie został załadowany"
 
-#: src/views/PartnerView.cpp:421
+#: src/views/PartnerView.cpp:405
 msgid "Charts identical"
 msgstr "Diagramy identyczne"
 
@@ -7887,7 +7888,7 @@ msgstr "Okno menu głównego"
 msgid "Yearly Preview"
 msgstr "Przegląd roku"
 
-#: src/views/UranianView.cpp:298
+#: src/views/UranianView.cpp:296
 #, fuzzy
 msgid "Included Event Configuration"
 msgstr "Zapisz ustawienia"

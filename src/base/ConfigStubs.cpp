@@ -94,20 +94,6 @@ void BarDiagramConfig::save( wxJSONValue &root, wxString attname )
 	else root.Append( v );
 }
 
-void BgPalette::load( wxJSONValue &root, wxString attname )
-{
-	JSonTool tool;
-	wxJSONValue &v = attname.IsEmpty() ? root : root[ attname ];
-}
-
-void BgPalette::save( wxJSONValue &root, wxString attname )
-{
-	JSonTool tool;
-	wxJSONValue v;
-	if ( ! attname.IsEmpty()) root[ attname ] = v;
-	else root.Append( v );
-}
-
 void ColorConfig::load( wxJSONValue &root, wxString attname )
 {
 	wxJSONValue &v = attname.IsEmpty() ? root : root[ attname ];
@@ -614,6 +600,9 @@ void UranianConfig::load( wxJSONValue &root, wxString attname )
 	if ( ! v[ wxT( "orbisPartner" ) ].IsNull()) orbisPartner = myatof( v[ wxT( "orbisPartner" ) ].AsString());
 	else reportMissingKey( wxT( "UranianConfig" ), wxT( "orbisPartner" ));
 
+	wxString s = v[ wxT( "orbisPartner" ) ].AsString();
+	printf( "HALLO load %f string was %s\n", orbisPartner, str2char( s ) );
+
 	if ( ! v[ wxT( "eventsIncludeTriples" ) ].IsNull()) eventsIncludeTriples = v[ wxT( "eventsIncludeTriples" ) ].AsBool();
 	else reportMissingKey( wxT( "UranianConfig" ), wxT( "eventsIncludeTriples" ));
 
@@ -638,6 +627,8 @@ void UranianConfig::save( wxJSONValue &root, wxString attname )
 	v[ wxT( "sortOrder" ) ] = sortOrder;
 	v[ wxT( "gradkreis" ) ] = gradkreis;
 	v[ wxT( "orbisPartner" ) ] = printfDouble( orbisPartner );
+	wxString s = printfDouble( orbisPartner );
+	printf( "HALLO save %f string was %s\n", orbisPartner, str2char( s ) );
 	v[ wxT( "eventsIncludeTriples" ) ] = eventsIncludeTriples;
 	v[ wxT( "eventsIncludeAntiscia" ) ] = eventsIncludeAntiscia;
 	v[ wxT( "eventsIncludeMidpoints" ) ] = eventsIncludeMidpoints;

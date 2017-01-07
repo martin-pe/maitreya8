@@ -5,7 +5,7 @@
  File       src/views/DasaGraphicView.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -543,6 +543,7 @@ void DasaGraphicWidget::paintDasaItem( GraphicalDasaItem *item, const wxRect& re
 	assert( item );
 	assert( item->rect );
 	assert( item->dasa );
+	//static int count = 0;
 
 	const bool zoomItem = config->bardiagram->doItemZoom && item == currentItem;
 
@@ -566,9 +567,15 @@ void DasaGraphicWidget::paintDasaItem( GraphicalDasaItem *item, const wxRect& re
 
 			ASSERT_VALID_DASA_ID( item->dasaId );
 			assert( item->dasa );
-			MString ms = experts[item->dasaId]->getDasaDescriptionF( item->dasa, format, writerCfg );
+
+			if ( item->contents.isEmpty() )
+			{
+				//printf( "WARN DasaGraphicWidget::paintDasaItem item is empty, setting contents #%d\n", count++ );
+				item->contents = experts[item->dasaId]->getDasaDescriptionF( item->dasa, format, writerCfg );
+				item->contents.size = painter->getTextExtent( item->contents );
+			}
 			painter->setGraphicFont();
-			painter->drawMString( MRect( rr ), ms, Align::Center );
+			painter->drawMString( MRect( rr ), item->contents, Align::Center );
 		}
 		else // item too small
 		{
@@ -637,6 +644,9 @@ void DasaGraphicWidget::calcDasaLevel( GraphicalDasaItem *item )
 			x1 = x2;
 		}
 	}
+
+	// dasa pointer is now owned by items, do not delete
+	v.clear();
 }
 
 /*****************************************************
@@ -655,6 +665,7 @@ void DasaGraphicWidget::calcItemRectangles( GraphicalDasaItem *item )
 	for( unsigned int i = 0; i < item->depitems.size(); i++ )
 	{
 		subitem = item->depitems[i];
+		assert( item );
 		dasa = subitem->dasa;
 		assert( dasa );
 

@@ -5,7 +5,7 @@
  File       src/gui/MultipleChildWindow.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -75,7 +75,7 @@ MultipleChildWindow::MultipleChildWindow( wxFrame *parent, Document *doc, const 
 ******************************************************/
 MultipleChildWindow::~MultipleChildWindow()
 {
-	printf( "Destructor MultipleChildWindow size is %d\n", (int)viewlist.size());
+	//printf( "Destructor MultipleChildWindow size is %d\n", (int)viewlist.size());
 	saveViewStatus( viewconfig->viewnode );
 	delete viewconfig;
 	viewlist.clear();
@@ -94,7 +94,7 @@ void MultipleChildWindow::saveViewStatus( ViewNode *node )
 		wxLogError( wxT( "MultipleChildWindow::saveViewStatus, view is NULL" ));
 		return;
 	}
-	printf( "SAVE view status %s\n", str2char( node->configEntryName ));
+	//printf( "SAVE view status %s\n", str2char( node->configEntryName ));
 	//s = node->getConfigEntryName();
 	//PrintLn( s );
 
@@ -102,12 +102,12 @@ void MultipleChildWindow::saveViewStatus( ViewNode *node )
 	{
 		case WniWidget:
 		{
-			printf( "Widget\n" );
+			//printf( "Widget\n" );
 		}
 		break;
 		case WniSplitter:
 		{
-			printf( "Splitter\n" );
+			//printf( "Splitter\n" );
 			//assert ( node->GetClassInfo()->IsKindOf( CLASSINFO( SplitterNode )));
 			//SplitterNode *sn = (SplitterNode*)node;
 
@@ -119,7 +119,7 @@ void MultipleChildWindow::saveViewStatus( ViewNode *node )
 		break;
 		case WniPageNode:
 		{
-			printf( "Page\n" );
+			//printf( "Page\n" );
 			//assert ( node->GetClassInfo()->IsKindOf( CLASSINFO( PageNode )));
 			//PageNode *pn = (PageNode*)node;
 			PageNode *pn = wxDynamicCast( node, PageNode );
@@ -129,7 +129,7 @@ void MultipleChildWindow::saveViewStatus( ViewNode *node )
 		break;
 		case WniNotebook:
 		{
-			printf( "Notebook\n" );
+			//printf( "Notebook\n" );
 			//assert(  node->GetClassInfo()->IsKindOf( CLASSINFO( NotebookNode )));
 			//NotebookNode *nn = (NotebookNode*)node;
 
@@ -165,8 +165,14 @@ void MultipleChildWindow::setTitle()
 ******************************************************/
 void MultipleChildWindow::OnDataChanged()
 {
-	printf( "MultipleChildWindow::OnDataChanged\n" );
-	for ( uint i = 0; i < viewlist.size(); i++ ) viewlist[i]->OnDataChanged();
+	//printf( "MultipleChildWindow::OnDataChanged size %d\n", (int)viewlist.size() );
+	for ( uint i = 0; i < viewlist.size(); i++ )
+	{
+		//wxString cname = viewlist[i]->GetClassInfo()->GetClassName();
+		//printf( "BasicWidget::OnDataChanged class %s\n", str2char( cname ));
+		viewlist[i]->OnDataChanged();
+	}
+
 	Refresh();
 }
 
@@ -187,7 +193,7 @@ void MultipleChildWindow::initViews( MultipleViewConfig *cfg )
 		printf( "WARN MultipleChildWindow::initViews is NULL, appending empty view\n" );
 		viewconfig->viewnode = new WidgetNode( VIEW_EMPTY );	
 	}
-	viewconfig->viewnode->dump();
+	//viewconfig->viewnode->dump();
 
 	insertNode( this, viewconfig->viewnode );
 }
@@ -202,18 +208,18 @@ wxWindow *MultipleChildWindow::insertNode( wxWindow *parent, ViewNode *node )
 	ViewFactory f;
 	IdConverter *idc = IdConverter::get();
 
-	printf( "MultipleChildWindow::insertNode start, %d views parent is a %s\n", (int)viewlist.size(), str2char( wxString( parent->GetClassInfo()->GetClassName())));
+	//printf( "MultipleChildWindow::insertNode start, %d views parent is a %s\n", (int)viewlist.size(), str2char( wxString( parent->GetClassInfo()->GetClassName())));
 
 	//if ( ! node ) return 0;
 	assert( node );
 	if ( ! node->parent )
 	{
-		printf( "ROOT\n" );
+		//printf( "ROOT\n" );
 		node->configEntryName = viewconfig->name;
 	}
 	else
 	{
-		printf( "NON ROOT raw name %s parent configentryname %s\n", str2char( node->configEntryName ), str2char( node->parent->configEntryName ));
+		//printf( "NON ROOT raw name %s parent configentryname %s\n", str2char( node->configEntryName ), str2char( node->parent->configEntryName ));
 		node->configEntryName << node->parent->configEntryName;
 	}
 	node->configEntryName << wxT( "." );
@@ -239,7 +245,7 @@ wxWindow *MultipleChildWindow::insertNode( wxWindow *parent, ViewNode *node )
 
 			wn->basicview->doLayout();
 			viewlist.push_back( wn->basicview );
-			printf( "Fertig widget configEntryName %s\n", str2char( node->configEntryName ));
+			//printf( "Fertig widget configEntryName %s\n", str2char( node->configEntryName ));
 			return wn->basicview;
 		}
 		break;
@@ -268,7 +274,7 @@ wxWindow *MultipleChildWindow::insertNode( wxWindow *parent, ViewNode *node )
 			if ( sn->dir ) splitter->SplitVertically( sn->window1, sn->window2 );
 			else splitter->SplitHorizontally( sn->window1, sn->window2 );
 			splitter->Layout();
-			printf( "Fertig splitter configEntryName %s\n", str2char( node->configEntryName ));
+			//printf( "Fertig splitter configEntryName %s\n", str2char( node->configEntryName ));
 			return splitter;
 		}
 		break;
@@ -286,7 +292,7 @@ wxWindow *MultipleChildWindow::insertNode( wxWindow *parent, ViewNode *node )
 			pn->widget = insertNode( parent, pn->viewnode );
 			pn->guified = true;
 
-			printf( "Fertig pagenode configEntryName %s\n", str2char( node->configEntryName ));
+			//printf( "Fertig pagenode configEntryName %s\n", str2char( node->configEntryName ));
 			return pn->widget;
 		}
 		break;
@@ -321,7 +327,7 @@ wxWindow *MultipleChildWindow::insertNode( wxWindow *parent, ViewNode *node )
 
 			}
 			nn->guified = true;
-			printf( "Fertig notebook configEntryName %s\n", str2char( node->configEntryName ));
+			//printf( "Fertig notebook configEntryName %s\n", str2char( node->configEntryName ));
 			return bookCtrl;
 		}
 		break;
@@ -468,15 +474,15 @@ BasicView *MultipleChildWindow::searchNextBasicView( ViewNode *node )
 ******************************************************/
 void MultipleChildWindow::postCreateNode( ViewNode *node, wxWindow* /*parent*/ )
 {
-	static int count = 1;
-	printf( "START post create %d\n", count++ );
+	//static int count = 1;
+	//printf( "START post create %d\n", count++ );
 
 	assert( node );
 	switch( node->id )
 	{
 		case WniWidget:
 		{
-			printf( "Post create widget\n" );
+			//printf( "Post create widget\n" );
 
 			//assert( node->GetClassInfo()->IsKindOf( CLASSINFO( WidgetNode )));
 			//WidgetNode* wn = (WidgetNode*)node;
@@ -485,7 +491,7 @@ void MultipleChildWindow::postCreateNode( ViewNode *node, wxWindow* /*parent*/ )
 			assert( wn );
 			if ( wn->basicview )
 			{
-				printf( "Start widget post create and layout\n" );
+				//printf( "Start widget post create and layout\n" );
 				wn->basicview->postCreate();
 			}
 			else
@@ -502,7 +508,7 @@ void MultipleChildWindow::postCreateNode( ViewNode *node, wxWindow* /*parent*/ )
 
 			SplitterNode *sn = wxDynamicCast( node, SplitterNode );
 			assert( sn );
-			printf( "Post create splitter sash is %d and relative pos %d\n", sn->sashpos, sn->sashpos_rel );
+			//printf( "Post create splitter sash is %d and relative pos %d\n", sn->sashpos, sn->sashpos_rel );
 
 			//SplitterWidget *splitter = (SplitterWidget*)node->widget;
 			//assert( splitter );
@@ -537,7 +543,7 @@ void MultipleChildWindow::postCreateNode( ViewNode *node, wxWindow* /*parent*/ )
 		break;
 		case WniPageNode:
 		{
-			printf( "Post create page\n" );
+			//printf( "Post create page\n" );
 
 			//assert ( node->GetClassInfo()->IsKindOf( CLASSINFO( PageNode )));
 			//PageNode *pn = (PageNode*)node;
@@ -552,7 +558,7 @@ void MultipleChildWindow::postCreateNode( ViewNode *node, wxWindow* /*parent*/ )
 		break;
 		case WniNotebook:
 		{
-			printf( "Post create notebook\n" );
+			//printf( "Post create notebook\n" );
 			//assert(  node->GetClassInfo()->IsKindOf( CLASSINFO( NotebookNode )));
 			//NotebookNode *nn = (NotebookNode*)node;
 
@@ -590,10 +596,10 @@ void MultipleChildWindow::postCreateNode( ViewNode *node, wxWindow* /*parent*/ )
 ******************************************************/
 void MultipleChildWindow::postCreate()
 {
-	printf( "MultipleChildWindow::postCreate\n" );
+	//printf( "MultipleChildWindow::postCreate\n" );
 
 	assert( viewconfig->viewnode );
-	viewconfig->viewnode->dump( 0 );
+	//viewconfig->viewnode->dump( 0 );
 
 	postCreateNode( viewconfig->viewnode, this );
 

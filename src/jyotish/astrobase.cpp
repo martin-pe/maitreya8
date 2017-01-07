@@ -5,7 +5,7 @@
  File       src/jyotish/astrobase.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -938,7 +938,7 @@ bool hasDebilationRasi( const ObjectId &planet, const Rasi &rasi )
 **  Sphuta drishti
 ***
 ***************************************************************/
-double getAspectValue( const ObjectId &aspectingPlanet, const ObjectId &aspectedPlanet, const double &len )
+double getAspectValue( const ObjectId &aspectingPlanet, const ObjectId& /*aspectedPlanet*/, const double &len )
 {
 	assert( len >= 0 && len <= 360 );
 	double ret = 0;

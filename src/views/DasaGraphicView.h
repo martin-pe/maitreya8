@@ -5,7 +5,7 @@
  File       src/views/DasaGraphicView.h
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -114,6 +114,9 @@ public:
 
 	// rectangle coordinates
 	wxRect *rect;
+
+	// payload
+	MString contents;
 
 	// for access to the config style stock
 	int graphicalObjectId;

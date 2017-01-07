@@ -5,7 +5,7 @@
  File       src/gui/GraphicGrid.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -142,8 +142,8 @@ void ChartGridWidget::addVedicChart( Varga varga, Horoscope *h1, Horoscope *h2 )
 		GraphicalChart *chart = ChartFactory().createVedicChart( charttype, chartprops, h1, h2, varga );
 		charts.push_back( chart );
 	}
-	else 
-	printf( "ERROR ChartGridWidget::addVedicChart Varga %d rows %d cols %d size %d\n", (int)varga, rows, cols, (int)charts.size() );
+	//else 
+	//printf( "ENDE ChartGridWidget::addVedicChart Varga %d rows %d cols %d size %d\n", (int)varga, rows, cols, (int)charts.size() );
 }
 
 /*****************************************************
@@ -224,31 +224,6 @@ void ChartGridWidget::deleteCharts()
 ******************************************************/
 void ChartGridWidget::OnDataChanged()
 {
-	/*
-
-	TODO was macht man wenn western(vedic umgeschaltet wird?
-	- alte lösung: Liste mit vedic charts und parallel western
-	- besser virtuelle Lösung, allerdings muss dann die Liste durchiteriert werden.
-	Und: die Vargas gehen verloren, wenn man w-v macht.
-
-	Was passiert übrigens mit AV? das darf nicht ersetzt werden durch westernchart. Dann weiß man nicht mehr weiter bei w-v
-
-	Arten von charts
-	- western
-	- vedic mit varga
-	- AV
-	- SBC
-
-	1, 2 und 4 können im Transitmodus kommen.
-	alle habe irgendwo ein chart und evtl. ein chart2.
-	aber: das kann auch ein AV sein oder ein solarchart
-	und bei vedic varga > 0 ist das horoskop nur unterhalb enthalten.
-
-	weitere Frage: wenn supportewtoggle eingeschaltet wird, wirkt das nur auf die Menus.
-	das ist falsch. muss im event handler geskipt werden.
-
-	*/
-
 	//static int i = 0;
 	//printf( "ChartGridWidget::OnDataChanged no. %d\n", i++ );
 	for ( uint i = 0; i < charts.size(); i++ )

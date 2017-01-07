@@ -5,7 +5,7 @@
  File       src/views/UranianView.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -67,7 +67,7 @@ public:
 		props->setFixedWestern();
 
 		year = getCurrentYear();
-		printf( "YEAR %d\n", year );
+		//printf( "YEAR %d\n", year );
 
 		expert = new UranianExpert( doc, props );
 		helper = new UranianHelper( expert );
@@ -145,7 +145,7 @@ protected:
 	void initToolItems()
 	{
 		UranianConfig &uconfig = props->getUranianConfig();
-		printf( "initToolItems\n" );
+		//printf( "initToolItems\n" );
 		if ( toolbar )
 		{
 			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
@@ -154,7 +154,7 @@ protected:
 			GradkreisChoice *choice_gk = (GradkreisChoice*)toolbar->FindControl( TBS_GRADKREIS );
 			if ( choice_gk ) choice_gk->SetSelection( (int)uconfig.gradkreis );
 
-			printf( "initToolItems YEAR %d\n", year );
+			//printf( "initToolItems YEAR %d\n", year );
 			wxSpinCtrl *spin_year = (wxSpinCtrl*)toolbar->FindControl( TBS_YEAR );
 			if ( spin_year ) spin_year->SetValue( year );
 
@@ -170,7 +170,7 @@ protected:
 	******************************************************/
 	void OnDataChanged()
 	{
-		printf( "OnDataChanged %d\n", year );
+		//printf( "OnDataChanged %d\n", year );
 
 		BasicView::OnDataChanged();
 
@@ -200,7 +200,7 @@ protected:
 	******************************************************/
 	void OnNotebook( wxNotebookEvent& )
 	{
-		printf( "OnNotebook PAGE %d\n", notebook->GetSelection() );
+		//printf( "OnNotebook PAGE %d\n", notebook->GetSelection() );
 		activateControls();
 		updateView = true;
 	}
@@ -286,8 +286,6 @@ protected:
 	******************************************************/
 	void OnConfigure( wxCommandEvent& )
 	{
-		printf( "URANIAN\n" );
-
 		wxArrayString l;
 		l.Add( wxT( "Midpoints" ));
 		l.Add( wxT( "Reflection Points" ));
@@ -348,7 +346,7 @@ protected:
 	******************************************************/
 	void OnYearSpin( wxCommandEvent& )
 	{
-		printf( "YEAR SPIN\n" );
+		//printf( "YEAR SPIN\n" );
 
 		OnToolbarCommand();
 		expert->calculateYearlyPreview( year );
@@ -393,7 +391,7 @@ protected:
 		UranianConfig &uconfig = props->getUranianConfig();
 		if ( toolbar )
 		{
-			printf( "OnToolbarCommand\n" );
+			//printf( "OnToolbarCommand\n" );
 
 			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
 			if ( spin_orbis )

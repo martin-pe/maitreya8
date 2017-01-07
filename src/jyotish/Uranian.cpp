@@ -5,7 +5,7 @@
  File       src/jyotish/Uranian.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -124,7 +124,8 @@ UranianExpert::UranianExpert( Horoscope *h, ChartProperties *chartprops )
 **
 ******************************************************/
 UranianExpert::UranianExpert( ChartProperties *chartprops )
-		: chartprops( chartprops )
+		: Expert( (Horoscope*)NULL ),
+		chartprops( chartprops )
 {
 	reset();
 	init();
@@ -660,7 +661,7 @@ void UranianExpert::calculateUEventDueDate( UEvent &e, const double &radixsun )
 		e.duedate = hradix->getJD() + year_length * ( solarjd - hradix->getJD() );
 		//printf( "DUEDATE 3 date %s\n", str2char( formatter->getDateStringFromJD(  e.duedate )));
 	}
-	else printf( "Other: %d - %d\n", e.e1->context, e.e2->context );
+	//else printf( "Other: %d - %d\n", e.e1->context, e.e2->context );
 }
 
 /*****************************************************

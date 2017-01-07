@@ -5,7 +5,7 @@
  File       src/dialogs/ObjectFilterDialog.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -100,14 +100,12 @@ ObjectFilterDialog::~ObjectFilterDialog()
 ******************************************************/
 void ObjectFilterDialog::OnOK( wxCommandEvent& )
 {
-	printf( "OK\n" );
 	filter.clear();
 
 	for( uint i = 0; i < planets.size(); i++ )
 	{
 		if ( list->IsChecked( i ))
 		{
-			printf( "KNUT %d\n", i );
 			filter.insert( planets[i] );
 		}
 	}
@@ -121,7 +119,7 @@ void ObjectFilterDialog::OnOK( wxCommandEvent& )
 ******************************************************/
 void ObjectFilterDialog::OnAll( wxCommandEvent& )
 {
-	printf( "OnAll\n" );
+	//printf( "OnAll\n" );
 	for ( uint i = 0; i < planets.size(); i++ ) list->Check( i, true );
 }
 
@@ -132,7 +130,7 @@ void ObjectFilterDialog::OnAll( wxCommandEvent& )
 ******************************************************/
 void ObjectFilterDialog::OnFromMars( wxCommandEvent& )
 {
-	printf( "OnFromMars\n" );
+	//printf( "OnFromMars\n" );
 	for ( uint i = 0; i < planets.size(); i++ ) list->Check( i, planets[i] >= OMARS && ! IS_ANGLE_OBJECT( planets[i] ));
 }
 
@@ -143,7 +141,7 @@ void ObjectFilterDialog::OnFromMars( wxCommandEvent& )
 ******************************************************/
 void ObjectFilterDialog::OnUptoMars( wxCommandEvent& )
 {
-	printf( "OnUptoMars\n" );
+	//printf( "OnUptoMars\n" );
 	for ( uint i = 0; i < planets.size(); i++ ) list->Check( i, planets[i] <= OMARS || IS_ANGLE_OBJECT( planets[i] ));
 }
 
@@ -154,7 +152,7 @@ void ObjectFilterDialog::OnUptoMars( wxCommandEvent& )
 ******************************************************/
 void ObjectFilterDialog::OnNone( wxCommandEvent& )
 {
-	printf( "OnNone\n" );
+	//printf( "OnNone\n" );
 	for ( uint i = 0; i < planets.size(); i++ ) list->Check( i, false );
 }
 

@@ -5,7 +5,7 @@
  File       src/views/PartnerView.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -30,10 +30,8 @@
 #include "Commands.h"
 #include "Conf.h"
 #include "DataSet.h"
-#include "DialogElements.h"
 #include "Document.h"
 #include "GraphicGrid.h"
-#include "guibase.h"
 #include "Lang.h"
 #include "maitreya.h"
 #include "Partner.h"
@@ -141,7 +139,8 @@ public:
 		// PNB_URANIAN
 		wxPanel *panel = new wxPanel( notebook );
 		uwidget = new TextWidget( panel, props, URANIAN_VIEW_WO );
-		//printf( "ORBIS 1 %f\n", uconfig.orbisPartner );
+		printf( "ORBIS 1 %f\n", uconfig.orbisPartner );
+		//upanel = new UranianParamPanel( panel, PV_UPANEL, props, &uconfig.orbisPartner );
 		upanel = new UranianParamPanel( panel, PV_UPANEL, props, &uconfig.orbisPartner );
 		wxBoxSizer* usizer = new wxBoxSizer( wxHORIZONTAL );
 		usizer->Add( upanel, 0, wxALL, 3);
@@ -152,12 +151,13 @@ public:
 
 		widget = notebook;
 		notebook->SetSelection( config->viewprefs->activePagePartner );
-		notebook->SetSelection( notebook->GetSelection() );
+
 		setActiveItems();
 		initToolItems();
 		updatePartnerChoices();
 		OnDataChanged();
-		SetSize( config->viewprefs->sizes.sPartnerWindow );
+
+		if ( IS_VALID_SIZE( config->viewprefs->sizes.sPartnerWindow )) SetSize( config->viewprefs->sizes.sPartnerWindow );
 
 		Connect( TBS_PARTNER1, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( PartnerView::OnPartnerChoice ));
 		Connect( TBS_PARTNER2, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( PartnerView::OnPartnerChoice ));
@@ -176,12 +176,12 @@ public:
 		config->viewprefs->sashPartnerComposite = compositesplitter->GetSashPosition();
 		config->viewprefs->activePagePartner = notebook->GetSelection();
 
-		//printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisPartner );
+		printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisPartner );
 		*config->uranian = props->getUranianConfig();
 
 		delete uexpert;
 		delete ch;
-		DocumentManager::get()->subscribe( this );
+		DocumentManager::get()->unsubscribe( this );
 	}
 
 	wxString getWindowLabel( const bool shortname ) { return shortname ? _( "Partner" ) : _( "Partner View" ); }
@@ -201,22 +201,6 @@ public:
 	}
 
 protected:
-
-	/*****************************************************
-	**
-	**   PartnerView   ---   initToolItems
-	**
-	******************************************************/
-	/*
-	virtual void initToolItems()
-	{
-		assert( upanel );
-		UranianConfig &uconfig = props->getUranianConfig();
-
-		upanel->setOrbis( uconfig.orbisPartner );
-		upanel->load( uconfig );
-	}
-	*/
 
 	/*****************************************************
 	**
@@ -442,7 +426,8 @@ protected:
 	******************************************************/
 	void setupCharts()
 	{
-		int sel1 = -1, sel2 = -1;
+		int sel1 = -1;
+		int sel2 = -1;
 		DocumentManager *docmanager = DocumentManager::get();
 
 		wxChoice *choice_partner1 = (wxChoice*)toolbar->FindControl( TBS_PARTNER1 );
@@ -451,9 +436,9 @@ protected:
 		wxChoice *choice_partner2 = (wxChoice*)toolbar->FindControl( TBS_PARTNER2 );
 		if ( choice_partner2 ) sel2 = choice_partner2->GetSelection();
 		if ( sel1 > -1 ) h1 = docmanager->getDocument( sel1 );
-		else h1 = 0;
+		else h1 = (Horoscope*)NULL;
 		if ( sel2 > -1 ) h2 = docmanager->getDocument( sel2 );
-		else h2 = 0;
+		else h2 = (Horoscope*)NULL;
 	}
 
 	/*****************************************************
@@ -475,7 +460,8 @@ protected:
 	void updatePartnerChoices()
 	{
 		if ( ! toolbar ) return;
-		int sel1 = -1, sel2 = -1;
+		int sel1 = -1;
+		int sel2 = -1;
 		wxString docname;
 		DocumentManager *docmanager = DocumentManager::get();
 
@@ -506,9 +492,9 @@ protected:
 		choice_partner2->SetSelection( sel2 );
 		//printf( "sel1 %d sel2 %d\n", sel1, sel2 );
 		if ( sel1 != -1 && docnum > 0 ) h1 = docmanager->getDocument( Min( sel1, docnum ));
-		else h1 = 0;
+		else h1 = (Horoscope*)NULL;
 		if ( sel2 != -1 && docnum > 0 ) h2 = docmanager->getDocument( Min( sel2, docnum ));
-		else h2 = 0;
+		else h2 = (Horoscope*)NULL;
 	}
 
 	/*****************************************************

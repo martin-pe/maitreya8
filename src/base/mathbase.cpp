@@ -5,7 +5,7 @@
  File       src/base/mathbase.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -151,13 +151,14 @@ int a_rund( const double &v )
 ***************************************************************/
 double myatof( const wxString &s )
 {
-	if ( ! s ) return 0;
+	if ( s.IsEmpty() ) return 0.0;
 	//assert( s );
 	wxString err;
 	wxChar tmp[256];
 	wxStrcpy( tmp, s );
 	wxChar *c = tmp;
 	wxChar dp = (localeconv()->decimal_point)[0];
+	printf( "mathbase::myatof decimal point of locale is '%c'\n", dp );
 
 	while ( *c )
 	{
@@ -169,10 +170,10 @@ double myatof( const wxString &s )
 	double a = 0;
 	if ( ! s1.ToDouble( &a ) && s != wxEmptyString )
 	{
-		err.Printf(
+		wxLogError(
 		    wxT( "Can't convert string to double, string was \"%s\", local decimal point \"%c\", converted string \"%s\", double is %f\n" ),
 		    s.c_str(), dp, c, a );
-		Cout( err );
+		return 0.0;
 	}
 	return a;
 }

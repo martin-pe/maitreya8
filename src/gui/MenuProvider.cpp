@@ -5,7 +5,7 @@
  File       src/gui/MenuProvider.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -180,9 +180,7 @@ AppMenuBar::AppMenuBar( int style )
 	newmenu->AppendSeparator();
 	vector<MultipleViewConfig*> &v = MultipleViewConfigLoader::get()->getConfigs();
 
-	// APP_NEW_MULTIPLE will lauch the default view. So the index begins with 1
-	// (must be reflected in the handler in ApplcationWindow)
-	for ( uint i = 0; i < v.size(); i++ ) newmenu->Append( APP_NEW_MULTIPLE + i + 1, v[i]->name );
+	for ( uint i = 0; i < v.size(); i++ ) newmenu->Append( APP_NEW_MULTIPLE + i, v[i]->name );
 	filemenu->Append( -1, _( "New" ), newmenu );
 
 	filemenu->addItem( APP_OPEN );
@@ -415,8 +413,6 @@ wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &w
 
 	menu->addItem( CMD_EDITDATA );
 	menu->Enable( CMD_EDITDATA, props->hasDocument() );
-	menu->addCheckItem( CMD_ANIMATE, props->isAnimated() );
-	menu->Enable( CMD_ANIMATE, props->hasDocument() );
 	menu->AppendSeparator();
 
 	if ( wo & WO_SUPPORTS_EW_TOGGLE )
@@ -454,6 +450,10 @@ wxMenu *ContextMenuProvider::getWidgetMenu( ChartProperties *props, const int &w
 	{
 		menu->AppendSubMenu( getMainViewColumnMenu( props ), _( "Columns"));
 	}
+	menu->AppendSeparator();
+	menu->addCheckItem( CMD_ANIMATE, props->isAnimated() );
+	menu->Enable( CMD_ANIMATE, props->hasDocument() );
+	menu->AppendSubMenu( getNewViewMenu( props ), _( "New View"));
 	if (
 		( wo & WO_EXPORT_PLAINTEXT )
 		| ( wo & WO_EXPORT_CSVTEXT )

@@ -5,7 +5,7 @@
  File       src/dialogs/UranianParamPanel.cpp
  Release    8.0
  Author     Martin Pettau
- Copyright  2003-2016 by the author
+ Copyright  2003-2017 by the author
 
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -54,7 +54,7 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 		props( chartprops ),
 		orbis( orbis )
 {
-		iorbis = 60 * *orbis;
+	iorbis = (int)(*orbis * 60.0 );
 
     // begin wxGlade: UranianParamPanel::UranianParamPanel
     panel_filter = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
@@ -83,6 +83,7 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 	choice_gradkreis->SetValidator( MChoiceValidator( (int*)&uconfig.gradkreis ));
 	choice_sort->SetValidator( MChoiceValidator( (int*)&uconfig.sortOrder ));
 	spin_orbis->SetValidator( MSpinValidator( &iorbis ));
+	//spin_orbis->SetValue( (int)( 60 * *orbis ));
 
 	check_include_midpoints->SetValidator( MCheckValidator( &uconfig.eventsIncludeMidpoints ));
 	check_include_reflectionpoints->SetValidator( MCheckValidator( &uconfig.eventsIncludeReflectionPoints ));
@@ -105,13 +106,28 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 
 /*****************************************************
 **
+**   UranianParamPanel   ---   Desstructor
+**
+******************************************************/
+UranianParamPanel::~UranianParamPanel()
+{
+	*orbis = (double)iorbis / 60.0;
+	//*orbis = (double)spin_orbis->GetValue() / 60.0;
+	printf( "UranianParamPanel::Destructor orbis %f\n", *orbis );
+}
+
+/*****************************************************
+**
 **   UranianParamPanel   ---   OnCommand
 **
 ******************************************************/
-void UranianParamPanel::OnCommand( wxCommandEvent& )
+void UranianParamPanel::OnCommand( wxCommandEvent &event )
 {
+	event.Skip();
 	*orbis = (double)iorbis / 60.0;
-	printf( "UranianParamPanel::OnCommand\n" );
+	//*orbis = (double)spin_orbis->GetValue() / 60.0;
+	printf( "UranianParamPanel::OnCommand orbis %f iorbis %d\n", *orbis, iorbis );
+	//printf( "UranianParamPanel::OnCommand\n" );
 	emitChangeEvent();
 }
 
@@ -120,10 +136,13 @@ void UranianParamPanel::OnCommand( wxCommandEvent& )
 **   UranianParamPanel   ---   OnSpin
 **
 ******************************************************/
-void UranianParamPanel::OnSpin( wxSpinEvent& )
+void UranianParamPanel::OnSpin( wxSpinEvent &event )
 {
+	event.Skip();
 	*orbis = (double)iorbis / 60.0;
+	//*orbis = (double)spin_orbis->GetValue() / 60.0;
 	printf( "UranianParamPanel::OnSpin orbis %f iorbis %d\n", *orbis, iorbis );
+	//printf( "UranianParamPanel::OnSpin orbis %f iorbis %d\n", *orbis, iorbis );
 	emitChangeEvent();
 }
 
@@ -134,7 +153,7 @@ void UranianParamPanel::OnSpin( wxSpinEvent& )
 ******************************************************/
 void UranianParamPanel::OnFilter( wxCommandEvent& )
 {
-	printf( "UranianParamPanel::OnFilter\n" );
+	//printf( "UranianParamPanel::OnFilter\n" );
 	vector<ObjectId> planets = props->getPlanetList( FILTER_EXLUDE_LIST );
 
 	ObjectFilterDialog dialog( this, planets, props->getObjectFilter() );
@@ -154,7 +173,7 @@ void UranianParamPanel::OnFilter( wxCommandEvent& )
 ******************************************************/
 void UranianParamPanel::OnClearFilter( wxCommandEvent& )
 {
-	printf( "UranianParamPanel::OnClearFilter\n" );
+	//printf( "UranianParamPanel::OnClearFilter\n" );
 	props->setObjectFilter( ObjectFilter());
 	updateFilterLabel();
 	emitChangeEvent();
@@ -167,7 +186,7 @@ void UranianParamPanel::OnClearFilter( wxCommandEvent& )
 ******************************************************/
 void UranianParamPanel::emitChangeEvent()
 {
-	printf( "EMIT\n" );
+	//printf( "EMIT\n" );
 	wxCommandEvent e( COMMAND_UPANEL_CHANGED, GetId());
 	wxPostEvent( GetParent(), e );
 }
