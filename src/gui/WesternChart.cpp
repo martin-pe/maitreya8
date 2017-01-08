@@ -586,7 +586,8 @@ void WesternChart::drawAllPlanets( const Horoscope *h, const bool applyFilter )
 	SheetFormatter fmt;
 	WesternChartConfig *wconf = getWChartConfig();
 
-	const bool doSkipAries = h->getPlanetContext() == PcRadix || h->getPlanetContext() == PcTransit || h->getPlanetContext() == PcDirection;
+	const bool doSkipAries = ( config->westernCalculation->ayanamsa == AY_NONE ) 
+		&& (h->getPlanetContext() == PcRadix || h->getPlanetContext() == PcTransit || h->getPlanetContext() == PcDirection );
 
 	painter->setPen( defaultPen );
 	painter->setTextColor( defaultPen.GetColour());
