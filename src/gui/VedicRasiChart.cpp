@@ -66,11 +66,21 @@ void VedicRasiChart::drawGrid()
 	{
 		case VCT_NORTH:
 		{
-			//const double mtol = xmax / 100.0;
+			if ( chartprops->getVedicChartDisplayConfig().centerInfoType == VCC_NOTHING )
+			{
+				painter->drawLine( xcenter - xr + cornertol, ycenter - yr + cornertol, xcenter + xr - cornertol, ycenter + yr - cornertol );
+				painter->drawLine( xcenter - xr + cornertol, ycenter + yr - cornertol, xcenter + xr - cornertol, ycenter - yr + cornertol );
+			}
+			else
+			{
+				// break cross lines if a center string is available
+				const double tol = text_height;
+				painter->drawLine( xcenter - xr + cornertol, ycenter - yr + cornertol, xcenter - tol, ycenter - tol );
+				painter->drawLine( xcenter + tol, ycenter + tol, xcenter + xr - cornertol, ycenter + yr - cornertol );
 
-			// diagonal from egde to egde paint one line or two depending on chart center
-			painter->drawLine( xcenter - xr + cornertol, ycenter - yr + cornertol, xcenter + xr - cornertol, ycenter + yr - cornertol );
-			painter->drawLine( xcenter - xr + cornertol, ycenter + yr - cornertol, xcenter + xr - cornertol, ycenter - yr + cornertol );
+				painter->drawLine( xcenter - xr + cornertol, ycenter + yr - cornertol, xcenter - tol, ycenter + tol );
+				painter->drawLine( xcenter + tol, ycenter - tol, xcenter + xr - cornertol, ycenter - yr + cornertol );
+			}
 
 			painter->drawLine( xcenter, ycenter + yr, xcenter + xr, ycenter );
 			painter->drawLine( xcenter, ycenter + yr, xcenter - xr, ycenter );
