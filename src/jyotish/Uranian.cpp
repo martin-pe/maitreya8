@@ -56,17 +56,9 @@ UranianHoroscope::UranianHoroscope( const int mode )
 ******************************************************/
 ObjectPosition UranianHoroscope::getObjectPosition( const ObjectId &planet, const bool &vedic ) const
 {
-	//const ObjectPosition refpos = Horoscope::getObjectPosition( refobj, vedic );
 	const ObjectPosition sunpos = Horoscope::getObjectPosition( OSUN, vedic );
 
 	ObjectPosition pos = Horoscope::getObjectPosition( planet, vedic );
-	//ObjectPosition ic = Horoscope::getObjectPosition( OIMUMCOELI, vedic );
-	/*
-	ObjectPosition pos;
-	if ( IS_EPHEM_OBJECT( planet )) pos = ( vedic ? vpos[planet] : wpos[planet] );
-	else if ( IS_HOUSE_OBJECT( planet )) pos = ObjectPosition( getHouse( planet-OHOUSE1, vedic, ! config->vedicCalculation->houseUseCusps ));
-	else assert( false );
-	*/
 
 	switch( mode )
 	{
@@ -74,8 +66,6 @@ ObjectPosition UranianHoroscope::getObjectPosition( const ObjectId &planet, cons
 			pos.longitude = red_deg( 270 - sunpos.longitude + pos.longitude );
 		break;
 		case 1: // sun on Cap (m)
-			//pos.longitude = red_deg( 90 + sunpos.longitude - pos.longitude );
-			//pos.longitude = red_deg( sunpos.longitude - ( 270 + pos.longitude ));
 			pos.longitude = red_deg( 270 + sunpos.longitude - pos.longitude );
 		break;
 		case 2: // Cap on Sun
@@ -275,6 +265,7 @@ void UranianExpert::OnDataChanged()
 
 	findMatchingEvents( PcRadix, PcRadix, PcRadix, cfg.orbisRadix );
 
+	/*
 	if ( cfg.eventsIncludeAntiscia )
 	{
 		hantiscia->setLocation( *horoscope->getLocation());
@@ -282,6 +273,7 @@ void UranianExpert::OnDataChanged()
 		hantiscia->update();
 		findMatchingEvents( PcRadixAntiscia, PcRadix, PcRadix, cfg.orbisRadix );
 	}
+	*/
 }
 
 /*****************************************************
@@ -573,10 +565,12 @@ void UranianExpert::calculateTransit( Horoscope *htransit, const PlanetContext &
 
 	findMatchingEvents( PcRadix, ctx, ctx, cfg.orbisTransit );
 
+	/*
 	if (  cfg.eventsIncludeAntiscia )
 	{
 		findMatchingEvents( PcRadixAntiscia, ctx, ctx, cfg.orbisTransit );
 	}
+*/
 }
 
 /*****************************************************
@@ -629,6 +623,7 @@ UranianMatch UranianExpert::calculateMatch( const double &len1, const double &le
 void UranianExpert::calculateUEventDueDate( UEvent &e, const double &radixsun )
 {
 	double targetpos, solarjd;
+	const bool vedic = chartprops->isVedic();
 	//printf( "len1 %f len2 %f orbis %f residuum %f\n", e.e1->longitude, e.e2->longitude, e.orbis, e.residuum );
 	//printf( "DUEDATE date %s\n", str2char( formatter->getDateStringFromJD(  e.duedate )));
 
@@ -639,24 +634,20 @@ void UranianExpert::calculateUEventDueDate( UEvent &e, const double &radixsun )
 
 	if ( e.e1->context == PcRadix && e.e2->context == PcPeriod )
 	{
-		// TODO bei Antiszien wohl andersrum den Orbis machen
-		if ( e.e2->lttype == LT_ANTISCIA ) targetpos = radixsun - e.orbis; // + e.residuum;
-		else targetpos = radixsun + e.orbis; // + e.residuum;
+		targetpos = radixsun - e.orbis;
 
 		//printf( "P1 radix, p2 ist targetpos %f \n", targetpos );
-		solarjd = calculator->calcPlanetaryEvent( &workingDs, targetpos, OSUN, false /*vedic*/ );
+		solarjd = calculator->calcPlanetaryEvent( &workingDs, targetpos, OSUN, vedic );
 		//printf( "DUEDATE 2 date %s\n", str2char( formatter->getDateStringFromJD(  solarjd )));
 		e.duedate = hradix->getJD() + year_length * ( solarjd - hradix->getJD() );
 		//printf( "DUEDATE 3 date %s\n", str2char( formatter->getDateStringFromJD(  e.duedate )));
 	}
 	else if ( e.e2->context == PcRadix && e.e1->context == PcPeriod )
 	{
-		//printf( "P2 radix, p1 ist Solar\n" );
-		if ( e.e1->lttype == LT_ANTISCIA ) targetpos = radixsun - e.orbis; // + e.residuum;
-		else targetpos = radixsun + e.orbis; // + e.residuum;
+		targetpos = radixsun - e.orbis;
 
 		//printf( "P1 radix, p2 ist targetpos %f \n", targetpos );
-		solarjd = calculator->calcPlanetaryEvent( &workingDs, targetpos, OSUN, false /*vedic*/ );
+		solarjd = calculator->calcPlanetaryEvent( &workingDs, targetpos, OSUN, vedic );
 		//printf( "DUEDATE 2 date %s\n", str2char( formatter->getDateStringFromJD(  solarjd )));
 		e.duedate = hradix->getJD() + year_length * ( solarjd - hradix->getJD() );
 		//printf( "DUEDATE 3 date %s\n", str2char( formatter->getDateStringFromJD(  e.duedate )));
@@ -685,7 +676,6 @@ void UranianExpert::calculateYearlyPreview( const int &year )
 ******************************************************/
 void UranianExpert::calculatePeriodPreview( const double &first_jd, const double &last_jd )
 {
-	//UranianConfig &cfg = chartprops->getUranianConfig();
 	double first_sunpos, last_sunpos, dummy;
 	const bool vedic = chartprops->isVedic();
 
@@ -694,36 +684,33 @@ void UranianExpert::calculatePeriodPreview( const double &first_jd, const double
 	const double birth_jd = horoscope->getJD();
 	const double first_sjd = birth_jd + ( first_jd - birth_jd ) / year_length;
 	workingDs.setDate( first_sjd );
-	calculator->calcPosition( &workingDs, OSUN, first_sunpos, dummy, true, false /*vedic*/ );
+	calculator->calcPosition( &workingDs, OSUN, first_sunpos, dummy, true, vedic );
 
 	const double last_sjd = birth_jd + ( last_jd - birth_jd ) / year_length;
 	workingDs.setDate( last_sjd );
-	calculator->calcPosition( &workingDs, OSUN, last_sunpos, dummy, true, false /*vedic*/ );
+	calculator->calcPosition( &workingDs, OSUN, last_sunpos, dummy, true, vedic );
 	const double bogen = red_deg( last_sunpos - first_sunpos );
 
 	const double mid_sunpos = red_deg( first_sunpos + .5 * bogen );
 	const double orbis = .5 * ( last_sunpos - first_sunpos );
 
 	workingDs.setDate( 0.5 * ( first_sjd + last_sjd ));
-	const double mid_sjd = calculator->calcPlanetaryEvent( &workingDs, mid_sunpos, OSUN, false /*vedic*/ );
+	const double mid_sjd = calculator->calcPlanetaryEvent( &workingDs, mid_sunpos, OSUN, vedic );
 	const double mid_jd = birth_jd + year_length * ( mid_sjd - birth_jd );
 
 	initPeriod();
 	hperiod->setLocation( *horoscope->getDataSet()->getLocation() );
 
 	hperiod->setDate( mid_jd );
-	hperiod->calcTransitPositions( horoscope, mid_jd, false /*vedic*/, year_length, PcSolarArc );
+	hperiod->calcTransitPositions( horoscope, mid_jd, vedic, year_length, PcSolarArc );
 	hperiod->setDate( mid_sjd );
 
 	findMatchingEvents( PcRadix, PcPeriod, PcPeriod, orbis );
 
 	for( list<UEvent>::iterator iter = result[PcPeriod]->uevents.begin(); iter != result[PcPeriod]->uevents.end(); iter++ )
 	{
-		//(*iter).duedate = mid_sjd;
 		calculateUEventDueDate( *iter, hperiod->getLongitude( OSUN, vedic ));
 	}
-	result[PcPeriod]->uevents.sort( UEventSorter( AS_DATE, false /*vedic*/ ));
-
-	//const int nb_days = (int)fabs( last_jd - first_jd );
+	result[PcPeriod]->uevents.sort( UEventSorter( AS_DATE, vedic ));
 }
 
