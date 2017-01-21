@@ -74,8 +74,10 @@ YogaEditorPanel::YogaEditorPanel( wxWindow* parent, wxWindowID id, MinimalVargaH
 	const wxString *choice_source_choices = NULL;
 	choice_source = new wxChoice(this, YE_CHOICE_SOURCE, wxDefaultPosition, wxDefaultSize, 0, choice_source_choices, 0);
 	button_new_source = new wxBitmapButton(this, YE_NEW_SOURCE, wxNullBitmap);
-	check_higher_vargas = new wxCheckBox(this, YE_CHECK_VargaS, _("Allow Higher Vargas"));
+	check_higher_vargas = new wxCheckBox(this, YE_CHECK_VARGAS, _("Allow Higher Vargas"));
+	//text_effect = new wxTextCtrl(this, YE_TEXT_EFFECT, wxEmptyString ); //, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
 	text_effect = new wxTextCtrl(this, YE_TEXT_EFFECT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
+	//text_effect = new wxTextCtrl(this, YE_TEXT_EFFECT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_WORDWRAP);
 	text_rule = new wxTextCtrl(this, YE_TEXT_RULE, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
 	drag_chart = new DragChart(this, wxID_ANY, evaluationChart);
 	button_parse_rule = new wxButton(this, YE_PARSE_RULE, _("Parse Rule"));
@@ -99,14 +101,17 @@ YogaEditorPanel::YogaEditorPanel( wxWindow* parent, wxWindowID id, MinimalVargaH
 	Connect( YE_YOGA_LIST, wxEVT_COMMAND_LIST_ITEM_SELECTED, wxListEventHandler( YogaEditorPanel::OnYogaListLeftSelected ));
 
 	// changes events of input items
+	/*
 	Connect( YE_TEXT_EFFECT, wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
 	Connect( YE_TEXT_RULE, wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
 	Connect( YE_TEXT_DESCRIPTION, wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
+	*/
+	Connect( wxID_ANY, wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
 
 	Connect( YE_CHOICE_GROUP, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
 	Connect( YE_CHOICE_SOURCE, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
 
-	Connect( YE_CHECK_VargaS, wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
+	Connect( YE_CHECK_VARGAS, wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( YogaEditorPanel::OnFieldChanged ));
 
 	updateFieldStatus();
 }
@@ -256,6 +261,8 @@ void YogaEditorPanel::OnYogaListLeftSelected( wxListEvent& )
 ******************************************************/
 void YogaEditorPanel::OnFieldChanged( wxCommandEvent &event )
 {
+	printf( "YogaEditorPanel::OnFieldChanged\n" );
+
 	if ( ! propagateUserInput ) return;
 
 	long item = -1;

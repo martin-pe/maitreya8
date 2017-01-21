@@ -67,6 +67,7 @@ private:
     // end wxGlade
 
 	void OnCommand( wxCommandEvent &event );
+	void OnTextEnter( wxCommandEvent &event );
 	void OnSpin( wxSpinEvent &event );
 	void OnFilter( wxCommandEvent& );
 	void OnClearFilter( wxCommandEvent& );
@@ -93,7 +94,6 @@ protected:
     wxCheckBox* check_include_reflectionpoints;
     wxCheckBox* check_include_sums;
     wxCheckBox* check_include_differences;
-    wxCheckBox* check_include_antiscia;
     wxStaticText* label_filter;
     wxPanel* panel_filter;
     wxButton* button_filter;

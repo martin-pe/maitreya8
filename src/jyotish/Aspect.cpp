@@ -364,8 +364,8 @@ list<AspectEvent> &AspectExpert::updateWesternAspects( ChartProperties *chartpro
 			// no aspects if one of them is a house cusps
 			if ( IS_HOUSE_OBJECT( ob1 ) || IS_HOUSE_OBJECT( ob2 )) continue;
 
-			// aries excluded
-			if ( ob1 == OARIES || ob2 == OARIES ) continue;
+			// aries excluded - NO
+			//if ( ob1 == OARIES || ob2 == OARIES ) continue;
 
 			// do not compare ascendent etc items that are alwys in opposition
 			if ( ob1 == OASCENDANT && ob2 == ODESCENDANT ) continue;

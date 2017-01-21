@@ -223,6 +223,8 @@ void GenericSheetWriter::preformatItem( Painter *painter, SheetItem *item )
 ******************************************************/
 void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset )
 {
+	if ( rowset->sheet->items.size() == 0 ) return;
+
 	//printf( "GenericSheetWriter::preformatRowset\n" );
 	double xmax = pageSize.real() - 2 * contentRect.x;
 	double ymax = pageSize.imag() - 2 * contentRect.y;
@@ -231,6 +233,7 @@ void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset 
 	rowset->rect = MRect( contentRect.x, ycursor, xmax, ymax + 1 );
 	int shrinkrate = 0;
 
+	// preformat items and shrink them if necessary
 	while ( shrinkrate < 10 && rowset->rect.height > ymax )
 	{
 		y0 = ycursor;
@@ -249,6 +252,16 @@ void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset 
 		//printf( "GenericSheetWriter::preformatRowset after loop rect height %f ymax %f\n", rowset->rect.height, ymax );
 	}
 
+	// distribute item continously
+	double yd = ( ymax - rowset->rect.height ) / rowset->sheet->items.size();
+	y0 = .5 * yd;
+	for( list<SheetItem*>::iterator iter = rowset->sheet->items.begin(); iter != rowset->sheet->items.end(); iter++ )
+	{
+		(*iter)->moveTo( (*iter)->rect.x, y0 );
+		y0 += (*iter)->rect.height + yd;
+	}
+
+	/*
 	// arrange vertically
 	y0 = rowset->rect.y + .5 * ( ymax - rowset->rect.height );
 	//printf( "GenericSheetWriter::preformatRowset arrange rect height %f ymax %f y0 %f\n", rowset->rect.height, ymax, y0 );
@@ -258,6 +271,7 @@ void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset 
 		y0 += (*iter)->rect.height;
 		//printf( "GenericSheetWriter::preformatRowset after arrange ITEM rect x %f y %f\n", (*iter)->rect.x, (*iter)->rect.y );
 	}
+	*/
 
 	if ( doCenterAll ) rowset->sheet->centerItems();
 }
@@ -292,22 +306,16 @@ void GenericSheetWriter::preformatColset( Painter *painter, SheetColumnSet *cols
 			preformatItem( painter, item );
 			maxh = Max( maxh, item->rect.height );
 			sumx += item->rect.width;
-
-			//item->moveTo( MPoint( currentx, colset->rect.y ));
-			//currentx += xrightmax / colset->getSize();
 		}
 		shrinkrate++;
 		if ( sumx > xrightmax )
 		{
-			printf( "WARN: table ist too large sumx %f contentRect.x %f xrightmax %f, shrinkrate %d\n", sumx, contentRect.x, xrightmax, shrinkrate );
+			printf( "WARN: table ist too large sumx %f contentRect.x %f xrightmax %f, shrinkrate %d\n",
+				sumx, contentRect.x, xrightmax, shrinkrate );
 		}
 	}
 
 	colset->rect.height = maxh + table_widget_extra_y;
-	//double diff = 0;
-	//if ( colset->getSize() > 1 ) diff = ( colset->rect.width - sumx ) / ( colset->getSize() - 1 );
-
-	//double newx = contentRect.x + .5 * diff;
 	double newx = contentRect.x + .5 * ( colset->rect.width - sumx - ( colset->getSize() - 1 ) * table_widget_extra_y );
 
 	for( list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
@@ -417,9 +425,6 @@ void GenericSheetWriter::preformatTable( Painter *painter, Table *table )
 
 		xSizeContents = Max( p.real(), xSizeContents );
 		table->header.rect.height = Y_EXTRA_HEADER * p.imag();
-
-		//wxFont fff = *fc->getFont( getFontIdForItem( WitHeader ));
-		//printf( "HEADER size %f size %d\n", p.imag(), fff.GetPointSize());
 	}
 	table->rect = MRect( contentRect.x, 0, 0, table->header.rect.height );
 	double singleLineTotalWidth = 0;
@@ -898,7 +903,13 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 	{
 		painter->setDefaultPen();
 		painter->setTransparentBrush();
-		painter->drawRectangle( table->rect );
+		MRect r = table->rect;
+		if ( table->header.rect.height > 0 )
+		{
+			r.y += table->header.rect.height;
+			r.height -= table->header.rect.height;
+		}
+		painter->drawRectangle( r );
 	}
 
 	//wxLogMessage( wxT( "ENDE GenericSheetWriter::drawTable" ));

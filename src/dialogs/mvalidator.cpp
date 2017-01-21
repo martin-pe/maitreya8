@@ -669,7 +669,7 @@ wxSpinCtrl *MSpinValidator::getSpinControl()
 bool MSpinValidator::TransferFromWindow()
 {
 	*value = getSpinControl()->GetValue();
-	//printf( "MSpinValidator::TransferFromWindow value %d\n", *value );
+	printf( "MSpinValidator::TransferFromWindow value %d\n", *value );
 	return true;
 }
 

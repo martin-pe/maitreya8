@@ -158,7 +158,7 @@ double myatof( const wxString &s )
 	wxStrcpy( tmp, s );
 	wxChar *c = tmp;
 	wxChar dp = (localeconv()->decimal_point)[0];
-	printf( "mathbase::myatof decimal point of locale is '%c'\n", dp );
+	//printf( "mathbase::myatof decimal point of locale is '%c'\n", dp );
 
 	while ( *c )
 	{

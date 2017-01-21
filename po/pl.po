@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maitreya 6\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-01-07 09:44+0100\n"
+"POT-Creation-Date: 2017-01-09 14:27+0100\n"
 "PO-Revision-Date: 2012-07-18 20:46+0100\n"
 "Last-Translator: Mariusz Gajowniczek <yogamaya@yogamaya.pl>\n"
 "Language-Team: http://yogamaya.pl <yogamaya@yogamaya.pl>\n"
@@ -501,7 +501,7 @@ msgstr "Rok"
 msgid "Filter"
 msgstr "Filter"
 
-#: src/base/Commands.cpp:335 src/dialogs/UranianParamPanel.cpp:76
+#: src/base/Commands.cpp:335 src/dialogs/UranianParamPanel.cpp:75
 #, fuzzy
 msgid "Clear Filter"
 msgstr "Zastosuj filtr"
@@ -4144,16 +4144,11 @@ msgstr ""
 msgid "Differences"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:73 src/dialogs/WesternPanel.cpp:85
-#: src/gui/MenuProvider.cpp:641
-msgid "Antiscia"
-msgstr ""
-
-#: src/dialogs/UranianParamPanel.cpp:74 src/dialogs/UranianParamPanel.cpp:209
+#: src/dialogs/UranianParamPanel.cpp:73 src/dialogs/UranianParamPanel.cpp:208
 msgid "No Filter"
 msgstr "Bez filtra"
 
-#: src/dialogs/UranianParamPanel.cpp:75
+#: src/dialogs/UranianParamPanel.cpp:74
 #, fuzzy
 msgid "Set Filter ..."
 msgstr "Zastosuj filtr"
@@ -5133,6 +5128,10 @@ msgstr "Długość"
 msgid "45 Degree Longitude"
 msgstr "Długość"
 
+#: src/dialogs/WesternPanel.cpp:85 src/gui/MenuProvider.cpp:641
+msgid "Antiscia"
+msgstr ""
+
 #: src/dialogs/WesternPanel.cpp:86
 #, fuzzy
 msgid "House Position"
@@ -5204,64 +5203,64 @@ msgstr "Źródło"
 msgid "Allow Higher Vargas"
 msgstr "Zezwól na większe podziały Vargas"
 
-#: src/dialogs/YogaEditorPanel.cpp:81
+#: src/dialogs/YogaEditorPanel.cpp:83
 msgid "Parse Rule"
 msgstr "Zmień znaczenia"
 
-#: src/dialogs/YogaEditorPanel.cpp:82
+#: src/dialogs/YogaEditorPanel.cpp:84
 msgid "Evaluate"
 msgstr "Sprawdź"
 
-#: src/dialogs/YogaEditorPanel.cpp:83
+#: src/dialogs/YogaEditorPanel.cpp:85
 msgid "Clear Chart"
 msgstr "Wyczyść diagram"
 
-#: src/dialogs/YogaEditorPanel.cpp:407
+#: src/dialogs/YogaEditorPanel.cpp:414
 #, c-format
 msgid "Do you want to delete the Yoga %s?"
 msgstr "Czy chcesz skasować tę Yoga %s?"
 
-#: src/dialogs/YogaEditorPanel.cpp:538
+#: src/dialogs/YogaEditorPanel.cpp:545
 msgid "Move current Yoga up"
 msgstr "Przesuń wybraną Yogę w górę"
 
-#: src/dialogs/YogaEditorPanel.cpp:540
+#: src/dialogs/YogaEditorPanel.cpp:547
 msgid "Move current Yoga down"
 msgstr "Przesuń wybraną Yogę w dół"
 
-#: src/dialogs/YogaEditorPanel.cpp:542
+#: src/dialogs/YogaEditorPanel.cpp:549
 msgid "Insert new Yoga at current position"
 msgstr "Ustaw nową Yogę na wybraną pozycję"
 
-#: src/dialogs/YogaEditorPanel.cpp:544
+#: src/dialogs/YogaEditorPanel.cpp:551
 msgid "Delete current Yoga"
 msgstr "Skasuj wybraną Yogę"
 
-#: src/dialogs/YogaEditorPanel.cpp:546
+#: src/dialogs/YogaEditorPanel.cpp:553
 msgid "Copy current Yoga"
 msgstr "Kopiuj wybraną Yogę"
 
-#: src/dialogs/YogaEditorPanel.cpp:552
+#: src/dialogs/YogaEditorPanel.cpp:559
 msgid "Create a new group"
 msgstr "Utwórz nową grupę"
 
-#: src/dialogs/YogaEditorPanel.cpp:556
+#: src/dialogs/YogaEditorPanel.cpp:563
 msgid "Create a new source"
 msgstr "Utwórz nowe źródło"
 
-#: src/dialogs/YogaEditorPanel.cpp:557
+#: src/dialogs/YogaEditorPanel.cpp:564
 msgid "Check this to include the Yoga only in Rasi chart"
 msgstr "Sprawdź aby ustawić tylko Jogę w diagramie Rasi"
 
-#: src/dialogs/YogaEditorPanel.cpp:561
+#: src/dialogs/YogaEditorPanel.cpp:568
 msgid "Parse the current rule for syntactical correctness"
 msgstr "Przypisz aktualne znaczenia"
 
-#: src/dialogs/YogaEditorPanel.cpp:562
+#: src/dialogs/YogaEditorPanel.cpp:569
 msgid "Evaluate the rule in the chart"
 msgstr "Wskaż znaczenia w diagramie"
 
-#: src/dialogs/YogaEditorPanel.cpp:563
+#: src/dialogs/YogaEditorPanel.cpp:570
 msgid "Remove all objects from the chart"
 msgstr "Usuń wszystkie obiekty z diagramu"
 
@@ -5603,7 +5602,7 @@ msgstr "Korzystne/niekorzystne Nakszatry"
 msgid "Horoscope"
 msgstr "Horoskop partnera"
 
-#: src/gui/PdfTools.cpp:259 src/gui/PdfTools.cpp:286 src/gui/PdfTools.cpp:422
+#: src/gui/PdfTools.cpp:259 src/gui/PdfTools.cpp:286 src/gui/PdfTools.cpp:431
 #, c-format
 msgid "Chart printed to file %s."
 msgstr "Diagram drukawany do pliku %s."
@@ -5613,30 +5612,35 @@ msgstr "Diagram drukawany do pliku %s."
 msgid "Select Printout"
 msgstr "Wydruk"
 
-#: src/gui/PdfTools.cpp:336
+#: src/gui/PdfTools.cpp:332
 #, fuzzy
 msgid "Save Document"
 msgstr "Zamknij diagram"
 
-#: src/gui/PdfTools.cpp:443
+#: src/gui/PdfTools.cpp:381
+#, c-format
+msgid "File %s exists. Do you want to overwrite?"
+msgstr "Plik %s istnieje. Czy chcesz go zamienić?"
+
+#: src/gui/PdfTools.cpp:452
 msgid "Cannot launch pdf viewer."
 msgstr "Nie można odnaleźć przeglądarki."
 
-#: src/gui/PdfTools.cpp:451
+#: src/gui/PdfTools.cpp:460
 #, fuzzy
 msgid ""
 "Pdf viewer command is empty. Please configure the command in the "
 "configuration dialog."
 msgstr "Nie mogę odnaleźć przeglądarki Pdf. Skonfiguruj swoją przeglądarkę."
 
-#: src/gui/PdfTools.cpp:461
+#: src/gui/PdfTools.cpp:470
 #, fuzzy, c-format
 msgid ""
 "Pdf viewer file \"%s\" does not exist. Please configure the command in the "
 "configuration dialog."
 msgstr "Nie mogę odnaleźć przeglądarki Pdf. Skonfiguruj swoją przeglądarkę."
 
-#: src/gui/PdfTools.cpp:474
+#: src/gui/PdfTools.cpp:483
 #, c-format
 msgid "Can't launch pdf viewer, command is \"%s\" (error code %ld)"
 msgstr "Nie mogę odnaleźć przeglądarki pdf, polecenie \"%s\" (błąd kodu %ld)"
@@ -8305,9 +8309,6 @@ msgstr "Wszystkie grupy"
 
 #~ msgid "Permission denied (%s)"
 #~ msgstr "Dostęp zabroniony (%s)"
-
-#~ msgid "File %s exists. Do you want to overwrite?"
-#~ msgstr "Plik %s istnieje. Czy chcesz go zamienić?"
 
 #~ msgid "Could not create file %s"
 #~ msgstr "Nie mogę utworzyć pliku %s"

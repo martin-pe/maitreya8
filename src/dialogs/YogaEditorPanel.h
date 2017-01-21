@@ -57,7 +57,7 @@ enum { YE_YOGA_PANEL = wxID_HIGHEST + 100, YE_YOGA_LIST, YE_OPENFILE,
 	YE_NEW_GROUP, YE_DESCRIPTION, YE_EVALUATE, YE_UP, YE_DOWN, YE_DELETE_YOGA,
 	YE_NEW_YOGA, YE_COPY_YOGA, YE_CLEAR_CHART, YE_OBJECTS,
 	YE_TEXT_EFFECT, YE_TEXT_RULE, YE_TEXT_DESCRIPTION,
-	YE_CHOICE_GROUP, YE_CHOICE_SOURCE, YE_CHECK_VargaS
+	YE_CHOICE_GROUP, YE_CHOICE_SOURCE, YE_CHECK_VARGAS
 };
 
 /*************************************************//**
@@ -65,7 +65,6 @@ enum { YE_YOGA_PANEL = wxID_HIGHEST + 100, YE_YOGA_LIST, YE_OPENFILE,
 * \brief Main panel for YogaEditor
 *
 ******************************************************/
-//class YogaEditorPanel: public BasicWidget
 class YogaEditorPanel : public wxPanel
 {
 	DECLARE_CLASS( YogaEditorPanel )

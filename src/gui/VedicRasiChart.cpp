@@ -74,12 +74,17 @@ void VedicRasiChart::drawGrid()
 			else
 			{
 				// break cross lines if a center string is available
-				const double tol = text_height;
-				painter->drawLine( xcenter - xr + cornertol, ycenter - yr + cornertol, xcenter - tol, ycenter - tol );
-				painter->drawLine( xcenter + tol, ycenter + tol, xcenter + xr - cornertol, ycenter + yr - cornertol );
+				//const double innertol = .08;
+				const double innertol = text_height / 300;
+				painter->drawLine( xcenter - xr + cornertol, ycenter - yr + cornertol,
+					xcenter - innertol * ( xr - cornertol ), ycenter - innertol * ( yr + cornertol ));
+				painter->drawLine( xcenter + innertol * ( xr - cornertol ), ycenter + innertol * ( yr - cornertol ),
+				xcenter + xr - cornertol, ycenter + yr - cornertol );
 
-				painter->drawLine( xcenter - xr + cornertol, ycenter + yr - cornertol, xcenter - tol, ycenter + tol );
-				painter->drawLine( xcenter + tol, ycenter - tol, xcenter + xr - cornertol, ycenter - yr + cornertol );
+				painter->drawLine( xcenter - xr + cornertol, ycenter + yr - cornertol,
+					xcenter - innertol * ( xr + cornertol ), ycenter + innertol * ( yr - cornertol ));
+				painter->drawLine( xcenter + innertol * ( xr - cornertol ), ycenter - innertol * ( yr + cornertol ),
+					xcenter + xr - cornertol, ycenter - yr + cornertol );
 			}
 
 			painter->drawLine( xcenter, ycenter + yr, xcenter + xr, ycenter );
@@ -369,16 +374,16 @@ void VedicRasiChart::setupEast()
 ******************************************************/
 void VedicRasiChart::paintCenterString()
 {
-	//printf( "VedicRasiChart::paintCenterString text_height %f\n", text_height );
 	if ( h1set && chartprops->getVedicChartDisplayConfig().centerInfoType == VCC_NOTHING ) return;
 	vector<wxString> v = getCenterString();
 	if ( v.size() == 0 ) return;
+	//printf( "VedicRasiChart::paintCenterString text_height %f v size %ld\n", text_height, v.size() );
 
 	setDefaultTextColor();
 	if ( centerstring_graphic ) setSymbolFont();
 	else setGraphicFont();
 
-	MRect rect( xcenter - xr, ycenter - .5 * text_height * v.size(), 2 * xr, text_height * v.size());
+	MRect rect( xcenter - xr, ycenter - .5 * v.size() * text_height, 2 * xr, text_height );
 
 	for( uint i = 0; i < v.size(); i++ )
 	{

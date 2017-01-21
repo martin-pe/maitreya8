@@ -368,17 +368,16 @@ void PdfPainter::drawTextFormatted( const MRect &r, const wxString &t, const int
 	double x1 = r.x;
 	double y1 = r.y;
 
-	pdf->SetXY( r.x, y1 );
-
 	MPoint p = getTextExtent( t );
 
 	if ( align & Align::Top )
 	{
-		y1 = r.y + r.height; // + .5 * sh;
+		y1 = r.y + p.imag();
 	}
 	else if ( align & Align::Bottom )
 	{
-		y1 = r.y + r.height; // + .5 * sh;
+		// add a certain part of p.imag, otherwise text will be too deep e.g. in SBC
+		y1 = r.y + r.height - .2 * p.imag();
 	}
 	else if ( align & Align::VCenter )
 	{

@@ -90,7 +90,7 @@ public:
 		synastrywidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
 		synastrywidget->addVedicChart();
 		synastrywidget->addWesternChart();
-		synastrywidget->getAspectExpert()->setSortOrder( uconfig.sortOrder );
+		//synastrywidget->getAspectExpert()->setSortOrder( uconfig.sortOrder );
 		swidget = new TextWidget( synastrysplitter, props );
 		swidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
 		swidget->addWidgetOption( WO_MENU_FULL_OBJECT );
@@ -139,8 +139,7 @@ public:
 		// PNB_URANIAN
 		wxPanel *panel = new wxPanel( notebook );
 		uwidget = new TextWidget( panel, props, URANIAN_VIEW_WO );
-		printf( "ORBIS 1 %f\n", uconfig.orbisPartner );
-		//upanel = new UranianParamPanel( panel, PV_UPANEL, props, &uconfig.orbisPartner );
+		//printf( "ORBIS 1 %f\n", uconfig.orbisPartner );
 		upanel = new UranianParamPanel( panel, PV_UPANEL, props, &uconfig.orbisPartner );
 		wxBoxSizer* usizer = new wxBoxSizer( wxHORIZONTAL );
 		usizer->Add( upanel, 0, wxALL, 3);
@@ -176,7 +175,7 @@ public:
 		config->viewprefs->sashPartnerComposite = compositesplitter->GetSashPosition();
 		config->viewprefs->activePagePartner = notebook->GetSelection();
 
-		printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisPartner );
+		//printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisPartner );
 		*config->uranian = props->getUranianConfig();
 
 		delete uexpert;

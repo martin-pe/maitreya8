@@ -128,6 +128,10 @@ public:
 	double orbisRadix;
 	double orbisTransit;
 	double orbisPartner;
+
+	// strange food for Apple gcc. last attribute cannot be adressed properly, so we add dummy here
+	double
+	dummy;
 };
 
 /*************************************************//**

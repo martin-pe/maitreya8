@@ -170,10 +170,12 @@ public:
 		Connect( TBS_TZ, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceTimezone ));
 		Connect( TBS_TRANSITMODE, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceCommand ));
 
+/*
 		Connect( TBS_ORBIS, wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( TransitView::OnSpinCommand ));
 		Connect( TBS_ORBIS, wxEVT_COMMAND_TEXT_ENTER, wxTextEventHandler( TransitView::OnGeneralCommand ));
 		Connect( TBS_SORT, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceCommand ));
 		Connect( TBS_GRADKREIS, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceCommand ));
+		*/
 		Connect( wxEVT_IDLE, wxIdleEventHandler( TransitView::OnIdle ));
 
 		Connect( TBS_DATE_PROGRESS, wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( TransitView::OnDateProgress ));

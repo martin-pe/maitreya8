@@ -291,18 +291,18 @@ protected:
 		l.Add( wxT( "Reflection Points" ));
 		l.Add( wxT( "Sums" ));
 		l.Add( wxT( "Differences" ));
+		//l.Add( wxT( "Antiscia" ));
 		//l.Add( wxT( "Triples" ));
-		l.Add( wxT( "Antiscia" ));
 		wxMultiChoiceDialog dialog( this, _( "Included Event Configuration" ), GUI_APP_NAME, l );
 
 		UranianConfig &ucfg = props->getUranianConfig();
 		wxArrayInt a;
-		if( ucfg.eventsIncludeMidpoints ) a.Add( 0 );
-		if( ucfg.eventsIncludeSums ) a.Add( 1 );
-		if( ucfg.eventsIncludeDifferences ) a.Add( 2 );
-		if( ucfg.eventsIncludeReflectionPoints ) a.Add( 3 );
-		//if( ucfg.eventsIncludeTriples ) a.Add( 4 );
-		if( ucfg.eventsIncludeAntiscia ) a.Add( 5 );
+		if( ucfg.eventsIncludeMidpoints )        a.Add( 0 );
+		if( ucfg.eventsIncludeReflectionPoints ) a.Add( 1 );
+		if( ucfg.eventsIncludeSums )             a.Add( 2 );
+		if( ucfg.eventsIncludeDifferences )      a.Add( 3 );
+		//if( ucfg.eventsIncludeAntiscia )         a.Add( 4 );
+		//if( ucfg.eventsIncludeTriples ) a.Add( 5 );
 		dialog.SetSelections( a );
 		if ( IS_VALID_SIZE( config->viewprefs->sizes.sUranianConfigDialog )) dialog.SetSize( config->viewprefs->sizes.sUranianConfigDialog );
 
@@ -313,8 +313,8 @@ protected:
 			ucfg.eventsIncludeReflectionPoints = ( a.Index( 1 ) != wxNOT_FOUND );
 			ucfg.eventsIncludeSums             = ( a.Index( 2 ) != wxNOT_FOUND );
 			ucfg.eventsIncludeDifferences      = ( a.Index( 3 ) != wxNOT_FOUND );
-			//ucfg.eventsIncludeTriples          = ( a.Index( 4 ) != wxNOT_FOUND );
-			ucfg.eventsIncludeAntiscia         = ( a.Index( 5 ) != wxNOT_FOUND );
+			//ucfg.eventsIncludeAntiscia         = ( a.Index( 4 ) != wxNOT_FOUND );
+			//ucfg.eventsIncludeTriples          = ( a.Index( 5 ) != wxNOT_FOUND );
 			config->viewprefs->sizes.sUranianConfigDialog = dialog.GetSize();
 			OnDataChanged();
 			updateView = true;

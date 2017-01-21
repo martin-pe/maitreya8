@@ -18,7 +18,7 @@ resourcesdir="${contentsdir}/Resources"
 copy_resources()
 {
 	rname=$1
-	echo "copy resources of type $rname ..."
+	# echo "copy resources of type $rname ..."
 	if [[ ! -d src/resources/${rname} ]]
 	then
 		echo "FATAL: directory src/resources/${rname} does not exist"

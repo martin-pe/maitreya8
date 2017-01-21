@@ -219,11 +219,6 @@
 													"type": "sbc"
 												}
 										]
-                },
-                {
-                    "type": "vedicchartpair",
-                    "division1": 10,
-                    "division2": 12
                 }
             ]
         },

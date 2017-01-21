@@ -327,13 +327,14 @@ bool PdfTool::selectFilename( wxString &fullname, wxString basename )
 	filename << basename << wxT( ".pdf" );
 	const static wxString filetypes = wxT( "Portable Document Format (*.pdf)|*.pdf|All files (*)| *.*" );
 
-	int style = wxFD_SAVE;
-	if ( pcfg->askOverwrite )
-	{
-		style |= wxFD_OVERWRITE_PROMPT;
-	}
-
-	wxFileDialog exportFileDialog( NULL, _("Save Document" ), config->viewprefs->defExportPath, filename, filetypes, style, wxDefaultPosition );
+	// override prompt is handled later
+	wxFileDialog exportFileDialog( NULL,
+		_("Save Document" ),
+		config->viewprefs->defExportPath,
+		filename,
+		filetypes,
+		wxFD_SAVE | wxFD_OVERWRITE_PROMPT,
+		wxDefaultPosition );
 	if ( exportFileDialog.ShowModal() == wxID_OK )
 	{
 		fullname << exportFileDialog.GetDirectory() << wxFileName::GetPathSeparator() << exportFileDialog.GetFilename();
@@ -372,6 +373,14 @@ void PdfTool::printHoroscope( Horoscope *horoscope, const bool doSelect )
 		filename = config->viewprefs->defExportPath;
 		if ( ! filename.IsEmpty()) filename << wxFileName::GetPathSeparator();
 		filename << horoscope->getHName() << wxT( ".pdf" );
+
+		if ( pcfg->askOverwrite && wxFile::Exists( filename ))
+		{
+			if ( 
+			doMessageBox( 0,
+				wxString::Format( _( "File %s exists. Do you want to overwrite?" ), filename.c_str())
+				,wxYES_NO | wxCENTRE ) == wxID_NO ) return;
+		}
 	}
 	printHoroscope( horoscope, filename );
 }
