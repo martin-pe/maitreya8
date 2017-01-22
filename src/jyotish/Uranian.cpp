@@ -289,6 +289,8 @@ map<ObjectId, ClusterMatchingList> UranianExpert::createClusterMatchingList( con
 	const Horoscope *h = v->horoscope;
 	assert( h );
 
+	const bool skipAries = ( ctx == PcTransit || ctx == PcDirection );
+
 	for( list<UEvent>::iterator iter = v->uevents.begin(); iter != v->uevents.end(); iter++ )
 	{
 		if ( (*iter).isDoubleObjectEvent())
@@ -297,6 +299,8 @@ map<ObjectId, ClusterMatchingList> UranianExpert::createClusterMatchingList( con
 			assert( uo1 );
 			UObject *uo2 = wxDynamicCast( (*iter).e2, UObject );
 			assert( uo2 );
+
+			if ( uo1->p == OARIES && skipAries ) continue;
 
 			if ( m.find( uo1->p ) == m.end()) m[uo1->p] = ClusterMatchingList( uo1->context );
 			m[uo1->p].matchings.push_back( uo2 );
@@ -310,6 +314,8 @@ map<ObjectId, ClusterMatchingList> UranianExpert::createClusterMatchingList( con
 	{
 			UObject *uo = iter->getObjectEntity();
 			UObjectPair *up = (*iter).getObjectPairEntity();
+
+			if ( uo->p == OARIES && skipAries ) continue;
 
 			if ( m.find( uo->p ) == m.end())
 			{

@@ -22,6 +22,7 @@
 
 #include "astrobase.h"
 #include "ChartProperties.h"
+#include "Conf.h"
 #include "FileConfig.h"
 #include "Horoscope.h"
 #include "mathbase.h"
@@ -33,6 +34,8 @@
 
 #include <set>
 #include <wx/textfile.h>
+
+extern Config *config;
 
 IMPLEMENT_SINGLETON( UranianTextLoader )
 
@@ -704,9 +707,14 @@ void UranianHelper::writeMatchingClusters( Sheet *sheet, const PlanetContext &ct
 	map<ObjectId, ClusterMatchingList> m = expert->createClusterMatchingList( ctx );
 	set<ObjectId> keys;
 
+	//printf( "UranianHelper::writeMatchingClusters context %d\n", (int)ctx );
+
+	const bool skipAries = ( ctx == PcTransit || ctx == PcDirection );
+
 	// collect keys. only planets with matchings need to be shown
 	for( map<ObjectId,ClusterMatchingList>::iterator iter = m.begin(); iter != m.end(); iter++ )
 	{
+		if ( iter->first == OARIES && skipAries ) continue;
 		keys.insert( iter->first );
 	}
 
