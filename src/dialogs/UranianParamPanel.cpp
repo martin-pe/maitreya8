@@ -65,9 +65,7 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
     sizer_gradkreis_staticbox = new wxStaticBox(this, wxID_ANY, _("Gradkreis"));
     choice_gradkreis = new GradkreisChoice(this, wxID_ANY);
     choice_sort = new SortChoice(this, wxID_ANY);
-		// spin_orbis = new wxSpinCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER|wxTE_PROCESS_TAB, 0, 600);
-    spin_orbis = new wxSpinCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize,
-			wxSP_ARROW_KEYS|wxTE_PROCESS_ENTER|wxTE_PROCESS_TAB, 0, 600);
+		spin_orbis = new wxSpinCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER|wxTE_PROCESS_TAB, 0, 600);
     check_include_midpoints = new wxCheckBox(this, wxID_ANY, _("Midpoints"));
     check_include_reflectionpoints = new wxCheckBox(this, wxID_ANY, _("Reflection Points"));
     check_include_sums = new wxCheckBox(this, wxID_ANY, _("Sums"));
@@ -84,7 +82,6 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 	choice_gradkreis->SetValidator( MChoiceValidator( (int*)&uconfig.gradkreis ));
 	choice_sort->SetValidator( MChoiceValidator( (int*)&uconfig.sortOrder ));
 	spin_orbis->SetValidator( MSpinValidator( &iorbis ));
-	//spin_orbis->SetValue( (int)( 60 * *orbis ));
 
 	check_include_midpoints->SetValidator( MCheckValidator( &uconfig.eventsIncludeMidpoints ));
 	check_include_reflectionpoints->SetValidator( MCheckValidator( &uconfig.eventsIncludeReflectionPoints ));
@@ -97,8 +94,7 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 	Connect( wxID_ANY, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( UranianParamPanel::OnCommand ));
 	Connect( wxID_ANY, wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( UranianParamPanel::OnSpin ));
 	Connect( wxID_ANY, wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( UranianParamPanel::OnCommand ));
-	//Connect( wxID_ANY, wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( UranianParamPanel::OnCommand ));
-	Connect( wxID_ANY, wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( UranianParamPanel::OnTextEnter ));
+	Connect( wxID_ANY, wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( UranianParamPanel::OnCommand ));
 
 	Connect( CMD_FILTER, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( UranianParamPanel::OnFilter ));
 	Connect( CMD_CLEAR_FILTER, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( UranianParamPanel::OnClearFilter ));
@@ -114,31 +110,7 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 UranianParamPanel::~UranianParamPanel()
 {
 	*orbis = (double)iorbis / 60.0;
-	//*orbis = (double)spin_orbis->GetValue() / 60.0;
-	printf( "UranianParamPanel::Destructor orbis %f\n", *orbis );
-}
-
-/*****************************************************
-**
-**   UranianParamPanel   ---   OnTextEnter
-**
-******************************************************/
-void UranianParamPanel::OnTextEnter( wxCommandEvent &event )
-{
-	event.Skip();
-
-	wxString s = event.GetString();
-	printf( "Spin value %d string %s\n", spin_orbis->GetValue(), str2char( s ));
-	long l;
-	s.ToLong( &l );
-	iorbis = (int)l;
-
-	*orbis = (double)iorbis / 60.0;
-	//*orbis = (double)spin_orbis->GetValue() / 60.0;
-	printf( "UranianParamPanel::OnTEXT ENTER orbis %f iorbis %d\n", *orbis, iorbis );
-
-	//printf( "UranianParamPanel::OnCommand\n" );
-	emitChangeEvent();
+	//printf( "UranianParamPanel::Destructor orbis %f\n", *orbis );
 }
 
 /*****************************************************
@@ -150,9 +122,6 @@ void UranianParamPanel::OnCommand( wxCommandEvent &event )
 {
 	event.Skip();
 	*orbis = (double)iorbis / 60.0;
-	//*orbis = (double)spin_orbis->GetValue() / 60.0;
-	printf( "UranianParamPanel::OnCommand orbis %f iorbis %d\n", *orbis, iorbis );
-	printf( "Spin value %d\n", spin_orbis->GetValue());
 	//printf( "UranianParamPanel::OnCommand\n" );
 	emitChangeEvent();
 }
@@ -166,8 +135,6 @@ void UranianParamPanel::OnSpin( wxSpinEvent &event )
 {
 	event.Skip();
 	*orbis = (double)iorbis / 60.0;
-	//*orbis = (double)spin_orbis->GetValue() / 60.0;
-	printf( "UranianParamPanel::OnSpin orbis %f iorbis %d\n", *orbis, iorbis );
 	//printf( "UranianParamPanel::OnSpin orbis %f iorbis %d\n", *orbis, iorbis );
 	emitChangeEvent();
 }
