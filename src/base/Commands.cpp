@@ -214,7 +214,7 @@ bool CommandHandler::processKeyEvent( wxKeyEvent *event, wxWindow *window, const
 
 	if ( i )
 	{
-		printf( "CommandHandler::processKeyEvent: POST\n" );
+		//printf( "CommandHandler::processKeyEvent: POST\n" );
 		wxMenuEvent evt( wxEVT_COMMAND_MENU_SELECTED, i );
 		wxPostEvent( window, evt );
 	}
