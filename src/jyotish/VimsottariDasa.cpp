@@ -55,8 +55,7 @@ ObjectId VimsottariBaseDasaExpert::getDasaLordByIndex( const int &i )
 ******************************************************/
 int VimsottariBaseDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
-	const Nakshatra pindex = Nakshatra(( (int)nak + 7 ) % 9 );
-	return pindex;
+	return ((int)nak + 7 ) % 9;
 }
 
 /*****************************************************

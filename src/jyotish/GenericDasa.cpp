@@ -428,7 +428,7 @@ ObjectId ShodshottariDasaExpert::getDasaLordByIndex( const int &index )
 int ShodshottariDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
 	int diff = (int)a_red( nak - N27_PUSHYAMI, 27 );
-	return (Nakshatra)a_red( diff, 8 );
+	return (int)a_red( diff, 8 );
 }
 
 /*****************************************************
@@ -463,7 +463,7 @@ ObjectId DvadashottariDasaExpert::getDasaLordByIndex( const int &index )
 int DvadashottariDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
 	int diff = (int)a_red( 26 - nak, 27 ); // 26 is Revati
-	return (Nakshatra)a_red( diff, 8 );
+	return (int)a_red( diff, 8 );
 }
 
 /*****************************************************
@@ -498,7 +498,7 @@ ObjectId PanchottariDasaExpert::getDasaLordByIndex( const int &index )
 int PanchottariDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
 	int diff = (int)a_red( nak - N27_ANURADHA, 27 );
-	return (Nakshatra)a_red( diff, 7 );
+	return (int)a_red( diff, 7 );
 }
 
 /*****************************************************
@@ -533,7 +533,7 @@ ObjectId ShatabdikaDasaExpert::getDasaLordByIndex( const int &index )
 int ShatabdikaDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
 	int diff = (int)a_red( nak - 26, 27 ); // 26 is Revati
-	return (Nakshatra)a_red( diff, 7 );
+	return (int)a_red( diff, 7 );
 }
 
 /*****************************************************
@@ -568,7 +568,7 @@ ObjectId ChaturashitiSamaDasaExpert::getDasaLordByIndex( const int &index )
 int ChaturashitiSamaDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
 	int diff = (int)a_red( nak - N27_SWATI, 27 );
-	return (Nakshatra)a_red( diff, 7 );
+	return (int)a_red( diff, 7 );
 }
 
 /*****************************************************
@@ -601,7 +601,7 @@ ObjectId DvisaptatiSamaDasaExpert::getDasaLordByIndex( const int &index )
 int DvisaptatiSamaDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
 	int diff = (int)a_red( nak - 18, 27 );
-	return (Nakshatra)a_red( diff, 8 );
+	return (int)a_red( diff, 8 );
 }
 
 /*****************************************************
@@ -635,7 +635,7 @@ ObjectId ShatTrimshatSamaDasaExpert::getDasaLordByIndex( const int &index )
 int ShatTrimshatSamaDasaExpert::getDasaIndex4Nakshatra( const Nakshatra &nak )
 {
 	int diff = (int)a_red( nak - 21, 27 );
-	return (Nakshatra)a_red( diff, 8 );
+	return (int)a_red( diff, 8 );
 }
 
 /*****************************************************
