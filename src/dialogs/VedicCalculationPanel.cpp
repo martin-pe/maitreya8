@@ -51,35 +51,27 @@ VedicCalculationPanel::VedicCalculationPanel( wxWindow* parent ) : ConfigPanel( 
 	config2model();
 
     // begin wxGlade: VedicCalculationPanel::VedicCalculationPanel
-    notebook = new wxNotebook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0);
+    notebook = new wxNotebook(this, wxID_ANY);
     notebook_pane6 = new wxPanel(notebook, wxID_ANY);
     notebook_pane5 = new wxPanel(notebook, wxID_ANY);
     notebook_pane4 = new wxPanel(notebook, wxID_ANY);
     notebook_pane3 = new wxPanel(notebook, wxID_ANY);
     notebook_pane2 = new wxPanel(notebook, wxID_ANY);
     notebook_pane1 = new wxPanel(notebook, wxID_ANY);
-    sizer_benefics_staticbox = new wxStaticBox(notebook_pane1, wxID_ANY, _("Benefics"));
-    sizer_varga_staticbox = new wxStaticBox(notebook_pane2, wxID_ANY, _("Vargas"));
-    sizer_varga_significations_staticbox = new wxStaticBox(notebook_pane2, wxID_ANY, _("Varga Significations"));
-    sizer_nakshatra_staticbox = new wxStaticBox(notebook_pane3, wxID_ANY, _("Nakshatras and Dasas"));
-    sizer_yl_staticbox = new wxStaticBox(notebook_pane3, wxID_ANY, _("Year Length"));
-    sizer_kalavelas_staticbox = new wxStaticBox(notebook_pane4, wxID_ANY, _("Kala Velas"));
-    sizer_jaimini_staticbox = new wxStaticBox(notebook_pane6, wxID_ANY, _("Jaimini Astrology"));
-    sizer_basic_staticbox = new wxStaticBox(notebook_pane1, wxID_ANY, _("Basic Calculation"));
     label_ayanamsa = new wxStaticText(notebook_pane1, wxID_ANY, _("Ayanamsa"));
     const wxString choice_ayanamsa_choices[] = {
         _("None"),
         _("Lahiri"),
         _("Raman"),
-        _("Krishnamurti")
+        _("Krishnamurti"),
     };
-    choice_ayanamsa = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_ayanamsa_choices, 0);
+    choice_ayanamsa = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_ayanamsa_choices);
     label_vcalc_node = new wxStaticText(notebook_pane1, wxID_ANY, _("Lunar Node"));
     const wxString choice_node_choices[] = {
         _("True"),
-        _("Mean")
+        _("Mean"),
     };
-    choice_node = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_node_choices, 0);
+    choice_node = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_node_choices);
     label_vcalc_house = new wxStaticText(notebook_pane1, wxID_ANY, _("House System"));
     const wxString choice_house_choices[] = {
         _("Placidus"),
@@ -94,83 +86,83 @@ VedicCalculationPanel::VedicCalculationPanel( wxWindow* parent ) : ConfigPanel( 
         _("Polich/Page"),
         _("Alcabitus"),
         _("Morinus"),
-        _("Krusinski")
+        _("Krusinski"),
     };
-    choice_house = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 13, choice_house_choices, 0);
+    choice_house = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 13, choice_house_choices);
     check_use_house_cusp = new wxCheckBox(notebook_pane1, wxID_ANY, _("K.P. Style Houses (Start at Cusp)"));
     label_moon = new wxStaticText(notebook_pane1, wxID_ANY, _("Moon"));
     const wxString choice_moon_choices[] = {
         _("Never"),
         _("Angle < 180"),
         _("120 < Angle < 240"),
-        _("Always")
+        _("Always"),
     };
-    choice_moon = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_moon_choices, 0);
+    choice_moon = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_moon_choices);
     label_mercury = new wxStaticText(notebook_pane1, wxID_ANY, _("Mercury"));
     const wxString choice_mercury_choices[] = {
         _("Never"),
         _("No Malefic Conjunction"),
-        _("Always")
+        _("Always"),
     };
-    choice_mercury = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_mercury_choices, 0);
+    choice_mercury = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_mercury_choices);
     label_tempfriend = new wxStaticText(notebook_pane2, wxID_ANY, _("Temporary Friends"));
     const wxString choice_tempfriend_choices[] = {
         _("Always Rasi"),
-        _("Varga")
+        _("Varga"),
     };
-    choice_tempfriend = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_tempfriend_choices, 0);
+    choice_tempfriend = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_tempfriend_choices);
     label_hora = new wxStaticText(notebook_pane2, wxID_ANY, _("Hora"));
     const wxString choice_hora_choices[] = {
         _("Parasara"),
-        _("Continuous")
+        _("Continuous"),
     };
-    choice_hora = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_hora_choices, 0);
+    choice_hora = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_hora_choices);
     label_drekkana = new wxStaticText(notebook_pane2, wxID_ANY, _("Drekkana"));
     const wxString choice_drekkana_choices[] = {
         _("Parasara"),
-        _("Continuous")
+        _("Continuous"),
     };
-    choice_drekkana = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_drekkana_choices, 0);
+    choice_drekkana = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_drekkana_choices);
     label_chaturtamsa = new wxStaticText(notebook_pane2, wxID_ANY, _("Chaturtamsa"));
     const wxString choice_chaturtamsa_choices[] = {
         _("Parasara"),
-        _("Continuous")
+        _("Continuous"),
     };
-    choice_chaturtamsa = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_chaturtamsa_choices, 0);
+    choice_chaturtamsa = new wxChoice(notebook_pane2, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_chaturtamsa_choices);
     const wxString choice_vargas_choices[] = {
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_vargas = new wxChoice(notebook_pane2, CD_VARGA_CHOICE, wxDefaultPosition, wxDefaultSize, 3, choice_vargas_choices, 0);
+    choice_vargas = new wxChoice(notebook_pane2, CD_VARGA_CHOICE, wxDefaultPosition, wxDefaultSize, 3, choice_vargas_choices);
     text_varga_signification = new wxTextCtrl(notebook_pane2, CD_VARGA_SIGNIFICATION_TEXT, wxEmptyString);
     label_nakdasa = new wxStaticText(notebook_pane3, wxID_ANY, _("Nakshatra Dasa Calculation"));
     const wxString choice_nakdasa_choices[] = {
         _("Longitude"),
-        _("Entry Time")
+        _("Entry Time"),
     };
-    choice_nakdasa = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_nakdasa_choices, 0);
+    choice_nakdasa = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_nakdasa_choices);
     label_kalachakra = new wxStaticText(notebook_pane3, wxID_ANY, _("Kalachakra Antardasa Mode"));
     const wxString choice_kala_choices[] = {
         _("Progressive"),
         _("Cyclic"),
         _("Progr same Naks"),
-        _("Portion Zero")
+        _("Portion Zero"),
     };
-    choice_kala = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_kala_choices, 0);
+    choice_kala = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_kala_choices);
     label_yogini_lords = new wxStaticText(notebook_pane3, wxID_ANY, _("Display Yogini Dasa Lords"));
     const wxString choice_yogini_lords_choices[] = {
         _("Yogini"),
         _("Planet"),
-        _("Both")
+        _("Both"),
     };
-    choice_yogini_lords = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_yogini_lords_choices, 0);
+    choice_yogini_lords = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_yogini_lords_choices);
     label_dasa_enddate = new wxStaticText(notebook_pane3, wxID_ANY, _("Display Date for Dasas"));
     const wxString choice_dasa_show_date_mode_choices[] = {
         _("Start Date"),
-        _("End Date")
+        _("End Date"),
     };
-    choice_dasa_show_date_mode = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_dasa_show_date_mode_choices, 0);
+    choice_dasa_show_date_mode = new wxChoice(notebook_pane3, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_dasa_show_date_mode_choices);
     choice_yl = new YearLengthChoice(notebook_pane3, CD_YL_CHOICE, true);
     text_custom_yl = new wxTextCtrl(notebook_pane3, wxID_ANY, wxEmptyString);
     label_kalavela = new wxStaticText(notebook_pane4, wxID_ANY, _("Kala Vela"));
@@ -180,9 +172,9 @@ VedicCalculationPanel::VedicCalculationPanel( wxWindow* parent ) : ConfigPanel( 
         _("Ardhaprahara"),
         _("Yama Ghantaka"),
         _("Gulika"),
-        _("Mandi")
+        _("Mandi"),
     };
-    choice_kalavela = new wxChoice(notebook_pane4, CD_KALAVELA_CHOICE, wxDefaultPosition, wxDefaultSize, 6, choice_kalavela_choices, 0);
+    choice_kalavela = new wxChoice(notebook_pane4, CD_KALAVELA_CHOICE, wxDefaultPosition, wxDefaultSize, 6, choice_kalavela_choices);
     label_kalalord = new wxStaticText(notebook_pane4, wxID_ANY, _("Lord"));
     const wxString choice_kalalord_choices[] = {
         _("None"),
@@ -193,53 +185,53 @@ VedicCalculationPanel::VedicCalculationPanel( wxWindow* parent ) : ConfigPanel( 
         _("Jupiter"),
         _("Venus"),
         _("Saturn"),
-        _("Eight")
+        _("Eight"),
     };
-    choice_kalalord = new wxChoice(notebook_pane4, CD_KALAVELA_LORD_CHOICE, wxDefaultPosition, wxDefaultSize, 9, choice_kalalord_choices, 0);
+    choice_kalalord = new wxChoice(notebook_pane4, CD_KALAVELA_LORD_CHOICE, wxDefaultPosition, wxDefaultSize, 9, choice_kalalord_choices);
     label_kalaportion = new wxStaticText(notebook_pane4, -1, _("Part of Portion"));
     const wxString choice_kalaportion_choices[] = {
         _("Beginning"),
         _("Middle"),
-        _("End")
+        _("End"),
     };
-    choice_kalaportion = new wxChoice(notebook_pane4, CD_KALAVELA_PORTION_CHOICE, wxDefaultPosition, wxDefaultSize, 3, choice_kalaportion_choices, 0);
+    choice_kalaportion = new wxChoice(notebook_pane4, CD_KALAVELA_PORTION_CHOICE, wxDefaultPosition, wxDefaultSize, 3, choice_kalaportion_choices);
     label_av_calcrules = new wxStaticText(notebook_pane5, wxID_ANY, _("Calculation Rules"));
     const wxString choice_av_calcrules_choices[] = {
         _("Parasara"),
-        _("Vahara Mihira")
+        _("Vahara Mihira"),
     };
-    choice_av_calcrules = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_av_calcrules_choices, 0);
+    choice_av_calcrules = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_av_calcrules_choices);
     label_av_benefics = new wxStaticText(notebook_pane5, wxID_ANY, _("Benefic points"));
     const wxString choice_av_benefics_choices[] = {
         _("Number"),
         _("Line"),
-        _("Dot")
+        _("Dot"),
     };
-    choice_av_benefics = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_av_benefics_choices, 0);
+    choice_av_benefics = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_av_benefics_choices);
     label_av_sarva = new wxStaticText(notebook_pane5, wxID_ANY, _("Sarvashtakavarga"));
     const wxString choice_av_sarva_choices[] = {
         _("Planets only"),
-        _("With Lagna")
+        _("With Lagna"),
     };
-    choice_av_sarva = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_av_sarva_choices, 0);
+    choice_av_sarva = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_av_sarva_choices);
     label_av_sodhya = new wxStaticText(notebook_pane5, wxID_ANY, _("Sodhya Pinda"));
     const wxString choice_av_sodhya_choices[] = {
         _("Parasara"),
-        _("Mantreswar")
+        _("Mantreswar"),
     };
-    choice_av_sodhya = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_av_sodhya_choices, 0);
+    choice_av_sodhya = new wxChoice(notebook_pane5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_av_sodhya_choices);
     label_arudha = new wxStaticText(notebook_pane6, wxID_ANY, _("Arudhas"));
     const wxString choice_arudha_choices[] = {
         _("Parasara"),
-        _("Raman")
+        _("Raman"),
     };
-    choice_arudha = new wxChoice(notebook_pane6, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_arudha_choices, 0);
+    choice_arudha = new wxChoice(notebook_pane6, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_arudha_choices);
     label_karaka = new wxStaticText(notebook_pane6, wxID_ANY, _("Chara Karakas"));
     const wxString choice_charakaraka_choices[] = {
         _("Parasara"),
-        _("Raman")
+        _("Raman"),
     };
-    choice_charakaraka = new wxChoice(notebook_pane6, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_charakaraka_choices, 0);
+    choice_charakaraka = new wxChoice(notebook_pane6, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_charakaraka_choices);
 
     set_properties();
     do_layout();
@@ -492,115 +484,107 @@ void VedicCalculationPanel::do_layout()
     // begin wxGlade: VedicCalculationPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 1, 3, 3);
     wxBoxSizer* sizer_pane6 = new wxBoxSizer(wxVERTICAL);
-    sizer_jaimini_staticbox->Lower();
-    wxStaticBoxSizer* sizer_jaimini = new wxStaticBoxSizer(sizer_jaimini_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_jaimini = new wxStaticBoxSizer(new wxStaticBox(notebook_pane6, wxID_ANY, _("Jaimini Astrology")), wxHORIZONTAL);
     wxGridSizer* grid_jaimini = new wxGridSizer(2, 2, 0, 0);
     wxBoxSizer* sizer_pane5 = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* sizer_av = new wxBoxSizer(wxVERTICAL);
     wxFlexGridSizer* grid_av = new wxFlexGridSizer(4, 2, 3, 3);
     wxBoxSizer* sizer_pane4 = new wxBoxSizer(wxVERTICAL);
-    sizer_kalavelas_staticbox->Lower();
-    wxStaticBoxSizer* sizer_kalavelas = new wxStaticBoxSizer(sizer_kalavelas_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_kalavelas = new wxStaticBoxSizer(new wxStaticBox(notebook_pane4, wxID_ANY, _("Kala Velas")), wxVERTICAL);
     wxFlexGridSizer* grid_kalavelas = new wxFlexGridSizer(3, 2, 3, 3);
     wxFlexGridSizer* sizer_pane3 = new wxFlexGridSizer(2, 1, 0, 0);
-    sizer_yl_staticbox->Lower();
-    wxStaticBoxSizer* sizer_yl = new wxStaticBoxSizer(sizer_yl_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_yl = new wxStaticBoxSizer(new wxStaticBox(notebook_pane3, wxID_ANY, _("Year Length")), wxVERTICAL);
     wxFlexGridSizer* grid_yl = new wxFlexGridSizer(2, 2, 3, 3);
-    sizer_nakshatra_staticbox->Lower();
-    wxStaticBoxSizer* sizer_nakshatra = new wxStaticBoxSizer(sizer_nakshatra_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_nakshatra = new wxStaticBoxSizer(new wxStaticBox(notebook_pane3, wxID_ANY, _("Nakshatras and Dasas")), wxHORIZONTAL);
     wxFlexGridSizer* grid_nakshatra = new wxFlexGridSizer(4, 2, 3, 3);
     wxFlexGridSizer* sizer_pane2 = new wxFlexGridSizer(1, 2, 3, 3);
-    sizer_varga_significations_staticbox->Lower();
-    wxStaticBoxSizer* sizer_varga_significations = new wxStaticBoxSizer(sizer_varga_significations_staticbox, wxVERTICAL);
-    sizer_varga_staticbox->Lower();
-    wxStaticBoxSizer* sizer_varga = new wxStaticBoxSizer(sizer_varga_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_varga_significations = new wxStaticBoxSizer(new wxStaticBox(notebook_pane2, wxID_ANY, _("Varga Significations")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_varga = new wxStaticBoxSizer(new wxStaticBox(notebook_pane2, wxID_ANY, _("Vargas")), wxHORIZONTAL);
     wxFlexGridSizer* grid_varga = new wxFlexGridSizer(4, 2, 3, 3);
     wxFlexGridSizer* sizer_pane1 = new wxFlexGridSizer(2, 1, 0, 0);
-    sizer_benefics_staticbox->Lower();
-    wxStaticBoxSizer* sizer_benefics = new wxStaticBoxSizer(sizer_benefics_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_benefics = new wxStaticBoxSizer(new wxStaticBox(notebook_pane1, wxID_ANY, _("Benefics")), wxVERTICAL);
     wxFlexGridSizer* grid_sizer_other = new wxFlexGridSizer(3, 2, 3, 3);
-    sizer_basic_staticbox->Lower();
-    wxStaticBoxSizer* sizer_basic = new wxStaticBoxSizer(sizer_basic_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_basic = new wxStaticBoxSizer(new wxStaticBox(notebook_pane1, wxID_ANY, _("Basic Calculation")), wxVERTICAL);
     wxFlexGridSizer* grid_basic = new wxFlexGridSizer(3, 2, 3, 3);
-    grid_basic->Add(label_ayanamsa, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_basic->Add(choice_ayanamsa, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
-    grid_basic->Add(label_vcalc_node, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_basic->Add(choice_node, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
-    grid_basic->Add(label_vcalc_house, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_basic->Add(choice_house, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_basic->Add(label_ayanamsa, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_basic->Add(choice_ayanamsa, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_basic->Add(label_vcalc_node, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_basic->Add(choice_node, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_basic->Add(label_vcalc_house, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_basic->Add(choice_house, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_basic->AddGrowableCol(1);
     sizer_basic->Add(grid_basic, 1, wxALL, 3);
     sizer_basic->Add(check_use_house_cusp, 0, wxALL|wxEXPAND, 3);
     sizer_pane1->Add(sizer_basic, 1, wxALL|wxEXPAND, 3);
-    grid_sizer_other->Add(label_moon, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_sizer_other->Add(choice_moon, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_sizer_other->Add(label_mercury, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_sizer_other->Add(choice_mercury, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_sizer_other->Add(label_moon, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_sizer_other->Add(choice_moon, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_sizer_other->Add(label_mercury, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_sizer_other->Add(choice_mercury, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_sizer_other->AddGrowableCol(1);
     sizer_benefics->Add(grid_sizer_other, 0, wxEXPAND, 0);
     sizer_pane1->Add(sizer_benefics, 1, wxALL|wxEXPAND, 3);
     notebook_pane1->SetSizer(sizer_pane1);
-    grid_varga->Add(label_tempfriend, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_varga->Add(choice_tempfriend, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_varga->Add(label_hora, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_varga->Add(choice_hora, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_varga->Add(label_drekkana, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_varga->Add(choice_drekkana, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_varga->Add(label_chaturtamsa, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_varga->Add(choice_chaturtamsa, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_varga->Add(label_tempfriend, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_varga->Add(choice_tempfriend, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_varga->Add(label_hora, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_varga->Add(choice_hora, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_varga->Add(label_drekkana, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_varga->Add(choice_drekkana, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_varga->Add(label_chaturtamsa, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_varga->Add(choice_chaturtamsa, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_varga->AddGrowableCol(1);
     sizer_varga->Add(grid_varga, 1, wxALL|wxEXPAND, 3);
     sizer_pane2->Add(sizer_varga, 1, wxALL, 3);
-    sizer_varga_significations->Add(choice_vargas, 0, wxALL|wxALIGN_RIGHT, 3);
+    sizer_varga_significations->Add(choice_vargas, 0, wxALIGN_RIGHT|wxALL, 3);
     sizer_varga_significations->Add(text_varga_signification, 0, wxALL|wxEXPAND, 3);
     sizer_pane2->Add(sizer_varga_significations, 1, wxALL, 3);
     notebook_pane2->SetSizer(sizer_pane2);
-    grid_nakshatra->Add(label_nakdasa, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_nakshatra->Add(choice_nakdasa, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_nakshatra->Add(label_kalachakra, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_nakshatra->Add(choice_kala, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_nakshatra->Add(label_yogini_lords, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_nakshatra->Add(choice_yogini_lords, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
-    grid_nakshatra->Add(label_dasa_enddate, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_nakshatra->Add(choice_dasa_show_date_mode, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
+    grid_nakshatra->Add(label_nakdasa, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_nakshatra->Add(choice_nakdasa, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_nakshatra->Add(label_kalachakra, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_nakshatra->Add(choice_kala, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_nakshatra->Add(label_yogini_lords, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_nakshatra->Add(choice_yogini_lords, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_nakshatra->Add(label_dasa_enddate, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_nakshatra->Add(choice_dasa_show_date_mode, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
     sizer_nakshatra->Add(grid_nakshatra, 1, wxALL, 3);
     sizer_pane3->Add(sizer_nakshatra, 1, wxALL|wxEXPAND, 3);
     wxStaticText* label_yl = new wxStaticText(notebook_pane3, wxID_ANY, _("Length"));
-    grid_yl->Add(label_yl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_yl->Add(choice_yl, 1, wxLEFT|wxALIGN_RIGHT, 0);
+    grid_yl->Add(label_yl, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_yl->Add(choice_yl, 1, wxALIGN_RIGHT|wxLEFT, 0);
     wxStaticText* label_customyl = new wxStaticText(notebook_pane3, wxID_ANY, _("Custom Length"));
-    grid_yl->Add(label_customyl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_yl->Add(text_custom_yl, 0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 0);
+    grid_yl->Add(label_customyl, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_yl->Add(text_custom_yl, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 0);
     grid_yl->AddGrowableCol(1);
     sizer_yl->Add(grid_yl, 1, wxEXPAND, 0);
     sizer_pane3->Add(sizer_yl, 1, wxALL|wxEXPAND, 3);
     notebook_pane3->SetSizer(sizer_pane3);
-    grid_kalavelas->Add(label_kalavela, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_kalavelas->Add(choice_kalavela, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_kalavelas->Add(label_kalalord, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_kalavelas->Add(choice_kalalord, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_kalavelas->Add(label_kalaportion, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_kalavelas->Add(choice_kalaportion, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_kalavelas->Add(label_kalavela, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_kalavelas->Add(choice_kalavela, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_kalavelas->Add(label_kalalord, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_kalavelas->Add(choice_kalalord, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_kalavelas->Add(label_kalaportion, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_kalavelas->Add(choice_kalaportion, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_kalavelas->AddGrowableCol(1);
     sizer_kalavelas->Add(grid_kalavelas, 1, wxALL, 3);
     sizer_pane4->Add(sizer_kalavelas, 0, wxALL, 3);
     notebook_pane4->SetSizer(sizer_pane4);
-    grid_av->Add(label_av_calcrules, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_av->Add(choice_av_calcrules, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
-    grid_av->Add(label_av_benefics, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_av->Add(choice_av_benefics, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
-    grid_av->Add(label_av_sarva, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_av->Add(choice_av_sarva, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
-    grid_av->Add(label_av_sodhya, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_av->Add(choice_av_sodhya, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
+    grid_av->Add(label_av_calcrules, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_av->Add(choice_av_calcrules, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_av->Add(label_av_benefics, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_av->Add(choice_av_benefics, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_av->Add(label_av_sarva, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_av->Add(choice_av_sarva, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_av->Add(label_av_sodhya, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_av->Add(choice_av_sodhya, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
     grid_av->AddGrowableCol(1);
     sizer_av->Add(grid_av, 1, wxALL|wxEXPAND, 3);
     sizer_pane5->Add(sizer_av, 0, wxALL, 3);
     notebook_pane5->SetSizer(sizer_pane5);
-    grid_jaimini->Add(label_arudha, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_jaimini->Add(choice_arudha, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
-    grid_jaimini->Add(label_karaka, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_jaimini->Add(choice_charakaraka, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
+    grid_jaimini->Add(label_arudha, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_jaimini->Add(choice_arudha, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_jaimini->Add(label_karaka, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_jaimini->Add(choice_charakaraka, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
     sizer_jaimini->Add(grid_jaimini, 1, wxEXPAND, 0);
     sizer_pane6->Add(sizer_jaimini, 0, wxALL, 3);
     notebook_pane6->SetSizer(sizer_pane6);

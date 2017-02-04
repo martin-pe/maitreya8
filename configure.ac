@@ -5,7 +5,7 @@ dnl  File: configure.ac
 dnl
 dnl
 
-AC_INIT(maitreya8, 8.0.alpha1b)
+AC_INIT(maitreya8, 8.0.alpha1e)
 AM_INIT_AUTOMAKE()
 
 dnl should be included according to documentation, but not supported by older versions of automake
@@ -54,10 +54,6 @@ wxgtkset="`echo $WX_BASENAME | grep gtk`"
 if test "x$wxgtkset" != x; then
 	PKG_CHECK_MODULES([FONTCONFIG], [fontconfig >= 2.0])
 fi
-
-
-dnl WX_ARG_SYS_WITH(libxpm,    [  --with-libxpm           use libxpm (XPM file format)], wxUSE_LIBXPM)
-
 
 dnl
 dnl Swiss Ephemeris

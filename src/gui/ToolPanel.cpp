@@ -37,7 +37,6 @@
 #include "Lang.h"
 #include "MenuProvider.h"
 #include "mspin.h"
-//#include "spintest.h"
 #include "PrintoutConfig.h"
 #include "SheetConfig.h"
 #include "VargaBase.h"

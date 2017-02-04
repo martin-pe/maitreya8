@@ -336,10 +336,10 @@ wxString FileConfig::getPdfViewerDefaultFilename()
 #endif
 
 #ifndef __WXMSW__
-#define NUM_READERS 8
+#define NUM_READERS 9
 	const wxChar *pdfviewers[NUM_READERS] = { wxT( "evince" ), wxT( "kpdf" ), wxT( "xpdf" ),
 		wxT( "okular" ), wxT( "kghostview" ), wxT( "acroread" ),
-		wxT( "epdfview" ), wxT( "atril" ) };
+		wxT( "epdfview" ), wxT( "atril" ), wxT( "xreader" ) };
 	wxString s;
 
 	for ( int i = 0; i < NUM_READERS; i++ )

@@ -121,8 +121,6 @@ PenDialog::PenDialog( wxWindow* parent, const wxPen &p, MBrush *brush )
 	pen = new wxPen( p );
 
     // begin wxGlade: PenDialog::PenDialog
-    sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Pen Preview"));
-    sizer_fg_staticbox = new wxStaticBox(this, wxID_ANY, _("Attributes"));
     panel_preview = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
     label_fgcolor = new wxStaticText(this, wxID_ANY, _("Color"));
     button_fgcolor = new wxColourPickerCtrl(this, CD_PICKER_FGCOLOR);
@@ -134,9 +132,9 @@ PenDialog::PenDialog( wxWindow* parent, const wxPen &p, MBrush *brush )
         _("Dot"),
         _("Long Dash"),
         _("Short Dash"),
-        _("Dot Dash")
+        _("Dot Dash"),
     };
-    choice_fgstyle = new wxChoice(this, CD_CHOICE_FGSTYLE, wxDefaultPosition, wxDefaultSize, 5, choice_fgstyle_choices, 0);
+    choice_fgstyle = new wxChoice(this, CD_CHOICE_FGSTYLE, wxDefaultPosition, wxDefaultSize, 5, choice_fgstyle_choices);
     preview = new PenDialogPreviewWidget(panel_preview, wxID_ANY, pen, bgbrush);
     static_line = new wxStaticLine(this, wxID_ANY);
     button_ok = new wxButton(this, wxID_OK, _("OK"));
@@ -210,17 +208,15 @@ void PenDialog::do_layout()
     // begin wxGlade: PenDialog::do_layout
     wxBoxSizer* sizer_main = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* sizer_bottom = new wxBoxSizer(wxHORIZONTAL);
-    sizer_fg_staticbox->Lower();
-    wxStaticBoxSizer* sizer_fg = new wxStaticBoxSizer(sizer_fg_staticbox, wxVERTICAL);
-    sizer_preview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_fg = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Attributes")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Pen Preview")), wxHORIZONTAL);
     wxBoxSizer* sizer_previewpanel = new wxBoxSizer(wxHORIZONTAL);
     wxFlexGridSizer* grid_fg = new wxFlexGridSizer(3, 2, 3, 3);
-    grid_fg->Add(label_fgcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_fg->Add(label_fgcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_fg->Add(button_fgcolor, 1, wxALL, 3);
-    grid_fg->Add(label_fgwidth, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_fg->Add(label_fgwidth, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_fg->Add(spin_fgwidth, 0, wxALL, 3);
-    grid_fg->Add(label_fgstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_fg->Add(label_fgstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_fg->Add(choice_fgstyle, 0, wxALL, 3);
     grid_fg->AddGrowableCol(1);
     sizer_fg->Add(grid_fg, 0, wxALIGN_RIGHT, 0);
@@ -232,7 +228,7 @@ void PenDialog::do_layout()
     sizer_main->Add(static_line, 0, wxEXPAND, 0);
     sizer_bottom->Add(button_ok, 0, wxALL, 3);
     sizer_bottom->Add(button_cancel, 0, wxALL, 3);
-    sizer_main->Add(sizer_bottom, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
+    sizer_main->Add(sizer_bottom, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     Layout();

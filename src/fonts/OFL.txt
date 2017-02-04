@@ -5,7 +5,7 @@ This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
 http://scripts.sil.org/OFL
 
-The font contain glyphs from
+The font contains glyphs from
 ----------------------------------------
 
 - MaitreyaSymbols which is distributed along with Maitreya versions 7.*.

@@ -128,7 +128,7 @@ public:
 
 	double getLongitude() const { return longitude; }
 	double getLatitude() const { return latitude; }
-	wxString getLocName() const { return locName; }
+	const wxString getLocName() const { return locName; }
 
 	double getTimeZone() const { return tz; }
 	void setTimeZone( const double &ttz ) { tz = ttz; }
@@ -200,7 +200,7 @@ public:
 	void setLocation( const Location& );
 	Location *getLocation() const { return location; }
 
-	wxString getName() const { return name; }
+	const wxString getName() const { return name; }
 	void setName( const wxString& );
 
 	wxString getRemark() const { return remark; }

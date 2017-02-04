@@ -1,4 +1,4 @@
-This program is copyrighted (C) 2003-2016 Martin Pettau, and is distributed under terms of the GNU GPL v. 2.0 or later.
+This program is copyrighted (C) 2003-2017 Martin Pettau, and is distributed under terms of the GNU GPL v. 2.0 or later.
 
 The author can be contacted at http://www.saravali.de/contact.html.
 
@@ -6,13 +6,13 @@ The software is Open Source and free for private and commercial use.
 
 Parts of this program contain code from
 ----------------------------------------
-1. Swiss Ephemeris project http://www.astro.com/swisseph/. which is licensed under the GNU GPL v. 2.0 or later. Swiss Ephemeris is authored by Dieter Koch and Alois Treindl and is copyright (C) 1997 - 2013 Astrodienst AG, Switzerland.
+1. Swiss Ephemeris project http://www.astro.com/swisseph/. which is licensed under the GNU GPL v. 2.0 or later. Swiss Ephemeris is authored by Dieter Koch and Alois Treindl and is copyrighted (C) 1997 - 2013 Astrodienst AG, Switzerland.
 
 2. wxWidgets project hhtp://wxwidgets.org which is licensed under the OSI certified wxWidgets license, available at http://www.wxwidgets.org/about/licence3.txt.
 
 3. wxpdfdoc and wxsqlite3. http://wxcode.sourceforge.net/components and are (C) Ulrich Telle
 
-4. wxJSON http://wxcode.sourceforge.net/components/wxjson and are (C) Luciano Cattani
+4. wxJSON http://wxcode.sourceforge.net/components/wxjson is (C) Luciano Cattani
 
 Atlas Data
 ----------
@@ -20,7 +20,7 @@ The atlas uses the Geonames location database (http://geonames.org) which is bas
 
 Symbol Font
 -----------
-The font is licensed under the SIL Open Font License.
+The font Saravali.ttf is licensed under the SIL Open Font License. For details see the license file under src/fonts/OFL.txt
 
 Details of the GNU v2 license are
 

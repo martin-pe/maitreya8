@@ -81,9 +81,6 @@ private:
 
 protected:
     // begin wxGlade: AspectPanel::attributes
-    wxStaticBox* sizer_preview_staticbox;
-    wxStaticBox* sizer_options_staticbox;
-    wxStaticBox* sizer_type_staticbox;
     wxChoice* choice_aspect_type;
     wxCheckBox* check_active;
     wxButton* button_pen;

@@ -210,7 +210,7 @@ void Location::dump(wxString &o)
 ******************************************************/
 LocationModel::LocationModel( const Location &loc )
 {
-	locname = loc.getLocName();;
+	locname = loc.getLocName();
 	longitude = fabs( loc.getLongitude());
 	c_longitude = loc.getLongitude() < 0 ? 1 : 0;
 	latitude = fabs( loc.getLatitude());

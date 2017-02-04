@@ -82,9 +82,6 @@ private:
 
 protected:
     // begin wxGlade: AtlasEditDialog::attributes
-    wxStaticBox* sizer_main_staticbox;
-    wxStaticBox* sizer_bottom_staticbox;
-    wxStaticBox* sizer_left_staticbox;
     wxStaticText* label_name;
     wxTextCtrl* text_name;
     wxStaticText* label_asciiname;

@@ -72,10 +72,6 @@ private:
 
 protected:
     // begin wxGlade: PlanetSignDisplayPanel::attributes
-    wxStaticBox* sizer_preview_staticbox;
-    wxStaticBox* sizer_signs_staticbox;
-    wxStaticBox* sizer_positions_staticbox;
-    wxStaticBox* sizer_planets_staticbox;
     wxCheckBox* check_planet_symbols;
     wxCheckBox* check_vedic_planet_names;
     wxStaticText* label_uranus;

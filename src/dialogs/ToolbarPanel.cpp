@@ -53,22 +53,19 @@ ToolbarPanel::ToolbarPanel( wxWindow* parent ) : ConfigPanel( parent )
 	config2model();
 
     // begin wxGlade: ToolbarPanel::ToolbarPanel
-    sizer_selected_staticbox = new wxStaticBox(this, wxID_ANY, _("Items in Toolbar"));
-    sizer_options_staticbox = new wxStaticBox(this, wxID_ANY, _("Toolbar Options"));
-    sizer_available_staticbox = new wxStaticBox(this, wxID_ANY, _("Available Items"));
-    list1 = new wxListCtrl(this, CD_LIST1, wxDefaultPosition, wxDefaultSize, wxLC_REPORT|wxLC_NO_HEADER|wxLC_SINGLE_SEL|wxSUNKEN_BORDER);
+    list1 = new wxListCtrl(this, CD_LIST1, wxDefaultPosition, wxDefaultSize, wxBORDER_SUNKEN|wxLC_NO_HEADER|wxLC_REPORT|wxLC_SINGLE_SEL);
     button_right = new wxBitmapButton(this, CD_RIGHT, wxNullBitmap);
     button_left = new wxBitmapButton(this, CD_LEFT, wxNullBitmap);
     button_up = new wxBitmapButton(this, CD_UP, wxNullBitmap);
     button_down = new wxBitmapButton(this, CD_DOWN, wxNullBitmap);
-    list2 = new wxListCtrl(this, CD_LIST2, wxDefaultPosition, wxDefaultSize, wxLC_REPORT|wxLC_NO_HEADER|wxLC_SINGLE_SEL|wxSUNKEN_BORDER);
+    list2 = new wxListCtrl(this, CD_LIST2, wxDefaultPosition, wxDefaultSize, wxBORDER_SUNKEN|wxLC_NO_HEADER|wxLC_REPORT|wxLC_SINGLE_SEL);
     label_toolstyle = new wxStaticText(this, wxID_ANY, _("Show Tools as"));
     const wxString choice_toolstyle_choices[] = {
         _("Text"),
         _("Icon"),
-        _("Text and Icon")
+        _("Text and Icon"),
     };
-    choice_toolstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_toolstyle_choices, 0);
+    choice_toolstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_toolstyle_choices);
 
     set_properties();
     do_layout();
@@ -438,15 +435,12 @@ void ToolbarPanel::do_layout()
 {
     // begin wxGlade: ToolbarPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(2, 1, 3, 3);
-    sizer_options_staticbox->Lower();
-    wxStaticBoxSizer* sizer_options = new wxStaticBoxSizer(sizer_options_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_options = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Toolbar Options")), wxHORIZONTAL);
     wxFlexGridSizer* sizer_listbox = new wxFlexGridSizer(1, 3, 3, 3);
-    sizer_selected_staticbox->Lower();
-    wxStaticBoxSizer* sizer_selected = new wxStaticBoxSizer(sizer_selected_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_selected = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Items in Toolbar")), wxVERTICAL);
     wxFlexGridSizer* sizer_selected2 = new wxFlexGridSizer(2, 1, 0, 0);
     wxFlexGridSizer* sizer_buttons = new wxFlexGridSizer(4, 1, 3, 3);
-    sizer_available_staticbox->Lower();
-    wxStaticBoxSizer* sizer_available = new wxStaticBoxSizer(sizer_available_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_available = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Available Items")), wxVERTICAL);
     wxFlexGridSizer* sizer_available2 = new wxFlexGridSizer(1, 1, 0, 0);
     sizer_available2->Add(list1, 1, wxALL|wxEXPAND, 3);
     sizer_available2->AddGrowableRow(0);
@@ -457,7 +451,7 @@ void ToolbarPanel::do_layout()
     sizer_buttons->Add(button_left, 0, wxALL|wxEXPAND, 3);
     sizer_buttons->Add(button_up, 0, wxALL|wxEXPAND, 3);
     sizer_buttons->Add(button_down, 0, wxALL|wxEXPAND, 3);
-    sizer_listbox->Add(sizer_buttons, 1, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL|wxSHAPED, 3);
+    sizer_listbox->Add(sizer_buttons, 1, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND|wxSHAPED, 3);
     sizer_selected2->Add(list2, 1, wxALL|wxEXPAND, 3);
     sizer_selected2->AddGrowableRow(0);
     sizer_selected2->AddGrowableCol(0);
@@ -467,7 +461,7 @@ void ToolbarPanel::do_layout()
     sizer_listbox->AddGrowableCol(0);
     sizer_listbox->AddGrowableCol(2);
     sizer_main->Add(sizer_listbox, 1, wxALL|wxEXPAND, 3);
-    sizer_options->Add(label_toolstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_options->Add(label_toolstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     sizer_options->Add(choice_toolstyle, 0, wxALL, 3);
     sizer_main->Add(sizer_options, 1, wxEXPAND, 0);
     SetSizer(sizer_main);

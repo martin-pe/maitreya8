@@ -80,11 +80,6 @@ private:
 
 protected:
     // begin wxGlade: PrintoutPanel::attributes
-    wxStaticBox* sizer_save_options_staticbox;
-    wxStaticBox* sizer_custom_text_staticbox;
-    wxStaticBox* sizer_viewer_staticbox;
-    wxStaticBox* sizer_view_options_staticbox;
-    wxStaticBox* sizer_printout_staticbox;
     wxChoice* choice_printout_type;
     wxStaticText* text_printout_description;
     wxPanel* panel_description;

@@ -82,9 +82,6 @@ private:
 
 protected:
     // begin wxGlade: AtlasPanel::attributes
-    wxStaticBox* sizer_favcountries_staticbox;
-    wxStaticBox* sizer_import_staticbox;
-    wxStaticBox* sizer_db_staticbox;
     wxButton* button_dbfile;
     wxTextCtrl* text_dbfile;
     wxStaticText* text_dbstatus;

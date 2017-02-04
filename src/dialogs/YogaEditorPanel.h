@@ -35,7 +35,6 @@ using namespace std;
 // end wxGlade
 
 // begin wxGlade: ::extracode
-
 // end wxGlade
 
 class wxBitmapButton;
@@ -70,8 +69,8 @@ class YogaEditorPanel : public wxPanel
 	DECLARE_CLASS( YogaEditorPanel )
 
 public:
-	// begin wxGlade: YogaEditorPanel::ids
-	// end wxGlade
+    // begin wxGlade: YogaEditorPanel::ids
+    // end wxGlade
 
 	YogaEditorPanel( wxWindow*, wxWindowID id, MinimalVargaHoroscope* );
 
@@ -97,10 +96,10 @@ public:
 	void newItem();
 
 private:
-	// begin wxGlade: YogaEditorPanel::methods
-	void set_properties();
-	void do_layout();
-	// end wxGlade
+    // begin wxGlade: YogaEditorPanel::methods
+    void set_properties();
+    void do_layout();
+    // end wxGlade
 
 	void OnFieldChanged( wxCommandEvent& );
 	void updateFieldStatus();
@@ -125,34 +124,29 @@ protected:
 
 	virtual void doPaint( bool = true, const wxRect* = 0 ) {}
 
-	// begin wxGlade: YogaEditorPanel::attributes
-	wxStaticBox* sizer_right_staticbox;
-	wxStaticBox* sizer_dragchart_staticbox;
-	wxStaticBox* sizer_rule_staticbox;
-	wxStaticBox* sizer_effect_staticbox;
-	wxStaticBox* sizer_yogalist_staticbox;
-	wxListCtrl* list_yogas;
-	wxBitmapButton* button_up;
-	wxBitmapButton* button_down;
-	wxBitmapButton* button_new_yoga;
-	wxBitmapButton* button_delete_yoga;
-	wxBitmapButton* button_copy_yoga;
-	wxStaticText* label_description;
-	wxTextCtrl* text_description;
-	wxStaticText* label_group;
-	wxChoice* choice_group;
-	wxBitmapButton* button_new_group;
-	wxStaticText* label_source;
-	wxChoice* choice_source;
-	wxBitmapButton* button_new_source;
-	wxCheckBox* check_higher_vargas;
-	wxTextCtrl* text_effect;
-	wxTextCtrl* text_rule;
-	DragChart* drag_chart;
-	wxButton* button_parse_rule;
-	wxButton* button_evaluate;
-	wxButton* button_clear_chart;
-	// end wxGlade
+    // begin wxGlade: YogaEditorPanel::attributes
+    wxListCtrl* list_yogas;
+    wxBitmapButton* button_up;
+    wxBitmapButton* button_down;
+    wxBitmapButton* button_new_yoga;
+    wxBitmapButton* button_delete_yoga;
+    wxBitmapButton* button_copy_yoga;
+    wxStaticText* label_description;
+    wxTextCtrl* text_description;
+    wxStaticText* label_group;
+    wxChoice* choice_group;
+    wxBitmapButton* button_new_group;
+    wxStaticText* label_source;
+    wxChoice* choice_source;
+    wxBitmapButton* button_new_source;
+    wxCheckBox* check_higher_vargas;
+    wxTextCtrl* text_effect;
+    wxTextCtrl* text_rule;
+    DragChart* drag_chart;
+    wxButton* button_parse_rule;
+    wxButton* button_evaluate;
+    wxButton* button_clear_chart;
+    // end wxGlade
 }; // wxGlade: end class
 
 

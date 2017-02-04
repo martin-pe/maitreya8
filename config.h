@@ -3,17 +3,25 @@
 
 /* Define to 1 if translation of program messages to the user's native
    language is requested. */
-/* #undef ENABLE_NLS */
+#define ENABLE_NLS 1
+
+/* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
+   CoreFoundation framework. */
+/* #undef HAVE_CFLOCALECOPYCURRENT */
+
+/* Define to 1 if you have the Mac OS X function CFPreferencesCopyAppValue in
+   the CoreFoundation framework. */
+/* #undef HAVE_CFPREFERENCESCOPYAPPVALUE */
 
 /* Define if the GNU dcgettext() function is already present or preinstalled.
    */
-/* #undef HAVE_DCGETTEXT */
+#define HAVE_DCGETTEXT 1
 
 /* Define if the GNU gettext() function is already present or preinstalled. */
-/* #undef HAVE_GETTEXT */
+#define HAVE_GETTEXT 1
 
 /* Define if you have the iconv() function and it works. */
-#define HAVE_ICONV 1
+/* #undef HAVE_ICONV */
 
 /* Name of package */
 #define PACKAGE "maitreya8"
@@ -25,7 +33,7 @@
 #define PACKAGE_NAME "maitreya8"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "maitreya8 8.0.alpha1b"
+#define PACKAGE_STRING "maitreya8 8.0.alpha1e"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "maitreya8"
@@ -34,16 +42,16 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "8.0.alpha1b"
+#define PACKAGE_VERSION "8.0.alpha1e"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
 
 /* Package version of system wide Swiss Ephemeris */
-#define SWE_SYSTEM_VERSION "none"
+#define SWE_SYSTEM_VERSION "unknown"
 
 /* Use builtin Swiss Ephemeris */
-#define USE_SWE_BUILTIN 1
+#define USE_SWE_BUILTIN 0
 
 /* Use builtin wxpdfdoc */
 #define USE_WXPDFDOC_BUILTIN 1
@@ -52,7 +60,7 @@
 #define USE_WXSQLITE_BUILTIN 1
 
 /* Version number of package */
-#define VERSION "8.0.alpha1b"
+#define VERSION "8.0.alpha1e"
 
 /* CFLAGS for wxpdfdoc */
 #define WXPDFDOC_CFLAGS ""

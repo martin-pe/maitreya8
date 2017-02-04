@@ -240,17 +240,14 @@ AspectPanel::AspectPanel( wxWindow* parent ) :  ConfigPanel( parent )
 	config2model();
 
     // begin wxGlade: AspectPanel::AspectPanel
-    sizer_options_staticbox = new wxStaticBox(this, wxID_ANY, _("Options"));
-    sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Preview and Aspect Selection"));
-    sizer_type_staticbox = new wxStaticBox(this, wxID_ANY, _("Aspect Type"));
     const wxString choice_aspect_type_choices[] = {
         _("dummy"),
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_aspect_type = new wxChoice(this, CD_STYLE_CHOICE, wxDefaultPosition, wxDefaultSize, 5, choice_aspect_type_choices, 0);
+    choice_aspect_type = new wxChoice(this, CD_STYLE_CHOICE, wxDefaultPosition, wxDefaultSize, 5, choice_aspect_type_choices);
     check_active = new wxCheckBox(this, CD_CHECK_ACTIVE, _("Active"));
     button_pen = new wxButton(this, CD_BUTTON_PEN, _("Pen ..."));
     label_orbis = new wxStaticText(this, wxID_ANY, _("Orbis (deg)"));
@@ -427,19 +424,16 @@ void AspectPanel::do_layout()
     // begin wxGlade: AspectPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* sizer_styles_right = new wxFlexGridSizer(1, 1, 0, 0);
-    sizer_preview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Preview and Aspect Selection")), wxHORIZONTAL);
     wxFlexGridSizer* sizer_left = new wxFlexGridSizer(3, 1, 0, 0);
-    sizer_options_staticbox->Lower();
-    wxStaticBoxSizer* sizer_options = new wxStaticBoxSizer(sizer_options_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_options = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Options")), wxVERTICAL);
     wxGridSizer* grid_options = new wxGridSizer(2, 2, 0, 0);
-    sizer_type_staticbox->Lower();
-    wxStaticBoxSizer* sizer_type = new wxStaticBoxSizer(sizer_type_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_type = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Aspect Type")), wxVERTICAL);
     sizer_type->Add(choice_aspect_type, 0, wxALL|wxEXPAND, 3);
     sizer_left->Add(sizer_type, 1, wxEXPAND, 0);
-    grid_options->Add(check_active, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_options->Add(check_active, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_options->Add(button_pen, 0, wxALL, 3);
-    grid_options->Add(label_orbis, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_options->Add(label_orbis, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_options->Add(spin_orbis, 0, wxALL, 3);
     sizer_options->Add(grid_options, 1, wxEXPAND, 0);
     sizer_left->Add(sizer_options, 1, wxEXPAND, 0);

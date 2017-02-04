@@ -1,3 +1,10 @@
+maitreya8 (8.0.alfa2) unstable; urgency=low
+
+  * second alpha of major release
+  * various fixes
+
+ -- Martin Pettau <http://www.saravali.de/contact.html>  Mon, 26 Dec 2016 12:45:37 +0100
+
 maitreya8 (8.0.alfa1) unstable; urgency=low
 
   * first alpha of major release

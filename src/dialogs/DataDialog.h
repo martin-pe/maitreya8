@@ -89,11 +89,6 @@ private:
 
 protected:
     // begin wxGlade: DataDialog::attributes
-    wxStaticBox* sizer_remark_staticbox;
-    wxStaticBox* sizer_tz_staticbox;
-    wxStaticBox* sizer_location_staticbox;
-    wxStaticBox* sizer_date_staticbox;
-    wxStaticBox* sizer_name_staticbox;
     wxTextCtrl* text_name;
     wxStaticText* label_date;
     MDateSpin* text_date;

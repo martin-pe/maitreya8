@@ -52,6 +52,7 @@ release: all
 	$(RMR) $(RELEASE_DIR)/fonts
 	$(MKDIR) $(RELEASE_DIR)/fonts
 	$(CPR) $(SRC_DIR)/fonts/Saravali.ttf $(RELEASE_DIR)/fonts
+	$(CPR) $(SRC_DIR)/fonts/OFL.txt $(RELEASE_DIR)/fonts
 	$(CP) $(PICS_DIR)/maitreya8.ico $(RELEASE_DIR)
 	$(CP) po/maitreya8.pot $(RELEASE_DIR)
 	for LANG in de de ru te pl it hu ro es fr ta; \

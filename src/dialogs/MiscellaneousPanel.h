@@ -65,9 +65,6 @@ private:
 
 protected:
     // begin wxGlade: MiscellaneousPanel::attributes
-    wxStaticBox* sizer_export_staticbox;
-    wxStaticBox* sizer_logging_staticbox;
-    wxStaticBox* sizer_misc_staticbox;
     wxCheckBox* check_showstatusinfo;
     wxSpinCtrl* spin_recent_files;
     wxChoice* choice_file_backup;

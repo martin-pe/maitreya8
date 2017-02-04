@@ -141,8 +141,6 @@ BrushDialog::BrushDialog( wxWindow* parent, const MBrush &b )
 	}
 
     // begin wxGlade: BrushDialog::BrushDialog
-    sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Brush Preview"));
-    sizer_bg_staticbox = new wxStaticBox(this, wxID_ANY, _("Attributes"));
     panel_preview = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
     label_bgcolor = new wxStaticText(this, wxID_ANY, _("Color"));
     button_bgcolor = new wxColourPickerCtrl(this, CD_PICKER_BGCOLOR);
@@ -156,12 +154,12 @@ BrushDialog::BrushDialog( wxWindow* parent, const MBrush &b )
         _("Cross hatch"),
         _("Horizontal hatch"),
         _("Vertical hatch"),
-        _("Stipple")
+        _("Stipple"),
     };
-    choice_bgstyle = new wxChoice(this, CD_CHOICE_BGSTYLE, wxDefaultPosition, wxDefaultSize, 9, choice_bgstyle_choices, 0);
+    choice_bgstyle = new wxChoice(this, CD_CHOICE_BGSTYLE, wxDefaultPosition, wxDefaultSize, 9, choice_bgstyle_choices);
     label_bgimage = new wxStaticText(this, wxID_ANY, _("Image"));
-    const wxString *choice_bgimage_choices = NULL;
-    choice_bgimage = new wxChoice(this, CD_CHOICE_BGIMAGE, wxDefaultPosition, wxDefaultSize, 0, choice_bgimage_choices, 0);
+    const wxString choice_bgimage_choices[] = {};
+    choice_bgimage = new wxChoice(this, CD_CHOICE_BGIMAGE, wxDefaultPosition, wxDefaultSize, 0, choice_bgimage_choices);
     label_rotatehue = new wxStaticText(this, wxID_ANY, _("Rotate Hue"));
     slider_rotatehue = new wxSlider(this, CD_SLIDER_HUE, 0, 0, 360, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL|wxSL_LABELS);
     preview = new BrushDialogPreviewWidget(panel_preview, wxID_ANY, brush);
@@ -317,20 +315,18 @@ void BrushDialog::do_layout()
     // begin wxGlade: BrushDialog::do_layout
     wxBoxSizer* sizer_main = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* sizer_bottom = new wxBoxSizer(wxHORIZONTAL);
-    sizer_bg_staticbox->Lower();
-    wxStaticBoxSizer* sizer_bg = new wxStaticBoxSizer(sizer_bg_staticbox, wxVERTICAL);
-    sizer_preview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_bg = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Attributes")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Brush Preview")), wxHORIZONTAL);
     wxBoxSizer* sizer_previewpanel = new wxBoxSizer(wxHORIZONTAL);
     wxFlexGridSizer* grid_bg = new wxFlexGridSizer(4, 2, 3, 3);
-    grid_bg->Add(label_bgcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_bg->Add(label_bgcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_bg->Add(button_bgcolor, 1, wxALL, 3);
-    grid_bg->Add(label_bgstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_bg->Add(label_bgstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_bg->Add(choice_bgstyle, 0, wxALL, 3);
-    grid_bg->Add(label_bgimage, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_bg->Add(label_bgimage, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_bg->Add(choice_bgimage, 0, wxALL|wxEXPAND, 3);
-    grid_bg->Add(label_rotatehue, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_bg->Add(slider_rotatehue, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    grid_bg->Add(label_rotatehue, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_bg->Add(slider_rotatehue, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     grid_bg->AddGrowableCol(1);
     sizer_bg->Add(grid_bg, 1, wxALIGN_RIGHT, 0);
     sizer_previewpanel->Add(preview, 1, wxALL|wxEXPAND, 3);
@@ -341,7 +337,7 @@ void BrushDialog::do_layout()
     sizer_main->Add(static_line, 0, wxEXPAND, 0);
     sizer_bottom->Add(button_ok, 0, wxALL, 3);
     sizer_bottom->Add(button_cancel, 0, wxALL, 3);
-    sizer_main->Add(sizer_bottom, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
+    sizer_main->Add(sizer_bottom, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     Layout();

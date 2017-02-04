@@ -27,30 +27,34 @@
 class wxSpinButton;
 class wxSpinEvent;
 class wxStaticText;
-class wxTextCtrl;
+class MSpinCtrlTextGeneric;
 
 /*************************************************//**
 *
-* 
+*  Basic spin control based upon double value.
+*  It is used for dates, time, longitude, latitude.
+*
+*  Special feature is cursor based scrolling, e.g. cursor in month
+*  position will scroll months instead of day in a date control.
 *
 ******************************************************/
 class MBaseSpin : public wxControl
 {
 	DECLARE_CLASS( MBaseSpin )
+	friend class MSpinCtrlTextGeneric;
 
 public:
 	MBaseSpin( wxWindow *parent, int id, const wxPoint pos = wxDefaultPosition,
 		const wxSize size = wxDefaultSize, bool showLabel = false );
 	~MBaseSpin();
 
-	//void update();
 	void SetValidator( const wxValidator& );
+
+	virtual void updateLabel() {}
 
 protected:
 
 	virtual void add( const double &value ) = 0;
-
-	//virtual bool TransferDataToWindow();
 
 	void OnSpinUp( wxSpinEvent& ) { add( 1 ); }
 	void OnSpinDown( wxSpinEvent& ) { add( -1 ); }
@@ -66,14 +70,13 @@ protected:
 	void sendWrapEvent( const bool forward = true );
 
 	int findToken4add();
-	virtual void updateLabel() {}
 
 	double *value;
 	double maxvalue;
 
 	wxChar token;
 
-	wxTextCtrl *text;
+	MSpinCtrlTextGeneric *text;
 	wxStaticText *label;
 	wxSpinButton *spin;
 
@@ -93,11 +96,10 @@ public:
 
 	MDateSpin( wxWindow *parent, int id, const wxPoint pos = wxDefaultPosition, const wxSize size = wxDefaultSize );
 
-	//void setValue( double* );
+	virtual void updateLabel();
 
 protected:
 
-	virtual void updateLabel();
 	virtual void add( const double &value );
 };
 
@@ -117,8 +119,6 @@ public:
 	{
 		token = ':';
 	}
-
-	//void setValue( double* );
 
 protected:
 

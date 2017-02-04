@@ -51,12 +51,6 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
 
     // begin wxGlade: VedicPanel::VedicPanel
     panel_arabic_selection = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
-    sizer_sobjects_staticbox = new wxStaticBox(this, wxID_ANY, _("Special Points"));
-    sizer_partly_staticbox = new wxStaticBox(this, wxID_ANY, _("Partly Displayed"));
-    sizer_arabic_staticbox = new wxStaticBox(this, wxID_ANY, _("Arabic Parts"));
-    sizer_order_lagna_staticbox = new wxStaticBox(this, wxID_ANY, _("Order of Lagna"));
-    sizer_maincols_staticbox = new wxStaticBox(this, wxID_ANY, _("Columns in Main Window"));
-    sizer_eobjects_staticbox = new wxStaticBox(this, wxID_ANY, _("Ephemeris Objects"));
     check_objects_outer = new wxCheckBox(this, wxID_ANY, _("3 Outer Planets"));
     check_objects_dragonhead = new wxCheckBox(this, wxID_ANY, _("Rahu"));
     check_objects_dragontail = new wxCheckBox(this, wxID_ANY, _("Ketu"));
@@ -79,9 +73,9 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
     label_arabic_selection = new wxStaticText(panel_arabic_selection, wxID_ANY, _("No parts selected"));
     const wxString choice_order_lagna_choices[] = {
         _("After Planets"),
-        _("Top")
+        _("Top"),
     };
-    choice_order_lagna = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_order_lagna_choices, 0);
+    choice_order_lagna = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_order_lagna_choices);
     check_main_declination = new wxCheckBox(this, wxID_ANY, _("Declination"));
     check_main_lord = new wxCheckBox(this, wxID_ANY, _("Sign Lord"));
     check_main_element = new wxCheckBox(this, wxID_ANY, _("Element"));
@@ -249,23 +243,17 @@ void VedicPanel::do_layout()
     // begin wxGlade: VedicPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 4, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(2, 1, 0, 0);
-    sizer_maincols_staticbox->Lower();
-    wxStaticBoxSizer* sizer_maincols = new wxStaticBoxSizer(sizer_maincols_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_maincols = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Columns in Main Window")), wxVERTICAL);
     wxFlexGridSizer* grid_maincols = new wxFlexGridSizer(15, 1, 3, 0);
     wxFlexGridSizer* sizer_center = new wxFlexGridSizer(4, 1, 0, 0);
-    sizer_order_lagna_staticbox->Lower();
-    wxStaticBoxSizer* sizer_order_lagna = new wxStaticBoxSizer(sizer_order_lagna_staticbox, wxVERTICAL);
-    sizer_arabic_staticbox->Lower();
-    wxStaticBoxSizer* sizer_arabic = new wxStaticBoxSizer(sizer_arabic_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_order_lagna = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Order of Lagna")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_arabic = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Arabic Parts")), wxVERTICAL);
     wxBoxSizer* sizer_arabic_selection = new wxBoxSizer(wxHORIZONTAL);
-    sizer_partly_staticbox->Lower();
-    wxStaticBoxSizer* sizer_partly = new wxStaticBoxSizer(sizer_partly_staticbox, wxVERTICAL);
-    sizer_sobjects_staticbox->Lower();
-    wxStaticBoxSizer* sizer_sobjects = new wxStaticBoxSizer(sizer_sobjects_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_partly = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Partly Displayed")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_sobjects = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Special Points")), wxHORIZONTAL);
     wxFlexGridSizer* grid_sobjects = new wxFlexGridSizer(8, 1, 3, 3);
     wxFlexGridSizer* sizer_left = new wxFlexGridSizer(2, 1, 0, 0);
-    sizer_eobjects_staticbox->Lower();
-    wxStaticBoxSizer* sizer_eobjects = new wxStaticBoxSizer(sizer_eobjects_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_eobjects = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Ephemeris Objects")), wxHORIZONTAL);
     wxFlexGridSizer* grid_eobjects = new wxFlexGridSizer(14, 1, 3, 3);
     grid_eobjects->Add(check_objects_outer, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_dragonhead, 0, wxALL|wxEXPAND, 3);
@@ -293,7 +281,7 @@ void VedicPanel::do_layout()
     sizer_partly->Add(check_objects_d9lagna, 0, wxALL|wxEXPAND, 3);
     sizer_center->Add(sizer_partly, 1, wxALL|wxEXPAND, 3);
     sizer_arabic->Add(button_arabic, 0, wxALL, 3);
-    sizer_arabic_selection->Add(label_arabic_selection, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_arabic_selection->Add(label_arabic_selection, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     panel_arabic_selection->SetSizer(sizer_arabic_selection);
     sizer_arabic->Add(panel_arabic_selection, 1, wxALL|wxEXPAND, 3);
     sizer_center->Add(sizer_arabic, 1, wxEXPAND, 0);
@@ -303,9 +291,9 @@ void VedicPanel::do_layout()
     sizer_main->Add(sizer_center, 1, wxALL, 3);
     grid_maincols->Add(check_main_declination, 0, wxALL|wxEXPAND, 3);
     grid_maincols->Add(check_main_lord, 0, wxALL|wxEXPAND, 3);
-    grid_maincols->Add(check_main_element, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_maincols->Add(check_main_quality, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_maincols->Add(check_main_signification, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    grid_maincols->Add(check_main_element, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_maincols->Add(check_main_quality, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_maincols->Add(check_main_signification, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     grid_maincols->Add(check_main_dignity, 0, wxALL|wxEXPAND, 3);
     grid_maincols->Add(check_main_d9, 0, wxALL|wxEXPAND, 3);
     grid_maincols->Add(check_main_nakshatra, 0, wxALL|wxEXPAND, 3);

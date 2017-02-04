@@ -222,7 +222,6 @@ list<AspectEvent> &AspectExpert::updateVedicRasiChartAspects( ChartProperties *c
 	if ( ! horoscope )
 	{
 		printf( "WARN: AspectExpert::updateVedicRasiChartAspects horoscope is NULL\n" );
-		sleep( 10 );
 		clear();
 		return al;
 	}

@@ -63,28 +63,19 @@ VedicChartPanel::VedicChartPanel( wxWindow* parent ) : ConfigPanel( parent )
 
     // begin wxGlade: VedicChartPanel::VedicChartPanel
     panel_preview = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
-    notebook = new wxNotebook(this, CD_NOTEBOOK, wxDefaultPosition, wxDefaultSize, 0);
+    notebook = new wxNotebook(this, CD_NOTEBOOK);
     notebook_pane_responsive = new wxPanel(notebook, wxID_ANY);
     notebook_pane_sbc = new wxPanel(notebook, wxID_ANY);
     notebook_pane_vargachart = new wxPanel(notebook, wxID_ANY);
     notebook_pane_general = new wxPanel(notebook, wxID_ANY);
-    sizer_viewoptions_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("View Options"));
-    sizer_mouseover_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Field Mouse Over Behavior"));
-    sizer_vargaoptions_staticbox = new wxStaticBox(notebook_pane_vargachart, wxID_ANY, _("View Options"));
-    sizer_north_staticbox = new wxStaticBox(notebook_pane_vargachart, wxID_ANY, _("North Indian Chart"));
-    sizer_south_staticbox = new wxStaticBox(notebook_pane_vargachart, wxID_ANY, _("South Indian Chart"));
-    sizer_sbc_options_staticbox = new wxStaticBox(notebook_pane_sbc, wxID_ANY, _("View Options"));
-    sizer_aspect_options_staticbox = new wxStaticBox(notebook_pane_responsive, wxID_ANY, _("Aspect Display"));
-    sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Preview"));
-    sizer_defaultskin_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Skin"));
     const wxString choice_defaultskin_choices[] = {
         _("dummy"),
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_defaultskin = new wxChoice(notebook_pane_general, CD_SKIN_SELECT, wxDefaultPosition, wxDefaultSize, 5, choice_defaultskin_choices, 0);
+    choice_defaultskin = new wxChoice(notebook_pane_general, CD_SKIN_SELECT, wxDefaultPosition, wxDefaultSize, 5, choice_defaultskin_choices);
     check_retro = new wxCheckBox(notebook_pane_general, CD_SHOW_RETRO, _("Show Retrogression (R)"));
     check_use_colors = new wxCheckBox(notebook_pane_general, CD_USE_COLORS, _("Use Colors for Planet Symbols"));
     check_highlight = new wxCheckBox(notebook_pane_general, CD_HIGHLIGHT_FIELD, _("Highlight"));
@@ -95,18 +86,18 @@ VedicChartPanel::VedicChartPanel( wxWindow* parent ) : ConfigPanel( parent )
     const wxString choice_chart_choices[] = {
         _("South Indian"),
         _("North Indian"),
-        _("East Indian")
+        _("East Indian"),
     };
-    choice_chart = new wxChoice(notebook_pane_vargachart, CD_SELECT_NORTH, wxDefaultPosition, wxDefaultSize, 3, choice_chart_choices, 0);
+    choice_chart = new wxChoice(notebook_pane_vargachart, CD_SELECT_NORTH, wxDefaultPosition, wxDefaultSize, 3, choice_chart_choices);
     label_chartcenter = new wxStaticText(notebook_pane_vargachart, wxID_ANY, _("Center of Chart"));
     const wxString choice_chart_center_choices[] = {
         _("Nothing"),
         _("Name"),
         _("Name + Signification"),
         _("Division D-N"),
-        _("D-N + Signification")
+        _("D-N + Signification"),
     };
-    choice_chart_center = new wxChoice(notebook_pane_vargachart, CD_SHOW_CENTER, wxDefaultPosition, wxDefaultSize, 5, choice_chart_center_choices, 0);
+    choice_chart_center = new wxChoice(notebook_pane_vargachart, CD_SHOW_CENTER, wxDefaultPosition, wxDefaultSize, 5, choice_chart_center_choices);
     check_arudhas = new wxCheckBox(notebook_pane_vargachart, CD_SHOW_ARUDHAS, _("Show Arudhas"));
     check_ashtakavarga = new wxCheckBox(notebook_pane_vargachart, CD_SHOW_ASHTAKAVARGA, _("Ashtakavarga in Transit Chart"));
     label_north_style = new wxStaticText(notebook_pane_vargachart, wxID_ANY, _("Sign Display"));
@@ -114,16 +105,16 @@ VedicChartPanel::VedicChartPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("Ascendant Only"),
         _("Number"),
         _("Short String"),
-        _("Symbol")
+        _("Symbol"),
     };
-    choice_north_chart = new wxChoice(notebook_pane_vargachart, CD_SELECT_SNE, wxDefaultPosition, wxDefaultSize, 4, choice_north_chart_choices, 0);
+    choice_north_chart = new wxChoice(notebook_pane_vargachart, CD_SELECT_SNE, wxDefaultPosition, wxDefaultSize, 4, choice_north_chart_choices);
     label_markup_ascendant = new wxStaticText(notebook_pane_vargachart, wxID_ANY, _("Ascendant Markup"));
     const wxString choice_markup_ascendant_choices[] = {
         _("None"),
         _("Solid Line"),
-        _("Dotted Line")
+        _("Dotted Line"),
     };
-    choice_markup_ascendant = new wxChoice(notebook_pane_vargachart, CD_SOUTH_ASCENDANT, wxDefaultPosition, wxDefaultSize, 3, choice_markup_ascendant_choices, 0);
+    choice_markup_ascendant = new wxChoice(notebook_pane_vargachart, CD_SOUTH_ASCENDANT, wxDefaultPosition, wxDefaultSize, 3, choice_markup_ascendant_choices);
     check_sanskrit_symbols = new wxCheckBox(notebook_pane_sbc, CD_SHOW_SANSKRIT_SYMBOLS, _("Sanskrit Symbols"));
     check_nakshatra_qualities = new wxCheckBox(notebook_pane_sbc, CD_SHOW_NAKSHATRA_QUALITIES, _("Benefic/Malefic (B/M) in Nakshatras Names"));
     label_aspected = new wxStaticText(notebook_pane_responsive, wxID_ANY, _("Show Aspected Fields"));
@@ -132,18 +123,18 @@ VedicChartPanel::VedicChartPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("Mouse Over"),
         _("Shift + Mouse Over"),
         _("Ctrl + Mouse Over"),
-        _("Alt + Mouse Over")
+        _("Alt + Mouse Over"),
     };
-    choice_aspected = new wxChoice(notebook_pane_responsive, CD_ASPECTED, wxDefaultPosition, wxDefaultSize, 5, choice_aspected_choices, 0);
+    choice_aspected = new wxChoice(notebook_pane_responsive, CD_ASPECTED, wxDefaultPosition, wxDefaultSize, 5, choice_aspected_choices);
     label_aspecting = new wxStaticText(notebook_pane_responsive, wxID_ANY, _("Show Aspecting Objects"));
     const wxString choice_aspecting_choices[] = {
         _("Never"),
         _("Mouse Over"),
         _("Shift + Mouse Over"),
         _("Ctrl + Mouse Over"),
-        _("Alt + Mouse Over")
+        _("Alt + Mouse Over"),
     };
-    choice_aspecting = new wxChoice(notebook_pane_responsive, CD_ASPECTING, wxDefaultPosition, wxDefaultSize, 5, choice_aspecting_choices, 0);
+    choice_aspecting = new wxChoice(notebook_pane_responsive, CD_ASPECTING, wxDefaultPosition, wxDefaultSize, 5, choice_aspecting_choices);
     label_all_aspects = new wxStaticText(notebook_pane_responsive, wxID_ANY, _("Show All Aspects"));
     const wxString choice_all_aspects_choices[] = {
         _("Never"),
@@ -151,30 +142,30 @@ VedicChartPanel::VedicChartPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("Shift + Mouse Over"),
         _("Ctrl + Mouse Over"),
         _("Alt + Mouse Over"),
-        _("Always")
+        _("Always"),
     };
-    choice_all_aspects = new wxChoice(notebook_pane_responsive, CD_ALL_ASPECTS, wxDefaultPosition, wxDefaultSize, 6, choice_all_aspects_choices, 0);
+    choice_all_aspects = new wxChoice(notebook_pane_responsive, CD_ALL_ASPECTS, wxDefaultPosition, wxDefaultSize, 6, choice_all_aspects_choices);
     label_aspect_type = new wxStaticText(notebook_pane_responsive, wxID_ANY, _("Aspect Type in Varga Charts"));
     const wxString choice_aspect_type_choices[] = {
         _("Graha Drishti"),
-        _("Rasi Drishti")
+        _("Rasi Drishti"),
     };
-    choice_aspect_type = new wxChoice(notebook_pane_responsive, CD_ASPECT_TYPE, wxDefaultPosition, wxDefaultSize, 2, choice_aspect_type_choices, 0);
+    choice_aspect_type = new wxChoice(notebook_pane_responsive, CD_ASPECT_TYPE, wxDefaultPosition, wxDefaultSize, 2, choice_aspect_type_choices);
     label_minimum_strength = new wxStaticText(notebook_pane_responsive, wxID_ANY, _("Graha Drishti Minimum Strength"));
     const wxString choice_minimum_strength_choices[] = {
-        _("100% (only full)"),
-        _("75%"),
-        _("50%"),
-        _("25% (show all)")
+        _("Only Full"),
+        _("3/4"),
+        _("Half"),
+        _("1/4"),
     };
-    choice_minimum_strength = new wxChoice(notebook_pane_responsive, CD_MINIMUM_STRENGTH, wxDefaultPosition, wxDefaultSize, 4, choice_minimum_strength_choices, 0);
+    choice_minimum_strength = new wxChoice(notebook_pane_responsive, CD_MINIMUM_STRENGTH, wxDefaultPosition, wxDefaultSize, 4, choice_minimum_strength_choices);
     label_benefic = new wxStaticText(notebook_pane_responsive, wxID_ANY, _("Benefic and Malefic Colors"));
     const wxString choice_benefic_choices[] = {
         _("Specific Colors (b/m)"),
         _("Background Color"),
-        _("Grey")
+        _("Grey"),
     };
-    choice_benefic = new wxChoice(notebook_pane_responsive, CD_BENEFIC_MARKUP, wxDefaultPosition, wxDefaultSize, 3, choice_benefic_choices, 0);
+    choice_benefic = new wxChoice(notebook_pane_responsive, CD_BENEFIC_MARKUP, wxDefaultPosition, wxDefaultSize, 3, choice_benefic_choices);
     check_include_asmc = new wxCheckBox(notebook_pane_responsive, wxID_ANY, _("Include Angles"));
     window_preview = new ChartGridWidget(panel_preview, CT_RADIX, chartprops, 1, 1, CD_PREVIEW_WINDOW);
     checktransit = new wxCheckBox(this, CD_TRANSIT, _("Show Transits"));
@@ -452,35 +443,26 @@ void VedicChartPanel::do_layout()
     // begin wxGlade: VedicChartPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(1, 1, 0, 0);
-    sizer_preview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Preview")), wxVERTICAL);
     wxFlexGridSizer* grid_preview = new wxFlexGridSizer(1, 1, 3, 3);
     wxBoxSizer* sizer_left = new wxBoxSizer(wxHORIZONTAL);
     wxFlexGridSizer* sizer_aspect = new wxFlexGridSizer(1, 1, 3, 3);
-    sizer_aspect_options_staticbox->Lower();
-    wxStaticBoxSizer* sizer_aspect_options = new wxStaticBoxSizer(sizer_aspect_options_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_aspect_options = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_responsive, wxID_ANY, _("Aspect Display")), wxVERTICAL);
     wxFlexGridSizer* grid_aspects = new wxFlexGridSizer(6, 2, 3, 3);
     wxFlexGridSizer* grid_sbc = new wxFlexGridSizer(1, 1, 0, 0);
-    sizer_sbc_options_staticbox->Lower();
-    wxStaticBoxSizer* sizer_sbc_options = new wxStaticBoxSizer(sizer_sbc_options_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_sbc_options = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_sbc, wxID_ANY, _("View Options")), wxVERTICAL);
     wxFlexGridSizer* grid_vargachart = new wxFlexGridSizer(3, 1, 0, 0);
-    sizer_south_staticbox->Lower();
-    wxStaticBoxSizer* sizer_south = new wxStaticBoxSizer(sizer_south_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_south = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_vargachart, wxID_ANY, _("South Indian Chart")), wxVERTICAL);
     wxFlexGridSizer* grid_south = new wxFlexGridSizer(1, 2, 0, 0);
-    sizer_north_staticbox->Lower();
-    wxStaticBoxSizer* sizer_north = new wxStaticBoxSizer(sizer_north_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_north = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_vargachart, wxID_ANY, _("North Indian Chart")), wxVERTICAL);
     wxFlexGridSizer* grid_north = new wxFlexGridSizer(1, 2, 0, 0);
-    sizer_vargaoptions_staticbox->Lower();
-    wxStaticBoxSizer* sizer_vargaoptions = new wxStaticBoxSizer(sizer_vargaoptions_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_vargaoptions = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_vargachart, wxID_ANY, _("View Options")), wxVERTICAL);
     wxFlexGridSizer* grid_varga_options = new wxFlexGridSizer(2, 2, 0, 0);
     wxFlexGridSizer* sizer_general = new wxFlexGridSizer(3, 1, 0, 0);
-    sizer_mouseover_staticbox->Lower();
-    wxStaticBoxSizer* sizer_mouseover = new wxStaticBoxSizer(sizer_mouseover_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_mouseover = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("Field Mouse Over Behavior")), wxVERTICAL);
     wxFlexGridSizer* grid_zoom = new wxFlexGridSizer(1, 3, 0, 0);
-    sizer_viewoptions_staticbox->Lower();
-    wxStaticBoxSizer* sizer_viewoptions = new wxStaticBoxSizer(sizer_viewoptions_staticbox, wxVERTICAL);
-    sizer_defaultskin_staticbox->Lower();
-    wxStaticBoxSizer* sizer_defaultskin = new wxStaticBoxSizer(sizer_defaultskin_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_viewoptions = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("View Options")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_defaultskin = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("Skin")), wxVERTICAL);
     sizer_defaultskin->Add(choice_defaultskin, 0, wxALL, 3);
     sizer_general->Add(sizer_defaultskin, 1, wxALL|wxEXPAND, 3);
     sizer_viewoptions->Add(check_retro, 0, wxALL|wxEXPAND, 3);
@@ -495,44 +477,44 @@ void VedicChartPanel::do_layout()
     sizer_general->Add(sizer_mouseover, 1, wxEXPAND, 3);
     notebook_pane_general->SetSizer(sizer_general);
     sizer_general->AddGrowableCol(0);
-    grid_varga_options->Add(label_chartstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_varga_options->Add(choice_chart, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_varga_options->Add(label_chartcenter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_varga_options->Add(choice_chart_center, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_varga_options->Add(label_chartstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_varga_options->Add(choice_chart, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_varga_options->Add(label_chartcenter, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_varga_options->Add(choice_chart_center, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_varga_options->AddGrowableCol(0);
     sizer_vargaoptions->Add(grid_varga_options, 1, wxALL|wxEXPAND, 3);
-    sizer_vargaoptions->Add(check_arudhas, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    sizer_vargaoptions->Add(check_ashtakavarga, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_vargaoptions->Add(check_arudhas, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    sizer_vargaoptions->Add(check_ashtakavarga, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     grid_vargachart->Add(sizer_vargaoptions, 1, wxEXPAND, 0);
-    grid_north->Add(label_north_style, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_north->Add(choice_north_chart, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_north->Add(label_north_style, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_north->Add(choice_north_chart, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_north->AddGrowableCol(0);
     sizer_north->Add(grid_north, 1, wxEXPAND, 0);
     grid_vargachart->Add(sizer_north, 1, wxEXPAND, 0);
-    grid_south->Add(label_markup_ascendant, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_south->Add(label_markup_ascendant, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_south->Add(choice_markup_ascendant, 0, wxALIGN_RIGHT, 0);
     grid_south->AddGrowableCol(0);
     sizer_south->Add(grid_south, 1, wxEXPAND, 0);
     grid_vargachart->Add(sizer_south, 1, wxEXPAND, 0);
     notebook_pane_vargachart->SetSizer(grid_vargachart);
     grid_vargachart->AddGrowableCol(0);
-    sizer_sbc_options->Add(check_sanskrit_symbols, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    sizer_sbc_options->Add(check_nakshatra_qualities, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_sbc_options->Add(check_sanskrit_symbols, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    sizer_sbc_options->Add(check_nakshatra_qualities, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     grid_sbc->Add(sizer_sbc_options, 1, wxEXPAND, 0);
     notebook_pane_sbc->SetSizer(grid_sbc);
     grid_sbc->AddGrowableCol(0);
-    grid_aspects->Add(label_aspected, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_aspects->Add(choice_aspected, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_aspects->Add(label_aspecting, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_aspects->Add(choice_aspecting, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_aspects->Add(label_all_aspects, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_aspects->Add(choice_all_aspects, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_aspects->Add(label_aspect_type, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_aspects->Add(choice_aspect_type, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_aspects->Add(label_minimum_strength, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_aspects->Add(choice_minimum_strength, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_aspects->Add(label_benefic, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_aspects->Add(choice_benefic, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_aspects->Add(label_aspected, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_aspects->Add(choice_aspected, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_aspects->Add(label_aspecting, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_aspects->Add(choice_aspecting, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_aspects->Add(label_all_aspects, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_aspects->Add(choice_all_aspects, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_aspects->Add(label_aspect_type, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_aspects->Add(choice_aspect_type, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_aspects->Add(label_minimum_strength, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_aspects->Add(choice_minimum_strength, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_aspects->Add(label_benefic, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_aspects->Add(choice_benefic, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_aspects->AddGrowableCol(1);
     sizer_aspect_options->Add(grid_aspects, 1, wxALL|wxEXPAND, 3);
     sizer_aspect_options->Add(check_include_asmc, 0, wxALL, 3);

@@ -35,6 +35,8 @@
 
 extern Config *config;
 
+//#define DEBUG_MVALIDATOR
+
 IMPLEMENT_CLASS( MBaseValidator, wxValidator )
 IMPLEMENT_CLASS( MBaseTextValidator, MBaseValidator )
 IMPLEMENT_CLASS( MBaseDoubleValidator, MBaseTextValidator )
@@ -99,6 +101,7 @@ void MBaseValidator::setWindowBackground( const bool &b )
 {
 	//printf( "MBaseValidator::setWindowBackground valid %d\n", b );
 	wxWindow *w = GetWindow();
+	//wxWindow *w = getTextCtrl();
 	assert( w );
 
 	w->SetBackgroundColour( b ? wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOW ) : config->colors->errorBgColor );
@@ -164,8 +167,9 @@ void MBaseTextValidator::setIncludes( const wxString &val )
 void MBaseTextValidator::OnChar( wxKeyEvent &event )
 {
 	const int keycode = event.GetKeyCode();
-	//printf( "MBaseTextValidator::OnChar %d\n", keycode );
-
+#ifdef DEBUG_MVALIDATOR
+	printf( "MBaseTextValidator::OnChar %d\n", keycode );
+#endif
 	if( allowedChars.size() == 0 )
 	{
 		// should be okay, no filter set
@@ -185,14 +189,10 @@ void MBaseTextValidator::OnChar( wxKeyEvent &event )
 	}
 	else if ( keycode == WXK_TAB )
 	{
-		//printf( "TAB\n" );
-		wxCommandEvent e( wxEVT_COMMAND_TEXT_ENTER, GetWindow()->GetId());
-		wxPostEvent( GetWindow(), e );
-		TransferToWindow();
-
-		const bool shiftpressed = wxGetKeyState( WXK_SHIFT );
-		//GetWindow()->doKillFocus();
-		GetWindow()->Navigate( ! shiftpressed );
+#ifdef DEBUG_MVALIDATOR
+		printf( "TAB\n" );
+#endif
+		event.Skip();
 		return;
 	}
 	else if ( keycode < WXK_SPACE || keycode == WXK_DELETE || keycode >= WXK_START )
@@ -728,9 +728,6 @@ bool MCheckValidator::TransferToWindow()
 ******************************************************/
 bool MBooleanFlagValidator::TransferFromWindow()
 {
-	//if ( check_main_element->GetValue() ) vedic->columnStyle |= TAB_CT_ELEMENT;
-	//*value = getCheckControl()->GetValue();
-	//*value = getCheckControl()->GetValue();
 	//printf( "MBooleanFlagValidator::TransferFromWindow value %d shiftvalue %d\n", *value, shiftvalue );
 	if ( getCheckControl()->GetValue() )
 	{
@@ -751,9 +748,7 @@ bool MBooleanFlagValidator::TransferFromWindow()
 ******************************************************/
 bool MBooleanFlagValidator::TransferToWindow()
 {
-	//check_objects_d9lagna->SetValue( vedic->objects & OI_D9_LAGNA );
 	//printf( "MBooleanFlagValidator::TransferToWindow value %d\n", *value );
-	//getCheckControl()->SetValue( *value );
 	getCheckControl()->SetValue( *value & shiftvalue );
 	return true;
 }

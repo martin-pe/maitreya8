@@ -66,8 +66,6 @@ private:
 
 protected:
     // begin wxGlade: MultipleViewPanel::attributes
-    wxStaticBox* sizer_nbstyle_staticbox;
-    wxStaticBox* sizer_mview_staticbox;
     wxCheckBox* check_use_mviews;
     wxStaticText* label_defview;
     wxChoice* choice_viewlist;

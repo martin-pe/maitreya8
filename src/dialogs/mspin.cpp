@@ -21,9 +21,9 @@
 #include "mspin.h"
 
 #include "Calculator.h"
+#include "Conf.h"
 #include "DataSet.h"
 #include "Lang.h"
-#include "mathbase.h"
 #include "mvalidator.h"
 
 #include <wx/app.h>
@@ -33,8 +33,12 @@
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 
+extern Config *config;
+
 DEFINE_EVENT_TYPE( COMMAND_SPIN_CHANGED )
 DEFINE_EVENT_TYPE( COMMAND_SPIN_WRAP )
+
+//#define DEBUG_MSPIN
 
 enum { BDT_SPIN = wxID_HIGHEST + 650, BDT_TEXT, BDT_LABEL };
 
@@ -63,16 +67,25 @@ public:
 
 	virtual bool TransferToWindow()
 	{
-		//printf( "DelegatingSpinValidator::TransferToWindow\n" );
+#ifdef DEBUG_MSPIN
+		printf( "DelegatingSpinValidator::TransferToWindow\n" );
+#endif
+		MBaseSpin *bspin = wxDynamicCast( GetWindow(), MBaseSpin );
+		assert( bspin );
+
 		assert( ctrl );
 		wxValidator *val = ctrl->GetValidator();
 		assert( val );
-		return 	val->TransferToWindow();
+		bool b = val->TransferToWindow();
+		bspin->updateLabel();
+		return b;
 	}
 
 	virtual bool TransferFromWindow()
 	{
-		//printf( "DelegatingSpinValidator::TransferFromWindow\n" );
+#ifdef DEBUG_MSPIN
+		printf( "DelegatingSpinValidator::TransferFromWindow\n" );
+#endif
 		assert( ctrl );
 		wxValidator *val = ctrl->GetValidator();
 		assert( val );
@@ -83,6 +96,145 @@ private:
 
 	wxTextCtrl *ctrl;
 };
+
+
+/*****************************************************
+**
+**   MSpinCtrlTextGeneric   ---   Constructor
+**
+**   code is copied and modified from wx3.0 generic/spinctrl sources
+**
+******************************************************/
+class MSpinCtrlTextGeneric : public wxTextCtrl
+{
+public:
+	MSpinCtrlTextGeneric(MBaseSpin *spin, const wxWindowID id = -1 )
+		: wxTextCtrl( spin, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 )
+	{
+		m_spin = spin;
+		processDeletegatedEvents = true;
+		SetSizeHints(wxDefaultCoord, wxDefaultCoord);
+	}
+
+	virtual ~MSpinCtrlTextGeneric()
+	{
+#ifdef DEBUG_MSPIN
+	printf( "MSpinCtrlTextGeneric::~MSpinCtrlTextGeneric\n" );
+#endif
+
+		//printf( "Contents %s\n",str2char( GetValue()));
+		//SetValidator( wxDefaultValidator );
+		// MSW sends extra kill focus event on destroy
+#ifdef __WIN32__
+		if (m_spin) m_spin->text = NULL;
+#endif
+		m_spin = NULL;
+	}
+
+	void OnChar( wxKeyEvent &event )
+	{
+#ifdef DEBUG_MSPIN
+		printf( "OnChar\n" );
+#endif
+		if ( processDeletegatedEvents )
+		{
+			if ( !m_spin->ProcessEvent(event) ) { event.Skip(); }
+		}
+	}
+
+	void OnTextEvent(wxCommandEvent& event)
+	{
+#ifdef DEBUG_MSPIN
+		printf( "OnTextEvent\n" );
+#endif
+
+		if ( processDeletegatedEvents )
+		{
+			wxCommandEvent eventCopy(event);
+			eventCopy.SetEventObject(m_spin);
+			eventCopy.SetId(m_spin->GetId());
+			m_spin->ProcessEvent(eventCopy);
+		}
+	}
+
+	void OnKillFocus(wxFocusEvent& event)
+	{
+#ifdef DEBUG_MSPIN
+		printf( "MSpinCtrlTextGeneric::OnKillFocus\n" );
+#endif
+		if ( processDeletegatedEvents )
+		{
+			assert( m_spin );
+			m_spin->doSkipSetFocus = true;
+			m_spin->ProcessEvent(event);
+			event.Skip();
+		}
+	}
+
+	MBaseSpin *m_spin;
+	bool processDeletegatedEvents;
+
+private:
+	DECLARE_EVENT_TABLE()
+};
+
+BEGIN_EVENT_TABLE(MSpinCtrlTextGeneric, wxTextCtrl)
+    EVT_CHAR(MSpinCtrlTextGeneric::OnChar)
+    EVT_TEXT(wxID_ANY, MSpinCtrlTextGeneric::OnTextEvent)
+    EVT_TEXT_ENTER(wxID_ANY, MSpinCtrlTextGeneric::OnTextEvent)
+    EVT_KILL_FOCUS(MSpinCtrlTextGeneric::OnKillFocus)
+END_EVENT_TABLE()
+
+#define SPIN_MAX_RANGE INT_MAX / 2 - 1
+
+// spin sizes per platform
+#ifdef __WIN32__
+#define SPIN_SIZE wxSize( 15, -1 )
+#elif defined(__WXGTK3__)
+#define SPIN_SIZE wxSize( 54, -1 )
+#else
+#define SPIN_SIZE wxDefaultSize
+#endif
+
+/*************************************************//**
+*
+* 
+*
+******************************************************/
+class MSpinCtrlButtonGeneric : public wxSpinButton
+{
+public:
+	MSpinCtrlButtonGeneric( MBaseSpin *spin, wxWindowID id )
+		: wxSpinButton( spin, id, wxDefaultPosition, SPIN_SIZE, wxSP_ARROW_KEYS | wxSP_WRAP)
+	{
+		m_spin = spin;
+		SetRange( - SPIN_MAX_RANGE, SPIN_MAX_RANGE );
+	}
+
+	~MSpinCtrlButtonGeneric()
+	{
+#ifdef DEBUG_MSPIN
+	printf( "MSpinCtrlButtonGeneric::~MSpinCtrlButtonGeneric\n" );
+#endif
+	}
+
+	void OnSetFocus(wxFocusEvent& /*event*/)
+	{
+#ifdef DEBUG_MSPIN
+		printf( "MSpinCtrlButtonGeneric::OnSetFocus\n" );
+#endif
+	}
+
+protected:
+	MBaseSpin *m_spin;
+
+private:
+	DECLARE_EVENT_TABLE()
+};
+
+BEGIN_EVENT_TABLE(MSpinCtrlButtonGeneric, wxSpinButton)
+    EVT_SET_FOCUS(MSpinCtrlButtonGeneric::OnSetFocus)
+END_EVENT_TABLE()
 
 /*****************************************************
 **
@@ -96,8 +248,9 @@ MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize 
 {
 	SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-	spin = new wxSpinButton( this, BDT_SPIN, wxDefaultPosition, wxSize( 15, -1 ), wxSP_ARROW_KEYS | wxSP_WRAP );
-	text = new wxTextCtrl( this, BDT_TEXT, wxEmptyString, wxDefaultPosition, wxSize( 100, -1 ));
+	//spin = new wxSpinButton( this, BDT_SPIN, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxSP_WRAP );
+	spin = new MSpinCtrlButtonGeneric( this, BDT_SPIN );
+	text = new MSpinCtrlTextGeneric( this, BDT_TEXT );
 
 	wxBoxSizer* sizer = new wxBoxSizer( wxHORIZONTAL );
 	sizer->Add( text, 1, wxALL|wxEXPAND, 3 );
@@ -108,10 +261,9 @@ MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize 
 		label = new wxStaticText( this, BDT_LABEL, wxT( "--" ), wxDefaultPosition, wxSize( 30, -1 ));
 		sizer->Add( label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	}
-
-	SetAutoLayout( true );
+	else label = (wxStaticText*)NULL;
 	SetSizer( sizer );
-	sizer->Fit( this );
+	
 	sizer->SetSizeHints(this);
 	Layout();
 
@@ -120,9 +272,7 @@ MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize 
 	Connect( wxEVT_SCROLL_LINEUP, wxSpinEventHandler( MBaseSpin::OnSpinUp ));
 	Connect( wxEVT_SCROLL_LINEDOWN, wxSpinEventHandler( MBaseSpin::OnSpinDown ));
 	Connect( wxEVT_MOUSEWHEEL, wxMouseEventHandler( MBaseSpin::OnMouseWheelEvent ));
-	Connect( BDT_TEXT, wxEVT_CHAR, wxKeyEventHandler( MBaseSpin::OnChar ));
 	Connect( wxEVT_CHAR, wxKeyEventHandler( MBaseSpin::OnChar ));
-	Connect( BDT_TEXT, wxEVT_COMMAND_TEXT_ENTER, wxTextEventHandler( MBaseSpin::OnTextEnter ));
 	Connect( wxEVT_SET_FOCUS, wxFocusEventHandler( MBaseSpin::OnSetFocus ));
 	Connect( wxEVT_KILL_FOCUS, wxFocusEventHandler( MBaseSpin::OnKillFocus ));
 }
@@ -134,8 +284,12 @@ MBaseSpin::MBaseSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize 
 ******************************************************/
 MBaseSpin::~MBaseSpin()
 {
-	text->SetValidator( wxDefaultValidator );
-	wxWindow::SetValidator( wxDefaultValidator );
+#ifdef DEBUG_MSPIN
+	printf( "MBaseSpin::~MBaseSpin\n" );
+#endif
+	text->processDeletegatedEvents = false;
+	//wxWindow::SetValidator( wxDefaultValidator );
+	//text->SetValidator( wxDefaultValidator );
 }
 
 /*****************************************************
@@ -219,16 +373,15 @@ void MBaseSpin::OnTextEnter( wxCommandEvent& )
 void MBaseSpin::OnChar(wxKeyEvent &event )
 {
 	const int keycode = event.GetKeyCode();
-	wxLogMessage( wxT( "MBaseSpin::OnChar keycode %d" ), keycode );
+#ifdef DEBUG_MSPIN
+	printf( "MBaseSpin::OnChar keycode %d\n", keycode );
+#endif
+
 	switch( keycode )
   {
     case WXK_TAB:
     {
       const bool shiftpressed = wxGetKeyState( WXK_SHIFT );
-      //printf( "MBaseSpin::OnChar SPIN TAB shift %d\n", shiftpressed );
-			//GetParent()->GetParent()->Navigate( ! shiftpressed );
-			//text->KillFocus();
-			doSkipSetFocus = true;
 			TransferDataToWindow();
 			sendChangeEvent();
 			Navigate( ! shiftpressed );
@@ -263,9 +416,34 @@ void MBaseSpin::OnChar(wxKeyEvent &event )
 ******************************************************/
 void MBaseSpin::OnKillFocus( wxFocusEvent &event )
 {
-	//printf( "MBaseSpin::OnKillFocus\n" );
-	event.Skip();
-	doSkipSetFocus = false;
+#ifdef DEBUG_MSPIN
+	printf( "MBaseSpin::OnKillFocus\n" );
+#endif
+
+	wxWindow *win = event.GetWindow();
+	if ( ! win )
+	{
+#ifdef DEBUG_MSPIN
+		printf( "NULL\n" );
+#endif
+		return;
+	}
+	wxString s = win->GetClassInfo()->GetClassName();
+	if ( win == text )
+	{
+		// focus goes to the text control, nothing to do
+#ifdef DEBUG_MSPIN
+		printf( "TEXT %s\n", str2char( s ));
+#endif
+		event.Skip();
+	}
+	else
+	{
+#ifdef DEBUG_MSPIN
+		printf( "OTHER %s\n", str2char( s ));
+#endif
+		event.Skip();
+	}
 }
 
 /*****************************************************
@@ -275,25 +453,16 @@ void MBaseSpin::OnKillFocus( wxFocusEvent &event )
 ******************************************************/
 void MBaseSpin::OnSetFocus( wxFocusEvent &event )
 {
-	//printf( "MBaseSpin::OnSetFocus doSkipSetFocus %d\n", doSkipSetFocus );
-
-	if ( ! doSkipSetFocus ) text->SetFocus();
+#ifdef DEBUG_MSPIN
+	printf( "MBaseSpin::OnSetFocus doSkipSetFocus %d\n", doSkipSetFocus );
+#endif
+	if ( ! doSkipSetFocus )
+	{
+		text->SetFocus();
+	}
 	else event.Skip();
+	doSkipSetFocus = false;
 }
-
-/*****************************************************
-**
-**   MDateSpin   ---   MBaseSpin
-**
-******************************************************/
-/*
-void MBaseSpin::update()
-{
-	printf( "MBaseSpin::update\n" );
-	InitDialog();
-	sendChangeEvent();
-}
-*/
 
 /*****************************************************
 **
@@ -360,25 +529,13 @@ MDateSpin::MDateSpin( wxWindow *parent, int id, const wxPoint pos, const wxSize 
 ******************************************************/
 void MDateSpin::updateLabel()
 {
+	//printf( "MDateSpin::updateLabel\n" );
 	Lang lang;
 	assert( label );
-	label->SetLabel( lang.getWeekdayName( ((int)(*value + 1.5 )) % 7).Left( 2 ));
-}
+	const double tmpjd = *value + ( config->defaultLocation->getTimeZone() + config->defaultLocation->getDST() ) / 24.0;
 
-/*****************************************************
-**
-**   MDateSpin   ---   setValue
-**
-******************************************************/
-/*
-void MDateSpin::setValue( double *v )
-{
-	value = v;
-	text->SetValidator( MDateValidator( v ));
-	printf( "MDateSpin::setValue %f\n", *v );
-	update();
+	label->SetLabel( lang.getWeekdayName( ((int)(tmpjd + 1.5 )) % 7).Left( 2 ));
 }
-*/
 
 /*****************************************************
 **
@@ -415,26 +572,10 @@ void MDateSpin::add( const double &v )
 	assert( value );
 	*value = calculator->calc_jd( year, month, day, 12 );
 
-	//printf( "MDateSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
 	TransferDataToWindow();
 	text->SetInsertionPoint( cursorpos );
 	sendChangeEvent();
 }
-
-/*****************************************************
-**
-**   MDegSpin   ---   setValue
-**
-******************************************************/
-/*
-void MDegSpin::setValue( double *v )
-{
-	value = v;
-	text->SetValidator( MDegreeValidator( v, maxvalue ));
-	printf( "MDegSpin::setValue %f\n", *v );
-	update();
-}
-*/
 
 /*****************************************************
 **
@@ -450,10 +591,8 @@ void MDegSpin::add( const double &v )
 	Formatter *formatter = Formatter::get();
 
 	formatter->parseDegreeString( s, deg, min, sec, 360 );
-	//printf( "HALLO 1 s %s deg %d min %d sec %d\n", str2char( s ), deg, min, sec );
 
 	const long cursorpos = text->GetInsertionPoint();
-	//int freq = s.Freq( token );
 	const int tokenpos = findToken4add();
 
 	switch( tokenpos )
@@ -471,7 +610,6 @@ void MDegSpin::add( const double &v )
 			assert( false );
 		break;
 	}
-	//printf( "HALLO freq %d target pos %d ------  deg %d min %d sec %d\n", freq, findToken4add(), deg, min, sec );
 
 	*value = 3600 * deg + 60 * min + sec;
 	*value /= 3600;
@@ -490,7 +628,6 @@ void MDegSpin::add( const double &v )
 		}
 	}
 
-	//printf( "MDegSpin::add delta %f value %f cursor %ld\n", v, *value, cursorpos );
 	TransferDataToWindow();
 	text->SetInsertionPoint( cursorpos );
 	sendChangeEvent();
