@@ -93,8 +93,10 @@ AtlasEditDialog::AtlasEditDialog(wxWindow* parent, AtlasLogic *logic, const Atla
     do_layout();
     // end wxGlade
 
-	text_name->SetValidator( MTextValidator( &model.name ));
-	text_asciiname->SetValidator( MTextValidator( &model.asciiname ));
+	text_name->ChangeValue( model.name );
+	text_asciiname->ChangeValue( model.asciiname );
+	text_alias->ChangeValue( model.aliases );
+
 	text_population->SetValidator( MIntegerValidator( &model.population ));
 
 	text_longitude->SetValidator( MDegreeValidator( &model.a_longitude, 180 ));
@@ -105,8 +107,6 @@ AtlasEditDialog::AtlasEditDialog(wxWindow* parent, AtlasLogic *logic, const Atla
 	choice_country->SetStringSelection( model.country );
 	updateAdminChoice();
 	updateTzChoice();
-
-	text_alias->SetValidator( MTextValidator( &model.aliases ));
 
 	Connect( AE_COUNTRY, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( AtlasEditDialog::OnChoiceCountry ));
 	Connect( AE_TZNAME, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( AtlasEditDialog::OnChoiceTzName ));
@@ -233,13 +233,17 @@ void AtlasEditDialog::OnEntryAliases( wxCommandEvent& )
 void AtlasEditDialog::OnOK( wxCommandEvent& )
 {
 	TransferDataFromWindow();
+
+	model.name = text_name->GetValue();
+	model.asciiname = text_asciiname->GetValue();
+	model.aliases = text_alias->GetValue();
+
 	model.country = choice_country->GetStringSelection();
 	model.country_code = logic->getCountryCodeForName( choice_country->GetStringSelection());
 
 	model.admin = choice_admin->GetStringSelection();
 	model.admin1_code = logic->getAdminCodeForCountryAndName( model.country_code, choice_admin->GetStringSelection());
 
-	printf( "POP %d\n", model.population );
 	EndModal( wxID_OK );
 }
 

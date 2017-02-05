@@ -1,9 +1,9 @@
-maitreya8 (8.0.alfa2) unstable; urgency=low
+maitreya8 (8.0.beta1) unstable; urgency=low
 
-  * second alpha of major release
-  * various fixes
+  * first beta of major release
+  * various fixes, see website and ChangeLog in root folder
 
- -- Martin Pettau <http://www.saravali.de/contact.html>  Mon, 26 Dec 2016 12:45:37 +0100
+ -- Martin Pettau <http://www.saravali.de/contact.html>  Sun, 05 Feb 2017 11:35:17 +0100
 
 maitreya8 (8.0.alfa1) unstable; urgency=low
 

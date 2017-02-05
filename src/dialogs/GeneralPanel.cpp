@@ -200,7 +200,7 @@ void GeneralPanel::config2model()
 
 /*****************************************************
 **
-**   GeneralPanel   ---   model->config
+**   GeneralPanel   ---   model2config
 **
 ******************************************************/
 void GeneralPanel::model2config()

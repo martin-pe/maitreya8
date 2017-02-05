@@ -48,8 +48,7 @@ const double ShadBalaExpert::circulation_time[7] = { 1, .082, .24, .62, 1.88, 11
 
 // types of cheshta bala
 enum { CHESHTA_NULL, CHESHTA_VAKRA, CHESHTA_ANUVAKRA, CHESHTA_VIKALA, CHESHTA_MANDA, CHESHTA_MANDATARA, CHESHTA_SAMA, CHESHTA_CHARA,
-       CHESHTA_ATICHARA
-     };
+	CHESHTA_ATICHARA }; 
 
 /*****************************************************
 **
@@ -74,7 +73,7 @@ void ShadBalaExpert::clear()
 		                                 = kendradibala[i] = drekkanabala[i] = 0;
 		digbala[i] = 0;
 		kalabala[i] = nathonathabala[i] = pakshabala[i] = tribhagabala[i]
-		                                  = varshamasadinahorabala[i] = ayanabala[i] = yudhdhabala[i] = 0;
+			= varshamasadinahorabala[i] = ayanabala[i] = yudhdhabala[i] = 0;
 		percentual_speed[i] = speed[i] = cheshtabala[i] = naisargikabala[i] = drigbala[i] = shadbala[i] = 0;
 		varshalord = masalord = dinalord = horalord = ONONE;
 		cheshtabalatype[i] = CHESHTA_NULL;
@@ -382,7 +381,54 @@ void ShadBalaExpert::updateKalaBala()
 		ayanabala[p] = Max( ayanabala[p], 0 );
 	}
 
-	// TODO yudhdhabala
+	// yudhdhabala 
+	{
+		// start with kalabala aquired so far
+		// in case of planetary war the difference of both values must be added to the winner, substractcted from the looser
+		double kb[7];
+		for ( int i = OSUN; i <= OSATURN; i++ )
+		{
+			kb[i] = nathonathabala[i] + pakshabala[i] + tribhagabala[i] + varshamasadinahorabala[i] + ayanabala[i];
+		}
+		double dist, shadbaladiff;
+		ObjectId pwinner, ploser;
+		double len1, len2;
+
+		for ( ObjectId p1 = OMERCURY; p1 <= OSATURN; p1++ )
+		{
+			for ( ObjectId p2 = p1; p2 <= OSATURN; p2++ )
+			{
+				if ( p1 == p2 ) continue;
+
+				len1 = horoscope->getVedicLongitude( p1 );
+				len2 = horoscope->getVedicLongitude( p2 );
+				dist = planetDistance( len1, len2 );
+				//printf( "Yuddha Bala %d %d dist %f\n", p1, p2, dist );
+
+				if ( dist < 1 )
+				{
+					shadbaladiff = fabs( kb[p1] - kb[p2] );
+
+					// winner is the planet with higer longitude
+					if (( len1 > len2 ) | ( len1 < 1 && len2 >= 359 ))
+					{
+						pwinner = p1;
+						ploser = p2;
+					}
+					else
+					{
+						pwinner = p2;
+						ploser = p1;
+					}
+					yudhdhabala[ pwinner ] = shadbaladiff;
+					yudhdhabala[ ploser ] = -shadbaladiff;
+					
+					//printf( "MATCH %d %d dist %f winner %d loser %d\n", p1, p2, dist, pwinner, ploser );
+				}
+				
+			}
+		}
+	}
 }
 
 /*****************************************************
@@ -409,7 +455,7 @@ void ShadBalaExpert::updateNaisargikaBala()
 void ShadBalaExpert::updateCheshtaBala()
 {
 	int count, rasi, baserasi;
-	double len, lat, medium_speed, jd;
+	double len, lat, medium_speed, jd, speed1;
 	Calculator *calculator = CalculatorFactory().getCalculator();
 
 	DataSet ds( *horoscope->getDataSet());
@@ -423,7 +469,7 @@ void ShadBalaExpert::updateCheshtaBala()
 		percentual_speed[p] = 100 * speed[p] / medium_speed;
 		if ( speed[p] > 0 ) // direct motion
 		{
-			//printf( "DIRECT Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed, medium_speed, percentual_speed[p] );
+			printf( "DIRECT Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed[p], medium_speed, percentual_speed[p] );
 			if ( fabs( percentual_speed[p] ) < 10 ) // Vikala, devoid of motion
 			{
 				cheshtabalatype[p] = CHESHTA_VIKALA;
@@ -453,13 +499,14 @@ void ShadBalaExpert::updateCheshtaBala()
 				baserasi = ::getRasi( horoscope->getVedicLongitude( p ));
 				count = 0;
 				jd = horoscope->getJD();
-				while ( speed[p] > 0 && count++ < 90 )
+				speed1 = speed[p];
+				while ( speed1 > 0 && count++ < 90 )
 				{
 					jd += 3.0;
 					ds.setDate( jd );
-					calculator->calcPositionSpeed( &ds, p, len, lat, speed[p], true, true );
+					calculator->calcPositionSpeed( &ds, p, len, lat, speed1, true, true );
 					rasi = getRasi( len );
-					//printf( "  -> In Atichara Calc #%d Speed %f len %f rasi %d / baserasi %d\n", count, speed[p], len, rasi, baserasi );
+					//printf( "  -> In Atichara Calc #%d Speed %f len %f rasi %d / baserasi %d\n", count, speed1, len, rasi, baserasi );
 					if ( rasi != baserasi )
 					{
 						//printf ( "Rasi CHANGED IN DIRECT MOTION ->IN ATICHARA\n" );
@@ -474,19 +521,20 @@ void ShadBalaExpert::updateCheshtaBala()
 		{
 			cheshtabalatype[p] = CHESHTA_VAKRA;
 			cheshtabala[p] = 60;
-			//printf( "RETRO Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed[p], medium_speed, percentual_speed[p] );
+			printf( "RETRO Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed[p], medium_speed, percentual_speed[p] );
 
 			// anuvakra
 			baserasi = ::getRasi( horoscope->getVedicLongitude( p ));
 			count = 0;
 			jd = horoscope->getJD();
-			while ( speed[p] < 0 && count++ < 90 )
+			speed1 = speed[p];
+			while ( speed1 < 0 && count++ < 90 )
 			{
 				jd += 3.0;
 				ds.setDate( jd );
-				calculator->calcPositionSpeed( &ds, p, len, lat, speed[p], true, true );
+				calculator->calcPositionSpeed( &ds, p, len, lat, speed1, true, true );
 				rasi = getRasi( len );
-				//printf( "  -> In Retro Calc #%d Speed %f len %f rasi %d / baserasi %d\n", count, speed, len, rasi, baserasi );
+				//printf( "  -> In Retro Calc #%d Speed %f len %f rasi %d / baserasi %d\n", count, speed1, len, rasi, baserasi );
 				if ( rasi != baserasi )
 				{
 					//printf ( "Rasi CHANGED IN RETRO -> ANUVAKRA\n" );
@@ -586,7 +634,7 @@ void ShadBalaExpert::write( Sheet *sheet )
 	Table *t0 = new Table( 13, 8 );
 	t0->setHeader( _( "Six Balas" ));
 	t0->setHeader( 0, wxEmptyString );
-	t0->setHeader( 1, _( "Stana" ));
+	t0->setHeader( 1, _( "Sthana" ));
 	t0->setHeader( 2, _( "Dig" ));
 	t0->setHeader( 3, _( "Kala" ));
 	t0->setHeader( 4, _( "Cheshta" ));

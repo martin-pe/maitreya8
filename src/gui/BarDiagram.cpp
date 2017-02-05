@@ -442,7 +442,7 @@ void BarDiagramWidget::drawBar( Painter *painter, BarDiagramItem *item )
 
 	painter->drawRectangle( rect );
 
-	s.Printf( wxT( "%d" ), (int)( item->value + .5) ); // rounded value
+	s.Printf( wxT( "%d" ), (int)( item->value > 0 ?  item->value + .5 : item->value - .5 ) ); // rounded value
 	if ( rect.height > text_height ) painter->drawTextFormatted( rect, s, Align::Center );
 	else
 	{

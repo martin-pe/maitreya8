@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maitreya 8.0\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-02-04 15:11+0100\n"
+"POT-Creation-Date: 2017-02-05 11:31+0100\n"
 "PO-Revision-Date: 2016-12-25 22:18+0100\n"
 "Last-Translator: a <a>\n"
 "Language-Team: de <http://www.saravali.de/contact.html>\n"
@@ -993,7 +993,7 @@ msgid "Upaketu"
 msgstr ""
 
 #: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:170
-#: src/jyotish/ShadBala.cpp:591 src/views/ShadbalaView.cpp:159
+#: src/jyotish/ShadBala.cpp:639 src/views/ShadbalaView.cpp:159
 msgid "Kala"
 msgstr ""
 
@@ -1162,7 +1162,7 @@ msgstr ""
 msgid "Adhimitra"
 msgstr ""
 
-#: src/base/Lang.cpp:303 src/jyotish/ShadBala.cpp:581
+#: src/base/Lang.cpp:303 src/jyotish/ShadBala.cpp:629
 msgid "Sama"
 msgstr ""
 
@@ -1214,7 +1214,7 @@ msgstr ""
 msgid "SwrEn"
 msgstr ""
 
-#: src/base/Lang.cpp:320 src/jyotish/ShadBala.cpp:624
+#: src/base/Lang.cpp:320 src/jyotish/ShadBala.cpp:672
 #: src/views/ShadbalaView.cpp:187
 msgid "Uchcha"
 msgstr ""
@@ -2030,7 +2030,7 @@ msgid "Navamsa"
 msgstr ""
 
 #: src/base/VargaBase.cpp:74 src/dialogs/VedicCalculationPanel.cpp:120
-#: src/jyotish/ShadBala.cpp:628 src/views/ShadbalaView.cpp:203
+#: src/jyotish/ShadBala.cpp:676 src/views/ShadbalaView.cpp:203
 msgid "Drekkana"
 msgstr ""
 
@@ -2510,11 +2510,11 @@ msgstr "Süd"
 msgid "Edit Aliases ..."
 msgstr "Aliase bearbeiten ..."
 
-#: src/dialogs/AtlasEditDialog.cpp:272
+#: src/dialogs/AtlasEditDialog.cpp:276
 msgid "Edit Atlas Entry"
 msgstr "Aliaseintrag bearbeiten"
 
-#: src/dialogs/AtlasEditDialog.cpp:291 src/dialogs/BrushDialog.cpp:318
+#: src/dialogs/AtlasEditDialog.cpp:295 src/dialogs/BrushDialog.cpp:318
 #: src/dialogs/PenDialog.cpp:211
 msgid "Attributes"
 msgstr "Attribute"
@@ -3871,7 +3871,7 @@ msgstr "Element ist schon in Funktionsleiste an Position %ld"
 
 #: src/dialogs/ToolbarPanel.cpp:402 src/gui/ChildWindowListCtrl.cpp:132
 #: src/gui/ToolPanel.cpp:351 src/jyotish/Aspect.cpp:624
-#: src/jyotish/Eclipse.cpp:133 src/jyotish/ShadBala.cpp:734
+#: src/jyotish/Eclipse.cpp:133 src/jyotish/ShadBala.cpp:782
 msgid "Type"
 msgstr "Typ"
 
@@ -7066,172 +7066,172 @@ msgstr "Wert"
 msgid "Composite Planets"
 msgstr "Komposit-Planeten"
 
-#: src/jyotish/ShadBala.cpp:580
+#: src/jyotish/ShadBala.cpp:628
 msgid "Vakra"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:580
+#: src/jyotish/ShadBala.cpp:628
 msgid "Anuvakra"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:581
+#: src/jyotish/ShadBala.cpp:629
 msgid "Vikala"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:581
+#: src/jyotish/ShadBala.cpp:629
 msgid "Manda"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:581
+#: src/jyotish/ShadBala.cpp:629
 msgid "Mandatara"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:581
+#: src/jyotish/ShadBala.cpp:629
 msgid "Chara"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:581
+#: src/jyotish/ShadBala.cpp:629
 msgid "Atichara"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:587
+#: src/jyotish/ShadBala.cpp:635
 msgid "Six Balas"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:589
-msgid "Stana"
+#: src/jyotish/ShadBala.cpp:637
+msgid "Sthana"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:590 src/views/ShadbalaView.cpp:155
+#: src/jyotish/ShadBala.cpp:638 src/views/ShadbalaView.cpp:155
 msgid "Dig"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:592 src/views/ShadbalaView.cpp:163
+#: src/jyotish/ShadBala.cpp:640 src/views/ShadbalaView.cpp:163
 msgid "Cheshta"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:593 src/views/ShadbalaView.cpp:167
+#: src/jyotish/ShadBala.cpp:641 src/views/ShadbalaView.cpp:167
 msgid "Naisargika"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:594 src/views/ShadbalaView.cpp:171
+#: src/jyotish/ShadBala.cpp:642 src/views/ShadbalaView.cpp:171
 msgid "Drik"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:596 src/jyotish/ShadBala.cpp:630
+#: src/jyotish/ShadBala.cpp:644 src/jyotish/ShadBala.cpp:678
 msgid "Rupas"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:597 src/jyotish/ShadBala.cpp:631
-#: src/jyotish/ShadBala.cpp:689 src/jyotish/ShadBala.cpp:735
+#: src/jyotish/ShadBala.cpp:645 src/jyotish/ShadBala.cpp:679
+#: src/jyotish/ShadBala.cpp:737 src/jyotish/ShadBala.cpp:783
 msgid "Virupas"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:598
+#: src/jyotish/ShadBala.cpp:646
 msgid "Required"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:599
+#: src/jyotish/ShadBala.cpp:647
 msgid "Strength (Percent)"
 msgstr "Stärke (Prozent)"
 
-#: src/jyotish/ShadBala.cpp:622 src/views/ShadbalaView.cpp:71
+#: src/jyotish/ShadBala.cpp:670 src/views/ShadbalaView.cpp:71
 msgid "Sthana Bala"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:625 src/views/ShadbalaView.cpp:191
+#: src/jyotish/ShadBala.cpp:673 src/views/ShadbalaView.cpp:191
 msgid "Saptavargaja"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:626
+#: src/jyotish/ShadBala.cpp:674
 msgid "Ojhayugma"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:627 src/views/ShadbalaView.cpp:199
+#: src/jyotish/ShadBala.cpp:675 src/views/ShadbalaView.cpp:199
 msgid "Kendradi"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:651 src/views/ShadbalaView.cpp:74
+#: src/jyotish/ShadBala.cpp:699 src/views/ShadbalaView.cpp:74
 msgid "Saptavargaja Bala"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:661
+#: src/jyotish/ShadBala.cpp:709
 msgid "Total Virupas"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:679 src/views/ShadbalaView.cpp:77
+#: src/jyotish/ShadBala.cpp:727 src/views/ShadbalaView.cpp:77
 msgid "Kala Bala"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:681 src/views/ShadbalaView.cpp:257
+#: src/jyotish/ShadBala.cpp:729 src/views/ShadbalaView.cpp:257
 msgid "Nathonatha"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:682 src/views/ShadbalaView.cpp:261
+#: src/jyotish/ShadBala.cpp:730 src/views/ShadbalaView.cpp:261
 msgid "Paksha"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:683 src/views/ShadbalaView.cpp:265
+#: src/jyotish/ShadBala.cpp:731 src/views/ShadbalaView.cpp:265
 msgid "Tribhaga"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:684 src/views/ShadbalaView.cpp:269
+#: src/jyotish/ShadBala.cpp:732 src/views/ShadbalaView.cpp:269
 msgid "Varsha-Masa-Dina-Hora"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:685 src/views/ShadbalaView.cpp:273
+#: src/jyotish/ShadBala.cpp:733 src/views/ShadbalaView.cpp:273
 msgid "Ayana"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:686 src/views/ShadbalaView.cpp:277
+#: src/jyotish/ShadBala.cpp:734 src/views/ShadbalaView.cpp:277
 msgid "Yudhdha"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:688
+#: src/jyotish/ShadBala.cpp:736
 msgid "Total Rupas"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:709
+#: src/jyotish/ShadBala.cpp:757
 msgid "Remark: no Tribhaga Bala, sunrise and sunset not found."
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:713
+#: src/jyotish/ShadBala.cpp:761
 msgid "Lord of year"
 msgstr "Herrscher des Jahres"
 
-#: src/jyotish/ShadBala.cpp:717
+#: src/jyotish/ShadBala.cpp:765
 msgid "Lord of month"
 msgstr "Herrscher des Monats"
 
-#: src/jyotish/ShadBala.cpp:721
+#: src/jyotish/ShadBala.cpp:769
 msgid "Lord of day"
 msgstr "Herrscher des Tages"
 
-#: src/jyotish/ShadBala.cpp:725
+#: src/jyotish/ShadBala.cpp:773
 msgid "Lord of hour"
 msgstr "Herrscher der Stunde"
 
-#: src/jyotish/ShadBala.cpp:729
+#: src/jyotish/ShadBala.cpp:777
 msgid "Cheshta Bala"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:731 src/jyotish/TextHelper.cpp:334
+#: src/jyotish/ShadBala.cpp:779 src/jyotish/TextHelper.cpp:334
 msgid "Speed (deg/day)"
 msgstr "Geschwindigkeit (Grad/Tag)"
 
-#: src/jyotish/ShadBala.cpp:732
+#: src/jyotish/ShadBala.cpp:780
 msgid "Medium Speed"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:733
+#: src/jyotish/ShadBala.cpp:781
 msgid "Ratio"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:756
+#: src/jyotish/ShadBala.cpp:804
 msgid "Drig Bala"
 msgstr ""
 
-#: src/jyotish/ShadBala.cpp:758
+#: src/jyotish/ShadBala.cpp:806
 msgid "Sum"
 msgstr "Summe"
 

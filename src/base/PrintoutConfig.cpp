@@ -353,7 +353,7 @@ PrintoutItem *PrintoutConfigLoader::loadItem( wxJSONValue &v )
 		}
 		else
 		{
-			printf( "Key not found\n" );
+			printf( "Key not found '%s'\n", str2char( s ));
 			item = new PrintoutItemError( wxString::Format( wxT( "unsupported printout item %s" ), s.c_str()));
 		}
 	}

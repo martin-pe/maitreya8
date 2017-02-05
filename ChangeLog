@@ -1,3 +1,16 @@
+Version 8.0beta Feb 05 2017)
+
+   This release contains many bug fixes. The program should run stable
+   now.
+
+   Fixes are among others
+     * Crash in configuration dialog/style manager
+     * Crash after closing birth data dialog
+     * Fixes in Shadbala
+
+   Several documentation pages of this web site are updated to release 8
+   level, especially pages around installation and other technical topics.
+
 Version 8.0alpha1 Dec 26 2016)
 
    Version 8 is a major release after more than four years. It contains
