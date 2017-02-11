@@ -264,6 +264,7 @@ public:
 	{
 		//ratio = .1;
 		//yfixed = 70;
+		rect = MRect( 0, 0, 100, 100 );
 	}
 
 	virtual SheetItem *cloneClean() { return new DasaBarPreviewItem( props, barconfig ); }
@@ -284,6 +285,7 @@ public:
 		painter->setDefaultPen();
 		painter->setDefaultBrush();
 		painter->drawRectangle( rect, 10 );
+		//printf( "RECT %d %d\n", rect.width, rect.height );
 
 		bool isGrahaLord = ( objectId >= 12 );
 
@@ -733,10 +735,11 @@ void ColorPanel::updateUiBarDiagram()
 	barwidget->clearSheet();
 	barwidget->setMinXRight( 300 );
 	Sheet *sheet = barwidget->getSheet();
+  SheetWidgetGrid *grid = new SheetWidgetGrid( 1 );
 
 	DasaBarPreviewItem *baritem = new DasaBarPreviewItem( props, barconfig );
 	baritem->setObjectId( sel );
-	sheet->addItem( baritem );
+	grid->addItem( baritem );
 	if ( isGraha )
 	{
 		ObjectArray obs = PlanetList().getVedicPlanetOnlyList();
@@ -747,7 +750,7 @@ void ColorPanel::updateUiBarDiagram()
 		{
 			diagram->addItem( new BarDiagramItem( obs[i], expert->getPinda( GRAHAPINDA, i )));
 		}
-		sheet->addItem( diagram );
+		grid->addItem( diagram );
 	}
 	else
 	{
@@ -756,8 +759,9 @@ void ColorPanel::updateUiBarDiagram()
 		{
 			diagram->addItem( new BarDiagramItem( (int)rasi, expert->getSarva( REKHA, rasi )));
 		}
-		sheet->addItem( diagram );
+		grid->addItem( diagram );
 	}
+	sheet->addItem( grid );
 	barwidget->OnDataChanged();
 }
 
