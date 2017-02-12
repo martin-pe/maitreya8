@@ -152,7 +152,7 @@ void UranianExpert::reset()
 
 /*****************************************************
 **
-**   UranianExpert   ---   init()
+**   UranianExpert   ---   init
 **
 ******************************************************/
 void UranianExpert::init()
@@ -305,13 +305,9 @@ map<ObjectId, ClusterMatchingList> UranianExpert::createClusterMatchingList( con
 			if ( m.find( uo1->p ) == m.end()) m[uo1->p] = ClusterMatchingList( uo1->context );
 			m[uo1->p].matchings.push_back( uo2 );
 			if ( uo1->context != uo2->context ) m[uo1->p].oneContext = false;
-
-		if ( m.find( uo2->p ) == m.end()) m[uo2->p] = ClusterMatchingList( uo2->context );
-		m[uo2->p].matchings.push_back( uo1 );
-		if ( uo1->context != uo2->context ) m[uo2->p].oneContext = false;
-	}
-	else if ( (*iter).isObjectAndPairEvent())
-	{
+		}
+		else if ( (*iter).isObjectAndPairEvent())
+		{
 			UObject *uo = iter->getObjectEntity();
 			UObjectPair *up = (*iter).getObjectPairEntity();
 

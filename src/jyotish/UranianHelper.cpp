@@ -364,7 +364,6 @@ void UranianHelper::writePartner( Sheet *sheet )
 
 	s.Clear();
 
-	// TODO aus expert result und dann horoskop ziehen
 	s << _( "Partner1" ) << wxT( "/" ) << _( "Partner2" );
 	sheet->addHeader( s );
 	writeUEvents( sheet, PcPartner1 );
@@ -372,7 +371,6 @@ void UranianHelper::writePartner( Sheet *sheet )
 
 	s.Clear();
 	s << _( "Partner2" ) << wxT( "/" ) << _( "Partner1" );
-	//s << _( "Partner2" ) << wxT( ": " ) << h2->getHName();
 	sheet->addHeader( s );
 	writeUEvents( sheet, PcPartner2 );
 	writeMatchingClusters( sheet, PcPartner2 );
@@ -525,7 +523,6 @@ Table *UranianHelper::createTupleTable( const URANIAN_TUPLE_TYPE &utt, const Pla
 	assert( h );
 
 	const ObjectArray &planets = expert->getChartProperties()->getPlanetList();
-	//vector<ObjectId> planets = expert->getPlanetList( ctx );
 	const int pmax = planets.size();
 
 	UranianConfig &cfg = expert->getChartProperties()->getUranianConfig();
@@ -609,9 +606,6 @@ Table *UranianHelper::createTupleTable( const URANIAN_TUPLE_TYPE &utt, const Pla
 void UranianHelper::writeTupleTable( Sheet *sheet, const URANIAN_TUPLE_TYPE &utt, const PlanetContext &ctx )
 {
 	wxString s, s1;
-	//UranianConfig &cfg = expert->getChartProperties()->getUranianConfig();
-	//UranianTool *tool = UranianTool::get();
-	//double mod_degrees = tool->getDegrees4Gradkreis( cfg.gradkreis );
 
 	switch( utt )
 	{
