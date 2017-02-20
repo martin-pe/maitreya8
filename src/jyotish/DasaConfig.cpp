@@ -65,7 +65,7 @@ bool DasaConfig::matches( Dasa *dasa )
 		Dasa *parent = dasa->getParent();
 		if ( parent )
 		{
-			return this->lord == dasa->getDasaLord() && this->sublord == parent->getDasaLord();
+			return this->lord == parent->getDasaLord() && this->sublord == dasa->getDasaLord();
 		}
 	}
 	return false;
@@ -132,41 +132,5 @@ void DasaConfigLoader::loadSingleConfig( wxJSONValue &v )
 	}
 	l.push_back( cfg );
 }
-
-/*****************************************************
-**
-**   DasaConfigLoader   ---   saveConfigs
-**
-******************************************************/
-/*
-void DasaConfigLoader::saveConfigs( wxString filename, const vector<DasaConfig*> yl )
-{
-	wxJSONWriter writer;
-	wxJSONValue root;
-
-	// TODO not finished yes
-	assert( false );
-
-	printf( "DasaConfigLoader::saveConfigs\n" );
-	for ( uint i = 0; i < yl.size(); i++ )
-	{
-		wxJSONValue cfgroot;
-		cfgroot[ CFG_DESCRIPTION ] = yl[i]->description;
-		cfgroot[ CFG_SOURCE ] = yl[i]->source;
-		cfgroot[ CFG_EFFECT ] = yl[i]->effect;
-
-		root[ CFG_CONFIGS ].Append( cfgroot );
-	}
-
-	wxString s;
-	writer.Write( root, s );
-	PrintLn( s );
-
-	wxFileOutputStream stream( filename );
-	writer.Write( root, stream );
-
-	printf( "ENDE DasaConfigLoader::saveConfigs filename %s\n", str2char( filename ));
-}
-*/
 
 
