@@ -76,6 +76,8 @@ private:
 
 protected:
     // begin wxGlade: StyleManagerDialog::attributes
+    wxStaticBox* sizer_right_staticbox;
+    wxStaticBox* sizer_list_staticbox;
     wxListBox* list;
     wxButton* button_new;
     wxButton* button_copy;

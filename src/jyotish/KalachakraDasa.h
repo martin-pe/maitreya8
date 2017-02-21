@@ -96,6 +96,8 @@ private:
 	int paramayus;
 
 	bool isMarkatiField( const int &group, const int &pada, const int &column );
+	KalachakraGati calculateGati( const Rasi &ad_lord, const Rasi &oldlord, const bool &markatiField );
+
 	int getKPLordRecursive( const int &group, const int &pada, int &lord_index, double &elapsed, double &total_len );
 
 	static const Rasi K_KALA[4][4][9];

@@ -76,6 +76,8 @@ private:
 
 protected:
     // begin wxGlade: BrushDialog::attributes
+    wxStaticBox* sizer_bg_staticbox;
+    wxStaticBox* sizer_preview_staticbox;
     wxStaticText* label_bgcolor;
     wxColourPickerCtrl* button_bgcolor;
     wxStaticText* label_bgstyle;

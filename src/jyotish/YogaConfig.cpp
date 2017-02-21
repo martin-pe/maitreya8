@@ -114,7 +114,7 @@ void YogaConfigLoader::loadSingleConfig( wxJSONValue &v )
 ******************************************************/
 bool YogaConfigLoader::loadConfig( wxString filename, vector<YogaConfig*> &yl )
 {
-	printf( "YogaConfigLoader::loadConfig %s\n", str2char( filename ));
+	//printf( "YogaConfigLoader::loadConfig %s\n", str2char( filename ));
   wxJSONReader reader;
 	wxJSONValue root;
 
@@ -134,7 +134,7 @@ bool YogaConfigLoader::loadConfig( wxString filename, vector<YogaConfig*> &yl )
 	wxJSONValue &yconfigs = root[ CFG_CONFIGS ];
 
 	const bool isArray = yconfigs.IsArray();
-	printf( "ARRAY %d size %d\n", isArray, yconfigs.Size());
+	//printf( "ARRAY %d size %d\n", isArray, yconfigs.Size());
 
 	if ( isArray )
 	{
@@ -161,7 +161,7 @@ void YogaConfigLoader::saveConfigs( wxString filename, const vector<YogaConfig*>
 	wxJSONWriter writer;
 	wxJSONValue root;
 
-	printf( "YogaConfigLoader::saveConfigs\n" );
+	//printf( "YogaConfigLoader::saveConfigs\n" );
 	for ( uint i = 0; i < yl.size(); i++ )
 	{
 		wxJSONValue cfgroot;
@@ -182,7 +182,7 @@ void YogaConfigLoader::saveConfigs( wxString filename, const vector<YogaConfig*>
 	wxFileOutputStream stream( filename );
 	writer.Write( root, stream );
 
-	printf( "ENDE YogaConfigLoader::saveConfigs filename %s\n", str2char( filename ));
+	//printf( "ENDE YogaConfigLoader::saveConfigs filename %s\n", str2char( filename ));
 
 }
 
@@ -202,7 +202,7 @@ void YogaConfigLoader::saveConfigs( wxString filename, const vector<YogaConfig*>
 ******************************************************/
 bool YogaConfigLoader::loadConfigXml( wxString filename, vector<YogaConfig*> &ycl )
 {
-	printf( "YogaConfigLoader::loadConfigXml\n" );
+	//printf( "YogaConfigLoader::loadConfigXml\n" );
 	if ( ! wxFileName::FileExists( filename ))
 	{
 		wxLogError( wxT( "File %s does not exist, using defaults" ), filename.c_str());
@@ -250,7 +250,6 @@ bool YogaConfigLoader::loadConfigXml( wxString filename, vector<YogaConfig*> &yc
 				child = child->GetNext();
 			}
 
-			printf( "PUSH BACK\n" );
 			ycl.push_back( cfg );
 		}
 		else reportWrongRootNode( cur );

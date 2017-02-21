@@ -64,6 +64,9 @@ AtlasPanel::AtlasPanel( wxWindow* parent ) : ConfigPanel( parent )
 
     // begin wxGlade: AtlasPanel::AtlasPanel
     panel_sqlfilestatus = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
+    sizer_db_staticbox = new wxStaticBox(this, wxID_ANY, _("Database File"));
+    sizer_import_staticbox = new wxStaticBox(this, wxID_ANY, _("Database  Import"));
+    sizer_favcountries_staticbox = new wxStaticBox(this, wxID_ANY, _("Manage Favourite Countries"));
     panel_status = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
     button_dbfile = new wxButton(this, AD_CHOOSEDBFILE, _("Choose ..."));
     text_dbfile = new wxTextCtrl(this, AD_TEXTDBFILE, wxEmptyString);
@@ -72,8 +75,8 @@ AtlasPanel::AtlasPanel( wxWindow* parent ) : ConfigPanel( parent )
     text_sqlfile = new wxTextCtrl(this, AD_TEXTSQLFILE, wxEmptyString);
     text_sqlfilestatus = new wxStaticText(panel_sqlfilestatus, wxID_ANY, _("Status"));
     button_startimport = new wxButton(this, AD_RUNIMPORT, _("Start Import"));
-    const wxString list_countries_choices[] = {};
-    list_countries = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, list_countries_choices, wxLB_SINGLE);
+    const wxString *list_countries_choices = NULL;
+    list_countries = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, list_countries_choices, 0);
     button_countries = new wxButton(this, AD_COUNTRIES, _("Change Countries ..."));
 
     set_properties();
@@ -359,21 +362,24 @@ void AtlasPanel::do_layout()
     // begin wxGlade: AtlasPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(1, 1, 0, 0);
-    wxStaticBoxSizer* sizer_favcountries = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Manage Favourite Countries")), wxVERTICAL);
+    sizer_favcountries_staticbox->Lower();
+    wxStaticBoxSizer* sizer_favcountries = new wxStaticBoxSizer(sizer_favcountries_staticbox, wxVERTICAL);
     wxFlexGridSizer* sizer_left = new wxFlexGridSizer(2, 1, 0, 0);
-    wxStaticBoxSizer* sizer_import = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Database  Import")), wxVERTICAL);
+    sizer_import_staticbox->Lower();
+    wxStaticBoxSizer* sizer_import = new wxStaticBoxSizer(sizer_import_staticbox, wxVERTICAL);
     wxBoxSizer* sizer_sqlfilestatus = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_db = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Database File")), wxVERTICAL);
+    sizer_db_staticbox->Lower();
+    wxStaticBoxSizer* sizer_db = new wxStaticBoxSizer(sizer_db_staticbox, wxVERTICAL);
     wxBoxSizer* sizer_dbstatus = new wxBoxSizer(wxHORIZONTAL);
     sizer_db->Add(button_dbfile, 0, wxALL, 3);
     sizer_db->Add(text_dbfile, 0, wxALL|wxEXPAND, 3);
-    sizer_dbstatus->Add(text_dbstatus, 1, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    sizer_dbstatus->Add(text_dbstatus, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     panel_status->SetSizer(sizer_dbstatus);
     sizer_db->Add(panel_status, 1, wxALL|wxEXPAND, 3);
     sizer_left->Add(sizer_db, 1, wxALL|wxEXPAND, 3);
     sizer_import->Add(button_sqlfile, 0, wxALL, 3);
     sizer_import->Add(text_sqlfile, 0, wxALL|wxEXPAND, 3);
-    sizer_sqlfilestatus->Add(text_sqlfilestatus, 1, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    sizer_sqlfilestatus->Add(text_sqlfilestatus, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     panel_sqlfilestatus->SetSizer(sizer_sqlfilestatus);
     sizer_import->Add(panel_sqlfilestatus, 1, wxALL|wxEXPAND, 3);
     sizer_import->Add(button_startimport, 0, wxALL, 3);
@@ -381,7 +387,7 @@ void AtlasPanel::do_layout()
     sizer_left->AddGrowableCol(0);
     sizer_main->Add(sizer_left, 1, wxALL|wxEXPAND, 3);
     sizer_favcountries->Add(list_countries, 1, wxALL|wxEXPAND, 3);
-    sizer_favcountries->Add(button_countries, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
+    sizer_favcountries->Add(button_countries, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     sizer_right->Add(sizer_favcountries, 1, wxEXPAND, 0);
     sizer_right->AddGrowableRow(0);
     sizer_right->AddGrowableCol(0);

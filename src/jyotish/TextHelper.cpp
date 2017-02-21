@@ -662,7 +662,6 @@ int TextHelper::writeSynastryReport( Horoscope *h2, AspectExpert* /*aexpert*/ )
 {
 	assert( horoscope );
 	assert( h2 );
-	//assert( horoscope != h2 );
 	SheetFormatter fmt;
 	ObjectId p;
 	ObjectPosition pos, pos2;
@@ -675,7 +674,6 @@ int TextHelper::writeSynastryReport( Horoscope *h2, AspectExpert* /*aexpert*/ )
 	table->setHeader( 0,  _( "Planet" ));
 	table->setHeader( 1,  horoscope->getHName());
 	table->setHeader( 2,  h2->getHName());
-	//table->setHeader( 3,  _( "Speed (deg/day)" ));
 
 	for ( uint i = 0; i < obs.size(); i++ )
 	{
@@ -684,46 +682,13 @@ int TextHelper::writeSynastryReport( Horoscope *h2, AspectExpert* /*aexpert*/ )
 		pos2 = h2->getObjectPosition( p, chartprops->isVedic() );
 
 		table->setEntry( 0, i + 1, fmt.getObjectName( p, format, chartprops->isVedic() ));
-		//table->setEntry( 3, i + 1, fmt.getObjectName( p, format, chartprops->isVedic() ));
-
 		table->setEntry( 1, i + 1, fmt.getPosFormatted( pos.longitude, pos.direction, DEG_PRECISION_SECOND, format ));
 		if ( IS_EPHEM_OBJECT( obs[p] ) && horoscope->getTropicalLongitude( obs[p] ) == 0 ) table->errorcount++;
 
 		table->setEntry( 2, i + 1, fmt.getPosFormatted( pos2.longitude, pos2.direction, DEG_PRECISION_SECOND, format ));
 		if ( IS_EPHEM_OBJECT( obs[p] ) && h2->getTropicalLongitude( obs[p] ) == 0 ) table->errorcount++;
 	}
-
-	if ( chartprops->isVedic() )
-	{
-	}
-	else
-	{
-	}
-
 	sheet->addItem( table );
-
-/*
-	if ( chartprops->isVedic() )
-	{
-		//writer->addLine( wxT( "TODO" ));
-		aexpert->writeVedicAspectarium( sheet, chartprops, CT_PARTNER );
-	}
-	else
-	{
-		assert( aexpert );
-		list<AspectEvent> al = aexpert->getAspectList();
-		aexpert->writeWesternAspectList( sheet, chartprops, CT_PARTNER, true );
-	}
-
-	writer->addHeader( horoscope->getHName());
-	//writeVedicPlanets();
-	writePlanets();
-
-	horoscope = h2;
-	writer->addHeader( horoscope->getHName());
-	//writeVedicPlanets();
-	writePlanets();
-*/
 	return 0;
 }
 

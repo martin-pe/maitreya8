@@ -665,7 +665,11 @@ void DasaGraphicWidget::calcItemRectangles( GraphicalDasaItem *item )
 	for( unsigned int i = 0; i < item->depitems.size(); i++ )
 	{
 		subitem = item->depitems[i];
-		assert( item );
+		assert( subitem );
+
+		// fix at 8.0 rc: empty string because formatting might not fit anymore
+		subitem->contents.clear();
+
 		dasa = subitem->dasa;
 		assert( dasa );
 

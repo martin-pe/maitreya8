@@ -52,35 +52,38 @@ AtlasEditDialog::AtlasEditDialog(wxWindow* parent, AtlasLogic *logic, const Atla
  model = entry;
 
     // begin wxGlade: AtlasEditDialog::AtlasEditDialog
+    sizer_bottom_staticbox = new wxStaticBox(this, wxID_ANY, wxEmptyString);
+    sizer_main_staticbox = new wxStaticBox(this, wxID_ANY, wxEmptyString);
+    sizer_left_staticbox = new wxStaticBox(this, wxID_ANY, _("Attributes"));
     label_name = new wxStaticText(this, wxID_ANY, _("Name"));
     text_name = new wxTextCtrl(this, wxID_ANY, wxEmptyString);
     label_asciiname = new wxStaticText(this, wxID_ANY, _("ASCII Name"));
     text_asciiname = new wxTextCtrl(this, wxID_ANY, wxEmptyString);
     label_country = new wxStaticText(this, wxID_ANY, _("Country"));
-    const wxString choice_country_choices[] = {};
-    choice_country = new wxChoice(this, AE_COUNTRY, wxDefaultPosition, wxDefaultSize, 0, choice_country_choices);
+    const wxString *choice_country_choices = NULL;
+    choice_country = new wxChoice(this, AE_COUNTRY, wxDefaultPosition, wxDefaultSize, 0, choice_country_choices, 0);
     label_admincode = new wxStaticText(this, wxID_ANY, _("Admin Code"));
-    const wxString choice_admin_choices[] = {};
-    choice_admin = new wxChoice(this, AE_ADMIN, wxDefaultPosition, wxDefaultSize, 0, choice_admin_choices);
+    const wxString *choice_admin_choices = NULL;
+    choice_admin = new wxChoice(this, AE_ADMIN, wxDefaultPosition, wxDefaultSize, 0, choice_admin_choices, 0);
     label_population = new wxStaticText(this, wxID_ANY, _("Population"));
     text_population = new wxTextCtrl(this, wxID_ANY, wxEmptyString);
     label_longitude = new wxStaticText(this, wxID_ANY, _("Longitude"));
     text_longitude = new MDegSpin(this, wxID_ANY, 180);
     const wxString choice_ew_choices[] = {
         _("East"),
-        _("West"),
+        _("West")
     };
-    choice_ew = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ew_choices);
+    choice_ew = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ew_choices, 0);
     label_latitude = new wxStaticText(this, wxID_ANY, _("Latitude"));
     text_latitude = new MDegSpin(this, wxID_ANY, 90);
     const wxString choice_ns_choices[] = {
         _("North"),
-        _("South"),
+        _("South")
     };
-    choice_ns = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ns_choices);
+    choice_ns = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ns_choices, 0);
     label_timezone = new wxStaticText(this, wxID_ANY, _("Time Zone"));
-    const wxString choice_timezone_choices[] = {};
-    choice_timezone = new wxChoice(this, AE_TZNAME, wxDefaultPosition, wxDefaultSize, 0, choice_timezone_choices);
+    const wxString *choice_timezone_choices = NULL;
+    choice_timezone = new wxChoice(this, AE_TZNAME, wxDefaultPosition, wxDefaultSize, 0, choice_timezone_choices, 0);
     label_tzh = new wxStaticText(this, wxID_ANY, _("TZ Hours"));
     label_tzhours = new wxStaticText(this, wxID_ANY, _("dummy"));
     label_aliases = new wxStaticText(this, wxID_ANY, _("Aliases"));
@@ -290,36 +293,39 @@ void AtlasEditDialog::set_properties()
 void AtlasEditDialog::do_layout()
 {
     // begin wxGlade: AtlasEditDialog::do_layout
-    wxStaticBoxSizer* sizer_main = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, wxEmptyString), wxVERTICAL);
-    wxStaticBoxSizer* sizer_bottom = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, wxEmptyString), wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_left = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Attributes")), wxVERTICAL);
+    sizer_main_staticbox->Lower();
+    wxStaticBoxSizer* sizer_main = new wxStaticBoxSizer(sizer_main_staticbox, wxVERTICAL);
+    sizer_bottom_staticbox->Lower();
+    wxStaticBoxSizer* sizer_bottom = new wxStaticBoxSizer(sizer_bottom_staticbox, wxHORIZONTAL);
+    sizer_left_staticbox->Lower();
+    wxStaticBoxSizer* sizer_left = new wxStaticBoxSizer(sizer_left_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_attributes = new wxFlexGridSizer(11, 2, 0, 0);
     wxBoxSizer* sizer_latitude = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* sizer_longitude = new wxBoxSizer(wxHORIZONTAL);
-    grid_attributes->Add(label_name, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_name, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_attributes->Add(text_name, 0, wxALL|wxEXPAND, 3);
-    grid_attributes->Add(label_asciiname, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_asciiname, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_attributes->Add(text_asciiname, 0, wxALL|wxEXPAND, 3);
-    grid_attributes->Add(label_country, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_country, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_attributes->Add(choice_country, 0, wxALL, 3);
-    grid_attributes->Add(label_admincode, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_admincode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_attributes->Add(choice_admin, 0, wxALL, 3);
-    grid_attributes->Add(label_population, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_population, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_attributes->Add(text_population, 0, wxALL|wxEXPAND, 3);
-    grid_attributes->Add(label_longitude, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_longitude, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     sizer_longitude->Add(text_longitude, 1, wxEXPAND, 0);
     sizer_longitude->Add(choice_ew, 0, wxALL, 3);
     grid_attributes->Add(sizer_longitude, 1, wxALL|wxEXPAND, 0);
-    grid_attributes->Add(label_latitude, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_latitude, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     sizer_latitude->Add(text_latitude, 1, wxEXPAND, 0);
     sizer_latitude->Add(choice_ns, 0, wxALL, 3);
     grid_attributes->Add(sizer_latitude, 1, wxALL|wxEXPAND, 0);
-    grid_attributes->Add(label_timezone, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_attributes->Add(label_timezone, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_attributes->Add(choice_timezone, 1, wxALL, 3);
-    grid_attributes->Add(label_tzh, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_attributes->Add(label_tzhours, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_attributes->Add(label_aliases, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_attributes->Add(button_aliases, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_attributes->Add(label_tzh, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_attributes->Add(label_tzhours, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_attributes->Add(label_aliases, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_attributes->Add(button_aliases, 0, wxALL|wxALIGN_RIGHT, 3);
     grid_attributes->AddGrowableCol(1);
     sizer_left->Add(grid_attributes, 0, wxEXPAND, 0);
     sizer_left->Add(text_alias, 1, wxALL|wxEXPAND, 3);

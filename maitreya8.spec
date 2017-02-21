@@ -8,7 +8,7 @@
 
 
 Name:           maitreya8
-Version:        8.0.beta1
+Version:        8.0.beta2
 Release:        1%{?dist}
 Summary:        Software for Vedic and western astrology
 Group:          Productivity/Other

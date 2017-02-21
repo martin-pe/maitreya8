@@ -156,6 +156,138 @@ bool KalachakraDasaExpert::isMarkatiField( const int &group, const int &pada, co
 
 /*****************************************************
 **
+**   KalachakraDasaExpert   ---   calculateGati
+**
+******************************************************/
+KalachakraGati KalachakraDasaExpert::calculateGati( const Rasi &ad_lord, const Rasi &oldlord, const bool &markatiField )
+{
+	KalachakraGati gati = KdgDefault;
+	if ( oldlord != R_NONE )
+	{
+		switch( ad_lord )
+		{
+			case R_ARIES:
+				if ( oldlord == R_SAGITTARIUS ) gati = KdgSimhavalokan;
+			break;
+			case R_GEMINI:
+				if ( oldlord == R_LEO ) gati = KdgMandooka;
+			break;
+			case R_CANCER:
+				if ( oldlord == R_VIRGO ) gati = KdgMandooka;
+				else if ( markatiField ) gati = KdgMarkati;
+			break;
+			case R_LEO:
+				if ( oldlord == R_GEMINI ) gati = KdgMandooka;
+				else if ( markatiField ) gati = KdgMarkati;
+			break;
+			case R_VIRGO:
+				if ( oldlord == R_CANCER ) gati = KdgMandooka;
+			break;
+			case R_SCORPIO:
+				if ( oldlord == R_PISCES ) gati = KdgSimhavalokan;
+			break;
+			case R_SAGITTARIUS:
+				if ( oldlord == R_ARIES ) gati = KdgSimhavalokan;
+			break;
+			case R_PISCES:
+				if ( oldlord == R_SCORPIO ) gati = KdgSimhavalokan;
+			break;
+			default:
+			break;
+		}
+	}
+	return gati;
+}
+
+/*****************************************************
+**
+**   KalachakraDasaExpert   ---   getFirstLevel
+**
+******************************************************/
+vector<Dasa*> KalachakraDasaExpert::getFirstLevel()
+{
+	Calculator *calculator = CalculatorFactory().getCalculator();
+	vector<Dasa*> ret;
+	int pada;
+	KalachakraGroup group;
+	KalachakraGati gati = KdgDefault;
+	Rasi lord, oldlord = R_NONE;
+
+	const double mlen = horoscope->getVedicLongitude( OMOON );
+	const double portion = ( config->vedicCalculation->kalachakraMode == 3 ? 0
+		: calculator->calcNakshatraPortion( horoscope->getDataSet(), mlen, true ));
+
+	pada = (int)( mlen / PADA_LEN );
+	pada %= 4;
+
+	int nakshatra = (int)::getNakshatra27( mlen );
+	group = K_NAKSHATRA_GROUP[nakshatra];
+	savya = ( IS_SAVYA_GROUP ( group ));
+
+	amsa = (Rasi)(( nakshatra % 3  ) * 4 + pada );
+	if ( ! savya ) amsa = K_APSAVYA_AMSA[amsa];
+
+	paramayus = K_TOTALYEARS[group][pada];
+
+	deha = savya ? K_KALA[group][pada][0] : K_KALA[group][pada][8];
+	jeeva = savya ? K_KALA[group][pada][8] : K_KALA[group][pada][0];
+
+	double elapsed = portion * paramayus;
+	int column = 0;
+	while ( elapsed - K_RASIYEARS[(int)K_KALA[group][pada][column]] > 0 )
+	{
+		elapsed -= K_RASIYEARS[(int)K_KALA[group][pada][column]];
+		assert( column++ < 8 );
+	}
+	double start_jd =  horoscope->getJD() - elapsed  * getYearLength( true );
+	double end_jd;
+
+	for ( int i = 0; i <= 9; i++ )
+	{
+		end_jd = start_jd + K_RASIYEARS[K_KALA[group][pada][column]] * getYearLength( true );
+
+		lord = K_KALA[group][pada][column];
+		gati = calculateGati( lord, oldlord, isMarkatiField( group, pada, column ));
+		ret.push_back( new KalachakraDasa( lord, start_jd, end_jd, pada, group, gati ));
+		//ret.push_back( new KalachakraDasa( K_KALA[group][pada][column], start_jd, end_jd, pada, group, gati ));
+		column++;
+		if ( column > 8 )
+		{
+			column = 0;
+
+			// iKalachakraMode == 1 doesn's jump to next row
+			// mode 0 goes to next row or next nakshatra if last pada.
+			// Last pada of savya or apsavya goes to first nakshatra of same group
+			if ( config->vedicCalculation->kalachakraMode == 0 )
+			{
+				if ( pada < 3 ) pada++;
+				else
+				{
+					pada  = 0;
+					nakshatra++;
+					if ( nakshatra > 27 ) nakshatra = 0;
+
+					// On change of savya/apsava -> don't add one nakshatra, but go back to first nakshatra of same cycle
+					if (( savya && K_NAKSHATRA_GROUP[nakshatra] > 1 ) || ( ! savya && K_NAKSHATRA_GROUP[nakshatra] <= 1 )) nakshatra -= 3;
+					if ( nakshatra < 0 ) nakshatra += 27;
+					group = K_NAKSHATRA_GROUP[nakshatra];
+				}
+			}
+			// Mode 2 stays in the same nakshatra
+			else if ( config->vedicCalculation->kalachakraMode == 2 )
+			{
+				if ( pada < 3 ) pada++;
+				else pada  = 0;
+			}
+		}
+		start_jd = end_jd;
+		oldlord = lord;
+	}
+	return ret;
+}
+
+/*****************************************************
+**
 **   KalachakraDasaExpert   ---   getNextLevel
 **
 ******************************************************/
@@ -191,136 +323,16 @@ vector<Dasa*> KalachakraDasaExpert::getNextLevel( Dasa *d )
 
 	for ( int i = 0; i < 9; i++ )
 	{
-		//wrap = ( column + i == 9 );
-		gati = KdgDefault;
-
 		currentcol = (column + i) % 9;
 		ad_lord = K_KALA[group][pada][currentcol];
 		ad_dur = dasa_dur * (double)K_RASIYEARS[ad_lord] / total_years;
 		end_jd = start_jd + ad_dur;
 
-		if ( oldlord != R_NONE )
-		{
-			switch( ad_lord )
-			{
-				case R_ARIES:
-					if ( oldlord == R_SAGITTARIUS ) gati = KdgSimhavalokan;
-				break;
-				case R_GEMINI:
-					if ( oldlord == R_LEO ) gati = KdgMandooka;
-				break;
-				case R_CANCER:
-					if ( oldlord == R_VIRGO ) gati = KdgMandooka;
-					else if ( isMarkatiField( group, pada, currentcol )) gati = KdgMarkati;
-				break;
-				case R_LEO:
-					if ( oldlord == R_GEMINI ) gati = KdgMandooka;
-					else if ( isMarkatiField( group, pada, currentcol )) gati = KdgMarkati;
-				break;
-				case R_VIRGO:
-					if ( oldlord == R_CANCER ) gati = KdgMandooka;
-				break;
-				case R_SCORPIO:
-					if ( oldlord == R_PISCES ) gati = KdgSimhavalokan;
-				break;
-				case R_SAGITTARIUS:
-					if ( oldlord == R_ARIES ) gati = KdgSimhavalokan;
-				break;
-				case R_PISCES:
-					if ( oldlord == R_SCORPIO ) gati = KdgSimhavalokan;
-				break;
-				default:
-				break;
-			}
-		}
-
+		gati = calculateGati( ad_lord, oldlord, isMarkatiField( group, pada, currentcol ));
 		ret.push_back( new KalachakraDasa( ad_lord, start_jd, end_jd, pada, group, gati, d ));
 
 		start_jd = end_jd;
 		oldlord = ad_lord;
-	}
-
-	return ret;
-}
-
-/*****************************************************
-**
-**   KalachakraDasaExpert   ---   getFirstLevel
-**
-******************************************************/
-vector<Dasa*> KalachakraDasaExpert::getFirstLevel()
-{
-	Calculator *calculator = CalculatorFactory().getCalculator();
-	vector<Dasa*> ret;
-	int pada;
-	KalachakraGroup group;
-	KalachakraGati gati = KdgDefault;
-
-	const double mlen = horoscope->getVedicLongitude( OMOON );
-	const double portion = ( config->vedicCalculation->kalachakraMode == 3 ? 0
-		: calculator->calcNakshatraPortion( horoscope->getDataSet(), mlen, true ));
-
-	pada = (int)( mlen / PADA_LEN );
-	pada %= 4;
-
-	int nakshatra = (int)::getNakshatra27( mlen );
-	group = K_NAKSHATRA_GROUP[nakshatra];
-	savya = ( IS_SAVYA_GROUP ( group ));
-
-	amsa = (Rasi)(( nakshatra % 3  ) * 4 + pada );
-	if ( ! savya ) amsa = K_APSAVYA_AMSA[amsa];
-
-	paramayus = K_TOTALYEARS[group][pada];
-
-	deha = savya ? K_KALA[group][pada][0] : K_KALA[group][pada][8];
-	jeeva = savya ? K_KALA[group][pada][8] : K_KALA[group][pada][0];
-
-	double elapsed = portion * paramayus;
-	int column = 0;
-	while ( elapsed - K_RASIYEARS[(int)K_KALA[group][pada][column]] > 0 )
-	{
-		elapsed -= K_RASIYEARS[(int)K_KALA[group][pada][column]];
-		assert( column++ < 8 );
-	}
-	double start_jd =  horoscope->getJD() - elapsed  * getYearLength( true );
-	double end_jd;
-
-	for ( int i = 0; i <= 9; i++ )
-	{
-		end_jd = start_jd + K_RASIYEARS[K_KALA[group][pada][column]] * getYearLength( true );
-
-		ret.push_back( new KalachakraDasa( K_KALA[group][pada][column], start_jd, end_jd, pada, group, gati ));
-		column++;
-		if ( column > 8 )
-		{
-			column = 0;
-
-			// iKalachakraMode == 1 doesn's jump to next row
-			// mode 0 goes to next row or next nakshatra if last pada.
-			// Last pada of savya or apsavya goes to first nakshatra of same group
-			if ( config->vedicCalculation->kalachakraMode == 0 )
-			{
-				if ( pada < 3 ) pada++;
-				else
-				{
-					pada  = 0;
-					nakshatra++;
-					if ( nakshatra > 27 ) nakshatra = 0;
-
-					// On change of savya/apsava -> don't add one nakshatra, but go back to first nakshatra of same cycle
-					if (( savya && K_NAKSHATRA_GROUP[nakshatra] > 1 ) || ( ! savya && K_NAKSHATRA_GROUP[nakshatra] <= 1 )) nakshatra -= 3;
-					if ( nakshatra < 0 ) nakshatra += 27;
-					group = K_NAKSHATRA_GROUP[nakshatra];
-				}
-			}
-			// Mode 2 stays in the same nakshatra
-			else if ( config->vedicCalculation->kalachakraMode == 2 )
-			{
-				if ( pada < 3 ) pada++;
-				else pada  = 0;
-			}
-		}
-		start_jd = end_jd;
 	}
 	return ret;
 }
@@ -515,7 +527,7 @@ KpData KalachakraDasaExpert::getKPLords( const double &len )
 	double elapsed = portion * totalyears;
 	int spalte = 0;
 
-	printf( "portion %f totalyears %d elapsed %f\n", portion, totalyears, elapsed );
+	//printf( "portion %f totalyears %d elapsed %f\n", portion, totalyears, elapsed );
 	//kp.lord = getKPLordRecursive( group, pada, spalte, elapsed, total_len );
 
 	// Lord of Dasa
@@ -545,7 +557,7 @@ KpData KalachakraDasaExpert::getKPLords( const double &len )
 	assert( spalte >= 0 && spalte < 9 );
 	kp.sublord = K_KALA[group][pada][spalte];
 
-	printf( "elapased %f allop %f\n", elapsed, aloop );
+	//printf( "elapased %f allop %f\n", elapsed, aloop );
 	return kp;
 }
 
@@ -556,7 +568,7 @@ KpData KalachakraDasaExpert::getKPLords( const double &len )
 ******************************************************/
 int KalachakraDasaExpert::getKPLordRecursive( const int &group, const int &pada, int &spalte, double &elapsed, double &total_len )
 {
-	printf( "getKPLordRecursive g %d p %d s %d el %f tl %f\n", group, pada, spalte, elapsed, total_len );
+	//printf( "getKPLordRecursive g %d p %d s %d el %f tl %f\n", group, pada, spalte, elapsed, total_len );
 	assert( group >= 0 && group < 4 );
 	assert( pada >= 0 && pada < 4 );
 	assert( spalte >= 0 && group < 9 );
@@ -568,7 +580,7 @@ int KalachakraDasaExpert::getKPLordRecursive( const int &group, const int &pada,
 	int count = 0;
 	while ( elapsed - aloop > 0 )
 	{
-		printf( "LOOP %f spalte %d elapsed %f aa %d %f \n", aloop, spalte, elapsed, K_RASIYEARS[(int)K_KALA[group][pada][spalte]], maha_dur  );
+		//printf( "LOOP %f spalte %d elapsed %f aa %d %f \n", aloop, spalte, elapsed, K_RASIYEARS[(int)K_KALA[group][pada][spalte]], maha_dur  );
 		elapsed -= aloop;
 		spalte++;
 		if ( spalte > 8 ) spalte = 0;
@@ -662,49 +674,4 @@ DasaExpert *DasaExpertFactory::getKalachakraDasaExpert( Horoscope *h )
 {
 	return new KalachakraDasaExpert( h );
 }
-
-
-/* Trash
-eunm KalachakraGati
-{
-	KG_ERROR = -2,
-	KG_NONE = -1,
-	KG_NORMAL = 0,
-	KG_MANDUKA,
-	KG_SIMHAVALOKAN,
-	KG_MARKATI,
-	KG_UNKNOWN
-
-wxString getGatiName( const KalachakraGati &gati )
-{
-	switch( gati )
-	{
-		case KG_ERROR:
-			return _( "Error" );
-		break;
-		case KG_NONE:
-			return _( "None" );
-		break;
-		case KG_NORMAL:
-			return _( "Normal" );
-		break;
-		case KG_MANDUKA:
-			return _( "Manduka" );
-		break;
-		case KG_SIMHAVALOKAN:
-			return _( "Simhavalokan" );
-		break;
-		case KG_MARKATI:
-			return _( "Markati" );
-		break;
-		case KG_UNKNOWN:
-			return _( "Unknown" );
-		break;
-		default:
-			assert( false );
-		break;
-	}
-}
-*/
-
 

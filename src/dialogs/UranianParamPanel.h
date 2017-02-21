@@ -81,6 +81,11 @@ private:
 
 protected:
     // begin wxGlade: UranianParamPanel::attributes
+    wxStaticBox* sizer_filter_staticbox;
+    wxStaticBox* sizer_include_staticbox;
+    wxStaticBox* sizer_orbis_staticbox;
+    wxStaticBox* sizer_sort_staticbox;
+    wxStaticBox* sizer_gradkreis_staticbox;
     GradkreisChoice* choice_gradkreis;
     SortChoice* choice_sort;
     wxSpinCtrl* spin_orbis;

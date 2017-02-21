@@ -48,6 +48,8 @@ ObjectFilterDialog::ObjectFilterDialog(wxWindow* parent, const ObjectArray &p, c
 		filter( f )
 {
     // begin wxGlade: ObjectFilterDialog::ObjectFilterDialog
+    sizer_right_staticbox = new wxStaticBox(this, wxID_ANY, _("Quick Select"));
+    sizer_list_staticbox = new wxStaticBox(this, wxID_ANY, _("Included Objects"));
     list = new wxCheckListBox(this, wxID_ANY);
     button_all = new wxButton(this, OD_ALL, _("Select All"));
     button_upto_mars = new wxButton(this, OD_UPTO_MARS, _("Up to Mars"));
@@ -178,21 +180,23 @@ void ObjectFilterDialog::do_layout()
     wxBoxSizer* sizer_main = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* sizer_bottom = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* sizer_top = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_right = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Quick Select")), wxVERTICAL);
-    wxStaticBoxSizer* sizer_list = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Included Objects")), wxVERTICAL);
+    sizer_right_staticbox->Lower();
+    wxStaticBoxSizer* sizer_right = new wxStaticBoxSizer(sizer_right_staticbox, wxVERTICAL);
+    sizer_list_staticbox->Lower();
+    wxStaticBoxSizer* sizer_list = new wxStaticBoxSizer(sizer_list_staticbox, wxVERTICAL);
     sizer_list->Add(list, 1, wxALL|wxEXPAND, 3);
     sizer_top->Add(sizer_list, 1, wxALL|wxEXPAND, 3);
     sizer_right->Add(button_all, 0, wxALL|wxEXPAND, 3);
     sizer_right->Add(button_upto_mars, 0, wxALL|wxEXPAND, 3);
     sizer_right->Add(button_from_mars, 0, wxALL, 3);
     sizer_right->Add(button_none, 0, wxALL|wxEXPAND, 3);
-    sizer_top->Add(sizer_right, 0, wxALIGN_BOTTOM|wxALL, 3);
+    sizer_top->Add(sizer_right, 0, wxALL|wxALIGN_BOTTOM, 3);
     sizer_main->Add(sizer_top, 1, wxEXPAND, 0);
     wxStaticLine* static_line_2 = new wxStaticLine(this, wxID_ANY);
     sizer_main->Add(static_line_2, 0, wxALL|wxEXPAND, 3);
     sizer_bottom->Add(button_ok, 0, wxALL, 3);
     sizer_bottom->Add(button_cancel, 0, wxALL, 3);
-    sizer_main->Add(sizer_bottom, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
+    sizer_main->Add(sizer_bottom, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     Layout();

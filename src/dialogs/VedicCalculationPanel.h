@@ -77,6 +77,14 @@ private:
 
 protected:
     // begin wxGlade: VedicCalculationPanel::attributes
+    wxStaticBox* sizer_jaimini_staticbox;
+    wxStaticBox* sizer_kalavelas_staticbox;
+    wxStaticBox* sizer_yl_staticbox;
+    wxStaticBox* sizer_nakshatra_staticbox;
+    wxStaticBox* sizer_varga_significations_staticbox;
+    wxStaticBox* sizer_varga_staticbox;
+    wxStaticBox* sizer_benefics_staticbox;
+    wxStaticBox* sizer_basic_staticbox;
     wxStaticText* label_ayanamsa;
     wxChoice* choice_ayanamsa;
     wxStaticText* label_vcalc_node;

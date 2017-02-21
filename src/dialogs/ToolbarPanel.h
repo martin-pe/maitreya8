@@ -93,6 +93,9 @@ private:
 
 protected:
     // begin wxGlade: ToolbarPanel::attributes
+    wxStaticBox* sizer_options_staticbox;
+    wxStaticBox* sizer_selected_staticbox;
+    wxStaticBox* sizer_available_staticbox;
     wxListCtrl* list1;
     wxBitmapButton* button_right;
     wxBitmapButton* button_left;

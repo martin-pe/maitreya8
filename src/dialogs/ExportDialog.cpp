@@ -44,6 +44,7 @@ ExportDialog::ExportDialog(wxWindow* parent, const int &x, const int &y )
 	sizex = x;
 	sizey = y;
     // begin wxGlade: ExportDialog::ExportDialog
+    sizer_size_staticbox = new wxStaticBox(this, wxID_ANY, _("Size"));
     label_x = new wxStaticText(this, wxID_ANY, _("Horizontal Size"));
     spin_x = new wxSpinCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 100000);
     label_y = new wxStaticText(this, wxID_ANY, _("Vertical Size"));
@@ -106,20 +107,21 @@ void ExportDialog::do_layout()
     // begin wxGlade: ExportDialog::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(3, 1, 0, 0);
     wxBoxSizer* sizer_buttons = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_size = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Size")), wxVERTICAL);
+    sizer_size_staticbox->Lower();
+    wxStaticBoxSizer* sizer_size = new wxStaticBoxSizer(sizer_size_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_size = new wxFlexGridSizer(2, 2, 3, 3);
-    grid_size->Add(label_x, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_size->Add(spin_x, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_size->Add(label_y, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_size->Add(spin_y, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_size->Add(label_x, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_size->Add(spin_x, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_size->Add(label_y, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_size->Add(spin_y, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     sizer_size->Add(grid_size, 1, wxEXPAND, 0);
     sizer_size->Add(20, 20, 0, wxALL|wxEXPAND, 3);
     sizer_size->Add(check_show_dialog, 0, wxALL|wxEXPAND, 3);
-    sizer_main->Add(sizer_size, 1, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
+    sizer_main->Add(sizer_size, 1, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     sizer_main->Add(static_line_1, 0, wxALL|wxEXPAND, 3);
     sizer_buttons->Add(button_ok, 0, wxALL, 3);
     sizer_buttons->Add(button_cancel, 0, wxALL, 3);
-    sizer_main->Add(sizer_buttons, 1, wxALIGN_CENTER|wxALL, 3);
+    sizer_main->Add(sizer_buttons, 1, 0, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     sizer_main->AddGrowableCol(0);

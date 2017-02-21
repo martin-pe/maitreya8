@@ -428,7 +428,7 @@ void Horoscope::updateKP( const DasaId &dasaindex ) const
 ******************************************************/
 KpData Horoscope::getHouseKPLords( const int &house ) const
 {
-	printf( "Horoscope::getHouseKPLords house %d\n", house );
+	//printf( "Horoscope::getHouseKPLords house %d\n", house );
 	ASSERT_VALID_HOUSE( house )
 	return hkp_lord[house];
 }

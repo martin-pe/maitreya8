@@ -86,6 +86,15 @@ private:
 
 protected:
     // begin wxGlade: VedicChartPanel::attributes
+    wxStaticBox* sizer_preview_staticbox;
+    wxStaticBox* sizer_aspect_options_staticbox;
+    wxStaticBox* sizer_sbc_options_staticbox;
+    wxStaticBox* sizer_south_staticbox;
+    wxStaticBox* sizer_north_staticbox;
+    wxStaticBox* sizer_vargaoptions_staticbox;
+    wxStaticBox* sizer_mouseover_staticbox;
+    wxStaticBox* sizer_viewoptions_staticbox;
+    wxStaticBox* sizer_defaultskin_staticbox;
     wxChoice* choice_defaultskin;
     wxCheckBox* check_retro;
     wxCheckBox* check_use_colors;

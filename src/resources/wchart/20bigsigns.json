@@ -88,7 +88,7 @@
             }
         },
         {
-            "name": "Big Signs/Colored",
+            "name": "Big Signs/Colored, alternative text color",
             "extends": "Big Signs",
             "houses": {
                 "globaltextcolor": "grey",
@@ -97,26 +97,6 @@
             "signs": {
                 "globaltextcolor": "white",
                 "palette": "housestock"
-            }
-        },
-        {
-            "name": "Big Signs/Grobi",
-            "extends": "Big Signs",
-            "signs": {
-                "palette": "desert",
-                "globaltextcolor": "black"
-            },
-            "houses": {
-                "palette": "desert",
-                "globaltextcolor": "black"
-            }
-        },
-        {
-            "name": "Big Signs/Rainbow",
-            "extends": "Big Signs",
-            "signs": {
-                "palette": "rainbow",
-                "globaltextcolor": "black"
             }
         }
     ]

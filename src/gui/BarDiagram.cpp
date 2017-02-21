@@ -188,11 +188,6 @@ BarDiagramWidget::BarDiagramWidget( ChartProperties *props, wxString title, cons
 {
 	barconfig = bconfig ? bconfig : config->bardiagram;
 	minvalue = maxvalue = 0;
-	/*
-	this->xmin = xmin;
-	this->xmax = xmax;
-	this->ratio = ratio;
-	*/
 }
 
 /*****************************************************
@@ -383,11 +378,7 @@ void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 			else s = lang.getSignName( (Rasi)(*iter)->objectId, TF_MEDIUM );
 		}
 		painter->drawTextFormatted( MRect( rulerRect.x + i * xstep, rulerRect.y + rulerRect.height, xstep, 2 * text_height ),
-			s, Align::VCenter + Align::HCenter );
-		/*
-		painter->drawTextFormatted( MRect( rulerRect.x + i * xstep, rulerRect.y + rulerRect.height, xstep, xstep ),
-			s, Align::VCenter + Align::HCenter );
-		*/
+			s, Align::Top + Align::HCenter );
 		i++;
 	}
 	painter->setGraphicFontZoom( graphicfont_scalingfactor );

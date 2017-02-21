@@ -48,6 +48,8 @@ MultipleViewPanel::MultipleViewPanel( wxWindow* parent ) : ConfigPanel( parent )
 	config2model();
 
     // begin wxGlade: MultipleViewPanel::MultipleViewPanel
+    sizer_mview_staticbox = new wxStaticBox(this, wxID_ANY, _("Multiple View Configuration"));
+    sizer_nbstyle_staticbox = new wxStaticBox(this, wxID_ANY, _("Notebooks in Multiple View"));
     panel_description = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
     check_use_mviews = new wxCheckBox(this, CD_SWITCH_MVIEW, _("Use Multiple Views"));
     label_defview = new wxStaticText(this, wxID_ANY, _("Default View"));
@@ -55,9 +57,9 @@ MultipleViewPanel::MultipleViewPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy"),
+        _("dummy")
     };
-    choice_viewlist = new wxChoice(this, CD_CHOICE_DEFAULTVIEW, wxDefaultPosition, wxDefaultSize, 4, choice_viewlist_choices);
+    choice_viewlist = new wxChoice(this, CD_CHOICE_DEFAULTVIEW, wxDefaultPosition, wxDefaultSize, 4, choice_viewlist_choices, 0);
     text_view_description = new wxStaticText(panel_description, wxID_ANY, _("dummy"));
     label_nbstyle = new wxStaticText(this, wxID_ANY, _("Style"));
     const wxString choice_nbstyle_choices[] = {
@@ -65,17 +67,17 @@ MultipleViewPanel::MultipleViewPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("Listbook"),
         _("Choicebook"),
         _("Toolbook"),
-        _("Treebook"),
+        _("Treebook")
     };
-    choice_nbstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_nbstyle_choices);
+    choice_nbstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_nbstyle_choices, 0);
     label_orientation = new wxStaticText(this, wxID_ANY, _("Orientation"));
     const wxString choice_orientation_choices[] = {
         _("Top"),
         _("Bottom"),
         _("Left"),
-        _("Right"),
+        _("Right")
     };
-    choice_orientation = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_orientation_choices);
+    choice_orientation = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_orientation_choices, 0);
 
     set_properties();
     do_layout();
@@ -188,15 +190,17 @@ void MultipleViewPanel::do_layout()
     // begin wxGlade: MultipleViewPanel::do_layout
     wxFlexGridSizer* grid_main = new wxFlexGridSizer(2, 2, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(1, 1, 3, 3);
-    wxStaticBoxSizer* sizer_nbstyle = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Notebooks in Multiple View")), wxVERTICAL);
+    sizer_nbstyle_staticbox->Lower();
+    wxStaticBoxSizer* sizer_nbstyle = new wxStaticBoxSizer(sizer_nbstyle_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_nbstyle = new wxFlexGridSizer(2, 2, 3, 3);
     wxFlexGridSizer* sizer_left = new wxFlexGridSizer(2, 1, 3, 3);
-    wxStaticBoxSizer* sizer_mview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Multiple View Configuration")), wxVERTICAL);
+    sizer_mview_staticbox->Lower();
+    wxStaticBoxSizer* sizer_mview = new wxStaticBoxSizer(sizer_mview_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_mview = new wxFlexGridSizer(3, 1, 0, 0);
     wxBoxSizer* sizer_description = new wxBoxSizer(wxHORIZONTAL);
     wxFlexGridSizer* grid_select_view = new wxFlexGridSizer(1, 2, 0, 0);
     sizer_mview->Add(check_use_mviews, 0, wxALL, 3);
-    grid_select_view->Add(label_defview, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_select_view->Add(label_defview, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_select_view->Add(choice_viewlist, 0, wxALL|wxEXPAND, 3);
     grid_select_view->AddGrowableCol(1);
     grid_mview->Add(grid_select_view, 1, wxALL|wxEXPAND, 3);
@@ -208,10 +212,10 @@ void MultipleViewPanel::do_layout()
     sizer_mview->Add(grid_mview, 1, wxEXPAND, 0);
     sizer_left->Add(sizer_mview, 1, wxALL|wxEXPAND, 3);
     grid_main->Add(sizer_left, 1, wxEXPAND, 0);
-    grid_nbstyle->Add(label_nbstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_nbstyle->Add(choice_nbstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
-    grid_nbstyle->Add(label_orientation, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_nbstyle->Add(choice_orientation, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_nbstyle->Add(label_nbstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_nbstyle->Add(choice_nbstyle, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    grid_nbstyle->Add(label_orientation, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_nbstyle->Add(choice_orientation, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
     sizer_nbstyle->Add(grid_nbstyle, 1, wxALL|wxEXPAND, 3);
     sizer_right->Add(sizer_nbstyle, 1, wxALL|wxEXPAND, 3);
     grid_main->Add(sizer_right, 1, wxEXPAND, 0);

@@ -85,7 +85,7 @@ class GraphicalEphemWidgetItem :  public SheetWidgetItem
 	DECLARE_CLASS( GraphicalEphemWidgetItem )
 
 public:
-	GraphicalEphemWidgetItem( ChartProperties*, EphemExpert*, const double &max_deg );
+	GraphicalEphemWidgetItem( ChartProperties*, EphemExpert*, const double &max_deg, const bool &localtime );
 	~GraphicalEphemWidgetItem();
 
   virtual SheetItem *cloneClean();
@@ -103,7 +103,8 @@ protected:
 
 	int zoom;
 	int filter;
-	double xleft, xright, ytop, ybottom;
+	double xright, ybottom;
+	bool isLocaltime;
 
 	void paintRuler( Painter* );
 	void paintPlanets( Painter* );

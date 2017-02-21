@@ -78,6 +78,12 @@ private:
 
 protected:
     // begin wxGlade: WesternChartPanel::attributes
+    wxStaticBox* sizer_preview_staticbox;
+    wxStaticBox* sizer_mouseover_staticbox;
+    wxStaticBox* sizer_colors_staticbox;
+    wxStaticBox* sizer_show_staticbox;
+    wxStaticBox* sizer_chartoptions_staticbox;
+    wxStaticBox* sizer_defaultskin_staticbox;
     wxChoice* choice_defaultskin;
     wxStaticText* label_orientation;
     wxChoice* choice_leftside;

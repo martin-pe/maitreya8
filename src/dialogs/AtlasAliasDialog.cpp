@@ -48,8 +48,9 @@ AtlasAliasDialog::AtlasAliasDialog(wxWindow* parent, AtlasEntry &entry )
  entry( entry )
 {
     // begin wxGlade: AtlasAliasDialog::AtlasAliasDialog
+    sizer_list_staticbox = new wxStaticBox(this, wxID_ANY, _("Aliases"));
     label_name = new wxStaticText(this, wxID_ANY, _("Name"));
-    const wxString list_choices[] = {};
+    const wxString *list_choices = NULL;
     list = new wxListBox(this, AL_LIST, wxDefaultPosition, wxDefaultSize, 0, list_choices, wxLB_SINGLE|wxLB_SORT);
     button_add = new wxButton(this, AL_ADD, _("Add Entry"));
     button_edit = new wxButton(this, AL_EDIT, _("Edit Entry"));
@@ -190,7 +191,8 @@ void AtlasAliasDialog::do_layout()
     wxBoxSizer* sizer_bottom = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* sizer_attributes = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* sizer_actions = new wxBoxSizer(wxVERTICAL);
-    wxStaticBoxSizer* sizer_list = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Aliases")), wxHORIZONTAL);
+    sizer_list_staticbox->Lower();
+    wxStaticBoxSizer* sizer_list = new wxStaticBoxSizer(sizer_list_staticbox, wxHORIZONTAL);
     wxFlexGridSizer* grid_list = new wxFlexGridSizer(1, 1, 0, 0);
     sizer_main->Add(label_name, 0, wxALL, 3);
     grid_list->Add(list, 0, wxALL|wxEXPAND, 3);
@@ -202,11 +204,11 @@ void AtlasAliasDialog::do_layout()
     sizer_actions->Add(button_edit, 0, wxALL|wxEXPAND, 3);
     sizer_actions->Add(button_delete, 0, wxALL|wxEXPAND, 3);
     sizer_actions->Add(static_line_4, 0, wxALL|wxEXPAND, 3);
-    sizer_attributes->Add(sizer_actions, 0, wxALIGN_CENTER|wxALL, 3);
+    sizer_attributes->Add(sizer_actions, 0, 0, 3);
     sizer_main->Add(sizer_attributes, 1, wxEXPAND, 0);
     sizer_bottom->Add(button_ok, 0, wxALL|wxEXPAND, 3);
     sizer_bottom->Add(button_cancel, 0, wxALL|wxEXPAND, 3);
-    sizer_main->Add(sizer_bottom, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
+    sizer_main->Add(sizer_bottom, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     Layout();

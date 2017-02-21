@@ -24,22 +24,17 @@
 #include "DataSet.h"
 #include "FileConfig.h"
 #include "JSonTool.h"
-#include "mathbase.h"
 #include "PrintoutConfigBase.h"
 #include "VedicChartConfig.h"
 #include "WesternChartConfig.h"
 
-#include <wx/defs.h>
-#include <wx/dir.h>
-#include <wx/fileconf.h>
 #include <wx/filename.h>
 #include <wx/jsonreader.h>
 #include <wx/jsonwriter.h>
 #include <wx/log.h>
-#include <wx/string.h>
-#include <wx/tokenzr.h>
-#include <wx/utils.h>
 #include <wx/wfstream.h>
+
+//#define DEBUG_CONFIG_FILE_OPERATIONS
 
 /*****************************************************
 **
@@ -48,7 +43,6 @@
 ******************************************************/
 void ConfigBase::reportMissingKey( wxString cname, wxString attname )
 {
-	// TODO
 	wxString message;
 	message << wxT( "config value for " ) << cname << wxT( "/" ) << attname << wxT( " not found" );
 	wxLogWarning( message );
@@ -579,8 +573,9 @@ void Config::readAll()
 		else
 		{
 			load( root, wxT( "config" ));
-			//wxLogMessage( wxT( "Config file %s successfully loaded" ), filename.c_str());
+#ifdef DEBUG_CONFIG_FILE_OPERATIONS
 			printf( "Config file %s successfully loaded\n", str2char( filename ));
+#endif
 		}
 	}
 
@@ -740,7 +735,11 @@ void Config::writeAll()
 	FileConfig *fc = FileConfig::get();
 
 	wxString filename = fc->getConfigFilename();
+
+#ifdef DEBUG_CONFIG_FILE_OPERATIONS
 	printf( "SAVE %s\n", str2char( filename ));
+#endif
+
 	fc->backupFile( filename );
 
 	save( root, wxT( "config" ));

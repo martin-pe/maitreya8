@@ -469,7 +469,7 @@ void ShadBalaExpert::updateCheshtaBala()
 		percentual_speed[p] = 100 * speed[p] / medium_speed;
 		if ( speed[p] > 0 ) // direct motion
 		{
-			printf( "DIRECT Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed[p], medium_speed, percentual_speed[p] );
+			//printf( "DIRECT Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed[p], medium_speed, percentual_speed[p] );
 			if ( fabs( percentual_speed[p] ) < 10 ) // Vikala, devoid of motion
 			{
 				cheshtabalatype[p] = CHESHTA_VIKALA;
@@ -521,7 +521,7 @@ void ShadBalaExpert::updateCheshtaBala()
 		{
 			cheshtabalatype[p] = CHESHTA_VAKRA;
 			cheshtabala[p] = 60;
-			printf( "RETRO Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed[p], medium_speed, percentual_speed[p] );
+			//printf( "RETRO Speed %d: is %f -- medium: %f -- percentual_speed = %f\n", p, speed[p], medium_speed, percentual_speed[p] );
 
 			// anuvakra
 			baserasi = ::getRasi( horoscope->getVedicLongitude( p ));

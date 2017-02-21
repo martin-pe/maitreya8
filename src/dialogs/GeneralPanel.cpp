@@ -89,20 +89,25 @@ GeneralPanel::GeneralPanel( wxWindow* parent ) : ConfigPanel( parent, false )
 	config2model();
 
     // begin wxGlade: GeneralPanel::GeneralPanel
+    sizer_2_staticbox = new wxStaticBox(this, wxID_ANY, _("Window Life Cycle"));
+    sizer_coordinates_staticbox = new wxStaticBox(this, wxID_ANY, _("Coordinates"));
+    sizer_tzsettings_staticbox = new wxStaticBox(this, wxID_ANY, _("Timezone System Settings"));
+    sizer_default_location_staticbox = new wxStaticBox(this, wxID_ANY, _("Standard Location"));
+    sizer_general_staticbox = new wxStaticBox(this, wxID_ANY, _("General"));
     label_defstyle = new wxStaticText(this, wxID_ANY, _("Default Style"));
     const wxString choice_defstyle_choices[] = {
         _("Vedic"),
-        _("Western"),
+        _("Western")
     };
-    choice_defstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_defstyle_choices);
+    choice_defstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_defstyle_choices, 0);
     label_lang = new wxStaticText(this, wxID_ANY, _("Language"));
     const wxString choice_lang_choices[] = {
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy"),
+        _("dummy")
     };
-    choice_lang = new wxChoice(this, CD_LANGUAGE, wxDefaultPosition, wxDefaultSize, 4, choice_lang_choices);
+    choice_lang = new wxChoice(this, CD_LANGUAGE, wxDefaultPosition, wxDefaultSize, 4, choice_lang_choices, 0);
     check_opennewdoc = new wxCheckBox(this, wxID_ANY, _("Open New Document on Startup"));
     check_askonquit = new wxCheckBox(this, wxID_ANY, _("Ask on Quit"));
     text_name = new wxTextCtrl(this, CD_NAME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
@@ -111,16 +116,16 @@ GeneralPanel::GeneralPanel( wxWindow* parent ) : ConfigPanel( parent, false )
     text_longitude = new wxTextCtrl(this, CD_LONGITUDE, wxEmptyString);
     const wxString choice_ew_choices[] = {
         _("East"),
-        _("West"),
+        _("West")
     };
-    choice_ew = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ew_choices);
+    choice_ew = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ew_choices, 0);
     label_latitude = new wxStaticText(this, wxID_ANY, _("Latitude"));
     text_latitude = new wxTextCtrl(this, CD_LATITUDE, wxEmptyString);
     const wxString choice_ns_choices[] = {
         _("North"),
-        _("South"),
+        _("South")
     };
-    choice_ns = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ns_choices);
+    choice_ns = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_ns_choices, 0);
     label_localtime = new wxStaticText(this, wxID_ANY, _("Local Time"));
     text_localtime = new wxStaticText(this, wxID_ANY, _("00:00:00"));
     label_uttime = new wxStaticText(this, wxID_ANY, _("Universal Time"));
@@ -354,21 +359,26 @@ void GeneralPanel::do_layout()
 {
     // begin wxGlade: GeneralPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(2, 1, 0, 0);
-    wxStaticBoxSizer* sizer_default_location = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Standard Location")), wxVERTICAL);
+    sizer_default_location_staticbox->Lower();
+    wxStaticBoxSizer* sizer_default_location = new wxStaticBoxSizer(sizer_default_location_staticbox, wxVERTICAL);
     wxBoxSizer* sizer_bottom = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_tzsettings = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Timezone System Settings")), wxVERTICAL);
+    sizer_tzsettings_staticbox->Lower();
+    wxStaticBoxSizer* sizer_tzsettings = new wxStaticBoxSizer(sizer_tzsettings_staticbox, wxVERTICAL);
     wxGridSizer* grid_systemsettings = new wxGridSizer(4, 2, 3, 6);
-    wxStaticBoxSizer* sizer_coordinates = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Coordinates")), wxHORIZONTAL);
+    sizer_coordinates_staticbox->Lower();
+    wxStaticBoxSizer* sizer_coordinates = new wxStaticBoxSizer(sizer_coordinates_staticbox, wxHORIZONTAL);
     wxFlexGridSizer* grid_coordinates = new wxFlexGridSizer(2, 3, 3, 3);
     wxBoxSizer* sizer_locname = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* sizer_top = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_2 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Window Life Cycle")), wxVERTICAL);
-    wxStaticBoxSizer* sizer_general = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("General")), wxVERTICAL);
+    sizer_2_staticbox->Lower();
+    wxStaticBoxSizer* sizer_2 = new wxStaticBoxSizer(sizer_2_staticbox, wxVERTICAL);
+    sizer_general_staticbox->Lower();
+    wxStaticBoxSizer* sizer_general = new wxStaticBoxSizer(sizer_general_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_general = new wxFlexGridSizer(2, 2, 3, 3);
-    grid_general->Add(label_defstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_general->Add(choice_defstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_general->Add(label_lang, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_general->Add(choice_lang, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_general->Add(label_defstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_general->Add(choice_defstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_general->Add(label_lang, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_general->Add(choice_lang, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
     grid_general->AddGrowableCol(1);
     sizer_general->Add(grid_general, 1, wxALL, 3);
     sizer_top->Add(sizer_general, 1, wxALL, 3);
@@ -376,13 +386,13 @@ void GeneralPanel::do_layout()
     sizer_2->Add(check_askonquit, 0, wxALL|wxEXPAND, 1);
     sizer_top->Add(sizer_2, 1, wxEXPAND, 0);
     sizer_main->Add(sizer_top, 1, wxEXPAND, 0);
-    sizer_locname->Add(text_name, 1, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    sizer_locname->Add(button_search, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
+    sizer_locname->Add(text_name, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_locname->Add(button_search, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     sizer_default_location->Add(sizer_locname, 0, wxALL|wxEXPAND, 3);
-    grid_coordinates->Add(label_longitude, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_coordinates->Add(text_longitude, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_coordinates->Add(label_longitude, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_coordinates->Add(text_longitude, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
     grid_coordinates->Add(choice_ew, 0, wxALL|wxEXPAND, 3);
-    grid_coordinates->Add(label_latitude, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_coordinates->Add(label_latitude, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_coordinates->Add(text_latitude, 0, wxALL|wxEXPAND, 3);
     grid_coordinates->Add(choice_ns, 0, wxALL|wxEXPAND, 3);
     grid_coordinates->AddGrowableCol(1);

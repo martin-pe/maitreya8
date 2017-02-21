@@ -253,7 +253,7 @@ void YogaEditorPanel::OnYogaListLeftSelected( wxListEvent& )
 ******************************************************/
 void YogaEditorPanel::OnFieldChanged( wxCommandEvent &event )
 {
-	printf( "YogaEditorPanel::OnFieldChanged\n" );
+	//printf( "YogaEditorPanel::OnFieldChanged\n" );
 
 	if ( ! propagateUserInput ) return;
 
@@ -296,7 +296,7 @@ void YogaEditorPanel::updateFieldStatus()
 {
 	int size = list_yogas->GetItemCount();
 	const long item = size > 0 ? list_yogas->GetNextItem( -1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED ) : -1;
-	printf( "YogaEditorPanel::updateFieldStatus size %d item %d\n", (int)size, (int)item );
+	//printf( "YogaEditorPanel::updateFieldStatus size %d item %d\n", (int)size, (int)item );
 
 	// only if selected item is not first
 	button_up->Enable( size > 0 && item > 0 );

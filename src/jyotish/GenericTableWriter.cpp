@@ -160,6 +160,7 @@ void GenericTableWriter::appendObjectListTcByConfigKeys( Tc &tc, const OBJECT_IN
 	if ( style & TAB_CT_KP_LORDS ) colset.cols.push_back( TcColumn( TAB_CT_KP_LORDS, vedic ));
 	if ( style & TAB_CT_SHASTIAMSA_LORD ) colset.cols.push_back( TcColumn( TAB_CT_SHASTIAMSA_LORD, vedic ));
 	if ( style & TAB_CT_CHARA_KARAKA ) colset.cols.push_back( TcColumn( TAB_CT_CHARA_KARAKA, vedic ));
+	if ( style & TAB_CT_DASA_VARGA ) colset.cols.push_back( TcColumn( TAB_CT_DASA_VARGA, vedic ));
 	if ( style & TAB_CT_HOUSE_POSITION ) colset.cols.push_back( TcColumn( TAB_CT_HOUSE_POSITION, vedic ));
 	if ( style & TAB_CT_AV_REKHAPOINTS ) colset.cols.push_back( TcColumn( TAB_CT_AV_REKHAPOINTS, vedic ));
 

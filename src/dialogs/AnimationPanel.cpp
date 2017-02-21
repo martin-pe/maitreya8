@@ -48,15 +48,16 @@ AnimationPanel::AnimationPanel( wxWindow* parent ) : ConfigPanel( parent )
 	config2model();
 
     // begin wxGlade: AnimationPanel::AnimationPanel
+    sizer_animate_staticbox = new wxStaticBox(this, wxID_ANY, _("Animation"));
     label_animation_freq = new wxStaticText(this, wxID_ANY, _("Frequency"));
     spin_animation_freq = new wxSpinCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS|wxTE_AUTO_URL, 0, 1000);
     label_animation_freq2 = new wxStaticText(this, wxID_ANY, _("sec"));
     label_animation_mode = new wxStaticText(this, wxID_ANY, _("Mode"));
     const wxString choice_animation_mode_choices[] = {
         _("System Time"),
-        _("Custom Steps"),
+        _("Custom Steps")
     };
-    choice_animation_mode = new wxChoice(this, CD_ANIMATIONMODE, wxDefaultPosition, wxDefaultSize, 2, choice_animation_mode_choices);
+    choice_animation_mode = new wxChoice(this, CD_ANIMATIONMODE, wxDefaultPosition, wxDefaultSize, 2, choice_animation_mode_choices, 0);
     label_animation_step = new wxStaticText(this, wxID_ANY, _("Step Length"));
     spin_animation_steplength = new wxSpinCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1000);
     const wxString choice_animate_dimension_choices[] = {
@@ -65,9 +66,9 @@ AnimationPanel::AnimationPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("hours"),
         _("days"),
         _("months"),
-        _("years"),
+        _("years")
     };
-    choice_animate_dimension = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 6, choice_animate_dimension_choices);
+    choice_animate_dimension = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 6, choice_animate_dimension_choices, 0);
 
     set_properties();
     do_layout();
@@ -137,21 +138,22 @@ void AnimationPanel::do_layout()
 {
     // begin wxGlade: AnimationPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 1, 0, 0);
-    wxStaticBoxSizer* sizer_animate = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Animation")), wxVERTICAL);
+    sizer_animate_staticbox->Lower();
+    wxStaticBoxSizer* sizer_animate = new wxStaticBoxSizer(sizer_animate_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_ani2 = new wxFlexGridSizer(3, 2, 3, 3);
     wxFlexGridSizer* grid_steplen = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* grid_freq = new wxFlexGridSizer(1, 2, 0, 0);
-    grid_ani2->Add(label_animation_freq, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_freq->Add(spin_animation_freq, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
-    grid_freq->Add(label_animation_freq2, 0, wxALIGN_CENTER_VERTICAL|wxLEFT, 10);
+    grid_ani2->Add(label_animation_freq, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_freq->Add(spin_animation_freq, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
+    grid_freq->Add(label_animation_freq2, 0, wxLEFT|wxALIGN_CENTER_VERTICAL, 10);
     grid_freq->AddGrowableCol(0);
     grid_freq->AddGrowableCol(1);
     grid_ani2->Add(grid_freq, 1, wxALIGN_RIGHT, 0);
-    grid_ani2->Add(label_animation_mode, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_ani2->Add(choice_animation_mode, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
-    grid_ani2->Add(label_animation_step, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_steplen->Add(spin_animation_steplength, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_steplen->Add(choice_animate_dimension, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_ani2->Add(label_animation_mode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_ani2->Add(choice_animation_mode, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
+    grid_ani2->Add(label_animation_step, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_steplen->Add(spin_animation_steplength, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_steplen->Add(choice_animate_dimension, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_steplen->AddGrowableCol(0);
     grid_steplen->AddGrowableCol(1);
     grid_ani2->Add(grid_steplen, 1, wxALIGN_RIGHT, 0);

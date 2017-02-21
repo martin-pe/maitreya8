@@ -63,22 +63,29 @@
             }
         },
         {
-            "name": "Alternative/ colored",
-            "extends": "Alternative",
-						"patterns" : [
-							{
-								"innerFrame" : "zodiac",
-								"outerFrame" : "zodiac10Degree",
-								"palette" : "signstock",
-								"aligntohouses" : false
-							}
-						]
-        },
-        {
             "name": "Alternative/ Desert",
             "extends": "Alternative",
             "signs": {
 								"palette" : "desert",
+                "globaltextcolor": "black"
+							}
+        },
+        {
+            "name": "Alternative/ Desert 2",
+            "extends": "Alternative",
+						"patterns" : [
+							{
+								"innerFrame" : {
+									"radius" : 69
+								},
+								"outerFrame" : {
+									"radius" : 72
+								},
+								"palette" : "desert",
+								"aligntohouses" : false
+							}
+						],
+            "signs": {
                 "globaltextcolor": "black"
 							}
         },
@@ -110,16 +117,6 @@
             "signs": {
                 "palette": "desert",
                 "globaltextcolor": "black"
-            }
-        },
-        {
-            "name": "House numbers inside",
-            "houses": {
-                "radius": 25,
-                "wlabels": 20,
-								"brush": {
-									"color": "#a6a6a6"
-								}
             }
         }
     ]

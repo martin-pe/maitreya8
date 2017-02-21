@@ -66,6 +66,7 @@ private:
 
 protected:
     // begin wxGlade: AtlasAliasDialog::attributes
+    wxStaticBox* sizer_list_staticbox;
     wxStaticText* label_name;
     wxListBox* list;
     wxButton* button_add;

@@ -58,6 +58,11 @@ UranianParamPanel::UranianParamPanel( wxWindow* parent, int id, ChartProperties 
 
     // begin wxGlade: UranianParamPanel::UranianParamPanel
     panel_filter = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
+    sizer_sort_staticbox = new wxStaticBox(this, wxID_ANY, _("Order"));
+    sizer_orbis_staticbox = new wxStaticBox(this, wxID_ANY, _("Orbis"));
+    sizer_include_staticbox = new wxStaticBox(this, wxID_ANY, _("Include"));
+    sizer_filter_staticbox = new wxStaticBox(this, wxID_ANY, _("Filter"));
+    sizer_gradkreis_staticbox = new wxStaticBox(this, wxID_ANY, _("Gradkreis"));
     choice_gradkreis = new GradkreisChoice(this, wxID_ANY);
     choice_sort = new SortChoice(this, wxID_ANY);
     spin_orbis = new wxSpinCtrl(this, wxID_ANY, wxT(""), wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER|wxTE_PROCESS_TAB, 0, 600);
@@ -237,12 +242,17 @@ void UranianParamPanel::do_layout()
 {
     // begin wxGlade: UranianParamPanel::do_layout
     wxBoxSizer* sizer_main = new wxBoxSizer(wxVERTICAL);
-    wxStaticBoxSizer* sizer_filter = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Filter")), wxVERTICAL);
+    sizer_filter_staticbox->Lower();
+    wxStaticBoxSizer* sizer_filter = new wxStaticBoxSizer(sizer_filter_staticbox, wxVERTICAL);
     wxBoxSizer* sizer_1 = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_include = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Include")), wxVERTICAL);
-    wxStaticBoxSizer* sizer_orbis = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Orbis")), wxVERTICAL);
-    wxStaticBoxSizer* sizer_sort = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Order")), wxVERTICAL);
-    wxStaticBoxSizer* sizer_gradkreis = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Gradkreis")), wxVERTICAL);
+    sizer_include_staticbox->Lower();
+    wxStaticBoxSizer* sizer_include = new wxStaticBoxSizer(sizer_include_staticbox, wxVERTICAL);
+    sizer_orbis_staticbox->Lower();
+    wxStaticBoxSizer* sizer_orbis = new wxStaticBoxSizer(sizer_orbis_staticbox, wxVERTICAL);
+    sizer_sort_staticbox->Lower();
+    wxStaticBoxSizer* sizer_sort = new wxStaticBoxSizer(sizer_sort_staticbox, wxVERTICAL);
+    sizer_gradkreis_staticbox->Lower();
+    wxStaticBoxSizer* sizer_gradkreis = new wxStaticBoxSizer(sizer_gradkreis_staticbox, wxVERTICAL);
     sizer_gradkreis->Add(choice_gradkreis, 1, wxALL|wxEXPAND, 3);
     sizer_main->Add(sizer_gradkreis, 0, wxALL|wxEXPAND, 3);
     sizer_sort->Add(choice_sort, 1, wxALL|wxEXPAND, 3);
@@ -254,7 +264,7 @@ void UranianParamPanel::do_layout()
     sizer_include->Add(check_include_sums, 0, wxALL, 3);
     sizer_include->Add(check_include_differences, 0, wxALL, 3);
     sizer_main->Add(sizer_include, 0, wxALL|wxEXPAND, 3);
-    sizer_1->Add(label_filter, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    sizer_1->Add(label_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     panel_filter->SetSizer(sizer_1);
     sizer_filter->Add(panel_filter, 1, wxALL|wxEXPAND, 3);
     sizer_filter->Add(button_filter, 0, wxALL|wxEXPAND, 3);

@@ -195,7 +195,6 @@ void DasaTool::writeDasaEffect( Sheet *sheet, Dasa *dasa, const wxString sourcef
 	{
 		DasaConfig *cfg = (DasaConfig*)defs[i];
 		//printf( "i %d dasaId %d lord %d sublordi cfgdasa %d %d cfglord %d cfgsublord %d\n", i, (int)dasaId, lord, sublord, (int)cfg->dasaId, cfg->lord, cfg->sublord );
-		//if ( cfg->dasaId == dasaId && cfg->lord == lord && cfg->sublord == sublord )
 		if ( cfg->matches( dasa ) && ( sourcefilter.IsEmpty() || sourcefilter == cfg->source ))
 		{
 			sheet->addHeader( cfg->source );
@@ -311,19 +310,6 @@ void DasaTool::writeShortReport( Sheet *sheet, Horoscope *horoscope, const DasaI
 				t.add( SPACE );
 				t.add( formatter->formatDateString( w[j]->getEndJD()));
 				t.add( SPACE );
-				/*
-				s.Clear();
-				s	<< wxT( " " ) << formatter->formatDateString( w[j]->getEndJD() ) << wxT( " " );
-				t.add( s );
-				*/
-				/*
-				//t.add( SPACE );
-				s.Clear();
-				s	<< wxT( " " ) << formatter->formatDateString( w[j]->getEndJD() ) << wxT( " " );
-				//s	<< wxT( " otto  " ) << formatter->formatDateString( w[j]->getEndJD() ) << wxT( " otto " );
-				t.add( s );
-				//t.add( SPACE );
-				*/
 			}
 			delete w[j];
 		}

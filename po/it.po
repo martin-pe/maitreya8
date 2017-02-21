@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-02-05 11:31+0100\n"
+"POT-Creation-Date: 2017-02-21 18:39+0100\n"
 "PO-Revision-Date: 2008-02-17 21:55-0000\n"
 "Last-Translator: Maria Grazia De Nicolò <yuzu@antithesi.net>\n"
 "Language-Team: italiano\n"
@@ -58,20 +58,23 @@ msgid "unknown"
 msgstr "sconosciuto"
 
 #: src/base/ColorConfig.cpp:250 src/base/Lang.cpp:133 src/base/Lang.cpp:479
-#: src/dialogs/WesternPanel.cpp:68 src/gui/MenuProvider.cpp:567
+#: src/dialogs/WesternPanel.cpp:73 src/gui/MenuProvider.cpp:567
 #: src/gui/ToolPanel.cpp:273
 msgid "Aries"
 msgstr "Ariete"
 
-#: src/base/ColorConfig.cpp:251 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:251 src/base/Lang.cpp:479
+#: src/gui/ToolPanel.cpp:273
 msgid "Taurus"
 msgstr "Toro"
 
-#: src/base/ColorConfig.cpp:252 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:252 src/base/Lang.cpp:479
+#: src/gui/ToolPanel.cpp:273
 msgid "Gemini"
 msgstr "Gemelli"
 
-#: src/base/ColorConfig.cpp:253 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:253 src/base/Lang.cpp:479
+#: src/gui/ToolPanel.cpp:273
 msgid "Cancer"
 msgstr "Cancro"
 
@@ -80,11 +83,13 @@ msgstr "Cancro"
 msgid "Leo"
 msgstr "Leone"
 
-#: src/base/ColorConfig.cpp:255 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:255 src/base/Lang.cpp:480
+#: src/gui/ToolPanel.cpp:273
 msgid "Virgo"
 msgstr "Vergine"
 
-#: src/base/ColorConfig.cpp:256 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:256 src/base/Lang.cpp:480
+#: src/gui/ToolPanel.cpp:273
 msgid "Libra"
 msgstr "Bilancia"
 
@@ -93,79 +98,82 @@ msgstr "Bilancia"
 msgid "Scorpio"
 msgstr "Scorpione"
 
-#: src/base/ColorConfig.cpp:258 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:274
+#: src/base/ColorConfig.cpp:258 src/base/Lang.cpp:480
+#: src/gui/ToolPanel.cpp:274
 msgid "Sagittarius"
 msgstr "Sagittario"
 
 #: src/base/ColorConfig.cpp:259 src/base/Lang.cpp:480
-#: src/dialogs/PlanetSignDisplayPanel.cpp:74 src/gui/ToolPanel.cpp:274
+#: src/dialogs/PlanetSignDisplayPanel.cpp:78 src/gui/ToolPanel.cpp:274
 msgid "Capricorn"
 msgstr "Capricorno"
 
-#: src/base/ColorConfig.cpp:260 src/base/Lang.cpp:481 src/gui/ToolPanel.cpp:274
+#: src/base/ColorConfig.cpp:260 src/base/Lang.cpp:481
+#: src/gui/ToolPanel.cpp:274
 msgid "Aquarius"
 msgstr "Acquario"
 
-#: src/base/ColorConfig.cpp:261 src/base/Lang.cpp:481 src/gui/ToolPanel.cpp:274
+#: src/base/ColorConfig.cpp:261 src/base/Lang.cpp:481
+#: src/gui/ToolPanel.cpp:274
 msgid "Pisces"
 msgstr "Pesci"
 
-#: src/base/ColorConfig.cpp:262 src/dialogs/VedicCalculationPanel.cpp:181
+#: src/base/ColorConfig.cpp:262 src/dialogs/VedicCalculationPanel.cpp:189
 #: src/jyotish/Eclipse.cpp:136 src/jyotish/Ephemeris.cpp:570
 msgid "Sun"
 msgstr "Sole"
 
 #: src/base/ColorConfig.cpp:263 src/base/Lang.cpp:118
-#: src/dialogs/VedicCalculationPanel.cpp:93
-#: src/dialogs/VedicCalculationPanel.cpp:182 src/gui/ToolPanel.cpp:272
+#: src/dialogs/VedicCalculationPanel.cpp:101
+#: src/dialogs/VedicCalculationPanel.cpp:190 src/gui/ToolPanel.cpp:272
 #: src/jyotish/Eclipse.cpp:137 src/jyotish/Ephemeris.cpp:571
 msgid "Moon"
 msgstr "Luna"
 
 #: src/base/ColorConfig.cpp:264 src/base/Lang.cpp:118
-#: src/dialogs/VedicCalculationPanel.cpp:101
-#: src/dialogs/VedicCalculationPanel.cpp:184
+#: src/dialogs/VedicCalculationPanel.cpp:109
+#: src/dialogs/VedicCalculationPanel.cpp:192
 msgid "Mercury"
 msgstr "Mercurio"
 
 #: src/base/ColorConfig.cpp:265 src/base/Lang.cpp:118
-#: src/dialogs/VedicCalculationPanel.cpp:186
+#: src/dialogs/VedicCalculationPanel.cpp:194
 msgid "Venus"
 msgstr "Venere"
 
 #: src/base/ColorConfig.cpp:266 src/base/Lang.cpp:118
-#: src/dialogs/VedicCalculationPanel.cpp:183
+#: src/dialogs/VedicCalculationPanel.cpp:191
 msgid "Mars"
 msgstr "Marte"
 
 #: src/base/ColorConfig.cpp:267 src/base/Lang.cpp:118
-#: src/dialogs/VedicCalculationPanel.cpp:185
+#: src/dialogs/VedicCalculationPanel.cpp:193
 msgid "Jupiter"
 msgstr "Giove"
 
 #: src/base/ColorConfig.cpp:268 src/base/Lang.cpp:118
-#: src/dialogs/VedicCalculationPanel.cpp:187
+#: src/dialogs/VedicCalculationPanel.cpp:195
 msgid "Saturn"
 msgstr "Saturno"
 
 #: src/base/ColorConfig.cpp:269 src/base/Lang.cpp:144
-#: src/dialogs/VedicPanel.cpp:55
+#: src/dialogs/VedicPanel.cpp:61
 msgid "Rahu"
 msgstr "Rahu"
 
 #: src/base/ColorConfig.cpp:270 src/base/Lang.cpp:145
-#: src/dialogs/VedicPanel.cpp:56
+#: src/dialogs/VedicPanel.cpp:62
 msgid "Ketu"
 msgstr "Ketu"
 
 #: src/base/ColorConfig.cpp:271 src/base/Lang.cpp:123
-#: src/dialogs/VedicPanel.cpp:57 src/dialogs/WesternPanel.cpp:56
+#: src/dialogs/VedicPanel.cpp:63 src/dialogs/WesternPanel.cpp:61
 #: src/gui/ToolPanel.cpp:272 src/gui/ToolPanel.cpp:396
 msgid "Ascendant"
 msgstr "Ascendente"
 
 #: src/base/Commands.cpp:138 src/base/Commands.cpp:148
-#: src/base/Commands.cpp:261 src/dialogs/StyleManagerDialog.cpp:52
+#: src/base/Commands.cpp:261 src/dialogs/StyleManagerDialog.cpp:54
 #: src/gui/MenuProvider.cpp:184
 msgid "New"
 msgstr "Nuovo"
@@ -173,7 +181,7 @@ msgstr "Nuovo"
 #: src/base/Commands.cpp:250 src/base/Commands.cpp:251
 #: src/base/VargaBase.cpp:78 src/dialogs/DialogElements.cpp:316
 #: src/gui/MenuProvider.cpp:625 src/gui/VedicChart.cpp:156
-#: src/jyotish/GenericTableWriter.cpp:864 src/jyotish/TextHelper.cpp:390
+#: src/jyotish/GenericTableWriter.cpp:865 src/jyotish/TextHelper.cpp:390
 #: src/jyotish/TextHelper.cpp:410 src/jyotish/TextHelper.cpp:464
 msgid "Bhava"
 msgstr "Bhava"
@@ -201,7 +209,7 @@ msgstr "Apri"
 msgid "Exit"
 msgstr ""
 
-#: src/base/Commands.cpp:268 src/dialogs/StyleManagerDialog.cpp:58
+#: src/base/Commands.cpp:268 src/dialogs/StyleManagerDialog.cpp:60
 msgid "Close"
 msgstr "Chiudi"
 
@@ -238,8 +246,8 @@ msgstr "Grafico"
 msgid "Quick PDF Chart"
 msgstr "Stampa rapida"
 
-#: src/base/Commands.cpp:276 src/dialogs/FontPanel.cpp:72
-#: src/dialogs/ToolbarPanel.cpp:64 src/views/AshtakaVargaView.cpp:195
+#: src/base/Commands.cpp:276 src/dialogs/FontPanel.cpp:76
+#: src/dialogs/ToolbarPanel.cpp:67 src/views/AshtakaVargaView.cpp:195
 #: src/views/ShadbalaView.cpp:83 src/views/VargaView.cpp:75
 msgid "Text"
 msgstr "Testo"
@@ -259,7 +267,7 @@ msgstr "Analisi dei Transiti"
 msgid "Yoga"
 msgstr "Yogas"
 
-#: src/base/Commands.cpp:279 src/dialogs/VedicChartPanel.cpp:525
+#: src/base/Commands.cpp:279 src/dialogs/VedicChartPanel.cpp:543
 msgid "SBC"
 msgstr ""
 
@@ -274,7 +282,7 @@ msgstr "Sarvatobhadra"
 msgid "Solar"
 msgstr "Solare"
 
-#: src/base/Commands.cpp:281 src/dialogs/VedicCalculationPanel.cpp:111
+#: src/base/Commands.cpp:281 src/dialogs/VedicCalculationPanel.cpp:119
 #: src/gui/MenuProvider.cpp:150 src/gui/ToolPanel.cpp:303
 #: src/jyotish/Jaimini.cpp:190
 msgid "Varga"
@@ -303,8 +311,8 @@ msgstr "Grafico"
 msgid "Western Chart"
 msgstr "Tema Occidentale"
 
-#: src/base/Commands.cpp:289 src/dialogs/WesternPanel.cpp:74
-#: src/jyotish/GenericTableWriter.cpp:578
+#: src/base/Commands.cpp:289 src/dialogs/WesternPanel.cpp:79
+#: src/jyotish/GenericTableWriter.cpp:579
 #: src/jyotish/PrintoutTextHelper.cpp:156
 #: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:149
 #: src/views/TransitView.cpp:154 src/views/UranianView.cpp:136
@@ -316,12 +324,12 @@ msgstr "Uraniano"
 msgid "Uranian Chart"
 msgstr "Tema Partner Vedico"
 
-#: src/base/Commands.cpp:295 src/jyotish/GenericTableWriter.cpp:920
+#: src/base/Commands.cpp:295 src/jyotish/GenericTableWriter.cpp:921
 #: src/views/AshtakaVargaView.cpp:216
 msgid "AV"
 msgstr "AV"
 
-#: src/base/Commands.cpp:295 src/dialogs/VedicCalculationPanel.cpp:595
+#: src/base/Commands.cpp:295 src/dialogs/VedicCalculationPanel.cpp:611
 #: src/gui/MenuProvider.cpp:627 src/gui/MenuProvider.cpp:716
 msgid "Ashtakavarga"
 msgstr "Ashtakavarga"
@@ -346,13 +354,13 @@ msgstr "Dasa (Breve)"
 msgid "G-Dasa"
 msgstr "Dasa"
 
-#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1141
+#: src/base/Commands.cpp:298 src/views/DasaGraphicView.cpp:1145
 #, fuzzy
 msgid "Graphical Dasa"
 msgstr "Dati Geografici"
 
 #: src/base/Commands.cpp:301 src/base/VargaBase.cpp:74
-#: src/dialogs/VedicCalculationPanel.cpp:114 src/jyotish/Hora.cpp:170
+#: src/dialogs/VedicCalculationPanel.cpp:122 src/jyotish/Hora.cpp:170
 #: src/views/HoraView.cpp:75
 msgid "Hora"
 msgstr "Hora"
@@ -372,7 +380,7 @@ msgid "Ephem"
 msgstr "Effemeridi"
 
 #: src/base/Commands.cpp:304 src/dialogs/ConfigPanel.cpp:150
-#: src/dialogs/EphemerisPanel.cpp:73 src/views/EphemView.cpp:434
+#: src/dialogs/EphemerisPanel.cpp:77 src/views/EphemView.cpp:428
 msgid "Ephemeris"
 msgstr "Effemeridi"
 
@@ -393,13 +401,13 @@ msgstr "Configurazione"
 msgid "Yoga Editor"
 msgstr "Finestra Yoga"
 
-#: src/base/Commands.cpp:313 src/dialogs/AtlasDialog.cpp:703
+#: src/base/Commands.cpp:313 src/dialogs/AtlasDialog.cpp:706
 #: src/dialogs/ConfigPanel.cpp:152
 msgid "Atlas"
 msgstr ""
 
-#: src/base/Commands.cpp:314 src/dialogs/AboutDialog.cpp:361
-#: src/dialogs/AboutDialog.cpp:419
+#: src/base/Commands.cpp:314 src/dialogs/AboutDialog.cpp:364
+#: src/dialogs/AboutDialog.cpp:425
 msgid "About"
 msgstr "About"
 
@@ -452,7 +460,7 @@ msgstr "Salva il Testo"
 msgid "HTML"
 msgstr ""
 
-#: src/base/Commands.cpp:327 src/dialogs/BrushDialog.cpp:160
+#: src/base/Commands.cpp:327 src/dialogs/BrushDialog.cpp:162
 msgid "Image"
 msgstr ""
 
@@ -473,14 +481,14 @@ msgstr ""
 msgid "Split/Unsplit"
 msgstr ""
 
-#: src/base/Commands.cpp:331 src/dialogs/DataDialog.cpp:98
+#: src/base/Commands.cpp:331 src/dialogs/DataDialog.cpp:103
 msgid "Now"
 msgstr "Adesso"
 
 #: src/base/Commands.cpp:332 src/gui/ToolPanel.cpp:315
-#: src/jyotish/DasaTool.cpp:280 src/jyotish/DasaTool.cpp:370
-#: src/jyotish/DasaTool.cpp:488 src/jyotish/TextHelper.cpp:451
-#: src/views/DasaGraphicView.cpp:1141
+#: src/jyotish/DasaTool.cpp:279 src/jyotish/DasaTool.cpp:356
+#: src/jyotish/DasaTool.cpp:474 src/jyotish/TextHelper.cpp:451
+#: src/views/DasaGraphicView.cpp:1145
 msgid "Dasa"
 msgstr "Dasa"
 
@@ -499,12 +507,12 @@ msgstr "Data Iniziale"
 msgid "Goto Year"
 msgstr "Data Iniziale"
 
-#: src/base/Commands.cpp:334 src/dialogs/AtlasDialog.cpp:751
-#: src/dialogs/UranianParamPanel.cpp:240
+#: src/base/Commands.cpp:334 src/dialogs/AtlasDialog.cpp:251
+#: src/dialogs/UranianParamPanel.cpp:64
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/base/Commands.cpp:335 src/dialogs/UranianParamPanel.cpp:70
+#: src/base/Commands.cpp:335 src/dialogs/UranianParamPanel.cpp:75
 #, fuzzy
 msgid "Clear Filter"
 msgstr "&Resetta Filtro"
@@ -547,11 +555,11 @@ msgstr ""
 msgid "Zoom Out"
 msgstr "Zoom"
 
-#: src/base/Commands.cpp:344 src/dialogs/StyleManagerDialog.cpp:56
+#: src/base/Commands.cpp:344 src/dialogs/StyleManagerDialog.cpp:58
 msgid "Up"
 msgstr ""
 
-#: src/base/Commands.cpp:345 src/dialogs/StyleManagerDialog.cpp:57
+#: src/base/Commands.cpp:345 src/dialogs/StyleManagerDialog.cpp:59
 msgid "Down"
 msgstr ""
 
@@ -570,18 +578,18 @@ msgstr "Mostra Barra degli s&trumenti"
 msgid "Show Statusbar"
 msgstr "Mostra la &Barra di Stato"
 
-#: src/base/DataSet.cpp:201 src/dialogs/AtlasDialog.cpp:747
-#: src/dialogs/DataDialog.cpp:495 src/gui/ChildWindowListCtrl.cpp:144
-#: src/jyotish/GenericTableWriter.cpp:1011
+#: src/base/DataSet.cpp:201 src/dialogs/AtlasDialog.cpp:249
+#: src/dialogs/DataDialog.cpp:90 src/gui/ChildWindowListCtrl.cpp:144
+#: src/jyotish/GenericTableWriter.cpp:1012
 msgid "Location"
 msgstr "Luogo"
 
 #: src/base/DataSet.cpp:202 src/dialogs/AtlasDialog.cpp:225
-#: src/dialogs/AtlasDialog.cpp:271 src/dialogs/AtlasEditDialog.cpp:67
-#: src/dialogs/DataDialog.cpp:101 src/dialogs/GeneralPanel.cpp:110
-#: src/dialogs/VedicCalculationPanel.cpp:141 src/jyotish/ArabicParts.cpp:596
-#: src/jyotish/GenericTableWriter.cpp:482
-#: src/jyotish/GenericTableWriter.cpp:1016 src/jyotish/Nakshatra.cpp:229
+#: src/dialogs/AtlasDialog.cpp:274 src/dialogs/AtlasEditDialog.cpp:70
+#: src/dialogs/DataDialog.cpp:106 src/dialogs/GeneralPanel.cpp:115
+#: src/dialogs/VedicCalculationPanel.cpp:149 src/jyotish/ArabicParts.cpp:596
+#: src/jyotish/GenericTableWriter.cpp:483
+#: src/jyotish/GenericTableWriter.cpp:1017 src/jyotish/Nakshatra.cpp:229
 #: src/jyotish/Nakshatra.cpp:323 src/jyotish/Partner.cpp:630
 #: src/jyotish/TextHelper.cpp:332 src/jyotish/TextHelper.cpp:409
 #: src/jyotish/TextHelper.cpp:462 src/jyotish/TextHelper.cpp:530
@@ -590,9 +598,9 @@ msgid "Longitude"
 msgstr "Longitudine"
 
 #: src/base/DataSet.cpp:203 src/dialogs/AtlasDialog.cpp:222
-#: src/dialogs/AtlasDialog.cpp:275 src/dialogs/AtlasEditDialog.cpp:74
-#: src/dialogs/DataDialog.cpp:109 src/dialogs/GeneralPanel.cpp:117
-#: src/jyotish/GenericTableWriter.cpp:1023
+#: src/dialogs/AtlasDialog.cpp:278 src/dialogs/AtlasEditDialog.cpp:77
+#: src/dialogs/DataDialog.cpp:114 src/dialogs/GeneralPanel.cpp:122
+#: src/jyotish/GenericTableWriter.cpp:1024
 msgid "Latitude"
 msgstr "Latitudine"
 
@@ -600,31 +608,31 @@ msgstr "Latitudine"
 msgid "nn"
 msgstr "nuovo"
 
-#: src/base/DataSet.cpp:388 src/dialogs/AtlasAliasDialog.cpp:51
-#: src/dialogs/AtlasAliasDialog.cpp:167 src/dialogs/AtlasDialog.cpp:249
-#: src/dialogs/AtlasDialog.cpp:261 src/dialogs/AtlasDialog.cpp:269
-#: src/dialogs/AtlasEditDialog.cpp:55 src/dialogs/DataDialog.cpp:99
-#: src/dialogs/DataDialog.cpp:502 src/dialogs/VedicChartPanel.cpp:95
-#: src/gui/ChildWindowListCtrl.cpp:136 src/gui/MenuProvider.cpp:695
-#: src/jyotish/ArabicParts.cpp:595 src/jyotish/GenericTableWriter.cpp:993
-#: src/jyotish/TextHelper.cpp:359
+#: src/base/DataSet.cpp:388 src/dialogs/AtlasAliasDialog.cpp:52
+#: src/dialogs/AtlasAliasDialog.cpp:168 src/dialogs/AtlasDialog.cpp:213
+#: src/dialogs/AtlasDialog.cpp:252 src/dialogs/AtlasDialog.cpp:264
+#: src/dialogs/AtlasDialog.cpp:272 src/dialogs/AtlasEditDialog.cpp:58
+#: src/dialogs/DataDialog.cpp:93 src/dialogs/DataDialog.cpp:104
+#: src/dialogs/VedicChartPanel.cpp:104 src/gui/ChildWindowListCtrl.cpp:136
+#: src/gui/MenuProvider.cpp:695 src/jyotish/ArabicParts.cpp:595
+#: src/jyotish/GenericTableWriter.cpp:994 src/jyotish/TextHelper.cpp:359
 msgid "Name"
 msgstr "Nome"
 
-#: src/base/DataSet.cpp:392 src/dialogs/DataDialog.cpp:93
-#: src/dialogs/DataDialog.cpp:130 src/dialogs/GeneralPanel.cpp:124
-#: src/jyotish/GenericTableWriter.cpp:1005
+#: src/base/DataSet.cpp:392 src/dialogs/DataDialog.cpp:98
+#: src/dialogs/DataDialog.cpp:135 src/dialogs/GeneralPanel.cpp:129
+#: src/jyotish/GenericTableWriter.cpp:1006
 msgid "Local Time"
 msgstr "Ora Locale"
 
-#: src/base/DataSet.cpp:393 src/dialogs/AtlasDialog.cpp:279
-#: src/dialogs/AtlasEditDialog.cpp:81 src/dialogs/DataDialog.cpp:119
-#: src/dialogs/DataDialog.cpp:492 src/gui/ToolPanel.cpp:418
-#: src/jyotish/GenericTableWriter.cpp:1030
+#: src/base/DataSet.cpp:393 src/dialogs/AtlasDialog.cpp:282
+#: src/dialogs/AtlasEditDialog.cpp:84 src/dialogs/DataDialog.cpp:91
+#: src/dialogs/DataDialog.cpp:124 src/gui/ToolPanel.cpp:418
+#: src/jyotish/GenericTableWriter.cpp:1031
 msgid "Time Zone"
 msgstr "Fuso Orario"
 
-#: src/base/DataSet.cpp:394 src/dialogs/DataDialog.cpp:127
+#: src/base/DataSet.cpp:394 src/dialogs/DataDialog.cpp:132
 msgid "DST"
 msgstr "DST"
 
@@ -884,7 +892,7 @@ msgstr "Rev"
 msgid "Sun "
 msgstr "Sole"
 
-#: src/base/Lang.cpp:119 src/dialogs/PlanetSignDisplayPanel.cpp:58
+#: src/base/Lang.cpp:119 src/dialogs/PlanetSignDisplayPanel.cpp:62
 msgid "Uranus"
 msgstr "Uranio"
 
@@ -892,34 +900,34 @@ msgstr "Uranio"
 msgid "Neptune"
 msgstr "Nettuno"
 
-#: src/base/Lang.cpp:119 src/dialogs/PlanetSignDisplayPanel.cpp:64
+#: src/base/Lang.cpp:119 src/dialogs/PlanetSignDisplayPanel.cpp:68
 msgid "Pluto"
 msgstr "Plutone"
 
-#: src/base/Lang.cpp:120 src/dialogs/VedicPanel.cpp:208
-#: src/dialogs/WesternPanel.cpp:54
+#: src/base/Lang.cpp:120 src/dialogs/VedicPanel.cpp:214
+#: src/dialogs/WesternPanel.cpp:59
 msgid "Dragon Head"
 msgstr "Nodo Lunare Nord"
 
-#: src/base/Lang.cpp:122 src/dialogs/VedicPanel.cpp:209
-#: src/dialogs/WesternPanel.cpp:55
+#: src/base/Lang.cpp:122 src/dialogs/VedicPanel.cpp:215
+#: src/dialogs/WesternPanel.cpp:60
 msgid "Dragon Tail"
 msgstr "Nodo Lunare Sud"
 
-#: src/base/Lang.cpp:123 src/dialogs/VedicPanel.cpp:58
-#: src/dialogs/WesternPanel.cpp:57
+#: src/base/Lang.cpp:123 src/dialogs/VedicPanel.cpp:64
+#: src/dialogs/WesternPanel.cpp:62
 #, fuzzy
 msgid "Meridian"
 msgstr "Mean"
 
-#: src/base/Lang.cpp:123 src/dialogs/VedicPanel.cpp:59
-#: src/dialogs/WesternPanel.cpp:58
+#: src/base/Lang.cpp:123 src/dialogs/VedicPanel.cpp:65
+#: src/dialogs/WesternPanel.cpp:63
 #, fuzzy
 msgid "Descendant"
 msgstr "Ascendente"
 
-#: src/base/Lang.cpp:123 src/dialogs/VedicPanel.cpp:60
-#: src/dialogs/WesternPanel.cpp:59
+#: src/base/Lang.cpp:123 src/dialogs/VedicPanel.cpp:66
+#: src/dialogs/WesternPanel.cpp:64
 msgid "Imum Coeli"
 msgstr ""
 
@@ -955,13 +963,13 @@ msgstr "Vulcano"
 msgid "Poseidon"
 msgstr "Poseidone"
 
-#: src/base/Lang.cpp:125 src/dialogs/VedicPanel.cpp:63
-#: src/dialogs/WesternPanel.cpp:62
+#: src/base/Lang.cpp:125 src/dialogs/VedicPanel.cpp:69
+#: src/dialogs/WesternPanel.cpp:67
 msgid "Chiron"
 msgstr "Chirone"
 
-#: src/base/Lang.cpp:125 src/dialogs/VedicPanel.cpp:64
-#: src/dialogs/WesternPanel.cpp:63
+#: src/base/Lang.cpp:125 src/dialogs/VedicPanel.cpp:70
+#: src/dialogs/WesternPanel.cpp:68
 msgid "Pholus"
 msgstr "Pholus"
 
@@ -1037,16 +1045,16 @@ msgstr "Chapa"
 msgid "Upaketu"
 msgstr "Upaketu"
 
-#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:170
+#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:178
 #: src/jyotish/ShadBala.cpp:639 src/views/ShadbalaView.cpp:159
 msgid "Kala"
 msgstr "Kala"
 
-#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:171
+#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:179
 msgid "Mrityu"
 msgstr "Mrityu"
 
-#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:172
+#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:180
 msgid "Ardhaprahara"
 msgstr "Ardhaprahara"
 
@@ -1055,11 +1063,11 @@ msgid "Yamaghantaka"
 msgstr "Yamaghantaka"
 
 #: src/base/Lang.cpp:135 src/base/Lang.cpp:540
-#: src/dialogs/VedicCalculationPanel.cpp:174
+#: src/dialogs/VedicCalculationPanel.cpp:182
 msgid "Gulika"
 msgstr "Gulika"
 
-#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:175
+#: src/base/Lang.cpp:135 src/dialogs/VedicCalculationPanel.cpp:183
 msgid "Mandi"
 msgstr "Mandi"
 
@@ -1937,26 +1945,26 @@ msgstr "Novembre"
 msgid "December"
 msgstr "Dicembre"
 
-#: src/base/Lang.cpp:587 src/dialogs/ColorPanel.cpp:388
-#: src/dialogs/ColorPanel.cpp:401 src/jyotish/ArabicParts.cpp:253
+#: src/base/Lang.cpp:587 src/dialogs/ColorPanel.cpp:399
+#: src/dialogs/ColorPanel.cpp:412 src/jyotish/ArabicParts.cpp:253
 #, fuzzy
 msgid "Fire"
 msgstr "&File"
 
-#: src/base/Lang.cpp:590 src/dialogs/ColorPanel.cpp:389
-#: src/dialogs/ColorPanel.cpp:402 src/jyotish/ArabicParts.cpp:250
+#: src/base/Lang.cpp:590 src/dialogs/ColorPanel.cpp:400
+#: src/dialogs/ColorPanel.cpp:413 src/jyotish/ArabicParts.cpp:250
 #, fuzzy
 msgid "Earth"
 msgstr "Est"
 
-#: src/base/Lang.cpp:593 src/dialogs/ColorPanel.cpp:390
-#: src/dialogs/ColorPanel.cpp:403
+#: src/base/Lang.cpp:593 src/dialogs/ColorPanel.cpp:401
+#: src/dialogs/ColorPanel.cpp:414
 #, fuzzy
 msgid "Air"
 msgstr "Ar"
 
-#: src/base/Lang.cpp:596 src/dialogs/ColorPanel.cpp:391
-#: src/dialogs/ColorPanel.cpp:404 src/jyotish/ArabicParts.cpp:251
+#: src/base/Lang.cpp:596 src/dialogs/ColorPanel.cpp:402
+#: src/dialogs/ColorPanel.cpp:415 src/jyotish/ArabicParts.cpp:251
 #, fuzzy
 msgid "Water"
 msgstr "Data"
@@ -1995,28 +2003,28 @@ msgstr "Durata del Passo"
 msgid "Grief"
 msgstr ""
 
-#: src/base/Lang.cpp:664 src/dialogs/VedicCalculationPanel.cpp:63
-#: src/dialogs/VedicCalculationPanel.cpp:180
-#: src/dialogs/VedicChartPanel.cpp:113
-#: src/dialogs/WesternCalculationPanel.cpp:52
-#: src/dialogs/WesternChartPanel.cpp:97
+#: src/base/Lang.cpp:664 src/dialogs/VedicCalculationPanel.cpp:71
+#: src/dialogs/VedicCalculationPanel.cpp:188
+#: src/dialogs/VedicChartPanel.cpp:122
+#: src/dialogs/WesternCalculationPanel.cpp:54
+#: src/dialogs/WesternChartPanel.cpp:103
 msgid "None"
 msgstr "Nessuno"
 
-#: src/base/Lang.cpp:667 src/dialogs/VedicCalculationPanel.cpp:64
-#: src/dialogs/WesternCalculationPanel.cpp:53
+#: src/base/Lang.cpp:667 src/dialogs/VedicCalculationPanel.cpp:72
+#: src/dialogs/WesternCalculationPanel.cpp:55
 msgid "Lahiri"
 msgstr "Lahiri"
 
-#: src/base/Lang.cpp:670 src/dialogs/VedicCalculationPanel.cpp:65
-#: src/dialogs/VedicCalculationPanel.cpp:226
-#: src/dialogs/VedicCalculationPanel.cpp:232
-#: src/dialogs/WesternCalculationPanel.cpp:54
+#: src/base/Lang.cpp:670 src/dialogs/VedicCalculationPanel.cpp:73
+#: src/dialogs/VedicCalculationPanel.cpp:234
+#: src/dialogs/VedicCalculationPanel.cpp:240
+#: src/dialogs/WesternCalculationPanel.cpp:56
 msgid "Raman"
 msgstr "Raman"
 
-#: src/base/Lang.cpp:673 src/dialogs/VedicCalculationPanel.cpp:66
-#: src/dialogs/WesternCalculationPanel.cpp:55
+#: src/base/Lang.cpp:673 src/dialogs/VedicCalculationPanel.cpp:74
+#: src/dialogs/WesternCalculationPanel.cpp:57
 msgid "Krishnamurti"
 msgstr "Krishnamurti"
 
@@ -2078,7 +2086,7 @@ msgstr ""
 msgid "Printed by Maitreya $version on $creationdate/page $page"
 msgstr ""
 
-#: src/base/SheetConfig.cpp:45 src/dialogs/WesternPanel.cpp:73
+#: src/base/SheetConfig.cpp:45 src/dialogs/WesternPanel.cpp:78
 msgid "Default"
 msgstr "Predefinito"
 
@@ -2091,12 +2099,12 @@ msgstr "Rasi"
 msgid "Navamsa"
 msgstr "Navamsa"
 
-#: src/base/VargaBase.cpp:74 src/dialogs/VedicCalculationPanel.cpp:120
+#: src/base/VargaBase.cpp:74 src/dialogs/VedicCalculationPanel.cpp:128
 #: src/jyotish/ShadBala.cpp:676 src/views/ShadbalaView.cpp:203
 msgid "Drekkana"
 msgstr "Drekkana"
 
-#: src/base/VargaBase.cpp:74 src/dialogs/VedicCalculationPanel.cpp:126
+#: src/base/VargaBase.cpp:74 src/dialogs/VedicCalculationPanel.cpp:134
 msgid "Chaturtamsa"
 msgstr "Chaturtamsa"
 
@@ -2235,265 +2243,260 @@ msgstr ""
 msgid "Past Karma"
 msgstr "Karma"
 
-#: src/dialogs/AboutDialog.cpp:190 src/dialogs/AboutDialog.cpp:191
-#: src/dialogs/AboutDialog.cpp:194 src/dialogs/AboutDialog.cpp:196
-#: src/dialogs/AboutDialog.cpp:198 src/dialogs/AboutDialog.cpp:200
-#: src/dialogs/AboutDialog.cpp:202 src/dialogs/AboutDialog.cpp:204
-#: src/dialogs/AboutDialog.cpp:206 src/dialogs/AboutDialog.cpp:208
-#: src/dialogs/AboutDialog.cpp:210 src/dialogs/AspectPanel.cpp:244
-#: src/dialogs/AspectPanel.cpp:245 src/dialogs/AspectPanel.cpp:246
-#: src/dialogs/AspectPanel.cpp:247 src/dialogs/AspectPanel.cpp:248
-#: src/dialogs/AtlasDialog.cpp:253 src/dialogs/AtlasDialog.cpp:254
-#: src/dialogs/AtlasDialog.cpp:255 src/dialogs/AtlasDialog.cpp:256
-#: src/dialogs/AtlasDialog.cpp:267 src/dialogs/AtlasDialog.cpp:270
-#: src/dialogs/AtlasDialog.cpp:272 src/dialogs/AtlasDialog.cpp:274
-#: src/dialogs/AtlasDialog.cpp:276 src/dialogs/AtlasDialog.cpp:278
-#: src/dialogs/AtlasDialog.cpp:280 src/dialogs/AtlasDialog.cpp:282
-#: src/dialogs/AtlasDialog.cpp:284 src/dialogs/AtlasDialog.cpp:286
-#: src/dialogs/AtlasDialog.cpp:288 src/dialogs/AtlasEditDialog.cpp:85
-#: src/dialogs/AtlasImportDialog.cpp:53 src/dialogs/ColorPanel.cpp:377
-#: src/dialogs/ColorPanel.cpp:378 src/dialogs/ColorPanel.cpp:379
-#: src/dialogs/ColorPanel.cpp:380 src/dialogs/ColorPanel.cpp:381
-#: src/dialogs/ColorPanel.cpp:415 src/dialogs/ColorPanel.cpp:416
-#: src/dialogs/ColorPanel.cpp:417 src/dialogs/ColorPanel.cpp:418
-#: src/dialogs/ColorPanel.cpp:419 src/dialogs/ColorPanel.cpp:420
-#: src/dialogs/ColorPanel.cpp:421 src/dialogs/ColorPanel.cpp:422
-#: src/dialogs/ColorPanel.cpp:423 src/dialogs/ColorPanel.cpp:424
-#: src/dialogs/GeneralPanel.cpp:100 src/dialogs/GeneralPanel.cpp:101
-#: src/dialogs/GeneralPanel.cpp:102 src/dialogs/GeneralPanel.cpp:103
-#: src/dialogs/MultipleViewPanel.cpp:55 src/dialogs/MultipleViewPanel.cpp:56
+#: src/dialogs/AboutDialog.cpp:188
+msgid "Author"
+msgstr "Autore"
+
+#: src/dialogs/AboutDialog.cpp:189
+#, fuzzy
+msgid "Versions"
+msgstr "Versione"
+
+#: src/dialogs/AboutDialog.cpp:190
+msgid "Software"
+msgstr "Software"
+
+#: src/dialogs/AboutDialog.cpp:193 src/dialogs/AboutDialog.cpp:194
+#: src/dialogs/AboutDialog.cpp:197 src/dialogs/AboutDialog.cpp:199
+#: src/dialogs/AboutDialog.cpp:201 src/dialogs/AboutDialog.cpp:203
+#: src/dialogs/AboutDialog.cpp:205 src/dialogs/AboutDialog.cpp:207
+#: src/dialogs/AboutDialog.cpp:209 src/dialogs/AboutDialog.cpp:211
+#: src/dialogs/AboutDialog.cpp:213 src/dialogs/AspectPanel.cpp:247
+#: src/dialogs/AspectPanel.cpp:248 src/dialogs/AspectPanel.cpp:249
+#: src/dialogs/AspectPanel.cpp:250 src/dialogs/AspectPanel.cpp:251
+#: src/dialogs/AtlasDialog.cpp:256 src/dialogs/AtlasDialog.cpp:257
+#: src/dialogs/AtlasDialog.cpp:258 src/dialogs/AtlasDialog.cpp:259
+#: src/dialogs/AtlasDialog.cpp:270 src/dialogs/AtlasDialog.cpp:273
+#: src/dialogs/AtlasDialog.cpp:275 src/dialogs/AtlasDialog.cpp:277
+#: src/dialogs/AtlasDialog.cpp:279 src/dialogs/AtlasDialog.cpp:281
+#: src/dialogs/AtlasDialog.cpp:283 src/dialogs/AtlasDialog.cpp:285
+#: src/dialogs/AtlasDialog.cpp:287 src/dialogs/AtlasDialog.cpp:289
+#: src/dialogs/AtlasDialog.cpp:291 src/dialogs/AtlasEditDialog.cpp:88
+#: src/dialogs/AtlasImportDialog.cpp:53 src/dialogs/ColorPanel.cpp:388
+#: src/dialogs/ColorPanel.cpp:389 src/dialogs/ColorPanel.cpp:390
+#: src/dialogs/ColorPanel.cpp:391 src/dialogs/ColorPanel.cpp:392
+#: src/dialogs/ColorPanel.cpp:426 src/dialogs/ColorPanel.cpp:427
+#: src/dialogs/ColorPanel.cpp:428 src/dialogs/ColorPanel.cpp:429
+#: src/dialogs/ColorPanel.cpp:430 src/dialogs/ColorPanel.cpp:431
+#: src/dialogs/ColorPanel.cpp:432 src/dialogs/ColorPanel.cpp:433
+#: src/dialogs/ColorPanel.cpp:434 src/dialogs/ColorPanel.cpp:435
+#: src/dialogs/GeneralPanel.cpp:105 src/dialogs/GeneralPanel.cpp:106
+#: src/dialogs/GeneralPanel.cpp:107 src/dialogs/GeneralPanel.cpp:108
 #: src/dialogs/MultipleViewPanel.cpp:57 src/dialogs/MultipleViewPanel.cpp:58
-#: src/dialogs/MultipleViewPanel.cpp:61 src/dialogs/PrintoutPanel.cpp:73
-#: src/dialogs/PrintoutPanel.cpp:74 src/dialogs/PrintoutPanel.cpp:75
-#: src/dialogs/PrintoutPanel.cpp:78 src/dialogs/PrintoutPanel.cpp:81
-#: src/dialogs/PrintoutPanel.cpp:82 src/dialogs/PrintoutPanel.cpp:83
-#: src/dialogs/PrintoutPanel.cpp:84 src/dialogs/PrintoutPanel.cpp:85
-#: src/dialogs/PrintoutPanel.cpp:90 src/dialogs/PrintoutPanel.cpp:91
-#: src/dialogs/PrintoutPanel.cpp:92 src/dialogs/PrintoutPanel.cpp:93
-#: src/dialogs/PrintoutPanel.cpp:94 src/dialogs/PrintoutPanel.cpp:99
-#: src/dialogs/PrintoutPanel.cpp:100 src/dialogs/PrintoutPanel.cpp:101
-#: src/dialogs/PrintoutPanel.cpp:102 src/dialogs/PrintoutPanel.cpp:103
-#: src/dialogs/SheetStylePanel.cpp:89 src/dialogs/SheetStylePanel.cpp:90
-#: src/dialogs/SheetStylePanel.cpp:91 src/dialogs/SheetStylePanel.cpp:92
-#: src/dialogs/VedicCalculationPanel.cpp:133
-#: src/dialogs/VedicCalculationPanel.cpp:134
-#: src/dialogs/VedicCalculationPanel.cpp:135 src/dialogs/VedicChartPanel.cpp:72
-#: src/dialogs/VedicChartPanel.cpp:73 src/dialogs/VedicChartPanel.cpp:74
-#: src/dialogs/VedicChartPanel.cpp:75 src/dialogs/VedicChartPanel.cpp:76
-#: src/dialogs/WesternChartPanel.cpp:66 src/dialogs/WesternChartPanel.cpp:67
-#: src/dialogs/WesternChartPanel.cpp:68 src/dialogs/WesternChartPanel.cpp:69
-#: src/dialogs/WesternChartPanel.cpp:70 src/views/DasaView.cpp:77
-#: src/views/DasaView.cpp:79 src/views/DasaView.cpp:80
-#: src/views/DasaView.cpp:81 src/views/DasaView.cpp:82
+#: src/dialogs/MultipleViewPanel.cpp:59 src/dialogs/MultipleViewPanel.cpp:60
+#: src/dialogs/MultipleViewPanel.cpp:63 src/dialogs/PrintoutPanel.cpp:78
+#: src/dialogs/PrintoutPanel.cpp:79 src/dialogs/PrintoutPanel.cpp:80
+#: src/dialogs/PrintoutPanel.cpp:83 src/dialogs/PrintoutPanel.cpp:86
+#: src/dialogs/PrintoutPanel.cpp:87 src/dialogs/PrintoutPanel.cpp:88
+#: src/dialogs/PrintoutPanel.cpp:89 src/dialogs/PrintoutPanel.cpp:90
+#: src/dialogs/PrintoutPanel.cpp:95 src/dialogs/PrintoutPanel.cpp:96
+#: src/dialogs/PrintoutPanel.cpp:97 src/dialogs/PrintoutPanel.cpp:98
+#: src/dialogs/PrintoutPanel.cpp:99 src/dialogs/PrintoutPanel.cpp:104
+#: src/dialogs/PrintoutPanel.cpp:105 src/dialogs/PrintoutPanel.cpp:106
+#: src/dialogs/PrintoutPanel.cpp:107 src/dialogs/PrintoutPanel.cpp:108
+#: src/dialogs/SheetStylePanel.cpp:93 src/dialogs/SheetStylePanel.cpp:94
+#: src/dialogs/SheetStylePanel.cpp:95 src/dialogs/SheetStylePanel.cpp:96
+#: src/dialogs/VedicCalculationPanel.cpp:141
+#: src/dialogs/VedicCalculationPanel.cpp:142
+#: src/dialogs/VedicCalculationPanel.cpp:143
+#: src/dialogs/VedicChartPanel.cpp:81 src/dialogs/VedicChartPanel.cpp:82
+#: src/dialogs/VedicChartPanel.cpp:83 src/dialogs/VedicChartPanel.cpp:84
+#: src/dialogs/VedicChartPanel.cpp:85 src/dialogs/WesternChartPanel.cpp:72
+#: src/dialogs/WesternChartPanel.cpp:73 src/dialogs/WesternChartPanel.cpp:74
+#: src/dialogs/WesternChartPanel.cpp:75 src/dialogs/WesternChartPanel.cpp:76
+#: src/views/DasaView.cpp:77 src/views/DasaView.cpp:79
+#: src/views/DasaView.cpp:80 src/views/DasaView.cpp:81
+#: src/views/DasaView.cpp:82
 msgid "dummy"
 msgstr "fittizio"
 
-#: src/dialogs/AboutDialog.cpp:192
+#: src/dialogs/AboutDialog.cpp:195
 msgid "Dedicated to Paramapadma Dhirananda"
 msgstr ""
 
-#: src/dialogs/AboutDialog.cpp:193
+#: src/dialogs/AboutDialog.cpp:196
 msgid "Maitreya"
 msgstr ""
 
-#: src/dialogs/AboutDialog.cpp:195
+#: src/dialogs/AboutDialog.cpp:198
 msgid "wxWidgets"
 msgstr ""
 
-#: src/dialogs/AboutDialog.cpp:197
+#: src/dialogs/AboutDialog.cpp:200
 #, fuzzy
 msgid "Swiss Ephemeris"
 msgstr "Effemeridi"
 
-#: src/dialogs/AboutDialog.cpp:199
+#: src/dialogs/AboutDialog.cpp:202
 msgid "wxsqlite"
 msgstr ""
 
-#: src/dialogs/AboutDialog.cpp:201
+#: src/dialogs/AboutDialog.cpp:204
 msgid "wxpdfdoc"
 msgstr ""
 
-#: src/dialogs/AboutDialog.cpp:203
+#: src/dialogs/AboutDialog.cpp:206
 msgid "Build Date"
 msgstr "Data di Compilazione"
 
-#: src/dialogs/AboutDialog.cpp:205
+#: src/dialogs/AboutDialog.cpp:208
 #, fuzzy
 msgid "Compiled by"
 msgstr "Nessun Filtro"
 
-#: src/dialogs/AboutDialog.cpp:207
+#: src/dialogs/AboutDialog.cpp:210
 msgid "Unicode Support"
 msgstr "Supporto Unicode"
 
-#: src/dialogs/AboutDialog.cpp:209
+#: src/dialogs/AboutDialog.cpp:212
 msgid "Currently running on"
 msgstr ""
 
-#: src/dialogs/AboutDialog.cpp:212 src/dialogs/AtlasAliasDialog.cpp:58
-#: src/dialogs/AtlasDialog.cpp:295 src/dialogs/AtlasEditDialog.cpp:89
-#: src/dialogs/BrushDialog.cpp:167 src/dialogs/ConfigDialog.cpp:115
-#: src/dialogs/DataDialog.cpp:132 src/dialogs/ExportDialog.cpp:53
-#: src/dialogs/ObjectFilterDialog.cpp:56 src/dialogs/PenDialog.cpp:140
+#: src/dialogs/AboutDialog.cpp:215 src/dialogs/AtlasAliasDialog.cpp:59
+#: src/dialogs/AtlasDialog.cpp:298 src/dialogs/AtlasEditDialog.cpp:92
+#: src/dialogs/BrushDialog.cpp:169 src/dialogs/ConfigDialog.cpp:115
+#: src/dialogs/DataDialog.cpp:137 src/dialogs/ExportDialog.cpp:54
+#: src/dialogs/ObjectFilterDialog.cpp:58 src/dialogs/PenDialog.cpp:142
 #: src/gui/guibase.cpp:161
 #, fuzzy
 msgid "OK"
 msgstr "&OK"
 
-#: src/dialogs/AboutDialog.cpp:378
-msgid "Software"
-msgstr "Software"
-
-#: src/dialogs/AboutDialog.cpp:380
-#, fuzzy
-msgid "Versions"
-msgstr "Versione"
-
-#: src/dialogs/AboutDialog.cpp:382
-msgid "Author"
-msgstr "Autore"
-
-#: src/dialogs/AboutDialog.cpp:420
+#: src/dialogs/AboutDialog.cpp:426
 msgid "License"
 msgstr ""
 
-#: src/dialogs/AnimationPanel.cpp:51
+#: src/dialogs/AnimationPanel.cpp:51 src/dialogs/ConfigPanel.cpp:154
+msgid "Animation"
+msgstr "Animazione"
+
+#: src/dialogs/AnimationPanel.cpp:52
 msgid "Frequency"
 msgstr "Frequenza"
 
-#: src/dialogs/AnimationPanel.cpp:53
+#: src/dialogs/AnimationPanel.cpp:54
 msgid "sec"
 msgstr "Sec"
 
-#: src/dialogs/AnimationPanel.cpp:54 src/dialogs/AtlasDialog.cpp:259
-#: src/dialogs/DialogElements.cpp:249 src/dialogs/DialogElements.cpp:299
-#: src/gui/ToolPanel.cpp:289 src/gui/ToolPanel.cpp:369
-#: src/gui/ToolPanel.cpp:414
+#: src/dialogs/AnimationPanel.cpp:55 src/dialogs/DialogElements.cpp:249
+#: src/dialogs/DialogElements.cpp:299 src/gui/ToolPanel.cpp:289
+#: src/gui/ToolPanel.cpp:369 src/gui/ToolPanel.cpp:414
 msgid "Mode"
 msgstr "Modo"
 
-#: src/dialogs/AnimationPanel.cpp:56
+#: src/dialogs/AnimationPanel.cpp:57
 msgid "System Time"
 msgstr "Tempo di Sistema"
 
-#: src/dialogs/AnimationPanel.cpp:57
+#: src/dialogs/AnimationPanel.cpp:58
 msgid "Custom Steps"
 msgstr "Passi Personalizzati"
 
-#: src/dialogs/AnimationPanel.cpp:60
+#: src/dialogs/AnimationPanel.cpp:61
 msgid "Step Length"
 msgstr "Durata del Passo"
 
-#: src/dialogs/AnimationPanel.cpp:63
+#: src/dialogs/AnimationPanel.cpp:64
 msgid "seconds"
 msgstr "secondi"
 
-#: src/dialogs/AnimationPanel.cpp:64
+#: src/dialogs/AnimationPanel.cpp:65
 msgid "minutes"
 msgstr "minuti"
 
-#: src/dialogs/AnimationPanel.cpp:65
+#: src/dialogs/AnimationPanel.cpp:66
 msgid "hours"
 msgstr "ore"
 
-#: src/dialogs/AnimationPanel.cpp:66 src/jyotish/astrobase.cpp:99
+#: src/dialogs/AnimationPanel.cpp:67 src/jyotish/astrobase.cpp:99
 msgid "days"
 msgstr "giorni"
 
-#: src/dialogs/AnimationPanel.cpp:67 src/jyotish/astrobase.cpp:84
+#: src/dialogs/AnimationPanel.cpp:68 src/jyotish/astrobase.cpp:84
 msgid "months"
 msgstr "mesi"
 
-#: src/dialogs/AnimationPanel.cpp:68 src/jyotish/astrobase.cpp:69
+#: src/dialogs/AnimationPanel.cpp:69 src/jyotish/astrobase.cpp:69
 #: src/jyotish/Dasa.cpp:147
 msgid "years"
 msgstr "anni"
 
-#: src/dialogs/AnimationPanel.cpp:140 src/dialogs/ConfigPanel.cpp:154
-msgid "Animation"
-msgstr "Animazione"
-
-#: src/dialogs/AspectPanel.cpp:251
-#, fuzzy
-msgid "Active"
-msgstr "Azioni"
-
-#: src/dialogs/AspectPanel.cpp:252 src/dialogs/ColorPanel.cpp:427
-msgid "Pen ..."
-msgstr ""
-
-#: src/dialogs/AspectPanel.cpp:253
-#, fuzzy
-msgid "Orbis (deg)"
-msgstr "Orbita"
-
-#: src/dialogs/AspectPanel.cpp:427
-msgid "Preview and Aspect Selection"
-msgstr ""
-
-#: src/dialogs/AspectPanel.cpp:429
+#: src/dialogs/AspectPanel.cpp:243
 msgid "Options"
 msgstr "Opzioni"
 
-#: src/dialogs/AspectPanel.cpp:431
+#: src/dialogs/AspectPanel.cpp:244
+msgid "Preview and Aspect Selection"
+msgstr ""
+
+#: src/dialogs/AspectPanel.cpp:245
 #, fuzzy
 msgid "Aspect Type"
 msgstr "Aspetti"
 
-#: src/dialogs/AtlasAliasDialog.cpp:47 src/dialogs/AtlasAliasDialog.cpp:162
+#: src/dialogs/AspectPanel.cpp:254
+#, fuzzy
+msgid "Active"
+msgstr "Azioni"
+
+#: src/dialogs/AspectPanel.cpp:255 src/dialogs/ColorPanel.cpp:438
+msgid "Pen ..."
+msgstr ""
+
+#: src/dialogs/AspectPanel.cpp:256
+#, fuzzy
+msgid "Orbis (deg)"
+msgstr "Orbita"
+
+#: src/dialogs/AtlasAliasDialog.cpp:47 src/dialogs/AtlasAliasDialog.cpp:163
 msgid "Edit Aliases"
 msgstr ""
 
-#: src/dialogs/AtlasAliasDialog.cpp:54 src/dialogs/AtlasAliasDialog.cpp:78
+#: src/dialogs/AtlasAliasDialog.cpp:51 src/dialogs/AtlasEditDialog.cpp:89
+msgid "Aliases"
+msgstr ""
+
+#: src/dialogs/AtlasAliasDialog.cpp:55 src/dialogs/AtlasAliasDialog.cpp:79
 #, fuzzy
 msgid "Add Entry"
 msgstr "Aggiungi Stato"
 
-#: src/dialogs/AtlasAliasDialog.cpp:55 src/dialogs/AtlasAliasDialog.cpp:102
-#: src/dialogs/AtlasDialog.cpp:292
+#: src/dialogs/AtlasAliasDialog.cpp:56 src/dialogs/AtlasAliasDialog.cpp:103
+#: src/dialogs/AtlasDialog.cpp:295
 #, fuzzy
 msgid "Edit Entry"
 msgstr "Inserisci"
 
-#: src/dialogs/AtlasAliasDialog.cpp:56 src/dialogs/AtlasDialog.cpp:293
+#: src/dialogs/AtlasAliasDialog.cpp:57 src/dialogs/AtlasDialog.cpp:296
 #, fuzzy
 msgid "Delete Entry"
 msgstr "Cancella Stato"
 
-#: src/dialogs/AtlasAliasDialog.cpp:59 src/dialogs/AtlasDialog.cpp:296
-#: src/dialogs/AtlasEditDialog.cpp:90 src/dialogs/AtlasImportDialog.cpp:54
-#: src/dialogs/BrushDialog.cpp:168 src/dialogs/ConfigDialog.cpp:118
-#: src/dialogs/DataDialog.cpp:134 src/dialogs/ExportDialog.cpp:54
-#: src/dialogs/ObjectFilterDialog.cpp:57 src/dialogs/PenDialog.cpp:141
+#: src/dialogs/AtlasAliasDialog.cpp:60 src/dialogs/AtlasDialog.cpp:299
+#: src/dialogs/AtlasEditDialog.cpp:93 src/dialogs/AtlasImportDialog.cpp:54
+#: src/dialogs/BrushDialog.cpp:170 src/dialogs/ConfigDialog.cpp:118
+#: src/dialogs/DataDialog.cpp:139 src/dialogs/ExportDialog.cpp:55
+#: src/dialogs/ObjectFilterDialog.cpp:59 src/dialogs/PenDialog.cpp:143
 #: src/gui/guibase.cpp:166
 #, fuzzy
 msgid "Cancel"
 msgstr "&Cancella"
 
-#: src/dialogs/AtlasAliasDialog.cpp:78 src/dialogs/AtlasAliasDialog.cpp:102
-#: src/dialogs/AtlasDialog.cpp:263
+#: src/dialogs/AtlasAliasDialog.cpp:79 src/dialogs/AtlasAliasDialog.cpp:103
 msgid "Alias"
 msgstr ""
 
-#: src/dialogs/AtlasAliasDialog.cpp:124
+#: src/dialogs/AtlasAliasDialog.cpp:125
 #, fuzzy, c-format
 msgid "Do you want to delete the item %s?"
 msgstr "Vuoi cancellare il dato"
-
-#: src/dialogs/AtlasAliasDialog.cpp:193 src/dialogs/AtlasEditDialog.cpp:86
-msgid "Aliases"
-msgstr ""
 
 #: src/dialogs/AtlasDialog.cpp:93
 msgid "First Time Import of Atlas Data"
 msgstr ""
 
-#: src/dialogs/AtlasDialog.cpp:213
-msgid "City"
-msgstr ""
-
-#: src/dialogs/AtlasDialog.cpp:216 src/dialogs/AtlasDialog.cpp:251
-#: src/dialogs/AtlasDialog.cpp:277 src/dialogs/AtlasEditDialog.cpp:59
+#: src/dialogs/AtlasDialog.cpp:216 src/dialogs/AtlasDialog.cpp:254
+#: src/dialogs/AtlasDialog.cpp:280 src/dialogs/AtlasEditDialog.cpp:62
 msgid "Country"
 msgstr "Stato"
 
@@ -2502,420 +2505,426 @@ msgstr "Stato"
 msgid "Admin Division"
 msgstr "Divisione D-N"
 
+#: src/dialogs/AtlasDialog.cpp:250 src/dialogs/StyleManagerDialog.cpp:50
+msgid "Actions"
+msgstr "Azioni"
+
 #: src/dialogs/AtlasDialog.cpp:262
-msgid "ASCII"
+msgid "Key Field"
 msgstr ""
 
-#: src/dialogs/AtlasDialog.cpp:273 src/dialogs/AtlasEditDialog.cpp:57
+#: src/dialogs/AtlasDialog.cpp:265 src/dialogs/AtlasDialog.cpp:276
+#: src/dialogs/AtlasEditDialog.cpp:60
 #, fuzzy
 msgid "ASCII Name"
 msgstr "Nomi dei Segni"
 
-#: src/dialogs/AtlasDialog.cpp:281 src/dialogs/AtlasEditDialog.cpp:62
+#: src/dialogs/AtlasDialog.cpp:266
+#, fuzzy
+msgid "Alias Name"
+msgstr "Nomi dei Segni"
+
+#: src/dialogs/AtlasDialog.cpp:284 src/dialogs/AtlasEditDialog.cpp:65
 msgid "Admin Code"
 msgstr ""
 
-#: src/dialogs/AtlasDialog.cpp:283 src/dialogs/AtlasEditDialog.cpp:84
+#: src/dialogs/AtlasDialog.cpp:286 src/dialogs/AtlasEditDialog.cpp:87
 #, fuzzy
 msgid "TZ Hours"
 msgstr "Ore"
 
-#: src/dialogs/AtlasDialog.cpp:285 src/dialogs/AtlasEditDialog.cpp:65
+#: src/dialogs/AtlasDialog.cpp:288 src/dialogs/AtlasEditDialog.cpp:68
 #, fuzzy
 msgid "Population"
 msgstr "Calcoli"
 
-#: src/dialogs/AtlasDialog.cpp:287
+#: src/dialogs/AtlasDialog.cpp:290
 msgid "Internal ID"
 msgstr ""
 
-#: src/dialogs/AtlasDialog.cpp:289
+#: src/dialogs/AtlasDialog.cpp:292
 #, fuzzy
 msgid "Alias Names"
 msgstr "Nomi dei Segni"
 
-#: src/dialogs/AtlasDialog.cpp:291 src/dialogs/StyleManagerDialog.cpp:170
+#: src/dialogs/AtlasDialog.cpp:294 src/dialogs/StyleManagerDialog.cpp:172
 #, fuzzy
 msgid "New Entry"
 msgstr "Inserisci"
 
-#: src/dialogs/AtlasDialog.cpp:373
+#: src/dialogs/AtlasDialog.cpp:376
 #, fuzzy
 msgid "All Countries"
 msgstr "Tutti i Sorgenti"
 
-#: src/dialogs/AtlasDialog.cpp:473
+#: src/dialogs/AtlasDialog.cpp:476
 #, fuzzy, c-format
 msgid "%d entries"
 msgstr "%d Nomi corrispondenti"
 
-#: src/dialogs/AtlasDialog.cpp:474
+#: src/dialogs/AtlasDialog.cpp:477
 #, fuzzy
 msgid "No match"
 msgstr "Corrispondenze"
 
-#: src/dialogs/AtlasDialog.cpp:608 src/dialogs/AtlasDialog.cpp:609
+#: src/dialogs/AtlasDialog.cpp:611 src/dialogs/AtlasDialog.cpp:612
 #, c-format
 msgid "Copy of %s"
 msgstr ""
 
-#: src/dialogs/AtlasDialog.cpp:654
+#: src/dialogs/AtlasDialog.cpp:657
 #, fuzzy, c-format
 msgid "Delete %s?"
 msgstr "Cancella"
 
-#: src/dialogs/AtlasDialog.cpp:705
+#: src/dialogs/AtlasDialog.cpp:708
 msgid ""
 "\"*\" or \"%\" can be used for multiple character wildcards, \"?\" or \"_\" "
 "for single character wildcards"
 msgstr ""
 
-#: src/dialogs/AtlasDialog.cpp:746 src/dialogs/StyleManagerDialog.cpp:320
-msgid "Actions"
-msgstr "Azioni"
+#: src/dialogs/AtlasEditDialog.cpp:57 src/dialogs/BrushDialog.cpp:145
+#: src/dialogs/PenDialog.cpp:125
+msgid "Attributes"
+msgstr ""
 
-#: src/dialogs/AtlasEditDialog.cpp:70 src/dialogs/DataDialog.cpp:105
-#: src/dialogs/DataDialog.cpp:123 src/dialogs/GeneralPanel.cpp:113
+#: src/dialogs/AtlasEditDialog.cpp:73 src/dialogs/DataDialog.cpp:110
+#: src/dialogs/DataDialog.cpp:128 src/dialogs/GeneralPanel.cpp:118
 msgid "East"
 msgstr "Est"
 
-#: src/dialogs/AtlasEditDialog.cpp:71 src/dialogs/DataDialog.cpp:106
-#: src/dialogs/DataDialog.cpp:124 src/dialogs/GeneralPanel.cpp:114
+#: src/dialogs/AtlasEditDialog.cpp:74 src/dialogs/DataDialog.cpp:111
+#: src/dialogs/DataDialog.cpp:129 src/dialogs/GeneralPanel.cpp:119
 msgid "West"
 msgstr "Ovest "
 
-#: src/dialogs/AtlasEditDialog.cpp:77 src/dialogs/DataDialog.cpp:113
-#: src/dialogs/GeneralPanel.cpp:120
+#: src/dialogs/AtlasEditDialog.cpp:80 src/dialogs/DataDialog.cpp:118
+#: src/dialogs/GeneralPanel.cpp:125
 msgid "North"
 msgstr "Nord"
 
-#: src/dialogs/AtlasEditDialog.cpp:78 src/dialogs/DataDialog.cpp:114
-#: src/dialogs/GeneralPanel.cpp:121
+#: src/dialogs/AtlasEditDialog.cpp:81 src/dialogs/DataDialog.cpp:119
+#: src/dialogs/GeneralPanel.cpp:126
 msgid "South"
 msgstr "Sud"
 
-#: src/dialogs/AtlasEditDialog.cpp:87
+#: src/dialogs/AtlasEditDialog.cpp:90
 msgid "Edit Aliases ..."
 msgstr ""
 
-#: src/dialogs/AtlasEditDialog.cpp:276
+#: src/dialogs/AtlasEditDialog.cpp:279
 msgid "Edit Atlas Entry"
-msgstr ""
-
-#: src/dialogs/AtlasEditDialog.cpp:295 src/dialogs/BrushDialog.cpp:318
-#: src/dialogs/PenDialog.cpp:211
-msgid "Attributes"
 msgstr ""
 
 #: src/dialogs/AtlasImportDialog.cpp:204
 msgid "Atlas Data Import"
 msgstr ""
 
-#: src/dialogs/AtlasPanel.cpp:68 src/dialogs/AtlasPanel.cpp:71
-#: src/dialogs/EphemerisPanel.cpp:68
-#, fuzzy
-msgid "Choose ..."
-msgstr "Scegli ..."
-
-#: src/dialogs/AtlasPanel.cpp:70 src/dialogs/AtlasPanel.cpp:73
-#: src/dialogs/MiscellaneousPanel.cpp:79
-#, fuzzy
-msgid "Status"
-msgstr "Stato"
-
-#: src/dialogs/AtlasPanel.cpp:74
-#, fuzzy
-msgid "Start Import"
-msgstr "Data Iniziale"
-
-#: src/dialogs/AtlasPanel.cpp:77
-msgid "Change Countries ..."
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:121
-#, fuzzy
-msgid "Select database file"
-msgstr "Seetala"
-
-#: src/dialogs/AtlasPanel.cpp:151
-#, fuzzy
-msgid "File not found"
-msgstr "Nessun evento trovato."
-
-#: src/dialogs/AtlasPanel.cpp:156
-msgid "File not readable"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:161
-msgid "File size zero"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:165
-msgid "Ok"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:185
-msgid "Database error"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:200
-msgid "Select import file"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:225
-msgid "Import was successfull"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:229
-msgid "Import was canceled"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:234
-msgid "Import had errors"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:299
-msgid "Choose Favourite Countries"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:362
-msgid "Manage Favourite Countries"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:364
-msgid "Database  Import"
-msgstr ""
-
-#: src/dialogs/AtlasPanel.cpp:366
+#: src/dialogs/AtlasPanel.cpp:67
 #, fuzzy
 msgid "Database File"
 msgstr "Salva con nome"
 
-#: src/dialogs/BrushDialog.cpp:145 src/dialogs/PenDialog.cpp:125
-#, fuzzy
-msgid "Color"
-msgstr "Colori"
-
-#: src/dialogs/BrushDialog.cpp:147 src/dialogs/MultipleViewPanel.cpp:62
-#: src/dialogs/PenDialog.cpp:129 src/dialogs/SheetStylePanel.cpp:87
-#: src/dialogs/VedicChartPanel.cpp:85
-msgid "Style"
-msgstr "Style"
-
-#: src/dialogs/BrushDialog.cpp:149 src/dialogs/PenDialog.cpp:131
-#, fuzzy
-msgid "Solid"
-msgstr "Solare"
-
-#: src/dialogs/BrushDialog.cpp:150 src/dialogs/SheetStylePanel.cpp:106
-#, fuzzy
-msgid "Transparent"
-msgstr "Analisi dei Transiti"
-
-#: src/dialogs/BrushDialog.cpp:151
-msgid "Backward diagonal hatch"
+#: src/dialogs/AtlasPanel.cpp:68
+msgid "Database  Import"
 msgstr ""
 
-#: src/dialogs/BrushDialog.cpp:152
-msgid "Cross-diagonal hatch"
+#: src/dialogs/AtlasPanel.cpp:69
+msgid "Manage Favourite Countries"
 msgstr ""
 
-#: src/dialogs/BrushDialog.cpp:153
-msgid "Forward diagonal hatch"
+#: src/dialogs/AtlasPanel.cpp:71 src/dialogs/AtlasPanel.cpp:74
+#: src/dialogs/EphemerisPanel.cpp:72
+#, fuzzy
+msgid "Choose ..."
+msgstr "Scegli ..."
+
+#: src/dialogs/AtlasPanel.cpp:73 src/dialogs/AtlasPanel.cpp:76
+#: src/dialogs/MiscellaneousPanel.cpp:76
+#, fuzzy
+msgid "Status"
+msgstr "Stato"
+
+#: src/dialogs/AtlasPanel.cpp:77
+#, fuzzy
+msgid "Start Import"
+msgstr "Data Iniziale"
+
+#: src/dialogs/AtlasPanel.cpp:80
+msgid "Change Countries ..."
 msgstr ""
 
-#: src/dialogs/BrushDialog.cpp:154
-msgid "Cross hatch"
-msgstr ""
-
-#: src/dialogs/BrushDialog.cpp:155
+#: src/dialogs/AtlasPanel.cpp:124
 #, fuzzy
-msgid "Horizontal hatch"
-msgstr "Dimensione Orizzontale"
-
-#: src/dialogs/BrushDialog.cpp:156
-#, fuzzy
-msgid "Vertical hatch"
-msgstr "Dimensione Verticale"
-
-#: src/dialogs/BrushDialog.cpp:157
-#, fuzzy
-msgid "Stipple"
-msgstr "Sestile"
-
-#: src/dialogs/BrushDialog.cpp:163
-msgid "Rotate Hue"
-msgstr ""
-
-#: src/dialogs/BrushDialog.cpp:301
-#, fuzzy
-msgid "Select Brush"
+msgid "Select database file"
 msgstr "Seetala"
 
-#: src/dialogs/BrushDialog.cpp:302
-msgid "Background images can be used with option 'Stipple'"
+#: src/dialogs/AtlasPanel.cpp:154
+#, fuzzy
+msgid "File not found"
+msgstr "Nessun evento trovato."
+
+#: src/dialogs/AtlasPanel.cpp:159
+msgid "File not readable"
 msgstr ""
 
-#: src/dialogs/BrushDialog.cpp:319
+#: src/dialogs/AtlasPanel.cpp:164
+msgid "File size zero"
+msgstr ""
+
+#: src/dialogs/AtlasPanel.cpp:168
+msgid "Ok"
+msgstr ""
+
+#: src/dialogs/AtlasPanel.cpp:188
+msgid "Database error"
+msgstr ""
+
+#: src/dialogs/AtlasPanel.cpp:203
+msgid "Select import file"
+msgstr ""
+
+#: src/dialogs/AtlasPanel.cpp:228
+msgid "Import was successfull"
+msgstr ""
+
+#: src/dialogs/AtlasPanel.cpp:232
+msgid "Import was canceled"
+msgstr ""
+
+#: src/dialogs/AtlasPanel.cpp:237
+msgid "Import had errors"
+msgstr ""
+
+#: src/dialogs/AtlasPanel.cpp:302
+msgid "Choose Favourite Countries"
+msgstr ""
+
+#: src/dialogs/BrushDialog.cpp:144
 #, fuzzy
 msgid "Brush Preview"
 msgstr "Vista dei Transiti"
 
-#: src/dialogs/ColorPanel.cpp:360 src/dialogs/SheetStylePanel.cpp:97
-#: src/dialogs/SheetStylePanel.cpp:102
+#: src/dialogs/BrushDialog.cpp:147 src/dialogs/PenDialog.cpp:127
 #, fuzzy
-msgid "Text Color"
-msgstr "&Usa i Colori"
+msgid "Color"
+msgstr "Colori"
 
-#: src/dialogs/ColorPanel.cpp:362 src/dialogs/VedicCalculationPanel.cpp:505
-#, fuzzy
-msgid "Benefics"
-msgstr "Benefici"
+#: src/dialogs/BrushDialog.cpp:149 src/dialogs/MultipleViewPanel.cpp:64
+#: src/dialogs/PenDialog.cpp:131 src/dialogs/SheetStylePanel.cpp:91
+#: src/dialogs/VedicChartPanel.cpp:94
+msgid "Style"
+msgstr "Style"
 
-#: src/dialogs/ColorPanel.cpp:364
+#: src/dialogs/BrushDialog.cpp:151 src/dialogs/PenDialog.cpp:133
 #, fuzzy
-msgid "Malefics"
-msgstr "Malefici"
+msgid "Solid"
+msgstr "Solare"
 
-#: src/dialogs/ColorPanel.cpp:366
+#: src/dialogs/BrushDialog.cpp:152 src/dialogs/SheetStylePanel.cpp:110
 #, fuzzy
-msgid "Transit Planets"
-msgstr "Transiti"
+msgid "Transparent"
+msgstr "Analisi dei Transiti"
 
-#: src/dialogs/ColorPanel.cpp:368
+#: src/dialogs/BrushDialog.cpp:153
+msgid "Backward diagonal hatch"
+msgstr ""
+
+#: src/dialogs/BrushDialog.cpp:154
+msgid "Cross-diagonal hatch"
+msgstr ""
+
+#: src/dialogs/BrushDialog.cpp:155
+msgid "Forward diagonal hatch"
+msgstr ""
+
+#: src/dialogs/BrushDialog.cpp:156
+msgid "Cross hatch"
+msgstr ""
+
+#: src/dialogs/BrushDialog.cpp:157
 #, fuzzy
-msgid "Default Background"
+msgid "Horizontal hatch"
+msgstr "Dimensione Orizzontale"
+
+#: src/dialogs/BrushDialog.cpp:158
+#, fuzzy
+msgid "Vertical hatch"
+msgstr "Dimensione Verticale"
+
+#: src/dialogs/BrushDialog.cpp:159
+#, fuzzy
+msgid "Stipple"
+msgstr "Sestile"
+
+#: src/dialogs/BrushDialog.cpp:165
+msgid "Rotate Hue"
+msgstr ""
+
+#: src/dialogs/BrushDialog.cpp:302
+#, fuzzy
+msgid "Select Brush"
+msgstr "Seetala"
+
+#: src/dialogs/BrushDialog.cpp:303
+msgid "Background images can be used with option 'Stipple'"
+msgstr ""
+
+#: src/dialogs/ColorPanel.cpp:362
+#, fuzzy
+msgid "Background Colors"
 msgstr "Sfondo (2)"
 
-#: src/dialogs/ColorPanel.cpp:370
-msgid "Marked Fields in SBC"
-msgstr ""
+#: src/dialogs/ColorPanel.cpp:363 src/dialogs/WesternChartPanel.cpp:112
+msgid "Planets"
+msgstr "Pianeti"
 
-#: src/dialogs/ColorPanel.cpp:372
-msgid "Marked Fields in Charts"
-msgstr ""
-
-#: src/dialogs/ColorPanel.cpp:374
-msgid "Errors"
-msgstr ""
-
-#: src/dialogs/ColorPanel.cpp:384 src/dialogs/ColorPanel.cpp:394
-#: src/dialogs/ColorPanel.cpp:407
+#: src/dialogs/ColorPanel.cpp:364 src/dialogs/WesternChartPanel.cpp:113
 #, fuzzy
-msgid "Foreground"
-msgstr "Testo"
+msgid "Signs"
+msgstr "Segno"
 
-#: src/dialogs/ColorPanel.cpp:397 src/dialogs/ColorPanel.cpp:410
-#: src/dialogs/SheetStylePanel.cpp:99
-#, fuzzy
-msgid "Background"
-msgstr "Sfondo (2)"
-
-#: src/dialogs/ColorPanel.cpp:398 src/dialogs/ColorPanel.cpp:411
-#: src/dialogs/ColorPanel.cpp:428
-msgid "Brush ..."
-msgstr ""
-
-#: src/dialogs/ColorPanel.cpp:413
-#, fuzzy
-msgid "Select Object"
-msgstr "&Usa i Colori"
-
-#: src/dialogs/ColorPanel.cpp:429
-msgid "Zoom on Mouse Over"
-msgstr ""
-
-#: src/dialogs/ColorPanel.cpp:431 src/dialogs/ColorPanel.cpp:435
-msgid "Pixel"
-msgstr ""
-
-#: src/dialogs/ColorPanel.cpp:432
-#, fuzzy
-msgid "Show Messages in Toolbar"
-msgstr "Mostra Barra degli s&trumenti"
-
-#: src/dialogs/ColorPanel.cpp:433
-#, fuzzy
-msgid "Dasa Bar Corner Radius"
-msgstr "Crediti"
-
-#: src/dialogs/ColorPanel.cpp:745 src/gui/BarDiagram.cpp:134
-msgid "Graha Pinda"
-msgstr "Graha Pinda"
-
-#: src/dialogs/ColorPanel.cpp:754 src/gui/BarDiagram.cpp:107
-#: src/jyotish/Ashtakavarga.cpp:224 src/views/AshtakaVargaView.cpp:175
-msgid "Rekha"
-msgstr "Rekha"
-
-#: src/dialogs/ColorPanel.cpp:839
-#, fuzzy
-msgid "Sign or Lord of the Dasa"
-msgstr "Lord del giorno"
-
-#: src/dialogs/ColorPanel.cpp:855 src/dialogs/PlanetSignDisplayPanel.cpp:253
-#: src/dialogs/SheetStylePanel.cpp:415 src/dialogs/VedicChartPanel.cpp:446
-#: src/dialogs/WesternChartPanel.cpp:335
-msgid "Preview"
-msgstr "Anteprima"
-
-#: src/dialogs/ColorPanel.cpp:857
-#, fuzzy
-msgid "Graphical Dasa View Options"
-msgstr "Opzioni del Fuso"
-
-#: src/dialogs/ColorPanel.cpp:859
-msgid "Mouse over Behaviour"
-msgstr ""
-
-#: src/dialogs/ColorPanel.cpp:861
-#, fuzzy
-msgid "Object"
-msgstr "&Usa i Colori"
-
-#: src/dialogs/ColorPanel.cpp:864 src/dialogs/WesternChartPanel.cpp:105
-#: src/dialogs/WesternChartPanel.cpp:108 src/gui/MenuProvider.cpp:731
+#: src/dialogs/ColorPanel.cpp:365 src/dialogs/WesternChartPanel.cpp:111
+#: src/dialogs/WesternChartPanel.cpp:114 src/gui/MenuProvider.cpp:731
 #: src/jyotish/PrintoutTextHelper.cpp:116
 #: src/jyotish/PrintoutTextHelper.cpp:138
 msgid "Houses"
 msgstr "Case"
 
-#: src/dialogs/ColorPanel.cpp:866 src/dialogs/WesternChartPanel.cpp:107
+#: src/dialogs/ColorPanel.cpp:366
 #, fuzzy
-msgid "Signs"
-msgstr "Segno"
+msgid "Object"
+msgstr "&Usa i Colori"
 
-#: src/dialogs/ColorPanel.cpp:868 src/dialogs/WesternChartPanel.cpp:106
-msgid "Planets"
-msgstr "Pianeti"
+#: src/dialogs/ColorPanel.cpp:367
+msgid "Mouse over Behaviour"
+msgstr ""
 
-#: src/dialogs/ColorPanel.cpp:871
+#: src/dialogs/ColorPanel.cpp:368
 #, fuzzy
-msgid "Background Colors"
-msgstr "Sfondo (2)"
+msgid "Graphical Dasa View Options"
+msgstr "Opzioni del Fuso"
 
-#: src/dialogs/ColorPanel.cpp:874 src/dialogs/WesternChartPanel.cpp:341
+#: src/dialogs/ColorPanel.cpp:369 src/dialogs/PlanetSignDisplayPanel.cpp:58
+#: src/dialogs/SheetStylePanel.cpp:89 src/dialogs/VedicChartPanel.cpp:78
+#: src/dialogs/WesternChartPanel.cpp:69
+msgid "Preview"
+msgstr "Anteprima"
+
+#: src/dialogs/ColorPanel.cpp:370 src/dialogs/WesternChartPanel.cpp:67
 #, fuzzy
 msgid "Foreground Colors"
 msgstr "Colori"
 
-#: src/dialogs/ColorPanel.cpp:948 src/dialogs/ConfigPanel.cpp:149
-#: src/dialogs/GeneralPanel.cpp:366 src/dialogs/VedicCalculationPanel.cpp:591
-#: src/dialogs/VedicChartPanel.cpp:523 src/dialogs/WesternChartPanel.cpp:383
+#: src/dialogs/ColorPanel.cpp:371 src/dialogs/SheetStylePanel.cpp:101
+#: src/dialogs/SheetStylePanel.cpp:106
+#, fuzzy
+msgid "Text Color"
+msgstr "&Usa i Colori"
+
+#: src/dialogs/ColorPanel.cpp:373 src/dialogs/VedicCalculationPanel.cpp:61
+#, fuzzy
+msgid "Benefics"
+msgstr "Benefici"
+
+#: src/dialogs/ColorPanel.cpp:375
+#, fuzzy
+msgid "Malefics"
+msgstr "Malefici"
+
+#: src/dialogs/ColorPanel.cpp:377
+#, fuzzy
+msgid "Transit Planets"
+msgstr "Transiti"
+
+#: src/dialogs/ColorPanel.cpp:379
+#, fuzzy
+msgid "Default Background"
+msgstr "Sfondo (2)"
+
+#: src/dialogs/ColorPanel.cpp:381
+msgid "Marked Fields in SBC"
+msgstr ""
+
+#: src/dialogs/ColorPanel.cpp:383
+msgid "Marked Fields in Charts"
+msgstr ""
+
+#: src/dialogs/ColorPanel.cpp:385
+msgid "Errors"
+msgstr ""
+
+#: src/dialogs/ColorPanel.cpp:395 src/dialogs/ColorPanel.cpp:405
+#: src/dialogs/ColorPanel.cpp:418
+#, fuzzy
+msgid "Foreground"
+msgstr "Testo"
+
+#: src/dialogs/ColorPanel.cpp:408 src/dialogs/ColorPanel.cpp:421
+#: src/dialogs/SheetStylePanel.cpp:103
+#, fuzzy
+msgid "Background"
+msgstr "Sfondo (2)"
+
+#: src/dialogs/ColorPanel.cpp:409 src/dialogs/ColorPanel.cpp:422
+#: src/dialogs/ColorPanel.cpp:439
+msgid "Brush ..."
+msgstr ""
+
+#: src/dialogs/ColorPanel.cpp:424
+#, fuzzy
+msgid "Select Object"
+msgstr "&Usa i Colori"
+
+#: src/dialogs/ColorPanel.cpp:440
+msgid "Zoom on Mouse Over"
+msgstr ""
+
+#: src/dialogs/ColorPanel.cpp:442 src/dialogs/ColorPanel.cpp:446
+msgid "Pixel"
+msgstr ""
+
+#: src/dialogs/ColorPanel.cpp:443
+#, fuzzy
+msgid "Show Messages in Toolbar"
+msgstr "Mostra Barra degli s&trumenti"
+
+#: src/dialogs/ColorPanel.cpp:444
+#, fuzzy
+msgid "Dasa Bar Corner Radius"
+msgstr "Crediti"
+
+#: src/dialogs/ColorPanel.cpp:757 src/gui/BarDiagram.cpp:134
+msgid "Graha Pinda"
+msgstr "Graha Pinda"
+
+#: src/dialogs/ColorPanel.cpp:766 src/gui/BarDiagram.cpp:107
+#: src/jyotish/Ashtakavarga.cpp:224 src/views/AshtakaVargaView.cpp:175
+msgid "Rekha"
+msgstr "Rekha"
+
+#: src/dialogs/ColorPanel.cpp:852
+#, fuzzy
+msgid "Sign or Lord of the Dasa"
+msgstr "Lord del giorno"
+
+#: src/dialogs/ColorPanel.cpp:970 src/dialogs/ConfigPanel.cpp:149
+#: src/dialogs/GeneralPanel.cpp:96 src/dialogs/VedicCalculationPanel.cpp:607
+#: src/dialogs/VedicChartPanel.cpp:541 src/dialogs/WesternChartPanel.cpp:394
 msgid "General"
 msgstr "Generale"
 
-#: src/dialogs/ColorPanel.cpp:949
+#: src/dialogs/ColorPanel.cpp:971
 #, fuzzy
 msgid "Charts"
 msgstr "Grafico"
 
-#: src/dialogs/ColorPanel.cpp:950
+#: src/dialogs/ColorPanel.cpp:972
 #, fuzzy
 msgid "Bar Diagrams"
 msgstr "Diagramma Rasi"
 
-#: src/dialogs/ConfigDialog.cpp:116 src/dialogs/DataDialog.cpp:133
+#: src/dialogs/ConfigDialog.cpp:116 src/dialogs/DataDialog.cpp:138
 #, fuzzy
 msgid "Apply"
 msgstr "&Applica"
@@ -2947,7 +2956,7 @@ msgstr ""
 msgid "Planets and Signs"
 msgstr "Pianeti in Bhavas"
 
-#: src/dialogs/ConfigPanel.cpp:159 src/dialogs/WesternChartPanel.cpp:384
+#: src/dialogs/ConfigPanel.cpp:159 src/dialogs/WesternChartPanel.cpp:395
 msgid "Colors"
 msgstr "Colori"
 
@@ -2969,7 +2978,7 @@ msgid "Chart"
 msgstr "Grafico"
 
 #: src/dialogs/ConfigPanel.cpp:166 src/dialogs/ConfigPanel.cpp:171
-#: src/dialogs/EphemerisPanel.cpp:287
+#: src/dialogs/EphemerisPanel.cpp:61
 msgid "Calculation"
 msgstr "Calcoli"
 
@@ -2977,13 +2986,13 @@ msgstr "Calcoli"
 msgid "Western Astrology"
 msgstr "Astrologia Occidentale"
 
-#: src/dialogs/ConfigPanel.cpp:172 src/dialogs/VedicChartPanel.cpp:526
-#: src/dialogs/WesternChartPanel.cpp:103 src/dialogs/WesternChartPanel.cpp:109
+#: src/dialogs/ConfigPanel.cpp:172 src/dialogs/VedicChartPanel.cpp:544
+#: src/dialogs/WesternChartPanel.cpp:109 src/dialogs/WesternChartPanel.cpp:115
 #: src/gui/MenuProvider.cpp:727 src/jyotish/Aspect.cpp:606
 msgid "Aspects"
 msgstr "Aspetti"
 
-#: src/dialogs/ConfigPanel.cpp:174 src/dialogs/MiscellaneousPanel.cpp:195
+#: src/dialogs/ConfigPanel.cpp:174 src/dialogs/MiscellaneousPanel.cpp:54
 #: src/dialogs/UranianPanel.cpp:66
 msgid "Miscellaneous"
 msgstr "Varie"
@@ -3008,100 +3017,100 @@ msgstr "fine"
 msgid "duration"
 msgstr "durata"
 
-#: src/dialogs/DataDialog.cpp:90 src/dialogs/DataDialog.cpp:499
+#: src/dialogs/DataDialog.cpp:89 src/dialogs/DataDialog.cpp:95
 #: src/gui/ChildWindowListCtrl.cpp:140 src/gui/ToolPanel.cpp:361
-#: src/jyotish/Eclipse.cpp:134 src/jyotish/GenericTableWriter.cpp:998
+#: src/jyotish/Eclipse.cpp:134 src/jyotish/GenericTableWriter.cpp:999
 #: src/jyotish/Transit.cpp:325
 msgid "Date"
 msgstr "Data"
 
 #: src/dialogs/DataDialog.cpp:92
+msgid "Remark"
+msgstr "Appunti"
+
+#: src/dialogs/DataDialog.cpp:97
 msgid "YYYY-MM-DD"
 msgstr "YYYY-MM-DD"
 
-#: src/dialogs/DataDialog.cpp:95 src/dialogs/DataDialog.cpp:121
-#: src/dialogs/DataDialog.cpp:129
+#: src/dialogs/DataDialog.cpp:100 src/dialogs/DataDialog.cpp:126
+#: src/dialogs/DataDialog.cpp:134
 #, fuzzy
 msgid "HH:MM[:SS]"
 msgstr "HH:MM:SS"
 
-#: src/dialogs/DataDialog.cpp:96
+#: src/dialogs/DataDialog.cpp:101
 msgid "date"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:97
+#: src/dialogs/DataDialog.cpp:102
 #, fuzzy
 msgid "calendar"
 msgstr "Standard"
 
-#: src/dialogs/DataDialog.cpp:103 src/dialogs/DataDialog.cpp:111
+#: src/dialogs/DataDialog.cpp:108 src/dialogs/DataDialog.cpp:116
 #, fuzzy
 msgid "DD:MM[:SS]"
 msgstr "DD:MM:SS"
 
-#: src/dialogs/DataDialog.cpp:117 src/dialogs/GeneralPanel.cpp:357
+#: src/dialogs/DataDialog.cpp:122 src/dialogs/GeneralPanel.cpp:95
 #, fuzzy
 msgid "Standard Location"
 msgstr "Cerca Luogo"
 
-#: src/dialogs/DataDialog.cpp:118
+#: src/dialogs/DataDialog.cpp:123
 #, fuzzy
 msgid "Search Location"
 msgstr "Cerca Luogo"
 
-#: src/dialogs/DataDialog.cpp:305
+#: src/dialogs/DataDialog.cpp:310
 msgid "Gregorian Calendar"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:305
+#: src/dialogs/DataDialog.cpp:310
 #, fuzzy
 msgid "Julian Calendar"
 msgstr "Data Giuliana"
 
-#: src/dialogs/DataDialog.cpp:310
+#: src/dialogs/DataDialog.cpp:315
 msgid "invalid value"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:460
+#: src/dialogs/DataDialog.cpp:465
 msgid "Birth Data"
 msgstr "Dati di Nascita"
 
-#: src/dialogs/DataDialog.cpp:462
+#: src/dialogs/DataDialog.cpp:467
 msgid "Set current date"
 msgstr "Imposta la Data Corrente"
 
-#: src/dialogs/DataDialog.cpp:465
+#: src/dialogs/DataDialog.cpp:470
 #, fuzzy
 msgid "Set standard location"
 msgstr "Imposta il Luogo Predefinito"
 
-#: src/dialogs/DataDialog.cpp:466
+#: src/dialogs/DataDialog.cpp:471
 msgid "Search location in database"
 msgstr "Cerca un Luogo nel Database"
 
-#: src/dialogs/DataDialog.cpp:468
+#: src/dialogs/DataDialog.cpp:473
 msgid "Set time zone for local time"
 msgstr "Imposta il fuso orario per l'ora locale"
 
-#: src/dialogs/DataDialog.cpp:470
+#: src/dialogs/DataDialog.cpp:475
 msgid "Apply data and close dialog"
 msgstr "Applica e chiudi la finestra"
 
-#: src/dialogs/DataDialog.cpp:472
+#: src/dialogs/DataDialog.cpp:477
 msgid "Apply changes and recalculate chart with new data"
 msgstr "Applica i cambiamenti e ricalcola il tema con i nuovi dati"
 
-#: src/dialogs/DataDialog.cpp:473
+#: src/dialogs/DataDialog.cpp:478
 msgid "Cancel changes and close dialog"
 msgstr "Annulla i cambiamenti e chiudi la finestra"
 
-#: src/dialogs/DataDialog.cpp:488
-msgid "Remark"
-msgstr "Appunti"
-
-#: src/dialogs/DialogElements.cpp:97 src/dialogs/VedicCalculationPanel.cpp:496
-#: src/dialogs/WesternCalculationPanel.cpp:163
-#: src/dialogs/WesternCalculationPanel.cpp:176
+#: src/dialogs/DialogElements.cpp:97 src/dialogs/VedicCalculationPanel.cpp:65
+#: src/dialogs/WesternCalculationPanel.cpp:50
+#: src/dialogs/WesternCalculationPanel.cpp:180
 msgid "Year Length"
 msgstr "Durata dell'anno"
 
@@ -3114,7 +3123,7 @@ msgid "Custom"
 msgstr "Personalizzato"
 
 #: src/dialogs/DialogElements.cpp:125 src/dialogs/DialogElements.cpp:162
-#: src/dialogs/UranianParamPanel.cpp:245 src/gui/ToolPanel.cpp:378
+#: src/dialogs/UranianParamPanel.cpp:65 src/gui/ToolPanel.cpp:378
 #: src/jyotish/UranianHelper.cpp:346
 msgid "Gradkreis"
 msgstr ""
@@ -3133,7 +3142,7 @@ msgid "Left Side"
 msgstr "Lato Sinistro"
 
 #: src/dialogs/DialogElements.cpp:159 src/dialogs/UranianPanel.cpp:64
-#: src/dialogs/UranianParamPanel.cpp:243 src/gui/ToolPanel.cpp:374
+#: src/dialogs/UranianParamPanel.cpp:62 src/gui/ToolPanel.cpp:374
 #: src/jyotish/Aspect.cpp:625 src/jyotish/UranianHelper.cpp:344
 msgid "Orbis"
 msgstr "Orbita"
@@ -3206,8 +3215,8 @@ msgstr "Arco Costante"
 msgid "Base Data"
 msgstr "Dati"
 
-#: src/dialogs/DialogElements.cpp:313 src/dialogs/VedicPanel.cpp:250
-#: src/dialogs/WesternPanel.cpp:227 src/gui/MenuProvider.cpp:575
+#: src/dialogs/DialogElements.cpp:313 src/dialogs/VedicPanel.cpp:56
+#: src/dialogs/WesternPanel.cpp:54 src/gui/MenuProvider.cpp:575
 msgid "Arabic Parts"
 msgstr ""
 
@@ -3232,8 +3241,8 @@ msgstr "Dasa (Breve)"
 msgid "Dasa (Long)"
 msgstr "Dasa (Lungo)"
 
-#: src/dialogs/DialogElements.cpp:320 src/dialogs/VedicCalculationPanel.cpp:596
-#: src/jyotish/Jaimini.cpp:189
+#: src/dialogs/DialogElements.cpp:320
+#: src/dialogs/VedicCalculationPanel.cpp:612 src/jyotish/Jaimini.cpp:189
 msgid "Jaimini"
 msgstr "Jaimini"
 
@@ -3241,16 +3250,16 @@ msgstr "Jaimini"
 msgid "Krishnamurti Paddhati"
 msgstr "Krishnamurti Paddhati"
 
-#: src/dialogs/DialogElements.cpp:322 src/dialogs/VedicPanel.cpp:86
-#: src/gui/MenuProvider.cpp:611 src/jyotish/GenericTableWriter.cpp:621
+#: src/dialogs/DialogElements.cpp:322 src/dialogs/VedicPanel.cpp:92
+#: src/gui/MenuProvider.cpp:611 src/jyotish/GenericTableWriter.cpp:622
 #: src/jyotish/Nakshatra.cpp:230 src/jyotish/Nakshatra.cpp:324
 #: src/jyotish/Partner.cpp:504 src/jyotish/Partner.cpp:534
 #: src/jyotish/TextHelper.cpp:533 src/jyotish/TextHelper.cpp:585
 msgid "Nakshatra"
 msgstr "Nakshatra"
 
-#: src/dialogs/DialogElements.cpp:323 src/dialogs/VedicCalculationPanel.cpp:502
-#: src/dialogs/VedicCalculationPanel.cpp:592 src/jyotish/Varga.cpp:315
+#: src/dialogs/DialogElements.cpp:323 src/dialogs/VedicCalculationPanel.cpp:62
+#: src/dialogs/VedicCalculationPanel.cpp:608 src/jyotish/Varga.cpp:315
 #: src/views/VargaView.cpp:87 src/views/VargaView.cpp:147
 msgid "Vargas"
 msgstr "Vargas"
@@ -3273,99 +3282,111 @@ msgstr "Aspetti"
 msgid "Western Planets"
 msgstr "Pianeti Occidentali"
 
+#: src/dialogs/EphemerisPanel.cpp:59
+msgid "Custom Ayanamsa"
+msgstr " Ayanamsa personalizzato"
+
 #: src/dialogs/EphemerisPanel.cpp:60
+msgid "Path for Ephemeris Data Files"
+msgstr "Percorso per i files di dati delle Effemeridi"
+
+#: src/dialogs/EphemerisPanel.cpp:62
+msgid "Sunrise and Sunset"
+msgstr "Alba e Tramonto"
+
+#: src/dialogs/EphemerisPanel.cpp:64
 msgid "Date t0"
 msgstr "Data t0"
 
-#: src/dialogs/EphemerisPanel.cpp:62
+#: src/dialogs/EphemerisPanel.cpp:66
 #, fuzzy
 msgid "0000-00-00 00:00:00"
 msgstr "00:00:00"
 
-#: src/dialogs/EphemerisPanel.cpp:63
+#: src/dialogs/EphemerisPanel.cpp:67
 msgid "Ayanamsa at t0"
 msgstr "Ayanamsa a t0"
 
-#: src/dialogs/EphemerisPanel.cpp:65
+#: src/dialogs/EphemerisPanel.cpp:69
 #, fuzzy
 msgid "00:00:00.000"
 msgstr "00:00:00"
 
-#: src/dialogs/EphemerisPanel.cpp:66
+#: src/dialogs/EphemerisPanel.cpp:70
 #, fuzzy
 msgid "Constant Period"
 msgstr "&Periodo Costante"
 
-#: src/dialogs/EphemerisPanel.cpp:70
+#: src/dialogs/EphemerisPanel.cpp:74
 msgid "Time Model"
 msgstr "Modello di Tempo"
 
-#: src/dialogs/EphemerisPanel.cpp:72
+#: src/dialogs/EphemerisPanel.cpp:76
 msgid "Universal"
 msgstr "Universale"
 
-#: src/dialogs/EphemerisPanel.cpp:76 src/dialogs/GeneralPanel.cpp:361
+#: src/dialogs/EphemerisPanel.cpp:80 src/dialogs/GeneralPanel.cpp:93
 msgid "Coordinates"
 msgstr "Coordinate"
 
-#: src/dialogs/EphemerisPanel.cpp:78
+#: src/dialogs/EphemerisPanel.cpp:82
 msgid "Geocentric"
 msgstr "Geocentrico"
 
-#: src/dialogs/EphemerisPanel.cpp:79
+#: src/dialogs/EphemerisPanel.cpp:83
 msgid "Topocentric"
 msgstr "Topocentrico"
 
-#: src/dialogs/EphemerisPanel.cpp:80
+#: src/dialogs/EphemerisPanel.cpp:84
 #, fuzzy
 msgid "Equatorial"
 msgstr "Uguale"
 
-#: src/dialogs/EphemerisPanel.cpp:81
+#: src/dialogs/EphemerisPanel.cpp:85
 #, fuzzy
 msgid "Barycentric"
 msgstr "Geocentrico"
 
-#: src/dialogs/EphemerisPanel.cpp:82
+#: src/dialogs/EphemerisPanel.cpp:86
 #, fuzzy
 msgid "Heliocentric"
 msgstr "Geocentrico"
 
-#: src/dialogs/EphemerisPanel.cpp:85
+#: src/dialogs/EphemerisPanel.cpp:89
 msgid "Positions"
 msgstr "Posizioni"
 
-#: src/dialogs/EphemerisPanel.cpp:87
+#: src/dialogs/EphemerisPanel.cpp:91
 msgid "Apparent"
 msgstr "Apparente"
 
-#: src/dialogs/EphemerisPanel.cpp:88 src/dialogs/VedicCalculationPanel.cpp:71
-#: src/dialogs/WesternCalculationPanel.cpp:60
+#: src/dialogs/EphemerisPanel.cpp:92 src/dialogs/VedicCalculationPanel.cpp:79
+#: src/dialogs/WesternCalculationPanel.cpp:62
 msgid "True"
 msgstr "Reale"
 
-#: src/dialogs/EphemerisPanel.cpp:91
+#: src/dialogs/EphemerisPanel.cpp:95
 msgid "Reference Point"
 msgstr "Punto di Riferimento"
 
-#: src/dialogs/EphemerisPanel.cpp:93
+#: src/dialogs/EphemerisPanel.cpp:97
 msgid "Center of Disk"
 msgstr "Centro del Disco"
 
-#: src/dialogs/EphemerisPanel.cpp:94
+#: src/dialogs/EphemerisPanel.cpp:98
 msgid "Edge of Disk"
 msgstr "Apice del Disco"
 
-#: src/dialogs/EphemerisPanel.cpp:97
+#: src/dialogs/EphemerisPanel.cpp:101
 #, fuzzy
 msgid "Use Refraction"
 msgstr "&Usa Rifrazione"
 
-#: src/dialogs/EphemerisPanel.cpp:168
+#: src/dialogs/EphemerisPanel.cpp:172
 msgid "Choose a directory"
 msgstr "Scegli una cartella"
 
-#: src/dialogs/EphemerisPanel.cpp:240
+#: src/dialogs/EphemerisPanel.cpp:244
 msgid ""
 "Warning: changes in calculation configuration may result in wrong "
 "calculation results!"
@@ -3373,751 +3394,721 @@ msgstr ""
 "Attenzione: cambiamenti nella configurazione di calcolo possono generare "
 "risultati erronei!"
 
-#: src/dialogs/EphemerisPanel.cpp:266
+#: src/dialogs/EphemerisPanel.cpp:270
 msgid "Only required for high precision calculation"
 msgstr "Richiesto solo per calcoli ad alta precisione"
 
-#: src/dialogs/EphemerisPanel.cpp:271
+#: src/dialogs/EphemerisPanel.cpp:275
 msgid "Checked: apparent position will be used"
 msgstr "Selezionato: verrà usata la posizione apparente"
 
-#: src/dialogs/EphemerisPanel.cpp:285
-msgid "Sunrise and Sunset"
-msgstr "Alba e Tramonto"
-
-#: src/dialogs/EphemerisPanel.cpp:290
-msgid "Path for Ephemeris Data Files"
-msgstr "Percorso per i files di dati delle Effemeridi"
-
-#: src/dialogs/EphemerisPanel.cpp:291
-msgid "Custom Ayanamsa"
-msgstr " Ayanamsa personalizzato"
-
 #: src/dialogs/ExportDialog.cpp:47
-msgid "Horizontal Size"
-msgstr "Dimensione Orizzontale"
-
-#: src/dialogs/ExportDialog.cpp:49
-msgid "Vertical Size"
-msgstr "Dimensione Verticale"
-
-#: src/dialogs/ExportDialog.cpp:51
-msgid "Don't show this dialog again"
-msgstr ""
-
-#: src/dialogs/ExportDialog.cpp:93 src/gui/BasicWidget.cpp:323
-msgid "Export Picture"
-msgstr "Esporta Immagine"
-
-#: src/dialogs/ExportDialog.cpp:109
 msgid "Size"
 msgstr "Dimensione"
 
-#: src/dialogs/FontPanel.cpp:60 src/dialogs/FontPanel.cpp:78
-#: src/dialogs/FontPanel.cpp:81
-#, fuzzy
-msgid "Default Text"
-msgstr "Tipo di Vista Predefinito"
+#: src/dialogs/ExportDialog.cpp:48
+msgid "Horizontal Size"
+msgstr "Dimensione Orizzontale"
 
-#: src/dialogs/FontPanel.cpp:62 src/dialogs/FontPanel.cpp:65
-#: src/dialogs/FontPanel.cpp:68 src/dialogs/FontPanel.cpp:71
-#: src/dialogs/FontPanel.cpp:74 src/dialogs/FontPanel.cpp:77
-#: src/dialogs/FontPanel.cpp:80 src/dialogs/FontPanel.cpp:83
-#: src/dialogs/FontPanel.cpp:86 src/dialogs/FontPanel.cpp:89
-#: src/dialogs/FontPanel.cpp:92 src/dialogs/FontPanel.cpp:95
-#, fuzzy
-msgid "Choose..."
-msgstr "Scegli ..."
+#: src/dialogs/ExportDialog.cpp:50
+msgid "Vertical Size"
+msgstr "Dimensione Verticale"
 
-#: src/dialogs/FontPanel.cpp:63 src/dialogs/FontPanel.cpp:84
-#, fuzzy
-msgid "Text Header"
-msgstr "Intestazione"
-
-#: src/dialogs/FontPanel.cpp:66 src/dialogs/FontPanel.cpp:87
-msgid "Table Contents"
+#: src/dialogs/ExportDialog.cpp:52
+msgid "Don't show this dialog again"
 msgstr ""
 
-#: src/dialogs/FontPanel.cpp:69 src/dialogs/FontPanel.cpp:90
-#: src/dialogs/SheetStylePanel.cpp:422
-#, fuzzy
-msgid "Table Header"
-msgstr "Intestazione"
+#: src/dialogs/ExportDialog.cpp:94 src/gui/BasicWidget.cpp:323
+msgid "Export Picture"
+msgstr "Esporta Immagine"
 
-#: src/dialogs/FontPanel.cpp:75
-msgid "Symbols"
-msgstr "Simboli"
-
-#: src/dialogs/FontPanel.cpp:93
-msgid "Page Header and Footer"
-msgstr ""
-
-#: src/dialogs/FontPanel.cpp:264
-#, fuzzy
-msgid "Printout (Pdf)"
-msgstr "Stampato"
-
-#: src/dialogs/FontPanel.cpp:267
-#, fuzzy
-msgid "Plain Text Views"
-msgstr "Vista Testuale"
-
-#: src/dialogs/FontPanel.cpp:269
+#: src/dialogs/FontPanel.cpp:60
 #, fuzzy
 msgid "Graphical Views"
 msgstr "Grafico"
 
-#: src/dialogs/FontPanel.cpp:271
+#: src/dialogs/FontPanel.cpp:61
+#, fuzzy
+msgid "Plain Text Views"
+msgstr "Vista Testuale"
+
+#: src/dialogs/FontPanel.cpp:62
+#, fuzzy
+msgid "Printout (Pdf)"
+msgstr "Stampato"
+
+#: src/dialogs/FontPanel.cpp:63
 #, fuzzy
 msgid "Text Views"
 msgstr "Vista Testuale"
 
-#: src/dialogs/GeneralPanel.cpp:92
-msgid "Default Style"
-msgstr "Stile Predefinito"
-
-#: src/dialogs/GeneralPanel.cpp:94
-msgid "Vedic"
-msgstr "Vedico"
-
-#: src/dialogs/GeneralPanel.cpp:95 src/jyotish/Ephemeris.cpp:574
-msgid "Western"
-msgstr "Occidentale"
-
-#: src/dialogs/GeneralPanel.cpp:98
-msgid "Language"
-msgstr "Lingua"
-
-#: src/dialogs/GeneralPanel.cpp:106
+#: src/dialogs/FontPanel.cpp:64 src/dialogs/FontPanel.cpp:82
+#: src/dialogs/FontPanel.cpp:85
 #, fuzzy
-msgid "Open New Document on Startup"
-msgstr "Apri un &Nuovo Documento all'Avvio"
+msgid "Default Text"
+msgstr "Tipo di Vista Predefinito"
 
-#: src/dialogs/GeneralPanel.cpp:107
+#: src/dialogs/FontPanel.cpp:66 src/dialogs/FontPanel.cpp:69
+#: src/dialogs/FontPanel.cpp:72 src/dialogs/FontPanel.cpp:75
+#: src/dialogs/FontPanel.cpp:78 src/dialogs/FontPanel.cpp:81
+#: src/dialogs/FontPanel.cpp:84 src/dialogs/FontPanel.cpp:87
+#: src/dialogs/FontPanel.cpp:90 src/dialogs/FontPanel.cpp:93
+#: src/dialogs/FontPanel.cpp:96 src/dialogs/FontPanel.cpp:99
 #, fuzzy
-msgid "Ask on Quit"
-msgstr "Chiedi prima di Chiudere"
+msgid "Choose..."
+msgstr "Scegli ..."
 
-#: src/dialogs/GeneralPanel.cpp:109
+#: src/dialogs/FontPanel.cpp:67 src/dialogs/FontPanel.cpp:88
 #, fuzzy
-msgid "Search ..."
-msgstr "Cerca Luogo."
+msgid "Text Header"
+msgstr "Intestazione"
 
-#: src/dialogs/GeneralPanel.cpp:125 src/dialogs/GeneralPanel.cpp:127
-msgid "00:00:00"
-msgstr "00:00:00"
-
-#: src/dialogs/GeneralPanel.cpp:126 src/jyotish/GenericTableWriter.cpp:1044
-msgid "Universal Time"
-msgstr "Ora Universale"
-
-#: src/dialogs/GeneralPanel.cpp:128
-#, fuzzy
-msgid "Time Zone Offset"
-msgstr "Opzioni del Fuso"
-
-#: src/dialogs/GeneralPanel.cpp:129 src/dialogs/GeneralPanel.cpp:131
-#, fuzzy
-msgid "+00:00"
-msgstr "00:00:00"
-
-#: src/dialogs/GeneralPanel.cpp:130 src/jyotish/GenericTableWriter.cpp:1038
-msgid "Daylight Saving"
-msgstr "Ora Legale"
-
-#: src/dialogs/GeneralPanel.cpp:255
-msgid "The language will be changed when you restart the program."
-msgstr "La lingua verrà cambiata al prossimo riavvio del programma"
-
-#: src/dialogs/GeneralPanel.cpp:359
-msgid "Timezone System Settings"
+#: src/dialogs/FontPanel.cpp:70 src/dialogs/FontPanel.cpp:91
+msgid "Table Contents"
 msgstr ""
 
-#: src/dialogs/GeneralPanel.cpp:365
+#: src/dialogs/FontPanel.cpp:73 src/dialogs/FontPanel.cpp:94
+#: src/dialogs/SheetStylePanel.cpp:90
+#, fuzzy
+msgid "Table Header"
+msgstr "Intestazione"
+
+#: src/dialogs/FontPanel.cpp:79
+msgid "Symbols"
+msgstr "Simboli"
+
+#: src/dialogs/FontPanel.cpp:97
+msgid "Page Header and Footer"
+msgstr ""
+
+#: src/dialogs/GeneralPanel.cpp:92
 #, fuzzy
 msgid "Window Life Cycle"
 msgstr "Finestre"
 
+#: src/dialogs/GeneralPanel.cpp:94
+msgid "Timezone System Settings"
+msgstr ""
+
+#: src/dialogs/GeneralPanel.cpp:97
+msgid "Default Style"
+msgstr "Stile Predefinito"
+
+#: src/dialogs/GeneralPanel.cpp:99
+msgid "Vedic"
+msgstr "Vedico"
+
+#: src/dialogs/GeneralPanel.cpp:100 src/jyotish/Ephemeris.cpp:574
+msgid "Western"
+msgstr "Occidentale"
+
+#: src/dialogs/GeneralPanel.cpp:103
+msgid "Language"
+msgstr "Lingua"
+
+#: src/dialogs/GeneralPanel.cpp:111
+#, fuzzy
+msgid "Open New Document on Startup"
+msgstr "Apri un &Nuovo Documento all'Avvio"
+
+#: src/dialogs/GeneralPanel.cpp:112
+#, fuzzy
+msgid "Ask on Quit"
+msgstr "Chiedi prima di Chiudere"
+
+#: src/dialogs/GeneralPanel.cpp:114
+#, fuzzy
+msgid "Search ..."
+msgstr "Cerca Luogo."
+
+#: src/dialogs/GeneralPanel.cpp:130 src/dialogs/GeneralPanel.cpp:132
+msgid "00:00:00"
+msgstr "00:00:00"
+
+#: src/dialogs/GeneralPanel.cpp:131 src/jyotish/GenericTableWriter.cpp:1045
+msgid "Universal Time"
+msgstr "Ora Universale"
+
+#: src/dialogs/GeneralPanel.cpp:133
+#, fuzzy
+msgid "Time Zone Offset"
+msgstr "Opzioni del Fuso"
+
+#: src/dialogs/GeneralPanel.cpp:134 src/dialogs/GeneralPanel.cpp:136
+#, fuzzy
+msgid "+00:00"
+msgstr "00:00:00"
+
+#: src/dialogs/GeneralPanel.cpp:135 src/jyotish/GenericTableWriter.cpp:1039
+msgid "Daylight Saving"
+msgstr "Ora Legale"
+
+#: src/dialogs/GeneralPanel.cpp:260
+msgid "The language will be changed when you restart the program."
+msgstr "La lingua verrà cambiata al prossimo riavvio del programma"
+
 #: src/dialogs/MiscellaneousPanel.cpp:52
+msgid "Logging"
+msgstr ""
+
+#: src/dialogs/MiscellaneousPanel.cpp:53
+msgid "Image and Text Export"
+msgstr ""
+
+#: src/dialogs/MiscellaneousPanel.cpp:55
 #, fuzzy
 msgid "Running Objects in Status Bar"
 msgstr "Oggetti in movimento nella ba&rra di stato"
 
-#: src/dialogs/MiscellaneousPanel.cpp:55
-#: src/dialogs/VedicCalculationPanel.cpp:95
+#: src/dialogs/MiscellaneousPanel.cpp:58
 #: src/dialogs/VedicCalculationPanel.cpp:103
-#: src/dialogs/VedicChartPanel.cpp:122 src/dialogs/VedicChartPanel.cpp:131
-#: src/dialogs/VedicChartPanel.cpp:140
+#: src/dialogs/VedicCalculationPanel.cpp:111
+#: src/dialogs/VedicChartPanel.cpp:131 src/dialogs/VedicChartPanel.cpp:140
+#: src/dialogs/VedicChartPanel.cpp:149
 msgid "Never"
 msgstr "Mai"
 
-#: src/dialogs/MiscellaneousPanel.cpp:56
+#: src/dialogs/MiscellaneousPanel.cpp:59
 msgid "One"
 msgstr "Uno"
 
-#: src/dialogs/MiscellaneousPanel.cpp:57
+#: src/dialogs/MiscellaneousPanel.cpp:60
 msgid "Infinite"
 msgstr "Infinito"
 
-#: src/dialogs/MiscellaneousPanel.cpp:62
-msgid "Keep Value on Error"
-msgstr ""
-
-#: src/dialogs/MiscellaneousPanel.cpp:63
-#, fuzzy
-msgid "Restore Old Value"
-msgstr "Imposta il Luogo Predefinito"
-
-#: src/dialogs/MiscellaneousPanel.cpp:64
-#, fuzzy
-msgid "Adjust Value"
-msgstr "Valore Ayanamsa"
-
-#: src/dialogs/MiscellaneousPanel.cpp:68
+#: src/dialogs/MiscellaneousPanel.cpp:65
 msgid "Message Box"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:69
+#: src/dialogs/MiscellaneousPanel.cpp:66
 #, fuzzy
 msgid "Separate Window"
 msgstr "Separatore"
 
-#: src/dialogs/MiscellaneousPanel.cpp:70
+#: src/dialogs/MiscellaneousPanel.cpp:67
 #, fuzzy
 msgid "Part of Main Window"
 msgstr "Finestra Principale"
 
-#: src/dialogs/MiscellaneousPanel.cpp:71
+#: src/dialogs/MiscellaneousPanel.cpp:68
 msgid "Off"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:75
+#: src/dialogs/MiscellaneousPanel.cpp:72
 msgid "Fatal"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:76 src/gui/YogaEditor.cpp:332
-#: src/gui/YogaEditor.cpp:343 src/jyotish/GenericTableWriter.cpp:1192
+#: src/dialogs/MiscellaneousPanel.cpp:73 src/gui/YogaEditor.cpp:332
+#: src/gui/YogaEditor.cpp:343 src/jyotish/GenericTableWriter.cpp:1193
 msgid "Error"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:77
+#: src/dialogs/MiscellaneousPanel.cpp:74
 msgid "Warning"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:78
+#: src/dialogs/MiscellaneousPanel.cpp:75
 msgid "Message"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:80
+#: src/dialogs/MiscellaneousPanel.cpp:77
 msgid "Info"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:84
+#: src/dialogs/MiscellaneousPanel.cpp:81
 msgid "Show size dialog"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:85
+#: src/dialogs/MiscellaneousPanel.cpp:82
 msgid "Use view size"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:88
+#: src/dialogs/MiscellaneousPanel.cpp:85
 #, fuzzy
 msgid "Ask on overwrite"
 msgstr "Chiedi prima di sovrascrivere"
 
-#: src/dialogs/MiscellaneousPanel.cpp:112
+#: src/dialogs/MiscellaneousPanel.cpp:108
 msgid "Console"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:149
+#: src/dialogs/MiscellaneousPanel.cpp:145
 msgid "Log Mode will be changed after restart."
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:190
-msgid "Image and Text Export"
-msgstr ""
-
-#: src/dialogs/MiscellaneousPanel.cpp:192
-msgid "Logging"
-msgstr ""
-
-#: src/dialogs/MiscellaneousPanel.cpp:198
+#: src/dialogs/MiscellaneousPanel.cpp:196
 msgid "Maximum of Recent Files"
 msgstr "Numero Massimo di Files Recenti"
 
-#: src/dialogs/MiscellaneousPanel.cpp:201
+#: src/dialogs/MiscellaneousPanel.cpp:199
 msgid "Create Backup Files"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:204
+#: src/dialogs/MiscellaneousPanel.cpp:202
 msgid "Child View Frame Width"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:207
-msgid "Input Field Validation"
-msgstr ""
-
-#: src/dialogs/MiscellaneousPanel.cpp:214
+#: src/dialogs/MiscellaneousPanel.cpp:209
 msgid "Log Target"
 msgstr ""
 
-#: src/dialogs/MiscellaneousPanel.cpp:217
+#: src/dialogs/MiscellaneousPanel.cpp:212
 #, fuzzy
 msgid "Log Level"
 msgstr "Livello Dasa"
 
-#: src/dialogs/MiscellaneousPanel.cpp:223
+#: src/dialogs/MiscellaneousPanel.cpp:218
 msgid "Image Size"
 msgstr ""
 
-#: src/dialogs/MultipleViewPanel.cpp:52
-#, fuzzy
-msgid "Use Multiple Views"
-msgstr "Viste Multiple"
-
-#: src/dialogs/MultipleViewPanel.cpp:53
-#, fuzzy
-msgid "Default View"
-msgstr "Tipo di Vista Predefinito"
-
-#: src/dialogs/MultipleViewPanel.cpp:64 src/dialogs/MultipleViewPanel.cpp:92
-msgid "Notebook"
-msgstr "Notebook"
-
-#: src/dialogs/MultipleViewPanel.cpp:65 src/dialogs/MultipleViewPanel.cpp:95
-msgid "Listbook"
-msgstr "Listbook"
-
-#: src/dialogs/MultipleViewPanel.cpp:66 src/dialogs/MultipleViewPanel.cpp:98
-msgid "Choicebook"
-msgstr "Choicebook"
-
-#: src/dialogs/MultipleViewPanel.cpp:67 src/dialogs/MultipleViewPanel.cpp:101
-msgid "Toolbook"
-msgstr "Toolbook"
-
-#: src/dialogs/MultipleViewPanel.cpp:68 src/dialogs/MultipleViewPanel.cpp:104
-msgid "Treebook"
-msgstr "Treebook"
-
-#: src/dialogs/MultipleViewPanel.cpp:71 src/dialogs/PrintoutPanel.cpp:118
-msgid "Orientation"
-msgstr "Orientamento"
-
-#: src/dialogs/MultipleViewPanel.cpp:73 src/dialogs/VedicPanel.cpp:76
-msgid "Top"
-msgstr "Sopra"
-
-#: src/dialogs/MultipleViewPanel.cpp:74
-msgid "Bottom"
-msgstr "Sotto"
-
-#: src/dialogs/MultipleViewPanel.cpp:75 src/dialogs/PrintoutPanel.cpp:120
-msgid "Left"
-msgstr "Sinistra"
-
-#: src/dialogs/MultipleViewPanel.cpp:76 src/dialogs/PrintoutPanel.cpp:122
-msgid "Right"
-msgstr "Destra"
-
-#: src/dialogs/MultipleViewPanel.cpp:191
-msgid "Notebooks in Multiple View"
-msgstr "Notebooks in Vista Multipla"
-
-#: src/dialogs/MultipleViewPanel.cpp:194
+#: src/dialogs/MultipleViewPanel.cpp:51
 #, fuzzy
 msgid "Multiple View Configuration"
 msgstr "Seleziona Vista Multipla"
 
-#: src/dialogs/ObjectFilterDialog.cpp:52
+#: src/dialogs/MultipleViewPanel.cpp:52
+msgid "Notebooks in Multiple View"
+msgstr "Notebooks in Vista Multipla"
+
+#: src/dialogs/MultipleViewPanel.cpp:54
 #, fuzzy
-msgid "Select All"
-msgstr "Seetala"
+msgid "Use Multiple Views"
+msgstr "Viste Multiple"
 
-#: src/dialogs/ObjectFilterDialog.cpp:53
-msgid "Up to Mars"
-msgstr ""
-
-#: src/dialogs/ObjectFilterDialog.cpp:54
-msgid "Slower than Mars"
-msgstr ""
-
-#: src/dialogs/ObjectFilterDialog.cpp:55
+#: src/dialogs/MultipleViewPanel.cpp:55
 #, fuzzy
-msgid "Deselect All"
-msgstr "Seetala"
+msgid "Default View"
+msgstr "Tipo di Vista Predefinito"
 
-#: src/dialogs/ObjectFilterDialog.cpp:165
-msgid "Configure Object Filter"
-msgstr ""
+#: src/dialogs/MultipleViewPanel.cpp:66 src/dialogs/MultipleViewPanel.cpp:94
+msgid "Notebook"
+msgstr "Notebook"
 
-#: src/dialogs/ObjectFilterDialog.cpp:181
+#: src/dialogs/MultipleViewPanel.cpp:67 src/dialogs/MultipleViewPanel.cpp:97
+msgid "Listbook"
+msgstr "Listbook"
+
+#: src/dialogs/MultipleViewPanel.cpp:68 src/dialogs/MultipleViewPanel.cpp:100
+msgid "Choicebook"
+msgstr "Choicebook"
+
+#: src/dialogs/MultipleViewPanel.cpp:69 src/dialogs/MultipleViewPanel.cpp:103
+msgid "Toolbook"
+msgstr "Toolbook"
+
+#: src/dialogs/MultipleViewPanel.cpp:70 src/dialogs/MultipleViewPanel.cpp:106
+msgid "Treebook"
+msgstr "Treebook"
+
+#: src/dialogs/MultipleViewPanel.cpp:73 src/dialogs/PrintoutPanel.cpp:123
+msgid "Orientation"
+msgstr "Orientamento"
+
+#: src/dialogs/MultipleViewPanel.cpp:75 src/dialogs/VedicPanel.cpp:82
+msgid "Top"
+msgstr "Sopra"
+
+#: src/dialogs/MultipleViewPanel.cpp:76
+msgid "Bottom"
+msgstr "Sotto"
+
+#: src/dialogs/MultipleViewPanel.cpp:77 src/dialogs/PrintoutPanel.cpp:125
+msgid "Left"
+msgstr "Sinistra"
+
+#: src/dialogs/MultipleViewPanel.cpp:78 src/dialogs/PrintoutPanel.cpp:127
+msgid "Right"
+msgstr "Destra"
+
+#: src/dialogs/ObjectFilterDialog.cpp:51
 msgid "Quick Select"
 msgstr ""
 
-#: src/dialogs/ObjectFilterDialog.cpp:182
+#: src/dialogs/ObjectFilterDialog.cpp:52
 #, fuzzy
 msgid "Included Objects"
 msgstr "&Usa i Colori"
 
-#: src/dialogs/PenDialog.cpp:127
+#: src/dialogs/ObjectFilterDialog.cpp:54
 #, fuzzy
-msgid "Width"
-msgstr "Tithi"
-
-#: src/dialogs/PenDialog.cpp:132 src/dialogs/VedicCalculationPanel.cpp:208
-msgid "Dot"
-msgstr "Punto"
-
-#: src/dialogs/PenDialog.cpp:133
-msgid "Long Dash"
-msgstr ""
-
-#: src/dialogs/PenDialog.cpp:134
-#, fuzzy
-msgid "Short Dash"
-msgstr "Data Iniziale"
-
-#: src/dialogs/PenDialog.cpp:135
-msgid "Dot Dash"
-msgstr ""
-
-#: src/dialogs/PenDialog.cpp:194
-#, fuzzy
-msgid "Select Pen"
+msgid "Select All"
 msgstr "Seetala"
 
-#: src/dialogs/PenDialog.cpp:212
+#: src/dialogs/ObjectFilterDialog.cpp:55
+msgid "Up to Mars"
+msgstr ""
+
+#: src/dialogs/ObjectFilterDialog.cpp:56
+msgid "Slower than Mars"
+msgstr ""
+
+#: src/dialogs/ObjectFilterDialog.cpp:57
+#, fuzzy
+msgid "Deselect All"
+msgstr "Seetala"
+
+#: src/dialogs/ObjectFilterDialog.cpp:167
+msgid "Configure Object Filter"
+msgstr ""
+
+#: src/dialogs/PenDialog.cpp:124
 #, fuzzy
 msgid "Pen Preview"
 msgstr "Anteprima"
 
-#: src/dialogs/PlanetSignDisplayPanel.cpp:56
+#: src/dialogs/PenDialog.cpp:129
 #, fuzzy
-msgid "Use Symbols for Planets"
-msgstr "&Usa i Colori per i Simboli"
+msgid "Width"
+msgstr "Tithi"
 
-#: src/dialogs/PlanetSignDisplayPanel.cpp:57
-#, fuzzy
-msgid "Vedic Planet Names"
-msgstr "Pianeti Vedici"
+#: src/dialogs/PenDialog.cpp:134 src/dialogs/VedicCalculationPanel.cpp:216
+msgid "Dot"
+msgstr "Punto"
 
-#: src/dialogs/PlanetSignDisplayPanel.cpp:60
-#: src/dialogs/PlanetSignDisplayPanel.cpp:66
-#: src/dialogs/PlanetSignDisplayPanel.cpp:76
-#, fuzzy
-msgid "Symbol 1"
-msgstr "Simboli"
-
-#: src/dialogs/PlanetSignDisplayPanel.cpp:61
-#: src/dialogs/PlanetSignDisplayPanel.cpp:67
-#: src/dialogs/PlanetSignDisplayPanel.cpp:77
-#, fuzzy
-msgid "Symbol 2"
-msgstr "Simboli"
-
-#: src/dialogs/PlanetSignDisplayPanel.cpp:68
-#, fuzzy
-msgid "Symbol 3"
-msgstr "Simboli"
-
-#: src/dialogs/PlanetSignDisplayPanel.cpp:71
-#, fuzzy
-msgid "Vedic Position Format"
-msgstr "Tema Partner Vedico"
-
-#: src/dialogs/PlanetSignDisplayPanel.cpp:72
-msgid "Use Symbols for Signs"
+#: src/dialogs/PenDialog.cpp:135
+msgid "Long Dash"
 msgstr ""
 
-#: src/dialogs/PlanetSignDisplayPanel.cpp:73
+#: src/dialogs/PenDialog.cpp:136
 #, fuzzy
-msgid "Vedic Sign Names"
-msgstr "Nomi dei Segni"
+msgid "Short Dash"
+msgstr "Data Iniziale"
 
-#: src/dialogs/PlanetSignDisplayPanel.cpp:256
-msgid "Display of Signs"
-msgstr "Rappresentazione dei Segni"
+#: src/dialogs/PenDialog.cpp:137
+msgid "Dot Dash"
+msgstr ""
 
-#: src/dialogs/PlanetSignDisplayPanel.cpp:258
+#: src/dialogs/PenDialog.cpp:196
+#, fuzzy
+msgid "Select Pen"
+msgstr "Seetala"
+
+#: src/dialogs/PlanetSignDisplayPanel.cpp:56
 #, fuzzy
 msgid "Display of Positions"
 msgstr "Rappresentazione dei Segni"
 
-#: src/dialogs/PlanetSignDisplayPanel.cpp:259
+#: src/dialogs/PlanetSignDisplayPanel.cpp:57
+msgid "Display of Signs"
+msgstr "Rappresentazione dei Segni"
+
+#: src/dialogs/PlanetSignDisplayPanel.cpp:59
 msgid "Display of Planets"
 msgstr "Rappresentazione dei Pianeti"
 
-#: src/dialogs/PrintoutPanel.cpp:79 src/gui/ToolPanel.cpp:342
+#: src/dialogs/PlanetSignDisplayPanel.cpp:60
 #, fuzzy
-msgid "Sheet Style"
-msgstr "Stile Predefinito"
+msgid "Use Symbols for Planets"
+msgstr "&Usa i Colori per i Simboli"
 
-#: src/dialogs/PrintoutPanel.cpp:88
-msgid "Vedic Chart Style"
-msgstr "Tema in Stile Vedico"
-
-#: src/dialogs/PrintoutPanel.cpp:97
-msgid "Western Chart Style"
-msgstr "Tema in Stile Occidentale "
-
-#: src/dialogs/PrintoutPanel.cpp:106
+#: src/dialogs/PlanetSignDisplayPanel.cpp:61
 #, fuzzy
-msgid "Launch Pdf Viewer Automatically"
-msgstr "&Lancia il visualizzatore PDF"
+msgid "Vedic Planet Names"
+msgstr "Pianeti Vedici"
 
-#: src/dialogs/PrintoutPanel.cpp:107
-msgid "Command ..."
-msgstr "Comando ..."
+#: src/dialogs/PlanetSignDisplayPanel.cpp:64
+#: src/dialogs/PlanetSignDisplayPanel.cpp:70
+#: src/dialogs/PlanetSignDisplayPanel.cpp:80
+#, fuzzy
+msgid "Symbol 1"
+msgstr "Simboli"
 
-#: src/dialogs/PrintoutPanel.cpp:109
-msgid "Print Test Page"
+#: src/dialogs/PlanetSignDisplayPanel.cpp:65
+#: src/dialogs/PlanetSignDisplayPanel.cpp:71
+#: src/dialogs/PlanetSignDisplayPanel.cpp:81
+#, fuzzy
+msgid "Symbol 2"
+msgstr "Simboli"
+
+#: src/dialogs/PlanetSignDisplayPanel.cpp:72
+#, fuzzy
+msgid "Symbol 3"
+msgstr "Simboli"
+
+#: src/dialogs/PlanetSignDisplayPanel.cpp:75
+#, fuzzy
+msgid "Vedic Position Format"
+msgstr "Tema Partner Vedico"
+
+#: src/dialogs/PlanetSignDisplayPanel.cpp:76
+msgid "Use Symbols for Signs"
 msgstr ""
 
-#: src/dialogs/PrintoutPanel.cpp:111
+#: src/dialogs/PlanetSignDisplayPanel.cpp:77
 #, fuzzy
-msgid "Header"
-msgstr "Intestazione"
+msgid "Vedic Sign Names"
+msgstr "Nomi dei Segni"
 
-#: src/dialogs/PrintoutPanel.cpp:112
-msgid "Footer"
-msgstr ""
-
-#: src/dialogs/PrintoutPanel.cpp:115
-#, fuzzy
-msgid "Print Custom Text"
-msgstr "Stam&pa Testo Personalizzato nel piè di pagina"
-
-#: src/dialogs/PrintoutPanel.cpp:121
-#, fuzzy
-msgid "Center"
-msgstr "Colori"
-
-#: src/dialogs/PrintoutPanel.cpp:125
-#, fuzzy
-msgid "Line Separator"
-msgstr "Separatore"
-
-#: src/dialogs/PrintoutPanel.cpp:126
-msgid "Include First Page"
-msgstr ""
-
-#: src/dialogs/PrintoutPanel.cpp:127
-msgid "Paper Format"
-msgstr "Formato della Carta"
-
-#: src/dialogs/PrintoutPanel.cpp:129
-msgid "A4 (210x297mm)"
-msgstr "A4 (210x297mm)"
-
-#: src/dialogs/PrintoutPanel.cpp:130
-msgid "Letter (8.5x11 in)"
-msgstr "Letter (8.5x11 in)"
-
-#: src/dialogs/PrintoutPanel.cpp:131
-msgid "Legal (8.5x14 in)"
-msgstr "Legal (8.5x14 in)"
-
-#: src/dialogs/PrintoutPanel.cpp:134
-#, fuzzy
-msgid "Ask on Overwrite"
-msgstr "Chiedi prima di sovrascrivere"
-
-#: src/dialogs/PrintoutPanel.cpp:386
-msgid "Choose Pdf Viewer"
-msgstr "Scegli il Visualizzatore PDF"
-
-#: src/dialogs/PrintoutPanel.cpp:415
-msgid "Explain signification of variables"
-msgstr ""
-
-#: src/dialogs/PrintoutPanel.cpp:434
-#, fuzzy
-msgid "Save Options"
-msgstr "Opzioni"
-
-#: src/dialogs/PrintoutPanel.cpp:436
-#, fuzzy
-msgid "Custom Text in PDF Output"
-msgstr "Piè di pagina nell'output PDF"
-
-#: src/dialogs/PrintoutPanel.cpp:441
-msgid "Pdf Viewer"
-msgstr "Visualizzatore PDF"
-
-#: src/dialogs/PrintoutPanel.cpp:442 src/dialogs/VedicChartPanel.cpp:453
-#: src/dialogs/VedicChartPanel.cpp:459 src/dialogs/VedicChartPanel.cpp:464
-#, fuzzy
-msgid "View Options"
-msgstr "Opzioni"
-
-#: src/dialogs/PrintoutPanel.cpp:445 src/gui/ToolPanel.cpp:327
+#: src/dialogs/PrintoutPanel.cpp:71 src/gui/ToolPanel.cpp:327
 #, fuzzy
 msgid "Printout Type"
 msgstr "Stampato"
 
-#: src/dialogs/SheetStylePanel.cpp:95
-msgid "Manage Styles ..."
+#: src/dialogs/PrintoutPanel.cpp:72 src/dialogs/VedicChartPanel.cpp:71
+#: src/dialogs/VedicChartPanel.cpp:73 src/dialogs/VedicChartPanel.cpp:76
+#, fuzzy
+msgid "View Options"
+msgstr "Opzioni"
+
+#: src/dialogs/PrintoutPanel.cpp:73
+msgid "Pdf Viewer"
+msgstr "Visualizzatore PDF"
+
+#: src/dialogs/PrintoutPanel.cpp:74
+#, fuzzy
+msgid "Custom Text in PDF Output"
+msgstr "Piè di pagina nell'output PDF"
+
+#: src/dialogs/PrintoutPanel.cpp:75
+#, fuzzy
+msgid "Save Options"
+msgstr "Opzioni"
+
+#: src/dialogs/PrintoutPanel.cpp:84 src/gui/ToolPanel.cpp:342
+#, fuzzy
+msgid "Sheet Style"
+msgstr "Stile Predefinito"
+
+#: src/dialogs/PrintoutPanel.cpp:93
+msgid "Vedic Chart Style"
+msgstr "Tema in Stile Vedico"
+
+#: src/dialogs/PrintoutPanel.cpp:102
+msgid "Western Chart Style"
+msgstr "Tema in Stile Occidentale "
+
+#: src/dialogs/PrintoutPanel.cpp:111
+#, fuzzy
+msgid "Launch Pdf Viewer Automatically"
+msgstr "&Lancia il visualizzatore PDF"
+
+#: src/dialogs/PrintoutPanel.cpp:112
+msgid "Command ..."
+msgstr "Comando ..."
+
+#: src/dialogs/PrintoutPanel.cpp:114
+msgid "Print Test Page"
 msgstr ""
 
-#: src/dialogs/SheetStylePanel.cpp:96
+#: src/dialogs/PrintoutPanel.cpp:116
 #, fuzzy
-msgid "Use Header Colors"
-msgstr "&Usa i Colori"
+msgid "Header"
+msgstr "Intestazione"
 
-#: src/dialogs/SheetStylePanel.cpp:101
-#, fuzzy
-msgid "Use Cell Colors"
-msgstr "&Usa i Colori"
-
-#: src/dialogs/SheetStylePanel.cpp:104
-#, fuzzy
-msgid "Cell Background Mode"
-msgstr "Sfondo (2)"
-
-#: src/dialogs/SheetStylePanel.cpp:107
-#, fuzzy
-msgid "Constant"
-msgstr "Arco Costante"
-
-#: src/dialogs/SheetStylePanel.cpp:108
-#, fuzzy
-msgid "Alternating"
-msgstr "Aspetti"
-
-#: src/dialogs/SheetStylePanel.cpp:111
-#, fuzzy
-msgid "All Rows"
-msgstr "Tutti i Gruppi"
-
-#: src/dialogs/SheetStylePanel.cpp:113
-msgid "Even Rows"
+#: src/dialogs/PrintoutPanel.cpp:117
+msgid "Footer"
 msgstr ""
 
-#: src/dialogs/SheetStylePanel.cpp:115
-msgid "Odd Rows"
+#: src/dialogs/PrintoutPanel.cpp:120
+#, fuzzy
+msgid "Print Custom Text"
+msgstr "Stam&pa Testo Personalizzato nel piè di pagina"
+
+#: src/dialogs/PrintoutPanel.cpp:126
+#, fuzzy
+msgid "Center"
+msgstr "Colori"
+
+#: src/dialogs/PrintoutPanel.cpp:130
+#, fuzzy
+msgid "Line Separator"
+msgstr "Separatore"
+
+#: src/dialogs/PrintoutPanel.cpp:131
+msgid "Include First Page"
 msgstr ""
 
-#: src/dialogs/SheetStylePanel.cpp:117
-msgid "Draw Border"
+#: src/dialogs/PrintoutPanel.cpp:132
+msgid "Paper Format"
+msgstr "Formato della Carta"
+
+#: src/dialogs/PrintoutPanel.cpp:134
+msgid "A4 (210x297mm)"
+msgstr "A4 (210x297mm)"
+
+#: src/dialogs/PrintoutPanel.cpp:135
+msgid "Letter (8.5x11 in)"
+msgstr "Letter (8.5x11 in)"
+
+#: src/dialogs/PrintoutPanel.cpp:136
+msgid "Legal (8.5x14 in)"
+msgstr "Legal (8.5x14 in)"
+
+#: src/dialogs/PrintoutPanel.cpp:139
+#, fuzzy
+msgid "Ask on Overwrite"
+msgstr "Chiedi prima di sovrascrivere"
+
+#: src/dialogs/PrintoutPanel.cpp:391
+msgid "Choose Pdf Viewer"
+msgstr "Scegli il Visualizzatore PDF"
+
+#: src/dialogs/PrintoutPanel.cpp:420
+msgid "Explain signification of variables"
 msgstr ""
 
-#: src/dialogs/SheetStylePanel.cpp:370
-#, fuzzy
-msgid "Do you want to replace all entries by the built-in default values?"
-msgstr "Vuoi cancellare il dato"
-
-#: src/dialogs/SheetStylePanel.cpp:419
-#, fuzzy
-msgid "Borders"
-msgstr "Ordina"
-
-#: src/dialogs/SheetStylePanel.cpp:420
+#: src/dialogs/SheetStylePanel.cpp:87
 #, fuzzy
 msgid "Table Cells"
 msgstr "&Tabelle"
 
-#: src/dialogs/StyleManagerDialog.cpp:53
+#: src/dialogs/SheetStylePanel.cpp:88
 #, fuzzy
-msgid "Copy"
-msgstr "Cp"
+msgid "Borders"
+msgstr "Ordina"
 
-#: src/dialogs/StyleManagerDialog.cpp:54
-#, fuzzy
-msgid "Rename"
-msgstr "nome"
-
-#: src/dialogs/StyleManagerDialog.cpp:55
-#, fuzzy
-msgid "Delete"
-msgstr "Cancella"
-
-#: src/dialogs/StyleManagerDialog.cpp:170
-#, fuzzy
-msgid "Enter Name"
-msgstr "Inserisci l'Ora"
-
-#: src/dialogs/StyleManagerDialog.cpp:243
-msgid "Enter New Name"
+#: src/dialogs/SheetStylePanel.cpp:99
+msgid "Manage Styles ..."
 msgstr ""
 
-#: src/dialogs/StyleManagerDialog.cpp:243
+#: src/dialogs/SheetStylePanel.cpp:100
 #, fuzzy
-msgid "Rename Entry"
-msgstr "Cancella Stato"
+msgid "Use Header Colors"
+msgstr "&Usa i Colori"
 
-#: src/dialogs/StyleManagerDialog.cpp:277
-#, fuzzy, c-format
-msgid "Do you want to delete the entry %s?"
+#: src/dialogs/SheetStylePanel.cpp:105
+#, fuzzy
+msgid "Use Cell Colors"
+msgstr "&Usa i Colori"
+
+#: src/dialogs/SheetStylePanel.cpp:108
+#, fuzzy
+msgid "Cell Background Mode"
+msgstr "Sfondo (2)"
+
+#: src/dialogs/SheetStylePanel.cpp:111
+#, fuzzy
+msgid "Constant"
+msgstr "Arco Costante"
+
+#: src/dialogs/SheetStylePanel.cpp:112
+#, fuzzy
+msgid "Alternating"
+msgstr "Aspetti"
+
+#: src/dialogs/SheetStylePanel.cpp:115
+#, fuzzy
+msgid "All Rows"
+msgstr "Tutti i Gruppi"
+
+#: src/dialogs/SheetStylePanel.cpp:117
+msgid "Even Rows"
+msgstr ""
+
+#: src/dialogs/SheetStylePanel.cpp:119
+msgid "Odd Rows"
+msgstr ""
+
+#: src/dialogs/SheetStylePanel.cpp:121
+msgid "Draw Border"
+msgstr ""
+
+#: src/dialogs/SheetStylePanel.cpp:374
+#, fuzzy
+msgid "Do you want to replace all entries by the built-in default values?"
 msgstr "Vuoi cancellare il dato"
 
-#: src/dialogs/StyleManagerDialog.cpp:303
-#, fuzzy
-msgid "Manage Styles"
-msgstr "Style"
-
-#: src/dialogs/StyleManagerDialog.cpp:321
+#: src/dialogs/StyleManagerDialog.cpp:51
 #, fuzzy
 msgid "Styles"
 msgstr "Style"
 
-#: src/dialogs/ToolbarPanel.cpp:62
+#: src/dialogs/StyleManagerDialog.cpp:55
+#, fuzzy
+msgid "Copy"
+msgstr "Cp"
+
+#: src/dialogs/StyleManagerDialog.cpp:56
+#, fuzzy
+msgid "Rename"
+msgstr "nome"
+
+#: src/dialogs/StyleManagerDialog.cpp:57
+#, fuzzy
+msgid "Delete"
+msgstr "Cancella"
+
+#: src/dialogs/StyleManagerDialog.cpp:172
+#, fuzzy
+msgid "Enter Name"
+msgstr "Inserisci l'Ora"
+
+#: src/dialogs/StyleManagerDialog.cpp:245
+msgid "Enter New Name"
+msgstr ""
+
+#: src/dialogs/StyleManagerDialog.cpp:245
+#, fuzzy
+msgid "Rename Entry"
+msgstr "Cancella Stato"
+
+#: src/dialogs/StyleManagerDialog.cpp:279
+#, fuzzy, c-format
+msgid "Do you want to delete the entry %s?"
+msgstr "Vuoi cancellare il dato"
+
+#: src/dialogs/StyleManagerDialog.cpp:305
+#, fuzzy
+msgid "Manage Styles"
+msgstr "Style"
+
+#: src/dialogs/ToolbarPanel.cpp:56
+#, fuzzy
+msgid "Items in Toolbar"
+msgstr "Barra degli Strumenti"
+
+#: src/dialogs/ToolbarPanel.cpp:57
+#, fuzzy
+msgid "Toolbar Options"
+msgstr "Opzioni"
+
+#: src/dialogs/ToolbarPanel.cpp:58
+msgid "Available Items"
+msgstr ""
+
+#: src/dialogs/ToolbarPanel.cpp:65
 #, fuzzy
 msgid "Show Tools as"
 msgstr "Mostra Barra degli s&trumenti"
 
-#: src/dialogs/ToolbarPanel.cpp:65
+#: src/dialogs/ToolbarPanel.cpp:68
 #, fuzzy
 msgid "Icon"
 msgstr "Icone Grandi"
 
-#: src/dialogs/ToolbarPanel.cpp:66
+#: src/dialogs/ToolbarPanel.cpp:69
 msgid "Text and Icon"
 msgstr ""
 
-#: src/dialogs/ToolbarPanel.cpp:161 src/dialogs/ToolbarPanel.cpp:296
+#: src/dialogs/ToolbarPanel.cpp:164 src/dialogs/ToolbarPanel.cpp:299
 msgid "Separator"
 msgstr "Separatore"
 
-#: src/dialogs/ToolbarPanel.cpp:264
+#: src/dialogs/ToolbarPanel.cpp:267
 #, c-format
 msgid "Item already in toolbar at position %ld"
 msgstr ""
 
-#: src/dialogs/ToolbarPanel.cpp:402 src/gui/ChildWindowListCtrl.cpp:132
+#: src/dialogs/ToolbarPanel.cpp:405 src/gui/ChildWindowListCtrl.cpp:132
 #: src/gui/ToolPanel.cpp:351 src/jyotish/Aspect.cpp:624
 #: src/jyotish/Eclipse.cpp:133 src/jyotish/ShadBala.cpp:782
 msgid "Type"
 msgstr "Tipo"
 
-#: src/dialogs/ToolbarPanel.cpp:417
+#: src/dialogs/ToolbarPanel.cpp:420
 msgid "Move selected item to toolbar"
 msgstr ""
 
-#: src/dialogs/ToolbarPanel.cpp:419
+#: src/dialogs/ToolbarPanel.cpp:422
 msgid "Remove selected item from toolbar"
 msgstr ""
 
-#: src/dialogs/ToolbarPanel.cpp:421
+#: src/dialogs/ToolbarPanel.cpp:424
 msgid "Move selected item up"
 msgstr ""
 
-#: src/dialogs/ToolbarPanel.cpp:423
+#: src/dialogs/ToolbarPanel.cpp:426
 msgid "Move selected item down"
-msgstr ""
-
-#: src/dialogs/ToolbarPanel.cpp:438
-#, fuzzy
-msgid "Toolbar Options"
-msgstr "Opzioni"
-
-#: src/dialogs/ToolbarPanel.cpp:440
-#, fuzzy
-msgid "Items in Toolbar"
-msgstr "Barra degli Strumenti"
-
-#: src/dialogs/ToolbarPanel.cpp:443
-msgid "Available Items"
 msgstr ""
 
 #: src/dialogs/UranianPanel.cpp:61
@@ -4190,772 +4181,797 @@ msgstr ""
 msgid "Preferred Gradkreis"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:64 src/jyotish/UranianHelper.cpp:626
+#: src/dialogs/UranianParamPanel.cpp:61 src/dialogs/WesternPanel.cpp:76
+#, fuzzy
+msgid "Order"
+msgstr "Ordina"
+
+#: src/dialogs/UranianParamPanel.cpp:63
+msgid "Include"
+msgstr ""
+
+#: src/dialogs/UranianParamPanel.cpp:69 src/jyotish/UranianHelper.cpp:620
 #: src/views/UranianView.cpp:79
 msgid "Midpoints"
 msgstr "Punti medi"
 
-#: src/dialogs/UranianParamPanel.cpp:65 src/jyotish/UranianHelper.cpp:633
+#: src/dialogs/UranianParamPanel.cpp:70 src/jyotish/UranianHelper.cpp:627
 #: src/views/UranianView.cpp:95
 #, fuzzy
 msgid "Reflection Points"
 msgstr "Punto di Riferimento"
 
-#: src/dialogs/UranianParamPanel.cpp:66 src/jyotish/UranianHelper.cpp:619
+#: src/dialogs/UranianParamPanel.cpp:71 src/jyotish/UranianHelper.cpp:613
 #: src/views/UranianView.cpp:83
 msgid "Sums"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:67 src/jyotish/UranianHelper.cpp:622
+#: src/dialogs/UranianParamPanel.cpp:72 src/jyotish/UranianHelper.cpp:616
 #: src/views/UranianView.cpp:87
 msgid "Differences"
 msgstr ""
 
-#: src/dialogs/UranianParamPanel.cpp:68 src/dialogs/UranianParamPanel.cpp:197
+#: src/dialogs/UranianParamPanel.cpp:73 src/dialogs/UranianParamPanel.cpp:202
 msgid "No Filter"
 msgstr "Nessun Filtro"
 
-#: src/dialogs/UranianParamPanel.cpp:69
+#: src/dialogs/UranianParamPanel.cpp:74
 #, fuzzy
 msgid "Set Filter ..."
 msgstr "&Resetta Filtro"
 
-#: src/dialogs/UranianParamPanel.cpp:242
-msgid "Include"
-msgstr ""
-
-#: src/dialogs/UranianParamPanel.cpp:244 src/dialogs/WesternPanel.cpp:71
+#: src/dialogs/VedicCalculationPanel.cpp:63
 #, fuzzy
-msgid "Order"
-msgstr "Ordina"
+msgid "Varga Significations"
+msgstr "Orientamento"
 
-#: src/dialogs/VedicCalculationPanel.cpp:61
-#: src/dialogs/WesternCalculationPanel.cpp:50 src/jyotish/TextHelper.cpp:358
+#: src/dialogs/VedicCalculationPanel.cpp:64
+#: src/dialogs/VedicCalculationPanel.cpp:609
+msgid "Nakshatras and Dasas"
+msgstr "Nakshatras e Dasas"
+
+#: src/dialogs/VedicCalculationPanel.cpp:66
+#: src/dialogs/VedicCalculationPanel.cpp:610
+msgid "Kala Velas"
+msgstr "Kala Velas"
+
+#: src/dialogs/VedicCalculationPanel.cpp:67
+#, fuzzy
+msgid "Jaimini Astrology"
+msgstr "Astrologia Vedica"
+
+#: src/dialogs/VedicCalculationPanel.cpp:68
+msgid "Basic Calculation"
+msgstr "Calcoli di Base"
+
+#: src/dialogs/VedicCalculationPanel.cpp:69
+#: src/dialogs/WesternCalculationPanel.cpp:52 src/jyotish/TextHelper.cpp:358
 msgid "Ayanamsa"
 msgstr "Ayanamsa"
 
-#: src/dialogs/VedicCalculationPanel.cpp:69
-#: src/dialogs/WesternCalculationPanel.cpp:58
+#: src/dialogs/VedicCalculationPanel.cpp:77
+#: src/dialogs/WesternCalculationPanel.cpp:60
 msgid "Lunar Node"
 msgstr "Nodo Lunare"
 
-#: src/dialogs/VedicCalculationPanel.cpp:72
-#: src/dialogs/WesternCalculationPanel.cpp:61
+#: src/dialogs/VedicCalculationPanel.cpp:80
+#: src/dialogs/WesternCalculationPanel.cpp:63
 msgid "Mean"
 msgstr "Mean"
 
-#: src/dialogs/VedicCalculationPanel.cpp:75
-#: src/dialogs/WesternCalculationPanel.cpp:64
+#: src/dialogs/VedicCalculationPanel.cpp:83
+#: src/dialogs/WesternCalculationPanel.cpp:66
 msgid "House System"
 msgstr "Sistema di Case"
 
-#: src/dialogs/VedicCalculationPanel.cpp:77
-#: src/dialogs/WesternCalculationPanel.cpp:66
+#: src/dialogs/VedicCalculationPanel.cpp:85
+#: src/dialogs/WesternCalculationPanel.cpp:68
 msgid "Placidus"
 msgstr "Placido"
 
-#: src/dialogs/VedicCalculationPanel.cpp:78
-#: src/dialogs/WesternCalculationPanel.cpp:67
+#: src/dialogs/VedicCalculationPanel.cpp:86
+#: src/dialogs/WesternCalculationPanel.cpp:69
 msgid "Koch"
 msgstr "Koch"
 
-#: src/dialogs/VedicCalculationPanel.cpp:79
-#: src/dialogs/WesternCalculationPanel.cpp:68
+#: src/dialogs/VedicCalculationPanel.cpp:87
+#: src/dialogs/WesternCalculationPanel.cpp:70
 msgid "Regiomontanus"
 msgstr "Regiomontano"
 
-#: src/dialogs/VedicCalculationPanel.cpp:80
-#: src/dialogs/WesternCalculationPanel.cpp:69
+#: src/dialogs/VedicCalculationPanel.cpp:88
+#: src/dialogs/WesternCalculationPanel.cpp:71
 msgid "Campanus"
 msgstr "Campano"
 
-#: src/dialogs/VedicCalculationPanel.cpp:81
-#: src/dialogs/WesternCalculationPanel.cpp:70
+#: src/dialogs/VedicCalculationPanel.cpp:89
+#: src/dialogs/WesternCalculationPanel.cpp:72
 msgid "Porphyry"
 msgstr "Porphyry"
 
-#: src/dialogs/VedicCalculationPanel.cpp:82
-#: src/dialogs/WesternCalculationPanel.cpp:71
+#: src/dialogs/VedicCalculationPanel.cpp:90
+#: src/dialogs/WesternCalculationPanel.cpp:73
 msgid "Equal"
 msgstr "Uguale"
 
-#: src/dialogs/VedicCalculationPanel.cpp:83
-#: src/dialogs/WesternCalculationPanel.cpp:72
+#: src/dialogs/VedicCalculationPanel.cpp:91
+#: src/dialogs/WesternCalculationPanel.cpp:74
 msgid "Vehlow Equal"
 msgstr "Vehlow Equal"
 
-#: src/dialogs/VedicCalculationPanel.cpp:84
-#: src/dialogs/WesternCalculationPanel.cpp:73
+#: src/dialogs/VedicCalculationPanel.cpp:92
+#: src/dialogs/WesternCalculationPanel.cpp:75
 msgid "Axial Rotation"
 msgstr "Rotazione Assiale"
 
-#: src/dialogs/VedicCalculationPanel.cpp:85
-#: src/dialogs/WesternCalculationPanel.cpp:74
+#: src/dialogs/VedicCalculationPanel.cpp:93
+#: src/dialogs/WesternCalculationPanel.cpp:76
 msgid "Azimutal/Horizontal"
 msgstr "Azimut/Orizzontale"
 
-#: src/dialogs/VedicCalculationPanel.cpp:86
-#: src/dialogs/WesternCalculationPanel.cpp:75
+#: src/dialogs/VedicCalculationPanel.cpp:94
+#: src/dialogs/WesternCalculationPanel.cpp:77
 msgid "Polich/Page"
 msgstr "Polich/Pagina"
 
-#: src/dialogs/VedicCalculationPanel.cpp:87
-#: src/dialogs/WesternCalculationPanel.cpp:76
+#: src/dialogs/VedicCalculationPanel.cpp:95
+#: src/dialogs/WesternCalculationPanel.cpp:78
 msgid "Alcabitus"
 msgstr "Alcabitus"
 
-#: src/dialogs/VedicCalculationPanel.cpp:88
-#: src/dialogs/WesternCalculationPanel.cpp:77
+#: src/dialogs/VedicCalculationPanel.cpp:96
+#: src/dialogs/WesternCalculationPanel.cpp:79
 msgid "Morinus"
 msgstr "Morinus"
 
-#: src/dialogs/VedicCalculationPanel.cpp:89
-#: src/dialogs/WesternCalculationPanel.cpp:78
+#: src/dialogs/VedicCalculationPanel.cpp:97
+#: src/dialogs/WesternCalculationPanel.cpp:80
 msgid "Krusinski"
 msgstr "Krusinski"
 
-#: src/dialogs/VedicCalculationPanel.cpp:92
+#: src/dialogs/VedicCalculationPanel.cpp:100
 #, fuzzy
 msgid "K.P. Style Houses (Start at Cusp)"
 msgstr "Stile delle Case &K.P. (Inizia alla Cuspide)"
 
-#: src/dialogs/VedicCalculationPanel.cpp:96
+#: src/dialogs/VedicCalculationPanel.cpp:104
 #, fuzzy
 msgid "Angle < 180"
 msgstr "Angolo"
 
-#: src/dialogs/VedicCalculationPanel.cpp:97
+#: src/dialogs/VedicCalculationPanel.cpp:105
 msgid "120 < Angle < 240"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:98
-#: src/dialogs/VedicCalculationPanel.cpp:105
-#: src/dialogs/VedicChartPanel.cpp:145
+#: src/dialogs/VedicCalculationPanel.cpp:106
+#: src/dialogs/VedicCalculationPanel.cpp:113
+#: src/dialogs/VedicChartPanel.cpp:154
 #, fuzzy
 msgid "Always"
 msgstr "Sempre '='"
 
-#: src/dialogs/VedicCalculationPanel.cpp:104
+#: src/dialogs/VedicCalculationPanel.cpp:112
 #, fuzzy
 msgid "No Malefic Conjunction"
 msgstr "Co&ngiunzioni"
 
-#: src/dialogs/VedicCalculationPanel.cpp:108
+#: src/dialogs/VedicCalculationPanel.cpp:116
 msgid "Temporary Friends"
 msgstr "Amici Temporanei"
 
-#: src/dialogs/VedicCalculationPanel.cpp:110
+#: src/dialogs/VedicCalculationPanel.cpp:118
 msgid "Always Rasi"
 msgstr "Sempre Rasi"
 
-#: src/dialogs/VedicCalculationPanel.cpp:116
-#: src/dialogs/VedicCalculationPanel.cpp:122
-#: src/dialogs/VedicCalculationPanel.cpp:128
-#: src/dialogs/VedicCalculationPanel.cpp:200
-#: src/dialogs/VedicCalculationPanel.cpp:219
-#: src/dialogs/VedicCalculationPanel.cpp:225
-#: src/dialogs/VedicCalculationPanel.cpp:231
+#: src/dialogs/VedicCalculationPanel.cpp:124
+#: src/dialogs/VedicCalculationPanel.cpp:130
+#: src/dialogs/VedicCalculationPanel.cpp:136
+#: src/dialogs/VedicCalculationPanel.cpp:208
+#: src/dialogs/VedicCalculationPanel.cpp:227
+#: src/dialogs/VedicCalculationPanel.cpp:233
+#: src/dialogs/VedicCalculationPanel.cpp:239
 msgid "Parasara"
 msgstr "Parasara"
 
-#: src/dialogs/VedicCalculationPanel.cpp:117
-#: src/dialogs/VedicCalculationPanel.cpp:123
-#: src/dialogs/VedicCalculationPanel.cpp:129
+#: src/dialogs/VedicCalculationPanel.cpp:125
+#: src/dialogs/VedicCalculationPanel.cpp:131
+#: src/dialogs/VedicCalculationPanel.cpp:137
 msgid "Continuous"
 msgstr "Continuo"
 
-#: src/dialogs/VedicCalculationPanel.cpp:139
+#: src/dialogs/VedicCalculationPanel.cpp:147
 #, fuzzy
 msgid "Nakshatra Dasa Calculation"
 msgstr "Nakshatra Dasas"
 
-#: src/dialogs/VedicCalculationPanel.cpp:142
+#: src/dialogs/VedicCalculationPanel.cpp:150
 msgid "Entry Time"
 msgstr "Inserisci l'Ora"
 
-#: src/dialogs/VedicCalculationPanel.cpp:145
+#: src/dialogs/VedicCalculationPanel.cpp:153
 #, fuzzy
 msgid "Kalachakra Antardasa Mode"
 msgstr "Kalachakra Dasa"
 
-#: src/dialogs/VedicCalculationPanel.cpp:147
+#: src/dialogs/VedicCalculationPanel.cpp:155
 msgid "Progressive"
 msgstr "Progressivo"
 
-#: src/dialogs/VedicCalculationPanel.cpp:148
+#: src/dialogs/VedicCalculationPanel.cpp:156
 msgid "Cyclic"
 msgstr "Ciclico"
 
-#: src/dialogs/VedicCalculationPanel.cpp:149
+#: src/dialogs/VedicCalculationPanel.cpp:157
 msgid "Progr same Naks"
 msgstr "Progr come Naks"
 
-#: src/dialogs/VedicCalculationPanel.cpp:150
+#: src/dialogs/VedicCalculationPanel.cpp:158
 msgid "Portion Zero"
 msgstr "Portione Zero"
 
-#: src/dialogs/VedicCalculationPanel.cpp:153
+#: src/dialogs/VedicCalculationPanel.cpp:161
 msgid "Display Yogini Dasa Lords"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:155 src/jyotish/DasaTool.cpp:64
+#: src/dialogs/VedicCalculationPanel.cpp:163 src/jyotish/DasaTool.cpp:64
 msgid "Yogini"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:156 src/jyotish/Ashtakavarga.cpp:184
-#: src/jyotish/Ephemeris.cpp:443 src/jyotish/GenericTableWriter.cpp:572
+#: src/dialogs/VedicCalculationPanel.cpp:164 src/jyotish/Ashtakavarga.cpp:184
+#: src/jyotish/Ephemeris.cpp:443 src/jyotish/GenericTableWriter.cpp:573
 #: src/jyotish/Jaimini.cpp:200 src/jyotish/Nakshatra.cpp:228
 #: src/jyotish/Nakshatra.cpp:322 src/jyotish/Partner.cpp:629
 #: src/jyotish/TextHelper.cpp:331 src/jyotish/TextHelper.cpp:408
 #: src/jyotish/TextHelper.cpp:461 src/jyotish/TextHelper.cpp:529
-#: src/jyotish/TextHelper.cpp:622 src/jyotish/TextHelper.cpp:675
+#: src/jyotish/TextHelper.cpp:622 src/jyotish/TextHelper.cpp:674
 msgid "Planet"
 msgstr "Pianeta"
 
-#: src/dialogs/VedicCalculationPanel.cpp:157
+#: src/dialogs/VedicCalculationPanel.cpp:165
 msgid "Both"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:160
+#: src/dialogs/VedicCalculationPanel.cpp:168
 #, fuzzy
 msgid "Display Date for Dasas"
 msgstr "Rappresentazione dei Pianeti"
 
-#: src/dialogs/VedicCalculationPanel.cpp:162 src/jyotish/Dasa.cpp:164
-#: src/jyotish/DasaTool.cpp:502 src/jyotish/DasaTool.cpp:526
+#: src/dialogs/VedicCalculationPanel.cpp:170 src/jyotish/Dasa.cpp:164
+#: src/jyotish/DasaTool.cpp:488 src/jyotish/DasaTool.cpp:512
 msgid "Start Date"
 msgstr "Data Iniziale"
 
-#: src/dialogs/VedicCalculationPanel.cpp:163 src/jyotish/Dasa.cpp:169
-#: src/jyotish/DasaTool.cpp:504
+#: src/dialogs/VedicCalculationPanel.cpp:171 src/jyotish/Dasa.cpp:169
+#: src/jyotish/DasaTool.cpp:490
 msgid "End Date"
 msgstr "Data Finale"
 
-#: src/dialogs/VedicCalculationPanel.cpp:168
+#: src/dialogs/VedicCalculationPanel.cpp:176
 msgid "Kala Vela"
 msgstr "Kala Vela"
 
-#: src/dialogs/VedicCalculationPanel.cpp:173
+#: src/dialogs/VedicCalculationPanel.cpp:181
 msgid "Yama Ghantaka"
 msgstr "Yama Ghantaka"
 
-#: src/dialogs/VedicCalculationPanel.cpp:178 src/jyotish/Dasa.cpp:154
-#: src/jyotish/DasaTool.cpp:525 src/jyotish/Ephemeris.cpp:306
-#: src/jyotish/GenericTableWriter.cpp:643 src/jyotish/Hora.cpp:173
+#: src/dialogs/VedicCalculationPanel.cpp:186 src/jyotish/Dasa.cpp:154
+#: src/jyotish/DasaTool.cpp:511 src/jyotish/Ephemeris.cpp:306
+#: src/jyotish/GenericTableWriter.cpp:644 src/jyotish/Hora.cpp:173
 #: src/jyotish/Hora.cpp:177 src/jyotish/SolarChart.cpp:113
 #: src/views/DasaView.cpp:90
 msgid "Lord"
 msgstr "Lord"
 
-#: src/dialogs/VedicCalculationPanel.cpp:188
+#: src/dialogs/VedicCalculationPanel.cpp:196
 msgid "Eight"
 msgstr "Otto"
 
-#: src/dialogs/VedicCalculationPanel.cpp:191
+#: src/dialogs/VedicCalculationPanel.cpp:199
 msgid "Part of Portion"
 msgstr "Parte di Porzione"
 
-#: src/dialogs/VedicCalculationPanel.cpp:193
+#: src/dialogs/VedicCalculationPanel.cpp:201
 msgid "Beginning"
 msgstr "Inizio"
 
-#: src/dialogs/VedicCalculationPanel.cpp:194
+#: src/dialogs/VedicCalculationPanel.cpp:202
 msgid "Middle"
 msgstr "Metà"
 
-#: src/dialogs/VedicCalculationPanel.cpp:195 src/jyotish/Hora.cpp:174
+#: src/dialogs/VedicCalculationPanel.cpp:203 src/jyotish/Hora.cpp:174
 #: src/jyotish/Hora.cpp:178
 msgid "End"
 msgstr "Fine"
 
-#: src/dialogs/VedicCalculationPanel.cpp:198
+#: src/dialogs/VedicCalculationPanel.cpp:206
 msgid "Calculation Rules"
 msgstr "Regole di Calcolo"
 
-#: src/dialogs/VedicCalculationPanel.cpp:201
+#: src/dialogs/VedicCalculationPanel.cpp:209
 msgid "Vahara Mihira"
 msgstr "Vahara Mihira"
 
-#: src/dialogs/VedicCalculationPanel.cpp:204
+#: src/dialogs/VedicCalculationPanel.cpp:212
 msgid "Benefic points"
 msgstr "Punti Benefici"
 
-#: src/dialogs/VedicCalculationPanel.cpp:206
-#: src/dialogs/VedicChartPanel.cpp:106 src/gui/MenuProvider.cpp:682
+#: src/dialogs/VedicCalculationPanel.cpp:214
+#: src/dialogs/VedicChartPanel.cpp:115 src/gui/MenuProvider.cpp:682
 msgid "Number"
 msgstr "Numero"
 
-#: src/dialogs/VedicCalculationPanel.cpp:207
+#: src/dialogs/VedicCalculationPanel.cpp:215
 msgid "Line"
 msgstr "Linea"
 
-#: src/dialogs/VedicCalculationPanel.cpp:211
+#: src/dialogs/VedicCalculationPanel.cpp:219
 msgid "Sarvashtakavarga"
 msgstr "Sarvashtakavarga"
 
-#: src/dialogs/VedicCalculationPanel.cpp:213
+#: src/dialogs/VedicCalculationPanel.cpp:221
 msgid "Planets only"
 msgstr "Solo Pianeti"
 
-#: src/dialogs/VedicCalculationPanel.cpp:214
+#: src/dialogs/VedicCalculationPanel.cpp:222
 msgid "With Lagna"
 msgstr "Con Lagna"
 
-#: src/dialogs/VedicCalculationPanel.cpp:217 src/gui/BarDiagram.cpp:142
+#: src/dialogs/VedicCalculationPanel.cpp:225 src/gui/BarDiagram.cpp:142
 msgid "Sodhya Pinda"
 msgstr "Sodhya Pinda"
 
-#: src/dialogs/VedicCalculationPanel.cpp:220
+#: src/dialogs/VedicCalculationPanel.cpp:228
 msgid "Mantreswar"
 msgstr "Mantreswar"
 
-#: src/dialogs/VedicCalculationPanel.cpp:223 src/gui/MenuProvider.cpp:711
+#: src/dialogs/VedicCalculationPanel.cpp:231 src/gui/MenuProvider.cpp:711
 msgid "Arudhas"
 msgstr "Arudhas"
 
-#: src/dialogs/VedicCalculationPanel.cpp:229 src/jyotish/Jaimini.cpp:198
+#: src/dialogs/VedicCalculationPanel.cpp:237 src/jyotish/Jaimini.cpp:198
 msgid "Chara Karakas"
 msgstr "Chara Karakas"
 
-#: src/dialogs/VedicCalculationPanel.cpp:447
+#: src/dialogs/VedicCalculationPanel.cpp:455
 msgid "Mean Node is most frequently used in Vedic Astrology"
 msgstr "Mean Node è usato più frequentemente nell'Astrologia Vedica"
 
-#: src/dialogs/VedicCalculationPanel.cpp:450
+#: src/dialogs/VedicCalculationPanel.cpp:458
 msgid "Checked: houses start a cusp; Unchecked: cusp is middle of house"
 msgstr ""
 "Selezionato: le Case partono dalla Cuspide; Non Selezionato:la Cuspide è a "
 "metà della Casa"
 
-#: src/dialogs/VedicCalculationPanel.cpp:451
+#: src/dialogs/VedicCalculationPanel.cpp:459
 msgid "Angle is Moon - Sun"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:470
+#: src/dialogs/VedicCalculationPanel.cpp:478
 msgid "Parasara: special rules for planets in angles, Raman: no special rules"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:472
+#: src/dialogs/VedicCalculationPanel.cpp:480
 msgid "Parasara: 8 karakas, Raman: 7 karakas"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:487
-#, fuzzy
-msgid "Jaimini Astrology"
-msgstr "Astrologia Vedica"
-
-#: src/dialogs/VedicCalculationPanel.cpp:493
-#: src/dialogs/VedicCalculationPanel.cpp:594
-msgid "Kala Velas"
-msgstr "Kala Velas"
-
-#: src/dialogs/VedicCalculationPanel.cpp:498
-#: src/dialogs/VedicCalculationPanel.cpp:593
-msgid "Nakshatras and Dasas"
-msgstr "Nakshatras e Dasas"
-
-#: src/dialogs/VedicCalculationPanel.cpp:501
-#, fuzzy
-msgid "Varga Significations"
-msgstr "Orientamento"
-
-#: src/dialogs/VedicCalculationPanel.cpp:507
-msgid "Basic Calculation"
-msgstr "Calcoli di Base"
-
-#: src/dialogs/VedicCalculationPanel.cpp:552
+#: src/dialogs/VedicCalculationPanel.cpp:568
 msgid "Length"
 msgstr "Posizione"
 
-#: src/dialogs/VedicCalculationPanel.cpp:555
-#: src/dialogs/WesternCalculationPanel.cpp:179
+#: src/dialogs/VedicCalculationPanel.cpp:571
+#: src/dialogs/WesternCalculationPanel.cpp:183
 msgid "Custom Length"
 msgstr "Durata Personalizzata"
 
-#: src/dialogs/VedicChartPanel.cpp:79
-#, fuzzy
-msgid "Show Retrogression (R)"
-msgstr "&Regressione (R)"
-
-#: src/dialogs/VedicChartPanel.cpp:80
-#, fuzzy
-msgid "Use Colors for Planet Symbols"
-msgstr "&Usa i Colori per i Simboli"
-
-#: src/dialogs/VedicChartPanel.cpp:81
-msgid "Highlight"
+#: src/dialogs/VedicChartPanel.cpp:72
+msgid "Field Mouse Over Behavior"
 msgstr ""
 
-#: src/dialogs/VedicChartPanel.cpp:82 src/dialogs/WesternChartPanel.cpp:110
-msgid "Zoom"
-msgstr "Zoom"
-
-#: src/dialogs/VedicChartPanel.cpp:84 src/dialogs/WesternChartPanel.cpp:112
-msgid "%"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:87
-msgid "South Indian"
-msgstr "Sud Indiano"
-
-#: src/dialogs/VedicChartPanel.cpp:88
-msgid "North Indian"
-msgstr "Nord Indiano"
-
-#: src/dialogs/VedicChartPanel.cpp:89
-msgid "East Indian"
-msgstr "Est Indiano"
-
-#: src/dialogs/VedicChartPanel.cpp:92
-msgid "Center of Chart"
-msgstr "Centro del Tema"
-
-#: src/dialogs/VedicChartPanel.cpp:94 src/gui/MenuProvider.cpp:693
-msgid "Nothing"
-msgstr "Niente"
-
-#: src/dialogs/VedicChartPanel.cpp:96 src/gui/MenuProvider.cpp:697
-msgid "Name + Signification"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:97
-msgid "Division D-N"
-msgstr "Divisione D-N"
-
-#: src/dialogs/VedicChartPanel.cpp:98
-msgid "D-N + Signification"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:101
-#, fuzzy
-msgid "Show Arudhas"
-msgstr "Ar&udhas"
-
-#: src/dialogs/VedicChartPanel.cpp:102
-#, fuzzy
-msgid "Ashtakavarga in Transit Chart"
-msgstr "Punti Ash&takavarga"
-
-#: src/dialogs/VedicChartPanel.cpp:103
-#, fuzzy
-msgid "Sign Display"
-msgstr "Aspetti"
-
-#: src/dialogs/VedicChartPanel.cpp:105 src/gui/MenuProvider.cpp:680
-#, fuzzy
-msgid "Ascendant Only"
-msgstr "Ascendente"
-
-#: src/dialogs/VedicChartPanel.cpp:107 src/gui/MenuProvider.cpp:684
-msgid "Short String"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:108 src/gui/MenuProvider.cpp:686
-msgid "Symbol"
-msgstr "Simboli"
-
-#: src/dialogs/VedicChartPanel.cpp:111
-#, fuzzy
-msgid "Ascendant Markup"
-msgstr "Ascendente"
-
-#: src/dialogs/VedicChartPanel.cpp:114
-#, fuzzy
-msgid "Solid Line"
-msgstr "Solare"
-
-#: src/dialogs/VedicChartPanel.cpp:115
-msgid "Dotted Line"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:118 src/gui/MenuProvider.cpp:757
-#, fuzzy
-msgid "Sanskrit Symbols"
-msgstr "Simbolo dell'Evento"
-
-#: src/dialogs/VedicChartPanel.cpp:119
-msgid "Benefic/Malefic (B/M) in Nakshatras Names"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:120
-#, fuzzy
-msgid "Show Aspected Fields"
-msgstr "Mostra Aspetti"
-
-#: src/dialogs/VedicChartPanel.cpp:123 src/dialogs/VedicChartPanel.cpp:132
-#: src/dialogs/VedicChartPanel.cpp:141
-msgid "Mouse Over"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:124 src/dialogs/VedicChartPanel.cpp:133
-#: src/dialogs/VedicChartPanel.cpp:142
-msgid "Shift + Mouse Over"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:125 src/dialogs/VedicChartPanel.cpp:134
-#: src/dialogs/VedicChartPanel.cpp:143
-msgid "Ctrl + Mouse Over"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:126 src/dialogs/VedicChartPanel.cpp:135
-#: src/dialogs/VedicChartPanel.cpp:144
-msgid "Alt + Mouse Over"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:129
-#, fuzzy
-msgid "Show Aspecting Objects"
-msgstr "Mostra Aspetti"
-
-#: src/dialogs/VedicChartPanel.cpp:138
-#, fuzzy
-msgid "Show All Aspects"
-msgstr "Mostra Aspetti"
-
-#: src/dialogs/VedicChartPanel.cpp:148
-msgid "Aspect Type in Varga Charts"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:150
-#, fuzzy
-msgid "Graha Drishti"
-msgstr "Graha Maitri"
-
-#: src/dialogs/VedicChartPanel.cpp:151
-msgid "Rasi Drishti"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:154
-msgid "Graha Drishti Minimum Strength"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:156
-msgid "Only Full"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:157
-msgid "3/4"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:158
-msgid "Half"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:159
-msgid "1/4"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:162
-msgid "Benefic and Malefic Colors"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:164
-msgid "Specific Colors (b/m)"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:165
-#, fuzzy
-msgid "Background Color"
-msgstr "Sfondo (2)"
-
-#: src/dialogs/VedicChartPanel.cpp:166
-msgid "Grey"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:169
-msgid "Include Angles"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:171
-#, fuzzy
-msgid "Show Transits"
-msgstr "Pianeti Occidentali"
-
-#: src/dialogs/VedicChartPanel.cpp:416 src/dialogs/VedicChartPanel.cpp:417
-msgid "Cmd + Mouse Over"
-msgstr ""
-
-#: src/dialogs/VedicChartPanel.cpp:450
-#, fuzzy
-msgid "Aspect Display"
-msgstr "Aspetti"
-
-#: src/dialogs/VedicChartPanel.cpp:455
-#, fuzzy
-msgid "South Indian Chart"
-msgstr "Sud Indiano"
-
-#: src/dialogs/VedicChartPanel.cpp:457
+#: src/dialogs/VedicChartPanel.cpp:74
 #, fuzzy
 msgid "North Indian Chart"
 msgstr "Nord Indiano"
 
-#: src/dialogs/VedicChartPanel.cpp:462
-msgid "Field Mouse Over Behavior"
-msgstr ""
+#: src/dialogs/VedicChartPanel.cpp:75
+#, fuzzy
+msgid "South Indian Chart"
+msgstr "Sud Indiano"
 
-#: src/dialogs/VedicChartPanel.cpp:465 src/dialogs/WesternChartPanel.cpp:346
+#: src/dialogs/VedicChartPanel.cpp:77
+#, fuzzy
+msgid "Aspect Display"
+msgstr "Aspetti"
+
+#: src/dialogs/VedicChartPanel.cpp:79 src/dialogs/WesternChartPanel.cpp:70
 #: src/gui/MenuProvider.cpp:447 src/gui/MenuProvider.cpp:496
 #, fuzzy
 msgid "Skin"
 msgstr "Segno"
 
-#: src/dialogs/VedicChartPanel.cpp:524
+#: src/dialogs/VedicChartPanel.cpp:88
+#, fuzzy
+msgid "Show Retrogression (R)"
+msgstr "&Regressione (R)"
+
+#: src/dialogs/VedicChartPanel.cpp:89
+#, fuzzy
+msgid "Use Colors for Planet Symbols"
+msgstr "&Usa i Colori per i Simboli"
+
+#: src/dialogs/VedicChartPanel.cpp:90
+msgid "Highlight"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:91 src/dialogs/WesternChartPanel.cpp:116
+msgid "Zoom"
+msgstr "Zoom"
+
+#: src/dialogs/VedicChartPanel.cpp:93 src/dialogs/WesternChartPanel.cpp:118
+msgid "%"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:96
+msgid "South Indian"
+msgstr "Sud Indiano"
+
+#: src/dialogs/VedicChartPanel.cpp:97
+msgid "North Indian"
+msgstr "Nord Indiano"
+
+#: src/dialogs/VedicChartPanel.cpp:98
+msgid "East Indian"
+msgstr "Est Indiano"
+
+#: src/dialogs/VedicChartPanel.cpp:101
+msgid "Center of Chart"
+msgstr "Centro del Tema"
+
+#: src/dialogs/VedicChartPanel.cpp:103 src/gui/MenuProvider.cpp:693
+msgid "Nothing"
+msgstr "Niente"
+
+#: src/dialogs/VedicChartPanel.cpp:105 src/gui/MenuProvider.cpp:697
+msgid "Name + Signification"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:106
+msgid "Division D-N"
+msgstr "Divisione D-N"
+
+#: src/dialogs/VedicChartPanel.cpp:107
+msgid "D-N + Signification"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:110
+#, fuzzy
+msgid "Show Arudhas"
+msgstr "Ar&udhas"
+
+#: src/dialogs/VedicChartPanel.cpp:111
+#, fuzzy
+msgid "Ashtakavarga in Transit Chart"
+msgstr "Punti Ash&takavarga"
+
+#: src/dialogs/VedicChartPanel.cpp:112
+#, fuzzy
+msgid "Sign Display"
+msgstr "Aspetti"
+
+#: src/dialogs/VedicChartPanel.cpp:114 src/gui/MenuProvider.cpp:680
+#, fuzzy
+msgid "Ascendant Only"
+msgstr "Ascendente"
+
+#: src/dialogs/VedicChartPanel.cpp:116 src/gui/MenuProvider.cpp:684
+msgid "Short String"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:117 src/gui/MenuProvider.cpp:686
+msgid "Symbol"
+msgstr "Simboli"
+
+#: src/dialogs/VedicChartPanel.cpp:120
+#, fuzzy
+msgid "Ascendant Markup"
+msgstr "Ascendente"
+
+#: src/dialogs/VedicChartPanel.cpp:123
+#, fuzzy
+msgid "Solid Line"
+msgstr "Solare"
+
+#: src/dialogs/VedicChartPanel.cpp:124
+msgid "Dotted Line"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:127 src/gui/MenuProvider.cpp:757
+#, fuzzy
+msgid "Sanskrit Symbols"
+msgstr "Simbolo dell'Evento"
+
+#: src/dialogs/VedicChartPanel.cpp:128
+msgid "Benefic/Malefic (B/M) in Nakshatras Names"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:129
+#, fuzzy
+msgid "Show Aspected Fields"
+msgstr "Mostra Aspetti"
+
+#: src/dialogs/VedicChartPanel.cpp:132 src/dialogs/VedicChartPanel.cpp:141
+#: src/dialogs/VedicChartPanel.cpp:150 src/dialogs/WesternChartPanel.cpp:396
+msgid "Mouse Over"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:133 src/dialogs/VedicChartPanel.cpp:142
+#: src/dialogs/VedicChartPanel.cpp:151
+msgid "Shift + Mouse Over"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:134 src/dialogs/VedicChartPanel.cpp:143
+#: src/dialogs/VedicChartPanel.cpp:152
+msgid "Ctrl + Mouse Over"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:135 src/dialogs/VedicChartPanel.cpp:144
+#: src/dialogs/VedicChartPanel.cpp:153
+msgid "Alt + Mouse Over"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:138
+#, fuzzy
+msgid "Show Aspecting Objects"
+msgstr "Mostra Aspetti"
+
+#: src/dialogs/VedicChartPanel.cpp:147
+#, fuzzy
+msgid "Show All Aspects"
+msgstr "Mostra Aspetti"
+
+#: src/dialogs/VedicChartPanel.cpp:157
+msgid "Aspect Type in Varga Charts"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:159
+#, fuzzy
+msgid "Graha Drishti"
+msgstr "Graha Maitri"
+
+#: src/dialogs/VedicChartPanel.cpp:160
+msgid "Rasi Drishti"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:163
+msgid "Graha Drishti Minimum Strength"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:165
+msgid "Only Full"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:166
+msgid "3/4"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:167
+msgid "Half"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:168
+msgid "1/4"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:171
+msgid "Benefic and Malefic Colors"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:173
+msgid "Specific Colors (b/m)"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:174
+#, fuzzy
+msgid "Background Color"
+msgstr "Sfondo (2)"
+
+#: src/dialogs/VedicChartPanel.cpp:175
+msgid "Grey"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:178
+msgid "Include Angles"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:180
+#, fuzzy
+msgid "Show Transits"
+msgstr "Pianeti Occidentali"
+
+#: src/dialogs/VedicChartPanel.cpp:425 src/dialogs/VedicChartPanel.cpp:426
+msgid "Cmd + Mouse Over"
+msgstr ""
+
+#: src/dialogs/VedicChartPanel.cpp:542
 #, fuzzy
 msgid "Varga Chart"
 msgstr "Tema Solare"
 
-#: src/dialogs/VedicPanel.cpp:54 src/dialogs/WesternPanel.cpp:53
+#: src/dialogs/VedicPanel.cpp:54
+#, fuzzy
+msgid "Special Points"
+msgstr "Includi Oggetti"
+
+#: src/dialogs/VedicPanel.cpp:55 src/dialogs/WesternPanel.cpp:53
+#, fuzzy
+msgid "Partly Displayed"
+msgstr "Rappresentazione dei Segni"
+
+#: src/dialogs/VedicPanel.cpp:57
+#, fuzzy
+msgid "Order of Lagna"
+msgstr "3 Pianeti Esterni"
+
+#: src/dialogs/VedicPanel.cpp:58 src/dialogs/WesternPanel.cpp:56
+#, fuzzy
+msgid "Columns in Main Window"
+msgstr "Visualizza nella Finestra Principale"
+
+#: src/dialogs/VedicPanel.cpp:59 src/dialogs/WesternPanel.cpp:57
+#, fuzzy
+msgid "Ephemeris Objects"
+msgstr "Effemeridi"
+
+#: src/dialogs/VedicPanel.cpp:60 src/dialogs/WesternPanel.cpp:58
 #: src/gui/MenuProvider.cpp:529
 msgid "3 Outer Planets"
 msgstr "3 Pianeti Esterni"
 
-#: src/dialogs/VedicPanel.cpp:61 src/dialogs/WesternPanel.cpp:60
+#: src/dialogs/VedicPanel.cpp:67 src/dialogs/WesternPanel.cpp:65
 #: src/gui/MenuProvider.cpp:548
 msgid "4 Uranian (Cupido-Kronos)"
 msgstr ""
 
-#: src/dialogs/VedicPanel.cpp:62 src/dialogs/WesternPanel.cpp:61
+#: src/dialogs/VedicPanel.cpp:68 src/dialogs/WesternPanel.cpp:66
 #: src/gui/MenuProvider.cpp:549
 msgid "4 Uranian (Apollon-Poseidon)"
 msgstr ""
 
-#: src/dialogs/VedicPanel.cpp:65 src/dialogs/WesternPanel.cpp:64
+#: src/dialogs/VedicPanel.cpp:71 src/dialogs/WesternPanel.cpp:69
 #: src/gui/MenuProvider.cpp:554
 msgid "4 Planetoids"
 msgstr "4 Planetoidi"
 
-#: src/dialogs/VedicPanel.cpp:66 src/dialogs/WesternPanel.cpp:65
+#: src/dialogs/VedicPanel.cpp:72 src/dialogs/WesternPanel.cpp:70
 msgid "Lilith (Black Moon)"
 msgstr "Lilith (Luna Nera)"
 
-#: src/dialogs/VedicPanel.cpp:67
+#: src/dialogs/VedicPanel.cpp:73
 #, fuzzy
 msgid "House Cusps/Sandhis"
 msgstr "Case"
 
-#: src/dialogs/VedicPanel.cpp:68 src/gui/MenuProvider.cpp:562
+#: src/dialogs/VedicPanel.cpp:74 src/gui/MenuProvider.cpp:562
 msgid "5 Upagrahas"
 msgstr "5 Upagrahas"
 
-#: src/dialogs/VedicPanel.cpp:69 src/gui/MenuProvider.cpp:563
+#: src/dialogs/VedicPanel.cpp:75 src/gui/MenuProvider.cpp:563
 msgid "Kalavelas"
 msgstr "Kalavelas"
 
-#: src/dialogs/VedicPanel.cpp:70 src/gui/MenuProvider.cpp:564
+#: src/dialogs/VedicPanel.cpp:76 src/gui/MenuProvider.cpp:564
 msgid "3 Special Lagnas"
 msgstr "3 Lagnas Speciali"
 
-#: src/dialogs/VedicPanel.cpp:71 src/gui/MenuProvider.cpp:565
+#: src/dialogs/VedicPanel.cpp:77 src/gui/MenuProvider.cpp:565
 #, fuzzy
 msgid "Sphuta Navamsa Lagna"
 msgstr "Bhava Lagna"
 
-#: src/dialogs/VedicPanel.cpp:72 src/dialogs/WesternPanel.cpp:69
+#: src/dialogs/VedicPanel.cpp:78 src/dialogs/WesternPanel.cpp:74
 #, fuzzy
 msgid "Select Parts ..."
 msgstr "Salva Testo Come ..."
 
-#: src/dialogs/VedicPanel.cpp:73 src/dialogs/WesternPanel.cpp:70
+#: src/dialogs/VedicPanel.cpp:79 src/dialogs/WesternPanel.cpp:75
 #, fuzzy
 msgid "No parts selected"
 msgstr "Nessun tema caricato"
 
-#: src/dialogs/VedicPanel.cpp:75
+#: src/dialogs/VedicPanel.cpp:81
 #, fuzzy
 msgid "After Planets"
 msgstr "3 Pianeti Esterni"
 
-#: src/dialogs/VedicPanel.cpp:79 src/dialogs/WesternPanel.cpp:77
-#: src/jyotish/GenericTableWriter.cpp:602
+#: src/dialogs/VedicPanel.cpp:85 src/dialogs/WesternPanel.cpp:82
+#: src/jyotish/GenericTableWriter.cpp:603
 #, fuzzy
 msgid "Declination"
 msgstr "Direzioni"
 
-#: src/dialogs/VedicPanel.cpp:80 src/dialogs/WesternPanel.cpp:82
+#: src/dialogs/VedicPanel.cpp:86 src/dialogs/WesternPanel.cpp:87
 #: src/gui/MenuProvider.cpp:595 src/gui/MenuProvider.cpp:644
 #: src/jyotish/TextHelper.cpp:463
 msgid "Sign Lord"
 msgstr "Segno Lord"
 
-#: src/dialogs/VedicPanel.cpp:81 src/dialogs/WesternPanel.cpp:83
+#: src/dialogs/VedicPanel.cpp:87 src/dialogs/WesternPanel.cpp:88
 #: src/gui/MenuProvider.cpp:598 src/gui/MenuProvider.cpp:647
-#: src/jyotish/GenericTableWriter.cpp:695
+#: src/jyotish/GenericTableWriter.cpp:696
 #, fuzzy
 msgid "Element"
 msgstr "Inserisci l'Ora"
 
-#: src/dialogs/VedicPanel.cpp:82 src/dialogs/WesternPanel.cpp:84
+#: src/dialogs/VedicPanel.cpp:88 src/dialogs/WesternPanel.cpp:89
 msgid "Quality (Movable etc.)"
 msgstr ""
 
-#: src/dialogs/VedicPanel.cpp:83 src/gui/MenuProvider.cpp:604
+#: src/dialogs/VedicPanel.cpp:89 src/gui/MenuProvider.cpp:604
 #, fuzzy
 msgid "Basic Signification"
 msgstr "Calcoli di Base"
 
-#: src/dialogs/VedicPanel.cpp:84 src/gui/MenuProvider.cpp:607
-#: src/jyotish/GenericTableWriter.cpp:659
+#: src/dialogs/VedicPanel.cpp:90 src/gui/MenuProvider.cpp:607
+#: src/jyotish/GenericTableWriter.cpp:660
 msgid "Dignity"
 msgstr "Dignity"
 
-#: src/dialogs/VedicPanel.cpp:85
+#: src/dialogs/VedicPanel.cpp:91
 msgid "Navamsa D9"
 msgstr "Navamsa D9"
 
-#: src/dialogs/VedicPanel.cpp:87
+#: src/dialogs/VedicPanel.cpp:93
 #, fuzzy
 msgid "Nakshatra Pada"
 msgstr "Nakshatra Padas"
 
-#: src/dialogs/VedicPanel.cpp:88 src/gui/MenuProvider.cpp:618
+#: src/dialogs/VedicPanel.cpp:94 src/gui/MenuProvider.cpp:618
 #, fuzzy
 msgid "Krishnamurti Lords"
 msgstr "Krishna&murti Lords"
 
-#: src/dialogs/VedicPanel.cpp:89
+#: src/dialogs/VedicPanel.cpp:95
 msgid "Shastiamsa D60"
 msgstr "Shastiamsa D60"
 
-#: src/dialogs/VedicPanel.cpp:90 src/gui/BarDiagram.cpp:78
+#: src/dialogs/VedicPanel.cpp:96 src/gui/BarDiagram.cpp:78
 msgid "Dasa Varga"
 msgstr " Dasa Varga"
 
-#: src/dialogs/VedicPanel.cpp:91
+#: src/dialogs/VedicPanel.cpp:97
 #, fuzzy
 msgid "Bhava Position"
 msgstr "Posizioni &Bhava"
 
-#: src/dialogs/VedicPanel.cpp:92
+#: src/dialogs/VedicPanel.cpp:98
 #, fuzzy
 msgid "Jamini Karaka"
 msgstr "&Jamini Karakas"
 
-#: src/dialogs/VedicPanel.cpp:93
+#: src/dialogs/VedicPanel.cpp:99
 #, fuzzy
 msgid "Ashtakavarga Points"
 msgstr "Punti Ash&takavarga"
 
-#: src/dialogs/VedicPanel.cpp:159 src/dialogs/WesternPanel.cpp:141
+#: src/dialogs/VedicPanel.cpp:165 src/dialogs/WesternPanel.cpp:146
 msgid "Choose Arabic Parts"
 msgstr ""
 
-#: src/dialogs/VedicPanel.cpp:187 src/dialogs/WesternPanel.cpp:169
+#: src/dialogs/VedicPanel.cpp:193 src/dialogs/WesternPanel.cpp:174
 #, fuzzy
 msgid "No part selected"
 msgstr "Nessun tema caricato"
 
-#: src/dialogs/VedicPanel.cpp:195 src/dialogs/WesternPanel.cpp:177
+#: src/dialogs/VedicPanel.cpp:201 src/dialogs/WesternPanel.cpp:182
 #, c-format
 msgid "%d parts selected"
 msgstr ""
 
-#: src/dialogs/VedicPanel.cpp:207 src/dialogs/WesternPanel.cpp:190
+#: src/dialogs/VedicPanel.cpp:213 src/dialogs/WesternPanel.cpp:195
 msgid "Uranus, Neptune and Pluto"
 msgstr "Urano, Nettuno e Plutone"
 
-#: src/dialogs/VedicPanel.cpp:210 src/dialogs/VedicPanel.cpp:211
-#: src/dialogs/WesternPanel.cpp:195 src/dialogs/WesternPanel.cpp:196
+#: src/dialogs/VedicPanel.cpp:216 src/dialogs/VedicPanel.cpp:217
+#: src/dialogs/WesternPanel.cpp:200 src/dialogs/WesternPanel.cpp:201
 msgid ""
 "Fictitious planets of Uranian astrology: Cupido, Hades, Zeus, Kronos, "
 "Apollon, Admetos, Vulkanus and Poseidon "
@@ -4963,52 +4979,52 @@ msgstr ""
 "Pianeti fittizi dell'astrologia Uraniana: Cupido, Hades, Zeus, Kronos, "
 "Apollo, Admetos, Vulcano e Poseidon "
 
-#: src/dialogs/VedicPanel.cpp:212 src/dialogs/WesternPanel.cpp:197
+#: src/dialogs/VedicPanel.cpp:218 src/dialogs/WesternPanel.cpp:202
 msgid "Asteroid between Saturn and Uranus. Period 50 years"
 msgstr "Asteroidi tra Saturno e Urano. Periodo 50 anni"
 
-#: src/dialogs/VedicPanel.cpp:213 src/dialogs/WesternPanel.cpp:198
+#: src/dialogs/VedicPanel.cpp:219 src/dialogs/WesternPanel.cpp:203
 msgid "Asteroid crossing the orbits of outer planets. Period 92 years"
 msgstr ""
 "Asteroidi che attraversano le orbite dei pianeti esterni. Periodo 92 anni"
 
-#: src/dialogs/VedicPanel.cpp:214 src/dialogs/WesternPanel.cpp:199
+#: src/dialogs/VedicPanel.cpp:220 src/dialogs/WesternPanel.cpp:204
 msgid "Ceres, Pallas, Juno and Vesta"
 msgstr "Cerere, Pallade, Giunone e Vesta"
 
-#: src/dialogs/VedicPanel.cpp:215 src/dialogs/VedicPanel.cpp:221
+#: src/dialogs/VedicPanel.cpp:221 src/dialogs/VedicPanel.cpp:227
 msgid "House positions of the objects"
 msgstr "Posizione della casa degli oggetti"
 
-#: src/dialogs/VedicPanel.cpp:216
+#: src/dialogs/VedicPanel.cpp:222
 msgid "Dhuma, Vyatipata, Parivesha, Chapa and Upaketu"
 msgstr "Dhuma, Vyatipata, Parivesha, Chapa e Upaketu"
 
-#: src/dialogs/VedicPanel.cpp:217
+#: src/dialogs/VedicPanel.cpp:223
 msgid "Kala, Mrityu, Ardhaprahara, Yamaghantaka, Gulika and Mandi"
 msgstr "Kala, Mrityu, Ardhaprahara, Yamaghantaka, Gulika e Mandi"
 
-#: src/dialogs/VedicPanel.cpp:218
+#: src/dialogs/VedicPanel.cpp:224
 msgid "Bhava Lagna, Hora Lagna and Ghatika Lagna"
 msgstr "Bhava Lagna, Hora Lagna e Ghatika Lagna"
 
-#: src/dialogs/VedicPanel.cpp:219
+#: src/dialogs/VedicPanel.cpp:225
 msgid "Length of Navamsa Lagna"
 msgstr ""
 
-#: src/dialogs/VedicPanel.cpp:222 src/dialogs/WesternPanel.cpp:206
+#: src/dialogs/VedicPanel.cpp:228 src/dialogs/WesternPanel.cpp:211
 msgid "Owner of the Rasi"
 msgstr "Proprietario di Rasi"
 
-#: src/dialogs/VedicPanel.cpp:223
+#: src/dialogs/VedicPanel.cpp:229
 msgid "Exaltation, Moolatrikona, friendship etc."
 msgstr "Exaltation, Moolatrikona, friendship etc."
 
-#: src/dialogs/VedicPanel.cpp:224
+#: src/dialogs/VedicPanel.cpp:230
 msgid "D-9 chart for marriage"
 msgstr "D-9 tema per il matrimonio"
 
-#: src/dialogs/VedicPanel.cpp:225
+#: src/dialogs/VedicPanel.cpp:231
 msgid ""
 "Lunar mansions or constellations. See next tab for 27 resp. 28 Nakshatra "
 "zodiac"
@@ -5016,258 +5032,229 @@ msgstr ""
 "Case o costellazioni Lunari.Guarda la prossima tabella per 27 resp. 28 "
 "Nakshatra zodiac"
 
-#: src/dialogs/VedicPanel.cpp:226
+#: src/dialogs/VedicPanel.cpp:232
 msgid "Quarters of Nakshatras. 1 Pada = 1 Navamsa"
 msgstr "Quarti di Nakshatras. 1 Pada = 1 Navamsa"
 
-#: src/dialogs/VedicPanel.cpp:227
+#: src/dialogs/VedicPanel.cpp:233
 msgid "Lords and Sublords according to Krishnamurti Paddhati system"
 msgstr "Lords e Sublords secondo il sistema Krishnamurti Paddhati"
 
-#: src/dialogs/VedicPanel.cpp:228
+#: src/dialogs/VedicPanel.cpp:234
 msgid "Display of Shastiamsa Lords. Can be used for general indications"
 msgstr "Mostra i Lords Shastiamsa. Può essere usato per indicazioni generali"
 
-#: src/dialogs/VedicPanel.cpp:229
+#: src/dialogs/VedicPanel.cpp:235
 msgid ""
 "Names of dignities according to Dasa Varga: Parijata, Uttama, Gopura etc."
 msgstr "Nome delle dignities secondo Dasa Varga: Parijata, Uttama, Gopura etc."
 
-#: src/dialogs/VedicPanel.cpp:230
+#: src/dialogs/VedicPanel.cpp:236
 msgid "Bhava according to house cusps (K.P.) or Bhava Sandhis"
 msgstr "Bhava secondo le cuspidi delle case (K.P.) o Bhava Sandhis"
 
-#: src/dialogs/VedicPanel.cpp:231
+#: src/dialogs/VedicPanel.cpp:237
 msgid "Atma Karaka, Amatya Karaka etc. See next tab for inclusion of Rahu"
 msgstr ""
 "Atma Karaka, Amatya Karaka etc. Guarda la prossima tabella per l'inclusione "
 "di Rahu"
 
-#: src/dialogs/VedicPanel.cpp:232
+#: src/dialogs/VedicPanel.cpp:238
 msgid "Total number of Rekha points"
 msgstr "Numero totale di punti Rekha"
 
-#: src/dialogs/VedicPanel.cpp:246 src/dialogs/WesternPanel.cpp:222
-#, fuzzy
-msgid "Columns in Main Window"
-msgstr "Visualizza nella Finestra Principale"
-
-#: src/dialogs/VedicPanel.cpp:249
-#, fuzzy
-msgid "Order of Lagna"
-msgstr "3 Pianeti Esterni"
-
-#: src/dialogs/VedicPanel.cpp:252 src/dialogs/WesternPanel.cpp:229
-#, fuzzy
-msgid "Partly Displayed"
-msgstr "Rappresentazione dei Segni"
-
-#: src/dialogs/VedicPanel.cpp:253
-#, fuzzy
-msgid "Special Points"
-msgstr "Includi Oggetti"
-
-#: src/dialogs/VedicPanel.cpp:256 src/dialogs/WesternPanel.cpp:231
-#, fuzzy
-msgid "Ephemeris Objects"
-msgstr "Effemeridi"
-
-#: src/dialogs/WesternCalculationPanel.cpp:147
-msgid "Western astrologers most likely use True Node"
-msgstr "Gli astrologhi occidentali preferiscono usare il Nodo Reale"
-
-#: src/dialogs/WesternCalculationPanel.cpp:165
+#: src/dialogs/WesternCalculationPanel.cpp:51
 msgid "Calculation Options"
 msgstr "Opzioni di Calcolo"
 
-#: src/dialogs/WesternChartPanel.cpp:73
-#, fuzzy
-msgid "Chart Orientation"
-msgstr "Orientamento"
+#: src/dialogs/WesternCalculationPanel.cpp:149
+msgid "Western astrologers most likely use True Node"
+msgstr "Gli astrologhi occidentali preferiscono usare il Nodo Reale"
 
-#: src/dialogs/WesternChartPanel.cpp:75
-#, fuzzy
-msgid "Ascendant left"
-msgstr "Ascendente"
-
-#: src/dialogs/WesternChartPanel.cpp:76
-msgid "1st House left"
-msgstr ""
-
-#: src/dialogs/WesternChartPanel.cpp:77
-#, fuzzy
-msgid "Meridian top"
-msgstr "Mean"
-
-#: src/dialogs/WesternChartPanel.cpp:78
-#, fuzzy
-msgid "0 Aries top"
-msgstr "Ariete"
-
-#: src/dialogs/WesternChartPanel.cpp:79
-#, fuzzy
-msgid "15 Aries top"
-msgstr "Ariete"
-
-#: src/dialogs/WesternChartPanel.cpp:80
-#, fuzzy
-msgid "0 Cancer top"
-msgstr "Cancro"
-
-#: src/dialogs/WesternChartPanel.cpp:81
-#, fuzzy
-msgid "15 Cancer top"
-msgstr "Cancro"
-
-#: src/dialogs/WesternChartPanel.cpp:82
-msgid "0 Leo top"
-msgstr ""
-
-#: src/dialogs/WesternChartPanel.cpp:83
-#, fuzzy
-msgid "0 Libra top"
-msgstr "Bilancia"
-
-#: src/dialogs/WesternChartPanel.cpp:84
-#, fuzzy
-msgid "15 Libra top"
-msgstr "Bilancia"
-
-#: src/dialogs/WesternChartPanel.cpp:85
-#, fuzzy
-msgid "0 Capricorn top"
-msgstr "Capricorno"
-
-#: src/dialogs/WesternChartPanel.cpp:86
-#, fuzzy
-msgid "15 Capricorn top"
-msgstr "Capricorno"
-
-#: src/dialogs/WesternChartPanel.cpp:89
-#, fuzzy
-msgid "Secondary Chart"
-msgstr "Tema Solare"
-
-#: src/dialogs/WesternChartPanel.cpp:91
-msgid "Outsite"
-msgstr ""
-
-#: src/dialogs/WesternChartPanel.cpp:92
-msgid "Inside"
-msgstr ""
-
-#: src/dialogs/WesternChartPanel.cpp:95
-#, fuzzy
-msgid "House Number Style"
-msgstr "Sistema di Case"
-
-#: src/dialogs/WesternChartPanel.cpp:98
-msgid "Arabic"
-msgstr ""
-
-#: src/dialogs/WesternChartPanel.cpp:99
-#, fuzzy
-msgid "Roman"
-msgstr "Uraniano"
-
-#: src/dialogs/WesternChartPanel.cpp:102
-#, fuzzy
-msgid "Retrogression (R)"
-msgstr "&Regressione (R)"
-
-#: src/dialogs/WesternChartPanel.cpp:104 src/gui/MenuProvider.cpp:729
-#, fuzzy
-msgid "Aspect Symbols"
-msgstr "Mostra nel Tema Grafico"
-
-#: src/dialogs/WesternChartPanel.cpp:113
-msgid "Magnify Related Aspects"
-msgstr ""
-
-#: src/dialogs/WesternChartPanel.cpp:115
-#, fuzzy
-msgid "Show Secondary Chart"
-msgstr "Tema Partner Vedico"
-
-#: src/dialogs/WesternChartPanel.cpp:338
-msgid "Object Mouse Over Behavior"
-msgstr ""
-
-#: src/dialogs/WesternChartPanel.cpp:343
-#, fuzzy
-msgid "Show in Chart"
-msgstr "Tema Partner Vedico"
-
-#: src/dialogs/WesternChartPanel.cpp:344 src/gui/MenuProvider.cpp:666
+#: src/dialogs/WesternChartPanel.cpp:65 src/gui/MenuProvider.cpp:666
 #, fuzzy
 msgid "Chart Options"
 msgstr "Opzioni"
 
-#: src/dialogs/WesternChartPanel.cpp:385
-msgid "Responsiveness"
+#: src/dialogs/WesternChartPanel.cpp:66
+#, fuzzy
+msgid "Show in Chart"
+msgstr "Tema Partner Vedico"
+
+#: src/dialogs/WesternChartPanel.cpp:68
+msgid "Object Mouse Over Behavior"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:66
+#: src/dialogs/WesternChartPanel.cpp:79
+#, fuzzy
+msgid "Chart Orientation"
+msgstr "Orientamento"
+
+#: src/dialogs/WesternChartPanel.cpp:81
+#, fuzzy
+msgid "Ascendant left"
+msgstr "Ascendente"
+
+#: src/dialogs/WesternChartPanel.cpp:82
+msgid "1st House left"
+msgstr ""
+
+#: src/dialogs/WesternChartPanel.cpp:83
+#, fuzzy
+msgid "Meridian top"
+msgstr "Mean"
+
+#: src/dialogs/WesternChartPanel.cpp:84
+#, fuzzy
+msgid "0 Aries top"
+msgstr "Ariete"
+
+#: src/dialogs/WesternChartPanel.cpp:85
+#, fuzzy
+msgid "15 Aries top"
+msgstr "Ariete"
+
+#: src/dialogs/WesternChartPanel.cpp:86
+#, fuzzy
+msgid "0 Cancer top"
+msgstr "Cancro"
+
+#: src/dialogs/WesternChartPanel.cpp:87
+#, fuzzy
+msgid "15 Cancer top"
+msgstr "Cancro"
+
+#: src/dialogs/WesternChartPanel.cpp:88
+msgid "0 Leo top"
+msgstr ""
+
+#: src/dialogs/WesternChartPanel.cpp:89
+#, fuzzy
+msgid "0 Libra top"
+msgstr "Bilancia"
+
+#: src/dialogs/WesternChartPanel.cpp:90
+#, fuzzy
+msgid "15 Libra top"
+msgstr "Bilancia"
+
+#: src/dialogs/WesternChartPanel.cpp:91
+#, fuzzy
+msgid "0 Capricorn top"
+msgstr "Capricorno"
+
+#: src/dialogs/WesternChartPanel.cpp:92
+#, fuzzy
+msgid "15 Capricorn top"
+msgstr "Capricorno"
+
+#: src/dialogs/WesternChartPanel.cpp:95
+#, fuzzy
+msgid "Secondary Chart"
+msgstr "Tema Solare"
+
+#: src/dialogs/WesternChartPanel.cpp:97
+msgid "Outsite"
+msgstr ""
+
+#: src/dialogs/WesternChartPanel.cpp:98
+msgid "Inside"
+msgstr ""
+
+#: src/dialogs/WesternChartPanel.cpp:101
+#, fuzzy
+msgid "House Number Style"
+msgstr "Sistema di Case"
+
+#: src/dialogs/WesternChartPanel.cpp:104
+msgid "Arabic"
+msgstr ""
+
+#: src/dialogs/WesternChartPanel.cpp:105
+#, fuzzy
+msgid "Roman"
+msgstr "Uraniano"
+
+#: src/dialogs/WesternChartPanel.cpp:108
+#, fuzzy
+msgid "Retrogression (R)"
+msgstr "&Regressione (R)"
+
+#: src/dialogs/WesternChartPanel.cpp:110 src/gui/MenuProvider.cpp:729
+#, fuzzy
+msgid "Aspect Symbols"
+msgstr "Mostra nel Tema Grafico"
+
+#: src/dialogs/WesternChartPanel.cpp:119
+msgid "Magnify Related Aspects"
+msgstr ""
+
+#: src/dialogs/WesternChartPanel.cpp:121
+#, fuzzy
+msgid "Show Secondary Chart"
+msgstr "Tema Partner Vedico"
+
+#: src/dialogs/WesternPanel.cpp:55
+#, fuzzy
+msgid "Order of Planets"
+msgstr "3 Pianeti Esterni"
+
+#: src/dialogs/WesternPanel.cpp:71
 #, fuzzy
 msgid "All House Cusps"
 msgstr "Case"
 
-#: src/dialogs/WesternPanel.cpp:67
+#: src/dialogs/WesternPanel.cpp:72
 msgid "4 Cusps (2, 3, 11, 12)"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:78
+#: src/dialogs/WesternPanel.cpp:83
 #, fuzzy
 msgid "90 Degree Longitude"
 msgstr "Longitudine"
 
-#: src/dialogs/WesternPanel.cpp:79
+#: src/dialogs/WesternPanel.cpp:84
 #, fuzzy
 msgid "45 Degree Longitude"
 msgstr "Longitudine"
 
-#: src/dialogs/WesternPanel.cpp:80 src/gui/MenuProvider.cpp:641
+#: src/dialogs/WesternPanel.cpp:85 src/gui/MenuProvider.cpp:641
 msgid "Antiscia"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:81
+#: src/dialogs/WesternPanel.cpp:86
 #, fuzzy
 msgid "House Position"
 msgstr "Posizione delle Case"
 
-#: src/dialogs/WesternPanel.cpp:191
+#: src/dialogs/WesternPanel.cpp:196
 msgid "Northern Lunar Node, Rahu"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:192
+#: src/dialogs/WesternPanel.cpp:197
 msgid "Southern Lunar Node, Ketu"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:193
+#: src/dialogs/WesternPanel.cpp:198
 msgid "Midheaven"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:194
+#: src/dialogs/WesternPanel.cpp:199
 msgid "Descending Point of the Ecliptic"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:200
+#: src/dialogs/WesternPanel.cpp:205
 #, fuzzy
 msgid "Used in Uranian Astrology"
 msgstr "Astrologia Occidentale"
 
-#: src/dialogs/WesternPanel.cpp:207
+#: src/dialogs/WesternPanel.cpp:212
 msgid "Fire, Earth, Air and Water"
 msgstr ""
 
-#: src/dialogs/WesternPanel.cpp:208
+#: src/dialogs/WesternPanel.cpp:213
 msgid "Movable, Fixed, Dual"
 msgstr ""
-
-#: src/dialogs/WesternPanel.cpp:225
-#, fuzzy
-msgid "Order of Planets"
-msgstr "3 Pianeti Esterni"
 
 #: src/dialogs/YogaEditorPanel.cpp:61 src/jyotish/Partner.cpp:292
 #: src/jyotish/Yoga.cpp:181
@@ -6521,7 +6508,7 @@ msgstr ""
 msgid "Accomplishment"
 msgstr ""
 
-#: src/jyotish/ArabicParts.cpp:239 src/jyotish/GenericTableWriter.cpp:1116
+#: src/jyotish/ArabicParts.cpp:239 src/jyotish/GenericTableWriter.cpp:1117
 msgid "Influence"
 msgstr ""
 
@@ -6782,7 +6769,7 @@ msgstr "Lord"
 msgid "No."
 msgstr "No."
 
-#: src/jyotish/ArabicParts.cpp:597 src/jyotish/GenericTableWriter.cpp:864
+#: src/jyotish/ArabicParts.cpp:597 src/jyotish/GenericTableWriter.cpp:865
 #: src/jyotish/Jaimini.cpp:230 src/jyotish/TextHelper.cpp:624
 msgid "House"
 msgstr "Casa"
@@ -6948,8 +6935,8 @@ msgstr ""
 msgid "Lords"
 msgstr "Lord"
 
-#: src/jyotish/Dasa.cpp:174 src/jyotish/DasaTool.cpp:509
-#: src/jyotish/DasaTool.cpp:528 src/views/DasaView.cpp:99
+#: src/jyotish/Dasa.cpp:174 src/jyotish/DasaTool.cpp:495
+#: src/jyotish/DasaTool.cpp:514 src/views/DasaView.cpp:99
 msgid "Duration"
 msgstr "Durata"
 
@@ -7028,16 +7015,16 @@ msgstr "Pranadasa"
 msgid "Antardasa Level %d"
 msgstr "Livello Antardasa %d"
 
-#: src/jyotish/DasaTool.cpp:442
+#: src/jyotish/DasaTool.cpp:428
 #, fuzzy
 msgid "Current"
 msgstr "Ora Attuale"
 
-#: src/jyotish/DasaTool.cpp:515
+#: src/jyotish/DasaTool.cpp:501
 msgid "Antardasas"
 msgstr "Antardasas"
 
-#: src/jyotish/DasaTool.cpp:527
+#: src/jyotish/DasaTool.cpp:513
 msgid "Final Date"
 msgstr "Data Finale"
 
@@ -7104,15 +7091,15 @@ msgstr "Quarto Calante"
 msgid "Semi Square"
 msgstr "Semi-quadratura"
 
-#: src/jyotish/Ephemeris.cpp:671 src/jyotish/GenericTableWriter.cpp:1048
+#: src/jyotish/Ephemeris.cpp:671 src/jyotish/GenericTableWriter.cpp:1049
 msgid "Sidereal Time"
 msgstr "Ora Siderale"
 
-#: src/jyotish/Ephemeris.cpp:672 src/jyotish/GenericTableWriter.cpp:1057
+#: src/jyotish/Ephemeris.cpp:672 src/jyotish/GenericTableWriter.cpp:1058
 msgid "Sunrise"
 msgstr "Alba"
 
-#: src/jyotish/Ephemeris.cpp:673 src/jyotish/GenericTableWriter.cpp:1069
+#: src/jyotish/Ephemeris.cpp:673 src/jyotish/GenericTableWriter.cpp:1070
 msgid "Sunset"
 msgstr "Tramonto"
 
@@ -7148,148 +7135,148 @@ msgstr "Siddha"
 msgid "Sankata"
 msgstr "Sankata"
 
-#: src/jyotish/GenericTableWriter.cpp:505
+#: src/jyotish/GenericTableWriter.cpp:506
 #, fuzzy
 msgid "90 Degree"
 msgstr "gradi"
 
-#: src/jyotish/GenericTableWriter.cpp:524
+#: src/jyotish/GenericTableWriter.cpp:525
 #, fuzzy
 msgid "45 Degree"
 msgstr "gradi"
 
-#: src/jyotish/GenericTableWriter.cpp:545
+#: src/jyotish/GenericTableWriter.cpp:546
 msgid "Antiscium"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:575
+#: src/jyotish/GenericTableWriter.cpp:576
 #, fuzzy
 msgid "House Cusp"
 msgstr "Case"
 
-#: src/jyotish/GenericTableWriter.cpp:680
+#: src/jyotish/GenericTableWriter.cpp:681
 msgid "D-9"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:712
+#: src/jyotish/GenericTableWriter.cpp:713
 #, fuzzy
 msgid "Signification"
 msgstr "Orientamento"
 
-#: src/jyotish/GenericTableWriter.cpp:728 src/jyotish/Partner.cpp:440
+#: src/jyotish/GenericTableWriter.cpp:729 src/jyotish/Partner.cpp:440
 #: src/jyotish/Partner.cpp:501 src/jyotish/Partner.cpp:531
 #: src/jyotish/TextHelper.cpp:561 src/jyotish/TextHelper.cpp:582
 msgid "Quality"
 msgstr "Qualità"
 
-#: src/jyotish/GenericTableWriter.cpp:787 src/jyotish/TextHelper.cpp:593
+#: src/jyotish/GenericTableWriter.cpp:788 src/jyotish/TextHelper.cpp:593
 msgid "Pada"
 msgstr "Pada"
 
-#: src/jyotish/GenericTableWriter.cpp:818
+#: src/jyotish/GenericTableWriter.cpp:819
 msgid "D-60 Lords"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:842
+#: src/jyotish/GenericTableWriter.cpp:843
 msgid "D-10"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:884
+#: src/jyotish/GenericTableWriter.cpp:885
 msgid "L"
 msgstr "L"
 
-#: src/jyotish/GenericTableWriter.cpp:885
+#: src/jyotish/GenericTableWriter.cpp:886
 msgid "SL"
 msgstr "SL"
 
-#: src/jyotish/GenericTableWriter.cpp:886
+#: src/jyotish/GenericTableWriter.cpp:887
 #, fuzzy
 msgid "SSL"
 msgstr "SL"
 
-#: src/jyotish/GenericTableWriter.cpp:946 src/jyotish/Jaimini.cpp:199
+#: src/jyotish/GenericTableWriter.cpp:947 src/jyotish/Jaimini.cpp:199
 #: src/jyotish/TextHelper.cpp:531
 msgid "Karaka"
 msgstr "Karaka"
 
-#: src/jyotish/GenericTableWriter.cpp:1033
+#: src/jyotish/GenericTableWriter.cpp:1034
 msgid "UT"
 msgstr "UT"
 
-#: src/jyotish/GenericTableWriter.cpp:1052
+#: src/jyotish/GenericTableWriter.cpp:1053
 msgid "Julian Date"
 msgstr "Data Giuliana"
 
-#: src/jyotish/GenericTableWriter.cpp:1063
-#: src/jyotish/GenericTableWriter.cpp:1075
+#: src/jyotish/GenericTableWriter.cpp:1064
+#: src/jyotish/GenericTableWriter.cpp:1076
 msgid "n.a."
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:1080
+#: src/jyotish/GenericTableWriter.cpp:1081
 msgid "Vedic Ayanamsa"
 msgstr "Ayanamsa Vedico"
 
-#: src/jyotish/GenericTableWriter.cpp:1084
+#: src/jyotish/GenericTableWriter.cpp:1085
 msgid "Western Ayanamsa"
 msgstr "Ayanamsa Occidentale"
 
-#: src/jyotish/GenericTableWriter.cpp:1088 src/jyotish/Partner.cpp:301
+#: src/jyotish/GenericTableWriter.cpp:1089 src/jyotish/Partner.cpp:301
 #: src/jyotish/Partner.cpp:443 src/jyotish/Partner.cpp:508
 #: src/jyotish/Partner.cpp:537 src/jyotish/TextHelper.cpp:566
 msgid "Varna"
 msgstr "Varna"
 
-#: src/jyotish/GenericTableWriter.cpp:1092 src/jyotish/Nakshatra.cpp:232
+#: src/jyotish/GenericTableWriter.cpp:1093 src/jyotish/Nakshatra.cpp:232
 #: src/jyotish/Partner.cpp:361 src/jyotish/Partner.cpp:468
 #: src/jyotish/Partner.cpp:515 src/jyotish/Partner.cpp:544
 #: src/jyotish/TextHelper.cpp:573
 msgid "Gana"
 msgstr "Gana"
 
-#: src/jyotish/GenericTableWriter.cpp:1098 src/jyotish/Nakshatra.cpp:231
+#: src/jyotish/GenericTableWriter.cpp:1099 src/jyotish/Nakshatra.cpp:231
 #: src/jyotish/Partner.cpp:458 src/jyotish/Partner.cpp:512
 #: src/jyotish/Partner.cpp:541 src/jyotish/TextHelper.cpp:570
 msgid "Yoni"
 msgstr "Yoni"
 
-#: src/jyotish/GenericTableWriter.cpp:1103 src/jyotish/Nakshatra.cpp:233
+#: src/jyotish/GenericTableWriter.cpp:1104 src/jyotish/Nakshatra.cpp:233
 #: src/jyotish/Partner.cpp:382 src/jyotish/Partner.cpp:478
 #: src/jyotish/Partner.cpp:518 src/jyotish/Partner.cpp:547
 #: src/jyotish/TextHelper.cpp:576
 msgid "Nadi"
 msgstr "Nadi"
 
-#: src/jyotish/GenericTableWriter.cpp:1109 src/jyotish/Nakshatra.cpp:235
+#: src/jyotish/GenericTableWriter.cpp:1110 src/jyotish/Nakshatra.cpp:235
 #: src/jyotish/Partner.cpp:394 src/jyotish/Partner.cpp:483
 #: src/jyotish/Partner.cpp:521 src/jyotish/Partner.cpp:550
 msgid "Rajju"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:1124
+#: src/jyotish/GenericTableWriter.cpp:1125
 #, fuzzy
 msgid "Lunar Tithi"
 msgstr "Posizione Lunare"
 
-#: src/jyotish/GenericTableWriter.cpp:1129
+#: src/jyotish/GenericTableWriter.cpp:1130
 msgid "Weekday"
 msgstr ""
 
-#: src/jyotish/GenericTableWriter.cpp:1162
+#: src/jyotish/GenericTableWriter.cpp:1163
 #, fuzzy
 msgid "Hora Lord"
 msgstr "Hora Lagna"
 
-#: src/jyotish/GenericTableWriter.cpp:1166
+#: src/jyotish/GenericTableWriter.cpp:1167
 #, fuzzy
 msgid "Dina Lord"
 msgstr "Segno Lord"
 
-#: src/jyotish/GenericTableWriter.cpp:1170
+#: src/jyotish/GenericTableWriter.cpp:1171
 #, fuzzy
 msgid "Masa Lord"
 msgstr "KP Lord"
 
-#: src/jyotish/GenericTableWriter.cpp:1174
+#: src/jyotish/GenericTableWriter.cpp:1175
 #, fuzzy
 msgid "Varsha Lord"
 msgstr "Krishnamurti Lord"
@@ -7334,49 +7321,49 @@ msgstr "Ketu/Marte"
 msgid "Arudha Padas"
 msgstr "Arudha Padas"
 
-#: src/jyotish/KalachakraDasa.cpp:377
+#: src/jyotish/KalachakraDasa.cpp:389
 #, fuzzy
 msgid "Mandooka"
 msgstr "Mandi"
 
-#: src/jyotish/KalachakraDasa.cpp:380
+#: src/jyotish/KalachakraDasa.cpp:392
 #, fuzzy
 msgid "Markati"
 msgstr "Mak"
 
-#: src/jyotish/KalachakraDasa.cpp:383
+#: src/jyotish/KalachakraDasa.cpp:395
 #, fuzzy
 msgid "Simha"
 msgstr "Simhasana"
 
-#: src/jyotish/KalachakraDasa.cpp:390 src/jyotish/KalachakraDasa.cpp:430
-#: src/jyotish/KalachakraDasa.cpp:491
+#: src/jyotish/KalachakraDasa.cpp:402 src/jyotish/KalachakraDasa.cpp:442
+#: src/jyotish/KalachakraDasa.cpp:503
 msgid "Jeeva"
 msgstr ""
 
-#: src/jyotish/KalachakraDasa.cpp:391 src/jyotish/KalachakraDasa.cpp:431
-#: src/jyotish/KalachakraDasa.cpp:488
+#: src/jyotish/KalachakraDasa.cpp:403 src/jyotish/KalachakraDasa.cpp:443
+#: src/jyotish/KalachakraDasa.cpp:500
 msgid "Deha"
 msgstr ""
 
-#: src/jyotish/KalachakraDasa.cpp:392 src/jyotish/KalachakraDasa.cpp:432
-#: src/jyotish/KalachakraDasa.cpp:485
+#: src/jyotish/KalachakraDasa.cpp:404 src/jyotish/KalachakraDasa.cpp:444
+#: src/jyotish/KalachakraDasa.cpp:497
 msgid "Amsa"
 msgstr ""
 
-#: src/jyotish/KalachakraDasa.cpp:429
+#: src/jyotish/KalachakraDasa.cpp:441
 msgid "wrap"
 msgstr ""
 
-#: src/jyotish/KalachakraDasa.cpp:437
+#: src/jyotish/KalachakraDasa.cpp:449
 msgid "Mandooka Gati"
 msgstr ""
 
-#: src/jyotish/KalachakraDasa.cpp:440
+#: src/jyotish/KalachakraDasa.cpp:452
 msgid "Markati Gati"
 msgstr ""
 
-#: src/jyotish/KalachakraDasa.cpp:443
+#: src/jyotish/KalachakraDasa.cpp:455
 #, fuzzy
 msgid "Simhavalokan Gati"
 msgstr "Simhasana"
@@ -7809,7 +7796,7 @@ msgstr "Moon's Nakshatra e Porzioni Pada"
 msgid "Value (Percent)"
 msgstr "Percento"
 
-#: src/jyotish/TextHelper.cpp:674
+#: src/jyotish/TextHelper.cpp:673
 #, fuzzy
 msgid "Partner Positions"
 msgstr "Posizione Lunare"
@@ -7848,50 +7835,50 @@ msgstr ""
 msgid "1/64"
 msgstr ""
 
-#: src/jyotish/UranianHelper.cpp:368 src/jyotish/UranianHelper.cpp:374
+#: src/jyotish/UranianHelper.cpp:367 src/jyotish/UranianHelper.cpp:373
 #, fuzzy
 msgid "Partner1"
 msgstr "Partner 1"
 
-#: src/jyotish/UranianHelper.cpp:368 src/jyotish/UranianHelper.cpp:374
+#: src/jyotish/UranianHelper.cpp:367 src/jyotish/UranianHelper.cpp:373
 #, fuzzy
 msgid "Partner2"
 msgstr "Partner 2"
 
-#: src/jyotish/UranianHelper.cpp:388
+#: src/jyotish/UranianHelper.cpp:386
 #, fuzzy
 msgid "Yearly Preview for Solar Arc"
 msgstr "Anteprima Annuale"
 
-#: src/jyotish/UranianHelper.cpp:409 src/views/UranianView.cpp:103
+#: src/jyotish/UranianHelper.cpp:407 src/views/UranianView.cpp:103
 #, fuzzy
 msgid "Matchings"
 msgstr "Niente"
 
-#: src/jyotish/UranianHelper.cpp:416 src/jyotish/UranianHelper.cpp:724
+#: src/jyotish/UranianHelper.cpp:414 src/jyotish/UranianHelper.cpp:718
 #, fuzzy
 msgid "No Matchings"
 msgstr "Niente"
 
-#: src/jyotish/UranianHelper.cpp:463
+#: src/jyotish/UranianHelper.cpp:461
 #, fuzzy
 msgid "No events found"
 msgstr "Nessun evento trovato."
 
-#: src/jyotish/UranianHelper.cpp:623
+#: src/jyotish/UranianHelper.cpp:617
 msgid "Row - column"
 msgstr ""
 
-#: src/jyotish/UranianHelper.cpp:630 src/views/UranianView.cpp:91
+#: src/jyotish/UranianHelper.cpp:624 src/views/UranianView.cpp:91
 #, fuzzy
 msgid "Midpoints of Antiscia"
 msgstr "Punti medi"
 
-#: src/jyotish/UranianHelper.cpp:634
+#: src/jyotish/UranianHelper.cpp:628
 msgid "Row + row - column"
 msgstr ""
 
-#: src/jyotish/UranianHelper.cpp:721 src/views/UranianView.cpp:99
+#: src/jyotish/UranianHelper.cpp:715 src/views/UranianView.cpp:99
 msgid "Clusters"
 msgstr ""
 
@@ -8151,6 +8138,14 @@ msgstr "Diagramma"
 #: src/views/YogaView.cpp:93
 msgid "All Groups"
 msgstr "Tutti i Gruppi"
+
+#, fuzzy
+#~ msgid "Restore Old Value"
+#~ msgstr "Imposta il Luogo Predefinito"
+
+#, fuzzy
+#~ msgid "Adjust Value"
+#~ msgstr "Valore Ayanamsa"
 
 #, fuzzy
 #~ msgid "Stana"

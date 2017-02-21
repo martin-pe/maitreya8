@@ -113,6 +113,15 @@ private:
 
 protected:
     // begin wxGlade: ColorPanel::attributes
+    wxStaticBox* sizer_preview_staticbox;
+    wxStaticBox* sizer_general_staticbox;
+    wxStaticBox* sizer_mouseover_staticbox;
+    wxStaticBox* sizer_object_staticbox;
+    wxStaticBox* sizer_houses_staticbox;
+    wxStaticBox* sizer_signs_staticbox;
+    wxStaticBox* sizer_planets_staticbox;
+    wxStaticBox* sizer_bgcolors_staticbox;
+    wxStaticBox* sizer_fgcolors_staticbox;
     wxStaticText* label_fg;
     wxColourPickerCtrl* button_color_fg;
     wxStaticText* label_benefic;

@@ -97,8 +97,10 @@ void VedicRasiChart::drawGrid()
 		case VCT_EAST:
 		{
 			// inner square of chart
-			const double xi = xr * 0.28;
-			const double yi = yr * 0.28;
+			//const double xi = xr * 0.28;
+			//const double yi = yr * 0.28;
+			const double xi = xr / 3.0;
+			const double yi = yr / 3.0;
 
 			// vertical lines in the middle
 			painter->drawLine( xcenter - xi, ycenter - yr, xcenter - xi, ycenter + yr );
@@ -331,8 +333,10 @@ void VedicRasiChart::setupNorth()
 void VedicRasiChart::setupEast()
 {
 	// inner square of chart
-	const double xi = xr*0.28;
-	const double yi = yr*0.28;
+	//const double xi = xr*0.28;
+	//const double yi = yr*0.28;
+	const double xi = xr / 3.0;
+	const double yi = yr / 3.0;
 
 	 // 8 rectangles according to directions north, north west ...
 	 const MRect r_n( xcenter - xi, ycenter - yr, 2 * xi, yr - yi );

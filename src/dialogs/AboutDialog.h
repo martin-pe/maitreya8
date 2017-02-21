@@ -92,6 +92,9 @@ private:
 
 protected:
     // begin wxGlade: AboutDialog::attributes
+    wxStaticBox* sizer_software_staticbox;
+    wxStaticBox* sizer_versions_staticbox;
+    wxStaticBox* sizer_author_staticbox;
     LogoWidget* widget;
     wxPanel* panel_logo;
     wxStaticText* label_author;

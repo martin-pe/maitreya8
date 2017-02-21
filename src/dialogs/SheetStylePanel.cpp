@@ -84,14 +84,18 @@ SheetStylePanel::SheetStylePanel( wxWindow* parent  ) : ConfigPanel( parent )
 
     // begin wxGlade: SheetStylePanel::SheetStylePanel
     panel_preview = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
+    sizer_table_cells_staticbox = new wxStaticBox(this, wxID_ANY, _("Table Cells"));
+    sizer_table_border_staticbox = new wxStaticBox(this, wxID_ANY, _("Borders"));
+    sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Preview"));
+    sizer_table_headers_staticbox = new wxStaticBox(this, wxID_ANY, _("Table Header"));
     label_style = new wxStaticText(this, wxID_ANY, _("Style"));
     const wxString choice_styles_choices[] = {
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy"),
+        _("dummy")
     };
-    choice_styles = new wxChoice(this, CD_SELECT_STYLE, wxDefaultPosition, wxDefaultSize, 4, choice_styles_choices);
+    choice_styles = new wxChoice(this, CD_SELECT_STYLE, wxDefaultPosition, wxDefaultSize, 4, choice_styles_choices, 0);
     button_manage_styles = new wxButton(this, CD_MANAGE_STYLES, _("Manage Styles ..."));
     check_use_header_colors = new wxCheckBox(this, CD_USE_HEADER_COLORS, _("Use Header Colors"));
     label_header_textcolor = new wxStaticText(this, wxID_ANY, _("Text Color"));
@@ -105,9 +109,9 @@ SheetStylePanel::SheetStylePanel( wxWindow* parent  ) : ConfigPanel( parent )
     const wxString choice_cell_bgmode_choices[] = {
         _("Transparent"),
         _("Constant"),
-        _("Alternating"),
+        _("Alternating")
     };
-    choice_cell_bgmode = new wxChoice(this, CD_CHOICE_CELL_BGMODE, wxDefaultPosition, wxDefaultSize, 3, choice_cell_bgmode_choices);
+    choice_cell_bgmode = new wxChoice(this, CD_CHOICE_CELL_BGMODE, wxDefaultPosition, wxDefaultSize, 3, choice_cell_bgmode_choices, 0);
     label_all_row_bgcolor = new wxStaticText(this, wxID_ANY, _("All Rows"));
     button_all_cell_bgcolor = new wxColourPickerCtrl(this, CD_ALL_CELL_BGCOLOR);
     label_even_row_bgcolor = new wxStaticText(this, wxID_ANY, _("Even Rows"));
@@ -412,40 +416,44 @@ void SheetStylePanel::do_layout()
     // begin wxGlade: SheetStylePanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 1, 0, 0);
     wxBoxSizer* sizer_tablestyles = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Preview")), wxVERTICAL);
+    sizer_preview_staticbox->Lower();
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_previewpanel = new wxFlexGridSizer(1, 1, 3, 3);
     wxFlexGridSizer* grid_tablestyles = new wxFlexGridSizer(2, 1, 0, 0);
     wxFlexGridSizer* grid_pane_table = new wxFlexGridSizer(3, 1, 0, 0);
-    wxStaticBoxSizer* sizer_table_border = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Borders")), wxVERTICAL);
-    wxStaticBoxSizer* sizer_table_cells = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Table Cells")), wxVERTICAL);
+    sizer_table_border_staticbox->Lower();
+    wxStaticBoxSizer* sizer_table_border = new wxStaticBoxSizer(sizer_table_border_staticbox, wxVERTICAL);
+    sizer_table_cells_staticbox->Lower();
+    wxStaticBoxSizer* sizer_table_cells = new wxStaticBoxSizer(sizer_table_cells_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_table_cells = new wxFlexGridSizer(5, 2, 0, 0);
-    wxStaticBoxSizer* sizer_table_headers = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Table Header")), wxVERTICAL);
+    sizer_table_headers_staticbox->Lower();
+    wxStaticBoxSizer* sizer_table_headers = new wxStaticBoxSizer(sizer_table_headers_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_properties = new wxFlexGridSizer(2, 2, 0, 0);
     wxFlexGridSizer* sizer_select_style = new wxFlexGridSizer(1, 3, 0, 0);
-    sizer_select_style->Add(label_style, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    sizer_select_style->Add(label_style, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     sizer_select_style->Add(choice_styles, 0, wxALL, 3);
-    sizer_select_style->Add(button_manage_styles, 0, wxALIGN_RIGHT|wxALL, 3);
+    sizer_select_style->Add(button_manage_styles, 0, wxALL|wxALIGN_RIGHT, 3);
     sizer_select_style->AddGrowableCol(2);
     grid_tablestyles->Add(sizer_select_style, 1, wxALL|wxEXPAND, 3);
     sizer_table_headers->Add(check_use_header_colors, 0, wxALL, 3);
-    grid_properties->Add(label_header_textcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_properties->Add(button_header_textcolor, 1, wxALIGN_RIGHT|wxALL, 3);
-    grid_properties->Add(label_header_bgcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_properties->Add(button_header_bgcolor, 1, wxALIGN_RIGHT|wxALL, 3);
+    grid_properties->Add(label_header_textcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_properties->Add(button_header_textcolor, 1, wxALL|wxALIGN_RIGHT, 3);
+    grid_properties->Add(label_header_bgcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_properties->Add(button_header_bgcolor, 1, wxALL|wxALIGN_RIGHT, 3);
     grid_properties->AddGrowableCol(1);
     sizer_table_headers->Add(grid_properties, 1, wxEXPAND, 0);
     grid_pane_table->Add(sizer_table_headers, 1, wxEXPAND, 0);
     sizer_table_cells->Add(check_use_cell_colors, 0, wxALL, 3);
-    grid_table_cells->Add(label_cell_textcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_table_cells->Add(button_cell_textcolor, 1, wxALIGN_RIGHT|wxALL, 3);
-    grid_table_cells->Add(label_cell_bgmode, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_table_cells->Add(choice_cell_bgmode, 0, wxALIGN_RIGHT|wxALL, 3);
-    grid_table_cells->Add(label_all_row_bgcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_table_cells->Add(button_all_cell_bgcolor, 1, wxALIGN_RIGHT|wxALL, 3);
-    grid_table_cells->Add(label_even_row_bgcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_table_cells->Add(button_even_cell_bgcolor, 1, wxALIGN_RIGHT|wxALL, 3);
-    grid_table_cells->Add(label_odd_row_bgcolor, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_table_cells->Add(button_odd_cell_bgcolor, 1, wxALIGN_RIGHT|wxALL, 3);
+    grid_table_cells->Add(label_cell_textcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_table_cells->Add(button_cell_textcolor, 1, wxALL|wxALIGN_RIGHT, 3);
+    grid_table_cells->Add(label_cell_bgmode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_table_cells->Add(choice_cell_bgmode, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_table_cells->Add(label_all_row_bgcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_table_cells->Add(button_all_cell_bgcolor, 1, wxALL|wxALIGN_RIGHT, 3);
+    grid_table_cells->Add(label_even_row_bgcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_table_cells->Add(button_even_cell_bgcolor, 1, wxALL|wxALIGN_RIGHT, 3);
+    grid_table_cells->Add(label_odd_row_bgcolor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_table_cells->Add(button_odd_cell_bgcolor, 1, wxALL|wxALIGN_RIGHT, 3);
     grid_table_cells->AddGrowableCol(1);
     sizer_table_cells->Add(grid_table_cells, 1, wxALL|wxEXPAND, 3);
     grid_pane_table->Add(sizer_table_cells, 1, wxEXPAND, 0);

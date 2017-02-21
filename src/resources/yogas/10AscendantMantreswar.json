@@ -18,7 +18,7 @@
       },
       {
          "description" : "Ascendant in Gemini",
-         "effect" : "When the Ascedant is Gemini, the native will have balck eyes and curly hair. He will enjoy association with women and will have thick neck and many friends. He will be intelligent and mind reader. His nose will be elevated and he will be fond of music and dancing. He will like to remain indoors.",
+         "effect" : "When the Ascendant is Gemini, the native will have black eyes and curly hair. He will enjoy association with women and will have thick neck and many friends. He will be intelligent and mind reader. His nose will be elevated and he will be fond of music and dancing. He will like to remain indoors.",
          "rule" : "return getRasi( Ascendant ) == Gemini;",
          "highervargas" : true,
          "source" : "Phala Deepika",

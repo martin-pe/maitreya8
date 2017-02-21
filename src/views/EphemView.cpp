@@ -187,14 +187,8 @@ void EphemView::write()
 		sheet->clear();
 		ret = expert->calcMonth();
 
-	/*
-	const uint nb_cols;
-  double x2yratio;
-	const double wmin, hmin, wmax, hmax;
-*/
 		SheetWidgetGrid *grid = new SheetWidgetGrid( 1, .5, 100, 100, 1600, 800 );
-
-		SheetWidgetItem *w = new GraphicalEphemWidgetItem( props, expert, max_deg );
+		SheetWidgetItem *w = new GraphicalEphemWidgetItem( props, expert, max_deg, isLocaltime );
 		grid->addItem( w );
 		sheet->addItem( grid );
 		swidget->OnDataChanged();
@@ -439,10 +433,11 @@ wxString EphemView::getWindowLabel( const bool /* shortname */ )
 **   GraphicalEphemWidgetItem   ---   Constructor
 ***
 ***************************************************************/
-GraphicalEphemWidgetItem::GraphicalEphemWidgetItem( ChartProperties *props, EphemExpert *expert, const double &max_deg )
+GraphicalEphemWidgetItem::GraphicalEphemWidgetItem( ChartProperties *props, EphemExpert *expert, const double &max_deg, const bool &localtime )
  : SheetWidgetItem( props ),
  expert( expert ),
- max_deg( max_deg )
+ max_deg( max_deg ),
+ isLocaltime( localtime )
 {
 	filter = 1;
 }
@@ -463,7 +458,7 @@ GraphicalEphemWidgetItem::~GraphicalEphemWidgetItem()
 ***************************************************************/
 SheetItem *GraphicalEphemWidgetItem::cloneClean()
 {
-	SheetItem *item = new GraphicalEphemWidgetItem( props, expert, max_deg );
+	SheetItem *item = new GraphicalEphemWidgetItem( props, expert, max_deg, isLocaltime );
 	return item;
 }
 
@@ -488,10 +483,8 @@ void GraphicalEphemWidgetItem::doPaint( Painter *painter, const MRect& /*refresh
 	assert( painter );
 	//printf( "GraphicalEphemWidgetItem::doPaint rect %f %f %f %f\n", rect.x, rect.y, rect.width, rect.height );
 
-	xleft = rect.x;
-	xright = xleft + rect.width;
-	ytop = rect.y;
-	ybottom = ytop + rect.height;
+	xright = rect.x + rect.width;
+	ybottom = rect.y + rect.height;
 
 	painter->setDefaults();
 	paintRuler( painter );
@@ -507,60 +500,81 @@ void GraphicalEphemWidgetItem::paintRuler( Painter *painter )
 {
 	wxString s;
 	int i;
-	int xtext = 50;
-	int ytext = 10;
-	int ysizey = 20;
 	int y = (int)ybottom-30;
-	int x = (int)xleft;
-	double ystep;
+	double x;
+
+	const double ytext = 10;
+	const double tic_len = 5;
+	const double xtext = 50;
+	const double ysizey = 20;
 
 	painter->setTransparentBrush();
 
 	painter->setPenColor( config->colors->fgColor );
-	painter->drawRectangle( (int)xleft, (int)ybottom, (int)(xright - xleft), (int)(ytop - ybottom) );
-	int mlen = expert->getNumberOfDays();
-	double dstep = ( xright - xleft ) / ( mlen - 1 );
+
+	// outer rectangle
+	painter->drawRectangle( rect );
+	const int mlen = expert->getNumberOfDays();
+
+	// tics on the horizontal ruler at the bottom (per day) and horizontal reference lines
+	const double xstep = rect.width / ( mlen - 1 );
 	for ( i = 0; i < mlen; i++ )
 	{
-		painter->setPenColor( config->colors->fgColor );
-		x =  (int)(xleft+i*dstep);
-		painter->drawLine( x, (int)ybottom, x, (int)ybottom+5 );
-		s.Printf( wxT( "%d" ), i+1 );
-		painter->drawTextFormatted( wxRect( x-xtext, y + ysizey + ytext, 2*xtext, 2*ytext ), s, Align::Center );
+		x =  rect.x + i * xstep;
+
+		// tic
+		painter->drawLine( x, ybottom, x, ybottom + tic_len );
+		s.Printf( wxT( "%d" ), i + 1 );
+		painter->drawTextFormatted( wxRect( x - xtext, y + ysizey + ytext, 2 * xtext, 2 * ytext ), s, Align::Center );
+
+		// ref lines
 		if ( ! ( ( i + 1 ) % 5 ) && i > 0 )
 		{
-			painter->setPenColor( *wxLIGHT_GREY ); // TODO DASH
-			painter->drawLine( (int)x, (int)ybottom, (int)x, (int)ytop );
+			painter->setPenColor( *wxLIGHT_GREY ); // DASH ?
+			painter->drawLine( x, ybottom, x, rect.y );
+			painter->setPenColor( config->colors->fgColor );
 		}
 	}
 
-	ystep = (ybottom - ytop) / max_deg;
+	// vertical tics on the left and grey reference lines
+	const double ystep = rect.height / max_deg;
 	for ( i = 1; i < max_deg; i++ )
 	{
-		painter->setPenColor( config->colors->fgColor );
-
+		// avoid line for certain gradkreis values
 		if ( max_deg >= 180 && ( i % 30 ) ) continue;
 		if ( max_deg >= 90 && ( i % 10 ) ) continue;
 		if ( max_deg >= 22 && ( i % 5 ) ) continue;
-		y = (int)(ybottom - i * ystep);
-		painter->drawLine( (int)xleft-5, (int)y, (int)xleft, (int)y );
-		s.Printf( wxT( "%d" ), i );
-		painter->drawTextFormatted( wxRect( (int)xleft-xtext-5, y - ysizey, xtext, 2 * ysizey ), s, Align::Right+Align::VCenter );
 
-		painter->setPenColor( *wxLIGHT_GREY ); // TODO DASH
-		painter->drawLine( (int)xleft, (int)y, (int)xright, (int)y );
+		y = ybottom - i * ystep;
+
+		// tic
+		painter->drawLine( rect.x - tic_len, y, rect.x, y );
+		s.Printf( wxT( "%d" ), i );
+		painter->drawTextFormatted( wxRect( rect.x - xtext - tic_len, y - ysizey, xtext, 2 * ysizey ), s, Align::Right+Align::VCenter );
+
+		// ref line
+		painter->setPenColor( *wxLIGHT_GREY ); // DASH ?
+		painter->drawLine( rect.x, y, xright, y );
+		painter->setPenColor( config->colors->fgColor );
 	}
 
-	// Finally mark current date if possible
+	// mark current date if possible
 	if ( expert->isCurrentMonth())
 	{
 		MDate d;
 		double actjd = d.getJD();
+		if ( isLocaltime )
+		{
+			const TzInfo tzi = TzUtil().calculateTzInfoForJD( actjd );
+			actjd += ( tzi.tzhours + tzi.dsthours ) / 24.0;
+		}
+
 		d.setDate( 1, expert->getMonth(), expert->getYear(), 0 );
-		double portion = ( actjd - d.getJD() ) / expert->getNumberOfDays();
-		x = xleft + portion * ( xright - xleft );
+		double portion = ( actjd - d.getJD() ) / ( expert->getNumberOfDays() + 1 );
+		x = rect.x + xstep + portion * ( rect.width );
 		painter->setPenColor( *wxBLUE );
-		painter->drawLine( (int)x, (int)ybottom, (int)x, (int)ytop );
+		painter->drawLine( x, ybottom, x, rect.y );
+		painter->setPenColor( config->colors->fgColor );
 	}
 }
 
@@ -573,9 +587,8 @@ void GraphicalEphemWidgetItem::paintRuler( Painter *painter )
 void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 {
 	ObjectId p;
-	int x1, x2, y1, y2;  // daily positions in y and y dimension
-	int xp;              // x position for jumps
-	//int i;
+	double x1, x2, y1, y2;  // daily positions in y and y dimension
+	double xp;              // x position for jumps
 	double l1, l2;       // length of planets
 	double yp, yp2, ydiff;      // length values for jumps
 	const int sshift = 60;
@@ -584,11 +597,8 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 	int ylshift, yrshift;
 	const int xshiftunit = 15;
 
-	//printf( "GraphicalEphemWidgetItem::paintPlanets ybottom %f ytop %f\n", ybottom, ytop );
-	const int ytotal =  (int)(ybottom - ytop);   // total height of interior
 	const int mlen = expert->getNumberOfDays();  // length of month
-	const double dstep = ( xright - xleft ) / mlen;  // daily step in x dimension
-	//const int lstep = 20;                 // step height for legend entries
+	const double xstep = rect.width / mlen;  // daily step in x dimension
 
 	wxString s;
 	Lang lang;
@@ -609,12 +619,12 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 		setLineStyle( painter, p );
 		for ( int day = 0; day < mlen; day++ )
 		{
-			x1 =  (int)(xleft + day * dstep);
-			x2 =  (int)(x1 + dstep);
+			x1 =  rect.x + day * xstep;
+			x2 =  x1 + xstep;
 			l1 = a_red( expert->getPlanetLongitude( i1, day ), max_deg );
-			y1 = (int)(ybottom - l1 * ytotal / max_deg);
+			y1 = ybottom - l1 * rect.height / max_deg;
 			l2 = a_red( expert->getPlanetLongitude( i1, day+1 ), max_deg );
-			y2 = (int)(ybottom - l2 * ytotal / max_deg);
+			y2 = ybottom - l2 * rect.height / max_deg;
 
 			if ( expert->getPlanetRetro( i1, day ))
 			{
@@ -623,9 +633,9 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 					yp = l1;
 					yp2 = max_deg - l2;
 					ydiff = yp / ( yp + yp2 );
-					xp = (int)( x1 + ydiff * dstep );
-					painter->drawLine( x1, y1, xp, (int)ybottom );
-					painter->drawLine( xp, (int)ytop, x2, y2 );
+					xp = (int)( x1 + ydiff * xstep );
+					painter->drawLine( x1, y1, xp, ybottom );
+					painter->drawLine( xp, rect.y, x2, y2 );
 				}
 				else // that's normal
 				{
@@ -639,10 +649,10 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 					yp = max_deg - l1;
 					yp2 = l2;
 					ydiff = yp / ( yp + yp2 );
-					xp = (int)( x1 + ydiff * dstep );
+					xp = x1 + ydiff * xstep;
 					//printf( "2 planet %d yp %f yp2 %f x1 %d x2 %d xp %d l1 %f l2 %f ydiff %f\n", p, yp, yp2, x1, x2, xp, l1, l2, ydiff );
-					painter->drawLine( x1, y1, xp, (int)ytop );
-					painter->drawLine( xp, (int)ybottom, x2, y2 );
+					painter->drawLine( x1, y1, xp, rect.y );
+					painter->drawLine( xp, ybottom, x2, y2 );
 				}
 				else // that happens normally
 				{
@@ -661,20 +671,19 @@ void GraphicalEphemWidgetItem::paintPlanets( Painter *painter )
 			s = lang.getObjectName( p, TF_MEDIUM, props->isVedic() );
 		}
 		// Planet name on left side
-		y1 = (int)(ybottom - a_red( expert->getPlanetLongitude( i1, 0 ), max_deg ) * ytotal / max_deg);
+		y1 = ybottom - a_red( expert->getPlanetLongitude( i1, 0 ), max_deg ) * rect.height / max_deg;
 
-		assert( ytotal != 0 );
-		ylshift = a_red( sshift * y1 / ytotal, 60 );
+		assert( rect.height != 0 );
+		ylshift = a_red( sshift * y1 / rect.height, 60 );
 
 		painter->drawTextFormatted(
-			wxRect( Max( (int)xleft - xshiftunit * lsymbolshift[ylshift] - 10, 0 ), y1 - 5, 10, 10 ),
-			s, Align::Right+Align::VCenter );
+			wxRect( Max( rect.x - xshiftunit * lsymbolshift[ylshift] - 10, 0 ), y1 - 5, 10, 10 ), s, Align::Right+Align::VCenter );
 		lsymbolshift[ylshift]++;
 
 		// Planet name on right side
-		y1 = (int)(ybottom - a_red( expert->getPlanetLongitude( i1, mlen ), max_deg ) * ytotal / max_deg);
-		yrshift = a_red( sshift * y1 / ytotal, 60 );
-		painter->drawTextFormatted( wxRect( (int)xright + xshiftunit * rsymbolshift[yrshift], y1 - 5, 20, 10 ), s, Align::Left+Align::VCenter );
+		y1 = ybottom - a_red( expert->getPlanetLongitude( i1, mlen ), max_deg ) * rect.height / max_deg;
+		yrshift = a_red( sshift * y1 / rect.height, 60 );
+		painter->drawTextFormatted( wxRect( xright + xshiftunit * rsymbolshift[yrshift], y1 - 5, 20, 10 ), s, Align::Left+Align::VCenter );
 		rsymbolshift[yrshift]++;
 	}
 }

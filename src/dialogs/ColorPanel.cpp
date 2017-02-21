@@ -355,10 +355,19 @@ ColorPanel::ColorPanel( wxWindow* parent  ) : ConfigPanel( parent )
 	config2model();
 
     // begin wxGlade: ColorPanel::ColorPanel
-    notebook_main = new wxNotebook(this, wxID_ANY);
+    notebook_main = new wxNotebook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0);
     notebook_pane_bar = new wxPanel(notebook_main, wxID_ANY);
     notebook_pane_charts = new wxPanel(notebook_main, wxID_ANY);
     notebook_pane_general = new wxPanel(notebook_main, wxID_ANY);
+    sizer_bgcolors_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Background Colors"));
+    sizer_planets_staticbox = new wxStaticBox(notebook_pane_charts, wxID_ANY, _("Planets"));
+    sizer_signs_staticbox = new wxStaticBox(notebook_pane_charts, wxID_ANY, _("Signs"));
+    sizer_houses_staticbox = new wxStaticBox(notebook_pane_charts, wxID_ANY, _("Houses"));
+    sizer_object_staticbox = new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Object"));
+    sizer_mouseover_staticbox = new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Mouse over Behaviour"));
+    sizer_general_staticbox = new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Graphical Dasa View Options"));
+    sizer_preview_staticbox = new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Preview"));
+    sizer_fgcolors_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Foreground Colors"));
     label_fg = new wxStaticText(notebook_pane_general, wxID_ANY, _("Text Color"));
     button_color_fg = new wxColourPickerCtrl(notebook_pane_general, CD_FGCOLOR);
     label_benefic = new wxStaticText(notebook_pane_general, wxID_ANY, _("Benefics"));
@@ -380,9 +389,9 @@ ColorPanel::ColorPanel( wxWindow* parent  ) : ConfigPanel( parent )
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy"),
+        _("dummy")
     };
-    choice_planets = new wxChoice(notebook_pane_charts, CD_PLANETS, wxDefaultPosition, wxDefaultSize, 5, choice_planets_choices);
+    choice_planets = new wxChoice(notebook_pane_charts, CD_PLANETS, wxDefaultPosition, wxDefaultSize, 5, choice_planets_choices, 0);
     label_fgplanets = new wxStaticText(notebook_pane_charts, wxID_ANY, _("Foreground"));
     color_fgplanets = new wxColourPickerCtrl(notebook_pane_charts, CD_PLANET_FGCOLOR);
     preview_planetcolor = new PlanetColorPreviewPanel(notebook_pane_charts);
@@ -390,9 +399,9 @@ ColorPanel::ColorPanel( wxWindow* parent  ) : ConfigPanel( parent )
         _("Fire"),
         _("Earth"),
         _("Air"),
-        _("Water"),
+        _("Water")
     };
-    choice_signs = new wxChoice(notebook_pane_charts, CD_SIGNS, wxDefaultPosition, wxDefaultSize, 4, choice_signs_choices);
+    choice_signs = new wxChoice(notebook_pane_charts, CD_SIGNS, wxDefaultPosition, wxDefaultSize, 4, choice_signs_choices, 0);
     label_fg_signs = new wxStaticText(notebook_pane_charts, wxID_ANY, _("Foreground"));
     color_fgsigns = new wxColourPickerCtrl(notebook_pane_charts, CD_SIGN_FGCOLOR);
     preview_signfgcolor = new SignFgColorPreviewPanel(notebook_pane_charts);
@@ -403,9 +412,9 @@ ColorPanel::ColorPanel( wxWindow* parent  ) : ConfigPanel( parent )
         _("Fire"),
         _("Earth"),
         _("Air"),
-        _("Water"),
+        _("Water")
     };
-    choice_houses = new wxChoice(notebook_pane_charts, CD_HOUSES, wxDefaultPosition, wxDefaultSize, 4, choice_houses_choices);
+    choice_houses = new wxChoice(notebook_pane_charts, CD_HOUSES, wxDefaultPosition, wxDefaultSize, 4, choice_houses_choices, 0);
     label_fg_houses = new wxStaticText(notebook_pane_charts, wxID_ANY, _("Foreground"));
     color_fghouses = new wxColourPickerCtrl(notebook_pane_charts, CD_HOUSE_FGCOLOR);
     preview_housefgcolor = new HouseFgColorPreviewPanel(notebook_pane_charts);
@@ -423,9 +432,9 @@ ColorPanel::ColorPanel( wxWindow* parent  ) : ConfigPanel( parent )
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy"),
+        _("dummy")
     };
-    choice_object = new wxChoice(notebook_pane_bar, CD_BAR_OBJECT, wxDefaultPosition, wxDefaultSize, 10, choice_object_choices);
+    choice_object = new wxChoice(notebook_pane_bar, CD_BAR_OBJECT, wxDefaultPosition, wxDefaultSize, 10, choice_object_choices, 0);
     button_pen = new wxButton(notebook_pane_bar, CD_BAR_PEN, _("Pen ..."));
     button_brush = new wxButton(notebook_pane_bar, CD_BAR_BRUSH, _("Brush ..."));
     check_zoom = new wxCheckBox(notebook_pane_bar, CD_CHECK_ZOOM, _("Zoom on Mouse Over"));
@@ -856,91 +865,100 @@ void ColorPanel::do_layout()
     // begin wxGlade: ColorPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 3, 0, 0);
     wxFlexGridSizer* grid_bar = new wxFlexGridSizer(1, 2, 0, 0);
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Preview")), wxHORIZONTAL);
+    sizer_preview_staticbox->Lower();
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxHORIZONTAL);
     wxBoxSizer* sizer_left = new wxBoxSizer(wxVERTICAL);
-    wxStaticBoxSizer* sizer_general = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Graphical Dasa View Options")), wxVERTICAL);
+    sizer_general_staticbox->Lower();
+    wxStaticBoxSizer* sizer_general = new wxStaticBoxSizer(sizer_general_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_bar_general = new wxFlexGridSizer(3, 3, 0, 0);
-    wxStaticBoxSizer* sizer_mouseover = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Mouse over Behaviour")), wxVERTICAL);
+    sizer_mouseover_staticbox->Lower();
+    wxStaticBoxSizer* sizer_mouseover = new wxStaticBoxSizer(sizer_mouseover_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_mouseover = new wxFlexGridSizer(1, 3, 0, 0);
-    wxStaticBoxSizer* sizer_object = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_bar, wxID_ANY, _("Object")), wxVERTICAL);
+    sizer_object_staticbox->Lower();
+    wxStaticBoxSizer* sizer_object = new wxStaticBoxSizer(sizer_object_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_object = new wxFlexGridSizer(2, 2, 0, 0);
     wxFlexGridSizer* grid_charts = new wxFlexGridSizer(3, 1, 0, 0);
-    wxStaticBoxSizer* sizer_houses = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_charts, wxID_ANY, _("Houses")), wxVERTICAL);
+    sizer_houses_staticbox->Lower();
+    wxStaticBoxSizer* sizer_houses = new wxStaticBoxSizer(sizer_houses_staticbox, wxVERTICAL);
     wxGridSizer* grid_houses = new wxGridSizer(2, 3, 0, 0);
-    wxStaticBoxSizer* sizer_signs = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_charts, wxID_ANY, _("Signs")), wxVERTICAL);
+    sizer_signs_staticbox->Lower();
+    wxStaticBoxSizer* sizer_signs = new wxStaticBoxSizer(sizer_signs_staticbox, wxVERTICAL);
     wxGridSizer* grid_signs = new wxGridSizer(2, 3, 0, 0);
-    wxStaticBoxSizer* sizer_planets = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_charts, wxID_ANY, _("Planets")), wxVERTICAL);
+    sizer_planets_staticbox->Lower();
+    wxStaticBoxSizer* sizer_planets = new wxStaticBoxSizer(sizer_planets_staticbox, wxVERTICAL);
     wxBoxSizer* sizer_planet_fg = new wxBoxSizer(wxHORIZONTAL);
     wxFlexGridSizer* grid_general = new wxFlexGridSizer(1, 2, 0, 0);
-    wxStaticBoxSizer* sizer_bgcolors = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("Background Colors")), wxVERTICAL);
+    sizer_bgcolors_staticbox->Lower();
+    wxStaticBoxSizer* sizer_bgcolors = new wxStaticBoxSizer(sizer_bgcolors_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_bgcolors = new wxFlexGridSizer(4, 2, 3, 3);
     wxBoxSizer* sizer_colors = new wxBoxSizer(wxVERTICAL);
-    wxStaticBoxSizer* sizer_fgcolors = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("Foreground Colors")), wxVERTICAL);
+    sizer_fgcolors_staticbox->Lower();
+    wxStaticBoxSizer* sizer_fgcolors = new wxStaticBoxSizer(sizer_fgcolors_staticbox, wxVERTICAL);
     wxFlexGridSizer* grid_fgcolors = new wxFlexGridSizer(4, 2, 3, 3);
-    grid_fgcolors->Add(label_fg, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_fgcolors->Add(label_fg, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_fgcolors->Add(button_color_fg, 1, wxALL|wxEXPAND, 3);
-    grid_fgcolors->Add(label_benefic, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_fgcolors->Add(label_benefic, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_fgcolors->Add(button_color_benefic, 1, wxALL|wxEXPAND, 3);
-    grid_fgcolors->Add(label_malefic, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_fgcolors->Add(label_malefic, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_fgcolors->Add(button_color_malefic, 1, wxALL|wxEXPAND, 3);
-    grid_fgcolors->Add(label_transit, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_fgcolors->Add(label_transit, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_fgcolors->Add(button_color_transit, 1, wxALL|wxEXPAND, 3);
     grid_fgcolors->AddGrowableCol(1);
-    sizer_fgcolors->Add(grid_fgcolors, 1, wxALIGN_RIGHT|wxALL, 3);
+    sizer_fgcolors->Add(grid_fgcolors, 1, wxALL|wxALIGN_RIGHT, 3);
     sizer_colors->Add(sizer_fgcolors, 0, wxALL|wxEXPAND, 3);
     grid_general->Add(sizer_colors, 1, wxALL, 3);
-    grid_bgcolors->Add(label_bg, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_bgcolors->Add(label_bg, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_bgcolors->Add(button_color_bg, 1, wxALL|wxEXPAND, 3);
-    grid_bgcolors->Add(label_marked, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_bgcolors->Add(label_marked, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_bgcolors->Add(button_color_marked, 1, wxALL|wxEXPAND, 3);
-    grid_bgcolors->Add(label_chart_markup, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_bgcolors->Add(label_chart_markup, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_bgcolors->Add(button_color_chart_markup, 1, wxALL|wxEXPAND, 3);
-    grid_bgcolors->Add(label_error, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_bgcolors->Add(label_error, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_bgcolors->Add(button_color_error, 1, wxALL|wxEXPAND, 3);
     grid_bgcolors->AddGrowableCol(1);
     sizer_bgcolors->Add(grid_bgcolors, 1, wxALL, 3);
     grid_general->Add(sizer_bgcolors, 0, wxALL|wxEXPAND, 3);
     notebook_pane_general->SetSizer(grid_general);
-    sizer_planets->Add(choice_planets, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    sizer_planet_fg->Add(label_fgplanets, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    sizer_planets->Add(choice_planets, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_planet_fg->Add(label_fgplanets, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     sizer_planet_fg->Add(color_fgplanets, 1, wxALL|wxEXPAND, 3);
     sizer_planet_fg->Add(preview_planetcolor, 1, wxALL|wxEXPAND, 3);
     sizer_planets->Add(sizer_planet_fg, 1, wxEXPAND, 0);
     grid_charts->Add(sizer_planets, 0, wxEXPAND, 0);
-    sizer_signs->Add(choice_signs, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_signs->Add(label_fg_signs, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    sizer_signs->Add(choice_signs, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_signs->Add(label_fg_signs, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_signs->Add(color_fgsigns, 1, wxALL|wxEXPAND, 3);
     grid_signs->Add(preview_signfgcolor, 1, wxALL|wxEXPAND, 3);
-    grid_signs->Add(label_bg_signs, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_signs->Add(label_bg_signs, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_signs->Add(button_signbrush, 0, wxALL, 3);
     grid_signs->Add(preview_signbgcolor, 1, wxALL|wxEXPAND, 3);
     sizer_signs->Add(grid_signs, 1, wxEXPAND, 0);
     grid_charts->Add(sizer_signs, 1, wxEXPAND, 0);
-    sizer_houses->Add(choice_houses, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
-    grid_houses->Add(label_fg_houses, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    sizer_houses->Add(choice_houses, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_houses->Add(label_fg_houses, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_houses->Add(color_fghouses, 1, wxALL|wxEXPAND, 3);
     grid_houses->Add(preview_housefgcolor, 1, wxALL|wxEXPAND, 3);
-    grid_houses->Add(label_bg_houses, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_houses->Add(label_bg_houses, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_houses->Add(button_housebrush, 0, wxALL, 3);
     grid_houses->Add(preview_housebgcolor, 1, wxALL|wxEXPAND, 3);
     sizer_houses->Add(grid_houses, 1, wxEXPAND, 0);
     grid_charts->Add(sizer_houses, 1, wxEXPAND, 0);
     notebook_pane_charts->SetSizer(grid_charts);
-    grid_object->Add(label_2, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
-    grid_object->Add(choice_object, 0, wxALIGN_CENTER|wxALL, 3);
-    grid_object->Add(button_pen, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
-    grid_object->Add(button_brush, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
+    grid_object->Add(label_2, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
+    grid_object->Add(choice_object, 0, 0, 3);
+    grid_object->Add(button_pen, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
+    grid_object->Add(button_brush, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     sizer_object->Add(grid_object, 1, wxEXPAND, 0);
     sizer_left->Add(sizer_object, 1, wxALL, 3);
-    grid_mouseover->Add(check_zoom, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_mouseover->Add(check_zoom, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     grid_mouseover->Add(spin_zoom, 0, wxALL, 3);
-    grid_mouseover->Add(label_pixel, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_mouseover->Add(label_pixel, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     sizer_mouseover->Add(grid_mouseover, 1, 0, 0);
     sizer_left->Add(sizer_mouseover, 1, 0, 0);
     sizer_general->Add(check_showtoolbarmsg, 0, wxALL, 3);
-    grid_bar_general->Add(label_cornerradius, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 3);
+    grid_bar_general->Add(label_cornerradius, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 3);
     grid_bar_general->Add(spin_cornerradius, 0, wxALL, 3);
-    grid_bar_general->Add(label_pixel2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_bar_general->Add(label_pixel2, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
     sizer_general->Add(grid_bar_general, 1, 0, 0);
     sizer_left->Add(sizer_general, 1, 0, 0);
     grid_bar->Add(sizer_left, 1, wxALL, 3);

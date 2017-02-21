@@ -67,6 +67,8 @@ private:
 
 protected:
     // begin wxGlade: WesternCalculationPanel::attributes
+    wxStaticBox* sizer_yl_staticbox;
+    wxStaticBox* sizer_wcalc_staticbox;
     wxStaticText* label_wcalc_aya;
     wxChoice* choice_ayanamsa;
     wxStaticText* label_wcalc_node;

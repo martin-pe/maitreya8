@@ -67,6 +67,11 @@ private:
 
 protected:
     // begin wxGlade: WesternPanel::attributes
+    wxStaticBox* sizer_columns_staticbox;
+    wxStaticBox* sizer_planetorder_staticbox;
+    wxStaticBox* sizer_arabic_staticbox;
+    wxStaticBox* sizer_partly_staticbox;
+    wxStaticBox* sizer_eobjects_staticbox;
     wxCheckBox* check_objects_outer;
     wxCheckBox* check_objects_dragonhead;
     wxCheckBox* check_objects_dragontail;
