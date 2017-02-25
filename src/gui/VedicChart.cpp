@@ -84,18 +84,22 @@ vector<wxString> AshtakaVargaChart::getCenterString()
 ******************************************************/
 void AshtakaVargaChart::writeChartContents( const int& /* chart_id */, const bool /* applyFilter */ )
 {
-	//printf( "AshtakaVargaChart::writeChartContents\n" );
+	//printf( "AshtakaVargaChart::writeChartContents positionOffset %d\n", positionOffset );
 	wxString s;
-	wxChar avitem = config->vedicCalculation->ashtakavargaNumberMode == 1 ? 'I' : 'o';
+	int v;
+	const wxChar avitem = config->vedicCalculation->ashtakavargaNumberMode == 1 ? 'I' : 'o';
 
 	for ( Rasi i = R_ARIES; i <= R_PISCES; i++ )
 	{
+		v = rasi_values[red12( i + positionOffset )];
+		//printf( "AshtakaVargaChart::writeChartContents Rasi %d value %d\n", i, v );
+
 		fields[i].contents.clear();
 		s.Clear();
 		if ( config->vedicCalculation->ashtakavargaNumberMode != 0 )
 		{
 			if ( graphicSupport )
-				for ( int j = 0; j < rasi_values[i]; j++ )
+				for ( int j = 0; j < v; j++ )
 				{
 					if ( j == 5 )
 					{
@@ -108,7 +112,7 @@ void AshtakaVargaChart::writeChartContents( const int& /* chart_id */, const boo
 		}
 		else
 		{
-			s.Printf( wxT( "%d" ), rasi_values[i] );
+			s.Printf( wxT( "%d" ), v );
 		}
 		fields[i].contents.textitems.push_back( ChartTextItem( s, s ));
 	}
@@ -125,6 +129,7 @@ VedicVargaChart::VedicVargaChart( const ChartType &charttype, ChartProperties *c
 	varga( varga )
 {
 	ashtakavargaExpert = new AshtakavargaExpert( h1, varga );
+	ascendant = getPlanetField( OASCENDANT, 0 );
 }
 
 /*****************************************************
@@ -242,19 +247,16 @@ void VedicVargaChart::writeChartContents( const int &chart_id, const bool applyF
 	}
 	BasicVedicChart::writeChartContents( chart_id, applyFilter );
 
-	int i, rasi;
-	wxString lname, sname;
-
-	if ( chart_id == 0 ) ascendant = getPlanetField( OASCENDANT, 0 );
-
 	if ( chart_id == 0 && chartprops->getVedicChartDisplayConfig().showArudhas )
 	{
+		int rasi;
+		wxString lname, sname;
 		JaiminiExpert expert( h, varga );
-		for ( i = 0; i < 12; i++ )
-		{
-			rasi = expert.calcPada( i );
 
-			//fields[rasi].getContents( chart_id ).planets.push_back( (ObjectId)i );
+		for ( int i = 0; i < 12; i++ )
+		{
+			rasi = red12( expert.calcPada( i ) - positionOffset );
+
 			if ( i == 0 )
 			{
 				sname = _( "AL" );
