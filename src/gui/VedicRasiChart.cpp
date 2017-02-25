@@ -169,14 +169,14 @@ void VedicRasiChart::finishChart()
 			MRect( xcenter - rtol, ycenter - rtol, 2 * rtol, rtol ),
 			MRect( xcenter - xi - rtol / 2, ycenter - yi - rtol, rtol, rtol ),
 			MRect( xcenter - xi - rtol, ycenter - yi - rtol / 2, rtol, rtol ),
-			MRect( xcenter - 2 * rtol, ycenter - rtol, 2 * rtol, rtol ),
+			MRect( xcenter - 2 * rtol, ycenter - .5 * rtol, 2 * rtol, rtol ),
 			MRect( xcenter - xi - rtol, ycenter + yi - rtol / 2, rtol, rtol ),
 			MRect( xcenter - xi - rtol / 2, ycenter + yi, rtol, rtol ),
 
 			MRect( xcenter - rtol, ycenter, 2 * rtol, rtol ),
 			MRect( xcenter + xi - rtol / 2, ycenter + yi, rtol, rtol ),
 			MRect( xcenter + xi, ycenter + yi - rtol / 2, rtol, rtol ),
-			MRect( xcenter, ycenter - rtol, 2 * rtol, rtol ),
+			MRect( xcenter, ycenter - .5 * rtol, 2 * rtol, rtol ),
 			MRect( xcenter + xi, ycenter - yi - rtol / 2, rtol, rtol ),
 			MRect( xcenter + xi - rtol / 2, ycenter - yi - rtol, rtol, rtol )
 		};
@@ -238,7 +238,6 @@ void VedicRasiChart::finishChart()
 void VedicRasiChart::setupChart()
 {
 	positionOffset = 0;
-	ascendant = getPlanetField( OASCENDANT, 0 );
 
 	fields.clear();
 	switch( chartprops->getVedicChartDisplayConfig().indianChartType )
