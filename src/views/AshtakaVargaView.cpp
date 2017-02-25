@@ -42,7 +42,7 @@
 
 extern Config *config;
 
-#define MAX_ASHTAKAVarga_PAGES 6
+#define WO_BUNDLE_AVGRID WO_MENU_RESTRICTED_GRAPHIC_STYLE | WO_MENU_SKIN | WO_EXPORT_GRAPHIC
 
 enum { ANB_REKHA, ANB_TRIKONA, ANB_EKADHIPATYA, ANB_RASIDIAGRAM, ANB_PINDADIAGRAM, ANB_TEXT };
 enum { AV_NOTEBOOK = wxID_HIGHEST + 3500 };
@@ -69,6 +69,7 @@ public:
 			cols( cols )
 	{
 		chart = new AshtakaVargaChart( chartprops );
+		setWidgetOptions( WO_BUNDLE_AVGRID );
 	}
 
 	/*****************************************************
@@ -106,6 +107,7 @@ public:
 			{
 				assert( nb < rows * cols );
 				chart->setAscendant( expert->getRasi( OASCENDANT ));
+				//printf( "setAscendant varga %d AC %d\n", expert->getVarga(), expert->getRasi( OASCENDANT ));
 				for ( Rasi rasi = R_ARIES; rasi <= R_PISCES; rasi++ )
 				{
 					if ( nb == 0 )
@@ -214,50 +216,6 @@ public:
 	}
 
 	virtual wxString getWindowLabel( const bool shortname = false ) { return shortname ? _( "AV" ) : _( "Ashtaka Varga" ); }
-
-	/*****************************************************
-	**
-	**   AshtakaVargaView   ---   supportsGraphicExport
-	**
-	******************************************************/
-	bool supportsGraphicExport() const { return ( notebook->GetSelection() != ANB_TEXT ); }
-
-	/*****************************************************
-	**
-	**   AshtakaVargaView   ---   supportsTextExport
-	**
-	******************************************************/
-	bool supportsTextExport() const { return ( notebook->GetSelection() == ANB_TEXT ); }
-
-	/*****************************************************
-	**
-	**   AshtakaVargaView   ---   supportsSkinToggle
-	**
-	******************************************************/
-	bool supportsSkinToggle() const
-	{
-		switch ( notebook->GetSelection() )
-		{
-		case ANB_REKHA:
-		case ANB_TRIKONA:
-		case ANB_EKADHIPATYA:
-			return true;
-			break;
-		case ANB_RASIDIAGRAM:
-		case ANB_PINDADIAGRAM:
-		case ANB_TEXT:
-		default:
-			return false;
-		break;
-		}
-	}
-
-	/*****************************************************
-	**
-	**   AshtakaVargaView   ---   supportsRestrictedGraphicStyleToggle
-	**
-	******************************************************/
-	bool supportsRestrictedGraphicStyleToggle() const { return supportsSkinToggle(); }
 
 	/*****************************************************
 	**
