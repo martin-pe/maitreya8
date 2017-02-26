@@ -309,12 +309,8 @@ bool BasicVedicChart::OnResponsiveChartEvent( const MPoint p, const int /* keyMo
 	{
 		f = getFieldForScreenPos( p );
 		//printf( "F %d\n", f );
-		if ( positionOffset != 0 )
-		{
-			//f = a_red( f + positionOffset, field_count );
-		}
 	}
-	//printf( "Marked field is %d f is %d markedFieldStatus %d offset %d\n", markedField, f, markedFieldStatus, positionOffset );
+  //printf( "Marked field is %d f is %d markedFieldStatus %d offset %d\n", markedField, f, markedFieldStatus, positionOffset );
 
 	if ( markedField != f ) changed = true;
 	markedField = f;
@@ -401,6 +397,7 @@ void BasicVedicChart::writeChartContents( const int &chart_id, const bool applyF
 		if ( field_count == 12 && ! h2set && planet == OASCENDANT && chartprops->getVedicChartDisplayConfig().southIndianAscendantMarkup ) continue;
 
 		f = a_red( getPlanetField( planet, chart_id ) - positionOffset, field_count );
+		//printf( "positionOffset %d\n", positionOffset );
 		assert( f < fields.size());
 
 		ChartContents &cc = fields[f].getContents( chart_id );

@@ -159,6 +159,17 @@ void ChartGridWidget::addSarvatobhadraChart( Horoscope *h1, Horoscope *h2 )
 
 /*****************************************************
 **
+**   ChartGridWidget   ---   addAshtakavargaChart
+**
+******************************************************/
+void ChartGridWidget::addAshtakavargaChart()
+{
+	charts.push_back( ChartFactory().createAshtakavargaChart( chartprops ));
+	setFixedVedic();
+}
+
+/*****************************************************
+**
 **   ChartGridWidget   ---   addWesternChart
 **
 ******************************************************/

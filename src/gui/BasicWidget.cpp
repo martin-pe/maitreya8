@@ -98,7 +98,7 @@ BasicWidget::~BasicWidget()
 void BasicWidget::OnDataChanged()
 {
 	wxString cname = GetClassInfo()->GetClassName();
-	printf( "BasicWidget::OnDataChanged class %s\n", str2char( cname ));
+	//printf( "BasicWidget::OnDataChanged class %s\n", str2char( cname ));
 	Refresh();
 }
 

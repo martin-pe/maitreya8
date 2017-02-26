@@ -164,6 +164,7 @@ public:
 	GraphicalChart *createWesternChart( const ChartType&, ChartProperties*, Horoscope*, Horoscope* );
 	GraphicalChart *createSarvatobhadraChart( const ChartType&, ChartProperties*, Horoscope*, Horoscope* );
 	GraphicalChart *createVedicChart( const ChartType&, ChartProperties*, Horoscope*, Horoscope*, const Varga& );
+	GraphicalChart *createAshtakavargaChart( ChartProperties* );
 };
 
 #endif

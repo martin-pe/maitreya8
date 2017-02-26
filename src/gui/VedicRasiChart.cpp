@@ -144,21 +144,56 @@ void VedicRasiChart::drawGrid()
 
 /*****************************************************
 **
+**   VedicRasiChart   ---   calculateCenterRect
+**
+******************************************************/
+void VedicRasiChart::calculateCenterRect()
+{
+	//printf( "VedicRasiChart::calculateCenterRect\n" );
+	MPoint p;
+	const vector<wxString> v = getCenterString();
+	centerRect = MRect();
+
+	if ( centerstring_graphic ) setSymbolFont();
+	else setGraphicFont();
+
+	for( uint i = 0; i < v.size(); i++ )
+	{
+		p = painter->getTextExtent( v[i] );
+		centerRect.height += p.imag();
+		centerRect.width = Max( p.real(), centerRect.width );
+	}
+	if ( v.size())
+	{
+		centerRect.width += text_width;
+	}
+	else
+	{
+		centerRect.width += 4 * text_width;
+		centerRect.height += 2 * text_height;
+	}
+	centerRect.x = xcenter - .5 * centerRect.width;
+	centerRect.y = ycenter - .5 * centerRect.height;
+	//printf( "centerRect x %f y %f w %f h %f\n", centerRect.x, centerRect.y, centerRect.width, centerRect.height );
+}
+
+/*****************************************************
+**
 **   VedicRasiChart   ---   finishChart
 **
 ******************************************************/
 void VedicRasiChart::finishChart()
 {
-	Lang lang;
-	SymbolProvider sp;
-	wxString s;
-	Rasi current, i;
 	VedicChartConfig *vconf = getVChartConfig();
+
+	// calculate center string rectangle now because inner sign symbols (angles) in North Indian chart must be aligned accordingly
+	calculateCenterRect();
 
 	if ( chartprops->getVedicChartDisplayConfig().indianChartType == VCT_NORTH)
 	{
-		// used for sign number/symbol display
-		const double rtol = xmax / 15.0;
+		// reasonable width
+		const double rtol = xmax / 12.0;
+		const MPoint p = painter->getTextExtent( getNorthIndianSignLabel( R_ARIES ));
 
 		// 1/4 of the chart
 		const double xi = .5 * xr;
@@ -166,17 +201,19 @@ void VedicRasiChart::finishChart()
 
 		// Rectangles for sign names resp. numbers
 		const MRect sign_rect[12] = {
-			MRect( xcenter - rtol, ycenter - rtol, 2 * rtol, rtol ),
+			MRect( xcenter - .5 * centerRect.width, centerRect.y - text_height, centerRect.width, text_height ),
 			MRect( xcenter - xi - rtol / 2, ycenter - yi - rtol, rtol, rtol ),
 			MRect( xcenter - xi - rtol, ycenter - yi - rtol / 2, rtol, rtol ),
-			MRect( xcenter - 2 * rtol, ycenter - .5 * rtol, 2 * rtol, rtol ),
+
+			MRect( centerRect.x - p.real(), ycenter - .5 * rtol, p.real(), rtol ),
 			MRect( xcenter - xi - rtol, ycenter + yi - rtol / 2, rtol, rtol ),
 			MRect( xcenter - xi - rtol / 2, ycenter + yi, rtol, rtol ),
 
-			MRect( xcenter - rtol, ycenter, 2 * rtol, rtol ),
+			MRect( xcenter - .5 * centerRect.width, centerRect.y + centerRect.height, centerRect.width, text_height ),
 			MRect( xcenter + xi - rtol / 2, ycenter + yi, rtol, rtol ),
 			MRect( xcenter + xi, ycenter + yi - rtol / 2, rtol, rtol ),
-			MRect( xcenter, ycenter - .5 * rtol, 2 * rtol, rtol ),
+
+			MRect( centerRect.x + centerRect.width, ycenter - .5 * rtol, p.real(), rtol ),
 			MRect( xcenter + xi, ycenter - yi - rtol / 2, rtol, rtol ),
 			MRect( xcenter + xi - rtol / 2, ycenter - yi - rtol, rtol, rtol )
 		};
@@ -187,27 +224,9 @@ void VedicRasiChart::finishChart()
 		if ( ! ( chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType == VCN_SYMBOL )) setGraphicFont();
 		else setSymbolFont();
 
-		for ( i = R_ARIES; i <= R_PISCES; i++ )
+		for ( Rasi i = R_ARIES; i <= R_PISCES; i++ )
 		{
-			current = (Rasi)redRasi( getAscendant() + i );
-			switch( chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType )
-			{
-				case VCN_ASC:
-					s.Printf( wxT( "%d" ),  current + 1 );
-				break;
-				case VCN_NUMBER:
-					s.Printf( wxT( "%d" ),  current + 1 );
-				break;
-				case VCN_SHORT:
-				{
-					s = lang.getSignName( current, TF_SHORT );
-				}
-				break;
-				default:
-					s = sp.getSignCode( current );
-				break;
-			}
-			painter->drawTextFormatted( sign_rect[i], s, Align::Center );
+			painter->drawTextFormatted( sign_rect[i], getNorthIndianSignLabel( (Rasi)redRasi( getAscendant() + i )), Align::Center );
 
 			// leave after ascendant for style == 0
 			if ( chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType == VCN_ASC ) break;
@@ -226,8 +245,38 @@ void VedicRasiChart::finishChart()
 			painter->drawLine( MPoint( rr.x, rr.y + rr.height ), MPoint( rr.x + rr.width, rr.y ));
 		}
 	}
-
 	paintCenterString();
+}
+
+/*****************************************************
+**
+**   VedicRasiChart   ---   getNorthIndianSignLabel
+**
+******************************************************/
+wxString VedicRasiChart::getNorthIndianSignLabel( const Rasi &rasi )
+{
+	wxString s;
+	Lang lang;
+	SymbolProvider sp;
+
+	switch( chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType )
+	{
+		case VCN_ASC:
+			s.Printf( wxT( "%d" ),  rasi + 1 );
+		break;
+		case VCN_NUMBER:
+			s.Printf( wxT( "%d" ),  rasi + 1 );
+		break;
+		case VCN_SHORT:
+		{
+			s = lang.getSignName( rasi, TF_SHORT );
+		}
+		break;
+		default:
+			s = sp.getSignCode( rasi );
+		break;
+	}
+	return s;
 }
 
 /*****************************************************
@@ -386,12 +435,13 @@ void VedicRasiChart::paintCenterString()
 	if ( centerstring_graphic ) setSymbolFont();
 	else setGraphicFont();
 
-	MRect rect( xcenter - xr, ycenter - .5 * v.size() * text_height, 2 * xr, text_height );
+	double ystep = 0;
+	if ( v.size() > 0 ) ystep = centerRect.height / v.size();
+	//painter->drawRectangle( centerRect );
 
 	for( uint i = 0; i < v.size(); i++ )
 	{
-		painter->drawTextFormatted( rect, v[i], Align::Top + Align::HCenter );
-		rect.y += text_height;
+		painter->drawTextFormatted( MRect( centerRect.x, centerRect.y + i * ystep, centerRect.width, ystep ), v[i], Align::Top + Align::HCenter );
 	}
 }
 

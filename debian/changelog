@@ -1,13 +1,17 @@
+maitreya8 (8.0.beta3) unstable; urgency=low
+
+  * see website and ChangeLog in root folder
+
+ -- Martin Pettau <http://www.saravali.de/contact.html>  Sun, 26 Feb 2017 10:12:23 +0100
+
 maitreya8 (8.0.beta2) unstable; urgency=low
 
-  * second beta of major release
   * various fixes, see website and ChangeLog in root folder
 
  -- Martin Pettau <http://www.saravali.de/contact.html>  Tue, 21 Feb 2017 18:37:05 +0100
 
 maitreya8 (8.0.beta1) unstable; urgency=low
 
-  * first beta of major release
   * various fixes, see website and ChangeLog in root folder
 
  -- Martin Pettau <http://www.saravali.de/contact.html>  Sun, 05 Feb 2017 11:35:17 +0100

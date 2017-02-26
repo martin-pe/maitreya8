@@ -576,6 +576,7 @@ void DasaGraphicWidget::paintDasaItem( GraphicalDasaItem *item, const wxRect& re
 			}
 			painter->setGraphicFont();
 			painter->drawMString( MRect( rr ), item->contents, Align::Center );
+			//painter->resetBackground();
 		}
 		else // item too small
 		{

@@ -394,16 +394,34 @@ void DcPainter::setBrush( const MBrush &brush )
 			break;
 		case wxSTIPPLE:
 			{
-				wxBitmap bmp = ImageProvider::get()->getFileBasedBitmap( brush.filename, brush.rotateHue );
+			/*
+			* This section works around a problem in wx version 3 with gtk2 (not gtk3).
+			* Backgounds from cache are only painted correctly once, then bg appears black.
+			* But reloading the bitmap each time is okay.
+			*/
+#if ( defined __WXGTK__ && ! defined __WXGTK3__ && wxMAJOR_VERSION == 3 )
+				wxBitmap bmp = ImageProvider::get()->getFileBasedBitmapConservative( brush.filename, brush.rotateHue );
 				if ( bmp.IsOk() )
 				{
-					dc->SetBrush( wxBrush( bmp ));
+					dc->SetBrush( bmp );
 				}
 				else
 				{
 					wxLogError( wxT( "DcPainter::setBrush: bitmap for brush not okay, using red background instead" ));
 					dc->SetBrush( wxBrush( *wxRED ));
 				}
+#else
+				wxBitmap *bmp = ImageProvider::get()->getFileBasedBitmapRef( brush.filename, brush.rotateHue );
+				if ( bmp->IsOk() )
+				{
+					dc->SetBrush( wxBrush( *bmp ));
+				}
+				else
+				{
+					wxLogError( wxT( "DcPainter::setBrush: bitmap for brush not okay, using red background instead" ));
+					dc->SetBrush( wxBrush( *wxRED ));
+				}
+#endif
 			}
 			break;
 		case wxSOLID:
@@ -437,6 +455,19 @@ void DcPainter::setBrush( const MBrush &brush )
 			break;
 		}
 	}
+}
+
+/*****************************************************
+**
+**   DcPainter   ---   resetBackground
+**
+******************************************************/
+void DcPainter::resetBackground()
+{
+	printf( "HALLO\n" );
+	dc->SetBackgroundMode(wxSOLID);
+	dc->SetBrush(*wxTRANSPARENT_BRUSH);
+	dc->SetBrush(wxNullBrush);
 }
 
 /*****************************************************

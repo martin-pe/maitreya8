@@ -80,6 +80,12 @@ protected:
 	bool centerstring_graphic;
 
 private:
+
+	void calculateCenterRect();
+
+	wxString getNorthIndianSignLabel( const Rasi& );
+
+	MRect centerRect;
 	
 	void setupSouth();
 

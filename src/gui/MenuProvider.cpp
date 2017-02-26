@@ -205,15 +205,6 @@ AppMenuBar::AppMenuBar( int style )
 	westernmenu->addArray( westernitems );
 	Append( westernmenu, _( "&Western"));
 
-/*
-	Windowmenu hat keine Untermenus:
-	Objekte -> BasicWidget
-	Spalten -> BasicWidget
-	Skin    -> BasicWidget
-	Chart Options ->BasicWidget
-	Export ->BasicWidget
-*/
-
 #ifdef USE_PRINT_VIEW
 	const static int windowitems[] = { 0, CMD_NEW_PRINTPREVIEW, CMD_PRINT, CMD_QUICKPRINT, 0, CMD_CLOSE, -1 };
 #else
@@ -243,7 +234,6 @@ AppMenuBar::AppMenuBar( int style )
 	helpmenu = new MyMenu;
 	helpmenu->addItem( APP_HELP );
 	helpmenu->addItem( APP_ABOUT );
-	//helpmenu->addItem( wxID_ABOUT );
 	Append( helpmenu, _( "&Help"));
 }
 
@@ -397,7 +387,6 @@ wxMenu *ContextMenuProvider::getChildWindowListCtrlMenu( ChildWindow *child )
 wxMenu *ContextMenuProvider::getWidgetMenu( BasicWidget *widget )
 {
 	assert( widget );
-	//return getWidgetMenu( widget->getChartProperties(), widget->getWidgetOptions(), widget->GetClassInfo()->GetClassName() );
 	return getWidgetMenu( widget->getChartProperties(), widget->getWidgetOptions(), _( "Context Menu" ));
 }
 
@@ -716,9 +705,9 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 				menu->Append( CMD_VCS_ASHTAKAVARGA, _( "Ashtakavarga"), wxT( "" ), true );
 				menu->Check( CMD_VCS_ASHTAKAVARGA, props->getVedicChartDisplayConfig().showAshtakavarga );
 			}
+			menu->Append( CMD_VCS_PLANETCOLORS, _( "Colors for Planet Symbols"), wxT( "" ), true );
+			menu->Check( CMD_VCS_PLANETCOLORS, props->getVedicChartDisplayConfig().showPlanetColors );
 		}
-		menu->Append( CMD_VCS_PLANETCOLORS, _( "Colors for Planet Symbols"), wxT( "" ), true );
-		menu->Check( CMD_VCS_PLANETCOLORS, props->getVedicChartDisplayConfig().showPlanetColors );
 	}
 	else // western
 	{

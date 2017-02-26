@@ -58,16 +58,6 @@ public:
 		//printf( "BitmapCache::GET 1 size %d name %s rh %d\n", (int)mm.size(), str2char( s ), rotateHue );
 		const pair<wxString, int > k( s, rotateHue );
 
-		/*
-		int cc = 0;
-		for( map<pair<wxString, int>, wxBitmap*>::iterator iter = mm.begin(); iter != mm.end(); iter++ )
-		{
-			pair<wxString, int> p = iter->first;
-			printf( "Cache item %d name %s rh %d\n", cc, str2char( p.first ), p.second );
-			cc++;
-		}
-		*/
-
 		map<pair<wxString, int>, wxBitmap*>::iterator iter = mm.find( k );
 		if ( iter != mm.end() )
 		{
@@ -84,7 +74,6 @@ public:
 	void putBitmapRef( const wxString &s, const int rotateHue, wxBitmap *b )
 	{
 		//printf( "BitmapCache::PUT 1 size %d name %s rh %d\n", (int)mm.size(), str2char( s ), rotateHue );
-		//const BmpCacheKey k( s, rotateHue );
 		const pair<wxString, int > k( s, rotateHue );
 		mm[k] = b;
 		//printf( "BitmapCache::PUT 2 size %d\n", (int)mm.size() );
@@ -142,16 +131,56 @@ wxBitmap ImageProvider::getFileBasedBitmap( const wxString &s, const int rotateH
 
 /*****************************************************
 **
+**   ImageProvider   ---   getFileBasedBitmapConservative
+**
+******************************************************/
+wxBitmap ImageProvider::getFileBasedBitmapConservative( const wxString &s, const int rotateHue )
+{
+	//printf( "ImageProvider::getFileBasedBitmapConservative NEW BMP %s rotateHue %d\n", str2char( s ), rotateHue );
+	wxString filename =  FileConfig::get()->getPicDir() + s;
+	if ( ! wxFile::Exists( filename ))
+	{
+		wxLogError( wxString::Format( wxT( "bitmap \"%s\" not found in directory %s" ),
+			s.c_str( ), FileConfig::get()->getPicDir().c_str()));
+		return errorBmp;
+	}
+	else if ( ! wxFileName::IsFileReadable( filename ))
+	{
+		wxLogError( wxString::Format( wxT( "bitmap \"%s\" not readable in directory %s" ),
+			s.c_str( ), FileConfig::get()->getPicDir().c_str()));
+		return errorBmp;
+	}
+	else // file exists and is readable
+	{
+		if ( rotateHue )
+		{
+			wxBitmap bmp( filename, wxBITMAP_TYPE_ANY );
+			//printf( "ImageProvider::getFileBasedBitmapConservative BMP %s rotateHue %d NEW IS OK %d\n", str2char( s ), rotateHue, bmp.IsOk());
+			wxImage image = bmp.ConvertToImage();
+			image.RotateHue( rotateHue / 360.0 );
+			return wxBitmap( image );
+		}
+		else
+		{
+			return wxBitmap( filename, wxBITMAP_TYPE_ANY );
+		}
+	}
+}
+
+/*****************************************************
+**
 **   ImageProvider   ---   getFileBasedBitmapRef
 **
 ******************************************************/
 wxBitmap *ImageProvider::getFileBasedBitmapRef( const wxString &s, const int rotateHue, const bool storeInCache )
 {
+	//printf( "ImageProvider::getFileBasedBitmapRef image %s rotate %d store %d\n", str2char( s ), rotateHue, storeInCache );
 	BitmapCache *cache = BitmapCache::get();
 	wxBitmap *b = cache->findBitmapRef( s, rotateHue );
 
 	if ( ! b )
 	{
+		//printf( "ImageProvider::getFileBasedBitmapRef NEW BMP %s rotateHue %d\n", str2char( s ), rotateHue );
 		wxString filename =  FileConfig::get()->getPicDir() + s;
 		if ( ! wxFile::Exists( filename ))
 		{
@@ -169,16 +198,17 @@ wxBitmap *ImageProvider::getFileBasedBitmapRef( const wxString &s, const int rot
 		{
 			if ( rotateHue )
 			{
-				//printf( "ImageProvider::loadBitmap BMP %s rotateHue %d NEW IS OK %d\n", str2char( s ), rotateHue, bmp.IsOk());
 				wxBitmap bmp( filename, wxBITMAP_TYPE_ANY );
+				//printf( "ImageProvider::getFileBasedBitmapRef BMP %s rotateHue %d NEW IS OK %d\n", str2char( s ), rotateHue, bmp.IsOk());
 				wxImage image = bmp.ConvertToImage();
 				image.RotateHue( rotateHue / 360.0 );
 				b = new wxBitmap( image );
 			}
 			else
 			{
-				//printf( "ImageProvider::loadBitmap ROTATED BMP rotateHue %d NEW IS OK %d\n", rotateHue, bmp.IsOk());
 				b = new wxBitmap( filename, wxBITMAP_TYPE_ANY );
+				//b = new wxBitmap( filename, wxBITMAP_TYPE_PNG );
+				//printf( "ImageProvider::getFileBasedBitmapRef ROTATED BMP rotateHue %d NEW IS OK %d\n", rotateHue, b->IsOk());
 			}
 		}
 
@@ -188,6 +218,11 @@ wxBitmap *ImageProvider::getFileBasedBitmapRef( const wxString &s, const int rot
 			//printf( "PUT TO CACHE name %s rh %d\n", str2char( s ), rotateHue );
 			cache->putBitmapRef( s, rotateHue, b );
 		}
+	}
+	else
+	{
+		//printf( "ImageProvider::getFileBasedBitmapRef FOUND BMP %s rotateHue %d\n", str2char( s ), rotateHue );
+		//if ( b->IsOk()) printf( " OKi (1)\n" );
 	}
 	return b;
 }

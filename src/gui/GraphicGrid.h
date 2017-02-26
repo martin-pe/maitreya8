@@ -50,6 +50,8 @@ public:
 
 	void addSarvatobhadraChart( Horoscope* = (Horoscope*)NULL, Horoscope* = (Horoscope*)NULL );
 
+	void addAshtakavargaChart();
+
 	void addWesternChart( Horoscope* = (Horoscope*)NULL, Horoscope* = (Horoscope*)NULL );
 
 	AspectExpert *getAspectExpert() const;

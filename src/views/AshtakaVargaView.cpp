@@ -52,100 +52,74 @@ enum { AV_NOTEBOOK = wxID_HIGHEST + 3500 };
 * \brief Chart grid for Ashtakavarga charts
 *
 ******************************************************/
-class AshtakaVargaChartGridWidget : public BasicWidget
+class AshtakaVargaGridWidget : public ChartGridWidget
 {
 public:
-	/*****************************************************
-	**
-	**   AshtakaVargaChartGridWidget   ---   Constructor
-	**
-	******************************************************/
-	AshtakaVargaChartGridWidget( wxWindow *parent, ChartProperties *chartprops, AshtakavargaExpert *expert, const int &type, const int &rows, const int &cols,
-		const wxPoint& pos = wxDefaultPosition, const wxSize &size = wxDefaultSize )
-			: BasicWidget( parent, chartprops, -1, pos, size ),
-			expert( expert ),
-			ashtakatype( type ),
-			rows( rows ),
-			cols( cols )
+
+	AshtakaVargaGridWidget( wxWindow *parent, ChartProperties *chartprops, AshtakavargaExpert *expert, const int &type )
+		: ChartGridWidget( parent, CT_RADIX, chartprops, 3, 3 ),
+		expert( expert ),
+		ashtakatype( type )
 	{
-		chart = new AshtakaVargaChart( chartprops );
+		for( int i = 0; i < 9; i++ ) addAshtakavargaChart();
 		setWidgetOptions( WO_BUNDLE_AVGRID );
+
+		obs = PlanetList().getVedicPlanetOnlyList();
+		obs.push_back( OASCENDANT );
 	}
 
 	/*****************************************************
 	**
-	**   AshtakaVargaChartGridWidget   ---   Destructor
+	**   AshtakaVargaGridWidget   ---   OnDataChanged
 	**
 	******************************************************/
-	~AshtakaVargaChartGridWidget()
+	void OnDataChanged()
 	{
-		delete chart;
-	}
-
-	/*****************************************************
-	**
-	**   AshtakaVargaChartGridWidget   ---   doPaint
-	**
-	******************************************************/
-	virtual void doPaint( const wxRect&, const bool /* eraseBackground */ = true )
-	{
-		int nb = 0;
+		//printf( "AshtakaVargaGridWidget::OnDataChanged\n" );
 		SymbolProvider sp;
 		Lang lang;
 
-		assert( painter );
-		wxSize size = GetVirtualSize();
-		const int xstep = size.x / cols;
-		const int ystep = size.y / rows;
-
-		ObjectArray obs = PlanetList().getVedicPlanetOnlyList();
-		obs.push_back( OASCENDANT );
-
-		for ( int row = 0; row < rows; row++ )
+		for ( uint i = 0; i < charts.size(); i++ )
 		{
-			for ( int col = 0; col < cols; col++ )
+			// dynamic cast  would be better
+			AshtakaVargaChart *chart = (AshtakaVargaChart*)charts[i];
+
+			chart->setAscendant( expert->getRasi( OASCENDANT ));
+			for ( Rasi rasi = R_ARIES; rasi <= R_PISCES; rasi++ )
 			{
-				assert( nb < rows * cols );
-				chart->setAscendant( expert->getRasi( OASCENDANT ));
-				//printf( "setAscendant varga %d AC %d\n", expert->getVarga(), expert->getRasi( OASCENDANT ));
-				for ( Rasi rasi = R_ARIES; rasi <= R_PISCES; rasi++ )
+				if ( i == 0 )
 				{
-					if ( nb == 0 )
-					{
-						chart->setRasiValue( rasi, expert->getSarva( ashtakatype, rasi ));
-						chart->setCenterString( _( "Sarva" ));
-						chart->setGraphicSupport( false );
-						chart->setCenterGraphicFormat( false );
-					}
-					else if ( nb > 0 && nb <= 8 )
-					{
-						chart->setRasiValue( rasi, expert->getItem( ashtakatype, obs[nb-1], rasi ));
-						chart->setCenterGraphicFormat( config->writer->planetSymbols );
-						chart->setCenterString( config->writer->planetSymbols ?  wxString( sp.getPlanetCode( obs[nb-1])) : lang.getObjectName( obs[nb-1], TF_LONG ));
-						chart->setGraphicSupport( true );
-					}
-					else assert( false );
+					chart->setRasiValue( rasi, expert->getSarva( ashtakatype, rasi ));
+
+					// Sarva can have high numbers, so the bindhu etc. mode is switched off here
+					chart->setGraphicSupport( false );
+					chart->setCenterString( _( "Sarva" ));
+					chart->setCenterGraphicFormat( false );
 				}
-				MRect rect( col * xstep, row * ystep, xstep, ystep );
+				else if ( i <= 8 )
+				{
+					chart->setRasiValue( rasi, expert->getItem( ashtakatype, obs[i-1], rasi ));
+
+					// cosmetic
+					chart->setCenterGraphicFormat( config->writer->planetSymbols );
+					chart->setCenterString( config->writer->planetSymbols ?  wxString( sp.getPlanetCode( obs[i-1])) : lang.getObjectName( obs[i-1], TF_LONG ));
+					chart->setGraphicSupport( true );
+				}
+				else assert( false );
 				chart->OnDataChanged();
-				chart->paint( painter, rect );
-				nb++;
 			}
 		}
+		Refresh();
 	}
 
-protected:
+
+private:
 
 	AshtakavargaExpert *expert;
 	const int ashtakatype;
-	const int rows, cols;
+	ObjectArray obs;
 
-	AshtakaVargaChart *chart;
-
-	DECLARE_CLASS( AshtakaVargaChartGridWidget )
 };
-
-IMPLEMENT_CLASS( AshtakaVargaChartGridWidget, BasicWidget )
 
 /*************************************************//**
 *
@@ -166,22 +140,24 @@ public:
 	AshtakaVargaView( wxWindow *parent, ChildWindow *frame )
 			: BasicView( parent, frame, VIEW_ASHTAKAVARGA, true )
 	{
+		int i;
 		props->setFixedVedic();
 		varga = V_RASI;
+
 		expert = new AshtakavargaExpert( doc, varga );
 
 		notebook = new wxNotebook( this, AV_NOTEBOOK );
 
 		//  ANB_REKHA
-		rekhagrid = new AshtakaVargaChartGridWidget( notebook, props, expert, REKHA, 3, 3 );
+		rekhagrid = new AshtakaVargaGridWidget( notebook, props, expert, REKHA );
 		notebook->AddPage( rekhagrid, _( "Rekha" ));
 
 		// ANB_TRIKONA
-		trikonagrid = new AshtakaVargaChartGridWidget( notebook, props, expert, TRIKONA, 3, 3 );
+		trikonagrid = new AshtakaVargaGridWidget( notebook, props, expert, TRIKONA );
 		notebook->AddPage( trikonagrid, _( "Trikona Shodana" ));
 
 		// ANB_EKADHIPATYA
-		ekadhigrid = new AshtakaVargaChartGridWidget( notebook, props, expert, EKADHI, 3, 3 );
+		ekadhigrid = new AshtakaVargaGridWidget( notebook, props, expert, EKADHI );
 		notebook->AddPage( ekadhigrid, _( "Ekadhipatya Shodana" ));
 		
 		// ANB_RASIDIAGRAM
@@ -227,8 +203,10 @@ public:
 		expert->setVarga( varga );
 		expert->update();
 		twidget->clearSheet();
-		expert->write( twidget->getSheet(), config->view->showTextViewHeaders );
-		twidget->OnDataChanged();
+
+		rekhagrid->OnDataChanged();
+		trikonagrid->OnDataChanged();
+		ekadhigrid->OnDataChanged();
 
 		// Rasi widget
 		rasiwidget->clearSheet();
@@ -243,6 +221,9 @@ public:
 		BarDiagramWriter pwriter( pindasheet, props, doc );
 		pwriter.writeAvPindaDiagrams( expert );
 		pindawidget->OnDataChanged();
+
+		expert->write( twidget->getSheet(), config->view->showTextViewHeaders );
+		twidget->OnDataChanged();
 
 		notebook->GetCurrentPage()->Refresh();
 	}
@@ -289,7 +270,7 @@ protected:
 	}
 
 
-	AshtakaVargaChartGridWidget *rekhagrid, *trikonagrid, *ekadhigrid;
+	AshtakaVargaGridWidget *rekhagrid, *trikonagrid, *ekadhigrid;
 	TextWidget *twidget;
 	SheetWidget *pindawidget;
 	SheetWidget *rasiwidget;

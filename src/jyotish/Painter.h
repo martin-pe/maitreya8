@@ -55,6 +55,7 @@ public:
 	virtual MBrush getDefaultBrush() = 0;
 	virtual void setBrush( const MBrush& ) = 0;
 	void setDefaultBrush() { setBrush( getDefaultBrush()); }
+	virtual void resetBackground() {}
 
 	// pen
 	virtual void setPen( const wxPen& ) = 0;
@@ -129,6 +130,7 @@ public:
 	virtual void setTransparentBrush();
 	virtual void setBrush( const MBrush& );
 	MBrush getDefaultBrush();
+	virtual void resetBackground();
 
 	// pen
 	virtual void setPen( const wxPen& );

@@ -121,6 +121,7 @@ public:
 
 	wxBitmap getFileBasedBitmap( const wxString &s, const int rotateHue = 0, const bool storeInCache = true );
 	wxBitmap *getFileBasedBitmapRef( const wxString &s, const int rotateHue = 0, const bool storeInCache = true );
+	wxBitmap getFileBasedBitmapConservative( const wxString &s, const int rotateHue );
 
 	wxBitmap getBitmap( const BitmapId&, const int rotateHue = 0 );
 

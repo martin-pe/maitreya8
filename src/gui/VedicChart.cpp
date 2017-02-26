@@ -99,16 +99,18 @@ void AshtakaVargaChart::writeChartContents( const int& /* chart_id */, const boo
 		if ( config->vedicCalculation->ashtakavargaNumberMode != 0 )
 		{
 			if ( graphicSupport )
+			{
 				for ( int j = 0; j < v; j++ )
 				{
-					if ( j == 5 )
+					if ( j > 0 && ! ( j % 5 ))
 					{
 						fields[i].contents.textitems.push_back( ChartTextItem( s, s ));
 						s.Clear();
 					}
 					s << avitem;
 				}
-			else s.Printf( wxT( "%d" ), rasi_values[i] );
+			}
+			else s.Printf( wxT( "%d" ), v );
 		}
 		else
 		{
@@ -116,6 +118,16 @@ void AshtakaVargaChart::writeChartContents( const int& /* chart_id */, const boo
 		}
 		fields[i].contents.textitems.push_back( ChartTextItem( s, s ));
 	}
+}
+
+/*****************************************************
+**
+**   ChartFactory   ---   createAshtakavargaChart
+**
+******************************************************/
+GraphicalChart *ChartFactory::createAshtakavargaChart( ChartProperties *chartprops )
+{
+	return new AshtakaVargaChart( chartprops );
 }
 
 /*****************************************************
@@ -287,6 +299,5 @@ GraphicalChart *ChartFactory::createVedicChart( const ChartType &charttype, Char
 {
 	return new VedicVargaChart( charttype, chartprops, varga, h1, h2 );
 }
-
 
 

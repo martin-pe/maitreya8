@@ -5,7 +5,7 @@ dnl  File: configure.ac
 dnl
 dnl
 
-AC_INIT(maitreya8, 8.0.beta2)
+AC_INIT(maitreya8, 8.0.beta3)
 AM_INIT_AUTOMAKE()
 
 dnl should be included according to documentation, but not supported by older versions of automake
