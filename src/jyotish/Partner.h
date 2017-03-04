@@ -44,6 +44,9 @@ public:
 	void setHoroscope1( Horoscope *h ) { horoscope = h; }
 	void setHoroscope2( Horoscope *h ) { h2 = h; }
 
+	int calcYoniValue( const Yoni&, const Yoni& );
+	int calcRajjuValue( const Rajju&, const Rajju& );
+
 	void update();
 	void write( Sheet* );
 	void writeComprehensive( Sheet* );

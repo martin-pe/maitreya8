@@ -78,6 +78,89 @@ void AshtakootaExpert::init()
 
 /*****************************************************
 **
+**   AshtakootaExpert   ---   calcYoniValue
+**
+******************************************************/
+int AshtakootaExpert::calcYoniValue( const Yoni &y1, const Yoni &y2 )
+{
+	assert( y1.id >= 0 && y1.id < 14 );
+	assert( y2.id >= 0 && y2.id < 14 );
+	const static int yoni_map[14][14] =
+	{
+		{ 4, 0, 1, 2, 3, 2, 2, 1, 3, 2, 3, 3, 1, 3 },
+		{ 0, 4, 1, 2, 3, 2, 2, 2, 3, 2, 2, 2, 1, 3 },
+		{ 1, 1, 4, 0, 1, 2, 2, 2, 1, 1, 2, 1, 2, 1 },
+		{ 2, 3, 0, 4, 2, 2, 2, 2, 2, 2, 3, 2, 1, 2 },
+		{ 3, 3, 1, 2, 4, 0, 3, 1, 3, 2, 3, 2, 1, 3 },
+		{ 2, 2, 2, 2, 0, 4, 2, 1, 2, 2, 2, 2, 1, 2 },
+		{ 2, 2, 2, 2, 3, 2, 4, 0, 2, 1, 2, 2, 2, 2 },
+		{ 1, 2, 2, 2, 1, 1, 0, 4, 1, 1, 1, 1, 2, 1 },
+		{ 3, 2, 1, 2, 3, 2, 2, 1, 4, 0, 2, 2, 1, 2 },
+		{ 2, 2, 1, 2, 2, 2, 1, 1, 0, 4, 1, 1, 1, 1 },
+		{ 3, 2, 2, 3, 3, 2, 2, 1, 2, 1, 4, 0, 2, 2 },
+		{ 3, 2, 1, 2, 2, 2, 2, 1, 2, 1, 0, 4, 2, 2 },
+		{ 1, 1, 2, 1, 1, 1, 2, 2, 1, 1, 2, 2, 4, 0 },
+		{ 3, 3, 1, 2, 3, 2, 2, 1, 2, 1, 2, 2, 0, 4 }
+	};
+	return yoni_map[y1.id][y2.id];
+}
+
+/*****************************************************
+**
+**   AshtakootaExpert   ---   calcRajjuValue
+**
+******************************************************/
+int AshtakootaExpert::calcRajjuValue( const Rajju &rajju1, const Rajju &rajju2 )
+{
+	 /*
+	  const wxString k_aroha_name[3] = { _( "Aroha" ), wxEmptyString, _( "Avaroha" ) };
+		const wxString k_rajjutype_name[5] = { _( "Pada (foot)" ), _("Kati (waist)" ), _( "Nabhi (navel)" ), _( "Kantha (neck)" ), _( "Siro (head)" ) };
+	 */
+	 int pr = 0;
+	 // different Rajjus in Aroha
+	 if ( rajju1.aroha == 0 && rajju2.aroha == 0 && rajju1.type != rajju2.type )
+	 {
+	 	pr = 4;
+	 }
+
+	 // different Rajjus, not both in Avaroha
+	 else if ( rajju1.type != rajju2.type && ( rajju1.aroha != 2 || rajju2.aroha != 2 ) )
+	 {
+	 	pr = 3;
+	 }
+
+	 // same Rajju, one in Aroha, other in Avaroha
+	 else if ( rajju1.type != rajju2.type && rajju1.aroha != rajju2.aroha )
+	 {
+	 	pr = 2;
+	 }
+
+	 // different Rajjus in Avaroha
+	 else if ( rajju1.type != rajju2.type && rajju1.aroha == 2 && rajju2.aroha == 2 )
+	 {
+	 	pr = 1;
+	 }
+
+	 // same Rajju 
+	 //else if ( rajju1.type == rajju2.type && rajju1.aroha == rajju2.aroha )
+	 else if ( rajju1.type == rajju2.type )
+	 {
+	 	pr = 0;
+	 }
+
+	 else
+	 {
+			wxLogError( wxString::Format( wxT ( "RAJJU1 aroha %d type %d Rajju2 aroha %d type %d\n" ),
+				rajju1.aroha, rajju1.type, rajju2.aroha, rajju2.type ));
+			assert( false );
+	 }
+
+	 //printf( "RAJJU1 aroha %d type %d Rajju2 aroha %d type %d\n", rajju1.aroha, rajju1.type, rajju2.aroha, rajju2.type );
+	return pr;
+}
+
+/*****************************************************
+**
 **   AshtakootaExpert   ---   update
 **
 ******************************************************/
@@ -151,31 +234,11 @@ void AshtakootaExpert::update()
 	 */
 	yoni1 = expert.getYoni( len1 );
 	yoni2 = expert.getYoni( len2 );
-
-	const int yoni_map[14][14] =
-	{
-		{ 4, 0, 1, 2, 3, 2, 2, 1, 3, 2, 3, 3, 1, 3 },
-		{ 0, 4, 1, 2, 3, 2, 2, 2, 3, 2, 2, 2, 1, 3 },
-		{ 1, 1, 4, 0, 1, 2, 2, 2, 1, 1, 2, 1, 2, 1 },
-		{ 2, 3, 0, 4, 2, 2, 2, 2, 2, 2, 3, 2, 1, 2 },
-		{ 3, 3, 1, 2, 4, 0, 3, 1, 3, 2, 3, 2, 1, 3 },
-		{ 2, 2, 2, 2, 0, 4, 2, 1, 2, 2, 2, 2, 1, 2 },
-		{ 2, 2, 2, 2, 3, 2, 4, 0, 2, 1, 2, 2, 2, 2 },
-		{ 1, 2, 2, 2, 1, 1, 0, 4, 1, 1, 1, 1, 2, 1 },
-		{ 3, 2, 1, 2, 3, 2, 2, 1, 4, 0, 2, 2, 1, 2 },
-		{ 2, 2, 1, 2, 2, 2, 1, 1, 0, 4, 1, 1, 1, 1 },
-		{ 3, 2, 2, 3, 3, 2, 2, 1, 2, 1, 4, 0, 2, 2 },
-		{ 3, 2, 1, 2, 2, 2, 2, 1, 2, 1, 0, 4, 2, 2 },
-		{ 1, 1, 2, 1, 1, 1, 2, 2, 1, 1, 2, 2, 4, 0 },
-		{ 3, 3, 1, 2, 3, 2, 2, 1, 2, 1, 2, 2, 0, 4 }
-	};
-	pyoni = yoni_map[yoni1.id][yoni2.id];
+	pyoni = calcYoniValue( yoni1, yoni2 );
 
 	/*
 	 * Graha Maitri
 	 */
-	//friendship1 = horoscope->getVargaData( OMOON, V_RASI )->getFriendship();
-	//friendship2 = h2->getVargaData( OMOON, V_RASI )->getFriendship();
 	mitra1 = getPlanetaryFriendship( getLord( rasi1 ), getLord( rasi2 ) );
 	mitra2 = getPlanetaryFriendship( getLord( rasi2 ), getLord( rasi1 ) );
 	//printf( "Graha maitri rasi1 %d lord1 %d rasi2 %d lord2 %d mitra1 %d mitra2 %d\n", rasi1, getLord(rasi1),rasi2,getLord(rasi2),mitra1,mitra2 );
@@ -228,46 +291,7 @@ void AshtakootaExpert::update()
 	 */
 	 rajju1 = expert.getRajju( nak1 );
 	 rajju2 = expert.getRajju( nak2 );
-
-	 // different Rajjus in Aroha
-	 if ( rajju1.aroha == 0 && rajju2.aroha == 0 && rajju1.type != rajju2.type )
-	 {
-	 	prajju = 4;
-	 }
-
-	 // different Rajjus, not both in Avaroha
-	 else if ( rajju1.type != rajju2.type && ( rajju1.aroha != 2 || rajju2.aroha != 2 ) )
-	 {
-	 	prajju = 3;
-	 }
-
-	 // same Rajju, one in Aroha, other in Avaroha
-	 else if ( rajju1.type != rajju2.type && rajju1.aroha != rajju2.aroha )
-	 {
-	 	prajju = 2;
-	 }
-
-	 // different Rajjus in Avaroha
-	 else if ( rajju1.type != rajju2.type && rajju1.aroha == 2 && rajju2.aroha == 2 )
-	 {
-	 	prajju = 1;
-	 }
-
-	 // same Rajju
-	 else if ( rajju1.type == rajju2.type && rajju1.aroha == rajju2.aroha )
-	 {
-	 	prajju = 0;
-	 }
-
-	 else
-	 {
-			wxLogError( wxString::Format( wxT ( "RAJJU1 aroha %d type %d Rajju2 aroha %d type %d\n" ),
-				rajju1.aroha, rajju1.type, rajju2.aroha, rajju2.type ));
-			prajju = 0;
-		 //assert( false );
-	 }
-
-	 //printf( "RAJJU1 aroha %d type %d Rajju2 aroha %d type %d\n", rajju1.aroha, rajju1.type, rajju2.aroha, rajju2.type );
+	 prajju = calcRajjuValue( rajju1, rajju2 );
 
 	/*
 	 * Final
