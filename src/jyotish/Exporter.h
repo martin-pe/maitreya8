@@ -61,6 +61,7 @@ public:
 
 protected:
 	Exporter *getHtmlExporter( SheetConfig* = (SheetConfig*)NULL, WriterConfig* = (WriterConfig*)NULL );
+	Exporter *getPlainHtmlExporter( SheetConfig *sheetcfg, WriterConfig *writercfg );
 
 };
 

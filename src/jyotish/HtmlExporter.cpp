@@ -33,11 +33,11 @@ extern Config *config;
 * 
 *
 ******************************************************/
-class HtmlExporter : public Exporter
+class PlainHtmlExporter : public Exporter
 {
 public:
 
-	HtmlExporter( SheetConfig *scfg = (SheetConfig*)NULL, WriterConfig *wcfg = (WriterConfig*)NULL )
+	PlainHtmlExporter( SheetConfig *scfg = (SheetConfig*)NULL, WriterConfig *wcfg = (WriterConfig*)NULL )
 	 : Exporter( scfg, wcfg )
 	{
 	}
@@ -46,14 +46,7 @@ public:
 	{
 		s.Clear();
 
-		s << wxT( "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//en\">" ) << Endl
-			<< wxT( "<html>" ) << Endl
-			<< wxT( "<head/>" ) << Endl
-			<< wxT( "<meta charset=\"utf-8\"/>" ) << Endl
-			<< wxT( "<body " )
-			<< wxT( " bgcolor=" ) << config->colors->bgColor.GetAsString( wxC2S_HTML_SYNTAX )
-			<< wxT( " text=" ) << config->colors->fgColor.GetAsString( wxC2S_HTML_SYNTAX )
-			<< wxT( ">" ) << Endl;
+		writeHtmlHead();
 
 		for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 		{
@@ -94,9 +87,26 @@ public:
 		return s;
 	}
 
+protected:
+
 	/*****************************************************
 	**
-	**   HtmlExporter   ---   writeEntry
+	**   PlainHtmlExporter   ---   writeHtmlHead
+	**
+	******************************************************/
+	virtual void writeHtmlHead()
+	{
+		s << wxT( "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//en\">" ) << Endl
+			<< wxT( "<html>" ) << Endl
+			<< wxT( "<head>" ) << Endl
+			<< wxT( "<meta charset=\"utf-8\"/>" ) << Endl
+			<< wxT( "</head>" ) << Endl
+			<< wxT( "<body>" ) << Endl;
+	}
+
+	/*****************************************************
+	**
+	**   PlainHtmlExporter   ---   writeEntry
 	**
 	******************************************************/
 	void writeEntry( const wxString &entry, const int &len )
@@ -108,7 +118,7 @@ public:
 
 	/*****************************************************
 	**
-	**   HtmlExporter   ---   textFragment2Html
+	**   PlainHtmlExporter   ---   textFragment2Html
 	**
 	******************************************************/
 	wxString textFragment2Html( const MString f )
@@ -135,10 +145,102 @@ public:
 
 	/*****************************************************
 	**
+	**   PlainHtmlExporter   ---   generateTable
+	**
+	******************************************************/
+	virtual void generateTable( Table *table )
+	{
+		if ( ! table->header.isEmpty())
+		{
+			s << wxT( "<h1>" ) << textFragment2Html( table->header.tf ) << wxT( "</h1>" ) << Endl;
+		}
+
+		uint c, r;
+		TableEntry *entry;
+		Row row( table, table->getNbCols() );
+
+		s << wxT( " <table>" ) << Endl;
+
+		for ( r = 0; r < (unsigned)table->getNbRows(); r++ )
+		{
+			row = table->contents[r];
+			if ( row.isEmpty() ) continue;
+
+			s << wxT( "   <tr>" ) << Endl;
+			for ( c = 0; c < table->getNbCols(); c++ )
+			{
+				entry = &row.value[c];
+
+				if ( entry->isHeader )
+				{
+					s << wxT( "<th>" ) << textFragment2Html( entry->text ) << wxT ( "</th>" ) << Endl;
+				}
+				else if ( table->isEmptyCol( c ))
+				{
+					s << wxT( "<td width=10></td>" ) << Endl;
+				}
+				else
+				{
+					s << wxT( "<td>" ) << textFragment2Html( entry->text )  << wxT ( "</td>" ) << Endl;
+				}
+			}
+			s << wxT( "   </tr>" ) << Endl;
+		}
+		s << wxT( "	</table><p>" ) << Endl;
+	}
+
+};
+
+
+/*****************************************************
+**
+**   ExporterFactory   ---   getPlainHtmlExporter
+**
+******************************************************/
+Exporter *ExporterFactory::getPlainHtmlExporter( SheetConfig *sheetcfg, WriterConfig *writercfg )
+{
+	return new PlainHtmlExporter( sheetcfg, writercfg );
+}
+
+/*************************************************//**
+*
+* 
+*
+******************************************************/
+class HtmlExporter : public PlainHtmlExporter
+{
+public:
+
+	HtmlExporter( SheetConfig *scfg = (SheetConfig*)NULL, WriterConfig *wcfg = (WriterConfig*)NULL )
+	 : PlainHtmlExporter( scfg, wcfg )
+	{
+	}
+
+protected:
+
+	/*****************************************************
+	**
+	**   HtmlExporter   ---   writeHtmlHead
+	**
+	******************************************************/
+	virtual void writeHtmlHead()
+	{
+		s << wxT( "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//en\">" ) << Endl
+			<< wxT( "<html>" ) << Endl
+			<< wxT( "<head/>" ) << Endl
+			<< wxT( "<meta charset=\"utf-8\"/>" ) << Endl
+			<< wxT( "<body " )
+			<< wxT( " bgcolor=" ) << config->colors->bgColor.GetAsString( wxC2S_HTML_SYNTAX )
+			<< wxT( " text=" ) << config->colors->fgColor.GetAsString( wxC2S_HTML_SYNTAX )
+			<< wxT( ">" ) << Endl;
+	}
+
+	/*****************************************************
+	**
 	**   HtmlExporter   ---   generateTable
 	**
 	******************************************************/
-	void generateTable( Table *table )
+	virtual void generateTable( Table *table )
 	{
 		if ( ! table->header.isEmpty())
 		{
@@ -227,7 +329,6 @@ public:
 	}
 
 };
-
 
 /*****************************************************
 **
