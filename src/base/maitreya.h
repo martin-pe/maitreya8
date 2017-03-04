@@ -675,7 +675,7 @@ struct Align
 };
 
 // writer export options
-enum WidgetExportType { WeNone = 0, WeText, WeCsv, WeHtml, WePdf, WeImage };
+enum WidgetExportType { WeNone = 0, WeText, WeCsv, WeHtml, WePdf, WeImage, WePlainHtml };
 
 /*************************************************//**
 *
