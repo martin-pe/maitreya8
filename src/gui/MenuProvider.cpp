@@ -464,7 +464,11 @@ wxMenu *ContextMenuProvider::getExportMenu( const int &wo )
 	MyMenu *exportmenu = new MyMenu( _( "Export As" ));
 	if ( wo & WO_EXPORT_PLAINTEXT ) exportmenu->addItem( CMD_EXPORT_TEXT );
 	if ( wo & WO_EXPORT_CSVTEXT ) exportmenu->addItem( CMD_EXPORT_CSV );
-	if ( wo & WO_EXPORT_HTMLTEXT ) exportmenu->addItem( CMD_EXPORT_HTML );
+	if ( wo & WO_EXPORT_HTMLTEXT )
+	{
+		exportmenu->addItem( CMD_EXPORT_HTML );
+		exportmenu->addItem( CMD_EXPORT_PLAIN_HTML );
+	}
 
 #ifdef USE_PDF_EXPORT
 	if ( wo & WO_EXPORT_PDF ) exportmenu->addItem( CMD_EXPORT_PDF );
