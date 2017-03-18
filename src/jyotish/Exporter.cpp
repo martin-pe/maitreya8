@@ -240,6 +240,9 @@ Exporter *ExporterFactory::getExporter( const WidgetExportType &type, SheetConfi
 		case WeHtml:
 			e = getHtmlExporter( scfg, wcfg );
 		break;
+		case WePlainHtml:
+			e = getPlainHtmlExporter( scfg, wcfg );
+		break;
 		case WeCsv:
 			e = new ExporterCsv( scfg, wcfg );
 		break;

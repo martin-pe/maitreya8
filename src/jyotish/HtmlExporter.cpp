@@ -159,32 +159,32 @@ protected:
 		TableEntry *entry;
 		Row row( table, table->getNbCols() );
 
-		s << wxT( " <table>" ) << Endl;
+		s << wxT( "	<table>" ) << Endl;
 
 		for ( r = 0; r < (unsigned)table->getNbRows(); r++ )
 		{
 			row = table->contents[r];
 			if ( row.isEmpty() ) continue;
 
-			s << wxT( "   <tr>" ) << Endl;
+			s << wxT( "		<tr>" ) << Endl;
 			for ( c = 0; c < table->getNbCols(); c++ )
 			{
 				entry = &row.value[c];
 
 				if ( entry->isHeader )
 				{
-					s << wxT( "<th>" ) << textFragment2Html( entry->text ) << wxT ( "</th>" ) << Endl;
+					s << wxT( "		<th>" ) << textFragment2Html( entry->text ) << wxT ( "</th>" ) << Endl;
 				}
 				else if ( table->isEmptyCol( c ))
 				{
-					s << wxT( "<td width=10></td>" ) << Endl;
+					s << wxT( "			<td width=10></td>" ) << Endl;
 				}
 				else
 				{
-					s << wxT( "<td>" ) << textFragment2Html( entry->text )  << wxT ( "</td>" ) << Endl;
+					s << wxT( "			<td>" ) << textFragment2Html( entry->text )  << wxT ( "</td>" ) << Endl;
 				}
 			}
-			s << wxT( "   </tr>" ) << Endl;
+			s << wxT( "		</tr>" ) << Endl;
 		}
 		s << wxT( "	</table><p>" ) << Endl;
 	}
