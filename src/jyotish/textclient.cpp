@@ -83,7 +83,9 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("western"), wxT1("Force western mode (instead of default)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("html"), wxT1("print output in HTML format (instead of text)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("html"), wxT1("print output in Maitreya formatted HTML format (instead of text)"),
+		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("plain-html"), wxT1("print output in plain HTML format (instead of text)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("year"), wxT1("set additional year (transit, Solar)"),
@@ -532,6 +534,10 @@ void MaitreyaTextclient::run( int argc, wxChar **argv )
 	if ( parser.Found( wxT( "html" ) ))
 	{
 		exportType = WeHtml;
+	}
+	if ( parser.Found( wxT( "plain-html" ) ))
+	{
+		exportType = WePlainHtml;
 	}
 
 	// Vedic and western mode
