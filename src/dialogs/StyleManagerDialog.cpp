@@ -194,6 +194,7 @@ void StyleManagerDialog::OnCopy( wxCommandEvent& )
 	populateChoice();
 	list->SetSelection( list->GetCount() - 1 );
 	list->Refresh();
+	updateUi();
 }
 
 /*****************************************************
@@ -213,6 +214,7 @@ void StyleManagerDialog::OnUp( wxCommandEvent& )
 	populateChoice();
 	list->SetSelection( target );
 	list->Refresh();
+	updateUi();
 }
 
 /*****************************************************
@@ -224,7 +226,7 @@ void StyleManagerDialog::OnDown( wxCommandEvent& )
 {
 	const int sel = getSelection();
 	const int target = sel + 1;
-	assert( target >= 0 );
+	assert( target < list->GetCount() );
 	//printf( "On Down selected %d target %d\n", sel, target );
 	SheetConfig *cfg = v[sel];
 	v[sel] = v[target];
@@ -232,6 +234,7 @@ void StyleManagerDialog::OnDown( wxCommandEvent& )
 	populateChoice();
 	list->SetSelection( target );
 	list->Refresh();
+	updateUi();
 }
 
 /*****************************************************
@@ -251,6 +254,7 @@ void StyleManagerDialog::renameEntry( const int &sel )
 		list->Refresh();
 	}
 	list->Refresh();
+	updateUi();
 }
 
 /*****************************************************
@@ -262,6 +266,7 @@ void StyleManagerDialog::OnRename( wxCommandEvent& )
 {
 	//printf( "Rename\n" );
 	renameEntry( getSelection() );
+	updateUi();
 }
 
 /*****************************************************
@@ -292,6 +297,7 @@ void StyleManagerDialog::OnDelete( wxCommandEvent& )
 		list->SetSelection( sel );
 		list->Refresh();
 	}
+	updateUi();
 }
 
 /*****************************************************

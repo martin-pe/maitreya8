@@ -132,7 +132,7 @@ public:
 		summaryWidget->clearSheet();
 		{
 			SheetWidgetGrid *summaryGrid = new SheetWidgetGrid( 2, .4, 400, 200, 1000, 800 );
-			BarDiagramWidget *diagram1 = new BarDiagramWidget( props, _( "Shad Bala Summary" ));
+			BarDiagramWidget *diagram1 = new BarDiagramWidget( props, _( "Shadala Summary" ));
 			for ( i = 0; i < obs.size(); i++ ) diagram1->addItem( new BarDiagramItem( obs[i], expert->getShadBala( obs[i] )));
 			summaryGrid->addItem( diagram1 );
 

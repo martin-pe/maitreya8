@@ -78,7 +78,7 @@ protected:
 		if ( toolbar )
 		{
 			expert->init();
-			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_Varga );
+			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_VARGA );
 			if ( choice_varga ) choice_varga->SetSelection( varga );
 
 			wxChoice *choice_firsthouse = (wxChoice*)toolbar->FindControl( TBS_YOGAFIRSTHOUSE );
@@ -154,7 +154,7 @@ protected:
 	{
 		if ( toolbar )
 		{
-			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_Varga );
+			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_VARGA );
 			if ( choice_varga ) varga = (Varga)choice_varga->GetSelection();
 
 			wxChoice *choice_firsthouse = (wxChoice*)toolbar->FindControl( TBS_YOGAFIRSTHOUSE );

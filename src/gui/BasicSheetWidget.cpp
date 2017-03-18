@@ -116,13 +116,14 @@ void BasicSheetWidget::clearSheet()
 ******************************************************/
 void BasicSheetWidget::exportAs( const WidgetExportType &type )
 {
-	printf( "BasicSheetWidget::exportAs %d\n", type );
+	//printf( "BasicSheetWidget::exportAs %d\n", type );
 
 	switch( type  )
 	{
 		case WeText:
 		case WeCsv:
 		case WeHtml:
+		case WePlainHtml:
 			doTextExport( type );
 		break;
 		case WePdf:
@@ -163,6 +164,11 @@ void BasicSheetWidget::doTextExport( const WidgetExportType &type )
 			filename = wxT( "out.html" );
 			filetypes = wxT( "Html (*.html)|*.html|All files (*)|*.*" );
 			title = _( "Export as HTML Text" );
+		break;
+		case WePlainHtml:
+			filename = wxT( "out.html" );
+			filetypes = wxT( "Html (*.html)|*.html|All files (*)|*.*" );
+			title = _( "Export as plain HTML Text" );
 		break;
 		default:
 			assert( false );

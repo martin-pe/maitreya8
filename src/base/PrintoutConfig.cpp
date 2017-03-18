@@ -56,7 +56,7 @@ PdfDocumentConfig::PdfDocumentConfig()
 	pdfViewerCommand = FileConfig::get()->getPdfViewerDefaultFilename();
 
 	customHeader.enabled = true;
-	customHeader.text = _( "$name/$fulldate/$location" );
+	customHeader.text = wxT( "$name/$fulldate/$location" );
 	customHeader.showSeparator = true;
 	customHeader.orientation = 0;
 	customHeader.showOnFirstPage = false;

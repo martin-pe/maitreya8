@@ -121,6 +121,9 @@ void BasicWidget::OnMenuCommand( wxCommandEvent &event )
 		case CMD_EXPORT_HTML:
 			exportAs( WeHtml );
 		break;
+		case CMD_EXPORT_PLAIN_HTML:
+			exportAs( WePlainHtml );
+		break;
 		case CMD_EXPORT_PDF:
 			exportAs( WePdf );
 		break;

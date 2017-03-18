@@ -51,15 +51,7 @@ public:
 	MBrush brush;
 	wxColour textColor;
 
-	// TODO ggf ableiten von einer Basisklasse
 	wxString name;
-	//wxString description;
-
-	/*
-	bool useTextColors;
-	bool useHouseColors;
-	bool useSignColors;
-	*/
 
 	wxColour &getPlanetColor( const int& );
 

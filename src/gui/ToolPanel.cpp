@@ -55,9 +55,9 @@ extern Config *config;
 ******************************************************/
 const int tb_horawindow[] = { TBS_DATE, CMD_NOW, TBS_TZ, -1 };
 
-const int tb_textwindow[] = { TBS_TEXTMODE, TBS_Varga, TBS_DASA, -1 };
+const int tb_textwindow[] = { TBS_TEXTMODE, TBS_VARGA, TBS_DASA, -1 };
 
-const int tb_ashtakavargawindow[] = { TBS_Varga, -1 };
+const int tb_ashtakavargawindow[] = { TBS_VARGA, -1 };
 
 const int tb_eclipsewindow[] = { TBS_YEAR, TBS_NBYEARS, TBS_ECL_TYPE, TBS_TZ, -1 };
 
@@ -81,7 +81,7 @@ const int tb_solarwindow[] = { TBS_YEAR, CMD_NOW, CMD_NEW_ANNUAL_CHART, TB_TEXT,
 
 const int tb_dasawindow[] = { CMD_ENTRY_CHART, CMD_TOGGLE_SPLIT, TB_SEPARATOR, TBS_YOGASOURCEFILTER,-1 };
 
-const int tb_yogawindow[] = { TBS_Varga, TBS_YOGAGROUPFILTER, TBS_YOGASOURCEFILTER, TBS_YOGAFIRSTHOUSE, -1 };
+const int tb_yogawindow[] = { TBS_VARGA, TBS_YOGAGROUPFILTER, TBS_YOGASOURCEFILTER, TBS_YOGAFIRSTHOUSE, -1 };
 
 const int tb_yogaeditor[] = { APP_NEW, APP_OPEN, CMD_SAVE, CMD_SAVEAS, CMD_CLOSE, -1 };
 
@@ -288,7 +288,7 @@ void ToolbarFactory::createChoiceItem( wxToolBar *toolbar, const int &item )
 		control = new TextViewModeChoice( toolbar, item );
 		label = _( "Mode" );
 		break;
-	case TBS_Varga:
+	case TBS_VARGA:
 	{
 		VargaConfigLoader *loader = VargaConfigLoader::get();
 

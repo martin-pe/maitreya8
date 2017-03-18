@@ -46,7 +46,7 @@ libjyotish_a_SOURCES = ArabicParts.cpp ArabicParts.h Ashtakavarga.cpp Ashtakavar
 	MdlInterpreter.cpp MdlInterpreter.h MdlLexer.cc MdlLexer.ll MdlParser.cc MdlParser.yy \
 	Nakshatra.cpp Nakshatra.h Painter.cpp Painter.h Partner.cpp Partner.h PrintoutTextHelper.cpp \
 	PrintoutTextHelper.h ShadBala.cpp ShadBala.h Sheet.cpp Sheet.h SingletonLifeline.cpp \
-	SingletonLifeline.h SolarChart.cpp SolarChart.h Table.cpp Table.h textclient.cpp \
+	SingletonLifeline.h SolarChart.cpp SolarChart.h Table.cpp Table.h \
 	TextHelper.cpp TextHelper.h Transit.cpp Transit.h UranianBase.cpp UranianBase.h \
 	Uranian.cpp Uranian.h UranianHelper.cpp UranianHelper.h Varga.cpp Varga.h \
 	VargaHoroscope.cpp VargaHoroscope.h VedicPlanet.cpp VedicPlanet.h VimsottariDasa.cpp \

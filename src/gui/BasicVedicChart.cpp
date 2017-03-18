@@ -413,12 +413,16 @@ void BasicVedicChart::writeChartContents( const int &chart_id, const bool applyF
 		if ( retro )
 		{
 			//lname += wxT( " " );
-			lname += _( "(R)" );
-			sname += _( "R" );
+			lname += wxT( "(R)" );
+			sname += wxT( "R" );
 		}
 
 		// see if transit mode, varga, av and valid planet
-		avmode = ( IS_AVPLANET( planet ) && charttype == CT_TRANSIT && chart_id == 1 && field_count == 12 && chartprops->getVedicChartDisplayConfig().showAshtakavarga );
+		avmode = ( IS_AVPLANET( planet )
+			&& charttype == CT_TRANSIT
+			&& chart_id == 1
+			&& field_count == 12
+			&& chartprops->getVedicChartDisplayConfig().showAshtakavarga );
 
 		if ( avmode )
 		{
@@ -930,6 +934,7 @@ void BasicVedicChart::drawFieldText( const uint &f, const FIELD_PART &part )
 void BasicVedicChart::drawSingleGraphicItem( const MRect &rect, const ChartGraphicItem &g, const FIELD_PART &part )
 {
 	VedicChartConfig *vconf = getVChartConfig();
+	const wxChar retroSymbol = SymbolProvider().getRetroCode( MD_RETROGRADE );
 	if ( vconf->textColor.IsOk())
 	{
 		painter->setTextColor( vconf->textColor );
@@ -942,8 +947,9 @@ void BasicVedicChart::drawSingleGraphicItem( const MRect &rect, const ChartGraph
 	{
 		setDefaultTextColor( part );
 	}
+	//setDefaultTextColor();
 	painter->drawTextFormatted( rect, g.name, Align::Center );
-	if ( g.retro ) painter->drawTextFormatted( MRect( rect.x + text_width, rect.y+text_height/3, rect.width, rect.height ), wxT( "_" ), Align::Center);
+	if ( g.retro ) painter->drawTextFormatted( MRect( rect.x + text_width, rect.y+text_height/3, rect.width, rect.height ), retroSymbol, Align::Center);
 }
 
 /*****************************************************

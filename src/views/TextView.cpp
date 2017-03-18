@@ -116,7 +116,7 @@ protected:
 			wxChoice *choice_viewmode = (wxChoice*)toolbar->FindControl( TBS_TEXTMODE );
 			if ( choice_viewmode ) choice_viewmode->SetSelection( mode );
 
-			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_Varga );
+			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_VARGA );
 			if ( choice_varga )
 			{
 				choice_varga->SetSelection( varga );
@@ -170,7 +170,7 @@ protected:
 				DocumentManager::get()->documentChanged( doc );
 			}
 
-			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_Varga );
+			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_VARGA );
 			if ( choice_varga )
 			{
 				varga = (Varga)choice_varga->GetSelection();

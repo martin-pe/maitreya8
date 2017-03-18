@@ -223,7 +223,8 @@ void VedicRasiChart::finishChart()
 		*********************************************************/
 		if ( ! ( chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType == VCN_SYMBOL )) setGraphicFont();
 		else setSymbolFont();
-
+ 
+		setDefaultTextColor();
 		for ( Rasi i = R_ARIES; i <= R_PISCES; i++ )
 		{
 			painter->drawTextFormatted( sign_rect[i], getNorthIndianSignLabel( (Rasi)redRasi( getAscendant() + i )), Align::Center );

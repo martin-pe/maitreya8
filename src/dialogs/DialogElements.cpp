@@ -311,7 +311,7 @@ wxString TextViewModeChoice::getItemName( const int &i )
 	{
 		_("Base Data"),
 		_("Arabic Parts"),
-		_("Ashtaka Varga"),
+		_("Ashtakavarga"),
 		_("Astronomical"),
 		_("Bhava"),
 		_("Dasa (Short)"),

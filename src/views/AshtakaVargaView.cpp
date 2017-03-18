@@ -140,7 +140,6 @@ public:
 	AshtakaVargaView( wxWindow *parent, ChildWindow *frame )
 			: BasicView( parent, frame, VIEW_ASHTAKAVARGA, true )
 	{
-		int i;
 		props->setFixedVedic();
 		varga = V_RASI;
 
@@ -177,7 +176,7 @@ public:
 		initToolItems();
 		OnDataChanged();
 
-		Connect( TBS_Varga, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( AshtakaVargaView::OnChoiceCommand ));
+		Connect( TBS_VARGA, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( AshtakaVargaView::OnChoiceCommand ));
 	}
 
 	/*****************************************************
@@ -191,7 +190,7 @@ public:
 		delete expert;
 	}
 
-	virtual wxString getWindowLabel( const bool shortname = false ) { return shortname ? _( "AV" ) : _( "Ashtaka Varga" ); }
+	virtual wxString getWindowLabel( const bool shortname = false ) { return shortname ? _( "AV" ) : _( "Ashtakavarga" ); }
 
 	/*****************************************************
 	**
@@ -249,7 +248,7 @@ protected:
 	{
 		if ( toolbar )
 		{
-			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_Varga );
+			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_VARGA );
 			if ( choice_varga ) choice_varga->SetSelection( varga );
 		}
 	}
@@ -263,7 +262,7 @@ protected:
 	{
 		if ( toolbar )
 		{
-			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_Varga );
+			wxChoice *choice_varga = (wxChoice*)toolbar->FindControl( TBS_VARGA );
 			if ( choice_varga ) varga = (Varga)choice_varga->GetSelection();
 		}
 		OnDataChanged();
