@@ -71,7 +71,6 @@ Config *config;
 
 static const wxCmdLineEntryDesc cmdLineDesc[] =
 {
-	//{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("help"), wxT1("show this help message"), wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("help"), wxT1("show this help message"), wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("date"), wxT1("Set UT date YYYY-MM-DD HH:MM:SS"),
@@ -485,6 +484,8 @@ protected:
 		if ( t.HasMoreTokens()) bdeg = getIntFromString( t.GetNextToken());
 		if ( t.HasMoreTokens()) bmin = getIntFromString( t.GetNextToken());
 		if ( t.HasMoreTokens()) tz = myatof( t.GetNextToken());
+
+		//printf( "Set location: name %s ldeg %ld lmin %ld bdeg %ld bmin %ld tz %f\n", str2char( name ), ldeg, lmin, bdeg, bmin, tz );
 
 		lon = lmin + 60 * ldeg;
 		lon /= 60;
