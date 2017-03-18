@@ -370,8 +370,9 @@ protected:
 			SortChoice *choice_sort = (SortChoice*)toolbar->FindControl( TBS_SORT );
 			if ( choice_sort ) choice_sort->Enable( pageId == UNB_EVENT_LIST );
 
-			toolbar->EnableTool( CMD_FILTER, pageId == UNB_EVENT_LIST );
-			toolbar->EnableTool( APP_CONFIGURE, pageId == UNB_EVENT_LIST || pageId == UNB_CLUSTERS ||  pageId == UNB_YEARLY_PREVIEW );
+			const bool needsFilter = pageId == UNB_EVENT_LIST || pageId == UNB_CLUSTERS ||  pageId == UNB_YEARLY_PREVIEW;
+			toolbar->EnableTool( CMD_FILTER, needsFilter );
+			toolbar->EnableTool( APP_CONFIGURE, needsFilter );
 
 			wxSpinCtrl *spin_orbis = (wxSpinCtrl*)toolbar->FindControl( TBS_ORBIS );
 			if ( spin_orbis ) spin_orbis->Enable( pageId == UNB_CLUSTERS || pageId == UNB_EVENT_LIST );
