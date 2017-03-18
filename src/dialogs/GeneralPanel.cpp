@@ -156,8 +156,8 @@ GeneralPanel::GeneralPanel( wxWindow* parent ) : ConfigPanel( parent, false )
 	Connect( CD_NAME, wxEVT_COMMAND_TEXT_ENTER, wxTextEventHandler( GeneralPanel::OnSearchLocation ));
 	Connect( CD_LANGUAGE, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( GeneralPanel::OnLanguageChoice ));
 
-#ifdef SHOW_LANGUARGES
 	choice_lang->Clear();
+#ifdef SHOW_LANGUARGES
 	list<LanguageEntry>::iterator iter;
 	int thelang = 0, i = 0;
 	list<LanguageEntry> thelist = LanguageConfig::get()->getLanguages();
@@ -169,8 +169,11 @@ GeneralPanel::GeneralPanel( wxWindow* parent ) : ConfigPanel( parent, false )
 	}
 	choice_lang->SetSelection( thelang );
 #else
-	label_lang->Show( false );
-	choice_lang->Show( false );
+	wxLocale *locale = LanguageConfig::get()->getLocale();
+	choice_lang->Append( locale->GetName());
+	choice_lang->SetSelection( 0 );
+	label_lang->Enable( false );
+	choice_lang->Enable( false );
 #endif
 
 	updateTzItems();
