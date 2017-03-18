@@ -282,7 +282,7 @@ PlanetContext TransitModeChoice::getTransitMode() const
 }
 
 
-#define MAX_TEXT_VIEW_MODES 16
+#define MAX_TEXT_VIEW_MODES 17
 
 /*****************************************************
 **
@@ -320,6 +320,7 @@ wxString TextViewModeChoice::getItemName( const int &i )
 		_("Jaimini"),
 		_("Krishnamurti Paddhati"),
 		_("Nakshatra"),
+		_("Shadbala"),
 		_("Vargas"),
 		_("Vedic Aspectarium"),
 		_("Vedic Planets"),

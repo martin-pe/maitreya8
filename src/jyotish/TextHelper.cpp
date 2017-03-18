@@ -43,6 +43,7 @@
 #include "Nakshatra.h"
 #include "PlanetList.h"
 #include "Table.h"
+#include "ShadBala.h"
 #include "Sheet.h"
 #include "SheetConfig.h"
 #include "Varga.h"
@@ -141,6 +142,14 @@ int TextHelper::writeTextAnalysis( const int &mode, const Varga varga, const Das
 	case TM_ASTRONOMICAL:
 		ret = writeAstronomicalData();
 		break;
+
+	case TM_SHADBALA:
+	{
+		ShadBalaExpert sexpert( horoscope );
+		sexpert.updateAllBalas();
+		sexpert.write( sheet );
+	}
+	break;
 
 	case TM_VARGA:
 	{
