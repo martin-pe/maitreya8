@@ -132,6 +132,10 @@ enum { CMD_FIRST = wxID_HIGHEST + 1000,
 	// final commands
 	CMD_NEW_RASI,
 	CMD_GRAPHIC_STYLE = CMD_NEW_RASI + 30,
+
+	// careful: this id was introduced after release, so do not put it in the middle
+	// because the ids are stored for toolbar buttons
+	CMD_EXPORT_PLAIN_HTML,
 	CMD_LAST
 };
 
@@ -271,6 +275,8 @@ public:
 	MCommand *getCommand( const int &id );
 
 	bool processKeyEvent( wxKeyEvent*, wxWindow *window, const bool isTextWidget );
+
+	const map<int, MCommand*> &getCommands() const { return cmds; }
 
 protected:
 	void init();

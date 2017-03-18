@@ -80,6 +80,12 @@ wxString MaitreyaShortcut::toString() const
 	case WXK_F1:
 		s << wxT( "F1" );
 		break;
+	case WXK_UP:
+		s << wxT( "Up" );
+		break;
+	case WXK_DOWN:
+		s << wxT( "Down" );
+		break;
 	case WXK_ESCAPE:
 		s << wxT( "Esc" );
 		break;
@@ -146,19 +152,6 @@ NewDefaultCommand::NewDefaultCommand()
 wxString NewDefaultCommand::getText()
 {
 	return _( "New" );
-	/*
-	if ( config->multipleView->useMultipleViews )
-	{
-		wxString s;
-		vector<MultipleViewConfig*> v = MultipleViewConfigLoader::get()->getConfigs();
-		s << wxT( "New (" ) << v[config->multipleView->defaultView]->name << wxT( ")" );
-		return s;
-	}
-	else
-	{
-		return _( "New (Single View)" );
-	}
-*/
 }
 
 IMPLEMENT_SINGLETON( CommandHandler )
@@ -323,6 +316,7 @@ void CommandHandler::init()
 	cmds[ CMD_EXPORT_TEXT ] = new MCommand( BM_EXPORT_TEXT, _( "Plain Text" ));
 	cmds[ CMD_EXPORT_CSV ] = new MCommand( BM_EXPORT_CSV, _( "CSV Text" ));
 	cmds[ CMD_EXPORT_HTML ] = new MCommand( BM_EXPORT_HTML, _( "HTML" ));
+	cmds[ CMD_EXPORT_PLAIN_HTML ] = new MCommand( BM_EXPORT_HTML, _( "Plain HTML" ));
 	cmds[ CMD_EXPORT_PDF ] = new MCommand( BM_EXPORT_PDF, _( "PDF" ));
 	cmds[ CMD_EXPORT_IMAGE ] = new MCommand( BM_EXPORT_IMAGE, _( "Image" ));
 
