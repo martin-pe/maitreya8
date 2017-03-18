@@ -44,6 +44,7 @@
 #include "FileConfig.h"
 #include "ShadBala.h"
 #include "Sheet.h"
+#include "ShadBala.h"
 #include "SolarChart.h"
 #include "TextHelper.h"
 #include "Transit.h"
@@ -160,7 +161,9 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("constant-arc"), wxT1("Show constant arc"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("solar"), wxT1("Show Solar (Tajaka) positions"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("solar"), wxT1("Show Solar chart"),
+		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("shadbala"), wxT1("Show Shadbala"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("uranian"), wxT1("Show Uranian Analysis"),
