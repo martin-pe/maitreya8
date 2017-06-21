@@ -2814,7 +2814,7 @@ msgstr "Standards wiederherstellen"
 
 #: src/dialogs/ConfigDialog.cpp:301
 msgid "Configuration has changed. Do you want to save?"
-msgstr "Die Honfiguration wurde geändert. Wollen Sie speichern?"
+msgstr "Die Konfiguration wurde geändert. Wollen Sie speichern?"
 
 #: src/dialogs/ConfigPanel.cpp:151
 msgid "Multiple Views"
@@ -3186,7 +3186,7 @@ msgstr "Koordinaten"
 
 #: src/dialogs/EphemerisPanel.cpp:82
 msgid "Geocentric"
-msgstr "Geozentisch"
+msgstr "Geozentrisch"
 
 #: src/dialogs/EphemerisPanel.cpp:83
 msgid "Topocentric"
@@ -3605,7 +3605,7 @@ msgstr "Umriss auswählen"
 
 #: src/dialogs/PlanetSignDisplayPanel.cpp:56
 msgid "Display of Positions"
-msgstr "Darstellung der Positioen"
+msgstr "Darstellung der Positionen"
 
 #: src/dialogs/PlanetSignDisplayPanel.cpp:57
 msgid "Display of Signs"
