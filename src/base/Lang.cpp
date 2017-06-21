@@ -481,15 +481,15 @@ const wxString Lang::getSignName( const Rasi &i, const TEXT_FORMAT format ) cons
 		_( "Aquarius" ), _( "Pisces" ) };
 
 	const static wxString k_sign_full_vedic[12]={ wxT( "Mesha" ), wxT( "Vrishabha" ), wxT( "Mithuna" ),
-		wxT( "Kataka" ), wxT( "Simha" ), wxT( "Kanya" ), wxT( "Thula" ), wxT( "Vrischika" ),
+		wxT( "Kataka" ), wxT( "Simha" ), wxT( "Kanya" ), wxT( "Tula" ), wxT( "Vrischika" ),
 		wxT( "Dhanus" ), wxT( "Makara" ), wxT( "Kumbha" ), wxT( "Meena" ) };
 
 	const static wxString k_sign_medium_vedic[12]={ wxT( "Mes" ), wxT( "Vrs" ), wxT( "Mit" ),
-		wxT( "Kat" ), wxT( "Sim" ), wxT( "Kan" ), wxT( "Thu" ), wxT( "Vrc" ), wxT( "Dha" ),
+		wxT( "Kat" ), wxT( "Sim" ), wxT( "Kan" ), wxT( "Tul" ), wxT( "Vrc" ), wxT( "Dha" ),
 		wxT( "Mak" ), wxT( "Kum" ), wxT( "Mee" ) };
 
 	const static wxString k_sign_vedic[12]={ wxT( "Ms" ), wxT( "Vs" ), wxT( "Mi" ), wxT( "Kt" ),
-	wxT( "Si" ), wxT( "Kn" ), wxT( "Th" ), wxT( "Vc" ), wxT( "Dh" ), wxT( "Mk" ), wxT( "Ku" ), wxT( "Mn" ) };
+	wxT( "Si" ), wxT( "Kn" ), wxT( "Tu" ), wxT( "Vc" ), wxT( "Dh" ), wxT( "Mk" ), wxT( "Ku" ), wxT( "Mn" ) };
 
 	if ( format == TF_LONG )
 	{
