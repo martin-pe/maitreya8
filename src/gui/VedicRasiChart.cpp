@@ -287,6 +287,8 @@ wxString VedicRasiChart::getNorthIndianSignLabel( const Rasi &rasi )
 ******************************************************/
 void VedicRasiChart::setupChart()
 {
+	// bugfix 2017-6-20: ascendant was only set in constructor, so there was no update of asc in North Indian chart
+	ascendant = getPlanetField( OASCENDANT, 0 );
 	positionOffset = 0;
 
 	fields.clear();
