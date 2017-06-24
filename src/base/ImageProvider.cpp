@@ -125,7 +125,13 @@ int ImageProvider::getDefaultBitmapSize() const
 wxBitmap ImageProvider::getFileBasedBitmap( const wxString &s, const int rotateHue, const bool storeInCache )
 {
 	wxBitmap *b = getFileBasedBitmapRef( s, rotateHue, storeInCache );
-	if ( b ) return wxBitmap( *b );
+	if ( b )
+	{
+		// workaround for wxgtk3
+		wxImage img = b->ConvertToImage();
+		return wxBitmap( img );
+		//return wxBitmap( *b );
+	}
 	else return errorBmp;
 }
 

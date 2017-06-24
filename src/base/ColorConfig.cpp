@@ -27,6 +27,7 @@
 #include <wx/colour.h>
 #include <wx/log.h>
 #include <wx/tokenzr.h>
+#include <wx/stopwatch.h>
 #include <vector>
 
 using namespace std;
@@ -131,6 +132,23 @@ void PaletteManager::setPalette( wxString name, const BgPalette &palette )
 ******************************************************/
 BgPalette *PaletteManager::getPalette( wxString name )
 {
+	/*
+	printf( "PaletteManager::getPalette size %ld\n", m.size());
+	const wxLongLong starttime = wxGetLocalTimeMillis();
+	BgPalette *p = (BgPalette*)NULL;
+	if ( name == wxT( "signstock" ))
+	{
+		p = &config->chartColors->signPalette;
+	}
+	if ( name == wxT( "housestock" ))
+	{
+		p = &config->chartColors->housePalette;
+	}
+	else p = m[name];
+	printf( "PaletteManager::getPalette mark 1 %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
+	return p;
+	*/
+
 	if ( name == wxT( "signstock" ))
 	{
 		return &config->chartColors->signPalette;

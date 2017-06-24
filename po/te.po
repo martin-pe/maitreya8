@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maitreya 4.1\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-06-24 09:52+0200\n"
+"POT-Creation-Date: 2017-06-24 12:48+0200\n"
 "PO-Revision-Date: 2006-07-09 23:34+0530\n"
 "Last-Translator: Santhosh <astrosanthosh@gmail.com>\n"
 "Language-Team: te <info@onlinejyotish.com>\n"
@@ -56,108 +56,108 @@ msgstr "సాంవత్సరిక పూర్తి"
 msgid "unknown"
 msgstr "తెలియని"
 
-#: src/base/ColorConfig.cpp:250 src/base/Lang.cpp:133 src/base/Lang.cpp:479
+#: src/base/ColorConfig.cpp:268 src/base/Lang.cpp:133 src/base/Lang.cpp:479
 #: src/dialogs/WesternPanel.cpp:68 src/gui/MenuProvider.cpp:560
 #: src/gui/ToolPanel.cpp:273
 msgid "Aries"
 msgstr "మేష"
 
-#: src/base/ColorConfig.cpp:251 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:269 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
 msgid "Taurus"
 msgstr "వృషభ"
 
-#: src/base/ColorConfig.cpp:252 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:270 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
 msgid "Gemini"
 msgstr "మిథున"
 
-#: src/base/ColorConfig.cpp:253 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:271 src/base/Lang.cpp:479 src/gui/ToolPanel.cpp:273
 msgid "Cancer"
 msgstr "కర్కాటక"
 
-#: src/base/ColorConfig.cpp:254 src/base/Lang.cpp:265 src/base/Lang.cpp:480
+#: src/base/ColorConfig.cpp:272 src/base/Lang.cpp:265 src/base/Lang.cpp:480
 #: src/gui/ToolPanel.cpp:273
 msgid "Leo"
 msgstr "సింహ"
 
-#: src/base/ColorConfig.cpp:255 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:273 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:273
 msgid "Virgo"
 msgstr "కన్య"
 
-#: src/base/ColorConfig.cpp:256 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:273
+#: src/base/ColorConfig.cpp:274 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:273
 msgid "Libra"
 msgstr "తుల"
 
-#: src/base/ColorConfig.cpp:257 src/base/Lang.cpp:268 src/base/Lang.cpp:480
+#: src/base/ColorConfig.cpp:275 src/base/Lang.cpp:268 src/base/Lang.cpp:480
 #: src/gui/ToolPanel.cpp:274
 msgid "Scorpio"
 msgstr "వృశ్చిక"
 
-#: src/base/ColorConfig.cpp:258 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:274
+#: src/base/ColorConfig.cpp:276 src/base/Lang.cpp:480 src/gui/ToolPanel.cpp:274
 msgid "Sagittarius"
 msgstr "ధను"
 
-#: src/base/ColorConfig.cpp:259 src/base/Lang.cpp:480
+#: src/base/ColorConfig.cpp:277 src/base/Lang.cpp:480
 #: src/dialogs/PlanetSignDisplayPanel.cpp:74 src/gui/ToolPanel.cpp:274
 msgid "Capricorn"
 msgstr "మకర"
 
-#: src/base/ColorConfig.cpp:260 src/base/Lang.cpp:481 src/gui/ToolPanel.cpp:274
+#: src/base/ColorConfig.cpp:278 src/base/Lang.cpp:481 src/gui/ToolPanel.cpp:274
 msgid "Aquarius"
 msgstr "కుంభ"
 
-#: src/base/ColorConfig.cpp:261 src/base/Lang.cpp:481 src/gui/ToolPanel.cpp:274
+#: src/base/ColorConfig.cpp:279 src/base/Lang.cpp:481 src/gui/ToolPanel.cpp:274
 msgid "Pisces"
 msgstr "మీన"
 
-#: src/base/ColorConfig.cpp:262 src/dialogs/VedicCalculationPanel.cpp:183
+#: src/base/ColorConfig.cpp:280 src/dialogs/VedicCalculationPanel.cpp:183
 #: src/jyotish/Eclipse.cpp:136 src/jyotish/Ephemeris.cpp:570
 msgid "Sun"
 msgstr "రవి"
 
-#: src/base/ColorConfig.cpp:263 src/base/Lang.cpp:118
+#: src/base/ColorConfig.cpp:281 src/base/Lang.cpp:118
 #: src/dialogs/VedicCalculationPanel.cpp:93
 #: src/dialogs/VedicCalculationPanel.cpp:184 src/gui/ToolPanel.cpp:272
 #: src/jyotish/Eclipse.cpp:137 src/jyotish/Ephemeris.cpp:571
 msgid "Moon"
 msgstr "చంద్ర"
 
-#: src/base/ColorConfig.cpp:264 src/base/Lang.cpp:118
+#: src/base/ColorConfig.cpp:282 src/base/Lang.cpp:118
 #: src/dialogs/VedicCalculationPanel.cpp:101
 #: src/dialogs/VedicCalculationPanel.cpp:186
 msgid "Mercury"
 msgstr "బుధ"
 
-#: src/base/ColorConfig.cpp:265 src/base/Lang.cpp:118
+#: src/base/ColorConfig.cpp:283 src/base/Lang.cpp:118
 #: src/dialogs/VedicCalculationPanel.cpp:188
 msgid "Venus"
 msgstr "శుక్ర"
 
-#: src/base/ColorConfig.cpp:266 src/base/Lang.cpp:118
+#: src/base/ColorConfig.cpp:284 src/base/Lang.cpp:118
 #: src/dialogs/VedicCalculationPanel.cpp:185
 msgid "Mars"
 msgstr "కుజ"
 
-#: src/base/ColorConfig.cpp:267 src/base/Lang.cpp:118
+#: src/base/ColorConfig.cpp:285 src/base/Lang.cpp:118
 #: src/dialogs/VedicCalculationPanel.cpp:187
 msgid "Jupiter"
 msgstr "గురు"
 
-#: src/base/ColorConfig.cpp:268 src/base/Lang.cpp:118
+#: src/base/ColorConfig.cpp:286 src/base/Lang.cpp:118
 #: src/dialogs/VedicCalculationPanel.cpp:189
 msgid "Saturn"
 msgstr "శని"
 
-#: src/base/ColorConfig.cpp:269 src/base/Lang.cpp:144
+#: src/base/ColorConfig.cpp:287 src/base/Lang.cpp:144
 #: src/dialogs/VedicPanel.cpp:55
 msgid "Rahu"
 msgstr "రాహు"
 
-#: src/base/ColorConfig.cpp:270 src/base/Lang.cpp:145
+#: src/base/ColorConfig.cpp:288 src/base/Lang.cpp:145
 #: src/dialogs/VedicPanel.cpp:56
 msgid "Ketu"
 msgstr "కేతు"
 
-#: src/base/ColorConfig.cpp:271 src/base/Lang.cpp:123
+#: src/base/ColorConfig.cpp:289 src/base/Lang.cpp:123
 #: src/dialogs/VedicPanel.cpp:57 src/dialogs/WesternPanel.cpp:56
 #: src/gui/ToolPanel.cpp:272 src/gui/ToolPanel.cpp:396
 msgid "Ascendant"

@@ -31,10 +31,12 @@
 #include "Varga.h"
 
 #include <wx/log.h>
+#include <wx/stopwatch.h>
 
 extern Config *config;
 
 #define NO_CHART_ID UINT_FOR_NOT_FOUND
+//#define CHARTGRID_WIDGET_SHOW_STOP_WATCH 
 
 IMPLEMENT_CLASS( ChartGridWidget, BasicWidget )
 IMPLEMENT_CLASS( DefaultEwChartGridWidget, ChartGridWidget )
@@ -235,6 +237,9 @@ void ChartGridWidget::deleteCharts()
 ******************************************************/
 void ChartGridWidget::OnDataChanged()
 {
+#ifdef CHARTGRID_WIDGET_SHOW_STOP_WATCH
+	const wxLongLong starttime = wxGetLocalTimeMillis();
+#endif
 	//static int i = 0;
 	//printf( "ChartGridWidget::OnDataChanged no. %d\n", i++ );
 	for ( uint i = 0; i < charts.size(); i++ )
@@ -243,6 +248,11 @@ void ChartGridWidget::OnDataChanged()
 	}
 	if ( wchart ) wchart->OnDataChanged();
 	Refresh();
+
+#ifdef CHARTGRID_WIDGET_SHOW_STOP_WATCH
+	const wxLongLong totaltime = wxGetLocalTimeMillis() - starttime;
+	printf( "ChartGridWidget::OnDataChanged %ld millisec\n", totaltime.ToLong());
+#endif
 }
 
 /*****************************************************
@@ -374,6 +384,9 @@ uint ChartGridWidget::findChartForCurrentScreenPos()
 ******************************************************/
 void ChartGridWidget::doPaint( const wxRect &rect, const bool /* eraseBackground */ )
 {
+#ifdef CHARTGRID_WIDGET_SHOW_STOP_WATCH
+	const wxLongLong starttime = wxGetLocalTimeMillis();
+#endif
 	assert( painter );
 	const wxSize size = GetVirtualSize();
 
@@ -403,6 +416,10 @@ void ChartGridWidget::doPaint( const wxRect &rect, const bool /* eraseBackground
 		if ( wchart ) wchart->paint( painter, MRect( 0, 0, size.x, size.y ));
 		else wxLogError( wxT( "ChartGridWidget::doPaint western chart is not set!" ));
 	}
+#ifdef CHARTGRID_WIDGET_SHOW_STOP_WATCH
+	const wxLongLong totaltime = wxGetLocalTimeMillis() - starttime;
+	printf( "ChartGridWidget::doPaint %ld millisec\n", totaltime.ToLong());
+#endif
 }
 
 /*****************************************************

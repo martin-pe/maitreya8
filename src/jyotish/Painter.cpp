@@ -400,6 +400,17 @@ void DcPainter::setBrush( const MBrush &brush )
 			* But reloading the bitmap each time is okay.
 			*/
 #if ( defined __WXGTK__ && ! defined __WXGTK3__ && wxMAJOR_VERSION == 3 )
+				wxBitmap bmp = ImageProvider::get()->getFileBasedBitmap( brush.filename, brush.rotateHue, true );
+				if ( bmp.IsOk() )
+				{
+					dc->SetBrush( bmp );
+				}
+				else
+				{
+					wxLogError( wxT( "DcPainter::setBrush: bitmap for brush not okay, using red background instead" ));
+					dc->SetBrush( wxBrush( *wxRED ));
+				}
+				/*
 				wxBitmap bmp = ImageProvider::get()->getFileBasedBitmapConservative( brush.filename, brush.rotateHue );
 				if ( bmp.IsOk() )
 				{
@@ -410,6 +421,7 @@ void DcPainter::setBrush( const MBrush &brush )
 					wxLogError( wxT( "DcPainter::setBrush: bitmap for brush not okay, using red background instead" ));
 					dc->SetBrush( wxBrush( *wxRED ));
 				}
+*/
 #else
 				wxBitmap *bmp = ImageProvider::get()->getFileBasedBitmapRef( brush.filename, brush.rotateHue );
 				if ( bmp->IsOk() )

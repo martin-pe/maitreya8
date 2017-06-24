@@ -25,6 +25,7 @@
 #include <wx/font.h>
 #include <wx/gdicmn.h>
 #include <wx/tokenzr.h>
+#include <wx/stopwatch.h>
 
 extern Config *config;
 
@@ -156,6 +157,8 @@ wxString FontProvider::getSymbolFontName()
 wxFont *FontProvider::getFontZoom( const FONT_ID &id, const double &zoom )
 {
 	ASSERT_VALID_FONT_ID( id )
+	//printf( "FontProvider::getFontZoom id %d zoom %f\n", id, zoom );
+  //const wxLongLong starttime = wxGetLocalTimeMillis();
 
 	if ( ! config->font[id].isOk() )
 	{
@@ -171,6 +174,13 @@ wxFont *FontProvider::getFontZoom( const FONT_ID &id, const double &zoom )
 			size, (int)id, zoom );
 		size = 10;
 	}
+
+	/*
+	wxFont *font = wxTheFontList->FindOrCreateFont( size, config->font[id].family, config->font[id].style,
+		config->font[id].weight, config->font[id].underline, config->font[id].facename );
+	printf( "FontProvider::getFontZoom mark 1 %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
+	return font;
+	*/
 
 	return wxTheFontList->FindOrCreateFont( size, config->font[id].family, config->font[id].style,
 		config->font[id].weight, config->font[id].underline, config->font[id].facename );

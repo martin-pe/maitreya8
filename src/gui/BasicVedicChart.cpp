@@ -36,6 +36,7 @@
 
 #include <math.h>
 #include <wx/log.h>
+#include <wx/stopwatch.h>
 
 extern Config *config;
 
@@ -161,6 +162,7 @@ bool BasicVedicChart::isFieldZoomed( const uint &i )
 void BasicVedicChart::paintField( const int &i )
 {
 	MRect rr = fields[i].rect;
+	//const wxLongLong starttime = wxGetLocalTimeMillis();
 
 	//printf( "ZOOM %d while %f and %f\n", config->vedicChartBehavior->zoomFactor, .5 * ( rr.width + rr.height ), a );
 
@@ -291,6 +293,7 @@ void BasicVedicChart::paintField( const int &i )
 			painter->drawRectangle( rr );
 		break;
 	}
+	//printf( "BasicVedicChart::paintField mark 10 %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
 }
 
 /**************************************************************
@@ -655,7 +658,6 @@ void BasicVedicChart::paintInternal( ChartConfig *cfg )
 			for ( uint i = 0; i < field_count; i++ )
 			{
 				if (( markedField == i ) && ( markedFieldStatus & CHART_FIELD_STATUS_MARKUP || markedFieldStatus & CHART_FIELD_STATUS_ZOOM )) continue;
-
 				painter->setBrush( palette->getBrush( i ));
 				paintField( i );
 			}
@@ -785,6 +787,7 @@ void BasicVedicChart::paintInternal( ChartConfig *cfg )
 void BasicVedicChart::drawFieldText( const uint &f, const FIELD_PART &part )
 {
 	assert( f < field_count );
+	//const wxLongLong starttime = wxGetLocalTimeMillis();
 
 	//printf( "BasicVedicChart::drawFieldText field %d mode %d\n", f, mode );
 
@@ -849,6 +852,7 @@ void BasicVedicChart::drawFieldText( const uint &f, const FIELD_PART &part )
 
 	// text items per line
 	int titems_pline = 0;
+	//printf( "BasicVedicChart::drawFieldText mark 4 %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
 	if ( titems > 0 )
 	{
 		const int left_lines = max_lines - total_lines;
@@ -879,7 +883,13 @@ void BasicVedicChart::drawFieldText( const uint &f, const FIELD_PART &part )
 	vector<ChartGraphicItem> g;
 	uint i = 0;
 	int j = 0;
-	setSymbolFontZoom( zoomfactor );
+	//printf( "BasicVedicChart::drawFieldText mark 4a %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
+
+	if ( gitems > 0 )
+	{
+		setSymbolFontZoom( zoomfactor );
+	}
+	//printf( "BasicVedicChart::drawFieldText mark 5 %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
 	while ( i < gitems )
 	{
 		g.push_back( cc.graphicitems[i++] );
@@ -904,6 +914,7 @@ void BasicVedicChart::drawFieldText( const uint &f, const FIELD_PART &part )
 	i = 0;
 	j = 0;
 	s.Clear();
+	//printf( "BasicVedicChart::drawFieldText mark 9 %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
 	while ( i < titems )
 	{
 		if ( s.Len() > 0 ) s << wxT( " " );
@@ -924,6 +935,7 @@ void BasicVedicChart::drawFieldText( const uint &f, const FIELD_PART &part )
 		}
 	}
 	if ( s.Len() > 0 ) drawTextItemLine( trect, s, align, part );
+	//printf( "BasicVedicChart::drawFieldText mark 10 %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
 }
 
 /*****************************************************
