@@ -53,34 +53,30 @@ PlanetSignDisplayPanel::PlanetSignDisplayPanel( wxWindow* parent ) : ConfigPanel
 
     // begin wxGlade: PlanetSignDisplayPanel::PlanetSignDisplayPanel
     panel_preview = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
-    sizer_positions_staticbox = new wxStaticBox(this, wxID_ANY, _("Display of Positions"));
-    sizer_signs_staticbox = new wxStaticBox(this, wxID_ANY, _("Display of Signs"));
-    sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Preview"));
-    sizer_planets_staticbox = new wxStaticBox(this, wxID_ANY, _("Display of Planets"));
     check_planet_symbols = new wxCheckBox(this, wxID_ANY, _("Use Symbols for Planets"));
     check_vedic_planet_names = new wxCheckBox(this, wxID_ANY, _("Vedic Planet Names"));
     label_uranus = new wxStaticText(this, wxID_ANY, _("Uranus"));
     const wxString choice_uranus_choices[] = {
         _("Symbol 1"),
-        _("Symbol 2")
+        _("Symbol 2"),
     };
-    choice_uranus = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_uranus_choices, 0);
+    choice_uranus = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_uranus_choices);
     label_pluto = new wxStaticText(this, wxID_ANY, _("Pluto"));
     const wxString choice_pluto_choices[] = {
         _("Symbol 1"),
         _("Symbol 2"),
-        _("Symbol 3")
+        _("Symbol 3"),
     };
-    choice_pluto = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_pluto_choices, 0);
+    choice_pluto = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_pluto_choices);
     check_vedic_positions = new wxCheckBox(this, wxID_ANY, _("Vedic Position Format"));
     check_sign_symbols = new wxCheckBox(this, wxID_ANY, _("Use Symbols for Signs"));
     check_vedic_sign_names = new wxCheckBox(this, wxID_ANY, _("Vedic Sign Names"));
     label_capricorn = new wxStaticText(this, wxID_ANY, _("Capricorn"));
     const wxString choice_capricorn_choices[] = {
         _("Symbol 1"),
-        _("Symbol 2")
+        _("Symbol 2"),
     };
-    choice_capricorn = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_capricorn_choices, 0);
+    choice_capricorn = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_capricorn_choices);
     theText = new TextWidget(panel_preview, props, 0, cfg);
 
     set_properties();
@@ -254,23 +250,19 @@ void PlanetSignDisplayPanel::do_layout()
     // begin wxGlade: PlanetSignDisplayPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(1, 1, 0, 0);
-    sizer_preview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Preview")), wxVERTICAL);
     wxFlexGridSizer* grid_previewpanel = new wxFlexGridSizer(1, 1, 3, 3);
     wxFlexGridSizer* sizer_left = new wxFlexGridSizer(3, 1, 0, 0);
-    sizer_signs_staticbox->Lower();
-    wxStaticBoxSizer* sizer_signs = new wxStaticBoxSizer(sizer_signs_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_signs = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Display of Signs")), wxVERTICAL);
     wxFlexGridSizer* grid_signs = new wxFlexGridSizer(1, 2, 3, 3);
-    sizer_positions_staticbox->Lower();
-    wxStaticBoxSizer* sizer_positions = new wxStaticBoxSizer(sizer_positions_staticbox, wxVERTICAL);
-    sizer_planets_staticbox->Lower();
-    wxStaticBoxSizer* sizer_planets = new wxStaticBoxSizer(sizer_planets_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_positions = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Display of Positions")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_planets = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Display of Planets")), wxVERTICAL);
     wxFlexGridSizer* grid_planets = new wxFlexGridSizer(2, 2, 3, 3);
     sizer_planets->Add(check_planet_symbols, 0, wxALL, 3);
     sizer_planets->Add(check_vedic_planet_names, 0, wxALL, 3);
-    grid_planets->Add(label_uranus, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_planets->Add(label_uranus, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_planets->Add(choice_uranus, 0, wxALL|wxEXPAND, 3);
-    grid_planets->Add(label_pluto, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_planets->Add(label_pluto, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_planets->Add(choice_pluto, 0, wxALL|wxEXPAND, 3);
     grid_planets->AddGrowableCol(1);
     sizer_planets->Add(grid_planets, 1, wxALL|wxEXPAND, 3);
@@ -279,7 +271,7 @@ void PlanetSignDisplayPanel::do_layout()
     sizer_left->Add(sizer_positions, 1, wxALL|wxEXPAND, 3);
     sizer_signs->Add(check_sign_symbols, 0, wxALL, 3);
     sizer_signs->Add(check_vedic_sign_names, 0, wxALL, 3);
-    grid_signs->Add(label_capricorn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_signs->Add(label_capricorn, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_signs->Add(choice_capricorn, 0, wxALL|wxEXPAND, 3);
     grid_signs->AddGrowableCol(1);
     sizer_signs->Add(grid_signs, 1, wxALL|wxEXPAND, 3);

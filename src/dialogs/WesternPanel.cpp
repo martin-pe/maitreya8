@@ -50,11 +50,6 @@ WesternPanel::WesternPanel( wxWindow* parent ) : ConfigPanel( parent )
 
     // begin wxGlade: WesternPanel::WesternPanel
     panel_arabic_selection = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
-    sizer_partly_staticbox = new wxStaticBox(this, wxID_ANY, _("Partly Displayed"));
-    sizer_arabic_staticbox = new wxStaticBox(this, wxID_ANY, _("Arabic Parts"));
-    sizer_planetorder_staticbox = new wxStaticBox(this, wxID_ANY, _("Order of Planets"));
-    sizer_columns_staticbox = new wxStaticBox(this, wxID_ANY, _("Columns in Main Window"));
-    sizer_eobjects_staticbox = new wxStaticBox(this, wxID_ANY, _("Ephemeris Objects"));
     check_objects_outer = new wxCheckBox(this, wxID_ANY, _("3 Outer Planets"));
     check_objects_dragonhead = new wxCheckBox(this, wxID_ANY, _("Dragon Head"));
     check_objects_dragontail = new wxCheckBox(this, wxID_ANY, _("Dragon Tail"));
@@ -76,9 +71,9 @@ WesternPanel::WesternPanel( wxWindow* parent ) : ConfigPanel( parent )
     label_planetorder = new wxStaticText(this, wxID_ANY, _("Order"));
     const wxString choice_planetorder_choices[] = {
         _("Default"),
-        _("Uranian")
+        _("Uranian"),
     };
-    choice_planetorder = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_planetorder_choices, 0);
+    choice_planetorder = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_planetorder_choices);
     check_main_declinations = new wxCheckBox(this, wxID_ANY, _("Declination"));
     check_main_90deg = new wxCheckBox(this, wxID_ANY, _("90 Degree Longitude"));
     check_main_45deg = new wxCheckBox(this, wxID_ANY, _("45 Degree Longitude"));
@@ -223,22 +218,17 @@ void WesternPanel::do_layout()
 {
     // begin wxGlade: WesternPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 3, 0, 0);
-    wxFlexGridSizer* sizer_right = new wxFlexGridSizer(3, 1, 3, 3);
-    sizer_columns_staticbox->Lower();
-    wxStaticBoxSizer* sizer_columns = new wxStaticBoxSizer(sizer_columns_staticbox, wxVERTICAL);
+    wxFlexGridSizer* sizer_right = new wxFlexGridSizer(1, 1, 3, 3);
+    wxStaticBoxSizer* sizer_columns = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Columns in Main Window")), wxVERTICAL);
     wxFlexGridSizer* grid_columns = new wxFlexGridSizer(8, 1, 3, 3);
     wxFlexGridSizer* sizer_center = new wxFlexGridSizer(3, 1, 0, 0);
-    sizer_planetorder_staticbox->Lower();
-    wxStaticBoxSizer* sizer_planetorder = new wxStaticBoxSizer(sizer_planetorder_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_planetorder = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Order of Planets")), wxVERTICAL);
     wxFlexGridSizer* grid_planetorder2 = new wxFlexGridSizer(1, 2, 3, 3);
-    sizer_arabic_staticbox->Lower();
-    wxStaticBoxSizer* sizer_arabic = new wxStaticBoxSizer(sizer_arabic_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_arabic = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Arabic Parts")), wxVERTICAL);
     wxBoxSizer* sizer_arabic_selection = new wxBoxSizer(wxHORIZONTAL);
-    sizer_partly_staticbox->Lower();
-    wxStaticBoxSizer* sizer_partly = new wxStaticBoxSizer(sizer_partly_staticbox, wxVERTICAL);
-    wxFlexGridSizer* sizer_left = new wxFlexGridSizer(2, 1, 0, 0);
-    sizer_eobjects_staticbox->Lower();
-    wxStaticBoxSizer* sizer_eobjects = new wxStaticBoxSizer(sizer_eobjects_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_partly = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Partly Displayed")), wxVERTICAL);
+    wxFlexGridSizer* sizer_left = new wxFlexGridSizer(1, 1, 0, 0);
+    wxStaticBoxSizer* sizer_eobjects = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Ephemeris Objects")), wxHORIZONTAL);
     wxFlexGridSizer* grid_eobjects = new wxFlexGridSizer(15, 1, 3, 3);
     grid_eobjects->Add(check_objects_outer, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_dragonhead, 0, wxALL|wxEXPAND, 3);
@@ -262,24 +252,24 @@ void WesternPanel::do_layout()
     sizer_partly->Add(check_objects_aries, 0, wxALL|wxEXPAND, 3);
     sizer_center->Add(sizer_partly, 1, wxALL|wxEXPAND, 3);
     sizer_arabic->Add(button_arabic, 0, wxALL, 3);
-    sizer_arabic_selection->Add(label_arabic_selection, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_arabic_selection->Add(label_arabic_selection, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     panel_arabic_selection->SetSizer(sizer_arabic_selection);
     sizer_arabic->Add(panel_arabic_selection, 1, wxALL|wxEXPAND, 3);
     sizer_center->Add(sizer_arabic, 1, wxEXPAND, 0);
-    grid_planetorder2->Add(label_planetorder, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_planetorder2->Add(label_planetorder, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_planetorder2->Add(choice_planetorder, 0, wxALL|wxEXPAND, 3);
     sizer_planetorder->Add(grid_planetorder2, 1, wxALL|wxEXPAND, 3);
     sizer_center->Add(sizer_planetorder, 1, wxALL|wxEXPAND, 3);
     sizer_center->AddGrowableCol(0);
     sizer_main->Add(sizer_center, 1, wxALL, 3);
-    grid_columns->Add(check_main_declinations, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_columns->Add(check_main_90deg, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_columns->Add(check_main_45deg, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_columns->Add(check_main_antiscia, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_columns->Add(check_main_housepos, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    grid_columns->Add(check_main_declinations, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_columns->Add(check_main_90deg, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_columns->Add(check_main_45deg, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_columns->Add(check_main_antiscia, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_columns->Add(check_main_housepos, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     grid_columns->Add(check_main_lord, 0, wxALL|wxEXPAND, 3);
-    grid_columns->Add(check_main_element, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_columns->Add(check_main_quality, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    grid_columns->Add(check_main_element, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_columns->Add(check_main_quality, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     sizer_columns->Add(grid_columns, 1, wxALL|wxEXPAND, 3);
     sizer_right->Add(sizer_columns, 1, wxALL|wxEXPAND, 3);
     sizer_right->AddGrowableCol(0);

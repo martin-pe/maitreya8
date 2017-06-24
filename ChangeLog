@@ -1,3 +1,64 @@
+Stable version 8.0 released (June 24 2017)
+
+   Bug fixes are
+
+     * Ascendent was not updated correctly in views with multiple North
+       indian charts (github bugs #11, #12 and #16)
+     * Several minor fixes
+
+Changes
+
+     * Technical/UNIX: automake version updated from 1.14 to 1.15
+
+Known Bugs
+
+   Currently no no known bugs.
+     __________________________________________________________________
+
+Third beta version 8.0 released (Feb 26 2017)
+
+   Bug fixes are
+
+     * Linux/GTK: stipple backgrounds were black, views like graphical
+       Dasa are finally okay now.
+     * Wrong ascendant in Ashtakavarga chart with North Indian style
+       (Aries always ascendant)
+     * Same for Arudha padas
+     * Improved graphical Ashtakavarga chart: better adjustment of sign
+       numbers, context menus
+
+Known Bugs
+
+   Bugs marked as solved are fixed in the Github repository. The fix will
+   appear in the next public release.
+
+     * Shadbala not stable yet
+     * Crash in Partner view/Astakoota under certain circumstances
+       (solved)
+     __________________________________________________________________
+
+Second beta version 8.0 released (Feb 21 2017)
+
+   New feature: Mahadasa and Antardasa description from Jataka Parijata
+   (Dasa tree view).
+
+   Bug fixes are
+
+     * ConfigDialog/color configuration: bar diagram preview widget broken
+     * Transit/Uranian view: cluster view has some wrong combinations)
+     * Wrong display of scripture text for Mahadasa and Antardasa in Dasa
+       view
+
+Known Bugs
+
+   Bugs marked as solved are fixed in the Github repository. The fix will
+   appear in the next public release.
+
+     * Linux/GTK: stipple backgrounds are black. Appears e.g. in graphical
+       Dasa.
+     * Shadbala not stable yet
+     __________________________________________________________________
+
 Version 8.0beta Feb 05 2017)
 
    This release contains many bug fixes. The program should run stable

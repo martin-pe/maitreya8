@@ -220,7 +220,7 @@ void AtlasImportDialog::do_layout()
     sizer_gauge->Add(text_status, 0, 0, 3);
     panel_gauge->SetSizer(sizer_gauge);
     sizer_main->Add(panel_gauge, 1, wxALL|wxEXPAND, 3);
-    sizer_main->Add(button_cancel, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
+    sizer_main->Add(button_cancel, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     Layout();

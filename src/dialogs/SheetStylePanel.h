@@ -89,10 +89,6 @@ private:
 
 protected:
     // begin wxGlade: SheetStylePanel::attributes
-    wxStaticBox* sizer_preview_staticbox;
-    wxStaticBox* sizer_table_border_staticbox;
-    wxStaticBox* sizer_table_cells_staticbox;
-    wxStaticBox* sizer_table_headers_staticbox;
     wxStaticText* label_style;
     wxChoice* choice_styles;
     wxButton* button_manage_styles;

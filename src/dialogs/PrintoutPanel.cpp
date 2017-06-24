@@ -68,18 +68,13 @@ PrintoutPanel::PrintoutPanel( wxWindow* parent ) : ConfigPanel( parent )
 	config2model();
 
     // begin wxGlade: PrintoutPanel::PrintoutPanel
-    sizer_printout_staticbox = new wxStaticBox(this, wxID_ANY, _("Printout Type"));
-    sizer_view_options_staticbox = new wxStaticBox(this, wxID_ANY, _("View Options"));
-    sizer_viewer_staticbox = new wxStaticBox(this, wxID_ANY, _("Pdf Viewer"));
-    sizer_custom_text_staticbox = new wxStaticBox(this, wxID_ANY, _("Custom Text in PDF Output"));
-    sizer_save_options_staticbox = new wxStaticBox(this, wxID_ANY, _("Save Options"));
     panel_description = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
     const wxString choice_printout_type_choices[] = {
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_printout_type = new wxChoice(this, CD_CHOICE_PRINTOUT_TYPE, wxDefaultPosition, wxDefaultSize, 3, choice_printout_type_choices, 0);
+    choice_printout_type = new wxChoice(this, CD_CHOICE_PRINTOUT_TYPE, wxDefaultPosition, wxDefaultSize, 3, choice_printout_type_choices);
     text_printout_description = new wxStaticText(panel_description, wxID_ANY, _("dummy"));
     label_sheetstyle = new wxStaticText(this, wxID_ANY, _("Sheet Style"));
     const wxString choice_sheetstyle_choices[] = {
@@ -87,36 +82,36 @@ PrintoutPanel::PrintoutPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_sheetstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_sheetstyle_choices, 0);
+    choice_sheetstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_sheetstyle_choices);
     label_vstyle = new wxStaticText(this, wxID_ANY, _("Vedic Chart Style"));
     const wxString choice_vstyle_choices[] = {
         _("dummy"),
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_vstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_vstyle_choices, 0);
+    choice_vstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_vstyle_choices);
     label_wstyle = new wxStaticText(this, wxID_ANY, _("Western Chart Style"));
     const wxString choice_wstyle_choices[] = {
         _("dummy"),
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_wstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_wstyle_choices, 0);
+    choice_wstyle = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_wstyle_choices);
     check_launchviewer = new wxCheckBox(this, CD_LAUNCH_VIEWER, _("Launch Pdf Viewer Automatically"));
     button_launchcommand = new wxButton(this, CD_LAUNCH_COMMAND_BUTTON, _("Command ..."));
     text_launchcommand = new wxTextCtrl(this, CD_LAUNCH_COMMAND_TEXT, wxEmptyString);
     button_test_page = new wxButton(this, CD_PRINT_TEST_PAGE, _("Print Test Page"));
     const wxString choice_custom_text_type_choices[] = {
         _("Header"),
-        _("Footer")
+        _("Footer"),
     };
-    choice_custom_text_type = new wxChoice(this, CD_CHOICE_CUSTOM_TEXT_TYPE, wxDefaultPosition, wxDefaultSize, 2, choice_custom_text_type_choices, 0);
+    choice_custom_text_type = new wxChoice(this, CD_CHOICE_CUSTOM_TEXT_TYPE, wxDefaultPosition, wxDefaultSize, 2, choice_custom_text_type_choices);
     check_doshow_custom_text = new wxCheckBox(this, CD_SHOW_CUSTOM_TEXT, _("Print Custom Text"));
     button_agenda = new wxBitmapButton(this, CD_AGENDA, wxNullBitmap);
     text_custom = new wxTextCtrl(this, CD_CUSTOM_TEXT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
@@ -124,18 +119,18 @@ PrintoutPanel::PrintoutPanel( wxWindow* parent ) : ConfigPanel( parent )
     const wxString choice_orientation_choices[] = {
         _("Left"),
         _("Center"),
-        _("Right")
+        _("Right"),
     };
-    choice_orientation = new wxChoice(this, CD_ORIENTATION, wxDefaultPosition, wxDefaultSize, 3, choice_orientation_choices, 0);
+    choice_orientation = new wxChoice(this, CD_ORIENTATION, wxDefaultPosition, wxDefaultSize, 3, choice_orientation_choices);
     check_line_separator = new wxCheckBox(this, CD_LINE_SEPARATOR, _("Line Separator"));
     check_include_first_page = new wxCheckBox(this, CD_FIRST_PAGE, _("Include First Page"));
     label_paper = new wxStaticText(this, wxID_ANY, _("Paper Format"));
     const wxString choice_paperformat_choices[] = {
         _("A4 (210x297mm)"),
         _("Letter (8.5x11 in)"),
-        _("Legal (8.5x14 in)")
+        _("Legal (8.5x14 in)"),
     };
-    choice_paperformat = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_paperformat_choices, 0);
+    choice_paperformat = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 3, choice_paperformat_choices);
     check_overwrite = new wxCheckBox(this, wxID_ANY, _("Ask on Overwrite"));
 
     set_properties();
@@ -436,24 +431,19 @@ void PrintoutPanel::do_layout()
     // begin wxGlade: PrintoutPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(2, 1, 0, 0);
-    sizer_save_options_staticbox->Lower();
-    wxStaticBoxSizer* sizer_save_options = new wxStaticBoxSizer(sizer_save_options_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_save_options = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Save Options")), wxVERTICAL);
     wxBoxSizer* sizer_paper_format = new wxBoxSizer(wxHORIZONTAL);
-    sizer_custom_text_staticbox->Lower();
-    wxStaticBoxSizer* sizer_custom_text = new wxStaticBoxSizer(sizer_custom_text_staticbox, wxVERTICAL);
-    wxFlexGridSizer* grid_custom_text = new wxFlexGridSizer(7, 1, 0, 0);
+    wxStaticBoxSizer* sizer_custom_text = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Custom Text in PDF Output")), wxVERTICAL);
+    wxFlexGridSizer* grid_custom_text = new wxFlexGridSizer(6, 1, 0, 0);
     wxFlexGridSizer* grid_orientation = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* grid_header = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* sizer_left = new wxFlexGridSizer(4, 1, 0, 0);
-    sizer_viewer_staticbox->Lower();
-    wxStaticBoxSizer* sizer_viewer = new wxStaticBoxSizer(sizer_viewer_staticbox, wxVERTICAL);
-    sizer_view_options_staticbox->Lower();
-    wxStaticBoxSizer* sizer_view_options = new wxStaticBoxSizer(sizer_view_options_staticbox, wxVERTICAL);
-    wxFlexGridSizer* grid_options = new wxFlexGridSizer(2, 1, 3, 3);
+    wxStaticBoxSizer* sizer_viewer = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Pdf Viewer")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_view_options = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("View Options")), wxVERTICAL);
+    wxFlexGridSizer* grid_options = new wxFlexGridSizer(1, 1, 3, 3);
     wxFlexGridSizer* grid_options2 = new wxFlexGridSizer(3, 2, 3, 3);
-    sizer_printout_staticbox->Lower();
-    wxStaticBoxSizer* sizer_printout = new wxStaticBoxSizer(sizer_printout_staticbox, wxVERTICAL);
-    wxFlexGridSizer* sizer_printout2 = new wxFlexGridSizer(7, 1, 0, 0);
+    wxStaticBoxSizer* sizer_printout = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Printout Type")), wxVERTICAL);
+    wxFlexGridSizer* sizer_printout2 = new wxFlexGridSizer(2, 1, 0, 0);
     wxFlexGridSizer* sizer_description = new wxFlexGridSizer(1, 1, 0, 0);
     sizer_printout2->Add(choice_printout_type, 0, wxALL, 3);
     sizer_description->Add(text_printout_description, 0, wxALL|wxEXPAND, 3);
@@ -464,30 +454,30 @@ void PrintoutPanel::do_layout()
     sizer_printout2->AddGrowableRow(2);
     sizer_printout2->AddGrowableCol(0);
     sizer_printout->Add(sizer_printout2, 1, wxALL|wxEXPAND, 3);
-    sizer_left->Add(sizer_printout, 1, wxEXPAND, 3);
-    grid_options2->Add(label_sheetstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_left->Add(sizer_printout, 1, wxALL|wxEXPAND, 3);
+    grid_options2->Add(label_sheetstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_options2->Add(choice_sheetstyle, 0, wxALL|wxEXPAND, 3);
-    grid_options2->Add(label_vstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_options2->Add(label_vstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_options2->Add(choice_vstyle, 0, wxALL|wxEXPAND, 3);
-    grid_options2->Add(label_wstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_options2->Add(label_wstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_options2->Add(choice_wstyle, 0, wxALL|wxEXPAND, 3);
     grid_options->Add(grid_options2, 1, wxALL, 3);
     sizer_view_options->Add(grid_options, 1, wxEXPAND, 0);
     sizer_left->Add(sizer_view_options, 1, wxEXPAND, 0);
     sizer_viewer->Add(check_launchviewer, 0, wxALL|wxEXPAND, 3);
     sizer_viewer->Add(button_launchcommand, 0, wxALL, 3);
-    sizer_viewer->Add(text_launchcommand, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_viewer->Add(text_launchcommand, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     sizer_left->Add(sizer_viewer, 1, wxALL|wxEXPAND, 3);
-    sizer_left->Add(button_test_page, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
+    sizer_left->Add(button_test_page, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
     sizer_left->AddGrowableCol(0);
     sizer_main->Add(sizer_left, 1, wxALL|wxEXPAND, 3);
     grid_custom_text->Add(choice_custom_text_type, 0, wxALL, 3);
     grid_header->Add(check_doshow_custom_text, 0, wxALL, 3);
-    grid_header->Add(button_agenda, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_header->Add(button_agenda, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_header->AddGrowableCol(1);
     grid_custom_text->Add(grid_header, 1, wxEXPAND, 0);
     grid_custom_text->Add(text_custom, 0, wxALL|wxEXPAND, 3);
-    grid_orientation->Add(label_orientation, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_orientation->Add(label_orientation, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_orientation->Add(choice_orientation, 0, wxALL, 3);
     grid_orientation->AddGrowableCol(0);
     grid_custom_text->Add(grid_orientation, 1, wxALL|wxEXPAND, 3);
@@ -497,7 +487,7 @@ void PrintoutPanel::do_layout()
     grid_custom_text->AddGrowableCol(0);
     sizer_custom_text->Add(grid_custom_text, 1, wxALL|wxEXPAND, 3);
     sizer_right->Add(sizer_custom_text, 1, wxALL|wxEXPAND, 3);
-    sizer_paper_format->Add(label_paper, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5);
+    sizer_paper_format->Add(label_paper, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
     sizer_paper_format->Add(choice_paperformat, 0, wxALL, 3);
     sizer_save_options->Add(sizer_paper_format, 1, wxALL|wxEXPAND, 3);
     sizer_save_options->Add(check_overwrite, 0, wxALL|wxEXPAND, 3);

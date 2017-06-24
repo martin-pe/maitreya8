@@ -67,7 +67,7 @@ void FileConfig::init( wxString s )
 {
 	datadir = s;
 	//wxLogMessage( wxString::Format( wxT( "Datadir %s" ), datadir.c_str()));
-	printf( "Datadir %s" , str2char( datadir ));
+	//printf( "Datadir %s\n" , str2char( datadir ));
 
 	if ( ! datadir.EndsWith( separator )) datadir += separator;
 
@@ -183,7 +183,7 @@ void FileConfig::prepareConfigDir()
 	// Create Yoga directory
 	yogadir = configdir + separator + YOGA_DIR_NAME + separator;
 	yogabasedir = resourcedir + YOGA_DIR_NAME;
-	PrintLn( yogabasedir );
+	//PrintLn( yogabasedir );
 	if ( wxFileName::DirExists( yogadir ))
 	{
 		if ( ! wxFileName::IsDirWritable( yogadir ))

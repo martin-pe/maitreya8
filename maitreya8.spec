@@ -8,13 +8,13 @@
 
 
 Name:           maitreya8
-Version:        8.0.beta3
+Version:        8.0
 Release:        1%{?dist}
 Summary:        Software for Vedic and western astrology
 Group:          Productivity/Other
 License:        GPLv2+
 URL:            http://www.saravali.de
-Source0: http://www.saravali.de/downloads/%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/martin-pe/maitreya8/releases/download/%{version}/%{name}-%{version}.tar.bz2
 
 BuildRoot:       %{_tmppath}/%{name}-%{version}-build
 

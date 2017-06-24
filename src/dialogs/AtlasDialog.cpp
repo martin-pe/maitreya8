@@ -246,9 +246,6 @@ AtlasDialog::AtlasDialog(wxWindow* parent, const int &callerId, wxString searchS
 	logic = new AtlasLogic( true );
 
     // begin wxGlade: AtlasDialog::AtlasDialog
-    sizer_details_staticbox = new wxStaticBox(this, wxID_ANY, _("Location"));
-    sizer_actions_staticbox = new wxStaticBox(this, wxID_ANY, _("Actions"));
-    sizer_filter_staticbox = new wxStaticBox(this, wxID_ANY, _("Filter"));
     label_filtername = new wxStaticText(this, wxID_ANY, _("Name"));
     filter_edit = new wxTextCtrl(this, ATLAS_FILTER, wxEmptyString);
     label_filtercountry = new wxStaticText(this, wxID_ANY, _("Country"));
@@ -256,16 +253,16 @@ AtlasDialog::AtlasDialog(wxWindow* parent, const int &callerId, wxString searchS
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    country_choice = new wxChoice(this, ATLAS_COUNTRY, wxDefaultPosition, wxDefaultSize, 4, country_choice_choices, 0);
+    country_choice = new wxChoice(this, ATLAS_COUNTRY, wxDefaultPosition, wxDefaultSize, 4, country_choice_choices);
     label_mode = new wxStaticText(this, wxID_ANY, _("Key Field"));
     const wxString choice_mode_choices[] = {
         _("Name"),
         _("ASCII Name"),
-        _("Alias Name")
+        _("Alias Name"),
     };
-    choice_mode = new wxChoice(this, ATLAS_MODE, wxDefaultPosition, wxDefaultSize, 3, choice_mode_choices, 0);
+    choice_mode = new wxChoice(this, ATLAS_MODE, wxDefaultPosition, wxDefaultSize, 3, choice_mode_choices);
     locgrid = new wxGrid(this, wxID_ANY);
     match_label = new wxStaticText(this, wxID_ANY, _("dummy"));
     static_line_match = new wxStaticLine(this, wxID_ANY);
@@ -746,21 +743,18 @@ void AtlasDialog::do_layout()
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(7, 1, 0, 0);
     wxFlexGridSizer* sizer_button = new wxFlexGridSizer(1, 5, 0, 0);
     wxBoxSizer* sizer_4 = new wxBoxSizer(wxHORIZONTAL);
-    sizer_actions_staticbox->Lower();
-    wxStaticBoxSizer* sizer_actions = new wxStaticBoxSizer(sizer_actions_staticbox, wxVERTICAL);
-    sizer_details_staticbox->Lower();
-    wxStaticBoxSizer* sizer_details = new wxStaticBoxSizer(sizer_details_staticbox, wxHORIZONTAL);
+    wxStaticBoxSizer* sizer_actions = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Actions")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_details = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Location")), wxHORIZONTAL);
     wxBoxSizer* sizer_details2 = new wxBoxSizer(wxVERTICAL);
     wxFlexGridSizer* grid_details = new wxFlexGridSizer(6, 4, 0, 3);
     wxFlexGridSizer* sizer_top = new wxFlexGridSizer(1, 3, 0, 0);
-    sizer_filter_staticbox->Lower();
-    wxStaticBoxSizer* sizer_filter = new wxStaticBoxSizer(sizer_filter_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_filter = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Filter")), wxVERTICAL);
     wxFlexGridSizer* grid_filter = new wxFlexGridSizer(1, 6, 3, 3);
-    grid_filter->Add(label_filtername, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_filter->Add(filter_edit, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    grid_filter->Add(label_filtercountry, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_filter->Add(label_filtername, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_filter->Add(filter_edit, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    grid_filter->Add(label_filtercountry, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_filter->Add(country_choice, 0, wxALL, 3);
-    grid_filter->Add(label_mode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_filter->Add(label_mode, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_filter->Add(choice_mode, 0, wxALL, 3);
     grid_filter->AddGrowableCol(1);
     grid_filter->AddGrowableCol(3);
@@ -768,23 +762,23 @@ void AtlasDialog::do_layout()
     sizer_filter->Add(grid_filter, 1, wxALL|wxEXPAND, 3);
     sizer_top->Add(sizer_filter, 1, wxALL|wxEXPAND, 5);
     sizer_top->AddGrowableCol(0);
-    sizer_main->Add(sizer_top, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL, 6);
+    sizer_main->Add(sizer_top, 1, wxALIGN_CENTER_HORIZONTAL|wxALL|wxEXPAND, 6);
     sizer_main->Add(locgrid, 1, wxALL|wxEXPAND, 3);
-    sizer_main->Add(match_label, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 6);
-    sizer_main->Add(static_line_match, 0, wxTOP|wxBOTTOM, 5);
+    sizer_main->Add(match_label, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 6);
+    sizer_main->Add(static_line_match, 0, wxBOTTOM|wxTOP, 5);
     grid_details->Add(label_name, 0, wxALL, 3);
     grid_details->Add(text_name, 0, wxALL, 3);
-    grid_details->Add(label_longitude, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_details->Add(label_longitude, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_details->Add(text_longitude, 0, wxALL, 3);
     grid_details->Add(label_asciiname, 0, wxALL, 3);
     grid_details->Add(text_asciiname, 0, wxALL, 3);
-    grid_details->Add(label_latitude, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_details->Add(label_latitude, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_details->Add(text_latitude, 0, wxALL, 3);
-    grid_details->Add(label_country, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_details->Add(label_country, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_details->Add(text_country, 0, wxALL, 3);
     grid_details->Add(label_timezone, 0, wxALL, 3);
     grid_details->Add(text_timezone, 0, wxALL, 3);
-    grid_details->Add(label_admincode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
+    grid_details->Add(label_admincode, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
     grid_details->Add(text_admincode, 0, wxALL, 3);
     grid_details->Add(label_tzoffset, 0, wxALL, 3);
     grid_details->Add(text_tzoffset, 0, wxALL, 3);
@@ -807,7 +801,7 @@ void AtlasDialog::do_layout()
     sizer_main->Add(static_line_button, 0, wxALL|wxEXPAND, 5);
     sizer_button->Add(button_ok, 0, wxALL, 3);
     sizer_button->Add(button_cancel, 0, wxALL, 3);
-    sizer_main->Add(sizer_button, 1, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
+    sizer_main->Add(sizer_button, 1, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     sizer_main->AddGrowableRow(1);

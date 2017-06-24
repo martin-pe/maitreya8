@@ -79,11 +79,6 @@ private:
 
 protected:
     // begin wxGlade: GeneralPanel::attributes
-    wxStaticBox* sizer_default_location_staticbox;
-    wxStaticBox* sizer_tzsettings_staticbox;
-    wxStaticBox* sizer_coordinates_staticbox;
-    wxStaticBox* sizer_2_staticbox;
-    wxStaticBox* sizer_general_staticbox;
     wxStaticText* label_defstyle;
     wxChoice* choice_defstyle;
     wxStaticText* label_lang;

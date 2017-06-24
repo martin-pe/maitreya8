@@ -58,24 +58,18 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
 
     // begin wxGlade: WesternChartPanel::WesternChartPanel
     panel_preview = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
-    notebook = new wxNotebook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0);
+    notebook = new wxNotebook(this, wxID_ANY);
     notebook_pane_responsive = new wxPanel(notebook, wxID_ANY);
     notebook_pane_color = new wxPanel(notebook, wxID_ANY);
     notebook_pane_general = new wxPanel(notebook, wxID_ANY);
-    sizer_chartoptions_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Chart Options"));
-    sizer_show_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Show in Chart"));
-    sizer_colors_staticbox = new wxStaticBox(notebook_pane_color, wxID_ANY, _("Foreground Colors"));
-    sizer_mouseover_staticbox = new wxStaticBox(notebook_pane_responsive, wxID_ANY, _("Object Mouse Over Behavior"));
-    sizer_preview_staticbox = new wxStaticBox(this, wxID_ANY, _("Preview"));
-    sizer_defaultskin_staticbox = new wxStaticBox(notebook_pane_general, wxID_ANY, _("Skin"));
     const wxString choice_defaultskin_choices[] = {
         _("dummy"),
         _("dummy"),
         _("dummy"),
         _("dummy"),
-        _("dummy")
+        _("dummy"),
     };
-    choice_defaultskin = new wxChoice(notebook_pane_general, CD_SKIN_SELECT, wxDefaultPosition, wxDefaultSize, 5, choice_defaultskin_choices, 0);
+    choice_defaultskin = new wxChoice(notebook_pane_general, CD_SKIN_SELECT, wxDefaultPosition, wxDefaultSize, 5, choice_defaultskin_choices);
     label_orientation = new wxStaticText(notebook_pane_general, wxID_ANY, _("Chart Orientation"));
     const wxString choice_leftside_choices[] = {
         _("Ascendant left"),
@@ -89,22 +83,22 @@ WesternChartPanel::WesternChartPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("0 Libra top"),
         _("15 Libra top"),
         _("0 Capricorn top"),
-        _("15 Capricorn top")
+        _("15 Capricorn top"),
     };
-    choice_leftside = new wxChoice(notebook_pane_general, CD_ASCENDANT, wxDefaultPosition, wxDefaultSize, 12, choice_leftside_choices, 0);
+    choice_leftside = new wxChoice(notebook_pane_general, CD_ASCENDANT, wxDefaultPosition, wxDefaultSize, 12, choice_leftside_choices);
     label_transitstyle = new wxStaticText(notebook_pane_general, wxID_ANY, _("Secondary Chart"));
     const wxString choice_secondchart_style_choices[] = {
         _("Outsite"),
-        _("Inside")
+        _("Inside"),
     };
-    choice_secondchart_style = new wxChoice(notebook_pane_general, CD_SECONDCHART_STYLE, wxDefaultPosition, wxDefaultSize, 2, choice_secondchart_style_choices, 0);
+    choice_secondchart_style = new wxChoice(notebook_pane_general, CD_SECONDCHART_STYLE, wxDefaultPosition, wxDefaultSize, 2, choice_secondchart_style_choices);
     label_house_number_style = new wxStaticText(notebook_pane_general, wxID_ANY, _("House Number Style"));
     const wxString choice_house_number_style_choices[] = {
         _("None"),
         _("Arabic"),
-        _("Roman")
+        _("Roman"),
     };
-    choice_house_number_style = new wxChoice(notebook_pane_general, CD_HOUSE_NUMBERS, wxDefaultPosition, wxDefaultSize, 3, choice_house_number_style_choices, 0);
+    choice_house_number_style = new wxChoice(notebook_pane_general, CD_HOUSE_NUMBERS, wxDefaultPosition, wxDefaultSize, 3, choice_house_number_style_choices);
     check_retro = new wxCheckBox(notebook_pane_general, CD_SHOW_RETRO, _("Retrogression (R)"));
     check_aspects = new wxCheckBox(notebook_pane_general, CD_SHOW_ASPECTS, _("Aspects"));
     check_aspectsymbols = new wxCheckBox(notebook_pane_general, CD_SHOW_ASPECT_SYMBOLS, _("Aspect Symbols"));
@@ -337,41 +331,35 @@ void WesternChartPanel::do_layout()
     // begin wxGlade: WesternChartPanel::do_layout
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 2, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(1, 1, 0, 0);
-    sizer_preview_staticbox->Lower();
-    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(sizer_preview_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_preview = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Preview")), wxVERTICAL);
     wxFlexGridSizer* grid_previewpanel = new wxFlexGridSizer(1, 1, 3, 3);
     wxFlexGridSizer* sizer_responsive = new wxFlexGridSizer(1, 1, 3, 3);
-    sizer_mouseover_staticbox->Lower();
-    wxStaticBoxSizer* sizer_mouseover = new wxStaticBoxSizer(sizer_mouseover_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_mouseover = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_responsive, wxID_ANY, _("Object Mouse Over Behavior")), wxVERTICAL);
     wxFlexGridSizer* grid_zoom = new wxFlexGridSizer(1, 3, 0, 0);
     wxFlexGridSizer* sizer_color = new wxFlexGridSizer(1, 1, 3, 3);
-    sizer_colors_staticbox->Lower();
-    wxStaticBoxSizer* sizer_colors = new wxStaticBoxSizer(sizer_colors_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_colors = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_color, wxID_ANY, _("Foreground Colors")), wxVERTICAL);
     wxFlexGridSizer* sizer_general = new wxFlexGridSizer(3, 1, 0, 0);
-    sizer_show_staticbox->Lower();
-    wxStaticBoxSizer* sizer_show = new wxStaticBoxSizer(sizer_show_staticbox, wxVERTICAL);
-    sizer_chartoptions_staticbox->Lower();
-    wxStaticBoxSizer* sizer_chartoptions = new wxStaticBoxSizer(sizer_chartoptions_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_show = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("Show in Chart")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_chartoptions = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("Chart Options")), wxVERTICAL);
     wxGridSizer* grid_options = new wxGridSizer(3, 2, 0, 0);
-    sizer_defaultskin_staticbox->Lower();
-    wxStaticBoxSizer* sizer_defaultskin = new wxStaticBoxSizer(sizer_defaultskin_staticbox, wxVERTICAL);
-    wxFlexGridSizer* grid_defaultview = new wxFlexGridSizer(4, 1, 3, 3);
+    wxStaticBoxSizer* sizer_defaultskin = new wxStaticBoxSizer(new wxStaticBox(notebook_pane_general, wxID_ANY, _("Skin")), wxVERTICAL);
+    wxFlexGridSizer* grid_defaultview = new wxFlexGridSizer(1, 1, 3, 3);
     grid_defaultview->Add(choice_defaultskin, 0, wxALL|wxEXPAND, 3);
     grid_defaultview->AddGrowableCol(0);
     sizer_defaultskin->Add(grid_defaultview, 1, wxEXPAND, 0);
     sizer_general->Add(sizer_defaultskin, 0, wxALL|wxEXPAND, 3);
-    grid_options->Add(label_orientation, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_options->Add(choice_leftside, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_options->Add(label_transitstyle, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_options->Add(choice_secondchart_style, 0, wxALL|wxALIGN_RIGHT, 3);
-    grid_options->Add(label_house_number_style, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3);
-    grid_options->Add(choice_house_number_style, 0, wxALL|wxALIGN_RIGHT, 3);
+    grid_options->Add(label_orientation, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_options->Add(choice_leftside, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_options->Add(label_transitstyle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_options->Add(choice_secondchart_style, 0, wxALIGN_RIGHT|wxALL, 3);
+    grid_options->Add(label_house_number_style, 0, wxALIGN_CENTER_VERTICAL|wxALL, 3);
+    grid_options->Add(choice_house_number_style, 0, wxALIGN_RIGHT|wxALL, 3);
     sizer_chartoptions->Add(grid_options, 1, 0, 0);
     sizer_general->Add(sizer_chartoptions, 0, wxALL|wxEXPAND, 3);
-    sizer_show->Add(check_retro, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    sizer_show->Add(check_aspects, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    sizer_show->Add(check_aspectsymbols, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
-    sizer_show->Add(check_houses, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+    sizer_show->Add(check_retro, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    sizer_show->Add(check_aspects, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    sizer_show->Add(check_aspectsymbols, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
+    sizer_show->Add(check_houses, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     sizer_general->Add(sizer_show, 1, wxEXPAND, 0);
     notebook_pane_general->SetSizer(sizer_general);
     sizer_general->AddGrowableCol(0);
@@ -383,12 +371,12 @@ void WesternChartPanel::do_layout()
     notebook_pane_color->SetSizer(sizer_color);
     sizer_color->AddGrowableCol(0);
     grid_zoom->Add(check_zoom, 1, wxALL|wxEXPAND, 3);
-    grid_zoom->Add(spin_zoomfactor, 0, wxALIGN_RIGHT, 3);
+    grid_zoom->Add(spin_zoomfactor, 0, wxALIGN_RIGHT|wxALL, 3);
     grid_zoom->Add(label_percent, 0, wxALIGN_CENTER_VERTICAL, 0);
     grid_zoom->AddGrowableCol(0);
     sizer_mouseover->Add(grid_zoom, 1, wxEXPAND, 0);
     sizer_mouseover->Add(check_magnify_aspects, 0, wxALL|wxEXPAND, 3);
-    sizer_responsive->Add(sizer_mouseover, 1, wxEXPAND, 3);
+    sizer_responsive->Add(sizer_mouseover, 1, wxALL|wxEXPAND, 3);
     notebook_pane_responsive->SetSizer(sizer_responsive);
     sizer_responsive->AddGrowableCol(0);
     notebook->AddPage(notebook_pane_general, _("General"));

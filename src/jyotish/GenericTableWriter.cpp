@@ -1031,7 +1031,7 @@ void GenericTableWriter::writeCustomDataEntry( const uint &col, const uint &row,
 			table->setEntry( col, row,  _( "Time Zone" ));
 			Location *loc = h->getDataSet()->getLocation();
 			const double tz = loc->getTimeZone();
-			table->setEntry( col + 1, row, wxString::Format( wxT( "%s %c%.1f" ), _( "UT" ), ( tz >= 0 ? '+' : '-' ), tz ));
+			table->setEntry( col + 1, row, wxString::Format( wxT( "%s %c%.1f" ), _( "UT" ), ( tz >= 0 ? '+' : ' ' ), tz ));
 		}
 		break;
 		case TAB_CELL_DST:

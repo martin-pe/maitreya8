@@ -74,8 +74,6 @@ protected:
 	ObjectFilter filter;
 
     // begin wxGlade: ObjectFilterDialog::attributes
-    wxStaticBox* sizer_right_staticbox;
-    wxStaticBox* sizer_list_staticbox;
     wxCheckListBox* list;
     wxButton* button_all;
     wxButton* button_upto_mars;

@@ -77,14 +77,6 @@ private:
 
 protected:
     // begin wxGlade: VedicCalculationPanel::attributes
-    wxStaticBox* sizer_jaimini_staticbox;
-    wxStaticBox* sizer_kalavelas_staticbox;
-    wxStaticBox* sizer_yl_staticbox;
-    wxStaticBox* sizer_nakshatra_staticbox;
-    wxStaticBox* sizer_varga_significations_staticbox;
-    wxStaticBox* sizer_varga_staticbox;
-    wxStaticBox* sizer_benefics_staticbox;
-    wxStaticBox* sizer_basic_staticbox;
     wxStaticText* label_ayanamsa;
     wxChoice* choice_ayanamsa;
     wxStaticText* label_vcalc_node;
@@ -116,7 +108,9 @@ protected:
     wxChoice* choice_yogini_lords;
     wxStaticText* label_dasa_enddate;
     wxChoice* choice_dasa_show_date_mode;
+    wxStaticText* label_yl;
     YearLengthChoice* choice_yl;
+    wxStaticText* label_customyl;
     wxTextCtrl* text_custom_yl;
     wxPanel* notebook_pane3;
     wxStaticText* label_kalavela;

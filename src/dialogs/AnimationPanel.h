@@ -69,7 +69,6 @@ private:
 
 protected:
     // begin wxGlade: AnimationPanel::attributes
-    wxStaticBox* sizer_animate_staticbox;
     wxStaticText* label_animation_freq;
     wxSpinCtrl* spin_animation_freq;
     wxStaticText* label_animation_freq2;

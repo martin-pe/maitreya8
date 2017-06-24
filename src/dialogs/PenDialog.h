@@ -80,8 +80,6 @@ private:
 
 protected:
     // begin wxGlade: PenDialog::attributes
-    wxStaticBox* sizer_fg_staticbox;
-    wxStaticBox* sizer_preview_staticbox;
     wxStaticText* label_fgcolor;
     wxColourPickerCtrl* button_fgcolor;
     wxStaticText* label_fgwidth;

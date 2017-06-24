@@ -124,9 +124,6 @@ private:
 
 protected:
     // begin wxGlade: AtlasDialog::attributes
-    wxStaticBox* sizer_actions_staticbox;
-    wxStaticBox* sizer_details_staticbox;
-    wxStaticBox* sizer_filter_staticbox;
     wxStaticText* label_filtername;
     wxTextCtrl* filter_edit;
     wxStaticText* label_filtercountry;

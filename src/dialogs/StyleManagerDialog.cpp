@@ -47,9 +47,7 @@ StyleManagerDialog::StyleManagerDialog(wxWindow* parent, vector<SheetConfig*> &c
 	v( configs )
 {
     // begin wxGlade: StyleManagerDialog::StyleManagerDialog
-    sizer_right_staticbox = new wxStaticBox(this, wxID_ANY, _("Actions"));
-    sizer_list_staticbox = new wxStaticBox(this, wxID_ANY, _("Styles"));
-    const wxString *list_choices = NULL;
+    const wxString list_choices[] = {};
     list = new wxListBox(this, CD_LIST, wxDefaultPosition, wxDefaultSize, 0, list_choices, wxLB_SINGLE);
     button_new = new wxButton(this, CD_NEW, _("New"));
     button_copy = new wxButton(this, CD_COPY, _("Copy"));
@@ -226,7 +224,7 @@ void StyleManagerDialog::OnDown( wxCommandEvent& )
 {
 	const int sel = getSelection();
 	const int target = sel + 1;
-	assert( target < list->GetCount() );
+	assert( target < (int)list->GetCount() );
 	//printf( "On Down selected %d target %d\n", sel, target );
 	SheetConfig *cfg = v[sel];
 	v[sel] = v[target];
@@ -325,10 +323,8 @@ void StyleManagerDialog::do_layout()
     wxBoxSizer* sizer_main = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* sizer_bottom = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* sizer_top = new wxBoxSizer(wxHORIZONTAL);
-    sizer_right_staticbox->Lower();
-    wxStaticBoxSizer* sizer_right = new wxStaticBoxSizer(sizer_right_staticbox, wxVERTICAL);
-    sizer_list_staticbox->Lower();
-    wxStaticBoxSizer* sizer_list = new wxStaticBoxSizer(sizer_list_staticbox, wxVERTICAL);
+    wxStaticBoxSizer* sizer_right = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Actions")), wxVERTICAL);
+    wxStaticBoxSizer* sizer_list = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Styles")), wxVERTICAL);
     sizer_list->Add(list, 1, wxALL|wxEXPAND, 3);
     sizer_top->Add(sizer_list, 1, wxEXPAND, 3);
     sizer_right->Add(button_new, 0, wxALL|wxEXPAND, 3);
@@ -337,12 +333,12 @@ void StyleManagerDialog::do_layout()
     sizer_right->Add(button_delete, 0, wxALL|wxEXPAND, 3);
     sizer_right->Add(button_up, 0, wxALL|wxEXPAND, 3);
     sizer_right->Add(button_down, 0, wxALL|wxEXPAND, 3);
-    sizer_top->Add(sizer_right, 0, wxALL|wxALIGN_BOTTOM, 3);
+    sizer_top->Add(sizer_right, 0, wxALIGN_BOTTOM|wxALL, 3);
     sizer_main->Add(sizer_top, 1, wxEXPAND, 0);
     wxStaticLine* static_line_2 = new wxStaticLine(this, wxID_ANY);
     sizer_main->Add(static_line_2, 0, wxALL|wxEXPAND, 3);
     sizer_bottom->Add(button_ok, 0, wxALL, 3);
-    sizer_main->Add(sizer_bottom, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
+    sizer_main->Add(sizer_bottom, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     Layout();

@@ -67,15 +67,15 @@ private:
 
 protected:
     // begin wxGlade: WesternCalculationPanel::attributes
-    wxStaticBox* sizer_yl_staticbox;
-    wxStaticBox* sizer_wcalc_staticbox;
     wxStaticText* label_wcalc_aya;
     wxChoice* choice_ayanamsa;
     wxStaticText* label_wcalc_node;
     wxChoice* choice_wnode;
     wxStaticText* label_wcalc_house;
     wxChoice* choice_whouse;
+    wxStaticText* label_yl;
     YearLengthChoice* choice_yl;
+    wxStaticText* label_custom_yl;
     wxTextCtrl* text_custom_yl;
     // end wxGlade
 }; // wxGlade: end class

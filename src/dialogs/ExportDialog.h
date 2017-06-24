@@ -58,7 +58,6 @@ private:
 
 protected:
     // begin wxGlade: ExportDialog::attributes
-    wxStaticBox* sizer_size_staticbox;
     wxStaticText* label_x;
     wxSpinCtrl* spin_x;
     wxStaticText* label_y;

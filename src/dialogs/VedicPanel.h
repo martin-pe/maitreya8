@@ -68,12 +68,6 @@ private:
 
 protected:
     // begin wxGlade: VedicPanel::attributes
-    wxStaticBox* sizer_maincols_staticbox;
-    wxStaticBox* sizer_order_lagna_staticbox;
-    wxStaticBox* sizer_arabic_staticbox;
-    wxStaticBox* sizer_partly_staticbox;
-    wxStaticBox* sizer_sobjects_staticbox;
-    wxStaticBox* sizer_eobjects_staticbox;
     wxCheckBox* check_objects_outer;
     wxCheckBox* check_objects_dragonhead;
     wxCheckBox* check_objects_dragontail;

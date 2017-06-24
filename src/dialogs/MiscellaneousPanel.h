@@ -65,15 +65,18 @@ private:
 
 protected:
     // begin wxGlade: MiscellaneousPanel::attributes
-    wxStaticBox* sizer_export_staticbox;
-    wxStaticBox* sizer_logging_staticbox;
-    wxStaticBox* sizer_misc_staticbox;
     wxCheckBox* check_showstatusinfo;
+    wxStaticText* label_recent;
     wxSpinCtrl* spin_recent_files;
+    wxStaticText* label_file_backup;
     wxChoice* choice_file_backup;
+    wxStaticText* label_frame_width;
     wxSpinCtrl* spin_frame_width;
+    wxStaticText* label_log_target;
     wxChoice* choice_logging;
+    wxStaticText* label_loglevel;
     wxChoice* choice_loglevel;
+    wxStaticText* label_graphic_size_dialog;
     wxChoice* choice_graphic_size_dialog;
     wxCheckBox* check_overwrite;
     // end wxGlade

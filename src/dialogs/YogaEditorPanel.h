@@ -24,7 +24,7 @@
 #include <wx/panel.h>
 
 #include "YogaConfig.h"
-//#include "BasicWidget.h"
+#include "Commands.h"
 
 #include <vector>
 
@@ -64,7 +64,7 @@ enum { YE_YOGA_PANEL = wxID_HIGHEST + 100, YE_YOGA_LIST, YE_OPENFILE,
 * \brief Main panel for YogaEditor
 *
 ******************************************************/
-class YogaEditorPanel : public wxPanel
+class YogaEditorPanel : public wxPanel, KeyEventObserver
 {
 	DECLARE_CLASS( YogaEditorPanel )
 

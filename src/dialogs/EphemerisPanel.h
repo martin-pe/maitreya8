@@ -74,10 +74,6 @@ private:
 
 protected:
     // begin wxGlade: EphemerisPanel::attributes
-    wxStaticBox* sizer_sunrise_staticbox;
-    wxStaticBox* sizer_calc_staticbox;
-    wxStaticBox* sizer_ephem_path_staticbox;
-    wxStaticBox* sizer_aya_staticbox;
     wxStaticText* label_custom_aya_t0;
     wxTextCtrl* text_t0;
     wxStaticText* text_t0_formatted;

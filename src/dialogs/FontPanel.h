@@ -68,10 +68,6 @@ private:
 
 protected:
     // begin wxGlade: FontPanel::attributes
-    wxStaticBox* sizer_pdfviews_staticbox;
-    wxStaticBox* sizer_plaintext_staticbox;
-    wxStaticBox* sizer_graphic_views_staticbox;
-    wxStaticBox* sizer_textviews_staticbox;
     wxStaticText* l_text_default;
     wxTextCtrl* t_text_default;
     wxButton* b_text_default;
