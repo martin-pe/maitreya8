@@ -46,6 +46,22 @@ AshtakaVargaChart::AshtakaVargaChart( ChartProperties *chartprops )
 
 /*****************************************************
 **
+**   AshtakaVargaChart   ---   getPlanetField
+**
+******************************************************/
+int AshtakaVargaChart::getPlanetField( const ObjectId &ob, const int &i )
+{
+	//printf( "AshtakaVargaChart::getPlanetField ob %d i %d ascendant %d\n", ob, ascendant );
+	// is only used once for position of ascendant in north indian chart
+	// in all other cases rasi_values will be used
+	// -> exclude all other calls
+	assert( i == 0 );
+	assert( ob == OASCENDANT );
+	return ascendant;
+}
+
+/*****************************************************
+**
 **   AshtakaVargaChart   ---   setRasiValue
 **
 ******************************************************/

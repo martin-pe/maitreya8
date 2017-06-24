@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maitreya Sinhala\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-06-23 08:12+0200\n"
+"POT-Creation-Date: 2017-06-24 09:52+0200\n"
 "PO-Revision-Date: 2013-11-28 14:51+0530\n"
 "Last-Translator: Pitiye Appu <pitiye.appuwa@gmail.com>\n"
 "Language-Team: Si <pitiye.appuiwa@gmail.com>\n"
@@ -173,7 +173,7 @@ msgstr ""
 
 #: src/base/Commands.cpp:243 src/base/Commands.cpp:244
 #: src/base/VargaBase.cpp:78 src/dialogs/DialogElements.cpp:316
-#: src/gui/MenuProvider.cpp:618 src/gui/VedicChart.cpp:174
+#: src/gui/MenuProvider.cpp:618 src/gui/VedicChart.cpp:190
 #: src/jyotish/GenericTableWriter.cpp:865 src/jyotish/TextHelper.cpp:399
 #: src/jyotish/TextHelper.cpp:419 src/jyotish/TextHelper.cpp:473
 msgid "Bhava"
@@ -5511,19 +5511,19 @@ msgstr ""
 msgid "Partner 2"
 msgstr ""
 
-#: src/gui/VedicChart.cpp:275
+#: src/gui/VedicChart.cpp:291
 msgid "AL"
 msgstr ""
 
-#: src/gui/VedicChart.cpp:276
+#: src/gui/VedicChart.cpp:292
 msgid "Arudha L"
 msgstr ""
 
-#: src/gui/VedicChart.cpp:280
+#: src/gui/VedicChart.cpp:296
 msgid "UL"
 msgstr ""
 
-#: src/gui/VedicChart.cpp:281
+#: src/gui/VedicChart.cpp:297
 msgid "Upapada L"
 msgstr ""
 

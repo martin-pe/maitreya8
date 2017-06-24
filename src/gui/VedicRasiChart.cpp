@@ -288,9 +288,10 @@ wxString VedicRasiChart::getNorthIndianSignLabel( const Rasi &rasi )
 void VedicRasiChart::setupChart()
 {
 	// bugfix 2017-6-20: ascendant was only set in constructor, so there was no update of asc in North Indian chart
-	ascendant = R_ARIES;
 	if ( h1set ) ascendant = getPlanetField( OASCENDANT, 0 );
+	else ascendant = R_ARIES;
 	positionOffset = 0;
+	//printf( "Hallo h1set %d ascendant %d\n", h1set, ascendant );
 
 	fields.clear();
 	switch( chartprops->getVedicChartDisplayConfig().indianChartType )

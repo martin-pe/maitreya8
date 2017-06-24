@@ -76,7 +76,7 @@ protected:
 	virtual vector<wxString> getCenterString();
 	virtual void writeChartContents( const int &chart_id, const bool applyFilter = false );
 
-	virtual int getPlanetField( const ObjectId&, const int&) { return 0; }
+	virtual int getPlanetField( const ObjectId&, const int&);
 
 	wxString centerString;
 	int rasi_values[12];

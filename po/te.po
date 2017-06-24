@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maitreya 4.1\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-06-23 08:12+0200\n"
+"POT-Creation-Date: 2017-06-24 09:52+0200\n"
 "PO-Revision-Date: 2006-07-09 23:34+0530\n"
 "Last-Translator: Santhosh <astrosanthosh@gmail.com>\n"
 "Language-Team: te <info@onlinejyotish.com>\n"
@@ -171,7 +171,7 @@ msgstr "కొత్త"
 
 #: src/base/Commands.cpp:243 src/base/Commands.cpp:244
 #: src/base/VargaBase.cpp:78 src/dialogs/DialogElements.cpp:316
-#: src/gui/MenuProvider.cpp:618 src/gui/VedicChart.cpp:174
+#: src/gui/MenuProvider.cpp:618 src/gui/VedicChart.cpp:190
 #: src/jyotish/GenericTableWriter.cpp:865 src/jyotish/TextHelper.cpp:399
 #: src/jyotish/TextHelper.cpp:419 src/jyotish/TextHelper.cpp:473
 msgid "Bhava"
@@ -5954,20 +5954,20 @@ msgstr "భాగస్వామి 1"
 msgid "Partner 2"
 msgstr "భాగస్వామి 2"
 
-#: src/gui/VedicChart.cpp:275
+#: src/gui/VedicChart.cpp:291
 msgid "AL"
 msgstr "ఆ.ల"
 
-#: src/gui/VedicChart.cpp:276
+#: src/gui/VedicChart.cpp:292
 #, fuzzy
 msgid "Arudha L"
 msgstr "ఆరూఢములు"
 
-#: src/gui/VedicChart.cpp:280
+#: src/gui/VedicChart.cpp:296
 msgid "UL"
 msgstr "ఉ.ల"
 
-#: src/gui/VedicChart.cpp:281
+#: src/gui/VedicChart.cpp:297
 msgid "Upapada L"
 msgstr ""
 
