@@ -141,7 +141,8 @@ VedicVargaChart::VedicVargaChart( const ChartType &charttype, ChartProperties *c
 	varga( varga )
 {
 	ashtakavargaExpert = new AshtakavargaExpert( h1, varga );
-	ascendant = getPlanetField( OASCENDANT, 0 );
+	ascendant = R_ARIES;
+	if ( h1 ) ascendant = getPlanetField( OASCENDANT, 0 );
 }
 
 /*****************************************************
