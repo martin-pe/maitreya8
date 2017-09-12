@@ -437,7 +437,9 @@ void UranianExpert::findMatchingEvents( const PlanetContext &ctx, const PlanetCo
 
 			if ( refctx != ctx || isObjectIdLessThan( p2, p1, vedic ))
 			{
-				match = calculateMatch( len2, len1, orbis );
+				// bugfix 8.0.1: other order for triple events, so orbis sign different and yearly preview wrong
+				//match = calculateMatch( len2, len1, orbis );
+				match = calculateMatch( len1, len2, orbis );
 				if ( match.gradkreis != GK_NONE )
 				{
 					//printf( "Conjunction p1 %d p2 %d orbis %f\n", p1, p2, match.orbis );
