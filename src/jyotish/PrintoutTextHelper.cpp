@@ -73,7 +73,7 @@ void  PrintoutTextHelper::writePrintoutHeader( const int &mode, const bool &vedi
 {
 	GenericTableWriter tw( horoscope );
 
-	printf( "PrintoutTextHelper::writePrintoutHeader mode %d vedic %d\n", mode, vedic );
+	//printf( "PrintoutTextHelper::writePrintoutHeader mode %d vedic %d\n", mode, vedic );
 
 	SheetColumnSet *sc = new SheetColumnSet;
 	sc->addItem( writeBaseData( mode, vedic ));

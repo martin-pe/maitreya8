@@ -49,8 +49,7 @@ BasePdfDocument::BasePdfDocument( Horoscope *h, PdfDocumentConfig *c )
  horoscope( h ),
  pcfg( c )
 {
-	printf( "LEFT MARGIN %f TOP MARGIN %f\n", GetLeftMargin(), GetTopMargin());
-
+	//printf( "LEFT MARGIN %f TOP MARGIN %f\n", GetLeftMargin(), GetTopMargin());
 	wxString s;
   s << GUI_APP_NAME << wxT( " " ) << getApplicationVersion();
 	SetCreator( s );
@@ -76,13 +75,12 @@ void BasePdfDocument::setHeaderFont()
 ******************************************************/
 void BasePdfDocument::Header()
 {
-	printf( "BasePdfDocument::Header\n" );
-
+	//printf( "BasePdfDocument::Header\n" );
 	setHeaderFont();
 
 	if ( pcfg->customHeader.enabled && ( PageNo() != 1 || pcfg->customHeader.showOnFirstPage ))
 	{
-		printf( "Print custom header on page %d\n", PageNo() );
+		//printf( "Print custom header on page %d\n", PageNo() );
 
 		// Position at 1.5 cm from top TODO einheit
 		SetY( PDF_HEADER_Y );
@@ -101,7 +99,7 @@ void BasePdfDocument::Header()
 		{
 			const double y = GetY() + PDF_HEADER_Y_SKIP;
 			const double y2 = GetPageWidth() - GetLeftMargin();
-			printf( "Draw Header Separator at %f left %f right %f\n", y, GetLeftMargin(), y2 );
+			//printf( "Draw Header Separator at %f left %f right %f\n", y, GetLeftMargin(), y2 );
 			Line( GetLeftMargin(), y, y2, y );
 		}
 
@@ -116,12 +114,12 @@ void BasePdfDocument::Header()
 ******************************************************/
 void BasePdfDocument::Footer()
 {
-	printf( "BasePdfDocument::Footer\n" );
+	//printf( "BasePdfDocument::Footer\n" );
 	setHeaderFont();
 
 	if ( pcfg->customFooter.enabled && ( PageNo() != 1 || pcfg->customFooter.showOnFirstPage ))
 	{
-		printf( "Print custom footer on page %d\n", PageNo() );
+		//printf( "Print custom footer on page %d\n", PageNo() );
 
 		// Position at 1.5 cm from bottom TODO einheit
 		SetY( PDF_FOOTER_Y );
@@ -133,7 +131,7 @@ void BasePdfDocument::Footer()
 		{
 			const double y = GetY() - PDF_HEADER_Y_SKIP;
 			const double y2 = GetPageWidth() - GetLeftMargin();
-			printf( "Draw Footer Separator at %f left %f right %f\n", y, GetLeftMargin(), y2 );
+			//printf( "Draw Footer Separator at %f left %f right %f\n", y, GetLeftMargin(), y2 );
 			Line( GetLeftMargin(), y, y2, y );
 		}
 

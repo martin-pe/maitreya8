@@ -52,15 +52,11 @@ public:
 	**   PdfSheetWriter   ---   Constructor
 	**
 	******************************************************/
-	PdfSheetWriter( Sheet *sheet, SheetConfig *sheetcfg, WriterConfig *writercfg )
+	PdfSheetWriter( Horoscope *horoscope, Sheet *sheet, SheetConfig *sheetcfg, WriterConfig *writercfg )
 		: GenericSheetWriter( sheet, sheetcfg, writercfg, config->colors )
 	{
 		pcfg = config->print;
-		Horoscope *h = new Horoscope();
-		pdfdoc = new BasePdfDocument( h, pcfg );
-
-		//const double pw = pdf->GetPageWidth() - pdf->GetLeftMargin() - pdf->GetRightMargin();
-		//printf( "PDF width %f left %f right %f\n", pdfdoc->GetPageWidth(), pdfdoc->GetLeftMargin(), pdfdoc->GetRightMargin());
+		pdfdoc = new BasePdfDocument( horoscope, pcfg );
 
 		pageSize = MPoint( pdfdoc->GetPageWidth(), pdfdoc->GetPageHeight());
 		table_cell_delta_x = 2;
@@ -250,7 +246,7 @@ void PdfTool::printTestpage( Horoscope *horoscope, ChartProperties *props )
 	PrintoutSheetCreator c( horoscope, props );
 	c.write( sheet, pcfg->defaultPrintout );
 
-	PdfSheetWriter *pdfwriter = new PdfSheetWriter( sheet, sloader->getConfig( pcfg->sheetStyle ), config->writer );
+	PdfSheetWriter *pdfwriter = new PdfSheetWriter( horoscope, sheet, sloader->getConfig( pcfg->sheetStyle ), config->writer );
 	pdfwriter->doPrint( filename );
 
 	if ( pcfg->launchPdfViewer ) launchBrowser( filename );
@@ -268,15 +264,14 @@ void PdfTool::printTestpage( Horoscope *horoscope, ChartProperties *props )
 bool PdfTool::doSheetExport( Sheet *sheet )
 {
   SheetConfigLoader *loader = SheetConfigLoader::get();
-	//SheetConfig *sheetcfg = loader->getConfig( config->view->sheetStyle );
 	SheetConfig *sheetcfg = loader->getConfig( config->print->sheetStyle );
 
-	//wxString filename = wxFileName::CreateTempFileName( wxT( "testpage" ));
 	wxString filename;
 	const bool b = selectFilename( filename, wxT( "out" ) );
 	if ( ! b ) return false;
 
-	PdfSheetWriter *pdfwriter = new PdfSheetWriter( sheet, sheetcfg, config->writer );
+	// TODO Horoscope is NULL
+	PdfSheetWriter *pdfwriter = new PdfSheetWriter( (Horoscope*)NULL, sheet, sheetcfg, config->writer );
 	pdfwriter->setCenterAll();
 	pdfwriter->doPrint( filename );
 
@@ -344,9 +339,6 @@ bool PdfTool::selectFilename( wxString &fullname, wxString basename )
 		return false;
 	}
 	config->viewprefs->defExportPath = exportFileDialog.GetDirectory();
-
-	//printf( "FULLNAME %s\n", str2char( fullname ));
-
 	return true;
 }
 
@@ -395,12 +387,10 @@ void PdfTool::printHoroscope( Horoscope *horoscope, wxString filename )
 	ChartProperties *props = new ChartProperties;
 	props->setWesternSkin( config->print->wGraphicSkin );
 	props->setVedicSkin( config->print->vGraphicSkin );
-	//printf( "VEdicChart skin %d\n", props->getVedicSkin());
 
 	PrintoutConfigLoader *loader = PrintoutConfigLoader::get();
 	PrintoutConfig *theconfig = loader->getConfig( pcfg->defaultPrintout );
 	props->setVedic( theconfig->vedic );
-	//printf( "VEDIC %d viewer %s\n", theconfig->vedic, str2char( pcfg->pdfViewerCommand ) );
 
 	Sheet *sheet = new Sheet;
 	SheetConfigLoader *sloader = SheetConfigLoader::get();
@@ -408,7 +398,7 @@ void PdfTool::printHoroscope( Horoscope *horoscope, wxString filename )
 	PrintoutSheetCreator c( horoscope, props );
 	c.write( sheet, pcfg->defaultPrintout );
 
-	PdfSheetWriter *pdfwriter = new PdfSheetWriter( sheet, sloader->getConfig( pcfg->sheetStyle ), config->writer );
+	PdfSheetWriter *pdfwriter = new PdfSheetWriter( horoscope, sheet, sloader->getConfig( pcfg->sheetStyle ), config->writer );
 	pdfwriter->doPrint( filename );
 
 	finishPrint( filename );

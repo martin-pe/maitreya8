@@ -257,7 +257,6 @@ void PrintoutSheetCreator::write( Sheet *sheet, const int &id )
 {
 	PrintoutConfigLoader *loader = PrintoutConfigLoader::get();
 	PrintoutConfig *cfg = loader->getConfig( id );
-	PrintoutTextHelper helper( horoscope, chartprops, sheet );
 
 	for( uint i = 0; i < cfg->items.size(); i++ )
 	{
