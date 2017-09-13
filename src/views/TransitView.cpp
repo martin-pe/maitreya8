@@ -61,6 +61,8 @@ enum { TRANSIT_NOTEBOOK = wxID_HIGHEST + 3000, TRANSIT_PROGRRESS_TIMER, TRANSIT_
 
 #define TIMER_PERIOD  100
 
+//#define DEBUG_TRANSITVIEW
+
 #define MAX_TRANSIT_PAGES 6
 enum { TNB_ERROR = -1, TNB_CHART, TNB_SBC, TNB_SHADVARGA, TNB_VARGA2, TNB_VARGA3, TNB_URANIAN };
 #define URANIAN_VIEW_TEXT_WO WO_SUPPORTS_EW_TOGGLE | WO_MENU_FULL_OBJECT | WO_EXPORT_PDF | WO_EXPORT_PLAINTEXT | WO_EXPORT_HTMLTEXT | WO_EXPORT_CSVTEXT
@@ -104,10 +106,7 @@ public:
 		}
 		//printf( "transitdate %f stored %f\n", transitdate, config->viewprefs->transitJD );
 		calcTzOffset();
-
-		thedate = (int)(transitdate + .5 );
-		thetime = ( transitdate - (long)transitdate ) + .5;
-		//printf( "TIME IS %f\n", thetime );
+		calculateDateAndTime();
 
 		notebook = new wxNotebook( this, TRANSIT_NOTEBOOK );
 
@@ -117,7 +116,6 @@ public:
 		gwidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
 		gwidget->addVedicChart( V_RASI, doc, expert->getTransitHoroscope());
 		gwidget->addWesternChart( doc, expert->getTransitHoroscope());
-		//gwidget->getAspectExpert()->setSortOrder( uconfig.sortOrder );
 
 		twidget = new TextWidget( tsplitter, props );
 		twidget->setWidgetOptions( URANIAN_VIEW_TEXT_WO );
@@ -145,7 +143,6 @@ public:
 		wxPanel *panel = new wxPanel( notebook );
 		uwidget = new TextWidget( panel, props, URANIAN_VIEW_TEXT_WO );
 		upanel = new UranianParamPanel( panel, TRANSIT_UPANEL, props, &uconfig.orbisTransit );
-		//printf( "ORBIS 1 %f\n", uconfig.orbisTransit );
 		wxBoxSizer* usizer = new wxBoxSizer( wxHORIZONTAL );
 		usizer->Add( upanel, 0, wxALL, 3);
 		usizer->Add( uwidget, 1, wxEXPAND | wxALL, 3);
@@ -166,16 +163,11 @@ public:
 		Connect( TBS_DATE, wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( TransitView::OnDateCtrlChanged ));
 		Connect( TBS_TIME, COMMAND_SPIN_CHANGED, wxCommandEventHandler( TransitView::OnDateCtrlChanged ));
 		Connect( TBS_TIME, COMMAND_SPIN_WRAP, wxCommandEventHandler( TransitView::OnTimeCtrlWrap ));
+		Connect( TBS_TIME, wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( TransitView::OnDateCtrlChanged ));
 
 		Connect( TBS_TZ, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceTimezone ));
 		Connect( TBS_TRANSITMODE, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceCommand ));
 
-/*
-		Connect( TBS_ORBIS, wxEVT_COMMAND_SPINCTRL_UPDATED, wxSpinEventHandler( TransitView::OnSpinCommand ));
-		Connect( TBS_ORBIS, wxEVT_COMMAND_TEXT_ENTER, wxTextEventHandler( TransitView::OnGeneralCommand ));
-		Connect( TBS_SORT, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceCommand ));
-		Connect( TBS_GRADKREIS, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( TransitView::OnChoiceCommand ));
-		*/
 		Connect( wxEVT_IDLE, wxIdleEventHandler( TransitView::OnIdle ));
 
 		Connect( TBS_DATE_PROGRESS, wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( TransitView::OnDateProgress ));
@@ -203,8 +195,6 @@ public:
 		config->viewprefs->activePageTransit = notebook->GetSelection();
 		config->viewprefs->transitmode = transitmode;
 		config->viewprefs->transitJD = transitdate;
-
-		//printf( "ORBIS 2 %f\n", props->getUranianConfig().orbisTransit );
 		*config->uranian = props->getUranianConfig();
 
 		delete expert;
@@ -222,6 +212,21 @@ public:
 		dirty = b;
 		udirty = b;
 	}
+
+	/*****************************************************
+	**
+	**   TransitView   ---   calculateDateAndTime
+	**
+	******************************************************/
+	void calculateDateAndTime()
+	{
+		thedate = (int)(transitdate + .5 );
+		thedate -= .5;
+		thetime = a_red( ( transitdate - (long)transitdate ) + .5, 1 );
+		thetime *= 24;
+		//printf( "Transitdate %f DATE %f TIME IS %f\n", transitdate, thedate, thetime );
+	}
+
 
 	/*****************************************************
 	**
@@ -356,6 +361,9 @@ protected:
 	******************************************************/
 	void OnDateCtrlChanged( wxCommandEvent &event )
 	{
+#ifdef DEBUG_TRANSITVIEW
+		printf( "OnDateCtrlChanged\n" );
+#endif
 		setTransitdateFromDateTimeSpins();
 		event.Skip();
 	}
@@ -424,7 +432,9 @@ protected:
 	******************************************************/
 	virtual void OnDataChanged()
 	{
-		//printf( "TransitView::OnDataChanged\n" );
+#ifdef DEBUG_TRANSITVIEW
+		printf( "TransitView::OnDataChanged START transitdate %f date %09.9f, time %f\n", transitdate, thedate, thetime );
+#endif
 		BasicView::OnDataChanged();
 
 		// must be called each time because dst may have changed
@@ -437,6 +447,9 @@ protected:
 		{
 			// Date and Time
 			setTransitdateFromDateTimeSpins();
+#ifdef DEBUG_TRANSITVIEW
+			printf( "TransitView::OnDataChanged transitdate %f date %09.9f, time %f\n", transitdate, thedate, thetime );
+#endif
 			expert->setTransitDate( transitdate, tzoffset );
 
 			// Mode
@@ -453,6 +466,9 @@ protected:
 		expert->update();
 		udirty = true;
 		updateCurrentPage();
+#ifdef DEBUG_TRANSITVIEW
+		printf( "TransitView::OnDataChanged FINISHED transitdate %f date %09.9f, time %f\n", transitdate, thedate, thetime );
+#endif
 	}
 
 	/*****************************************************
@@ -653,21 +669,10 @@ protected:
 	// update tzoffset and transitdate
 	void setTransitdateFromDateTimeSpins()
 	{
-		transitdate = thedate - .5 + thetime / 24.0;
-		if ( toolbar )
-		{
-			/*
-			// Date and Time
-			DateSpin *spin_date = (DateSpin*)toolbar->FindControl( TBS_DATE );
-			TimeSpin *spin_time = (TimeSpin*)toolbar->FindControl( TBS_TIME );
-			if ( spin_date && spin_time )
-			{
-				double dd = spin_date->getDoubleValue();
-				double tt = spin_time->getDoubleValue();
-				transitdate = dd + tt / 24.0;
-			}
-			*/
-		}
+		transitdate = thedate + thetime / 24.0;
+#ifdef DEBUG_TRANSITVIEW
+		printf( "setTransitdateFromDateTimeSpins transitdate %f date %09.9f, time %f\n", transitdate, thedate, thetime );
+#endif
 		setDirty();
 	}
 
@@ -678,11 +683,10 @@ protected:
 	******************************************************/
 	void setDateTimeSpinsFromTransitdate()
 	{
-		thedate = (int)(transitdate + .5 );
-		thetime = ( transitdate - (long)transitdate );
-		thetime += .5;
-		if ( thetime > 1 ) thetime--;
-		thetime *= 24;
+		calculateDateAndTime();
+#ifdef DEBUG_TRANSITVIEW
+		printf( "setDateTimeSpinsFromTransitdate transitdate %f date %09.9f, time %f\n", transitdate, thedate, thetime );
+#endif
 		toolbar->TransferDataToWindow();
 
 		if ( toolbar ) toolbar->TransferDataToWindow();

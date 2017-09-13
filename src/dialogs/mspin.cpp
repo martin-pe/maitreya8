@@ -145,7 +145,7 @@ public:
 	void OnTextEvent(wxCommandEvent& event)
 	{
 #ifdef DEBUG_MSPIN
-		printf( "OnTextEvent\n" );
+		printf( "OnTextEvent processDeletegatedEvents %d\n", processDeletegatedEvents );
 #endif
 
 		if ( processDeletegatedEvents )
@@ -310,6 +310,9 @@ void MBaseSpin::OnMouseWheelEvent( wxMouseEvent &event )
 ******************************************************/
 void MBaseSpin::sendChangeEvent()
 {
+#ifdef DEBUG_MSPIN
+	printf( "MBaseSpin::sendChangeEvent\n" );
+#endif
 	updateLabel();
 	wxCommandEvent e( COMMAND_SPIN_CHANGED, GetId());
 	wxPostEvent( GetParent(), e );
@@ -570,7 +573,10 @@ void MDateSpin::add( const double &v )
 	}
 
 	assert( value );
-	*value = calculator->calc_jd( year, month, day, 12 );
+	*value = calculator->calc_jd( year, month, day, 0 );
+#ifdef DEBUG_MSPIN
+		printf( "MDateSpin::add year %d month %d day %d jd %f\n", year, month, day, *value );
+#endif
 
 	TransferDataToWindow();
 	text->SetInsertionPoint( cursorpos );

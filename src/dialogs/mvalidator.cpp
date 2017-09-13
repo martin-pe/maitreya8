@@ -76,7 +76,9 @@ void MBaseValidator::OnKillFocus( wxFocusEvent &event )
 ******************************************************/
 void MBaseValidator::OnControlChanged( wxCommandEvent &event )
 {
-	//printf( "MBaseValidator::OnInputControlChanged\n" );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MBaseValidator::OnControlChanged\n" );
+#endif
 	doValidate();
 	TransferFromWindow();
 	event.Skip();
@@ -320,7 +322,9 @@ bool MDoubleValidator::TransferFromWindow()
 
 	Formatter *formatter = Formatter::get();
 	const bool isvalid = formatter->parseDoubleString( s, v, minvalue, maxvalue );
-	//printf( "MDoubleValidator::MDoubleValidator %s minvalue %f maxvalud %f isvalid %d\n", str2char( s ), minvalue, maxvalue, isvalid );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDoubleValidator::TransferFromWindow %s minvalue %f maxvalud %f isvalid %d\n", str2char( s ), minvalue, maxvalue, isvalid );
+#endif
 
 	if ( isvalid )
 	{
@@ -338,7 +342,9 @@ bool MDoubleValidator::TransferToWindow()
 {
 	Formatter *formatter = Formatter::get();
 	wxString s = formatter->formatDoubleString( *value, DEG_PRECISION_FLEXIBLE );
-	//printf( "MDoubleValidator::MDoubleValidator value %f string value %s\n", *value, str2char( s ) );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDoubleValidator::TransferToWindow value %f string value %s\n", *value, str2char( s ) );
+#endif
 	wxTextCtrl *ctrl = getTextCtrl();
 	ctrl->ChangeValue( formatter->formatDoubleString( *value, DEG_PRECISION_FLEXIBLE ));
 	return true;
@@ -470,7 +476,9 @@ MDegreeValidator::MDegreeValidator( const MDegreeValidator &tocopy )
 bool MDegreeValidator::TransferFromWindow()
 {
 	wxString s = getTextValue();
-	//printf( "MDegreeValidator::TransferFromWindow %s\n", str2char( s ) );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDegreeValidator::TransferFromWindow %s\n", str2char( s ) );
+#endif
 	double v;
 	Formatter *formatter = Formatter::get();
 	const bool isvalid = formatter->parseDegreeString( s, v, maxvalue );
@@ -490,7 +498,9 @@ bool MDegreeValidator::TransferToWindow()
 {
 	Formatter *formatter = Formatter::get();
 	wxString s = formatter->formatDegreeString( *value, DEG_PRECISION_FLEXIBLE );
-	//printf( "MDegreeValidator::TransferToWindow value %f string value %s\n", *value, str2char( s ) );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDegreeValidator::TransferToWindow value %f string value %s\n", *value, str2char( s ) );
+#endif
 	wxTextCtrl *ctrl = getTextCtrl();
 
 	ctrl->ChangeValue( formatter->formatDegreeString( *value, DEG_PRECISION_FLEXIBLE ));
@@ -556,11 +566,14 @@ MDateValidator::MDateValidator( const MDateValidator &tocopy )
 ******************************************************/
 bool MDateValidator::TransferFromWindow()
 {
-	//printf( "MDateValidator::TransferFromWindow\n" );
 	wxString s = getTextValue();
 	double v;
 	DateTimeFormatter *formatter = DateTimeFormatter::get();
 	const bool isvalid =  formatter->parseDateString( s, v );
+
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDateValidator::TransferFromWindow new value %f valid %d\n", v, isvalid );
+#endif
 	if ( isvalid )
 	{
 		*value = v;
@@ -575,7 +588,9 @@ bool MDateValidator::TransferFromWindow()
 ******************************************************/
 bool MDateValidator::TransferToWindow()
 {
-	//printf( "MDateValidator::iTransferToWindow\n" );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDateValidator::TransferToWindow value %f\n", *value );
+#endif
 	wxTextCtrl *ctrl = getTextCtrl();
 
 	DateTimeFormatter *formatter = DateTimeFormatter::get();
@@ -595,7 +610,9 @@ bool MDateValidator::doValidate()
 	DateTimeFormatter *formatter = DateTimeFormatter::get();
 	const bool isvalid =  formatter->parseDateString( s, v );
 
-	//printf( "MDateValidator::doValidate text %s v %f valid %d\n", str2char( s ), v, isvalid );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDateValidator::doValidate text %s v %f valid %d\n", str2char( s ), v, isvalid );
+#endif
 	setWindowBackground( isvalid );
 	return isvalid;
 }
@@ -610,7 +627,12 @@ bool MDateValidator::readValueFromControl( double &v )
 	DateTimeFormatter *formatter = DateTimeFormatter::get();
 	wxString s = getTextValue();
 
-	return formatter->parseDateString( s, v );
+	const bool isvalid = formatter->parseDateString( s, v );
+#ifdef DEBUG_MVALIDATOR
+	printf( "MDateValidator::readValueFromControl text %s v %f valid %d\n", str2char( s ), v, isvalid );
+#endif
+
+	return isvalid;
 }
 
 /*****************************************************
