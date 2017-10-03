@@ -26,7 +26,6 @@
 #include "DataSet.h"
 #include "Hora.h"
 #include "mspin.h"
-//#include "spintest.h"
 #include "mvalidator.h"
 #include "TextView.h"
 #include "TextWidget.h"
@@ -57,13 +56,7 @@ public:
 		initToolItems();
 		Connect( CMD_NOW, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( HoraView::OnNow ));
 		Connect( TBS_DATE, COMMAND_SPIN_CHANGED, wxCommandEventHandler( HoraView::OnDateCtrlChanged ));
-		/*
-		Connect( TBS_DATE, wxEVT_COMMAND_SPINCTRL, wxCommandEventHandler( HoraView::OnDateCtrlSpin ));
-		Connect( TBS_DATE, wxEVT_COMMAND_SPINCTRL_UPDATED, wxCommandEventHandler( HoraView::OnDateCtrlChanged ));
-		Connect( wxEVT_SCROLL_LINEUP, wxSpinEventHandler( HoraView::OnDateCtrlSpin ));
-		Connect( wxEVT_SCROLL_LINEDOWN, wxSpinEventHandler( HoraView::OnDateCtrlSpin ));
-		*/
-
+		Connect( TBS_DATE, wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( HoraView::OnDateCtrlChanged ));
 	}
 
 	~HoraView()
@@ -84,13 +77,6 @@ protected:
 		expert->write( twidget->getSheet(), isLocaltime );
 	}
 
-	/*
-	void OnDateCtrlSpin( wxSpinEvent& )
-	{
-		OnDataChanged();
-	}
-	*/
-
 	void OnDateCtrlChanged( wxCommandEvent& )
 	{
 		//printf( "HoraView::OnDateCtrlChanged\n" );
@@ -103,19 +89,6 @@ protected:
 		{
 			wxChoice *choice_ephemtz = (wxChoice*)toolbar->FindControl( TBS_TZ );
 			if ( choice_ephemtz ) choice_ephemtz->SetSelection( isLocaltime );
-
-			/*
-			MSpinDate *ds = wxDynamicCast( toolbar->FindControl( TBS_DATE ), MSpinDate );
-			if( ds )
-			{
-				ds->SetValidator( MDateSpinValidator( &jd ));
-			}
-			else
-			{
-				wxLogError( wxT( "Date spin not found in toolbar. View will not work properly." ));
-				assert( false );
-			}
-			*/
 
 			MDateSpin *ds = wxDynamicCast( toolbar->FindControl( TBS_DATE ), MDateSpin );
 			if( ds )

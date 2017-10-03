@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maitreya 4.1\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-06-24 12:48+0200\n"
+"POT-Creation-Date: 2017-09-30 10:55+0200\n"
 "PO-Revision-Date: 2006-07-09 23:34+0530\n"
 "Last-Translator: Santhosh <astrosanthosh@gmail.com>\n"
 "Language-Team: te <info@onlinejyotish.com>\n"
@@ -250,7 +250,7 @@ msgid "TextView"
 msgstr "టెక్స్ట్ గవాక్షం"
 
 #: src/base/Commands.cpp:270 src/dialogs/UranianPanel.cpp:60
-#: src/dialogs/UranianPanel.cpp:79 src/views/TransitView.cpp:231
+#: src/dialogs/UranianPanel.cpp:79 src/views/TransitView.cpp:236
 msgid "Transit"
 msgstr "గోచార"
 
@@ -265,7 +265,7 @@ msgstr ""
 
 #: src/base/Commands.cpp:272 src/gui/MenuProvider.cpp:432
 #: src/gui/MenuProvider.cpp:744 src/views/PartnerView.cpp:125
-#: src/views/SbcView.cpp:65 src/views/TransitView.cpp:130
+#: src/views/SbcView.cpp:65 src/views/TransitView.cpp:128
 msgid "Sarvatobhadra"
 msgstr "సర్వతోభద్ర"
 
@@ -309,7 +309,7 @@ msgstr "పాశ్చాత్య కుండలి"
 #: src/jyotish/GenericTableWriter.cpp:579
 #: src/jyotish/PrintoutTextHelper.cpp:156
 #: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:149
-#: src/views/TransitView.cpp:154 src/views/UranianView.cpp:136
+#: src/views/TransitView.cpp:151 src/views/UranianView.cpp:136
 #, fuzzy
 msgid "Uranian"
 msgstr "యురానియన్ లను చూపించు"
@@ -357,7 +357,7 @@ msgstr "ప్రదేశముల వివరములు"
 
 #: src/base/Commands.cpp:294 src/base/VargaBase.cpp:74
 #: src/dialogs/VedicCalculationPanel.cpp:114 src/jyotish/Hora.cpp:170
-#: src/views/HoraView.cpp:75
+#: src/views/HoraView.cpp:68
 msgid "Hora"
 msgstr "హోరా"
 
@@ -580,7 +580,7 @@ msgid "Show Statusbar"
 msgstr "స్టేటస్ బార్ ను చూపించు"
 
 #: src/base/DataSet.cpp:201 src/dialogs/AtlasDialog.cpp:747
-#: src/dialogs/DataDialog.cpp:495 src/gui/ChildWindowListCtrl.cpp:144
+#: src/dialogs/DataDialog.cpp:497 src/gui/ChildWindowListCtrl.cpp:144
 #: src/jyotish/GenericTableWriter.cpp:1012
 msgid "Location"
 msgstr "ప్రదేశం"
@@ -613,7 +613,7 @@ msgstr "ప్రశ్నాకుండలి"
 #: src/dialogs/AtlasAliasDialog.cpp:167 src/dialogs/AtlasDialog.cpp:213
 #: src/dialogs/AtlasDialog.cpp:249 src/dialogs/AtlasDialog.cpp:261
 #: src/dialogs/AtlasDialog.cpp:269 src/dialogs/AtlasEditDialog.cpp:55
-#: src/dialogs/DataDialog.cpp:99 src/dialogs/DataDialog.cpp:502
+#: src/dialogs/DataDialog.cpp:99 src/dialogs/DataDialog.cpp:504
 #: src/dialogs/VedicChartPanel.cpp:95 src/gui/ChildWindowListCtrl.cpp:136
 #: src/gui/MenuProvider.cpp:688 src/jyotish/ArabicParts.cpp:595
 #: src/jyotish/GenericTableWriter.cpp:994 src/jyotish/TextHelper.cpp:368
@@ -628,7 +628,7 @@ msgstr "స్థానిక సమయం"
 
 #: src/base/DataSet.cpp:393 src/dialogs/AtlasDialog.cpp:279
 #: src/dialogs/AtlasEditDialog.cpp:81 src/dialogs/DataDialog.cpp:119
-#: src/dialogs/DataDialog.cpp:492 src/gui/ToolPanel.cpp:418
+#: src/dialogs/DataDialog.cpp:494 src/gui/ToolPanel.cpp:418
 #: src/jyotish/GenericTableWriter.cpp:1031
 msgid "Time Zone"
 msgstr "టైం జోన్"
@@ -3015,7 +3015,7 @@ msgid "Vedic Astrology"
 msgstr "వైదిక జ్యోతిషం"
 
 #: src/dialogs/ConfigPanel.cpp:165 src/dialogs/ConfigPanel.cpp:170
-#: src/views/GraphicView.cpp:108 src/views/TransitView.cpp:125
+#: src/views/GraphicView.cpp:108 src/views/TransitView.cpp:123
 msgid "Chart"
 msgstr "జాతకము"
 
@@ -3059,7 +3059,7 @@ msgstr "అంత్యం"
 msgid "duration"
 msgstr "వ్యవధి"
 
-#: src/dialogs/DataDialog.cpp:90 src/dialogs/DataDialog.cpp:499
+#: src/dialogs/DataDialog.cpp:90 src/dialogs/DataDialog.cpp:501
 #: src/gui/ChildWindowListCtrl.cpp:140 src/gui/ToolPanel.cpp:361
 #: src/jyotish/Eclipse.cpp:134 src/jyotish/GenericTableWriter.cpp:999
 #: src/jyotish/Transit.cpp:325
@@ -3100,53 +3100,53 @@ msgstr "ప్రదేశాన్ని వెదకు"
 msgid "Search Location"
 msgstr "ప్రదేశాన్ని వెదకు"
 
-#: src/dialogs/DataDialog.cpp:305
+#: src/dialogs/DataDialog.cpp:307
 msgid "Gregorian Calendar"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:305
+#: src/dialogs/DataDialog.cpp:307
 #, fuzzy
 msgid "Julian Calendar"
 msgstr "జూలియన్ తేదీ"
 
-#: src/dialogs/DataDialog.cpp:310
+#: src/dialogs/DataDialog.cpp:312
 msgid "invalid value"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:460
+#: src/dialogs/DataDialog.cpp:462
 msgid "Birth Data"
 msgstr "జనన వివరములు"
 
-#: src/dialogs/DataDialog.cpp:462
+#: src/dialogs/DataDialog.cpp:464
 msgid "Set current date"
 msgstr "ప్రస్తుత తేదీని అంగీకరించు"
 
-#: src/dialogs/DataDialog.cpp:465
+#: src/dialogs/DataDialog.cpp:467
 #, fuzzy
 msgid "Set standard location"
 msgstr "డిఫాల్ట్ ప్రదేశంగా ఉంచు"
 
-#: src/dialogs/DataDialog.cpp:466
+#: src/dialogs/DataDialog.cpp:468
 msgid "Search location in database"
 msgstr "డాటాబేస్ లో ప్రదేశాన్ని వెదకు"
 
-#: src/dialogs/DataDialog.cpp:468
+#: src/dialogs/DataDialog.cpp:470
 msgid "Set time zone for local time"
 msgstr "స్థానిక సమయము కొరకు టైంజోన్ ను నిలుపు"
 
-#: src/dialogs/DataDialog.cpp:470
+#: src/dialogs/DataDialog.cpp:472
 msgid "Apply data and close dialog"
 msgstr "వివరములను అమలుపరచి ప్రకటనను ముగించు"
 
-#: src/dialogs/DataDialog.cpp:472
+#: src/dialogs/DataDialog.cpp:474
 msgid "Apply changes and recalculate chart with new data"
 msgstr "మార్పులను అమలుపరచి కొత్తవివరములతో జాతకాన్ని గణించు"
 
-#: src/dialogs/DataDialog.cpp:473
+#: src/dialogs/DataDialog.cpp:475
 msgid "Cancel changes and close dialog"
 msgstr "వివరములను తిరస్కరించి ప్రకటనను ముగించు"
 
-#: src/dialogs/DataDialog.cpp:488
+#: src/dialogs/DataDialog.cpp:490
 msgid "Remark"
 msgstr "విశేషములు"
 
@@ -5796,46 +5796,46 @@ msgstr ""
 msgid "Horoscope"
 msgstr ""
 
-#: src/gui/PdfTools.cpp:259 src/gui/PdfTools.cpp:286 src/gui/PdfTools.cpp:431
+#: src/gui/PdfTools.cpp:255 src/gui/PdfTools.cpp:281 src/gui/PdfTools.cpp:421
 #, c-format
 msgid "Chart printed to file %s."
 msgstr "జాతకం %s గా ముద్రించ బడింది"
 
-#: src/gui/PdfTools.cpp:300
+#: src/gui/PdfTools.cpp:295
 #, fuzzy
 msgid "Select Printout"
 msgstr "ముద్రణ"
 
-#: src/gui/PdfTools.cpp:332
+#: src/gui/PdfTools.cpp:327
 #, fuzzy
 msgid "Save Document"
 msgstr "జాతకాన్ని మూసివెయ్యి"
 
-#: src/gui/PdfTools.cpp:381
+#: src/gui/PdfTools.cpp:373
 #, c-format
 msgid "File %s exists. Do you want to overwrite?"
 msgstr "%s ఫైల్ ఇదివరకే ఉన్నది. దానిపైనే మళ్ళీ సేవ్ చేయమంటారా?"
 
-#: src/gui/PdfTools.cpp:452
+#: src/gui/PdfTools.cpp:442
 #, fuzzy
 msgid "Cannot launch pdf viewer."
 msgstr "బ్రౌసర్ తెరచుకోవటం లేదు."
 
-#: src/gui/PdfTools.cpp:460
+#: src/gui/PdfTools.cpp:450
 #, fuzzy
 msgid ""
 "Pdf viewer command is empty. Please configure the command in the "
 "configuration dialog."
 msgstr "నియంత్రణ ప్రకటన"
 
-#: src/gui/PdfTools.cpp:470
+#: src/gui/PdfTools.cpp:460
 #, fuzzy, c-format
 msgid ""
 "Pdf viewer file \"%s\" does not exist. Please configure the command in the "
 "configuration dialog."
 msgstr "నియంత్రణ ప్రకటన"
 
-#: src/gui/PdfTools.cpp:483
+#: src/gui/PdfTools.cpp:473
 #, c-format
 msgid "Can't launch pdf viewer, command is \"%s\" (error code %ld)"
 msgstr "పిడిఎఫ్ దర్శని తెరచుకోవటంలేదు, కమాండ్ \"%s\" (ఎర్రర్ కోడ్ %ld)"
@@ -8079,17 +8079,17 @@ msgstr "భకూట"
 msgid "Composite Chart"
 msgstr "గుణ మేళన చక్రం"
 
-#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:134
+#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:132
 #, fuzzy
 msgid "Shadvarga"
 msgstr "షడ్వర్గ"
 
-#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:138
+#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:136
 #, fuzzy
 msgid "Varga (2)"
 msgstr "వర్గ(2)"
 
-#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:142
+#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:140
 #, fuzzy
 msgid "Varga (3)"
 msgstr "వర్గ(2)"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maitreya 6\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-06-24 12:48+0200\n"
+"POT-Creation-Date: 2017-09-30 10:55+0200\n"
 "PO-Revision-Date: 2012-07-18 20:46+0100\n"
 "Last-Translator: Mariusz Gajowniczek <yogamaya@yogamaya.pl>\n"
 "Language-Team: http://yogamaya.pl <yogamaya@yogamaya.pl>\n"
@@ -247,7 +247,7 @@ msgid "TextView"
 msgstr "Okno tekstowe"
 
 #: src/base/Commands.cpp:270 src/dialogs/UranianPanel.cpp:60
-#: src/dialogs/UranianPanel.cpp:79 src/views/TransitView.cpp:231
+#: src/dialogs/UranianPanel.cpp:79 src/views/TransitView.cpp:236
 msgid "Transit"
 msgstr "Tranzyt"
 
@@ -262,7 +262,7 @@ msgstr ""
 
 #: src/base/Commands.cpp:272 src/gui/MenuProvider.cpp:432
 #: src/gui/MenuProvider.cpp:744 src/views/PartnerView.cpp:125
-#: src/views/SbcView.cpp:65 src/views/TransitView.cpp:130
+#: src/views/SbcView.cpp:65 src/views/TransitView.cpp:128
 msgid "Sarvatobhadra"
 msgstr "Sarvatobhadra"
 
@@ -306,7 +306,7 @@ msgstr "Diagram zachodni"
 #: src/jyotish/GenericTableWriter.cpp:579
 #: src/jyotish/PrintoutTextHelper.cpp:156
 #: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:149
-#: src/views/TransitView.cpp:154 src/views/UranianView.cpp:136
+#: src/views/TransitView.cpp:151 src/views/UranianView.cpp:136
 msgid "Uranian"
 msgstr "Uraniczne"
 
@@ -351,7 +351,7 @@ msgstr "Grafika das"
 
 #: src/base/Commands.cpp:294 src/base/VargaBase.cpp:74
 #: src/dialogs/VedicCalculationPanel.cpp:114 src/jyotish/Hora.cpp:170
-#: src/views/HoraView.cpp:75
+#: src/views/HoraView.cpp:68
 msgid "Hora"
 msgstr "Hora"
 
@@ -564,7 +564,7 @@ msgid "Show Statusbar"
 msgstr "Pokaż pasek stanu"
 
 #: src/base/DataSet.cpp:201 src/dialogs/AtlasDialog.cpp:747
-#: src/dialogs/DataDialog.cpp:495 src/gui/ChildWindowListCtrl.cpp:144
+#: src/dialogs/DataDialog.cpp:497 src/gui/ChildWindowListCtrl.cpp:144
 #: src/jyotish/GenericTableWriter.cpp:1012
 msgid "Location"
 msgstr "Miejsce"
@@ -597,7 +597,7 @@ msgstr "Nowy diagram"
 #: src/dialogs/AtlasAliasDialog.cpp:167 src/dialogs/AtlasDialog.cpp:213
 #: src/dialogs/AtlasDialog.cpp:249 src/dialogs/AtlasDialog.cpp:261
 #: src/dialogs/AtlasDialog.cpp:269 src/dialogs/AtlasEditDialog.cpp:55
-#: src/dialogs/DataDialog.cpp:99 src/dialogs/DataDialog.cpp:502
+#: src/dialogs/DataDialog.cpp:99 src/dialogs/DataDialog.cpp:504
 #: src/dialogs/VedicChartPanel.cpp:95 src/gui/ChildWindowListCtrl.cpp:136
 #: src/gui/MenuProvider.cpp:688 src/jyotish/ArabicParts.cpp:595
 #: src/jyotish/GenericTableWriter.cpp:994 src/jyotish/TextHelper.cpp:368
@@ -612,7 +612,7 @@ msgstr "Czas lokalny"
 
 #: src/base/DataSet.cpp:393 src/dialogs/AtlasDialog.cpp:279
 #: src/dialogs/AtlasEditDialog.cpp:81 src/dialogs/DataDialog.cpp:119
-#: src/dialogs/DataDialog.cpp:492 src/gui/ToolPanel.cpp:418
+#: src/dialogs/DataDialog.cpp:494 src/gui/ToolPanel.cpp:418
 #: src/jyotish/GenericTableWriter.cpp:1031
 msgid "Time Zone"
 msgstr "Strefa czasowa"
@@ -2908,7 +2908,7 @@ msgid "Vedic Astrology"
 msgstr "Astrologia wedyjska"
 
 #: src/dialogs/ConfigPanel.cpp:165 src/dialogs/ConfigPanel.cpp:170
-#: src/views/GraphicView.cpp:108 src/views/TransitView.cpp:125
+#: src/views/GraphicView.cpp:108 src/views/TransitView.cpp:123
 msgid "Chart"
 msgstr "Diagram"
 
@@ -2952,7 +2952,7 @@ msgstr "koniec"
 msgid "duration"
 msgstr "czas trwania"
 
-#: src/dialogs/DataDialog.cpp:90 src/dialogs/DataDialog.cpp:499
+#: src/dialogs/DataDialog.cpp:90 src/dialogs/DataDialog.cpp:501
 #: src/gui/ChildWindowListCtrl.cpp:140 src/gui/ToolPanel.cpp:361
 #: src/jyotish/Eclipse.cpp:134 src/jyotish/GenericTableWriter.cpp:999
 #: src/jyotish/Transit.cpp:325
@@ -2990,53 +2990,53 @@ msgstr "Szukaj miejsca"
 msgid "Search Location"
 msgstr "Szukaj miejsca"
 
-#: src/dialogs/DataDialog.cpp:305
+#: src/dialogs/DataDialog.cpp:307
 msgid "Gregorian Calendar"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:305
+#: src/dialogs/DataDialog.cpp:307
 #, fuzzy
 msgid "Julian Calendar"
 msgstr "Rachuba czasu: kalendarz juliański"
 
-#: src/dialogs/DataDialog.cpp:310
+#: src/dialogs/DataDialog.cpp:312
 msgid "invalid value"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:460
+#: src/dialogs/DataDialog.cpp:462
 msgid "Birth Data"
 msgstr "Czas wydarzenia"
 
-#: src/dialogs/DataDialog.cpp:462
+#: src/dialogs/DataDialog.cpp:464
 msgid "Set current date"
 msgstr "Wprowadź bierzącą datę"
 
-#: src/dialogs/DataDialog.cpp:465
+#: src/dialogs/DataDialog.cpp:467
 #, fuzzy
 msgid "Set standard location"
 msgstr "Wprowadź domyślną lokalizację"
 
-#: src/dialogs/DataDialog.cpp:466
+#: src/dialogs/DataDialog.cpp:468
 msgid "Search location in database"
 msgstr "Sprawdź położenie w bazie danych"
 
-#: src/dialogs/DataDialog.cpp:468
+#: src/dialogs/DataDialog.cpp:470
 msgid "Set time zone for local time"
 msgstr "Wprowadź strefę czasową dla czasu lokalnego"
 
-#: src/dialogs/DataDialog.cpp:470
+#: src/dialogs/DataDialog.cpp:472
 msgid "Apply data and close dialog"
 msgstr "Zastosuj i zakończ dialog"
 
-#: src/dialogs/DataDialog.cpp:472
+#: src/dialogs/DataDialog.cpp:474
 msgid "Apply changes and recalculate chart with new data"
 msgstr "Zastosuj zmiany i oblicz ponownie diagram dla nowych danych"
 
-#: src/dialogs/DataDialog.cpp:473
+#: src/dialogs/DataDialog.cpp:475
 msgid "Cancel changes and close dialog"
 msgstr "Ignoruj zmiany i zmknij okno"
 
-#: src/dialogs/DataDialog.cpp:488
+#: src/dialogs/DataDialog.cpp:490
 msgid "Remark"
 msgstr "Komentarz"
 
@@ -5567,45 +5567,45 @@ msgstr "Korzystne/niekorzystne Nakszatry"
 msgid "Horoscope"
 msgstr "Horoskop partnera"
 
-#: src/gui/PdfTools.cpp:259 src/gui/PdfTools.cpp:286 src/gui/PdfTools.cpp:431
+#: src/gui/PdfTools.cpp:255 src/gui/PdfTools.cpp:281 src/gui/PdfTools.cpp:421
 #, c-format
 msgid "Chart printed to file %s."
 msgstr "Diagram drukawany do pliku %s."
 
-#: src/gui/PdfTools.cpp:300
+#: src/gui/PdfTools.cpp:295
 #, fuzzy
 msgid "Select Printout"
 msgstr "Wydruk"
 
-#: src/gui/PdfTools.cpp:332
+#: src/gui/PdfTools.cpp:327
 #, fuzzy
 msgid "Save Document"
 msgstr "Zamknij diagram"
 
-#: src/gui/PdfTools.cpp:381
+#: src/gui/PdfTools.cpp:373
 #, c-format
 msgid "File %s exists. Do you want to overwrite?"
 msgstr "Plik %s istnieje. Czy chcesz go zamienić?"
 
-#: src/gui/PdfTools.cpp:452
+#: src/gui/PdfTools.cpp:442
 msgid "Cannot launch pdf viewer."
 msgstr "Nie można odnaleźć przeglądarki."
 
-#: src/gui/PdfTools.cpp:460
+#: src/gui/PdfTools.cpp:450
 #, fuzzy
 msgid ""
 "Pdf viewer command is empty. Please configure the command in the "
 "configuration dialog."
 msgstr "Nie mogę odnaleźć przeglądarki Pdf. Skonfiguruj swoją przeglądarkę."
 
-#: src/gui/PdfTools.cpp:470
+#: src/gui/PdfTools.cpp:460
 #, fuzzy, c-format
 msgid ""
 "Pdf viewer file \"%s\" does not exist. Please configure the command in the "
 "configuration dialog."
 msgstr "Nie mogę odnaleźć przeglądarki Pdf. Skonfiguruj swoją przeglądarkę."
 
-#: src/gui/PdfTools.cpp:483
+#: src/gui/PdfTools.cpp:473
 #, c-format
 msgid "Can't launch pdf viewer, command is \"%s\" (error code %ld)"
 msgstr "Nie mogę odnaleźć przeglądarki pdf, polecenie \"%s\" (błąd kodu %ld)"
@@ -7737,15 +7737,15 @@ msgstr "Bhakuta"
 msgid "Composite Chart"
 msgstr "Diagram wielostopniowy"
 
-#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:134
+#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:132
 msgid "Shadvarga"
 msgstr "Szadvarga"
 
-#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:138
+#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:136
 msgid "Varga (2)"
 msgstr "Varga (2)"
 
-#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:142
+#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:140
 msgid "Varga (3)"
 msgstr "Varga (3)"
 

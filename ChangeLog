@@ -1,3 +1,24 @@
+Stable version 8.0.1 released (Sept 30 2017)
+
+   Bug fixes
+
+     * Transit View: the time input field doesn't work properly. Time has
+       sometimes a difference of 12 hours after entering the data.
+       Workaround: enter time first and then date.
+     * Uranian View/yearly preview: event date of pair events (p1=p2) is
+       not okay. Date is calculated from the end of the year instead of
+       beginning. Does not affect triple events: midpoints, reflection
+       points, sums, differences.
+     * Page header in printouts, multipage printouts (Vedic comprehensive)
+       do not reflect the horoscope data (name, date etc.). A new chart is
+       used instead. Calculations in printout are correct nevertheless.
+
+   Changes
+
+     * Mac OS X: new build with wxWidgets upgrade to version 3.0.3 and 64
+       bit architecture.
+     __________________________________________________________________
+
 Stable version 8.0 released (June 24 2017)
 
    Bug fixes are

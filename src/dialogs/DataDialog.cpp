@@ -137,6 +137,8 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
     do_layout();
     // end wxGlade
 
+	text_remark->SetParent( this );
+
 	//text_name->SetValidator( MTextValidator( &model->name ));
 	text_date->SetValidator( MDateValidator( &model->date ));
 	text_time->SetValidator( MDegreeValidator( &model->time, 24 ));
