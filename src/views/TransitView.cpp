@@ -113,7 +113,7 @@ public:
 		// setup notebook tabs, start with TNB_CHART
 		tsplitter = new SplitterWidget( notebook );
 		gwidget =  new ChartGridWidget( tsplitter, CT_TRANSIT, props );
-		gwidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE );
+		gwidget->addWidgetOption( WO_SUPPORTS_EW_TOGGLE | WO_MENU_TRANSIT );
 		gwidget->addVedicChart( V_RASI, doc, expert->getTransitHoroscope());
 		gwidget->addWesternChart( doc, expert->getTransitHoroscope());
 
@@ -129,14 +129,17 @@ public:
 
 		// TNB_SHADVARGA
 		shadvargawidget = new ShadVargaChartGridWidget( notebook, CT_TRANSIT, props, doc, expert->getTransitHoroscope());
+		shadvargawidget->addWidgetOption( WO_MENU_TRANSIT );
 		notebook->AddPage( shadvargawidget, _( "Shadvarga" ));
 
 		//  TNB_VARGA2
 		varga2widget = new VargaTab2ChartGridWidget( notebook, CT_TRANSIT, props, doc, expert->getTransitHoroscope());
+		varga2widget->addWidgetOption( WO_MENU_TRANSIT );
 		notebook->AddPage( varga2widget, _( "Varga (2)" ));
 
 		//  TNB_VARGA3
 		varga3widget = new VargaTab3ChartGridWidget( notebook, CT_TRANSIT, props, doc, expert->getTransitHoroscope());
+		varga3widget->addWidgetOption( WO_MENU_TRANSIT );
 		notebook->AddPage( varga3widget, _( "Varga (3)" ));
 
 		// TNB_URANIAN
