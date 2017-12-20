@@ -277,7 +277,7 @@
                             "widget": {
                                 "viewtype": "text",
 																"showtoolbar": false,
-																"textmode": 14
+																"textmode": 15
                             }
                         }
                     }
@@ -313,7 +313,7 @@
                                     "window2": {
                                         "widget": {
                                             "showtoolbar": false,
-                                            "textmode": 14,
+                                            "textmode": 15,
                                             "vedic": false,
                                             "viewtype": "text"
                                         }
