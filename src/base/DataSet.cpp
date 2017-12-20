@@ -1003,7 +1003,7 @@ TzFormattedDate TzUtil::getDateFormatted( const double &jd, const bool &isLocal 
 	}	
 
 	//fd.dateFormatted = formatter->getDateStringFromJD( jd + tzoffset / 24.0 );
-	fd.dateFormatted = formatter->formatDateString( jd, tzoffset, DF_INCLUDE_YEAR_BC_AD | DF_INCLUDE_TIME );
+	fd.dateFormatted = formatter->formatDateString( jd, tzoffset, DF_INCLUDE_YEAR_BC_AD );
 
 	double tzminutes = tzoffset - (int)tzoffset;
 	tzminutes *= 60;
