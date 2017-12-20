@@ -155,6 +155,7 @@ public:
 			eventCopy.SetId(m_spin->GetId());
 			m_spin->ProcessEvent(eventCopy);
 		}
+		m_spin->updateLabel();
 	}
 
 	void OnKillFocus(wxFocusEvent& event)
