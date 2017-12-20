@@ -419,7 +419,7 @@ void AboutDialog::do_layout()
     notebook->AddPage(pane_about, _("About"));
     notebook->AddPage(pane_license, _("License"));
     sizer_main->Add(notebook, 1, wxEXPAND, 0);
-    sizer_main->Add(button_ok, 0, 0, 3);
+    sizer_main->Add(button_ok, 0, wxALIGN_CENTER, 3);
     SetSizer(sizer_main);
     sizer_main->Fit(this);
     sizer_main->AddGrowableRow(1);
