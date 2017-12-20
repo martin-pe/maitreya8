@@ -704,7 +704,6 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 			menu->Append( CMD_VCS_ARUDHAS, _( "Arudhas"), wxT( "" ), true );
 			menu->Check( CMD_VCS_ARUDHAS, props->getVedicChartDisplayConfig().showArudhas );
 			
-			printf( "HALLO Transit wo %d -  %d\n", wo, ( wo & WO_MENU_TRANSIT ));
 			if ( wo & WO_MENU_TRANSIT )
 			{
 				menu->Append( CMD_VCS_ASHTAKAVARGA, _( "Ashtakavarga Points"), wxT( "" ), true );
