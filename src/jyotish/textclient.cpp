@@ -71,20 +71,31 @@ Config *config;
 
 static const wxCmdLineEntryDesc cmdLineDesc[] =
 {
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("help"), wxT1("show this help message"), wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("help"),
+		wxT1("show this help message"), wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("date"), wxT1("Set UT date YYYY-MM-DD HH:MM:SS"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("location"), wxT1("Set location \"name LL:LL BB:BB (+/-)TZ\""),
+	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("ldate"), wxT1("Set local date YYYY-MM-DD HH:MM:SS"),
+		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("location"),
+		wxT1("Set location \"name LL:LL[:LL] BB:BB[:BB] (+/-)TZ\""),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("vedic"), wxT1("Force Vedic mode (instead of default)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("vedic"),
+		wxT1("Force Vedic mode (instead of default)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("western"), wxT1("Force western mode (instead of default)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("western"),
+		wxT1("Force western mode (instead of default)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("html"), wxT1("print output in Maitreya formatted HTML format (instead of text)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("html"),
+		wxT1("print output in Maitreya formatted HTML format (instead of text)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("plain-html"), wxT1("print output in plain HTML format (instead of text)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("plain-html"),
+		wxT1("print output in plain HTML format (instead of text)"),
+		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("csv"),
+		wxT1("print output in CSV format (instead of text)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("year"), wxT1("set additional year (transit, Solar)"),
@@ -101,26 +112,34 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("ephemeris"), wxT1("Show ephemeris"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("ephemeris-sunrise"), wxT1("Show ephemeris sunrise/Tithi"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("ephemeris-sunrise"),
+		wxT1("Show ephemeris sunrise/Tithi"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("ephemeris-ingress"), wxT1("Show ephemeris ingress events"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("ephemeris-ingress"),
+		wxT1("Show ephemeris ingress events"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("ephemeris-lunar"), wxT1("Show ephemeris Lunar events"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("ephemeris-lunar"),
+		wxT1("Show ephemeris Lunar events"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("ephemeris-kpevents"), wxT1("Show ephemeris kp events for Dasa #n"),
+	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("ephemeris-kpevents"),
+		wxT1("Show ephemeris kp events for Dasa #n"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
 	// methods based upon Horoscope class
-	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("file"), wxT1("Open given file and use data for calculation"), 
+	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("file"),
+		wxT1("Open given file and use data for calculation"), 
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("base-data"), wxT1("Show base data of chart"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("planet-list"), wxT1("List planets (like in main window, using switch for Vedic/western)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("planet-list"),
+		wxT1("List planets (like in main window, using switch for Vedic/western)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("vedicplanets"), wxT1("Show vedic planets (like in TextView)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("vedicplanets"),
+		wxT1("Show vedic planets (like in TextView)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("westernplanets"), wxT1("Show western planets (like in TextView)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("westernplanets"),
+		wxT1("Show western planets (like in TextView)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("kp"), wxT1("Show Krishnamurti Paddhati"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
@@ -169,16 +188,19 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
 
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("uranian"), wxT1("Show Uranian Analysis"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("uranian-yearlypreview"), wxT1("Show yearly preview (Uranian astrology)"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("uranian-yearlypreview"),
+		wxT1("Show yearly preview (Uranian astrology)"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
 	{ wxCMD_LINE_OPTION, wxEmptyString1, wxT1("file2"), wxT1("Open second file for partner chart"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("partner-vedic"), wxT1("Show Vedic partner analysis"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("partner-composite"), wxT1("Show partner composite chart"),
+	{ wxCMD_LINE_SWITCH, wxEmptyString1, wxT1("partner-composite"),
+		wxT1("Show partner composite chart"),
 		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-	{ wxCMD_LINE_NONE, wxEmptyString1, wxEmptyString1, wxEmptyString1, wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+	{ wxCMD_LINE_NONE, wxEmptyString1, wxEmptyString1, wxEmptyString1,
+		wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 };
 
 #undef wxEmptyString1
@@ -240,9 +262,8 @@ protected:
 	**    MaitreyaTextclient   ---   showEclipses
 	***
 	***************************************************************/
-	void showEclipses()
+	void showEclipses( const double &jd )
 	{
-		double jd = dataset.getJD();
 		EclipseExpert ec;
 		ec.update( jd, jd + 365 * 3, 0, 0, chartprops->isVedic() );
 		ec.write( sheet, config->viewprefs->ephemTimezone );
@@ -254,10 +275,10 @@ protected:
 	**    MaitreyaTextclient   ---   showHora
 	***
 	***************************************************************/
-	void showHora()
+	void showHora( const double &jd )
 	{
 		HoraExpert expert;
-		expert.update( dataset.getJD());
+		expert.update( jd );
 		expert.write( sheet );
 		writecount++;
 	}
@@ -267,15 +288,10 @@ protected:
 	**    MaitreyaTextclient   ---   showEphemeris
 	***
 	***************************************************************/
-	void showEphemeris( const int &type, const DasaId dasa = D_VIMSOTTARI  )
+	void showEphemeris( const int &year, const int &month, const int &type, const DasaId dasa = D_VIMSOTTARI  )
 	{
-		int day, month, year;
-		DateTimeFormatter *formatter = DateTimeFormatter::get();
-
 		EphemExpert e( chartprops );
 		e.setShowHeader( true );
-
-		formatter->calculateDateIntegers( dataset.getJD(), day, month, year );
 		e.prepareMonth( month, year, 0 );
 
 		switch ( type )
@@ -439,28 +455,41 @@ protected:
 	**    MaitreyaTextclient   ---   setDate
 	***
 	***************************************************************/
-	void setDate( wxString s )
+	void setDate( wxString s, bool islocal = false )
 	{
-		long  year, month, day, hour, minute, second;
-		double time;
-
+		double jd = 0, time = 0;
 		if ( ! s.IsEmpty())
 		{
-			year = month = day = hour = minute = second = 0;
-			wxStringTokenizer t( s, wxT( " -:" ));
+			wxStringTokenizer t( s, wxT( " " ));
 
-			if ( t.HasMoreTokens()) year = getIntFromString( t.GetNextToken());
-			if ( t.HasMoreTokens()) month = getIntFromString( t.GetNextToken());
-			if ( t.HasMoreTokens()) day = getIntFromString( t.GetNextToken());
-			if ( t.HasMoreTokens()) hour = getIntFromString( t.GetNextToken());
-			if ( t.HasMoreTokens()) minute = getIntFromString( t.GetNextToken());
-			if ( t.HasMoreTokens()) second = getIntFromString( t.GetNextToken());
-
-			time = second + 60 * minute + 3600 * hour;
-			time /= 3600;
-
-			dataset.setDate( day, month, year, time );
+			if ( t.HasMoreTokens())
+			{
+				wxString datestr = t.GetNextToken();
+				if ( ! DateTimeFormatter::get()->parseDateString( datestr, jd ))
+				{
+					fatalError( "cannot parse date string " + datestr );
+				}
+				printf( "date token: %s jd %9.9f\n", str2char( datestr ), jd);
+			}
+			if ( t.HasMoreTokens())
+			{
+				wxString timestr = t.GetNextToken();
+				if ( ! Formatter::get()->parseDegreeString( timestr, time, 24.0 ))
+				{
+					fatalError( "cannot parse time string " + timestr );
+				}
+				printf( "Time token: %s time %9.9f\n", str2char( timestr ), time);
+			}
 		}
+		if ( islocal )
+		{
+			Location *location = dataset.getLocation();
+			const double timeshift = location->getTimeZone();
+			printf( "time shift %f\n", timeshift );
+			time -= timeshift;
+		}
+		jd += time / 24.0;
+		dataset.setDate( jd );
 	}
 
 	/**************************************************************
@@ -470,29 +499,61 @@ protected:
 	***************************************************************/
 	void setLocation( wxString s )
 	{
-		long ldeg, lmin, bdeg, bmin, dst;
-		double lon, lat, tz;
+		const char MINUS = '-';
+		Formatter *formatter =  Formatter::get();
+		double lon = 0.0, lat = 0.0, tz = 0.0;
 		wxString name;
-
-		ldeg = lmin = bdeg = bmin = dst = 0;
-		lon = lat = tz = 0;
-		wxStringTokenizer t( s, wxT( " :" ));
+		wxStringTokenizer t( s, wxT( " " ));
 
 		if ( t.HasMoreTokens()) name = t.GetNextToken();
-		if ( t.HasMoreTokens()) ldeg = getIntFromString( t.GetNextToken());
-		if ( t.HasMoreTokens()) lmin = getIntFromString( t.GetNextToken());
-		if ( t.HasMoreTokens()) bdeg = getIntFromString( t.GetNextToken());
-		if ( t.HasMoreTokens()) bmin = getIntFromString( t.GetNextToken());
+		if ( t.HasMoreTokens())
+		{
+			wxString slong = t.GetNextToken();
+			bool negative = false;
+			if ( slong.GetChar( 0 ) == '-' )
+			{
+				negative = true;
+				slong = slong.AfterFirst( MINUS );
+			}
+			if ( ! formatter->parseDegreeString( slong, lon, 180.0 ))
+			{
+				fatalError( "cannot parse longitude string " + slong );
+			}
+			if ( negative ) lon *= -1;
+			printf( "long token %s value %f\n", str2char( slong ), lon );
+		}
+		if ( t.HasMoreTokens())
+		{
+			wxString slat = t.GetNextToken();
+			bool negative = false;
+			if ( slat.GetChar( 0 ) == '-' )
+			{
+				negative = true;
+				slat = slat.AfterFirst( MINUS );
+			}
+			if ( ! formatter->parseDegreeString( slat, lat, 90.0 ))
+			{
+				fatalError( "cannot parse latitude string " + slat );
+			}
+			if ( negative ) lat *= -1;
+			printf( "lat token %s value %f\n", str2char( slat ), lat );
+		}
 		if ( t.HasMoreTokens()) tz = myatof( t.GetNextToken());
-
-		//printf( "Set location: name %s ldeg %ld lmin %ld bdeg %ld bmin %ld tz %f\n", str2char( name ), ldeg, lmin, bdeg, bmin, tz );
-
-		lon = lmin + 60 * ldeg;
-		lon /= 60;
-		lat = bmin + 60 * bdeg;
-		lat /= 60;
-		dataset.setLocation( name, lon, lat, tz, dst );
+		dataset.setLocation( name, lon, lat, tz, 0.0 );
+		printf( "set Location name %s longitude %f latitude %f tz %f\n", str2char( name ), lon, lat, tz );
 	}
+
+	/**************************************************************
+	***
+	**    MaitreyaTextclient   ---   fatalError
+	***
+	***************************************************************/
+	void fatalError( wxString s )
+	{
+		printf( "FATAL: %s\n", str2char( s ));
+		exit( 1 );
+	}
+
 };
 
 /**************************************************************
@@ -536,35 +597,40 @@ void MaitreyaTextclient::run( int argc, wxChar **argv )
 	{
 		exportType = WeHtml;
 	}
-	if ( parser.Found( wxT( "plain-html" ) ))
+	else if ( parser.Found( wxT( "plain-html" ) ))
 	{
 		exportType = WePlainHtml;
+	}
+	else if ( parser.Found( wxT( "csv" ) ))
+	{
+		exportType = WeCsv;
 	}
 
 	// Vedic and western mode
 	if ( parser.Found( wxT( "vedic" ))) chartprops->setVedic();
 	if ( parser.Found( wxT( "western" ))) chartprops->setVedic( false );
 
-	// set date
-	if ( parser.Found( wxT( "date" ), &s )) setDate( s );
+	// set date and location
 	if ( parser.Found( wxT( "location" ), &s )) setLocation( s );
+	if ( parser.Found( wxT( "date" ), &s )) setDate( s, false );
+	if ( parser.Found( wxT( "ldate" ), &s )) setDate( s, true );
 
 	// additional year, month, day
 	formatter->calculateDateIntegers( dataset.getJD(), tday, tmonth, tyear );
 	if ( parser.Found( wxT( "year" ), &a )) tyear = (int)a;
-	if ( parser.Found( wxT( "month" ), &a )) tyear = (int)a;
+	if ( parser.Found( wxT( "month" ), &a )) tmonth = (int)a;
 	if ( parser.Found( wxT( "day" ), &a )) tday = (int)a;
 	tjd = calculator->calc_jd( tyear, tmonth, tday, 0 );
 
-	if ( parser.Found( wxT( "eclipses" ) )) showEclipses();
-	if ( parser.Found( wxT( "hora" ) )) showHora();
+	if ( parser.Found( wxT( "eclipses" ) )) showEclipses( tjd );
+	if ( parser.Found( wxT( "hora" ) )) showHora( tjd );
 
 	// ephemeris
-	if ( parser.Found( wxT( "ephemeris" ) )) showEphemeris( 0 );
-	if ( parser.Found( wxT( "ephemeris-sunrise" ) )) showEphemeris( 1 );
-	if ( parser.Found( wxT( "ephemeris-ingress" ) )) showEphemeris( 2 );
-	if ( parser.Found( wxT( "ephemeris-lunar" ) )) showEphemeris( 3 );
-	if ( parser.Found( wxT( "ephemeris-kpevents" ), &a )) showEphemeris( 4, (DasaId)a );
+	if ( parser.Found( wxT( "ephemeris" ) )) showEphemeris( tyear, tmonth, 0 );
+	if ( parser.Found( wxT( "ephemeris-sunrise" ) )) showEphemeris( tyear, tmonth, 1 );
+	if ( parser.Found( wxT( "ephemeris-ingress" ) )) showEphemeris( tyear, tmonth, 2 );
+	if ( parser.Found( wxT( "ephemeris-lunar" ) )) showEphemeris( tyear, tmonth, 3 );
+	if ( parser.Found( wxT( "ephemeris-kpevents" ), &a )) showEphemeris( tyear, tmonth, 4, (DasaId)a );
 
 	// Create Horoscope
 	h = new Horoscope();
