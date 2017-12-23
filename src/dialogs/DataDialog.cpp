@@ -170,7 +170,18 @@ DataDialog::DataDialog( wxWindow* parent, Document *d )
 	Connect( wxID_ANY, wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DataDialog::OnInputControlChanged ));
 	Connect( wxID_ANY, COMMAND_SPIN_CHANGED, wxCommandEventHandler( DataDialog::OnInputControlChanged ));
 
-	if ( IS_VALID_SIZE( config->viewprefs->sizes.sDataDialog )) SetSize( config->viewprefs->sizes.sDataDialog );
+	const wxSize bestsize = GetBestSize();
+	//printf( "Best size %d %d config size %d % d\n", bestsize.x, bestsize.y,  config->viewprefs->sizes.sDataDialog.x,  config->viewprefs->sizes.sDataDialog.y );
+	if ( IS_VALID_SIZE( config->viewprefs->sizes.sDataDialog ))
+	{
+		wxSize size = config->viewprefs->sizes.sDataDialog;
+		if ( size.x < bestsize.x || size.y < bestsize.y )
+		{
+			printf( "WARN: size too small, adjust. Best size %d %d config size %d % d\n", bestsize.x, bestsize.y, size.x, size.y );
+			size = bestsize;
+		}
+		SetSize( size );
+	}
 	if ( config->viewprefs->pDataDialog.x > 0 || config->viewprefs->pDataDialog.y > 0 )
 	{
 		SetPosition( wxPoint( config->viewprefs->pDataDialog.x, config->viewprefs->pDataDialog.y ));
