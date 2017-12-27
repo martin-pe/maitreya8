@@ -262,10 +262,12 @@ protected:
 	**    MaitreyaTextclient   ---   showEclipses
 	***
 	***************************************************************/
-	void showEclipses( const double &jd )
+	void showEclipses( const int &year )
 	{
 		EclipseExpert ec;
-		ec.update( jd, jd + 365 * 3, 0, 0, chartprops->isVedic() );
+		Calculator *calculator = CalculatorFactory().getCalculator();
+		const double ejd = calculator->calc_jd( year, 1, 1, 0 );
+		ec.update( ejd, ejd + 365 * 3, 0, 0, chartprops->isVedic() );
 		ec.write( sheet, config->viewprefs->ephemTimezone );
 		writecount++;
 	}
@@ -622,7 +624,7 @@ void MaitreyaTextclient::run( int argc, wxChar **argv )
 	if ( parser.Found( wxT( "day" ), &a )) tday = (int)a;
 	tjd = calculator->calc_jd( tyear, tmonth, tday, 0 );
 
-	if ( parser.Found( wxT( "eclipses" ) )) showEclipses( tjd );
+	if ( parser.Found( wxT( "eclipses" ) )) showEclipses( tyear );
 	if ( parser.Found( wxT( "hora" ) )) showHora( tjd );
 
 	// ephemeris
