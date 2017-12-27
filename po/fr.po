@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: maitreya 6-fr 1.0\n"
 "Report-Msgid-Bugs-To: office4@saravali.de\n"
-"POT-Creation-Date: 2017-09-30 10:55+0200\n"
+"POT-Creation-Date: 2017-12-24 16:57+0100\n"
 "PO-Revision-Date: 2012-07-20 13:12+0100\n"
 "Last-Translator: Luc Meche <eclipse@magic.fr>\n"
 "Language-Team: Lem <eclipse@magic.fr>\n"
@@ -154,12 +154,12 @@ msgstr "Saturne"
 #: src/base/ColorConfig.cpp:287 src/base/Lang.cpp:144
 #: src/dialogs/VedicPanel.cpp:55
 msgid "Rahu"
-msgstr "Noeud Nord"
+msgstr ""
 
 #: src/base/ColorConfig.cpp:288 src/base/Lang.cpp:145
 #: src/dialogs/VedicPanel.cpp:56
 msgid "Ketu"
-msgstr "Noeud Sud"
+msgstr ""
 
 #: src/base/ColorConfig.cpp:289 src/base/Lang.cpp:123
 #: src/dialogs/VedicPanel.cpp:57 src/dialogs/WesternPanel.cpp:56
@@ -253,7 +253,7 @@ msgid "TextView"
 msgstr "Vue texte"
 
 #: src/base/Commands.cpp:270 src/dialogs/UranianPanel.cpp:60
-#: src/dialogs/UranianPanel.cpp:79 src/views/TransitView.cpp:236
+#: src/dialogs/UranianPanel.cpp:79 src/views/TransitView.cpp:239
 msgid "Transit"
 msgstr "Transit"
 
@@ -312,7 +312,7 @@ msgstr "Carte occidentale"
 #: src/jyotish/GenericTableWriter.cpp:579
 #: src/jyotish/PrintoutTextHelper.cpp:156
 #: src/jyotish/PrintoutTextHelper.cpp:176 src/views/PartnerView.cpp:149
-#: src/views/TransitView.cpp:151 src/views/UranianView.cpp:136
+#: src/views/TransitView.cpp:154 src/views/UranianView.cpp:136
 msgid "Uranian"
 msgstr "Uranien"
 
@@ -328,7 +328,7 @@ msgstr "AV"
 
 #: src/base/Commands.cpp:288 src/dialogs/DialogElements.cpp:314
 #: src/dialogs/VedicCalculationPanel.cpp:595 src/gui/MenuProvider.cpp:620
-#: src/gui/MenuProvider.cpp:709 src/views/AshtakaVargaView.cpp:193
+#: src/views/AshtakaVargaView.cpp:193
 msgid "Ashtakavarga"
 msgstr "Ashtakavarga"
 
@@ -572,7 +572,7 @@ msgid "Show Statusbar"
 msgstr "Voir la barre de statuts"
 
 #: src/base/DataSet.cpp:201 src/dialogs/AtlasDialog.cpp:747
-#: src/dialogs/DataDialog.cpp:497 src/gui/ChildWindowListCtrl.cpp:144
+#: src/dialogs/DataDialog.cpp:508 src/gui/ChildWindowListCtrl.cpp:144
 #: src/jyotish/GenericTableWriter.cpp:1012
 msgid "Location"
 msgstr "Localité"
@@ -605,7 +605,7 @@ msgstr "nn"
 #: src/dialogs/AtlasAliasDialog.cpp:167 src/dialogs/AtlasDialog.cpp:213
 #: src/dialogs/AtlasDialog.cpp:249 src/dialogs/AtlasDialog.cpp:261
 #: src/dialogs/AtlasDialog.cpp:269 src/dialogs/AtlasEditDialog.cpp:55
-#: src/dialogs/DataDialog.cpp:99 src/dialogs/DataDialog.cpp:504
+#: src/dialogs/DataDialog.cpp:99 src/dialogs/DataDialog.cpp:515
 #: src/dialogs/VedicChartPanel.cpp:95 src/gui/ChildWindowListCtrl.cpp:136
 #: src/gui/MenuProvider.cpp:688 src/jyotish/ArabicParts.cpp:595
 #: src/jyotish/GenericTableWriter.cpp:994 src/jyotish/TextHelper.cpp:368
@@ -620,7 +620,7 @@ msgstr "Heure locale"
 
 #: src/base/DataSet.cpp:393 src/dialogs/AtlasDialog.cpp:279
 #: src/dialogs/AtlasEditDialog.cpp:81 src/dialogs/DataDialog.cpp:119
-#: src/dialogs/DataDialog.cpp:494 src/gui/ToolPanel.cpp:418
+#: src/dialogs/DataDialog.cpp:505 src/gui/ToolPanel.cpp:418
 #: src/jyotish/GenericTableWriter.cpp:1031
 msgid "Time Zone"
 msgstr "Fuseau horaire"
@@ -2068,7 +2068,7 @@ msgstr ""
 msgid "Default"
 msgstr "Defaut"
 
-#: src/base/VargaBase.cpp:74 src/jyotish/Ashtakavarga.cpp:185
+#: src/base/VargaBase.cpp:74 src/jyotish/Ashtakavarga.cpp:186
 #: src/jyotish/Jaimini.cpp:231 src/jyotish/Jaimini.cpp:242
 msgid "Rasi"
 msgstr "Rasi"
@@ -2388,8 +2388,8 @@ msgstr "jours"
 msgid "months"
 msgstr "mois"
 
-#: src/dialogs/AnimationPanel.cpp:68 src/jyotish/astrobase.cpp:69
-#: src/jyotish/Dasa.cpp:147
+#: src/dialogs/AnimationPanel.cpp:68 src/jyotish/Dasa.cpp:147
+#: src/jyotish/astrobase.cpp:69
 msgid "years"
 msgstr "années"
 
@@ -2802,7 +2802,7 @@ msgid "Graha Pinda"
 msgstr "Graha Pinda"
 
 #: src/dialogs/ColorPanel.cpp:757 src/gui/BarDiagram.cpp:107
-#: src/jyotish/Ashtakavarga.cpp:224 src/views/AshtakaVargaView.cpp:152
+#: src/jyotish/Ashtakavarga.cpp:225 src/views/AshtakaVargaView.cpp:152
 msgid "Rekha"
 msgstr "Rekha"
 
@@ -2959,7 +2959,7 @@ msgstr "Fin"
 msgid "duration"
 msgstr "Durée"
 
-#: src/dialogs/DataDialog.cpp:90 src/dialogs/DataDialog.cpp:501
+#: src/dialogs/DataDialog.cpp:90 src/dialogs/DataDialog.cpp:512
 #: src/gui/ChildWindowListCtrl.cpp:140 src/gui/ToolPanel.cpp:361
 #: src/jyotish/Eclipse.cpp:134 src/jyotish/GenericTableWriter.cpp:999
 #: src/jyotish/Transit.cpp:325
@@ -2997,54 +2997,54 @@ msgstr "Chercher localité"
 msgid "Search Location"
 msgstr "Chercher localité"
 
-#: src/dialogs/DataDialog.cpp:307
+#: src/dialogs/DataDialog.cpp:318
 msgid "Gregorian Calendar"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:307
+#: src/dialogs/DataDialog.cpp:318
 #, fuzzy
 msgid "Julian Calendar"
 msgstr "Date Julienne"
 
-#: src/dialogs/DataDialog.cpp:312
+#: src/dialogs/DataDialog.cpp:323
 msgid "invalid value"
 msgstr ""
 
-#: src/dialogs/DataDialog.cpp:462
+#: src/dialogs/DataDialog.cpp:473
 msgid "Birth Data"
 msgstr "Données de naissance"
 
-#: src/dialogs/DataDialog.cpp:464
+#: src/dialogs/DataDialog.cpp:475
 msgid "Set current date"
 msgstr "Définir date actuelle"
 
-#: src/dialogs/DataDialog.cpp:467
+#: src/dialogs/DataDialog.cpp:478
 #, fuzzy
 msgid "Set standard location"
 msgstr "Définir Localité par défaut"
 
-#: src/dialogs/DataDialog.cpp:468
+#: src/dialogs/DataDialog.cpp:479
 msgid "Search location in database"
 msgstr "Chercher la localité dans la base de données"
 
-#: src/dialogs/DataDialog.cpp:470
+#: src/dialogs/DataDialog.cpp:481
 msgid "Set time zone for local time"
 msgstr "Définir fuseau horaire pour l'heure locale"
 
-#: src/dialogs/DataDialog.cpp:472
+#: src/dialogs/DataDialog.cpp:483
 msgid "Apply data and close dialog"
 msgstr "Appliquer les données et fermer la fenêtre"
 
-#: src/dialogs/DataDialog.cpp:474
+#: src/dialogs/DataDialog.cpp:485
 msgid "Apply changes and recalculate chart with new data"
 msgstr ""
 "Appliquer les modifications et recalculer la carte avec les nouvelles données"
 
-#: src/dialogs/DataDialog.cpp:475
+#: src/dialogs/DataDialog.cpp:486
 msgid "Cancel changes and close dialog"
 msgstr "Annuler les modifications et fermer la fenêtre"
 
-#: src/dialogs/DataDialog.cpp:490
+#: src/dialogs/DataDialog.cpp:501
 msgid "Remark"
 msgstr "Remarque"
 
@@ -4297,7 +4297,7 @@ msgstr ""
 msgid "Yogini"
 msgstr ""
 
-#: src/dialogs/VedicCalculationPanel.cpp:156 src/jyotish/Ashtakavarga.cpp:184
+#: src/dialogs/VedicCalculationPanel.cpp:156 src/jyotish/Ashtakavarga.cpp:185
 #: src/jyotish/Ephemeris.cpp:443 src/jyotish/GenericTableWriter.cpp:573
 #: src/jyotish/Jaimini.cpp:200 src/jyotish/Nakshatra.cpp:228
 #: src/jyotish/Nakshatra.cpp:322 src/jyotish/Partner.cpp:653
@@ -4813,7 +4813,7 @@ msgstr "Positions Bhava"
 msgid "Jamini Karaka"
 msgstr "Jamini Karakas"
 
-#: src/dialogs/VedicPanel.cpp:93
+#: src/dialogs/VedicPanel.cpp:93 src/gui/MenuProvider.cpp:709
 msgid "Ashtakavarga Points"
 msgstr "Points Ashtakavarga"
 
@@ -5278,12 +5278,12 @@ msgstr "Shodasa Varga"
 msgid "Average"
 msgstr "Moyenne"
 
-#: src/gui/BarDiagram.cpp:111 src/jyotish/Ashtakavarga.cpp:227
+#: src/gui/BarDiagram.cpp:111 src/jyotish/Ashtakavarga.cpp:228
 #: src/views/AshtakaVargaView.cpp:156
 msgid "Trikona Shodana"
 msgstr "Trikona Shodana"
 
-#: src/gui/BarDiagram.cpp:115 src/jyotish/Ashtakavarga.cpp:230
+#: src/gui/BarDiagram.cpp:115 src/jyotish/Ashtakavarga.cpp:231
 #: src/views/AshtakaVargaView.cpp:160
 msgid "Ekadhipatya Shodana"
 msgstr "Ekadhipatya Shodana"
@@ -5371,25 +5371,6 @@ msgstr "Maitreya texte (*.mtx)|*.mtx| Tous Fichiers (*.*)|*.*"
 #: src/gui/Document.cpp:201 src/gui/YogaEditor.cpp:263
 msgid "Save file as"
 msgstr "Enregistrer Sous"
-
-#: src/gui/guibase.cpp:139
-msgid "Information"
-msgstr "Information"
-
-#: src/gui/guibase.cpp:156
-#, fuzzy
-msgid "Do not show this message again"
-msgstr "Ne plus afficher cette fenêtre"
-
-#: src/gui/guibase.cpp:171
-#, fuzzy
-msgid "Yes"
-msgstr "Années"
-
-#: src/gui/guibase.cpp:173
-#, fuzzy
-msgid "No"
-msgstr "NNo"
 
 #: src/gui/MenuProvider.cpp:123
 msgid "Big Icons"
@@ -5820,6 +5801,25 @@ msgstr "Modifié"
 #: src/gui/YogaEditor.cpp:423
 msgid "unchanged"
 msgstr "Inchangé"
+
+#: src/gui/guibase.cpp:139
+msgid "Information"
+msgstr "Information"
+
+#: src/gui/guibase.cpp:156
+#, fuzzy
+msgid "Do not show this message again"
+msgstr "Ne plus afficher cette fenêtre"
+
+#: src/gui/guibase.cpp:171
+#, fuzzy
+msgid "Yes"
+msgstr "Années"
+
+#: src/gui/guibase.cpp:173
+#, fuzzy
+msgid "No"
+msgstr "NNo"
 
 #: src/jyotish/ArabicParts.cpp:117
 msgid "Fortune"
@@ -6553,19 +6553,19 @@ msgstr "Maison"
 msgid "Flip"
 msgstr "Inverser"
 
-#: src/jyotish/Ashtakavarga.cpp:183
+#: src/jyotish/Ashtakavarga.cpp:184
 msgid "Pinda"
 msgstr "Pinda"
 
-#: src/jyotish/Ashtakavarga.cpp:186 src/jyotish/Partner.cpp:377
+#: src/jyotish/Ashtakavarga.cpp:187 src/jyotish/Partner.cpp:377
 msgid "Graha"
 msgstr "Graha"
 
-#: src/jyotish/Ashtakavarga.cpp:187
+#: src/jyotish/Ashtakavarga.cpp:188
 msgid "Sodhya"
 msgstr "Sodhya"
 
-#: src/jyotish/Ashtakavarga.cpp:258 src/views/AshtakaVargaView.cpp:96
+#: src/jyotish/Ashtakavarga.cpp:259 src/views/AshtakaVargaView.cpp:96
 msgid "Sarva"
 msgstr "Sarva"
 
@@ -6666,26 +6666,6 @@ msgstr "Aspecter"
 msgid "Aspected"
 msgstr "Aspecté"
 
-#: src/jyotish/astrobase.cpp:68
-#, fuzzy
-msgid "year"
-msgstr "années"
-
-#: src/jyotish/astrobase.cpp:83
-#, fuzzy
-msgid "month"
-msgstr "mois"
-
-#: src/jyotish/astrobase.cpp:98
-#, fuzzy
-msgid "day"
-msgstr "jours"
-
-#: src/jyotish/DasaConfig.cpp:42
-#, fuzzy
-msgid "New Dasa"
-msgstr "%s Dasa"
-
 #: src/jyotish/Dasa.cpp:147
 msgid "Paramayus"
 msgstr ""
@@ -6699,6 +6679,11 @@ msgstr "Seigneur"
 #: src/jyotish/DasaTool.cpp:514 src/views/DasaView.cpp:99
 msgid "Duration"
 msgstr "Durée"
+
+#: src/jyotish/DasaConfig.cpp:42
+#, fuzzy
+msgid "New Dasa"
+msgstr "%s Dasa"
 
 #: src/jyotish/DasaTool.cpp:64 src/jyotish/SolarChart.cpp:112
 msgid "Vimsottari"
@@ -7663,11 +7648,6 @@ msgstr "Own Vargas"
 msgid "Percent"
 msgstr "Pourcent"
 
-#: src/jyotish/YogaConfig.cpp:45
-#, fuzzy
-msgid "New Yoga"
-msgstr "Nouvelle lune"
-
 #: src/jyotish/Yoga.cpp:138
 msgid "Rule successfully parsed"
 msgstr "Règle analysée avec succès"
@@ -7675,6 +7655,26 @@ msgstr "Règle analysée avec succès"
 #: src/jyotish/Yoga.cpp:241
 msgid "No matching Yogas found."
 msgstr "Pas de Yoga correspondant"
+
+#: src/jyotish/YogaConfig.cpp:45
+#, fuzzy
+msgid "New Yoga"
+msgstr "Nouvelle lune"
+
+#: src/jyotish/astrobase.cpp:68
+#, fuzzy
+msgid "year"
+msgstr "années"
+
+#: src/jyotish/astrobase.cpp:83
+#, fuzzy
+msgid "month"
+msgstr "mois"
+
+#: src/jyotish/astrobase.cpp:98
+#, fuzzy
+msgid "day"
+msgstr "jours"
 
 #: src/views/AshtakaVargaView.cpp:164
 msgid "Rasi Diagram"
@@ -7747,15 +7747,15 @@ msgstr "Bhakoota"
 msgid "Composite Chart"
 msgstr "Carte composite"
 
-#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:132
+#: src/views/PartnerView.cpp:129 src/views/TransitView.cpp:133
 msgid "Shadvarga"
 msgstr "Shadvarga"
 
-#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:136
+#: src/views/PartnerView.cpp:133 src/views/TransitView.cpp:138
 msgid "Varga (2)"
 msgstr "Varga (2)"
 
-#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:140
+#: src/views/PartnerView.cpp:137 src/views/TransitView.cpp:143
 msgid "Varga (3)"
 msgstr "Varga (3)"
 
