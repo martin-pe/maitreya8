@@ -428,6 +428,10 @@ bool ChartProperties::dispatchWidgetPropertyCommand( const int &command )
 			vgraphicstyle.showSbcNakshatraQuality = !vgraphicstyle.showSbcNakshatraQuality;
 		break;
 
+		case CMD_VCS_KPCHART:
+			config->vedic->showKPChart = !config->vedic->showKPChart;
+		break;
+
 #define SETOBJECTFLAG( a, c ) \
 			case a: \
 				if ( isVedic() ) \

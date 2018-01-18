@@ -68,6 +68,7 @@ private:
 
 protected:
     // begin wxGlade: VedicPanel::attributes
+    wxCheckBox* check_show_kp;
     wxCheckBox* check_objects_outer;
     wxCheckBox* check_objects_dragonhead;
     wxCheckBox* check_objects_dragontail;

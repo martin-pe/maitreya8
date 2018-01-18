@@ -51,19 +51,10 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
 
     // begin wxGlade: VedicPanel::VedicPanel
     panel_arabic_selection = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
-    check_objects_outer = new wxCheckBox(this, wxID_ANY, _("3 Outer Planets"));
     check_objects_dragonhead = new wxCheckBox(this, wxID_ANY, _("Rahu"));
     check_objects_dragontail = new wxCheckBox(this, wxID_ANY, _("Ketu"));
     check_objects_ascendant = new wxCheckBox(this, wxID_ANY, _("Ascendant"));
-    check_objects_meridian = new wxCheckBox(this, wxID_ANY, _("Meridian"));
-    check_objects_descendant = new wxCheckBox(this, wxID_ANY, _("Descendant"));
-    check_objects_imumcoeli = new wxCheckBox(this, wxID_ANY, _("Imum Coeli"));
-    check_objects_uranian_inner = new wxCheckBox(this, wxID_ANY, _("4 Uranian (Cupido-Kronos)"));
-    check_objects_uranian_outer = new wxCheckBox(this, wxID_ANY, _("4 Uranian (Apollon-Poseidon)"));
-    check_objects_chiron = new wxCheckBox(this, wxID_ANY, _("Chiron"));
-    check_objects_pholus = new wxCheckBox(this, wxID_ANY, _("Pholus"));
-    check_objects_planetoids = new wxCheckBox(this, wxID_ANY, _("4 Planetoids"));
-    check_objects_lilith = new wxCheckBox(this, wxID_ANY, _("Lilith (Black Moon)"));
+    check_show_kp = new wxCheckBox(this, wxID_ANY, _("Show KP Chart"));
     check_objects_house_cusp = new wxCheckBox(this, wxID_ANY, _("House Cusps/Sandhis"));
     check_objects_upagrahas = new wxCheckBox(this, wxID_ANY, _("5 Upagrahas"));
     check_objects_kalavelas = new wxCheckBox(this, wxID_ANY, _("Kalavelas"));
@@ -76,7 +67,6 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
         _("Top"),
     };
     choice_order_lagna = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, choice_order_lagna_choices);
-    check_main_declination = new wxCheckBox(this, wxID_ANY, _("Declination"));
     check_main_lord = new wxCheckBox(this, wxID_ANY, _("Sign Lord"));
     check_main_element = new wxCheckBox(this, wxID_ANY, _("Element"));
     check_main_quality = new wxCheckBox(this, wxID_ANY, _("Quality (Movable etc.)"));
@@ -96,19 +86,9 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
     do_layout();
     // end wxGlade
 
-	check_objects_outer->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_OUTER ));
 	check_objects_dragonhead->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_DRAGONHEAD ));
 	check_objects_dragontail->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_DRAGONTAIL ));
 	check_objects_ascendant->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_ASCENDANT ));
-	check_objects_meridian->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_MERIDIAN ));
-	check_objects_descendant->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_DESCENDANT ));
-	check_objects_imumcoeli->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_IMUMCOELI ));
-	check_objects_uranian_inner->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_URANIAN_INNER ));
-	check_objects_uranian_outer->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_URANIAN_OUTER ));
-	check_objects_chiron->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_CHIRON ));
-	check_objects_pholus->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_PHOLUS ));
-	check_objects_planetoids->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_PLANETOIDS ));
-	check_objects_lilith->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_LILITH ));
 	check_objects_upagrahas->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_UPAGRAHAS ));
 	check_objects_kalavelas->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_KALAVELAS ));
 	check_objects_lagnas->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_SPECIALLAGNAS ));
@@ -116,8 +96,8 @@ VedicPanel::VedicPanel( wxWindow* parent ) : ConfigPanel( parent )
 	check_objects_house_cusp->SetValidator( MBooleanFlagValidator( (int*)&vconfig->objects, (int)OI_ALL_HOUSES ));
 
 	choice_order_lagna->SetValidator( MChoiceValidator( &vconfig->orderLagna ));
+	check_show_kp->SetValidator( MCheckValidator( &vconfig->showKPChart ));
 
-	check_main_declination->SetValidator( MBooleanFlagValidator( (int*)&vconfig->columnStyle, (int)TAB_CT_LATITUDE ));
 	check_main_lord->SetValidator( MBooleanFlagValidator( (int*)&vconfig->columnStyle, (int)TAB_CT_SIGN_LORD ));
 	check_main_element->SetValidator( MBooleanFlagValidator( (int*)&vconfig->columnStyle, (int)TAB_CT_ELEMENT ));
 	check_main_quality->SetValidator( MBooleanFlagValidator( (int*)&vconfig->columnStyle, (int)TAB_CT_SIGN_QUALITY ));
@@ -204,21 +184,15 @@ void VedicPanel::updateUi()
 void VedicPanel::set_properties()
 {
     // begin wxGlade: VedicPanel::set_properties
-    check_objects_outer->SetToolTip(_("Uranus, Neptune and Pluto"));
+    check_show_kp->SetToolTip(_("Planets & Houses in single chart"));
     check_objects_dragonhead->SetToolTip(_("Dragon Head"));
     check_objects_dragontail->SetToolTip(_("Dragon Tail"));
-    check_objects_uranian_inner->SetToolTip(_("Fictitious planets of Uranian astrology: Cupido, Hades, Zeus, Kronos, Apollon, Admetos, Vulkanus and Poseidon "));
-    check_objects_uranian_outer->SetToolTip(_("Fictitious planets of Uranian astrology: Cupido, Hades, Zeus, Kronos, Apollon, Admetos, Vulkanus and Poseidon "));
-    check_objects_chiron->SetToolTip(_("Asteroid between Saturn and Uranus. Period 50 years"));
-    check_objects_pholus->SetToolTip(_("Asteroid crossing the orbits of outer planets. Period 92 years"));
-    check_objects_planetoids->SetToolTip(_("Ceres, Pallas, Juno and Vesta"));
     check_objects_house_cusp->SetToolTip(_("House positions of the objects"));
     check_objects_upagrahas->SetToolTip(_("Dhuma, Vyatipata, Parivesha, Chapa and Upaketu"));
     check_objects_kalavelas->SetToolTip(_("Kala, Mrityu, Ardhaprahara, Yamaghantaka, Gulika and Mandi"));
     check_objects_lagnas->SetToolTip(_("Bhava Lagna, Hora Lagna and Ghatika Lagna"));
     check_objects_d9lagna->SetToolTip(_("Length of Navamsa Lagna"));
     choice_order_lagna->SetSelection(0);
-    check_main_declination->SetToolTip(_("House positions of the objects"));
     check_main_lord->SetToolTip(_("Owner of the Rasi"));
     check_main_dignity->SetToolTip(_("Exaltation, Moolatrikona, friendship etc."));
     check_main_d9->SetToolTip(_("D-9 chart for marriage"));
@@ -244,7 +218,7 @@ void VedicPanel::do_layout()
     wxFlexGridSizer* sizer_main = new wxFlexGridSizer(1, 4, 0, 0);
     wxFlexGridSizer* sizer_right = new wxFlexGridSizer(1, 1, 0, 0);
     wxStaticBoxSizer* sizer_maincols = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Columns in Main Window")), wxVERTICAL);
-    wxFlexGridSizer* grid_maincols = new wxFlexGridSizer(15, 1, 3, 0);
+    wxFlexGridSizer* grid_maincols = new wxFlexGridSizer(14, 1, 3, 0);
     wxFlexGridSizer* sizer_center = new wxFlexGridSizer(4, 1, 0, 0);
     wxStaticBoxSizer* sizer_order_lagna = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Order of Lagna")), wxVERTICAL);
     wxStaticBoxSizer* sizer_arabic = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Arabic Parts")), wxVERTICAL);
@@ -252,25 +226,20 @@ void VedicPanel::do_layout()
     wxStaticBoxSizer* sizer_partly = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Partly Displayed")), wxVERTICAL);
     wxStaticBoxSizer* sizer_sobjects = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Special Points")), wxHORIZONTAL);
     wxFlexGridSizer* grid_sobjects = new wxFlexGridSizer(3, 1, 3, 3);
-    wxFlexGridSizer* sizer_left = new wxFlexGridSizer(1, 1, 0, 0);
+    wxFlexGridSizer* sizer_left = new wxFlexGridSizer(2, 1, 0, 0);
+    wxStaticBoxSizer* sizer_kp = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("KP System")), wxHORIZONTAL);
+    wxFlexGridSizer* grid_kp = new wxFlexGridSizer(1, 1, 0, 0);
     wxStaticBoxSizer* sizer_eobjects = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, _("Ephemeris Objects")), wxHORIZONTAL);
-    wxFlexGridSizer* grid_eobjects = new wxFlexGridSizer(14, 1, 3, 3);
-    grid_eobjects->Add(check_objects_outer, 0, wxALL|wxEXPAND, 3);
+    wxFlexGridSizer* grid_eobjects = new wxFlexGridSizer(4, 1, 3, 3);
     grid_eobjects->Add(check_objects_dragonhead, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_dragontail, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_ascendant, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_meridian, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_descendant, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_imumcoeli, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_uranian_inner, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_uranian_outer, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_chiron, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_pholus, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_planetoids, 0, wxALL|wxEXPAND, 3);
-    grid_eobjects->Add(check_objects_lilith, 0, wxALL|wxEXPAND, 3);
     grid_eobjects->Add(check_objects_house_cusp, 0, wxALL|wxEXPAND, 3);
     sizer_eobjects->Add(grid_eobjects, 1, wxALL, 3);
     sizer_left->Add(sizer_eobjects, 1, wxALL, 3);
+    grid_kp->Add(check_show_kp, 0, wxALL|wxEXPAND, 3);
+    sizer_kp->Add(grid_kp, 1, wxALL, 3);
+    sizer_left->Add(sizer_kp, 1, wxALL, 3);
     sizer_left->AddGrowableCol(0);
     sizer_main->Add(sizer_left, 1, wxALL, 3);
     grid_sobjects->Add(check_objects_upagrahas, 0, wxALL|wxEXPAND, 3);
@@ -289,7 +258,6 @@ void VedicPanel::do_layout()
     sizer_center->Add(sizer_order_lagna, 1, wxEXPAND, 0);
     sizer_center->AddGrowableCol(0);
     sizer_main->Add(sizer_center, 1, wxALL, 3);
-    grid_maincols->Add(check_main_declination, 0, wxALL|wxEXPAND, 3);
     grid_maincols->Add(check_main_lord, 0, wxALL|wxEXPAND, 3);
     grid_maincols->Add(check_main_element, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
     grid_maincols->Add(check_main_quality, 0, wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND, 3);
