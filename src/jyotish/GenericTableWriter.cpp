@@ -150,6 +150,7 @@ void GenericTableWriter::appendObjectListTcByConfigKeys( Tc &tc, const OBJECT_IN
 	if ( style & TAB_CT_45_DEGREE_LONGITUDE ) colset.cols.push_back( TcColumn( TAB_CT_45_DEGREE_LONGITUDE, vedic ));
 	if ( style & TAB_CT_ANTISCIA ) colset.cols.push_back( TcColumn( TAB_CT_ANTISCIA, vedic ));
 	if ( style & TAB_CT_SIGN_LORD ) colset.cols.push_back( TcColumn( TAB_CT_SIGN_LORD, vedic ));
+	if ( style & TAB_CT_KP_LORDS ) colset.cols.push_back( TcColumn( TAB_CT_KP_LORDS, vedic ));
 	if ( style & TAB_CT_ELEMENT ) colset.cols.push_back( TcColumn( TAB_CT_ELEMENT, vedic ));
 	if ( style & TAB_CT_SIGNIFICATION ) colset.cols.push_back( TcColumn( TAB_CT_SIGNIFICATION, vedic ));
 	if ( style & TAB_CT_SIGN_QUALITY ) colset.cols.push_back( TcColumn( TAB_CT_SIGN_QUALITY, vedic ));
@@ -157,7 +158,6 @@ void GenericTableWriter::appendObjectListTcByConfigKeys( Tc &tc, const OBJECT_IN
 	if ( style & TAB_CT_NAVAMSA ) colset.cols.push_back( TcColumn( TAB_CT_NAVAMSA, vedic ));
 	if ( style & TAB_CT_NAKSHATRA ) colset.cols.push_back( TcColumn( TAB_CT_NAKSHATRA, vedic ));
 	if ( style & TAB_CT_NAKSHATRA_PADA ) colset.cols.push_back( TcColumn( TAB_CT_NAKSHATRA_PADA, vedic ));
-	if ( style & TAB_CT_KP_LORDS ) colset.cols.push_back( TcColumn( TAB_CT_KP_LORDS, vedic ));
 	if ( style & TAB_CT_SHASTIAMSA_LORD ) colset.cols.push_back( TcColumn( TAB_CT_SHASTIAMSA_LORD, vedic ));
 	if ( style & TAB_CT_CHARA_KARAKA ) colset.cols.push_back( TcColumn( TAB_CT_CHARA_KARAKA, vedic ));
 	if ( style & TAB_CT_DASA_VARGA ) colset.cols.push_back( TcColumn( TAB_CT_DASA_VARGA, vedic ));

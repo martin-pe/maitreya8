@@ -699,6 +699,8 @@ void VedicConfig::load( wxJSONValue &root, wxString attname )
 	if ( ! v[ wxT( "arabicParts" ) ].IsNull()) tool.readObjectArray( v[ wxT( "arabicParts" ) ], arabicParts );
 	if ( ! v[ wxT( "orderLagna" ) ].IsNull()) orderLagna = v[ wxT( "orderLagna" ) ].AsInt();
 	else reportMissingKey( wxT( "VedicConfig" ), wxT( "orderLagna" ));
+	if ( ! v[ wxT( "showKPChart" ) ].IsNull()) showKPChart = v[ wxT( "showKPChart" ) ].AsInt();
+	else reportMissingKey( wxT( "VedicConfig" ), wxT( "showKPChart" ));
 
 	if ( ! v[ wxT( "objects" ) ].IsNull()) objects = (OBJECT_INCLUDES)v[ wxT( "objects" ) ].AsInt();
 	else reportMissingKey( wxT( "VedicConfig" ), wxT( "objects" ));
@@ -714,6 +716,7 @@ void VedicConfig::save( wxJSONValue &root, wxString attname )
 	wxJSONValue v;
 	v[ wxT( "arabicParts" ) ] = tool.writeObjectArray( arabicParts );
 	v[ wxT( "orderLagna" ) ] = orderLagna;
+	v[ wxT( "showKPChart" ) ] = showKPChart;
 	v[ wxT( "objects" ) ] = objects;
 	v[ wxT( "columnStyle" ) ] = columnStyle;
 	if ( ! attname.IsEmpty()) root[ attname ] = v;

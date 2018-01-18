@@ -174,6 +174,7 @@ public:
 
 	OBJECT_INCLUDES objects;
 	int orderLagna;
+	bool showKPChart;
 	ObjectArray arabicParts;
 	TAB_COLUMN_TYPE columnStyle;
 };

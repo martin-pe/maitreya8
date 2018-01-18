@@ -137,6 +137,7 @@ VedicConfig::VedicConfig()
 {
 	objects = OI_INNER | OI_DRAGONTAIL | OI_DRAGONHEAD | OI_ASCENDANT;
 	orderLagna = 0;
+	showKPChart = false;
 	columnStyle = TAB_CT_OBJECT_NAME | TAB_CT_LONGITUDE | TAB_CT_NAVAMSA | TAB_CT_NAKSHATRA;
 }
 

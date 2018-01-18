@@ -587,6 +587,14 @@ wxMenu *ContextMenuProvider::getMainViewColumnMenu( ChartProperties *props )
 
 		menu->Append( CMD_MAIN_SHOW_LORD, _( "Sign Lord" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_LORD, props->getVedicColumnStyle() & TAB_CT_SIGN_LORD );
+		menu->Append( CMD_MAIN_SHOW_KP, _( "Krishnamurti Lords" ), wxT( "" ), true );
+		menu->Check( CMD_MAIN_SHOW_KP, props->getVedicColumnStyle() & TAB_CT_KP_LORDS );
+		menu->Append( CMD_MAIN_SHOW_Nakshatra, _( "Nakshatra" ), wxT( "" ), true );
+		menu->Check( CMD_MAIN_SHOW_Nakshatra, props->getVedicColumnStyle() & TAB_CT_NAKSHATRA );
+		menu->Append( CMD_MAIN_SHOW_PADA, _( "Nakshatra Padas" ), wxT( "" ), true );
+		menu->Check( CMD_MAIN_SHOW_PADA, props->getVedicColumnStyle() & TAB_CT_NAKSHATRA_PADA );
+		menu->Append( CMD_MAIN_SHOW_HOUSEPOS, _( "Bhava" ), wxT( "" ), true );
+		menu->Check( CMD_MAIN_SHOW_HOUSEPOS, props->getVedicColumnStyle() & TAB_CT_HOUSE_POSITION );
 
 		menu->Append( CMD_MAIN_SHOW_ELEMENT, _( "Element" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_ELEMENT, props->getVedicColumnStyle() & TAB_CT_ELEMENT );
@@ -601,22 +609,14 @@ wxMenu *ContextMenuProvider::getMainViewColumnMenu( ChartProperties *props )
 		menu->Check( CMD_MAIN_SHOW_DIGNITY, props->getVedicColumnStyle() & TAB_CT_DIGNITY );
 		menu->Append( CMD_MAIN_SHOW_NAVAMSA, _( "Navamsa (D-9)" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_NAVAMSA, props->getVedicColumnStyle() & TAB_CT_NAVAMSA );
-		menu->Append( CMD_MAIN_SHOW_Nakshatra, _( "Nakshatra" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_Nakshatra, props->getVedicColumnStyle() & TAB_CT_NAKSHATRA );
-		menu->Append( CMD_MAIN_SHOW_PADA, _( "Nakshatra Padas" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_PADA, props->getVedicColumnStyle() & TAB_CT_NAKSHATRA_PADA );
 
 		menu->Append( CMD_MAIN_SHOW_KARAKA, _( "Jaimini Karaka" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_KARAKA, props->getVedicColumnStyle() & TAB_CT_CHARA_KARAKA );
-		menu->Append( CMD_MAIN_SHOW_KP, _( "Krishnamurti Lords" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_KP, props->getVedicColumnStyle() & TAB_CT_KP_LORDS );
 
 		menu->Append( CMD_MAIN_SHOW_SHASTIAMSA, _( "Shastiamsa (D-60)" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_SHASTIAMSA, props->getVedicColumnStyle() & TAB_CT_SHASTIAMSA_LORD );
 		menu->Append( CMD_MAIN_SHOW_DASAVARGA, _( "Dasa Varga Dignity" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_DASAVARGA, props->getVedicColumnStyle() & TAB_CT_DASA_VARGA );
-		menu->Append( CMD_MAIN_SHOW_HOUSEPOS, _( "Bhava" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_HOUSEPOS, props->getVedicColumnStyle() & TAB_CT_HOUSE_POSITION );
 		menu->Append( CMD_MAIN_SHOW_ASHTAKA, _( "Ashtakavarga" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_ASHTAKA, props->getVedicColumnStyle() & TAB_CT_AV_REKHAPOINTS );
 	}
