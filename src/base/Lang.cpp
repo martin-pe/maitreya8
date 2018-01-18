@@ -23,6 +23,7 @@
 #include <math.h>
 
 #include <wx/log.h>
+#include <wx/crt.h>
 #include <wx/string.h>
 
 #include "Calculator.h"
