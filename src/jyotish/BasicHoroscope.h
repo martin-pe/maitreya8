@@ -161,6 +161,8 @@ protected:
 	double iayanamsa, wayanamsa, siderealTime;
 	AYANAMSA iayanamsa_type, wayanamsa_type;
 	double object_len[MAX_EPHEM_OBJECTS], object_lat[MAX_EPHEM_OBJECTS], object_speed[MAX_EPHEM_OBJECTS];
+	int object_vhouse[MAX_EPHEM_OBJECTS], object_whouse[MAX_EPHEM_OBJECTS], object_sandhihouse[MAX_EPHEM_OBJECTS];
+	vector<int> obj_inhouse[12];
 	double whousecusp[12], ihousecusp[12], ihousesandhi[12];
 	PlanetContext context;
 
@@ -173,6 +175,7 @@ protected:
 	void updatePositionArrays();
 
 private:
+	int findInArray( const double (&arr)[12], double x ) const;
 	ObjectPosition vpos[MAX_EPHEM_OBJECTS], wpos[MAX_EPHEM_OBJECTS];
 	DECLARE_CLASS( BasicHoroscope )
 };

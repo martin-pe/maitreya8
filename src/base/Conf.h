@@ -287,6 +287,7 @@ public:
 
 	int indianChartType;
 	int northIndianSignDisplayType;
+	int southIndianSignDisplayType;
 	int southIndianAscendantMarkup;
 	int centerInfoType;
 

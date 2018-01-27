@@ -63,6 +63,9 @@ BasicHoroscope::BasicHoroscope()
 		object_len[i] = 0;
 		object_lat[i] = 0;
 		object_speed[i] = 1;
+		object_vhouse[i] = 0;
+		object_whouse[i] = 0;
+		object_sandhihouse[i] = 0;
 	}
 	for ( i = HOUSE1; i <= HOUSE12; i++ ) whousecusp[i] = ihousecusp[i] = ihousesandhi[0] = 0;
 
@@ -160,6 +163,9 @@ void BasicHoroscope::updatePlanets()
 ******************************************************/
 void BasicHoroscope::updatePositionArrays()
 {
+	// clear all objects in houses
+	for (int i = 0; i < 12; i++) obj_inhouse[i].clear();
+
 	// Setup Object position structs
 	for ( int i = 0; i < MAX_EPHEM_OBJECTS; i++ )
 	{
@@ -175,8 +181,58 @@ void BasicHoroscope::updatePositionArrays()
 		{
 			vpos[i].longitude = red_deg( vpos[i].longitude - iayanamsa );
 			wpos[i].longitude = red_deg( wpos[i].longitude - wayanamsa );
+
+			object_vhouse[i] = findInArray(ihousecusp, vpos[i].longitude);
+			object_sandhihouse[i] = findInArray(ihousesandhi, vpos[i].longitude);
+			object_whouse[i] = findInArray(whousecusp, wpos[i].longitude);
+			// collect KP objects placed in a given house
+			if ( ( OSUN <= i && i <= OSATURN ) || ( i == OTRUENODE || i == OTRUEDESCNODE ) )
+				obj_inhouse[object_vhouse[i]].push_back( i );
 		}
 	}
+}
+
+/*****************************************************
+**
+**   BasicHoroscope   ---   findInArray
+**
+******************************************************/
+int BasicHoroscope::findInArray( const double (&arr)[12], double x ) const
+{
+    double nxt, len;
+    bool mutated = false;
+
+    len = x;
+    for ( int k = 0; k < 12; k++ )
+    {
+        if (arr[k] > arr[k<11 ? k+1 : 0] && !mutated )
+        {
+            nxt = arr[k<11 ? k+1 : 0] + 360;
+            if ( arr[k] <= len && len < nxt )
+                return k;
+            len = x + 360;
+            mutated = true;
+            // std::cout << "arr: " << arr[k] << " changed to: " << nxt << " at: " << k << endl;
+            if ( arr[k] <= len && len < nxt )
+                return k;
+        }
+        else
+        {
+            nxt = arr[k<11 ? k+1 : 0];
+            if (mutated)
+            {
+                nxt = arr[k<11 ? k+1 : 0] + 360;
+                len = x + 360;
+                // std::cout << "arr: " << arr[k] << " also changed to: " << nxt << " at: " << k << endl;
+            }
+
+            if ( arr[k] <= len && len < nxt )
+                return k;
+        }
+    }
+
+    // if we reach here, then element was not present - so return 0ARIES
+    return 0;
 }
 
 /*****************************************************
@@ -276,42 +332,26 @@ double BasicHoroscope::getHouse( const int& housenb, const bool& vedic, const bo
 
 /*****************************************************
 **
-**   BasicHoroscope   ---   getHouseForLongitude
+**   BasicHoroscope   ---   getHouse4Longitude
 **
 ******************************************************/
 double BasicHoroscope::getHouse4Longitude( const double &len, const bool &vedic ) const
 {
 	//printf( "BasicHoroscope::getHouse4Longitude len %f\n", len );
-	double hstart, hend, hlen, hpart, ret;
-	for ( int i = HOUSE1; i <= HOUSE12; i++ )
+
+	if ( ! vedic )
 	{
-		if ( ! vedic )
+		return (double) findInArray(whousecusp, len);
+	}
+	else
+	{
+		if ( config->vedicCalculation->houseUseCusps )
 		{
-			hstart = whousecusp[i];
-			hend = whousecusp[red12(i+1)];
+			return (double) findInArray(ihousecusp, len);
 		}
 		else
 		{
-			if ( config->vedicCalculation->houseUseCusps )
-			{
-				hstart = ihousecusp[i];
-				hend = ihousecusp[red12(i+1)];
-			}
-			else
-			{
-				hstart = ihousesandhi[red12( i -1)];
-				hend = ihousesandhi[red12(i)];
-			}
-		}
-		//printf( "hstart %f end %f\n", hstart, hend );
-		if (( hstart <= len && len < hend ) || ( hstart > hend && ( len >= hstart || len < hend )))
-		{
-			hlen = red_deg( hend - hstart );
-			hpart = red_deg( len - hstart );
-			ret = i + hpart / hlen;
-			//printf( "BasicHoroscope::getHouse4Longitude len %f vedic %d hstart %f hend %f hlen %f hpart %f ret %f\n", len, vedic, hstart, hend, hlen, hpart, ret );
-			assert( ret >= 0 && ret < 12 );
-			return ret;
+			return (double) findInArray(ihousesandhi, len);
 		}
 	}
 	assert( 0 );
@@ -327,7 +367,25 @@ double BasicHoroscope::getHouse4Longitude( const double &len, const bool &vedic 
 int BasicHoroscope::getHousePos( const ObjectId &planet, const bool &vedic ) const
 {
 	// TODO store house longitudes on update() and return that instead of repeated calculation
-	return (int)getHouse4Longitude( getLongitude( planet, vedic), vedic );
+	// return (int)getHouse4Longitude( getLongitude( planet, vedic), vedic );
+	int p = (int) planet;
+
+	if ( ! vedic )
+	{
+		return object_whouse[p];
+	}
+	else
+	{
+		if ( config->vedicCalculation->houseUseCusps )
+		{
+			return object_vhouse[p];
+		}
+		else
+		{
+			return object_sandhihouse[p];
+		}
+	}
+	return 0;
 }
 
 /*****************************************************

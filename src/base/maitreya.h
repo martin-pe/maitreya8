@@ -126,6 +126,7 @@ const wxString getApplicationVersion();
 
 #define CSV_DELIMITER ';'
 
+#define DASH wxT( "-" )
 #define SPACE wxT( " " )
 #define COLON_SPACE wxT( ": " )
 #define FILE_CONF_MODE wxConvUTF8

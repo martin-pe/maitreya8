@@ -28,22 +28,31 @@
         },
         {
             "name": "Vedic KP",
-            "description": "Vedic printout with planets according to KP astrology, Rasi, Navamsa chart and Vimsottari Dasa",
+            "description": "Vedic printout with planets according to KP astrology, Rasi and Vimsottari Dasa",
             "vedic": true,
             "items": [
                 {
                     "type": "rowset",
                     "children": [
-												{
-														"type": "title"
-												},
+                        {
+                            "type": "columnset",
+                            "children": [
+                                {
+                                    "type": "chart",
+                                    "division": 1,
+                                    "vedic": true
+                                },
+                                {
+                                    "type": "chart",
+                                    "division": "bhava",
+                                    "vedic": true
+                                }
+                           ]
+                        },
                         {
                             "headertype": 2,
                             "type": "header",
                             "vedic": true
-                        },
-                        {
-                            "type": "vedicchartpair"
                         },
                         {
                             "type": "dasasummary"
@@ -60,34 +69,34 @@
                 {
                     "type": "rowset",
                     "children": [
-												{
-														"type": "title"
-												},
+                        {
+                                "type": "title"
+                        },
                         {
                             "headertype": 2,
                             "type": "header",
                             "vedic": true
                         },
-												{
-														"type": "columnset",
-														"children": [
-																{
-																		"type": "chart",
-																		"division": 1,
-																		"vedic": true
-																},
-																{
-																		"type": "chart",
-																		"division": 9,
-																		"vedic": true
-																},
-																{
-																		"type": "chart",
-																		"division": "bhava",
-																		"vedic": true
-																}
-														]
-												},
+                        {
+                            "type": "columnset",
+                            "children": [
+                                    {
+                                            "type": "chart",
+                                            "division": 1,
+                                            "vedic": true
+                                    },
+                                    {
+                                            "type": "chart",
+                                            "division": 9,
+                                            "vedic": true
+                                    },
+                                    {
+                                            "type": "chart",
+                                            "division": "bhava",
+                                            "vedic": true
+                                    }
+                            ]
+                        },
                         {
                             "type": "dasasummary"
                         }
@@ -221,7 +230,6 @@
 										]
                 }
             ]
-        },
-				}
+        }
     ]
 }

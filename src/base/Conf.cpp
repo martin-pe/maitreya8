@@ -243,6 +243,7 @@ VedicChartDisplayConfig::VedicChartDisplayConfig()
 	indianChartType = VCT_SOUTH;
 	centerInfoType = VCC_NAME_SIGNIFICATION;
 	northIndianSignDisplayType = VCN_NUMBER;
+	southIndianSignDisplayType = VCN_SYMBOL;
 	southIndianAscendantMarkup = 0;
 
 	showSbcSanskritSymbols = false;

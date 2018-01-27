@@ -65,6 +65,7 @@ public:
 	int writeAstronomicalData();
 	void writeBhavas();
 	int writeKp( const DasaId& );
+	int writeKpHouseSignificators( const DasaId& );
 
 private:
 	Horoscope *horoscope;

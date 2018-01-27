@@ -418,6 +418,9 @@ void Horoscope::updateKP( const DasaId &dasaindex ) const
 
 	for ( int j = HOUSE1; j <= HOUSE12; j++ )
 		hkp_lord[j] = expert->getKPLords( getHouse( j, true, false ));
+
+	// update KP Significators
+	updateHouseKPSigLevels();
 	delete expert;
 }
 
@@ -461,4 +464,73 @@ KpData Horoscope::getKPLords( const ObjectId &planet ) const
 	}
 }
 
+/*****************************************************
+**
+**   Horoscope   ---   kpSigClear
+**
+******************************************************/
+void Horoscope::kpSigClear() const
+{
+	for ( int i = 0; i < 12; i++ ) {
+        for (int j = 0; j < 6; j++ ) {
+            houseSigLevel[i].lev[j].clear();
+        }
+    }
+}
+
+/*****************************************************
+**
+**   Horoscope   ---   updateHouseKPSigLevels
+**
+******************************************************/
+void Horoscope::updateHouseKPSigLevels() const
+{
+	int plnt, signlord;
+
+	// clear the house significations
+	kpSigClear();
+
+	for ( int j = HOUSE1; j <= HOUSE12; j++ ) {
+		if ( !obj_inhouse[j].empty() )
+		{
+            for ( int obj : obj_inhouse[j] )
+			{
+				// 2. Occupants of a given Bhava
+				houseSigLevel[j].lev[1].push_back( obj );
+				for ( plnt = 0; plnt < 14; plnt++)
+				{
+					// 1. Planets whose Star Lord is occupant of a given Bhava
+					if ( ((plnt >= 0 && plnt < 7) || (plnt == 11 || plnt == 13)) && ( obj == kp_lord[plnt].lord ) )
+						houseSigLevel[j].lev[0].push_back( plnt );
+				}
+			}
+		}
+
+		signlord = getLord( getRasi( ihousecusp[j] ) );
+		// 3. Planets whose Star Lord is given Bhava Lord
+		for ( plnt = 0; plnt < 14; plnt++)
+		{
+			if ( ((plnt >= 0 && plnt < 7) || (plnt == 11 || plnt == 13)) && ( signlord == kp_lord[plnt].lord ) )
+				houseSigLevel[j].lev[2].push_back( plnt );
+		}
+		// 4. Bhava Lord
+		houseSigLevel[j].lev[3].push_back( signlord );
+
+		// 5. Aspects to given Bhava
+		// 6. Bhava Sub Lord
+		houseSigLevel[j].lev[5].push_back( hkp_lord[j].sublord );
+	}
+}
+
+/*****************************************************
+**
+**   Horoscope   ---   getHouseKPSigLevels
+**
+******************************************************/
+KpSigLevels Horoscope::getHouseKPSigLevels( const int &house ) const
+{
+	//printf( "Horoscope::getHouseKPSigLevels house %d\n", house );
+	ASSERT_VALID_HOUSE( house )
+	return houseSigLevel[house];
+}
 

@@ -46,6 +46,19 @@ struct KpData
 	int lord, sublord, subsublord;
 };
 
+#define MAX_SIGNIFICATOR_LEVELS 6
+typedef vector<int> SigLevels;
+
+struct KpSigLevels
+{
+    KpSigLevels() {
+        for ( int i = 0; i < MAX_SIGNIFICATOR_LEVELS; i++ ) {
+            lev[i].clear();
+        }
+    }
+
+    SigLevels lev[6];
+};
 
 /*************************************************//**
 *
@@ -77,9 +90,11 @@ public:
 	void updateKP( const DasaId &dasaindex ) const;
 	KpData getKPLords( const ObjectId &planet ) const;
 	KpData getHouseKPLords( const int &house ) const;
+	KpSigLevels getHouseKPSigLevels( const int &house ) const;
 
 protected:
 	mutable KpData kp_lord[MAX_EPHEM_OBJECTS], ekp_lord[MAX_EXTENDED_OBJECTS], akp_lord[MAX_ARABIC_OBJECTS], hkp_lord[12];
+	mutable KpSigLevels houseSigLevel[12];
 
 	VedicPlanet *ephem_planets[MAX_EPHEM_OBJECTS];
 
@@ -101,6 +116,8 @@ protected:
 
 private:
 	DECLARE_CLASS( Horoscope )
+	void kpSigClear() const;
+	void updateHouseKPSigLevels() const;
 };
 
 #endif

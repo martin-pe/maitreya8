@@ -35,6 +35,7 @@ extern Config *config;
 ChartProperties::ChartProperties( const bool readFromConfig )
 {
 	fixedVedic = fixedWestern = false;
+	kpChart = false;
 	animated = false;
 	isDocumentProp = false;
 
@@ -49,6 +50,7 @@ ChartProperties::ChartProperties( const bool readFromConfig )
 void ChartProperties::init()
 {
 	vedic = config->preferVedic;
+	kpChart = config->vedic->showKPChart;
 
 	vobjectstyle = config->vedic->objects;
 	wobjectstyle = config->western->objects;
@@ -76,6 +78,16 @@ void ChartProperties::init()
 void ChartProperties::setVedic( const bool b  )
 {
 	vedic = b;
+}
+
+/*****************************************************
+**
+**   ChartProperties   ---   setKpChart
+**
+******************************************************/
+void ChartProperties::setKpChart( const bool b  )
+{
+	kpChart = b;
 }
 
 /*****************************************************
@@ -123,6 +135,16 @@ bool ChartProperties::isVedic() const
 	if ( fixedVedic ) return true;
 	if ( fixedWestern ) return false;
 	return vedic;
+}
+
+/*****************************************************
+**
+**   ChartProperties   ---   isKpChart
+**
+******************************************************/
+bool ChartProperties::isKpChart() const
+{
+	return kpChart;
 }
 
 /*****************************************************
@@ -402,10 +424,18 @@ bool ChartProperties::dispatchWidgetPropertyCommand( const int &command )
 			vgraphicstyle.northIndianSignDisplayType = VCN_NUMBER;
 		break;
 		case CMD_VCN_SHORT:
-			vgraphicstyle.northIndianSignDisplayType = VCN_SHORT;
+			if ( vgraphicstyle.indianChartType == VCT_SOUTH ) {
+				vgraphicstyle.southIndianSignDisplayType = VCN_SHORT;
+			} else {
+				vgraphicstyle.northIndianSignDisplayType = VCN_SHORT;
+			}
 		break;
 		case CMD_VCN_SYMBOL:
-			vgraphicstyle.northIndianSignDisplayType = VCN_SYMBOL;
+			if ( vgraphicstyle.indianChartType == VCT_SOUTH ) {
+				vgraphicstyle.southIndianSignDisplayType = VCN_SYMBOL;
+			} else {
+				vgraphicstyle.northIndianSignDisplayType = VCN_SYMBOL;
+			}
 		break;
 
 		case CMD_VCS_ARUDHAS:
@@ -430,6 +460,12 @@ bool ChartProperties::dispatchWidgetPropertyCommand( const int &command )
 
 		case CMD_VCS_KPCHART:
 			config->vedic->showKPChart = !config->vedic->showKPChart;
+			if (config->vedic->showKPChart) {
+				setKpChart(true);
+				vgraphicstyle.centerInfoType = VCC_NAME;
+			} else {
+				setKpChart(false);
+			}
 		break;
 
 #define SETOBJECTFLAG( a, c ) \
