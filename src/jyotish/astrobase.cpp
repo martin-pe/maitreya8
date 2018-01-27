@@ -193,30 +193,8 @@ wxString getDasaDuration( const double &length )
 double getYearLength( const bool vedic )
 {
 	int yl = ( vedic ? config->vedicCalculation->yearLength : config->westernCalculation->yearLength );
-	double custom_yl = ( vedic ? config->vedicCalculation->customYearLength : config->westernCalculation->customYearLength );
 
-	switch ( yl )
-	{
-	case 0:
-		return 365.25;
-		break;
-	case 1:
-		return 365.2422;
-		break;
-	case 2:
-		return 365;
-		break;
-	case 3:
-		return 360;
-		break;
-	case 4:
-		return custom_yl;
-		break;
-	default:
-		printf( "Warning: Wrong year length index %d taking default 365.25", yl );
-		return 365.25;
-		break;
-	}
+	return calcYearLength( yl, vedic );
 }
 
 /*****************************************************

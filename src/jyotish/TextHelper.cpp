@@ -103,6 +103,7 @@ int TextHelper::writeTextAnalysis( const int &mode, const Varga varga, const Das
 	break;
 	case TM_KP:
 		ret = writeKp( dasa );
+		ret = writeKpHouseSignificators( dasa );
 		break;
 
 	case TM_BHAVA:
@@ -461,19 +462,20 @@ int TextHelper::writeKp( const DasaId &dasaindex )
 		sheet->addParagraph( s );
 	}
 
+	sheet->addLine( _( "Planet details" ) );
 	OBJECT_INCLUDES kpstyle = chartprops->getVedicObjectStyle();
 	//if ( chartprops->getVedicObjectStyle() & OI_ASCENDANT ) kpstyle -= OI_ASCENDANT;
 	//if ( chartprops->getVedicObjectStyle() & OI_MERIDIAN ) kpstyle -= OI_MERIDIAN;
 	ObjectArray obs = PlanetList().getVedicObjectList( kpstyle );
 
-	Table *table = new Table( 7, obs.size()+13 );
+	Table *table = new Table( 7, obs.size()+2 );
 	table->setHeader( 0,  _( "Planet" ));
 	table->setHeader( 1,  _( "Longitude" ));
 	table->setHeader( 2,  _( "Sign Lord" ));
-	table->setHeader( 3,  _( "Bhava" ));
-	table->setHeader( 4,  _( "KP Lord" ));
-	table->setHeader( 5,  _( "Sublord" ));
-	table->setHeader( 6,  _( "Subsublord" ));
+	table->setHeader( 3,  _( "KP Lord" ));
+	table->setHeader( 4,  _( "Sublord" ));
+	table->setHeader( 5,  _( "Subsublord" ));
+	table->setHeader( 6,  _( "Bhava" ));
 	for( int i = 0; i < 7; i++ ) table->col_alignment[i] = Align::Center;
 
 	int line = 1;
@@ -485,27 +487,151 @@ int TextHelper::writeKp( const DasaId &dasaindex )
 		table->setEntry( 0, line, fmt.getObjectName( o, TF_LONG, true ) );
 		table->setEntry( 1, line, fmt.getPosFormatted( len, horoscope->getMovingDirection( o )));
 		table->setEntry( 2, line, fmt.getObjectName( getLord( getRasi( len )), TF_LONG, true ) );
-		s.Printf( wxT( "%02d" ), horoscope->getHousePos( o, true ) + 1 );
-		table->setEntry( 3, line, s );
 
 		kp = horoscope->getKPLords( o );
-		table->setEntry( 4, line, expert->getDasaLordNameF( kp.lord, TF_LONG ));
-		table->setEntry( 5, line, expert->getDasaLordNameF( kp.sublord, TF_LONG ));
-		table->setEntry( 6, line, expert->getDasaLordNameF( kp.subsublord, TF_LONG ));
+		table->setEntry( 3, line, expert->getDasaLordNameF( kp.lord, TF_LONG ));
+		table->setEntry( 4, line, expert->getDasaLordNameF( kp.sublord, TF_LONG ));
+		table->setEntry( 5, line, expert->getDasaLordNameF( kp.subsublord, TF_LONG ));
+
+		s.Printf( wxT( "%02d" ), horoscope->getHousePos( o, true ) + 1 );
+		table->setEntry( 6, line, s );
 		line++;
 	}
+	sheet->addItem( table );
+
+	sheet->addLine( _( "House details" ) );
+	Table *htable = new Table( 6, 13 );
+	htable->setHeader( 0,  _( "House" ));
+	htable->setHeader( 1,  _( "Longitude" ));
+	htable->setHeader( 2,  _( "Sign Lord" ));
+	htable->setHeader( 3,  _( "KP Lord" ));
+	htable->setHeader( 4,  _( "Sublord" ));
+	htable->setHeader( 5,  _( "Subsublord" ));
+	for( int i = 0; i < 6; i++ ) htable->col_alignment[i] = Align::Center;
+
+	line = 1;
 	for ( p = HOUSE1; p <= HOUSE12; p++ )
 	{
 		hlen = horoscope->getHouse( p, true, false );
-		table->setEntry( 0, line, lang.getBhavaName( p ));
-		table->setEntry( 1, line, fmt.getPosFormatted( hlen ));
-		table->setEntry( 2, line, fmt.getObjectName( getLord(getRasi( hlen )), TF_LONG, true ) );
+		// htable->setEntry( 0, line, lang.getBhavaName( p ));
+		htable->setEntry( 0, line, MString(getHouseNumberFormatted( p, 2 )));
+		htable->setEntry( 1, line, fmt.getPosFormatted( hlen ));
+		htable->setEntry( 2, line, fmt.getObjectName( getLord(getRasi( hlen )), TF_LONG, true ) );
 
 		kp = horoscope->getHouseKPLords( p );
-		table->setEntry( 4, line, expert->getDasaLordNameF( kp.lord, TF_LONG ));
-		table->setEntry( 5, line, expert->getDasaLordNameF( kp.sublord, TF_LONG ));
-		table->setEntry( 6, line, expert->getDasaLordNameF( kp.subsublord, TF_LONG ));
+		htable->setEntry( 3, line, expert->getDasaLordNameF( kp.lord, TF_LONG ));
+		htable->setEntry( 4, line, expert->getDasaLordNameF( kp.sublord, TF_LONG ));
+		htable->setEntry( 5, line, expert->getDasaLordNameF( kp.subsublord, TF_LONG ));
 		line++;
+	}
+	sheet->addItem( htable );
+	delete expert;
+	return ret;
+}
+
+/*****************************************************
+**
+**   TextHelper   ---   writeKpHouseSignificators
+**		Level 1: P.C.O - Planets whose Star Lord is the occupant of a given Bhava 
+**		Level 2: Occupant - Planets housed in a given Bhava
+**		Level 3: P.C.BL - Planets whose Star Lord is Bhava Lord
+**		Level 4: B.Lord - Planet that is Bhava Lord (= Rasi/Sign Lord)
+**		Level 5: Asp2Bhava - Planets aspecting Bhava
+**		Level 6: B.SubL - Planet that is Bhava Sub-Lord
+**
+******************************************************/
+int TextHelper::writeKpHouseSignificators( const DasaId &dasaindex )
+{
+	MString sigstr;
+	Lang lang;
+	int b, ret = 0;
+	double len, hlen;
+	DasaExpert *expert = DasaExpertFactory().getDasaExpert( dasaindex );
+	DasaTool *tool = DasaTool::get();
+	KpData kp;
+	KpSigLevels kpSig;
+	SheetFormatter fmt;
+
+	if ( ! expert->hasKpFeatures() ) // Not supported by all (e.g. Jaimini)
+	{
+		sheet->addLine( _( "Not supported" ) );
+		return 0;
+	}
+	horoscope->updateKP( dasaindex );
+
+	sheet->addLine( _( "Significators" ) );
+	Table *table = new Table( 13, 7 );
+	table->setHeader( 0,  _( "Level" ));
+	table->setEntry( 0, 1, _( "P.C.O" ));
+	table->setEntry( 0, 2, _( "Occupant" ));
+	table->setEntry( 0, 3, _( "P.C.BL" ));
+	table->setEntry( 0, 4, _( "B.Lord" ));
+	table->setEntry( 0, 5, _( "Asp2Bhava" ));
+	table->setEntry( 0, 6, _( "B.SubL" ));
+	table->col_alignment[0] = Align::Left;
+	int line = 1;
+	for ( b = HOUSE1; b <= HOUSE12; b++ )
+	{
+		table->setHeader( b+1, MString(getHouseNumberFormatted( b, 2 )));
+		table->col_alignment[b+1] = Align::Center;
+		hlen = horoscope->getHouse( b, true, false );
+
+		kp = horoscope->getHouseKPLords( b );
+		kpSig = horoscope->getHouseKPSigLevels( b );
+		// Level 1
+		if ( !kpSig.lev[0].empty() )
+		{
+			sigstr.clear();
+			for ( int p : kpSig.lev[0] ) {
+				sigstr.add(fmt.getObjectName( (ObjectId) p, TF_LONG, true ));
+				sigstr.add( SPACE );
+			}
+			table->setEntry( b+1, line, sigstr );
+		}
+		else
+		{
+			table->setEntry( b+1, line, DASH );
+		}
+		// Level 2
+		if ( !kpSig.lev[1].empty() )
+		{
+			sigstr.clear();
+			for ( int p : kpSig.lev[1] ) {
+				sigstr.add(fmt.getObjectName( (ObjectId) p, TF_LONG, true ));
+				sigstr.add( SPACE );
+			}
+			table->setEntry( b+1, line+1, sigstr );
+		}
+		else
+		{
+			table->setEntry( b+1, line+1, DASH );
+		}
+		// Level 3
+		if ( !kpSig.lev[2].empty() )
+		{
+			sigstr.clear();
+			for ( int p : kpSig.lev[2] ) {
+				sigstr.add(fmt.getObjectName( (ObjectId) p, TF_LONG, true ));
+				sigstr.add( SPACE );
+			}
+			table->setEntry( b+1, line+2, sigstr );
+		}
+		else
+		{
+			table->setEntry( b+1, line+2, DASH );
+		}
+		// Level 4
+		if ( !kpSig.lev[3].empty() )
+		{
+			table->setEntry( b+1, line+3, fmt.getObjectName( (ObjectId) (kpSig.lev[3])[0], TF_LONG, true ) );
+		}
+		// Level 5
+		// table->setEntry( b+1, line+4, fmt.getObjectName( (ObjectId) (kpSig.lev[4])[0], TF_LONG, true ) );
+		// Level 6
+		if ( !kpSig.lev[5].empty() )
+		{
+			table->setEntry( b+1, line+5, fmt.getObjectName( (ObjectId) (kpSig.lev[5])[0], TF_LONG, true ));
+		}
 	}
 	sheet->addItem( table );
 	delete expert;

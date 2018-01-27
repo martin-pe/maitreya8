@@ -37,6 +37,62 @@
             "vedic": true
         },
         {
+            "description": "Simple view for Vedic astrologers: KP chart, planets and tree view of Dasas",
+            "name": "Vedic KP",
+            "splitter": {
+                "sashpospercent": 70,
+                "splitdirection": "Vertical",
+                "window1": {
+                    "splitter": {
+                        "splitdirection": "Vertical",
+                        "window1": {
+                            "splitter": {
+                                "sashpospercent": 70,
+                                "splitdirection": "Horizontal",
+                                "window1": {
+                                    "widget": {
+                                        "colcount": 1,
+                                        "rowcount": 1,
+                                        "vargas": [
+                                            0
+                                        ],
+                                        "vedic": true,
+                                        "viewtype": "grid"
+                                    }
+                                },
+                                "window2": {
+                                    "widget": {
+                                        "viewtype": "planets"
+                                    }
+                                }
+                            }
+                        },
+                        "window2": {
+                            "splitter": {
+                                "splitdirection": "Horizontal",
+                                "window1":{
+                                    "widget": {
+                                        "viewtype": "planets"
+                                    }
+                                },
+                                "window2": {
+                                    "widget": {
+                                        "viewtype": "planets"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "window2": {
+                    "widget": {
+                        "viewtype": "dasa"
+                    }
+                }
+            },
+            "vedic": true
+        },
+        {
             "description": "Simple view for Vedic astrologers: planets, Rasi/Bhava chart and tree view of Dasas",
             "name": "Vedic Bhava",
             "splitter": {

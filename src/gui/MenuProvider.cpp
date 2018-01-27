@@ -519,48 +519,60 @@ wxMenu *ContextMenuProvider::getObjectSubMenu( const int &wo, ChartProperties *p
 
 	MyMenu *menu = new MyMenu( _( "Objects" ));
 
-	menu->addCheckItem( CMD_SHOWOUTER, _( "3 Outer Planets"), props->getObjectStyle() & OI_OUTER );
+	if ( !props->isVedic())
+	{
+		menu->addCheckItem( CMD_SHOWOUTER, _( "3 Outer Planets"), props->getObjectStyle() & OI_OUTER );
+	}
 
 	menu->addCheckItem( CMD_SHOWDRAGONHEAD, lang.getObjectName( OMEANNODE, format, props->isVedic() ),
 		props->getObjectStyle() & OI_DRAGONHEAD );
 	menu->addCheckItem( CMD_SHOWDRAGONTAIL, lang.getObjectName( OMEANDESCNODE, format, props->isVedic() ),
 		props->getObjectStyle() & OI_DRAGONTAIL );
 
-	if ( wo & WO_MENU_FULL_OBJECT )
+	if ( !props->isVedic())
 	{
-		menu->addCheckItem( CMD_SHOWASCENDANT, lang.getObjectName( OASCENDANT, format, props->isVedic() ),
-			props->getObjectStyle() & OI_ASCENDANT );
-		menu->addCheckItem( CMD_SHOWMERIDIAN, lang.getObjectName( OMERIDIAN, format, props->isVedic() ),
-			props->getObjectStyle() & OI_MERIDIAN );
-		menu->addCheckItem( CMD_SHOWDESCENDANT, lang.getObjectName( ODESCENDANT, format, props->isVedic() ),
-			props->getObjectStyle() & OI_DESCENDANT );
-		menu->addCheckItem( CMD_SHOWIMUMCOELI, lang.getObjectName( OIMUMCOELI, format, props->isVedic() ),
-			props->getObjectStyle() & OI_IMUMCOELI );
+		if ( wo & WO_MENU_FULL_OBJECT )
+		{
+			menu->addCheckItem( CMD_SHOWASCENDANT, lang.getObjectName( OASCENDANT, format, props->isVedic() ),
+				props->getObjectStyle() & OI_ASCENDANT );
+			menu->addCheckItem( CMD_SHOWMERIDIAN, lang.getObjectName( OMERIDIAN, format, props->isVedic() ),
+				props->getObjectStyle() & OI_MERIDIAN );
+			menu->addCheckItem( CMD_SHOWDESCENDANT, lang.getObjectName( ODESCENDANT, format, props->isVedic() ),
+				props->getObjectStyle() & OI_DESCENDANT );
+			menu->addCheckItem( CMD_SHOWIMUMCOELI, lang.getObjectName( OIMUMCOELI, format, props->isVedic() ),
+				props->getObjectStyle() & OI_IMUMCOELI );
+		}
+
+		menu->addCheckItem( CMD_SHOWURANIAN_INNER, _( "4 Uranian (Cupido-Kronos)"), props->getObjectStyle() & OI_URANIAN_INNER );
+		menu->addCheckItem( CMD_SHOWURANIAN_OUTER, _( "4 Uranian (Apollon-Poseidon)"), props->getObjectStyle() & OI_URANIAN_OUTER );
+		menu->addCheckItem( CMD_SHOWCHIRON, lang.getObjectName( OCHIRON, format, props->isVedic() ),
+			props->getObjectStyle() & OI_CHIRON );
+		menu->addCheckItem( CMD_SHOWPHOLUS, lang.getObjectName( OPHOLUS, format, props->isVedic() ),
+			props->getObjectStyle() & OI_PHOLUS );
+		menu->addCheckItem( CMD_SHOWPLANETOIDS, _( "4 Planetoids"), props->getObjectStyle() & OI_PLANETOIDS );
+		menu->addCheckItem( CMD_SHOWLILITH, lang.getObjectName( OLILITH, format, props->isVedic() ),
+			props->getObjectStyle() & OI_LILITH );
 	}
 
-	menu->addCheckItem( CMD_SHOWURANIAN_INNER, _( "4 Uranian (Cupido-Kronos)"), props->getObjectStyle() & OI_URANIAN_INNER );
-	menu->addCheckItem( CMD_SHOWURANIAN_OUTER, _( "4 Uranian (Apollon-Poseidon)"), props->getObjectStyle() & OI_URANIAN_OUTER );
-	menu->addCheckItem( CMD_SHOWCHIRON, lang.getObjectName( OCHIRON, format, props->isVedic() ),
-		props->getObjectStyle() & OI_CHIRON );
-	menu->addCheckItem( CMD_SHOWPHOLUS, lang.getObjectName( OPHOLUS, format, props->isVedic() ),
-		props->getObjectStyle() & OI_PHOLUS );
-	menu->addCheckItem( CMD_SHOWPLANETOIDS, _( "4 Planetoids"), props->getObjectStyle() & OI_PLANETOIDS );
-	menu->addCheckItem( CMD_SHOWLILITH, lang.getObjectName( OLILITH, format, props->isVedic() ),
-		props->getObjectStyle() & OI_LILITH );
-
 	if ( wo & WO_MENU_FULL_OBJECT )
 	{
-		if ( props->isVedic())
+		if ( props->isVedic() )
 		{
-			menu->addCheckItem( CMD_SHOWUPAGRAHAS, _( "5 Upagrahas"), props->getObjectStyle() & OI_UPAGRAHAS );
-			menu->addCheckItem( CMD_SHOWKALAVELAS, _( "Kalavelas"), props->getObjectStyle() & OI_KALAVELAS );
-			menu->addCheckItem( CMD_SHOWSPECIALLAGNAS, _( "3 Special Lagnas"), props->getObjectStyle() & OI_SPECIALLAGNAS );
-			menu->addCheckItem( CMD_SHOWD9LAGNA, _( "Sphuta Navamsa Lagna"), props->getObjectStyle() & OI_D9_LAGNA );
+			if ( !config->vedic->showKPChart )
+			{
+				menu->addCheckItem( CMD_SHOWUPAGRAHAS, _( "5 Upagrahas"), props->getObjectStyle() & OI_UPAGRAHAS );
+				menu->addCheckItem( CMD_SHOWKALAVELAS, _( "Kalavelas"), props->getObjectStyle() & OI_KALAVELAS );
+				menu->addCheckItem( CMD_SHOWSPECIALLAGNAS, _( "3 Special Lagnas"), props->getObjectStyle() & OI_SPECIALLAGNAS );
+				menu->addCheckItem( CMD_SHOWD9LAGNA, _( "Sphuta Navamsa Lagna"), props->getObjectStyle() & OI_D9_LAGNA );
+			}
 		}
 		else menu->addCheckItem( CMD_SHOWARIES, _( "Aries"), props->getObjectStyle() & OI_ARIES );
 
-		menu->addCheckItem( CMD_SHOW_HOUSES, _( "All Houses"), props->getObjectStyle() & OI_ALL_HOUSES );
-		menu->addCheckItem( CMD_SHOW_4HOUSES, _( "4 Houses (2, 3, 11, 12)"), props->getObjectStyle() & OI_4_HOUSES );
+		if ( !config->vedic->showKPChart )
+		{
+			menu->addCheckItem( CMD_SHOW_HOUSES, _( "All Houses"), props->getObjectStyle() & OI_ALL_HOUSES );
+			menu->addCheckItem( CMD_SHOW_4HOUSES, _( "4 Houses (2, 3, 11, 12)"), props->getObjectStyle() & OI_4_HOUSES );
+		}
 
 		size_t size = ( props->isVedic() ? config->vedic->arabicParts.size() : config->western->arabicParts.size() );
 		if ( size > 0 )
@@ -582,8 +594,11 @@ wxMenu *ContextMenuProvider::getMainViewColumnMenu( ChartProperties *props )
 
 	if ( props->isVedic())
 	{
-		menu->Append( CMD_MAIN_SHOW_DECLINATION, _( "Declinations" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_DECLINATION, props->getVedicColumnStyle() & TAB_CT_LATITUDE );
+		if ( !config->vedic->showKPChart )
+		{
+			menu->Append( CMD_MAIN_SHOW_DECLINATION, _( "Declinations" ), wxT( "" ), true );
+			menu->Check( CMD_MAIN_SHOW_DECLINATION, props->getVedicColumnStyle() & TAB_CT_LATITUDE );
+		}
 
 		menu->Append( CMD_MAIN_SHOW_LORD, _( "Sign Lord" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_LORD, props->getVedicColumnStyle() & TAB_CT_SIGN_LORD );
@@ -607,18 +622,22 @@ wxMenu *ContextMenuProvider::getMainViewColumnMenu( ChartProperties *props )
 
 		menu->Append( CMD_MAIN_SHOW_DIGNITY, _( "Dignity" ), wxT( "" ), true );
 		menu->Check( CMD_MAIN_SHOW_DIGNITY, props->getVedicColumnStyle() & TAB_CT_DIGNITY );
-		menu->Append( CMD_MAIN_SHOW_NAVAMSA, _( "Navamsa (D-9)" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_NAVAMSA, props->getVedicColumnStyle() & TAB_CT_NAVAMSA );
 
-		menu->Append( CMD_MAIN_SHOW_KARAKA, _( "Jaimini Karaka" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_KARAKA, props->getVedicColumnStyle() & TAB_CT_CHARA_KARAKA );
+		if ( !config->vedic->showKPChart )
+		{
+			menu->Append( CMD_MAIN_SHOW_NAVAMSA, _( "Navamsa (D-9)" ), wxT( "" ), true );
+			menu->Check( CMD_MAIN_SHOW_NAVAMSA, props->getVedicColumnStyle() & TAB_CT_NAVAMSA );
 
-		menu->Append( CMD_MAIN_SHOW_SHASTIAMSA, _( "Shastiamsa (D-60)" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_SHASTIAMSA, props->getVedicColumnStyle() & TAB_CT_SHASTIAMSA_LORD );
-		menu->Append( CMD_MAIN_SHOW_DASAVARGA, _( "Dasa Varga Dignity" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_DASAVARGA, props->getVedicColumnStyle() & TAB_CT_DASA_VARGA );
-		menu->Append( CMD_MAIN_SHOW_ASHTAKA, _( "Ashtakavarga" ), wxT( "" ), true );
-		menu->Check( CMD_MAIN_SHOW_ASHTAKA, props->getVedicColumnStyle() & TAB_CT_AV_REKHAPOINTS );
+			menu->Append( CMD_MAIN_SHOW_KARAKA, _( "Jaimini Karaka" ), wxT( "" ), true );
+			menu->Check( CMD_MAIN_SHOW_KARAKA, props->getVedicColumnStyle() & TAB_CT_CHARA_KARAKA );
+
+			menu->Append( CMD_MAIN_SHOW_SHASTIAMSA, _( "Shastiamsa (D-60)" ), wxT( "" ), true );
+			menu->Check( CMD_MAIN_SHOW_SHASTIAMSA, props->getVedicColumnStyle() & TAB_CT_SHASTIAMSA_LORD );
+			menu->Append( CMD_MAIN_SHOW_DASAVARGA, _( "Dasa Varga Dignity" ), wxT( "" ), true );
+			menu->Check( CMD_MAIN_SHOW_DASAVARGA, props->getVedicColumnStyle() & TAB_CT_DASA_VARGA );
+			menu->Append( CMD_MAIN_SHOW_ASHTAKA, _( "Ashtakavarga" ), wxT( "" ), true );
+			menu->Check( CMD_MAIN_SHOW_ASHTAKA, props->getVedicColumnStyle() & TAB_CT_AV_REKHAPOINTS );
+		}
 	}
 	else
 	{
@@ -667,6 +686,15 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 		menu->Append( CMD_VCT_EAST, _("East Indian Style"), wxT( "" ), true );
 		menu->Check( CMD_VCT_EAST, props->getVedicChartDisplayConfig().indianChartType == VCT_EAST );
 
+		if ( props->getVedicChartDisplayConfig().indianChartType == VCT_SOUTH )
+		{
+			wxMenu *southmenu = new wxMenu();
+			southmenu->Append( CMD_VCN_SYMBOL, _("Symbol"), wxT( "" ), true );
+			southmenu->Check( CMD_VCN_SYMBOL, props->getVedicChartDisplayConfig().southIndianSignDisplayType == VCN_SYMBOL );
+			southmenu->Append( CMD_VCN_SHORT, _("Short String"), wxT( "" ), true );
+			southmenu->Check( CMD_VCN_SHORT, props->getVedicChartDisplayConfig().southIndianSignDisplayType == VCN_SHORT );
+			menu->Append( -1, _( "Display Signs" ), southmenu );
+		}
 		if ( props->getVedicChartDisplayConfig().indianChartType == VCT_NORTH )
 		{
 			wxMenu *northmenu = new wxMenu();
@@ -687,12 +715,20 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 			centermenu->Check( CMD_VCC_NOTHING, props->getVedicChartDisplayConfig().centerInfoType == VCC_NOTHING );
 			centermenu->Append( CMD_VCC_NAME, _("Name"), wxT( "" ), true );
 			centermenu->Check( CMD_VCC_NAME, props->getVedicChartDisplayConfig().centerInfoType == VCC_NAME );
-			centermenu->Append( CMD_VCC_NAME_SIGNIFICATION, _("Name + Signification"), wxT( "" ), true );
-			centermenu->Check( CMD_VCC_NAME_SIGNIFICATION, props->getVedicChartDisplayConfig().centerInfoType == VCC_NAME_SIGNIFICATION );
-			centermenu->Append( CMD_VCC_DIVISION, _("Division"), wxT( "" ), true );
-			centermenu->Check( CMD_VCC_DIVISION, props->getVedicChartDisplayConfig().centerInfoType == VCC_DIVISION );
-			centermenu->Append( CMD_VCC_DIVISION_SIGNIFICATION, _("Division + Signification"), wxT( "" ), true );
-			centermenu->Check( CMD_VCC_DIVISION_SIGNIFICATION, props->getVedicChartDisplayConfig().centerInfoType == VCC_DIVISION_SIGNIFICATION );
+			if ( config->vedic->showKPChart )
+			{
+				config->vedicChart->centerInfoType = VCC_NAME;
+			}
+
+			if ( !config->vedic->showKPChart )
+			{
+				centermenu->Append( CMD_VCC_NAME_SIGNIFICATION, _("Name + Signification"), wxT( "" ), true );
+				centermenu->Check( CMD_VCC_NAME_SIGNIFICATION, props->getVedicChartDisplayConfig().centerInfoType == VCC_NAME_SIGNIFICATION );
+				centermenu->Append( CMD_VCC_DIVISION, _("Division"), wxT( "" ), true );
+				centermenu->Check( CMD_VCC_DIVISION, props->getVedicChartDisplayConfig().centerInfoType == VCC_DIVISION );
+				centermenu->Append( CMD_VCC_DIVISION_SIGNIFICATION, _("Division + Signification"), wxT( "" ), true );
+				centermenu->Check( CMD_VCC_DIVISION_SIGNIFICATION, props->getVedicChartDisplayConfig().centerInfoType == VCC_DIVISION_SIGNIFICATION );
+			}
 			menu->Append( -1, _( "Chart Center" ), centermenu );
 		}
 		menu->AppendSeparator();
@@ -701,13 +737,17 @@ wxMenu *ContextMenuProvider::getGraphicStyleMenu( const int &wo, ChartProperties
 		{
 			menu->Append( CMD_VCS_RETRO, _( "Retrograde Planets"), wxT( "" ), true );
 			menu->Check( CMD_VCS_RETRO, props->getVedicChartDisplayConfig().showRetro );
-			menu->Append( CMD_VCS_ARUDHAS, _( "Arudhas"), wxT( "" ), true );
-			menu->Check( CMD_VCS_ARUDHAS, props->getVedicChartDisplayConfig().showArudhas );
-			
-			if ( wo & WO_MENU_TRANSIT )
+
+			if ( !config->vedic->showKPChart )
 			{
-				menu->Append( CMD_VCS_ASHTAKAVARGA, _( "Ashtakavarga Points"), wxT( "" ), true );
-				menu->Check( CMD_VCS_ASHTAKAVARGA, props->getVedicChartDisplayConfig().showAshtakavarga );
+				menu->Append( CMD_VCS_ARUDHAS, _( "Arudhas"), wxT( "" ), true );
+				menu->Check( CMD_VCS_ARUDHAS, props->getVedicChartDisplayConfig().showArudhas );
+			
+				if ( wo & WO_MENU_TRANSIT )
+				{
+					menu->Append( CMD_VCS_ASHTAKAVARGA, _( "Ashtakavarga Points"), wxT( "" ), true );
+					menu->Check( CMD_VCS_ASHTAKAVARGA, props->getVedicChartDisplayConfig().showAshtakavarga );
+				}
 			}
 			menu->Append( CMD_VCS_PLANETCOLORS, _( "Colors for Planet Symbols"), wxT( "" ), true );
 			menu->Check( CMD_VCS_PLANETCOLORS, props->getVedicChartDisplayConfig().showPlanetColors );

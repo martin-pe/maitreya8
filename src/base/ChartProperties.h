@@ -43,10 +43,12 @@ public:
 
 	// Vedic - western
 	void setVedic( const bool = true );
+	void setKpChart( const bool = true );
 	void setFixedVedic();
 	void setFixedWestern();
 
 	virtual bool isVedic() const;
+	virtual bool isKpChart() const;
 	bool isFixedVedic()   const { return fixedVedic; }
 	bool isFixedWestern() const { return fixedWestern; }
 	bool isEwFixed() const { return fixedVedic || fixedWestern; }
@@ -129,6 +131,7 @@ private:
 	void updatePlanetList( const bool& );
 
 	bool vedic;
+	bool kpChart;
 	bool fixedVedic;
 	bool fixedWestern;
 

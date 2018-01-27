@@ -104,10 +104,10 @@ void  PrintoutTextHelper::writePrintoutHeader( const int &mode, const bool &vedi
 			else // KP
 			{
 				Tc tc;
-				TcColumnSet colset( TAB_LC_PLANETS, true );
+				TcColumnSet colset( TAB_LC_PLANETS, true, _( "Planets" ));
 				colset.cols.push_back( TcColumn( TAB_CT_OBJECT_NAME, true ));
 				colset.cols.push_back( TcColumn( TAB_CT_LONGITUDE, true ));
-				colset.cols.push_back( TcColumn( TAB_CT_NAKSHATRA, true ));
+				colset.cols.push_back( TcColumn( TAB_CT_SIGN_LORD, true ));
 				colset.cols.push_back( TcColumn( TAB_CT_KP_LORDS, true ));
 				tc.colsets.push_back( colset );
 				sc->addItem( tw.createTable( &tc ));
@@ -116,7 +116,7 @@ void  PrintoutTextHelper::writePrintoutHeader( const int &mode, const bool &vedi
 				TcColumnSet hcolset( TAB_LC_HOUSE_CUSPS, vedic, _( "Houses" ));
 				hcolset.cols.push_back( TcColumn( TAB_CT_OBJECT_NAME, true ));
 				hcolset.cols.push_back( TcColumn( TAB_CT_LONGITUDE, true ));
-				hcolset.cols.push_back( TcColumn( TAB_CT_NAKSHATRA, true ));
+				hcolset.cols.push_back( TcColumn( TAB_CT_SIGN_LORD, true ));
 				hcolset.cols.push_back( TcColumn( TAB_CT_KP_LORDS, true ));
 				tch.colsets.push_back( hcolset );
 				sc->addItem( tw.createTable( &tch ));
@@ -198,7 +198,9 @@ Table *PrintoutTextHelper::writeBaseData( const int& /*mode*/, const bool &vedic
 	TcColumnSet colset( TAB_LC_NONE );
 	TcColumn col( TAB_CT_CUSTOM_KEY_VALUE );
 
-	//col.cells.push_back( TcCell( TAB_CELL_NAME ));
+	if ( chartprops->isKpChart() ) {
+		col.cells.push_back( TcCell( TAB_CELL_NAME ));
+	}
 	col.cells.push_back( TcCell( TAB_CELL_FULL_DATE ));
 	col.cells.push_back( TcCell( TAB_CELL_LOCAL_TIME ));
 	col.cells.push_back( TcCell( TAB_CELL_LOCATION_NAME ));
