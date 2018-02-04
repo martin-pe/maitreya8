@@ -195,9 +195,9 @@ void BasicHoroscope::updatePositionArrays()
 /*****************************************************
 **
 **   BasicHoroscope   ---   findInArray
-**
+**		returns the range, a given value falls into, in a sorted array of degrees (circular fashion)
 ******************************************************/
-int BasicHoroscope::findInArray( const double (&arr)[12], double x ) const
+int BasicHoroscope::findInArray( const double arr[], double x ) const
 {
     double nxt, len;
     bool mutated = false;
@@ -212,7 +212,6 @@ int BasicHoroscope::findInArray( const double (&arr)[12], double x ) const
                 return k;
             len = x + 360;
             mutated = true;
-            // std::cout << "arr: " << arr[k] << " changed to: " << nxt << " at: " << k << endl;
             if ( arr[k] <= len && len < nxt )
                 return k;
         }
@@ -223,7 +222,6 @@ int BasicHoroscope::findInArray( const double (&arr)[12], double x ) const
             {
                 nxt = arr[k<11 ? k+1 : 0] + 360;
                 len = x + 360;
-                // std::cout << "arr: " << arr[k] << " also changed to: " << nxt << " at: " << k << endl;
             }
 
             if ( arr[k] <= len && len < nxt )

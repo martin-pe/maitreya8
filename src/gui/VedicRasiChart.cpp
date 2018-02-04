@@ -193,7 +193,8 @@ void VedicRasiChart::finishChart()
 	{
 		// reasonable width
 		const double rtol = xmax / 12.0;
-		const MPoint p = painter->getTextExtent( getNorthIndianSignLabel( R_ARIES ));
+		const int disp = chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType;
+		const MPoint p = painter->getTextExtent( getIndianSignLabel( R_ARIES, disp ) );
 
 		// 1/4 of the chart
 		const double xi = .5 * xr;
@@ -227,7 +228,7 @@ void VedicRasiChart::finishChart()
 		setDefaultTextColor();
 		for ( Rasi i = R_ARIES; i <= R_PISCES; i++ )
 		{
-			painter->drawTextFormatted( sign_rect[i], getNorthIndianSignLabel( (Rasi)redRasi( getAscendant() + i )), Align::Center );
+			painter->drawTextFormatted( sign_rect[i], getIndianSignLabel( (Rasi)redRasi( getAscendant() + i ), disp ), Align::Center );
 
 			// leave after ascendant for style == 0
 			if ( chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType == VCN_ASC ) break;
@@ -235,6 +236,40 @@ void VedicRasiChart::finishChart()
 	}
 	else if ( chartprops->getVedicChartDisplayConfig().indianChartType == VCT_SOUTH && h1set && ! h2set )
 	{
+		// reasonable width
+		const double rtol = 15.0;
+		const int disp = chartprops->getVedicChartDisplayConfig().southIndianSignDisplayType;
+		const MPoint p = painter->getTextExtent( getIndianSignLabel( R_ARIES, disp ) );
+
+		// 1/4 of the chart
+		const double xstep = .5 * xr;
+		const double ystep = .5 * yr;
+
+		// Rectangles for sign names resp. numbers
+		const MRect sign_rect[12] = {
+			MRect( xcenter - .5 * xstep - .5 * rtol, ycenter - ystep - rtol, rtol, rtol ),
+			MRect( xcenter + .5 * xstep - .5 * rtol, ycenter - ystep - rtol, rtol, rtol ),
+				MRect( xcenter + xstep, ycenter - ystep - 1.3 * rtol, 1.3 * rtol, rtol ),
+			MRect( xcenter + xstep, ycenter - .5 * ystep - .5 * rtol, rtol, rtol ),
+			MRect( xcenter + xstep, ycenter + .5 * ystep - .5 * rtol, rtol, rtol ),
+				MRect( xcenter + xstep, ycenter + ystep, 1.2 * rtol, 1.2 * rtol ),
+
+			MRect( xcenter + .5 * xstep - .5 * rtol, ycenter + ystep, rtol, rtol ),
+			MRect( xcenter - .5 * xstep - .5 * rtol, ycenter + ystep, rtol, rtol ),
+				MRect( xcenter - xstep - rtol, ycenter + ystep, 1.2 * rtol, 1.2 * rtol ),
+			MRect( xcenter - xstep - rtol, ycenter + .5 * ystep - .5 * rtol, rtol, rtol ),
+			MRect( xcenter - xstep - rtol, ycenter - .5 * ystep - .5 * rtol, rtol, rtol ),
+				MRect( xcenter - xstep - 1.2 * rtol, ycenter - ystep - 1.2 * rtol, rtol, rtol )
+		};
+
+		if ( ! ( chartprops->getVedicChartDisplayConfig().southIndianSignDisplayType == VCN_SYMBOL )) setGraphicFont();
+		else setSymbolFont();
+ 
+		setDefaultTextColor();
+		for ( Rasi i = R_ARIES; i <= R_PISCES; i++ )
+		{
+			painter->drawTextFormatted( sign_rect[i], getIndianSignLabel( (Rasi)redRasi( i ), disp ), Align::Center );
+		}
 		if ( chartprops->getVedicChartDisplayConfig().southIndianAscendantMarkup )
 		{
 			const MRect &rr = fields[getAscendant()].rect;
@@ -243,7 +278,7 @@ void VedicRasiChart::finishChart()
 				wxPen pen( vconf->pen.IsOk() ? vconf->pen.GetColour() : defaultPen.GetColour(), 1, wxDOT  );
 				painter->setPen( pen );
 			}
-			painter->drawLine( MPoint( rr.x, rr.y + rr.height ), MPoint( rr.x + rr.width, rr.y ));
+			painter->drawLine( MPoint( rr.x, rr.y + rr.height * .9 ), MPoint( rr.x + rr.width * .1, rr.y + rr.height ));
 		}
 	}
 	paintCenterString();
@@ -254,13 +289,13 @@ void VedicRasiChart::finishChart()
 **   VedicRasiChart   ---   getNorthIndianSignLabel
 **
 ******************************************************/
-wxString VedicRasiChart::getNorthIndianSignLabel( const Rasi &rasi )
+wxString VedicRasiChart::getIndianSignLabel( const Rasi &rasi, const int &disp )
 {
 	wxString s;
 	Lang lang;
 	SymbolProvider sp;
 
-	switch( chartprops->getVedicChartDisplayConfig().northIndianSignDisplayType )
+	switch( disp )
 	{
 		case VCN_ASC:
 			s.Printf( wxT( "%d" ),  rasi + 1 );

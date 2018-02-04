@@ -83,7 +83,7 @@ private:
 
 	void calculateCenterRect();
 
-	wxString getNorthIndianSignLabel( const Rasi& );
+	wxString getIndianSignLabel( const Rasi&, const int& );
 
 	MRect centerRect;
 	

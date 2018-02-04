@@ -175,7 +175,8 @@ protected:
 	void updatePositionArrays();
 
 private:
-	int findInArray( const double (&arr)[12], double x ) const;
+	// int findInArray( const double (&arr)[12], double x ) const;
+	int findInArray( const double arr[], double x ) const;
 	ObjectPosition vpos[MAX_EPHEM_OBJECTS], wpos[MAX_EPHEM_OBJECTS];
 	DECLARE_CLASS( BasicHoroscope )
 };
