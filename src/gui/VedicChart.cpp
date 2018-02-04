@@ -268,6 +268,9 @@ int VedicVargaChart::getAshtakavargaPoints( const ObjectId &planet, const int &s
 ******************************************************/
 void VedicVargaChart::writeChartContents( const int &chart_id, const bool applyFilter )
 {
+	int rasi;
+	wxString lname, sname;
+
 	Horoscope *h = getHoroscope( chart_id );
 	if ( chart_id == 1 && field_count == 12 && chartprops->getVedicChartDisplayConfig().showAshtakavarga )
 	{
@@ -275,11 +278,21 @@ void VedicVargaChart::writeChartContents( const int &chart_id, const bool applyF
 		ashtakavargaExpert->update();
 	}
 	BasicVedicChart::writeChartContents( chart_id, applyFilter );
+	
+	// print house numbers along with planets in KP Chart
+	if ( chart_id == 0 && chartprops->isKpChart() )
+	{
+		for ( ObjectId p = OHOUSE1; p <= OHOUSE12; p++ )
+		{
+			rasi = h->getVargaData( p, V_BHAVA )->getRasi();
+			sname = getHouseNumberFormatted( (int) p - OHOUSE1, 2 );
+			lname = sname;
+			fields[rasi].getContents( chart_id ).textitems.push_back( ChartTextItem( lname, sname, false ));
+		}
+	}
 
 	if ( chart_id == 0 && chartprops->getVedicChartDisplayConfig().showArudhas )
 	{
-		int rasi;
-		wxString lname, sname;
 		JaiminiExpert expert( h, varga );
 
 		for ( int i = 0; i < 12; i++ )
