@@ -7,7 +7,7 @@ Standards-Version: 3.7.2
 
 Package: maitreya8
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libwxbase3.0-0v5, libwxgtk3.0-gtk3-0v5, libwxsqlite3-3.0-0, wx-common, wx3.0-i18n
 Description: Software for Vedic and western astrology
  Free software for western and Vedic astrology (Jyotish). Supports classical Vedic astrology, KP system and parts of Jaimini system. Western part includes Uranian astrology. Platforms: Win32, Linux and UNIX.
 
