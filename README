@@ -16,5 +16,11 @@ Version 6: legacy release, still included in some older Linux or UNIX distributi
 https://github.com/martin-pe/maitreya6
 
 
+Ubuntu 20.04 LTS
+
+How to build
+./autogen.sh
+./configure
+make
 
 

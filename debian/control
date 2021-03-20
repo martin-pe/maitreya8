@@ -2,7 +2,7 @@ Source: maitreya8
 Section: misc
 Priority: extra
 Maintainer: M. Pettau <http://www.saravali.de/contact.html>
-Build-Depends: debhelper (>= 5), autotools-dev, libwxbase3.0-0v5, libwxgtk3.0-gtk3-dev, wx3.0-headers, wx3.0-i18n, libfontconfig1-dev
+Build-Depends: debhelper (>= 5), autotools-dev, libwxbase3.0-dev, libwxgtk3.0-gtk3-dev, wx3.0-headers, wx3.0-i18n, libfontconfig1-dev, libswe-dev, libswe0, libwxsqlite3-3.0-dev
 Standards-Version: 3.7.2
 
 Package: maitreya8
