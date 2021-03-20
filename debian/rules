@@ -21,11 +21,6 @@ export DH_OPTIONS
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
-export LIBSWE_CFLAGS=-I/usr/include
-export LIBSWE_LIBS=-lswe
-export WXSQLITE3_LIBS=-lwxsqlite3-3.0
-export WXSQLITE3_CFLAGS=-I/usr/include
-
 config.status: configure
 	dh_testdir
 	# Add here commands to configure the package.
@@ -35,7 +30,7 @@ endif
 ifneq "$(wildcard /usr/share/misc/config.guess)" ""
 	cp -f /usr/share/misc/config.guess config.guess
 endif
-	./configure --with-swe=system --with-wxsqlite3=system --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" LDFLAGS="-Wl,-z,defs"
+	./configure --with-swe=builtin --with-wxsqlite3=builtin --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" LDFLAGS="-Wl,-z,defs"
 
 
 #Architecture 
