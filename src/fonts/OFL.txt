@@ -6,16 +6,14 @@ This license is copied below, and is also available with a FAQ at:
 http://scripts.sil.org/OFL
 
 The font contains glyphs from
-----------------------------------------
+-----------------------------
 
-- MaitreyaSymbols which is distributed along with Maitreya versions 7.*.
-  The font is based on the Starfisher font by Kenneth Hirst
-	https://fontlibrary.org/de/font/starfisheruni,
-	both licensed under the SIL Open Font License
+- MaitreyaSymbols which is distributed along with Maitreya versions 7.*
 
-- MarvoSym font by Martin Vogel,
-  http://www.martinvogel.de/blog/index.php?/archives/131-Marvosym.ttf.html
-  and licensed under the SIL Open Font License
+- Cardo by David Perry
+	https://fonts.google.com/specimen/Cardo
+
+Both are licensed under the SIL Open Font License
 
 -----------------------------------------------------------
 SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
