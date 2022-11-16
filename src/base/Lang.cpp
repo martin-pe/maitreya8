@@ -24,6 +24,7 @@
 
 #include <wx/log.h>
 #include <wx/string.h>
+#include <wx/wxcrtvararg.h>
 
 #include "Calculator.h"
 #include "Conf.h"
