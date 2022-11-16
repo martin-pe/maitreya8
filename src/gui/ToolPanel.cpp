@@ -392,7 +392,9 @@ void ToolbarFactory::createChoiceItem( wxToolBar *toolbar, const int &item )
 		label = _( "Sources" );
 		break;
 	case TBS_YOGAFIRSTHOUSE:
-		control = new wxChoice( toolbar, item, wxDefaultPosition, wxSize( 120, -1 ), 15, first_house_choices, wxADJUST_MINSIZE );
+		// does not compile on wx3.2
+		//control = new wxChoice( toolbar, item, wxDefaultPosition, wxSize( 120, -1 ), 15, first_house_choices, wxADJUST_MINSIZE );
+		control = new wxChoice( toolbar, item, wxDefaultPosition, wxSize( 120, -1 ), 15, first_house_choices );
 		label = _( "Ascendant" );
 		break;
 	case TBS_ANTARDASALEVEL:
