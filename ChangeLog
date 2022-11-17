@@ -1,3 +1,10 @@
+Service release 8.0.1b (Nov 17 2022)
+
+Changes are
+	* Font updated due to copyright issues.
+	* Source code compiles on wxWidgets 3.2
+	* Ubuntu package available for version LTS 22.04 (usable for derivates like Linux Mint 21)
+
 Stable version 8.0.1 released (Sept 30 2017)
 
    Bug fixes
