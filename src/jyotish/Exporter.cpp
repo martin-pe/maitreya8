@@ -58,7 +58,7 @@ public:
 	{
 		s.Clear();
 
-		for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
+		for( std::list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 		{
 			SheetItem *item = *iter;
 			SheetFormatter fmt;
@@ -120,7 +120,7 @@ protected:
 	{
 		uint i, c, r;
 		uint total_len = 0;
-		vector<uint> col_len;
+		std::vector<uint> col_len;
 
 		TableEntry *entry;
 		SheetFormatter formatter;

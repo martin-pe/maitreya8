@@ -151,7 +151,7 @@ void ChildWindowListCtrl::recreate()
 		listctrl->AssignImageList( ip->createViewImageList( false ), wxIMAGE_LIST_NORMAL );
 		break;
 	}
-	for ( vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
+	for ( std::vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
 		insertListItem( *iter );
 
 	listctrl->SetSize( GetSize() );
@@ -288,7 +288,7 @@ void ChildWindowListCtrl::insertListItem( ChildWindow *item )
 // doc based views are update by DocManager in ApplcationWindows
 void ChildWindowListCtrl::onConfigChanged()
 {
-	for ( vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
+	for ( std::vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
 	{
 		ChildWindow *child = *iter;
 		if ( ! child->getDoc())
@@ -311,7 +311,7 @@ void ChildWindowListCtrl::onConfigChanged()
 void ChildWindowListCtrl::updateItemLabels()
 {
 	int i = 0;
-	for ( vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
+	for ( std::vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
 	{
 		updateItemLabel( *iter, i );
 		i++;
@@ -337,7 +337,7 @@ void ChildWindowListCtrl::addEntry( ChildWindow *child )
 void ChildWindowListCtrl::deleteEntry( ChildWindow *child )
 {
 	int i = 0;
-	for ( vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
+	for ( std::vector<ChildWindow*>::iterator iter = windowlist.begin(); iter != windowlist.end(); iter++ )
 	{
 		ChildWindow *current = *iter;
 		if ( current == child )

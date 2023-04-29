@@ -138,7 +138,7 @@ public:
 				sharedSection->fetchHasOrder = false;
 				logic->resetEntries();
 
-				vector<AtlasEntry> l = dao->getEntries( logic->filter, logic->country, logic->mode,
+				std::vector<AtlasEntry> l = dao->getEntries( logic->filter, logic->country, logic->mode,
 					ATLAS_MAX_GRID_ELEMENTS, sharedSection->fetchOffset );
 
 				if ( l.size() > 0 )
@@ -409,10 +409,10 @@ AtlasLogic::~AtlasLogic()
 **   AtlasLogic   ---   getFavouriteCountries
 **
 ******************************************************/
-list<AtlasCountry> AtlasLogic::getFavouriteCountries( vector<wxString> countries )
+std::list<AtlasCountry> AtlasLogic::getFavouriteCountries( std::vector<wxString> countries )
 {
 	wxString name;
-	list<AtlasCountry> l;
+	std::list<AtlasCountry> l;
 
 	if ( countries.size() == 0 )
 	{
@@ -436,7 +436,7 @@ list<AtlasCountry> AtlasLogic::getFavouriteCountries( vector<wxString> countries
 **   AtlasLogic   ---   getAllCountries
 **
 ******************************************************/
-list<AtlasCountry> AtlasLogic::getAllCountries()
+std::list<AtlasCountry> AtlasLogic::getAllCountries()
 {
 	return dao->getAllCountries();
 }
@@ -446,7 +446,7 @@ list<AtlasCountry> AtlasLogic::getAllCountries()
 **   AtlasLogic   ---   getAllTimezones
 **
 ******************************************************/
-list<TimezoneEntry> AtlasLogic::getAllTimezones()
+std::list<TimezoneEntry> AtlasLogic::getAllTimezones()
 {
 	return dao->getAllTimezones();
 }
@@ -550,7 +550,7 @@ wxString AtlasLogic::getAdminName( wxString country_code, wxString admin1_code )
 **   AtlasLogic   ---   getAllAdminNamesForCountry
 **
 ******************************************************/
-list<wxString> AtlasLogic::getAllAdminNamesForCountry( const wxString &country_code )
+std::list<wxString> AtlasLogic::getAllAdminNamesForCountry( const wxString &country_code )
 {
 	return dao->getAllAdminNamesForCountry( country_code );
 }

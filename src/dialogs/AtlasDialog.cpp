@@ -366,15 +366,15 @@ AtlasDialog::~AtlasDialog()
 ******************************************************/
 void AtlasDialog::updateCountryChoice()
 {
-	vector<wxString> dummy;
-	list<AtlasCountry> l = logic->getFavouriteCountries( dummy );
+	std::vector<wxString> dummy;
+	std::list<AtlasCountry> l = logic->getFavouriteCountries( dummy );
 
 	country_choice->Clear();
 	country_choice->Append( _( "All Countries" ));
 
 	int selCountry = 0;
 	int i = 1;
-	for ( list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
+	for ( std::list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
 	{
 		wxStringClientData *clientData = new wxStringClientData( (*iter).iso );
 		country_choice->Append( (*iter).name, clientData );

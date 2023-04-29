@@ -33,8 +33,6 @@ class DasaExpert;
 class DataSet;
 class Sheet;
 
-using namespace std;
-
 #define MAX_DAY 32
 
 /*************************************************//**
@@ -150,7 +148,7 @@ private:
 
 	const ChartProperties *chartprops;
 	DataSet *d;
-	vector<EphemPlanetData> planetdata;
+	std::vector<EphemPlanetData> planetdata;
 	int nb_days, year, month, current_day, current_month, current_year;
 	bool clen, cingress, ckp, cdetails, clunar, isLocaltime;
 	bool dstchange;
@@ -158,9 +156,9 @@ private:
 	int weekday[MAX_DAY], tithi[MAX_DAY];
 	DasaId mydasa;
 
-	vector<KPEvent> kpevents;
-	list<IngressEvent> ingressEvents;
-	list<LunarEvent> lunarEvents;
+	std::vector<KPEvent> kpevents;
+	std::list<IngressEvent> ingressEvents;
+	std::list<LunarEvent> lunarEvents;
 
 	bool show_header;
 	const static wxChar *month_name[12];

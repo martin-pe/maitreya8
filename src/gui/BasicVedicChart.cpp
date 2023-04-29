@@ -508,8 +508,8 @@ void BasicVedicChart::paintAspectsForFieldPair( const int &f1, const int &f2 )
 	MPoint p1, p2;
 	MRect rect;
 	int acount = 0;
-	list<AspectEvent> &al = aexpert->getAspectList();
-	list<AspectEvent>::iterator iter;
+	std::list<AspectEvent> &al = aexpert->getAspectList();
+	std::list<AspectEvent>::iterator iter;
 	AspectEvent *event = (AspectEvent*)NULL;
 
 	//printf( "BasicVedicChart::paintAspectsForFieldPair %d %d\n", f1, f2 );
@@ -880,7 +880,7 @@ void BasicVedicChart::drawFieldText( const uint &f, const FIELD_PART &part )
 	trect.height = text_height;
 
 	// paint graphic items
-	vector<ChartGraphicItem> g;
+	std::vector<ChartGraphicItem> g;
 	uint i = 0;
 	int j = 0;
 	//printf( "BasicVedicChart::drawFieldText mark 4a %ld millisec\n", (wxGetLocalTimeMillis() - starttime).ToLong());
@@ -989,7 +989,7 @@ void BasicVedicChart::drawTextItemLine( MRect rect, const wxString &s, const int
 **   BasicVedicChart   ---   drawGraphicItemLine
 **
 ******************************************************/
-void BasicVedicChart::drawGraphicItemLine( MRect rect, const vector<ChartGraphicItem> g, const int &align, const FIELD_PART &part )
+void BasicVedicChart::drawGraphicItemLine( MRect rect, const std::vector<ChartGraphicItem> g, const int &align, const FIELD_PART &part )
 {
 	double leftx = rect.x;
 	double xstep = 2 * text_width;

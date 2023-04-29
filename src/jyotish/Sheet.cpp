@@ -123,7 +123,7 @@ void SheetItemContainer::moveTo( const double &x, const double &y )
 	//printf( "SheetItemContainer::moveTo p %f %f CURRENT %f %f DIFF %f %f\n", x, y, rect.x, rect.y, x0, y0 );
 	rect.x = x;
 	rect.y = y;
-	for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
+	for( std::list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 	{
 		(*iter)->moveTo( (*iter)->rect.x - x0, (*iter)->rect.y - y0 );
 		//printf( "   SheetItemContainer::moveTo ITEM type %d result %f %f\n", (*iter)->type, (*iter)->rect.x, (*iter)->rect.y );
@@ -194,7 +194,7 @@ Sheet::~Sheet()
 Sheet *Sheet::cloneClean()
 {
 	Sheet *sheet = new Sheet( writercfg );
-	for( list<SheetItem*>::iterator iter = items.begin(); iter != items.end(); iter++ )
+	for( std::list<SheetItem*>::iterator iter = items.begin(); iter != items.end(); iter++ )
 	{
 		sheet->addItem( (*iter)->cloneClean() );
 	}
@@ -209,7 +209,7 @@ Sheet *Sheet::cloneClean()
 void Sheet::clear()
 {
 	//printf( "SHEET CLEAR\n" );
-	for( list<SheetItem*>::iterator iter = items.begin(); iter != items.end(); iter++ )
+	for( std::list<SheetItem*>::iterator iter = items.begin(); iter != items.end(); iter++ )
 	{
 		SheetItem *item = *iter;
 		assert( item );
@@ -226,7 +226,7 @@ void Sheet::clear()
 void Sheet::centerItems()
 {
 	double xrightmax = 0;
-	list<SheetItem*>::iterator iter;
+	std::list<SheetItem*>::iterator iter;
 
 	for( iter = items.begin(); iter != items.end(); iter++ )
 	{
@@ -313,7 +313,7 @@ void MString::add( const MToken &token )
 ******************************************************/
 void MString::add( const MString &f )
 {
-	for( list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
+	for( std::list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
 	{
 		tokens.push_back( *iter );
 	}
@@ -594,7 +594,7 @@ wxString SheetFormatter::escapeHtmlSymbol( const wxString &t )
 wxString SheetFormatter::fragment2PlainText( const MString &f )
 {
 	wxString s;
-	for( list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
+	for( std::list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
 	{
 		s << token2PlainText( *iter );
 	}

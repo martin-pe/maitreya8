@@ -45,7 +45,7 @@ protected:
 
 	void updateAspects();
 
-	virtual vector<wxString> getCenterString();
+	virtual std::vector<wxString> getCenterString();
 
 	virtual int getPlanetField( const ObjectId &planet, const int &chart_id );
 
@@ -73,7 +73,7 @@ public:
 protected:
 	void updateAspects() {}
 
-	virtual vector<wxString> getCenterString();
+	virtual std::vector<wxString> getCenterString();
 	virtual void writeChartContents( const int &chart_id, const bool applyFilter = false );
 
 	virtual int getPlanetField( const ObjectId&, const int&);

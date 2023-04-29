@@ -28,8 +28,6 @@
 #include "ChartField.h"
 #include "GraphicalChart.h"
 
-using namespace std;
-
 class ChartProperties;
 class Painter;
 class VedicChartConfig;
@@ -108,7 +106,7 @@ protected:
 	/**
 	 * \brief core information about the chart fields, their geometry and contents
 	 */
-	vector<ChartField> fields;
+	std::vector<ChartField> fields;
 
 	/**
 	 * \brief Write astrological objects into contents arrays
@@ -143,7 +141,7 @@ protected:
 	/**
 	 * \brief Draw one line of graphical items in the given rectangle
 	 */
-	void drawGraphicItemLine( MRect rect, const vector<ChartGraphicItem> g, const int &align, const FIELD_PART& );
+	void drawGraphicItemLine( MRect rect, const std::vector<ChartGraphicItem> g, const int &align, const FIELD_PART& );
 
 	/**
 	 * \brief Draw text in the given rectangle. Adds support for text align.

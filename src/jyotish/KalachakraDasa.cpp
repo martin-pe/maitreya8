@@ -204,10 +204,10 @@ KalachakraGati KalachakraDasaExpert::calculateGati( const Rasi &ad_lord, const R
 **   KalachakraDasaExpert   ---   getFirstLevel
 **
 ******************************************************/
-vector<Dasa*> KalachakraDasaExpert::getFirstLevel()
+std::vector<Dasa*> KalachakraDasaExpert::getFirstLevel()
 {
 	Calculator *calculator = CalculatorFactory().getCalculator();
-	vector<Dasa*> ret;
+	std::vector<Dasa*> ret;
 	int pada;
 	KalachakraGroup group;
 	KalachakraGati gati = KdgDefault;
@@ -291,9 +291,9 @@ vector<Dasa*> KalachakraDasaExpert::getFirstLevel()
 **   KalachakraDasaExpert   ---   getNextLevel
 **
 ******************************************************/
-vector<Dasa*> KalachakraDasaExpert::getNextLevel( Dasa *d )
+std::vector<Dasa*> KalachakraDasaExpert::getNextLevel( Dasa *d )
 {
-	vector<Dasa*> ret;
+	std::vector<Dasa*> ret;
 	Rasi ad_lord, oldlord = R_NONE;
 	double ad_dur;
 	int currentcol;
@@ -597,9 +597,9 @@ int KalachakraDasaExpert::getKPLordRecursive( const int &group, const int &pada,
 **   KalachakraDasaExpert   ---   getKPEventList
 **
 ******************************************************/
-vector<KPEvent> KalachakraDasaExpert::getKPEventList( const double &startlen, const double &endlen, const double &startjd )
+std::vector<KPEvent> KalachakraDasaExpert::getKPEventList( const double &startlen, const double &endlen, const double &startjd )
 {
-	vector<KPEvent> events;
+	std::vector<KPEvent> events;
 	int i, j, pada, column, param_ayus, antarcolumn;
 	int currentnak;
 	KalachakraGroup group;

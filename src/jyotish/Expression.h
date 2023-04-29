@@ -26,8 +26,6 @@
 
 class MdlInterpreter;
 
-using namespace std;
-
 // Expression types
 enum { EXPRESSION_RETURN = 0, EXPRESSION_NUMERIC, EXPRESSION_UNARY, EXPRESSION_DUAL };
 
@@ -71,7 +69,7 @@ public:
 	virtual void printStackTrace();
 
 	bool hasErrors;
-	vector<wxString> errorStack;
+	std::vector<wxString> errorStack;
 };
 
 /*************************************************//**
@@ -174,7 +172,7 @@ public:
 
 	void addExpression( Expression* );
 
-	vector<Expression*> expressions;
+	std::vector<Expression*> expressions;
 };
 
 #endif

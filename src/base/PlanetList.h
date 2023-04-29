@@ -23,8 +23,6 @@
 #include <vector>
 #include "maitreya.h"
 
-using namespace std;
-
 bool isObjectIdLessThan( const ObjectId&, const ObjectId&, const bool &vedic );
 
 /*************************************************//**

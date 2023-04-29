@@ -21,14 +21,11 @@
 #define _URANIAN_H_
 
 #include <map>
-#include <list>
 
 #include "Expert.h"
 #include "Conf.h"
 #include "Horoscope.h"
 #include "UranianBase.h"
-
-using namespace std;
 
 class ChartProperties;
 class ObjectEvaluation;
@@ -87,7 +84,7 @@ public:
 
 	void calculatePeriodPreview( const double &first_jd, const double &last_jd );
 
-	map<ObjectId, ClusterMatchingList> createClusterMatchingList( const PlanetContext& );
+	std::map<ObjectId, ClusterMatchingList> createClusterMatchingList( const PlanetContext& );
 
 	int getPreviewYear() const { return previewYear; }
 

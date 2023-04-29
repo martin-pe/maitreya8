@@ -27,11 +27,8 @@
 #include <wx/grid.h>
 #include <wx/panel.h>
 
-#include <vector>
-
 #include "maitreya.h"
 
-using namespace std;
 class wxStaticText;
 
 /*************************************************//**

@@ -142,7 +142,7 @@ SheetStylePanel::~SheetStylePanel()
 	delete props;
 	delete horoscope;
 
-	for( vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
+	for( std::vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
 	{
 		delete *iter;
 	}
@@ -225,7 +225,7 @@ void SheetStylePanel::OnSelectStyle( wxCommandEvent& )
 void SheetStylePanel::populateStyleChoice()
 {
 	choice_styles->Clear();
-	for( vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
+	for( std::vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
 	{
 		choice_styles->Append( (*iter)->name );
 	}
@@ -372,7 +372,7 @@ void SheetStylePanel::restoreDefaults()
 
 	if ( answer == wxID_YES )
 	{
-		for( vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
+		for( std::vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
 		{
 			delete *iter;
 		}

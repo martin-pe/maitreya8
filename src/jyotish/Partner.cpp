@@ -642,7 +642,7 @@ void CompositHoroscope::update( Horoscope *horoscope, Horoscope *h2 )
 ******************************************************/
 void CompositHoroscope::dump( Sheet *sheet, const ChartProperties* chartprops, bool /*show_header*/ )
 {
-	vector<int> obs;
+	std::vector<int> obs;
 	ObjectPosition pos;
 	int line = 0;
 	SheetFormatter fmt;

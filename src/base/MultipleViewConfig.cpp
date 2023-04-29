@@ -140,7 +140,7 @@ wxArrayString MultipleViewConfigLoader::getNamesAsArray()
 ******************************************************/
 VIEW_ID MultipleViewConfigLoader::getViewId( wxString key )
 {
-	map<wxString, VIEW_ID>::iterator it = viewtypes.find( key );
+	std::map<wxString, VIEW_ID>::iterator it = viewtypes.find( key );
 	if ( it != viewtypes.end()) return it->second;
 
 	wxLogError( wxT( "Wrong view type %s in file %s, returning default" ), key.c_str(), globalResourcename.c_str());

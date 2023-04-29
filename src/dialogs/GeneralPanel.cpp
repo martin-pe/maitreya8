@@ -38,8 +38,6 @@
 #include <wx/textctrl.h>
 #include <wx/timer.h>
 
-using namespace std;
-
 extern Config *config;
 
 IMPLEMENT_CLASS( GeneralPanel, ConfigPanel )
@@ -153,9 +151,9 @@ GeneralPanel::GeneralPanel( wxWindow* parent ) : ConfigPanel( parent, false )
 
 	choice_lang->Clear();
 #ifdef SHOW_LANGUARGES
-	list<LanguageEntry>::iterator iter;
+	std::list<LanguageEntry>::iterator iter;
 	int thelang = 0, i = 0;
-	list<LanguageEntry> thelist = LanguageConfig::get()->getLanguages();
+	std::list<LanguageEntry> thelist = LanguageConfig::get()->getLanguages();
 	for ( iter = thelist.begin(); iter != thelist.end(); iter++ )
 	{
 		choice_lang->Append( (*iter).name );
@@ -240,10 +238,10 @@ void GeneralPanel::OnLanguageChoice( wxCommandEvent& )
 {
 	static bool already_shown = false;
 
-	list<LanguageEntry>::iterator iter;
+	std::list<LanguageEntry>::iterator iter;
 	wxString sellang = choice_lang->GetStringSelection();
 	wxString oldlang = model->lang;
-	list<LanguageEntry> thelist = LanguageConfig::get()->getLanguages();
+	std::list<LanguageEntry> thelist = LanguageConfig::get()->getLanguages();
 	for ( iter = thelist.begin(); iter != thelist.end(); iter++ )
 	{
 		if ( sellang == (*iter).name )

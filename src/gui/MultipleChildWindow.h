@@ -33,8 +33,6 @@ struct NotebookNode;
 
 class wxBookCtrlBase;
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief complex child Window containing notebooks, splitters and views
@@ -61,7 +59,7 @@ public:
 
 protected:
 
-	vector<BasicView*> viewlist;
+	std::vector<BasicView*> viewlist;
 	MultipleViewConfig *viewconfig;
 
 	// Life cycle methods

@@ -31,8 +31,6 @@
 #include <wx/pen.h>
 #include <wx/string.h>
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief configuration for bar diagram styles, i.e. graphical Dasa, varga etc diagrams
@@ -82,7 +80,7 @@ class BgPalette // : public ConfigBase
 public:
 	bool isValid() const { return brushes.size() > 0; }
 
-	vector<MBrush> brushes;
+	std::vector<MBrush> brushes;
 
 	MBrush getBrush( const uint &i );
 
@@ -126,7 +124,7 @@ public:
 	bool hasPalette( wxString name );
 	BgPalette *getPalette( wxString name );
 
-	vector<wxString> getAllKeys();
+	std::vector<wxString> getAllKeys();
 	void setPalette( const wxString name, const BgPalette& );
 	void loadFallbackConfig();
 
@@ -134,7 +132,7 @@ private:
 	PaletteManager();
 	void init();
 
-	map<wxString, BgPalette*> m;
+	std::map<wxString, BgPalette*> m;
 };
 
 /*************************************************//**

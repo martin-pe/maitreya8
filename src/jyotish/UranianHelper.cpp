@@ -302,9 +302,9 @@ UranianHelper::UranianHelper( UranianExpert *expert )
 **   UranianHelper   ---   isOneContext
 **
 ******************************************************/
-bool UranianHelper::isOneContext( list<UEvent> &events, const PlanetContext &ctx )
+bool UranianHelper::isOneContext( std::list<UEvent> &events, const PlanetContext &ctx )
 {
-	list<UEvent>::iterator iter;
+	std::list<UEvent>::iterator iter;
 	for ( iter = events.begin(); iter != events.end(); iter++ )
 	{
 		assert( (*iter).e1 );
@@ -441,7 +441,7 @@ void UranianHelper::writeUEvents( Sheet *sheet, const PlanetContext &ctx, const 
 	const UWRITE_FORMAT format = isOneContext( r->uevents, ctx ) ? UF_DEFAULT : UF_CONTEXT;
 
 	int count = 1;
-	for ( list<UEvent>::iterator iter = r->uevents.begin(); iter != r->uevents.end(); iter++ )
+	for ( std::list<UEvent>::iterator iter = r->uevents.begin(); iter != r->uevents.end(); iter++ )
 	{
 		if ( filter.size() > 0 && ! (*iter).applyFilter( filter )) continue;
 
@@ -642,7 +642,7 @@ void UranianHelper::writeTupleTable( Sheet *sheet, const URANIAN_TUPLE_TYPE &utt
 **
 ******************************************************/
 void UranianHelper::writeMatchingClusterPart( Sheet *sheet, const PlanetContext &ctx,
-	map<ObjectId, ClusterMatchingList> &m, const uint &istart, const uint &iend )
+	std::map<ObjectId, ClusterMatchingList> &m, const uint &istart, const uint &iend )
 {
 	Lang lang;
 	ObjectId p;
@@ -651,7 +651,7 @@ void UranianHelper::writeMatchingClusterPart( Sheet *sheet, const PlanetContext 
 	MString t;
 	int col = 0;
 	uint maxrow = 0;
-	set<ObjectId> keys;
+	std::set<ObjectId> keys;
 
 	assert( istart < planets.size());
 	assert( iend <= planets.size());
@@ -660,12 +660,12 @@ void UranianHelper::writeMatchingClusterPart( Sheet *sheet, const PlanetContext 
 	for ( uint i = istart; i < iend; i++ )
 	{
 		p = planets[i];
-		for( map<ObjectId,ClusterMatchingList>::iterator iter = m.begin(); iter != m.end(); iter++ )
+		for( std::map<ObjectId,ClusterMatchingList>::iterator iter = m.begin(); iter != m.end(); iter++ )
 		{
 			if ( iter->first == p ) keys.insert( p );
 		}
 	}
-	for( set<ObjectId>::iterator iter = keys.begin(); iter != keys.end(); iter++ )
+	for( std::set<ObjectId>::iterator iter = keys.begin(); iter != keys.end(); iter++ )
 	{
 		maxrow = Max( m[*iter].matchings.size(), maxrow );
 	}
@@ -698,15 +698,15 @@ void UranianHelper::writeMatchingClusterPart( Sheet *sheet, const PlanetContext 
 ******************************************************/
 void UranianHelper::writeMatchingClusters( Sheet *sheet, const PlanetContext &ctx )
 {
-	map<ObjectId, ClusterMatchingList> m = expert->createClusterMatchingList( ctx );
-	set<ObjectId> keys;
+	std::map<ObjectId, ClusterMatchingList> m = expert->createClusterMatchingList( ctx );
+	std::set<ObjectId> keys;
 
 	//printf( "UranianHelper::writeMatchingClusters context %d\n", (int)ctx );
 
 	const bool skipAries = ( ctx == PcTransit || ctx == PcDirection );
 
 	// collect keys. only planets with matchings need to be shown
-	for( map<ObjectId,ClusterMatchingList>::iterator iter = m.begin(); iter != m.end(); iter++ )
+	for( std::map<ObjectId,ClusterMatchingList>::iterator iter = m.begin(); iter != m.end(); iter++ )
 	{
 		if ( iter->first == OARIES && skipAries ) continue;
 		keys.insert( iter->first );

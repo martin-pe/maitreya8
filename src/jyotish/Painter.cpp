@@ -128,7 +128,7 @@ void Painter::drawSingleMStringLine( const MRect &r, MString &f, const int& alig
 	const double yoffset = .5 * f.size.imag();
 
 	double yy = y0; // + .5 * ( r.height - size.imag());
-	for( list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
+	for( std::list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
 	{
 		switch ( iter->fontFormat )
 		{
@@ -237,7 +237,7 @@ void Painter::drawMString( const MRect &r, MString &f, const int& align )
 		MRect rect( r.x, y0, r.width, r.height );
 
 		int line = 0;
-		for( list<MString>::iterator iter = f.formattedLines.begin(); iter != f.formattedLines.end(); iter++ )
+		for( std::list<MString>::iterator iter = f.formattedLines.begin(); iter != f.formattedLines.end(); iter++ )
 		{
 			line++;
 			rect.height = iter->size.imag();
@@ -317,7 +317,7 @@ MPoint Painter::getTextExtent( const MString &f )
 	double x = 0, y = 0;
 	MPoint p;
 
-	for( list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
+	for( std::list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
 	{
 		p = getTextExtent( *iter );
 		x += p.real();

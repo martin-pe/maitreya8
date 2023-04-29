@@ -127,8 +127,8 @@ void AtlasEditDialog::updateAdminChoice()
 	choice_admin->Clear();
 	choice_admin->Append( wxEmptyString );
 
-	const list<wxString> &l = logic->getAllAdminNamesForCountry( choice_country->GetStringSelection());
-	for ( list<wxString>::const_iterator iter = l.begin(); iter != l.end(); iter++ )
+	const std::list<wxString> &l = logic->getAllAdminNamesForCountry( choice_country->GetStringSelection());
+	for ( std::list<wxString>::const_iterator iter = l.begin(); iter != l.end(); iter++ )
 	{
 		choice_admin->Append( *iter );
 	}
@@ -166,7 +166,7 @@ void AtlasEditDialog::updateTzHours()
 {
 	wxString tzfullname = choice_timezone->GetStringSelection();
 
-	for ( list<TimezoneEntry>::iterator iter = tzlist.begin(); iter != tzlist.end(); iter++ )
+	for ( std::list<TimezoneEntry>::iterator iter = tzlist.begin(); iter != tzlist.end(); iter++ )
 	{
 		if ( (*iter).name == tzfullname )
 		{
@@ -188,7 +188,7 @@ void AtlasEditDialog::updateTzChoice()
 	wxString country = choice_country->GetStringSelection();
 
 	// get country
-	for ( list<AtlasCountry>::iterator iter = countrylist.begin(); iter != countrylist.end(); iter++ )
+	for ( std::list<AtlasCountry>::iterator iter = countrylist.begin(); iter != countrylist.end(); iter++ )
 	{
 		if ( (*iter).name == country )
 		{
@@ -198,7 +198,7 @@ void AtlasEditDialog::updateTzChoice()
 	}
 
 	choice_timezone->Clear();
-	for ( list<TimezoneEntry>::iterator iter = tzlist.begin(); iter != tzlist.end(); iter++ )
+	for ( std::list<TimezoneEntry>::iterator iter = tzlist.begin(); iter != tzlist.end(); iter++ )
 	{
 		if ( (*iter).country_code != country_code ) continue;
 
@@ -266,7 +266,7 @@ void AtlasEditDialog::OnTextChanged( wxCommandEvent &event )
 void AtlasEditDialog::set_properties()
 {
 	countrylist = logic->getAllCountries();
-	for ( list<AtlasCountry>::iterator iter = countrylist.begin(); iter != countrylist.end(); iter++ )
+	for ( std::list<AtlasCountry>::iterator iter = countrylist.begin(); iter != countrylist.end(); iter++ )
 	{
 		choice_country->Append( (*iter).name );
 	}

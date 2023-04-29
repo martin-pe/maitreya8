@@ -26,8 +26,6 @@
 
 #include <list>
 
-using namespace std;
-
 class AshtakavargaExpert;
 class BarDiagramConfig;
 class BarDiagramStyle;
@@ -122,7 +120,7 @@ protected:
 
 	const wxString title;
 
-	list<BarDiagramItem*> subitems;
+	std::list<BarDiagramItem*> subitems;
 	double maxvalue, minvalue;
 	double text_height;
 

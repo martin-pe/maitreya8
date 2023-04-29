@@ -195,7 +195,7 @@ int EphemExpert::calcLongitude()
 	double dummy;
 	Calculator *calculator = CalculatorFactory().getCalculator();
 
-	vector<ObjectId> obs = chartprops->getPlanetList();
+	std::vector<ObjectId> obs = chartprops->getPlanetList();
 
 	planetdata.clear();
 	for ( i1 = 0; i1 < obs.size(); i1++ )
@@ -229,7 +229,7 @@ int EphemExpert::calcLongitude()
 void EphemExpert::calcKP( const DasaId &dasaId, DasaExpert *expert )
 {
 	KPEvent *e;
-	vector<KPEvent>::iterator iter;
+	std::vector<KPEvent>::iterator iter;
 	const wxLongLong starttime = wxGetLocalTimeMillis();
 
 	Calculator *calculator = CalculatorFactory().getCalculator();
@@ -260,7 +260,7 @@ void EphemExpert::writeKp( Sheet *sheet, const DasaId &dasaId )
 {
 	Lang lang;
 	int lord;
-	vector<KPEvent>::iterator iter;
+	std::vector<KPEvent>::iterator iter;
 	TzUtil tzu;
 	wxString s;
 	DasaTool *tool = DasaTool::get();
@@ -429,7 +429,7 @@ int EphemExpert::writeIngress( Sheet *sheet )
 {
 	int ret = 0;
 	Lang lang;
-	list<IngressEvent>::iterator iter;
+	std::list<IngressEvent>::iterator iter;
 	wxString s, thetime;
 	TzUtil tzu;
 	SheetFormatter fmt;
@@ -558,7 +558,7 @@ void EphemExpert::writeLunar( Sheet *sheet )
 	if ( ! clunar ) calcLunar();
 	Lang lang;
 	wxString s, thetime;
-	list<LunarEvent>::iterator iter;
+	std::list<LunarEvent>::iterator iter;
 	LunarEvent *e;
 	TzUtil tzu;
 	SheetFormatter fmt;

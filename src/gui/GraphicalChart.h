@@ -24,7 +24,6 @@
 #include <wx/brush.h>
 #include <wx/gdicmn.h>
 #include <wx/pen.h>
-#include <vector>
 
 #include "GraphConfig.h"
 #include "Painter.h"
@@ -35,8 +34,6 @@ class ChartProperties;
 class Horoscope;
 class UranianExpert;
 class Writer;
-
-using namespace std;
 
 /*************************************************//**
 *

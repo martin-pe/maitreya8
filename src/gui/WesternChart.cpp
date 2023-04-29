@@ -239,7 +239,7 @@ void WesternChart::drawPalettes()
 	BgPalette *palette = (BgPalette*)NULL;
 	PaletteManager *man = PaletteManager::get();
 
-	for( list<GcChartFrameBgPattern>::iterator iter = wconf->patterns.begin(); iter != wconf->patterns.end(); iter++ )
+	for( std::list<GcChartFrameBgPattern>::iterator iter = wconf->patterns.begin(); iter != wconf->patterns.end(); iter++ )
 	{
 		palette = man->getPalette( iter->paletteName );
 
@@ -320,7 +320,7 @@ void WesternChart::drawAspects()
 	assert( h1 );
 
 	ObjectPosition pos1, pos2;
-	list<AspectEvent>::iterator iter;
+	std::list<AspectEvent>::iterator iter;
 	WesternChartConfig *wconf = getWChartConfig();
 
 	if ( ! wconf->aspects.show ) return;
@@ -361,7 +361,7 @@ void WesternChart::drawAspects()
 
 	painter->setPen( wxPen( *wxRED, wxSOLID, 5 ));
 
-	list<AspectEvent> al = aexpert->getAspectList();
+	std::list<AspectEvent> al = aexpert->getAspectList();
 	//printf( "WesternChart::paintAspects al size %d\n", (int)al.size() );
 
 	/*  shifted to the end of the section
@@ -529,8 +529,8 @@ bool WesternChart::shouldBeMagnified( const ObjectId &p, const Horoscope *h )
 	if ( h == h1 && h1marked == p ) return true;
 	if ( h == h2 && h2marked == p ) return true;
 
-	list<AspectEvent>::iterator iter;
-	list<AspectEvent> al = aexpert->getAspectList();
+	std::list<AspectEvent>::iterator iter;
+	std::list<AspectEvent> al = aexpert->getAspectList();
 	for ( iter = al.begin(); iter != al.end(); iter++ )
 	{
 		switch( charttype )

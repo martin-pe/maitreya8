@@ -27,8 +27,6 @@
 
 #include <vector>
 
-using namespace std;
-
 class wxMouseEvent;
 class wxStatusBar;
 class Horoscope;
@@ -122,7 +120,7 @@ public:
 	int graphicalObjectId;
 
 	// antardasas etc of this Dasa
-	vector<GraphicalDasaItem*> depitems;
+	std::vector<GraphicalDasaItem*> depitems;
 };
 
 /*************************************************//**
@@ -225,7 +223,7 @@ private:
 
 	Horoscope *doc;
 
-	vector <GraphicalDasaItem*> rootItems;
+	std::vector <GraphicalDasaItem*> rootItems;
 
 	DasaExpert **experts;
 

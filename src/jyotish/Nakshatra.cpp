@@ -159,7 +159,7 @@ Rajju NakshatraExpert::getRajju( const Nakshatra &nak )
 **   NakshatraExpert   ---   getSbcNakshatraProperties
 **
 ******************************************************/
-void NakshatraExpert::getSbcNakshatraProperties( const int &birthStar, vector<NakshatraProperties> &props )
+void NakshatraExpert::getSbcNakshatraProperties( const int &birthStar, std::vector<NakshatraProperties> &props )
 {
 	props.clear();
 	int nak27 = 0;  // Aswini
@@ -263,7 +263,7 @@ void NakshatraExpert::write( Sheet *sheet, const ChartProperties *chartprops, co
 **   SarvatobhadraExpert   ---   getVedhaNakshatras
 **
 ******************************************************/
-vector<NakshatraId_28> SarvatobhadraExpert::getVedhaNakshatras( const NakshatraId_28 &n )
+std::vector<NakshatraId_28> SarvatobhadraExpert::getVedhaNakshatras( const NakshatraId_28 &n )
 {
 	ASSERT_VALID_NAKSHATRA_28( n );
 	const NakshatraId_28 nak_aspects[28][4] = {
@@ -297,7 +297,7 @@ vector<NakshatraId_28> SarvatobhadraExpert::getVedhaNakshatras( const NakshatraI
 		{ N28_REVATI, N28_MRIGASIRA, N28_UPHALGUNI, N28_MULA }
 	};
 
-	vector<NakshatraId_28> v;
+	std::vector<NakshatraId_28> v;
 	for( int i = 0; i < 4; i++ )
 	{
 		v.push_back( nak_aspects[n][i] );

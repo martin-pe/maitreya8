@@ -76,7 +76,7 @@ private:
 	void OnSpinOrbis( wxSpinEvent& );
 	void OnButtonPen( wxCommandEvent& ) { showPenDialog(); }
 
-	vector<AspectConfig> aspects;
+	std::vector<AspectConfig> aspects;
 	uint selconfig;
 
 protected:

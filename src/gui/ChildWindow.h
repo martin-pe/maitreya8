@@ -22,7 +22,6 @@
 #define _CHILDWINDOW_H_
 
 #include <wx/frame.h>
-#include <vector>
 
 #include "maitreya.h"
 #include "ImageProvider.h"
@@ -32,8 +31,6 @@ class ChartProperties;
 class Document;
 class DocumentManager;
 struct ViewNode;
-
-using namespace std;
 
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE( CHILD_ADDTORECENT, wxID_HIGHEST + 1100 )

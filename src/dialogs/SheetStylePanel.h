@@ -22,9 +22,7 @@
 #define SHEETSTYLEPANEL_H_
 
 #include "ConfigPanel.h"
-#include<vector>
-
-using namespace std;
+#include <vector>
 
 // begin wxGlade: dependencies
 // end wxGlade
@@ -85,7 +83,7 @@ private:
 	ChartProperties *props;
 	Horoscope *horoscope;
 	int selected;
-	vector<SheetConfig*> v;
+	std::vector<SheetConfig*> v;
 
 protected:
     // begin wxGlade: SheetStylePanel::attributes

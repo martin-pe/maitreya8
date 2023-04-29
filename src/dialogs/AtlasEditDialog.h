@@ -32,8 +32,6 @@
 
 #include <AtlasLogic.h>
 
-using namespace std;
-
 class wxButton;
 class wxChoice;
 class wxPanel;
@@ -67,8 +65,8 @@ private:
 	AtlasLogic *logic;
 	AtlasEntry model;
 
-	list<TimezoneEntry> tzlist;
-	list<AtlasCountry> countrylist;
+	std::list<TimezoneEntry> tzlist;
+	std::list<AtlasCountry> countrylist;
 
 	void OnOK( wxCommandEvent& );
 	void OnChoiceCountry( wxCommandEvent& );

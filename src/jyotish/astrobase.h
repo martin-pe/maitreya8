@@ -23,8 +23,6 @@
 #include <wx/string.h>
 #include "maitreya.h"
 
-using namespace std;
-
 /**************************************************************
 ***
 **  Variuos mathematical funtions

@@ -24,14 +24,10 @@
 #include "DataSet.h"
 #include "BasicHoroscope.h"
 
-#include <list>
-
 class ChartProperties;
 class VedicPlanet;
 class VargaData;
 class ArabicPartsExpert;
-
-using namespace std;
 
 /*************************************************//**
 *

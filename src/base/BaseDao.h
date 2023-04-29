@@ -25,8 +25,6 @@
 #include <vector>
 #include <wx/string.h>
 
-using namespace std;
-
 /*************************************************//**
 *
 *
@@ -56,7 +54,7 @@ public:
 
 	~BaseDao();
 
-	int executeQueryBundle( list<wxString>&, const bool &dbMustExist );
+	int executeQueryBundle( std::list<wxString>&, const bool &dbMustExist );
 
 	wxString getDbFileName();
 
@@ -72,7 +70,7 @@ public:
 
 	wxString getLastErrorMessage();
 
-	vector<DbErrorEntry> &getErrorStack() { return errorStack; }
+	std::vector<DbErrorEntry> &getErrorStack() { return errorStack; }
 
 protected:
 
@@ -82,7 +80,7 @@ protected:
 
 	wxString queryString;
 
-	vector<DbErrorEntry> errorStack;
+	std::vector<DbErrorEntry> errorStack;
 
 private:
 

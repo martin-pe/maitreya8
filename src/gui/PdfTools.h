@@ -23,9 +23,6 @@
 
 #include <wx/string.h>
 
-
-//using namespace std;
-
 //class BasePdfDocument;
 class ChartProperties;
 class Horoscope;

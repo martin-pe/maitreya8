@@ -22,6 +22,7 @@
 #define SARVATOBHADRACHART_H_
 
 #include <wx/string.h>
+#include <vector>
 
 #include "Nakshatra.h"
 #include "BasicVedicChart.h"
@@ -50,7 +51,7 @@ public:
 private:
 	double xstep, ystep;
 	int mark[9][9];
-	vector<NakshatraProperties> nakshatraProps;
+	std::vector<NakshatraProperties> nakshatraProps;
 
 	virtual void updateAspects();
 

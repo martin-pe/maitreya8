@@ -208,7 +208,7 @@ BarDiagramWidget::~BarDiagramWidget()
 SheetItem *BarDiagramWidget::cloneClean()
 {
 	SheetItem *item = new BarDiagramWidget( props, title, planetmode );
-	for ( list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
+	for ( std::list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
 	//for ( uint i = 0; i < data.size(); i++ )
 	{
 		// TODO copy constructor
@@ -224,7 +224,7 @@ SheetItem *BarDiagramWidget::cloneClean()
 ******************************************************/
 void BarDiagramWidget::clear()
 {
-	for ( list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
+	for ( std::list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
 	{
 		delete *iter;
 	}
@@ -337,7 +337,7 @@ void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 
 	// draw bar items
 	int i = 0;
-	for ( list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
+	for ( std::list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
 	{
 		value = fabs( rulerRect.height * (*iter)->value / valuespan );
 		double ybarbottom = rulerRect.y + rulerRect.height;
@@ -365,7 +365,7 @@ void BarDiagramWidget::doPaint( Painter *painter, const MRect& /*refreshRect*/ )
 
 	// draw signs resp planets below the ruler
 	i = 0;
-	for ( list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
+	for ( std::list<BarDiagramItem*>::iterator iter = subitems.begin(); iter != subitems.end(); iter++ )
 	{
 		if ( symbolmode )
 		{

@@ -30,8 +30,6 @@ class DasaExpert;
 class Horoscope;
 class Sheet;
 
-using namespace std;
-
 /*************************************************//**
 *
 * 
@@ -55,7 +53,7 @@ public:
 
 	wxString getDasaLordChain( Dasa *dasa, const bool addStartAndEndDate = false );
 	void writeDasaDocumentation( Sheet*, DasaExpert* = (DasaExpert*)NULL, Dasa* = (Dasa*)NULL, const wxString sourcefilter = wxEmptyString );
-	set<wxString> &getDasaSources();
+	std::set<wxString> &getDasaSources();
 	void dumpDasa( Dasa*, wxString& );
 
 	void writeShortReport( Sheet*, Horoscope*, const DasaId&, const bool show_header = false );
@@ -64,7 +62,7 @@ public:
 
 private:
 	DasaTool();
-	map<wxString, ObjectId> objects;
+	std::map<wxString, ObjectId> objects;
 
 };
 

@@ -30,8 +30,6 @@
 #include <wx/stopwatch.h>
 #include <vector>
 
-using namespace std;
-
 extern Config *config;
 
 #define SIGN_RED wxT( "#E39696" )
@@ -104,10 +102,10 @@ bool PaletteManager::hasPalette( wxString name )
 **   PaletteManager   ---   getAllKeys
 **
 ******************************************************/
-vector<wxString> PaletteManager::getAllKeys()
+std::vector<wxString> PaletteManager::getAllKeys()
 {
-	vector<wxString> v;
-	for( map<wxString, BgPalette*>::iterator iter = m.begin(); iter != m.end(); iter++ )
+	std::vector<wxString> v;
+	for( std::map<wxString, BgPalette*>::iterator iter = m.begin(); iter != m.end(); iter++ )
 	{
 		v.push_back( iter->first );
 	}

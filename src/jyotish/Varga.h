@@ -22,7 +22,6 @@
 #define _VARGA_H_
 
 #include <wx/string.h>
-#include <vector>
 
 #include "Expert.h"
 #include "maitreya.h"
@@ -30,8 +29,6 @@
 class Horoscope;
 class Sheet;
 class VedicPlanet;
-
-using namespace std;
 
 /*************************************************//**
 *

@@ -62,7 +62,7 @@ EclipseExpert::EclipseExpert()
 ******************************************************/
 EclipseExpert::~EclipseExpert()
 {
-	list<EclipseData*>::iterator iter;
+	std::list<EclipseData*>::iterator iter;
 	for ( iter = data.begin(); iter != data.end(); iter++ )
 	{
 		delete (*iter);
@@ -123,7 +123,7 @@ void EclipseExpert::write( Sheet *sheet, const bool &useLocaltime  )
 	//sheet->addHeader( _( "Eclipses" ));
 
 	EclipseData* e;
-	list<EclipseData*>::iterator iter;
+	std::list<EclipseData*>::iterator iter;
 	wxString type, thetime;
 	TzUtil tzu;
 

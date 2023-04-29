@@ -25,8 +25,6 @@
 #include "maitreya.h"
 #include <vector>
 
-using namespace std;
-
 class ChartProperties;
 class Sheet;
 
@@ -101,7 +99,7 @@ public:
 	int getTara( const int& ) const;
 	Rajju getRajju( const Nakshatra& );
 
-	void getSbcNakshatraProperties( const int &birthStar, vector<NakshatraProperties>& );
+	void getSbcNakshatraProperties( const int &birthStar, std::vector<NakshatraProperties>& );
 
 	void write( Sheet*, const ChartProperties *chartprops, const bool show_header = true );
 };
@@ -118,7 +116,7 @@ public:
 	SarvatobhadraExpert() : Expert() {}
 	SarvatobhadraExpert( Horoscope *h ) : Expert( h ) {}
 
-	vector<NakshatraId_28> getVedhaNakshatras( const NakshatraId_28& );
+	std::vector<NakshatraId_28> getVedhaNakshatras( const NakshatraId_28& );
 	void writeSbcText( Sheet*, const ChartProperties* );
 	void writeSbcAfflictions( Sheet*, const Horoscope*, const ChartProperties* );
 

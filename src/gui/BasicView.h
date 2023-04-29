@@ -27,8 +27,6 @@
 #include "Commands.h"
 #include "maitreya.h"
 
-using namespace std;
-
 class ChildWindow;
 
 class Document;
@@ -151,7 +149,7 @@ private:
 	BasicView *createMainView( wxWindow*, ChildWindow* );
 	BasicView *createTransitView( wxWindow*, ChildWindow* );
 	BasicView *createVargaView( wxWindow*, ChildWindow* );
-	BasicView *createGraphicGridView( wxWindow*, ChildWindow*, const int &rows, const int &cols, vector<int> vargas );
+	BasicView *createGraphicGridView( wxWindow*, ChildWindow*, const int &rows, const int &cols, std::vector<int> vargas );
 
 #ifdef USE_PRINT_VIEW
 	BasicView *createPrintView( wxWindow*, ChildWindow* );

@@ -368,7 +368,7 @@ private:
 	unsigned long totalsize;
 	AtlasDao *dao;
 	wxString currentQuery;
-	list<wxString> qb;
+	std::list<wxString> qb;
 };
 
 

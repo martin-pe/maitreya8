@@ -27,8 +27,6 @@
 #include <wx/arrstr.h>
 #include <map>
 
-using namespace std;
-
 class wxJSONValue;
 
 /*************************************************//**
@@ -80,7 +78,7 @@ private:
 	ViewNode *parseNotebookNode( ViewNode*, wxJSONValue& );
 	PageNode *parsePageNode( ViewNode*, wxJSONValue& );
 
-	map<wxString, VIEW_ID> viewtypes;
+	std::map<wxString, VIEW_ID> viewtypes;
 
 };
 

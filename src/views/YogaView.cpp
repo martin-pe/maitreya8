@@ -72,8 +72,8 @@ protected:
 	void initToolItems()
 	{
 		YogaExpert *expert = YogaExpert::get();
-		set<wxString> v;
-		set<wxString>::iterator iter;
+		std::set<wxString> v;
+		std::set<wxString>::iterator iter;
 
 		if ( toolbar )
 		{

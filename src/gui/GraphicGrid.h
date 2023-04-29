@@ -24,8 +24,6 @@
 #include <vector>
 #include "BasicWidget.h"
 
-using namespace std;
-
 class AspectExpert;
 class BasicWesternChart;
 class ChartProperties;
@@ -70,7 +68,7 @@ protected:
 	ChartType charttype;
 	const uint rows, cols;
 
-	vector <GraphicalChart*> charts;
+	std::vector <GraphicalChart*> charts;
 	GraphicalChart *wchart;
 
 	virtual void mouseHasMoved( const bool& );

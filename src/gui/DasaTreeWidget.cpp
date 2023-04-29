@@ -134,7 +134,7 @@ void DasaTreeWidget::expand( MyTreeEvent &event )
 	//printf( "expand\n" );
 	uint i;
 	wxString s;
-	vector<Dasa*> divector;
+	std::vector<Dasa*> divector;
 	wxTreeItemId id, id2;
 	Dasa *dasa, *dasa2;
 	DasaTreeItemClientData *ditem;
@@ -307,7 +307,7 @@ void DasaTreeWidget::updateDasa( const wxTreeItemId &masterid )
 	wxTreeItemId id;
 	TreeItemClientData *data;
 	DasaTreeItemClientData *item, *depitem;
-	vector<Dasa*> vdasa;
+	std::vector<Dasa*> vdasa;
 	int i = 0;
 	long cook;
 

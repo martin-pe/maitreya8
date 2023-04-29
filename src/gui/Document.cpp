@@ -87,7 +87,7 @@ void Document::releaseChildWindow( ChildWindow *child )
 {
 	//printf( "Document::releaseChildWindow\n" );
 	if ( child == mainwindow ) return;
-	for ( vector<ChildWindow*>::iterator iter = childlist.begin(); iter != childlist.end(); iter++ )
+	for ( std::vector<ChildWindow*>::iterator iter = childlist.begin(); iter != childlist.end(); iter++ )
 	{
 		if ( *iter  == child )
 		{
@@ -139,7 +139,7 @@ bool Document::queryClose()
 ******************************************************/
 void Document::closeDependentChildWindows()
 {
-	vector<ChildWindow*>::iterator iter = childlist.begin();
+	std::vector<ChildWindow*>::iterator iter = childlist.begin();
 	while ( iter != childlist.end())
 	{
 		((ChildWindow*)*iter)->Close();
@@ -155,7 +155,7 @@ void Document::closeDependentChildWindows()
 void Document::updateAllChildWindows()
 {
 	mainwindow->OnDataChanged();
-	for ( vector<ChildWindow*>::iterator iter = childlist.begin(); iter != childlist.end(); iter++ )
+	for ( std::vector<ChildWindow*>::iterator iter = childlist.begin(); iter != childlist.end(); iter++ )
 	{
 		((ChildWindow*)*iter)->OnDataChanged();
 	}
@@ -337,7 +337,7 @@ void Document::OnTimer( wxTimerEvent& )
 void DocumentManager::addDoc( Document *doc )
 {
 	docs.push_back( doc );
-	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	for( std::vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
 	{
 		(*iter)->notifyDocumentListChanged();
 	}
@@ -350,7 +350,7 @@ void DocumentManager::addDoc( Document *doc )
 ******************************************************/
 void DocumentManager::deleteDoc( Document *doc )
 {
-	for ( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
+	for ( std::vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
 	{
 		if ( *iter == doc )
 		{
@@ -358,7 +358,7 @@ void DocumentManager::deleteDoc( Document *doc )
 			break;
 		}
 	}
-	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	for( std::vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
 	{
 		(*iter)->notifyDocumentListChanged();
 	}
@@ -381,7 +381,7 @@ void DocumentManager::subscribe( DocumentListener *l )
 ******************************************************/
 void DocumentManager::unsubscribe( DocumentListener *l )
 {
-	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	for( std::vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
 	{
 		if ( (*iter) == l )
 		{
@@ -399,7 +399,7 @@ void DocumentManager::unsubscribe( DocumentListener *l )
 ******************************************************/
 bool DocumentManager::queryClose()
 {
-	for( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
+	for( std::vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
 	{
 		if ( ! (*iter)->queryClose() ) return false;
 	}
@@ -413,7 +413,7 @@ bool DocumentManager::queryClose()
 ******************************************************/
 void DocumentManager::updateAllDocs()
 {
-	for ( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
+	for ( std::vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
 		(*iter)->update();
 }
 
@@ -424,7 +424,7 @@ void DocumentManager::updateAllDocs()
 ******************************************************/
 void DocumentManager::updateDocsAndChildren()
 {
-	for( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
+	for( std::vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
 	{
 		(*iter)->update();
 		(*iter)->updateAllChildWindows();
@@ -438,7 +438,7 @@ void DocumentManager::updateDocsAndChildren()
 ******************************************************/
 void DocumentManager::documentChanged( Document *d )
 {
-	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	for( std::vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
 	{
 		(*iter)->notifyDocumentChanged( d );
 	}
@@ -451,7 +451,7 @@ void DocumentManager::documentChanged( Document *d )
 ******************************************************/
 void DocumentManager::documentSaved( Document *d )
 {
-	for( vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
+	for( std::vector<DocumentListener*>::iterator iter = clients.begin(); iter != clients.end(); iter++ )
 	{
 		(*iter)->notifyDocumentSaved( d );
 	}
@@ -476,7 +476,7 @@ Document *DocumentManager::getDocument( const uint &i )
 wxArrayString DocumentManager::getNamesArray()
 {
 	wxArrayString a;
-	for( vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
+	for( std::vector<Document*>::iterator iter = docs.begin(); iter != docs.end(); iter++ )
 	{
 		a.Add( (*iter)->getHName());
 	}

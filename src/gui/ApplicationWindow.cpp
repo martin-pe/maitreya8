@@ -306,7 +306,7 @@ ApplicationWindow::ApplicationWindow(const wxChar *title, const wxPoint &pos, co
 		break;
 #if wxUSE_STD_IOSTREAM && ! defined __WXMSW__
 		case 4:
-			wxLog::SetActiveTarget( new wxLogStream( &cout ));
+			wxLog::SetActiveTarget( new wxLogStream( &std::cout ));
 		break;
 #endif
 		case 0:

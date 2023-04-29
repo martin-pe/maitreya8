@@ -196,7 +196,7 @@ bool CommandHandler::processKeyEvent( wxKeyEvent *event, wxWindow *window, const
 		if ( event->GetKeyCode() == WXK_PAGEUP ) i = CMD_KEY_PAGE_UP;
 	}
 
-	for ( map<int, MCommand*>::iterator it = cmds.begin(); it != cmds.end(); it++ )
+	for ( std::map<int, MCommand*>::iterator it = cmds.begin(); it != cmds.end(); it++ )
 	{
 		if ( it->second && it->second->getShortcut() && it->second->getShortcut()->matches( *event ))
 		{

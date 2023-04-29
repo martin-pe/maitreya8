@@ -612,7 +612,7 @@ void DasaGraphicWidget::calcDasaLevel( GraphicalDasaItem *item )
 	unsigned int antardasa;
 	int graphicalObjectId;
 	int x1 = -1, x2;
-	vector<Dasa*> v;
+	std::vector<Dasa*> v;
 
 	// calc y value;
 	const int y = calcYTopForDasaItem( item );

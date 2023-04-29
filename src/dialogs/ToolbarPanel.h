@@ -25,8 +25,6 @@
 #include "ImageProvider.h"
 # include <map>
 
-using namespace std;
-
 // begin wxGlade: dependencies
 // end wxGlade
 
@@ -86,7 +84,7 @@ private:
 	void insertRightItemById( const int &commmandid, const int &pos, const bool doarrange = true );
 
 	wxImageList *imageList;
-	map< BitmapId, int > imageListIds;
+	std::map< BitmapId, int > imageListIds;
 
 	int left_sel, right_sel;
 	ToolbarConfig *tconfig;

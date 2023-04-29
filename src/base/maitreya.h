@@ -31,9 +31,7 @@
 #include <vector>
 #include <complex>
 
-using namespace std;
-
-typedef complex<double> MPoint;
+typedef std::complex<double> MPoint;
 
 wxPoint pointToWxPoint( const MPoint& );
 MPoint findOrthogonalPoint( const MPoint&, const double length = 1.0 );
@@ -313,8 +311,8 @@ ObjectId operator++ ( ObjectId& );
 ObjectId operator++ ( ObjectId&, int );
 ObjectId operator+ ( const ObjectId&, const ObjectId& );
 
-#define ObjectArray vector<ObjectId>
-#define ObjectFilter set<ObjectId>
+#define ObjectArray std::vector<ObjectId>
+#define ObjectFilter std::set<ObjectId>
 wxArrayInt objectArray2wxArrayInt( const ObjectArray& );
 ObjectArray wxArrayInt2objectArray( const wxArrayInt& );
 
@@ -825,7 +823,7 @@ public:
 	bool vedic;
 
 	wxString title;
-	vector<TcCell> cells;
+	std::vector<TcCell> cells;
 
 	wxString errorMsg;
 	bool ok;
@@ -854,7 +852,7 @@ public:
 	wxString errorMsg;
 	bool ok;
 
-	vector<TcColumn> cols;
+	std::vector<TcColumn> cols;
 };
 
 /*************************************************//**
@@ -867,7 +865,7 @@ class Tc
 public:
 	Tc() { ok = true; }
 
-	vector<TcColumnSet> colsets;
+	std::vector<TcColumnSet> colsets;
 
 	wxString errorMsg;
 	bool ok;

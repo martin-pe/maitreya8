@@ -24,11 +24,8 @@
 #include "Sheet.h"
 
 #include <list>
-#include <map>
 #include <wx/dynarray.h>
 #include <wx/string.h>
-
-using namespace std;
 
 class Horoscope;
 class UranianExpert;
@@ -317,7 +314,7 @@ public:
 	}
 
 	PlanetContext rootContext;
-	vector<UEntity*> matchings;
+	std::vector<UEntity*> matchings;
 	bool oneContext;
 
 };
@@ -360,7 +357,7 @@ public:
 	{
 	}
 
-	list<UEvent> uevents;
+	std::list<UEvent> uevents;
 	void clear();
 
 	UranianExpert *expert;

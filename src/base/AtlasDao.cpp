@@ -124,9 +124,9 @@ wxString AtlasDao::getCountryName( wxString iso )
 **   AtlasDao   ---   getAllAdminNamesForCountry
 **
 ******************************************************/
-list<wxString> AtlasDao::getAllAdminNamesForCountry( const wxString &country_name )
+std::list<wxString> AtlasDao::getAllAdminNamesForCountry( const wxString &country_name )
 {
-	list<wxString> l;
+	std::list<wxString> l;
 	try
 	{
 		wxSQLite3Database *db = getDbHandle();
@@ -279,9 +279,9 @@ wxString AtlasDao::getAdminCodeForCountryAndName( wxString country_code, wxStrin
 **   AtlasDao   ---   getAllTimezones
 **
 ******************************************************/
-list<TimezoneEntry> AtlasDao::getAllTimezones()
+std::list<TimezoneEntry> AtlasDao::getAllTimezones()
 {
-	list<TimezoneEntry> list;
+	std::list<TimezoneEntry> list;
 	try
 	{
 		wxSQLite3Database *db = getDbHandle();
@@ -310,9 +310,9 @@ list<TimezoneEntry> AtlasDao::getAllTimezones()
 **   AtlasDao   ---   getAllCountries
 **
 ******************************************************/
-list<AtlasCountry> AtlasDao::getAllCountries()
+std::list<AtlasCountry> AtlasDao::getAllCountries()
 {
-	list<AtlasCountry> list;
+	std::list<AtlasCountry> list;
 	try
 	{
 		wxSQLite3Database *db = getDbHandle();
@@ -342,9 +342,9 @@ list<AtlasCountry> AtlasDao::getAllCountries()
 **   AtlasDao   ---   getEntries
 **
 ******************************************************/
-vector<AtlasEntry> AtlasDao::getEntries( wxString filter, wxString country_code, const int &mode, const int &limit, const int &offset )
+std::vector<AtlasEntry> AtlasDao::getEntries( wxString filter, wxString country_code, const int &mode, const int &limit, const int &offset )
 {
-	vector<AtlasEntry> list;
+	std::vector<AtlasEntry> list;
 	assert( mode >= 0 && mode < 3 );
 	bool f = ! filter.IsEmpty();
 	bool c = ! country_code.IsEmpty();
@@ -642,10 +642,10 @@ void AtlasDao::saveAliasNames( const int &id, wxString /* country_code */, wxStr
 		try
 		{
 			// alias names in database
-			vector<wxString> db_names;
+			std::vector<wxString> db_names;
 
 			// alias names in database that occur in input string, other ones must be deleted from database
-			vector<bool> found;
+			std::vector<bool> found;
 
 			queryString = wxT( "SELECT alias FROM geonames_aliases WHERE featureid=?" );
 			wxSQLite3Statement stmt = db->PrepareStatement( queryString );

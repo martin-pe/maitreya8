@@ -30,8 +30,6 @@
 
 class wxJSONValue;
 
-using namespace std;
-
 /*************************************************//**
 *
 * 
@@ -75,7 +73,7 @@ public:
 	int planetMarkerLength;
 	double forcedZodiacStart;
 
-	list<GcChartFrameBgPattern> patterns;
+	std::list<GcChartFrameBgPattern> patterns;
 };
 
 /*************************************************//**

@@ -21,7 +21,6 @@
 #define _ASPECT_H_
 
 #include <list>
-#include <vector>
 #include <wx/colour.h>
 #include <wx/string.h>
 
@@ -33,8 +32,6 @@ class ChartProperties;
 class Horoscope;
 class Table;
 class Sheet;
-
-using namespace std;
 
 /*************************************************//**
 *
@@ -93,9 +90,9 @@ public:
 	void setHoroscopes( Horoscope*, Horoscope* );
 
 	void clear();
-	list<AspectEvent> &updateWesternAspects( ChartProperties*, const ChartType& );
-	list<AspectEvent> &updateVedicRasiChartAspects( ChartProperties*, const Varga&, const bool &swapCharts );
-	list<AspectEvent> &updateSbcAspects( ChartProperties*, const bool &swapCharts );
+	std::list<AspectEvent> &updateWesternAspects( ChartProperties*, const ChartType& );
+	std::list<AspectEvent> &updateVedicRasiChartAspects( ChartProperties*, const Varga&, const bool &swapCharts );
+	std::list<AspectEvent> &updateSbcAspects( ChartProperties*, const bool &swapCharts );
 
 	void setSortOrder( const ASPECT_SORTORDER &order ) { sortorder = order; }
 	void sort();
@@ -104,7 +101,7 @@ public:
 	static wxString getAspectDescription( const int&i );
 	static wxString getAspectShortDescription( const int&i );
 
-	list<AspectEvent> &getAspectList() { return al; }
+	std::list<AspectEvent> &getAspectList() { return al; }
 	void writeWesternAspectList( Sheet*, ChartProperties*, const ChartType&, const bool show_header = true );
 
 	Table *getWesternAspectariumTable( Sheet*, ChartProperties* );
@@ -115,7 +112,7 @@ public:
 private:
 
 	ASPECT_SORTORDER sortorder;
-	list<AspectEvent> al;
+	std::list<AspectEvent> al;
 	Horoscope *horoscope2;
 
 };

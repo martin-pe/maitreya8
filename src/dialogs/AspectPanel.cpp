@@ -71,7 +71,7 @@ public:
 	**   AspectPreviewPanel   ---   Constructor
 	**
 	******************************************************/
-	AspectPreviewPanel( wxWindow* parent, wxWindowID id, vector<AspectConfig> &a )
+	AspectPreviewPanel( wxWindow* parent, wxWindowID id, std::vector<AspectConfig> &a )
 			: wxPanel( parent, id, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL | wxBORDER_SUNKEN | wxFULL_REPAINT_ON_RESIZE ),
 			configs( a )
 	{
@@ -223,7 +223,7 @@ private:
 		Refresh();
 	}
 
-	vector<AspectConfig> &configs;
+	std::vector<AspectConfig> &configs;
 	bool showSymbols;
 	int selected;
 };

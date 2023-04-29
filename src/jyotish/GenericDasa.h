@@ -38,8 +38,8 @@ public:
 
 	GenericNakshatraDasaExpert( const DasaId &dasa, Horoscope *h ): DasaExpert( dasa, h ) {}
 
-	virtual vector<Dasa*> getFirstLevel();
-	virtual vector<Dasa*> getNextLevel( Dasa* );
+	virtual std::vector<Dasa*> getFirstLevel();
+	virtual std::vector<Dasa*> getNextLevel( Dasa* );
 
 	virtual bool hasKpFeatures() const { return true; }
 
@@ -47,9 +47,9 @@ public:
 
 	virtual KpData getKPLords( const double &len );
 
-	virtual vector<KPEvent> getKPEventList( const double &startlen, const double &endlen, const double &startjd );
+	virtual std::vector<KPEvent> getKPEventList( const double &startlen, const double &endlen, const double &startjd );
 
-	vector<Dasa*> getSolarDasa( const Horoscope *solarchart, const int &years );
+	std::vector<Dasa*> getSolarDasa( const Horoscope *solarchart, const int &years );
 
 	virtual int getDasaIndex4Nakshatra( const Nakshatra& ) = 0;
 	virtual int getDasaDuration( const int& ) const = 0;

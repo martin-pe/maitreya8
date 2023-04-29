@@ -151,7 +151,7 @@ void VedicRasiChart::calculateCenterRect()
 {
 	//printf( "VedicRasiChart::calculateCenterRect\n" );
 	MPoint p;
-	const vector<wxString> v = getCenterString();
+	const std::vector<wxString> v = getCenterString();
 	centerRect = MRect();
 
 	if ( centerstring_graphic ) setSymbolFont();
@@ -432,7 +432,7 @@ void VedicRasiChart::setupEast()
 void VedicRasiChart::paintCenterString()
 {
 	if ( h1set && chartprops->getVedicChartDisplayConfig().centerInfoType == VCC_NOTHING ) return;
-	vector<wxString> v = getCenterString();
+	std::vector<wxString> v = getCenterString();
 	if ( v.size() == 0 ) return;
 	//printf( "VedicRasiChart::paintCenterString text_height %f v size %ld\n", text_height, v.size() );
 

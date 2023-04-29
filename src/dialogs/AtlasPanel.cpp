@@ -42,8 +42,6 @@
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 
-using namespace std;
-
 // begin wxGlade: ::extracode
 // end wxGlade
 
@@ -268,8 +266,8 @@ void AtlasPanel::updateCountryList()
 	list_countries->Clear();
 
 	AtlasLogic logic;
-	list<AtlasCountry> l = logic.getFavouriteCountries( aconfig->favouriteCountries );
-	for ( list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
+	std::list<AtlasCountry> l = logic.getFavouriteCountries( aconfig->favouriteCountries );
+	for ( std::list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
 	{
 		list_countries->Append( (*iter).name );
 	}
@@ -287,12 +285,12 @@ void AtlasPanel::OnCountries( wxCommandEvent& )
 	AtlasLogic logic;
 	wxArrayInt fav;
 
-	list<AtlasCountry> l = logic.getAllCountries();
+	std::list<AtlasCountry> l = logic.getAllCountries();
 	wxArrayString countrylabels;
 	countrylabels.Add( wxEmptyString, l.size());
 
 	int i = 0;
-	for ( list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
+	for ( std::list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
 	{
 		countrylabels[i++] = (*iter).name;
 	}
@@ -302,7 +300,7 @@ void AtlasPanel::OnCountries( wxCommandEvent& )
 	{
 		wxString iso = aconfig->favouriteCountries[i];
 		int count = 0;
-		for ( list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
+		for ( std::list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
 		{
 			if ( (*iter).iso.CmpNoCase( iso ) == 0 )
 			{
@@ -322,7 +320,7 @@ void AtlasPanel::OnCountries( wxCommandEvent& )
 		for ( uint i = 0; i < a.Count(); i++ )
 		{
 			int count = 0;
-			for ( list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
+			for ( std::list<AtlasCountry>::iterator iter = l.begin(); iter != l.end(); iter++ )
 			{
 				if ( count++ == a[i] )
 				{

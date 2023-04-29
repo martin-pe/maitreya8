@@ -105,7 +105,7 @@ void GenericSheetWriter::preformat( Painter *painter, const double &xrm  )
 	//xSizeContents = xrightmax;
 	contentRect.width = xrightmax;
 	ycursor = contentRect.y;
-	for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
+	for( std::list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 	{
 		preformatItem( painter, *iter );
 		(*iter)->moveTo( contentRect.x, ycursor );
@@ -237,7 +237,7 @@ void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset 
 	while ( shrinkrate < 10 && rowset->rect.height > ymax )
 	{
 		y0 = ycursor;
-		for( list<SheetItem*>::iterator iter = rowset->sheet->items.begin(); iter != rowset->sheet->items.end(); iter++ )
+		for( std::list<SheetItem*>::iterator iter = rowset->sheet->items.begin(); iter != rowset->sheet->items.end(); iter++ )
 		{
 			SheetItem *item = (SheetItem*)(*iter);
 			//printf( "GenericSheetWriter::preformatRowset GOTO item, type is %d\n", item->type );
@@ -255,7 +255,7 @@ void GenericSheetWriter::preformatRowset( Painter *painter, SheetRowSet *rowset 
 	// distribute item continously
 	double yd = ( ymax - rowset->rect.height ) / rowset->sheet->items.size();
 	y0 = .5 * yd;
-	for( list<SheetItem*>::iterator iter = rowset->sheet->items.begin(); iter != rowset->sheet->items.end(); iter++ )
+	for( std::list<SheetItem*>::iterator iter = rowset->sheet->items.begin(); iter != rowset->sheet->items.end(); iter++ )
 	{
 		(*iter)->moveTo( (*iter)->rect.x, y0 );
 		y0 += (*iter)->rect.height + yd;
@@ -298,7 +298,7 @@ void GenericSheetWriter::preformatColset( Painter *painter, SheetColumnSet *cols
 	{
 		maxh = 0;
 		sumx = 0;
-		for( list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
+		for( std::list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
 		{
 			SheetItem *item = (SheetItem*)(*iter);
 			assert( item );
@@ -318,7 +318,7 @@ void GenericSheetWriter::preformatColset( Painter *painter, SheetColumnSet *cols
 	colset->rect.height = maxh + table_widget_extra_y;
 	double newx = contentRect.x + .5 * ( colset->rect.width - sumx - ( colset->getSize() - 1 ) * table_widget_extra_y );
 
-	for( list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
+	for( std::list<SheetItem*>::iterator iter = colset->sheet->items.begin(); iter != colset->sheet->items.end(); iter++ )
 	{
 		//printf( "Adjust table old x %f diff %f newx %f\n", (*iter)->rect.x, diff, (*iter)->rect.x + diff );
 		(*iter)->moveTo( newx, colset->rect.y );
@@ -371,7 +371,7 @@ void GenericSheetWriter::preformatWidgetGrid( Painter* /*painter*/, SheetWidgetG
   uint c = 0;
   uint r = 0;
 
-  for( list<SheetItem*>::iterator iter = grid->sheet->items.begin(); iter != grid->sheet->items.end(); iter++ )
+  for( std::list<SheetItem*>::iterator iter = grid->sheet->items.begin(); iter != grid->sheet->items.end(); iter++ )
 	{
 		SheetWidgetItem *item = (SheetWidgetItem*)*iter;
     item->rect.x = x0;
@@ -430,7 +430,7 @@ void GenericSheetWriter::preformatTable( Painter *painter, Table *table )
 	double singleLineTotalWidth = 0;
 
 	// text amount per columns. will be used for weighted alignment of column width if total width is too large
-	vector<double> textAmountPerCol;
+	std::vector<double> textAmountPerCol;
 	for ( uint col = 0; col < table->getNbCols(); col++ ) textAmountPerCol.push_back( 0 );
 
 	for ( uint col = 0; col < table->getNbCols(); col++ )
@@ -611,7 +611,7 @@ void GenericSheetWriter::drawSheet( Painter *painter, const MRect &refreshRect, 
 	//printf( "GenericSheetWriter::paintPage contentRect.x %f contentRect.y %f wirter has %lu items\n",
 		//contentRect.x, contentRect.y, sheet->items.size() );
 
-	for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
+	for( std::list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 	{
 		SheetItem *item = (SheetItem*)*iter;
 		assert( item );
@@ -658,7 +658,7 @@ void GenericSheetWriter::drawItem( Painter *painter, SheetItem *item, const MRec
 			//printf( "CONTAINER ITEM TYPE %d row set %d\n", item->type, WiRowSet );
 			SheetItemContainer *container = wxDynamicCast( item, SheetItemContainer );
 			assert( container );
-			for( list<SheetItem*>::iterator iter = container->sheet->items.begin(); iter != container->sheet->items.end(); iter++ )
+			for( std::list<SheetItem*>::iterator iter = container->sheet->items.begin(); iter != container->sheet->items.end(); iter++ )
 			{
 				//painter->setPen( *wxGREEN_PEN );
 				//painter->drawRectangle( (*iter)->rect );
@@ -725,7 +725,7 @@ void GenericSheetWriter::drawTable( Painter *painter, Table *table, const MRect 
 
 	// calculate the table frames depending on empty colums
 	// first the shadow will be painted, then cells and frames. Finally outer frames
-	list<MRect> tableframes;
+	std::list<MRect> tableframes;
 	{
 		// left margin
 		double xg0 = tableRect.x;
@@ -956,7 +956,7 @@ void GenericSheetWriter::formatMString( Painter *painter, MString &f, const doub
 		return;
 	}
 	
-	for( list<MToken>::iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
+	for( std::list<MToken>::iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
 	{
 		// token consists of symbols
 		if ( iter->entity != TTSE_NONE )
@@ -1019,7 +1019,7 @@ void GenericSheetWriter::formatMString( Painter *painter, MString &f, const doub
 					s.size = MPoint( xcursor, currenth );
 					f.formattedLines.push_back( s );
 					htotal += currenth;
-					xtotal = max( xtotal, xcursor );
+					xtotal = std::max( xtotal, xcursor );
 					currenth = 0;
 
 					s.clear();
@@ -1056,7 +1056,7 @@ void GenericSheetWriter::formatMString( Painter *painter, MString &f, const doub
 		//printf( "End Method, add String .... xcursor is %f\n", xcursor );
 		s.size = MPoint( xcursor, currenth );
 		f.formattedLines.push_back( s );
-		xtotal = max( xtotal, xcursor );
+		xtotal = std::max( xtotal, xcursor );
 		htotal += currenth;
 	}
 	f.size = MPoint( xtotal, htotal );

@@ -45,8 +45,6 @@ class MultiLineStaticText;
 
 #include "AtlasDao.h"
 
-using namespace std;
-
 enum { ATLASDIALOG_CALLER_APPLICATIONWINDOW, ATLASDIALOG_CALLER_DATADIALOG, ATLASDIALOG_CALLER_DEFAULTLOCATIONPANEL };
 
 /*************************************************//**

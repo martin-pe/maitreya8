@@ -29,8 +29,6 @@
 #include <vector>
 #include <wx/event.h>
 
-using namespace std;
-
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE( ATLAS_COUNT_HASNEWS, wxID_HIGHEST + 1500 )
 DECLARE_EVENT_TYPE( ATLAS_FETCH_HASNEWS, wxID_HIGHEST + 1501 )
@@ -52,13 +50,13 @@ public:
 	AtlasLogic( const bool runWorkerThreads = false );
 	~AtlasLogic();
 
-	list<AtlasCountry> getAllCountries();
-	list<AtlasCountry> getFavouriteCountries( vector<wxString> );
+	std::list<AtlasCountry> getAllCountries();
+	std::list<AtlasCountry> getFavouriteCountries( std::vector<wxString> );
 	wxString getCountryCodeForName( wxString name );
 
-	list<TimezoneEntry> getAllTimezones();
+	std::list<TimezoneEntry> getAllTimezones();
 
-	list<wxString> getAllAdminNamesForCountry( const wxString &country_code );
+	std::list<wxString> getAllAdminNamesForCountry( const wxString &country_code );
 	wxString getAdminCodeForCountryAndName( wxString country_code, wxString name );
 
 	void setFilterConditions( wxString f, wxString c, const int& m );
@@ -85,9 +83,9 @@ private:
 	class AtlasLogicLifeCycleWorker *lifeCycleWorker;
 
 	class AtlasDao *dao;
-	map<wxString, wxString> countrynames;
-	map<wxString, wxString> featurenames;
-	map<wxString, wxString> adminnames;
+	std::map<wxString, wxString> countrynames;
+	std::map<wxString, wxString> featurenames;
+	std::map<wxString, wxString> adminnames;
 
 	wxString getCountryName( wxString iso );
 	wxString getAdminName( wxString country_code, wxString admin1_code );

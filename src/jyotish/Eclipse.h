@@ -28,8 +28,6 @@ class EclipseData;
 class Sheet;
 class Table;
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief Encapsulates calculation of Eclipses
@@ -46,7 +44,7 @@ public:
 	void write( Sheet*, const bool &useLocaltime );
 
 private:
-	list<EclipseData*> data;
+	std::list<EclipseData*> data;
 };
 
 #endif

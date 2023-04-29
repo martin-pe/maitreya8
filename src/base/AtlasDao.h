@@ -124,13 +124,13 @@ public:
 
 	AtlasDao( const wxString = wxEmptyString );
 
-	vector<AtlasEntry> getEntries( wxString filter, wxString country, const int &mode, const int &limit, const int &offset );
+	std::vector<AtlasEntry> getEntries( wxString filter, wxString country, const int &mode, const int &limit, const int &offset );
 
 	AtlasEntry getFullEntry( int id );
 
 	int getMatchCount( wxString filter, wxString country, const int &mode );
 
-	list<AtlasCountry> getAllCountries();
+	std::list<AtlasCountry> getAllCountries();
 
 	wxString getCountryName( wxString iso );
 
@@ -142,9 +142,9 @@ public:
 
 	wxString getAdminCodeForCountryAndName( wxString country_code, wxString name );
 
-	list<wxString> getAllAdminNamesForCountry( const wxString &country_code );
+	std::list<wxString> getAllAdminNamesForCountry( const wxString &country_code );
 
-	list<TimezoneEntry> getAllTimezones();
+	std::list<TimezoneEntry> getAllTimezones();
 
   void saveEntry( AtlasEntry& );
 

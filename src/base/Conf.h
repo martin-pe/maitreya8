@@ -31,8 +31,6 @@
 #include "maitreya.h"
 #include "FontProvider.h"
 
-using namespace std;
-
 class wxJSONValue;
 
 class ObjectColorConfig;
@@ -190,8 +188,8 @@ public:
 	virtual void load( wxJSONValue&, wxString = wxEmptyString );
 	virtual void save( wxJSONValue&, wxString = wxEmptyString );
 
-	vector<int> lord;
-	vector<int> portion;
+	std::vector<int> lord;
+	std::vector<int> portion;
 };
 
 /*************************************************//**
@@ -220,8 +218,8 @@ public:
 	int mercuryBenefic;
 
 	KalaVelaConfig kalavela;
-	vector<int> kalavelaLord;
-	vector<int> kalavelaPortion;
+	std::vector<int> kalavelaLord;
+	std::vector<int> kalavelaPortion;
 
 	int arudhaMode;
 	int charaKarakaMode;
@@ -230,7 +228,7 @@ public:
 	int vargaHoraMode;
 	int vargaDrekkanaMode;
 	int vargaChaturtamsaMode;
-	vector<wxString> vargaSignifications;
+	std::vector<wxString> vargaSignifications;
 
 	int nakshatraPortionMode;
 	int kalachakraMode;
@@ -405,7 +403,7 @@ public:
 	// graphical dasa
 	int antarDasaLevelChoice;
 	int graphicalDasaWidgetZoom;
-	vector<int> graphicalDasaList;
+	std::vector<int> graphicalDasaList;
 
 	// Yoga view
 	int yogaSourceFilter;
@@ -423,7 +421,7 @@ public:
 
 
 	// remember paths
-	vector<wxString> recentFiles;
+	std::vector<wxString> recentFiles;
 	wxString defOpenPath;
 	wxString defSavePath;
 	wxString defExportPath;
@@ -443,7 +441,7 @@ public:
 	virtual void load( wxJSONValue&, wxString = wxEmptyString );
 	virtual void save( wxJSONValue&, wxString = wxEmptyString );
 
-	vector<int> mainToolbarItems;
+	std::vector<int> mainToolbarItems;
 	int toolbarStyle;
 };
 
@@ -518,10 +516,10 @@ public:
 
 	wxString databaseFile;
 	wxString sqlFile;
-	vector<wxString> favouriteCountries;
+	std::vector<wxString> favouriteCountries;
 	int filterMode;
 	wxString lastSelectedCountry;
-	vector<int> gridColumnSizes;
+	std::vector<int> gridColumnSizes;
 	bool filterCaseSensitive;
 	int cacheSize;
 };
@@ -586,7 +584,7 @@ public:
 
 	UranianConfig *uranian;
 
-	vector<AspectConfig> aspects;
+	std::vector<AspectConfig> aspects;
 
 	VedicConfig *vedic;
 	VedicCalculationConfig *vedicCalculation;

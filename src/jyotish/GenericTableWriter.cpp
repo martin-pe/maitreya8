@@ -743,13 +743,13 @@ void GenericTableWriter::writeSignQualities( const uint &i0, const TcColumnSet &
 void GenericTableWriter::writeAspectarium( const uint &i0, const TcColumnSet &set )
 {
 	AspectExpert expert( h, h );
-	list<AspectEvent>::iterator iter;
+	std::list<AspectEvent>::iterator iter;
 	TableEntry *e;
 
 	ChartProperties props;
 	props.setVedic( set.vedic );
 
-	list<AspectEvent> al = expert.updateWesternAspects( &props, CT_RADIX );
+	std::list<AspectEvent> al = expert.updateWesternAspects( &props, CT_RADIX );
 
 	for ( uint p = 0; p < obs.size(); p++ )
 	{

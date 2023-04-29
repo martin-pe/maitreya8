@@ -28,8 +28,6 @@
 
 #include <vector>
 
-using namespace std;
-
 // begin wxGlade: ::dependencies
 #include <wx/listctrl.h>
 // end wxGlade
@@ -78,9 +76,9 @@ public:
 
 	void addGroup( wxString );
 
-	void loadYogas( const vector<YogaConfig*> );
+	void loadYogas( const std::vector<YogaConfig*> );
 
-	void saveYogas( vector<YogaConfig*>& );
+	void saveYogas( std::vector<YogaConfig*>& );
 
 	void clearGui();
 

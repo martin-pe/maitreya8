@@ -178,7 +178,7 @@ AppMenuBar::AppMenuBar( int style )
 	newmenu = new MyMenu;
 	newmenu->addItem( APP_NEW_SINGLE );
 	newmenu->AppendSeparator();
-	vector<MultipleViewConfig*> &v = MultipleViewConfigLoader::get()->getConfigs();
+	std::vector<MultipleViewConfig*> &v = MultipleViewConfigLoader::get()->getConfigs();
 
 	for ( uint i = 0; i < v.size(); i++ ) newmenu->Append( APP_NEW_MULTIPLE + i, v[i]->name );
 	filemenu->Append( -1, _( "New" ), newmenu );
@@ -490,7 +490,7 @@ wxMenu *ContextMenuProvider::getSkinMenu( ChartProperties *props )
 
 	if ( props->isVedic())
 	{
-		vector<VedicChartConfig*> list =  VedicChartConfigLoader::get()->getConfigs();
+		std::vector<VedicChartConfig*> list =  VedicChartConfigLoader::get()->getConfigs();
 		for ( unsigned i = 0; i < list.size(); i++ )
 		{
 			menu->addCheckItem( CMD_GRAPHIC_STYLE + i, list[i]->name, i == (uint)props->getSkin());
@@ -498,7 +498,7 @@ wxMenu *ContextMenuProvider::getSkinMenu( ChartProperties *props )
 	}
 	else
 	{
-		vector<WesternChartConfig*> list =  WesternChartConfigLoader::get()->getConfigs();
+		std::vector<WesternChartConfig*> list =  WesternChartConfigLoader::get()->getConfigs();
 		for ( i = 0; i < list.size(); i++ )
 		{
 			menu->addCheckItem( CMD_GRAPHIC_STYLE + i, list[i]->name, i == (uint)props->getSkin());
@@ -785,7 +785,7 @@ wxMenu *ContextMenuProvider::getToolbarNewMenu()
 	newmenu->addItem( APP_NEW_SINGLE );
 
 	newmenu->AppendSeparator();
-	vector<MultipleViewConfig*> &v = MultipleViewConfigLoader::get()->getConfigs();
+	std::vector<MultipleViewConfig*> &v = MultipleViewConfigLoader::get()->getConfigs();
 	for ( uint i = 0; i < v.size(); i++ ) newmenu->Append( APP_NEW_MULTIPLE + i, v[i]->name );
 	return newmenu;
 }

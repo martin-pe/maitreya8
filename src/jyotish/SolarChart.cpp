@@ -105,7 +105,7 @@ void SolarChartExpert::writeSolarReturnData( Sheet *sheet )
 
 		VimsottariBaseDasaExpert *expert = new VimsottariDasaExpert( horoscope );
 		//Location *loc = horoscope->getLocation();
-		vector<Dasa*> v;
+		std::vector<Dasa*> v;
 		
 		v = expert->getSolarDasa( solarchart, year );
 		Table *table = new Table( 2, 10 );

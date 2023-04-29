@@ -50,11 +50,11 @@ double GenericNakshatraDasaExpert::getPortion( Nakshatra &nak )
 **   GenericNakshatraDasaExpert   ---   getNextLevel
 **
 ******************************************************/
-vector<Dasa*> GenericNakshatraDasaExpert::getNextLevel( Dasa *dasa )
+std::vector<Dasa*> GenericNakshatraDasaExpert::getNextLevel( Dasa *dasa )
 {
 	assert( dasa );
 
-	vector<Dasa*> ret;
+	std::vector<Dasa*> ret;
 	Dasa *parent;
 
 	double start_jd = dasa->getStartJD();
@@ -94,9 +94,9 @@ vector<Dasa*> GenericNakshatraDasaExpert::getNextLevel( Dasa *dasa )
 **   GenericNakshatraDasaExpert   ---   getFirstLevel
 **
 ******************************************************/
-vector<Dasa*> GenericNakshatraDasaExpert::getFirstLevel()
+std::vector<Dasa*> GenericNakshatraDasaExpert::getFirstLevel()
 {
-	vector<Dasa*> ret, tret;
+	std::vector<Dasa*> ret, tret;
 	double nportion;
 	int total_length = 0;
 	Nakshatra nak;
@@ -206,10 +206,10 @@ KpData GenericNakshatraDasaExpert::getKPLords( const double &len )
 **   GenericNakshatraDasaExpert   ---   getKPEventList
 **
 ******************************************************/
-vector<KPEvent> GenericNakshatraDasaExpert::getKPEventList( const double &startlen, const double &endlen,
+std::vector<KPEvent> GenericNakshatraDasaExpert::getKPEventList( const double &startlen, const double &endlen,
         const double &startjd )
 {
-	vector<KPEvent> events;
+	std::vector<KPEvent> events;
 	Nakshatra currentnak;
 	int currentlord, i, j, antarlord, antardasatime;
 	double dasastartlen, antarstartlen, dist;
@@ -258,9 +258,9 @@ vector<KPEvent> GenericNakshatraDasaExpert::getKPEventList( const double &startl
 **   GenericNakshatraDasaExpert   ---   getSolarDasa
 **
 ******************************************************/
-vector<Dasa*> GenericNakshatraDasaExpert::getSolarDasa( const Horoscope *solarchart, const int &year )
+std::vector<Dasa*> GenericNakshatraDasaExpert::getSolarDasa( const Horoscope *solarchart, const int &year )
 {
-	vector<Dasa*> ret;
+	std::vector<Dasa*> ret;
 	int currentdasa;
 	double start_jd, end_jd;
 

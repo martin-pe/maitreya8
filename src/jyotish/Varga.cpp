@@ -38,8 +38,6 @@
 #include "VargaBase.h"
 #include "VedicPlanet.h"
 
-using namespace std;
-
 extern Config *config;
 
 /*****************************************************

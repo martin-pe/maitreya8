@@ -25,13 +25,9 @@ class Horoscope;
 class Table;
 class TableStyle;
 
-#include<vector>
-
 #include "BasicHoroscope.h"
 #include "maitreya.h"
 #include "Sheet.h"
-
-using namespace std;
 
 /*************************************************//**
 *

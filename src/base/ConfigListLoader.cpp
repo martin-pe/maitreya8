@@ -228,7 +228,7 @@ bool ConfigBaseLoader::needsReload()
 {
 	//static int i = 0;
 	//printf( "Start ConfigBaseLoader::needsReload %d\n", i++ );
-	for( map<wxString, long>::iterator iter = modtimes.begin(); iter != modtimes.end(); iter++ )
+	for( std::map<wxString, long>::iterator iter = modtimes.begin(); iter != modtimes.end(); iter++ )
 	{
 		//printf( "ConfigBaseLoader::needsReload modtimes %ld ::wxFileModificationTime( filename ) %ld\n", iter->second, ::wxFileModificationTime( iter->first ));
 		if ( ::wxFileModificationTime( iter->first ) != iter->second )

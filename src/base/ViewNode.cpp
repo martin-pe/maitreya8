@@ -264,7 +264,7 @@ void PageNode::dump( const int level )
 {
 	dumpLine( wxString::Format( wxT( "Start Page %s" ), name.c_str() ), level );
 	dumpLine( wxT( "{" ), level );
-	dumpLine( wxString::Format( wxT( " viewnode %ld" ), (long)viewnode ), level +1 );
+	//dumpLine( wxString::Format( wxT( " viewnode %ld" ), (long)viewnode ), level +1 );
 	if ( viewnode ) viewnode->dump( level + 1 );
 	else dumpLine( wxT( "ERROR Page Empty" ), level + 1 );
 	dumpLine( wxT( "}" ), level );

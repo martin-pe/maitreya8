@@ -86,9 +86,9 @@ void AshtakaVargaChart::setRasiValues( const Rasi r[] )
 **   AshtakaVargaChart   ---   getCenterString
 **
 ******************************************************/
-vector<wxString> AshtakaVargaChart::getCenterString()
+std::vector<wxString> AshtakaVargaChart::getCenterString()
 {
-	vector<wxString> v;
+	std::vector<wxString> v;
 	v.push_back( centerString );
 	return v;
 }
@@ -176,9 +176,9 @@ VedicVargaChart::~VedicVargaChart()
 **   VedicVargaChart   ---   getCenterString
 **
 ******************************************************/
-vector<wxString> VedicVargaChart::getCenterString()
+std::vector<wxString> VedicVargaChart::getCenterString()
 {
-	vector<wxString> v;
+	std::vector<wxString> v;
 	VargaConfigLoader *loader = VargaConfigLoader::get();
 	wxString signification;
 	

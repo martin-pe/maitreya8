@@ -87,9 +87,9 @@ void AspectConfigLoader::initAspects()
 **   AspectConfigLoader   ---   getDefaultAspectConfigList
 **
 ******************************************************/
-vector<AspectConfig> AspectConfigLoader::getDefaultAspectConfigList()
+std::vector<AspectConfig> AspectConfigLoader::getDefaultAspectConfigList()
 {
-	vector<AspectConfig> a;
+	std::vector<AspectConfig> a;
 	for ( uint i = 0; i < MAX_ASPECT_TYPES; i++ )
 	{
 		a.push_back( DefaultAspectConfigs[i] );

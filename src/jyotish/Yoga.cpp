@@ -64,7 +64,7 @@ YogaExpert::YogaExpert()
 ******************************************************/
 void YogaExpert::init()
 {
-	vector<YogaConfig*> &defs = YogaConfigLoader::get()->getConfigs();
+	std::vector<YogaConfig*> &defs = YogaConfigLoader::get()->getConfigs();
 
 	for ( uint i = 0; i < defs.size(); i++ )
 	{
@@ -167,7 +167,7 @@ bool YogaExpert::evaluateRule( AbstractVargaHoroscope *evaluationChart, Rule *ru
 void YogaExpert::updateAndWrite( Sheet *sheet, const class VargaHoroscope *chart, const int artificialLagna,
 		const wxString groupFilter, const wxString sourceFilter )
 {
-	list<YogaConfig*> ret;
+	std::list<YogaConfig*> ret;
 	uint i;
 	YogaConfigLoader *loader = YogaConfigLoader::get();
 	wxString msg;
@@ -187,7 +187,7 @@ void YogaExpert::updateAndWrite( Sheet *sheet, const class VargaHoroscope *chart
 	interpreter->setChart( chart );
 	if ( artificialLagna != -1 ) interpreter->setLagna( artificialLagna );
 
-	vector<YogaConfig*> &defs = loader->getConfigs();
+	std::vector<YogaConfig*> &defs = loader->getConfigs();
 	//printf( "YogaExpert::updateAndWrite size of yogas is %ld\n", defs.size());
 
 	for ( i = 0; i < defs.size(); i++ )

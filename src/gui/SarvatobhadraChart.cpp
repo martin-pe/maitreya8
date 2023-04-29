@@ -34,11 +34,8 @@
 #include "SymbolProvider.h"
 #include "VedicChartConfig.h"
 
-#include <vector>
 #include <wx/brush.h>
 #include <wx/font.h>
-
-using namespace std;
 
 extern Config *config;
 

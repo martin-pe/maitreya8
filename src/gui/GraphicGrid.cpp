@@ -274,7 +274,7 @@ void ChartGridWidget::OnSize( wxSizeEvent &event )
 ******************************************************/
 void ChartGridWidget::OnEWToggle( const bool &vedic )
 {
-  printf( "ChartGridWidget::OnEWToggle %d charts.size %ld wchart %ld\n", vedic, charts.size(), (long)wchart );
+  //printf( "ChartGridWidget::OnEWToggle %d charts.size %ld wchart %ld\n", vedic, charts.size(), (long)wchart );
 	// TODO
 
 }

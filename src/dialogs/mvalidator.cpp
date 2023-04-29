@@ -205,7 +205,7 @@ void MBaseTextValidator::OnChar( wxKeyEvent &event )
 		return;
 	}
 
-	for( list<wxChar>::const_iterator iter = allowedChars.begin(); iter != allowedChars.end(); iter++ )
+	for( std::list<wxChar>::const_iterator iter = allowedChars.begin(); iter != allowedChars.end(); iter++ )
 	{
 		if ( *iter == keycode )
 		{

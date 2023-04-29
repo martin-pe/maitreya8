@@ -36,10 +36,10 @@ public:
 
 	AshtottariDasaExpert( Horoscope *h ) : DasaExpert( D_ASHTOTTARI, h ) {}
 
-	virtual vector<Dasa*> getFirstLevel();
-	virtual vector<Dasa*> getNextLevel( Dasa* );
+	virtual std::vector<Dasa*> getFirstLevel();
+	virtual std::vector<Dasa*> getNextLevel( Dasa* );
 
-	virtual vector<KPEvent> getKPEventList( const double &startlen, const double &endlen, const double &startjd );
+	virtual std::vector<KPEvent> getKPEventList( const double &startlen, const double &endlen, const double &startjd );
 	virtual KpData getKPLords( const double& ) { return KpData(); }
 
 	virtual int getParamayus() const { return 108; }

@@ -27,8 +27,6 @@
 #include "VedicChartConfig.h"
 #include "WesternChartConfig.h"
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief contains all common config properties for a chart

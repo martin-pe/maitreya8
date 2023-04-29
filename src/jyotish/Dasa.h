@@ -32,8 +32,6 @@ class DasaExpert;
 class Horoscope;
 class WriterConfig;
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief this class encapsulates a Dasa with its Lord, start, end and parent Dasa
@@ -117,8 +115,8 @@ public:
 
 	DasaId getDasaId() const { return dasaId; }
 
-	virtual vector<Dasa*> getFirstLevel() = 0;
-	virtual vector<Dasa*> getNextLevel( Dasa* ) = 0;
+	virtual std::vector<Dasa*> getFirstLevel() = 0;
+	virtual std::vector<Dasa*> getNextLevel( Dasa* ) = 0;
 
 	virtual bool isGrahaDasaExpert() const = 0;
 	bool isRasiDasaExpert() const  { return ! isGrahaDasaExpert(); }
@@ -140,7 +138,7 @@ public:
 
 	virtual KpData getKPLords( const double& ) = 0;
 	virtual bool hasKpFeatures() const { return false; }
-	virtual vector<KPEvent> getKPEventList( const double &startlen, const double &Endlen, const double &startjd ) = 0;
+	virtual std::vector<KPEvent> getKPEventList( const double &startlen, const double &Endlen, const double &startjd ) = 0;
 
 protected:
 	const DasaId dasaId;

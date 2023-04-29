@@ -28,8 +28,6 @@
 #include "Dasa.h"
 #include "maitreya.h"
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief config and descrition for a single Dasa configuration
@@ -61,14 +59,13 @@ class DasaConfigLoader : public ConfigListLoader<DasaConfig>
 public:
 
 	virtual void loadSingleConfig( wxJSONValue& );
-	//void saveConfigs( wxString filename, const vector<DasaConfig*> );
 
-	set<wxString> &getSources() { return sources; }
+	std::set<wxString> &getSources() { return sources; }
 
 private:
 
 	DasaConfigLoader();
-	set<wxString> sources;
+	std::set<wxString> sources;
 
 };
 

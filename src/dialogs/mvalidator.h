@@ -31,8 +31,6 @@ class wxColourPickerCtrl;
 class wxSpinCtrl;
 class wxTextCtrl;
 
-using namespace std;
-
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE(COMMAND_SPIN_CHANGED, wxID_HIGHEST + 5001 )
 DECLARE_EVENT_TYPE(COMMAND_SPIN_WRAP, wxID_HIGHEST + 5002 )
@@ -79,14 +77,14 @@ public:
 protected:
 
 	void setIncludes( const wxString& );
-	void setIncludes( const list<wxChar> l ) { allowedChars = l; }
+	void setIncludes( const std::list<wxChar> l ) { allowedChars = l; }
 
 	void OnChar( wxKeyEvent& );
 
 	wxTextCtrl *getTextCtrl() const;
 	wxString getTextValue();
 
-	list<wxChar> allowedChars;
+	std::list<wxChar> allowedChars;
 };
 
 /*************************************************//**

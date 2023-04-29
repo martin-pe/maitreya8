@@ -190,7 +190,7 @@ void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
 				else ratio = 1;
 			}
 			SheetWidgetGrid *grid = new SheetWidgetGrid( cs->children.size(), ratio );
-			for( list<PrintoutItem*>::iterator iter = cs->children.begin(); iter != cs->children.end(); iter++ )
+			for( std::list<PrintoutItem*>::iterator iter = cs->children.begin(); iter != cs->children.end(); iter++ )
 			{
 				addItem( grid->sheet, *iter );
 			}
@@ -202,7 +202,7 @@ void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
 			PrintoutItemRowSet *cs = (PrintoutItemRowSet*)item;
 			//printf( "ROW SET size %ld\n", cs->children.size() );
 			SheetRowSet *rowset = new SheetRowSet();
-			for( list<PrintoutItem*>::iterator iter = cs->children.begin(); iter != cs->children.end(); iter++ )
+			for( std::list<PrintoutItem*>::iterator iter = cs->children.begin(); iter != cs->children.end(); iter++ )
 			{
 				addItem( rowset->sheet, *iter );
 			}
@@ -214,7 +214,7 @@ void PrintoutSheetCreator::addItem( Sheet *sheet, PrintoutItem *item )
 			PrintoutItemGrid *g = (PrintoutItemGrid*)item;
 			//printf( "GRID size %ld\n", g->children.size() );
 			SheetWidgetGrid *grid = new SheetWidgetGrid( g->nb_cols );
-			for( list<PrintoutItem*>::iterator iter = g->children.begin(); iter != g->children.end(); iter++ )
+			for( std::list<PrintoutItem*>::iterator iter = g->children.begin(); iter != g->children.end(); iter++ )
 			{
 				addItem( grid->sheet, *iter );
 			}

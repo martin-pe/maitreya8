@@ -133,11 +133,11 @@ void YogaEditorPanel::addGroup( wxString s )
 **   YogaEditorPanel   ---   loadYogas
 **
 ******************************************************/
-void YogaEditorPanel::loadYogas( const vector<YogaConfig*> yogas )
+void YogaEditorPanel::loadYogas( const std::vector<YogaConfig*> yogas )
 {
 	bool found;
 	unsigned i, j;
-	vector<wxString> sources, groups;
+	std::vector<wxString> sources, groups;
 	wxListItem item;
 
 	propagateUserInput = false;
@@ -201,7 +201,7 @@ void YogaEditorPanel::loadYogas( const vector<YogaConfig*> yogas )
 **   YogaEditorPanel   ---   saveYogas
 **
 ******************************************************/
-void YogaEditorPanel::saveYogas( vector<YogaConfig*> &yogas )
+void YogaEditorPanel::saveYogas( std::vector<YogaConfig*> &yogas )
 {
 	long item = -1;
 	int count = 0;

@@ -112,7 +112,7 @@ void YogaConfigLoader::loadSingleConfig( wxJSONValue &v )
 **   YogaConfigLoader   ---   loadConfig
 **
 ******************************************************/
-bool YogaConfigLoader::loadConfig( wxString filename, vector<YogaConfig*> &yl )
+bool YogaConfigLoader::loadConfig( wxString filename, std::vector<YogaConfig*> &yl )
 {
 	//printf( "YogaConfigLoader::loadConfig %s\n", str2char( filename ));
   wxJSONReader reader;
@@ -156,7 +156,7 @@ bool YogaConfigLoader::loadConfig( wxString filename, vector<YogaConfig*> &yl )
 **   YogaConfigLoader   ---   saveConfigs
 **
 ******************************************************/
-void YogaConfigLoader::saveConfigs( wxString filename, const vector<YogaConfig*> yl )
+void YogaConfigLoader::saveConfigs( wxString filename, const std::vector<YogaConfig*> yl )
 {
 	wxJSONWriter writer;
 	wxJSONValue root;
@@ -200,7 +200,7 @@ void YogaConfigLoader::saveConfigs( wxString filename, const vector<YogaConfig*>
 **   YogaConfigLoader   ---   loadConfigXml
 **
 ******************************************************/
-bool YogaConfigLoader::loadConfigXml( wxString filename, vector<YogaConfig*> &ycl )
+bool YogaConfigLoader::loadConfigXml( wxString filename, std::vector<YogaConfig*> &ycl )
 {
 	//printf( "YogaConfigLoader::loadConfigXml\n" );
 	if ( ! wxFileName::FileExists( filename ))

@@ -27,8 +27,6 @@
 
 #include "maitreya.h"
 
-using namespace std;
-
 class ChartProperties;
 class Painter;
 class Table;
@@ -127,8 +125,8 @@ public:
 	bool isEmpty() const { return tokens.size() == 0; }
 	void clear();
 
-	list<MToken> tokens;
-	list<MString> formattedLines;
+	std::list<MToken> tokens;
+	std::list<MString> formattedLines;
 	MPoint size;
 
 	void operator=( const wxString );
@@ -388,7 +386,7 @@ public:
 	void addParagraph( const MString&, const int align = Align::Left + Align::VCenter );
 	void addLine( const MString&, const int align = Align::Left + Align::VCenter );
 
-	list<SheetItem*> items;
+	std::list<SheetItem*> items;
 
 	WriterConfig *writercfg;
 };

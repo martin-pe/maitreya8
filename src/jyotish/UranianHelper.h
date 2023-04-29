@@ -24,7 +24,9 @@
 #include "Conf.h"
 #include "maitreya.h"
 
-#include<map>
+#include <list>
+#include <map>
+#include <vector>
 
 class ChartProperties;
 class Horoscope;
@@ -92,9 +94,9 @@ private:
 	int getTextItem( wxString s );
 	bool loadItems( const int &mode );
 
-	map<wxString, ObjectId>  wobjects;
-	vector<MidpointTextItem*> midpoint_e, midpoint_w;
-	vector<ConjunctionTextItem*> conjunction_w;
+	std::map<wxString, ObjectId>  wobjects;
+	std::vector<MidpointTextItem*> midpoint_e, midpoint_w;
+	std::vector<ConjunctionTextItem*> conjunction_w;
 };
 
 enum URANIAN_TUPLE_TYPE { UTT_SUMS, UTT_DIFFERENCES, UTT_MIDPOINTS, UTT_ANT_MIDPOINTS, UTT_REFLECTION_POINTS };
@@ -120,7 +122,7 @@ public:
 
 	void writeMatchingClusters( Sheet*, const PlanetContext& );
 	void writeMatchingClusterPart( Sheet *sheet, const PlanetContext &ctx,
-		map<ObjectId, ClusterMatchingList> &m, const uint &istart, const uint &iend );
+		std::map<ObjectId, ClusterMatchingList> &m, const uint &istart, const uint &iend );
 
 	void writeYearlyPreview( Sheet* );
 
@@ -131,7 +133,7 @@ public:
 
 private:
 
-	bool isOneContext( list<UEvent>&, const PlanetContext& );
+	bool isOneContext( std::list<UEvent>&, const PlanetContext& );
 
 	UranianExpert *expert;
 

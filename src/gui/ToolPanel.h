@@ -26,8 +26,6 @@
 
 #include "ImageProvider.h"
 
-using namespace std;
-
 // Toolbar constants
 enum TOOBLBAR_ITEM { TBS_TEXTMODE = wxID_HIGHEST + 10000, TBS_VARGA, TBS_DASA, 
 	TBS_PARTNER1 , TBS_PARTNER2, TBS_DATE, TBS_TIME, TBS_GRADKREIS, TBS_PRINTOUTTYPE,
@@ -63,8 +61,8 @@ public:
 
 	int getToolbarStyle();
 
-	vector<int> getFullCommandIdList();
-	vector<int> getDefaultCommandIdList();
+	std::vector<int> getFullCommandIdList();
+	std::vector<int> getDefaultCommandIdList();
 
 private:
 	ToolbarFactory();

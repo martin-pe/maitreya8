@@ -35,8 +35,6 @@ class Rule;
 class Sheet;
 class YogaConfig;
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief singleton class encapsulates calculation and text report of Yogas
@@ -80,12 +78,12 @@ public:
 	/**
 	 * get list of possible sources (for choice in YogaView)
 	 */
-	set<wxString> getSources() const { return sources; }
+	std::set<wxString> getSources() const { return sources; }
 
 	/**
 	 * get list of possible groups (for choice in YogaView)
 	 */
-	set<wxString> getGroups() const { return groups; }
+	std::set<wxString> getGroups() const { return groups; }
 
 	/**
 	 *  cleanup groups, soources and Yoga definitions
@@ -96,8 +94,8 @@ private:
 
 	YogaExpert();
 
-	set<wxString> sources;
-	set<wxString> groups;
+	std::set<wxString> sources;
+	std::set<wxString> groups;
 	wxString groupFilter;
 	int artificialLagna;
 	MdlInterpreter *interpreter;

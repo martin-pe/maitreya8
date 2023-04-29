@@ -26,8 +26,6 @@
 
 class wxLocale;
 
-using namespace std;
-
 /*************************************************//**
 *
 *
@@ -58,7 +56,7 @@ class LanguageConfig
 
 public:
 
-	list<LanguageEntry> getLanguages() { return langentries; }
+	std::list<LanguageEntry> getLanguages() { return langentries; }
 	wxLocale *getLocale() { return locale; }
 	void setLanguage( const int& language );
 
@@ -68,7 +66,7 @@ private:
 
 	void init();
 	wxLocale *locale;
-	list<LanguageEntry> langentries;
+	std::list<LanguageEntry> langentries;
 };
 
 #endif

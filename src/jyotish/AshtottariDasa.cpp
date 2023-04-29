@@ -36,9 +36,9 @@ const int AshtottariDasaExpert::dasa_dur[8] = { 6, 15, 8, 17, 10, 19, 12, 21  };
 **   AshtottariDasaExpert   ---   getNextLevel
 **
 ******************************************************/
-vector<Dasa*> AshtottariDasaExpert::getNextLevel( Dasa *dasa )
+std::vector<Dasa*> AshtottariDasaExpert::getNextLevel( Dasa *dasa )
 {
-	vector<Dasa*> ret;
+	std::vector<Dasa*> ret;
 	int i;
 
 	double start_jd = dasa->getStartJD();
@@ -77,9 +77,9 @@ vector<Dasa*> AshtottariDasaExpert::getNextLevel( Dasa *dasa )
 **   AshtottariDasaExpert   ---   getFirstLevel
 **
 ******************************************************/
-vector<Dasa*> AshtottariDasaExpert::getFirstLevel()
+std::vector<Dasa*> AshtottariDasaExpert::getFirstLevel()
 {
-	vector<Dasa*> ret;
+	std::vector<Dasa*> ret;
 
 	int mnak = getNakshatra28( horoscope->getVedicLongitude( OMOON ));
 	int startn = mnak - 5;
@@ -174,11 +174,11 @@ vector<Dasa*> AshtottariDasaExpert::getFirstLevel()
 **   AshtottariDasaExpert   ---   getKPEventList
 **
 ******************************************************/
-vector<KPEvent> AshtottariDasaExpert::getKPEventList( const double&, const double&, const double& )
+std::vector<KPEvent> AshtottariDasaExpert::getKPEventList( const double&, const double&, const double& )
 {
 	// never used
 	assert( false );
-	vector<KPEvent> v;
+	std::vector<KPEvent> v;
 	return v;
 }
 

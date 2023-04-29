@@ -22,11 +22,8 @@
 #define _MDLINTERPRETER_H_
 
 #include <wx/string.h>
-#include <vector>
 
 #include "Expression.h"
-
-using namespace std;
 
 /*************************************************//**
 *

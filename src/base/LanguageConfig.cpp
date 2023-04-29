@@ -89,7 +89,7 @@ void LanguageConfig::init()
 {
 	wxString s;
 	wxStringTokenizer t( config->langList);
-	list<LanguageEntry>::iterator iter;
+	std::list<LanguageEntry>::iterator iter;
 	int theLang = -1;
 
 #ifdef __WXMSW__

@@ -28,12 +28,9 @@
 #include <wx/timer.h>
 #include <vector>
 
-
 class ChildWindow;
 class DocumentManager;
 class PdfDocumentConfig;
-
-using namespace std;
 
 /*************************************************//**
 *
@@ -71,7 +68,7 @@ protected:
 	void OnTimer( wxTimerEvent &event );
 	int myAniInterval;
 	bool dirty;
-	vector<ChildWindow*> childlist;
+	std::vector<ChildWindow*> childlist;
 	ChildWindow *mainwindow;
 };
 
@@ -118,8 +115,8 @@ public:
 
 protected:
 
-	vector<Document*> docs;
-	vector<DocumentListener*> clients;
+	std::vector<Document*> docs;
+	std::vector<DocumentListener*> clients;
 
 };
 

@@ -40,8 +40,6 @@
 
 #include <vector>
 
-using namespace std;
-
 extern Config *config;
 
 IMPLEMENT_CLASS( YogaEditor, BasicView )
@@ -138,7 +136,7 @@ bool YogaEditor::queryClose()
 ******************************************************/
 void YogaEditor::loadFile( wxString fn )
 {
-	vector<YogaConfig*> yogas;
+	std::vector<YogaConfig*> yogas;
 
 	panel->setDirty( false );
 
@@ -225,7 +223,7 @@ void YogaEditor::OnOpenFile( wxCommandEvent& )
 ******************************************************/
 bool YogaEditor::saveFile()
 {
-	vector<YogaConfig*> yogas;
+	std::vector<YogaConfig*> yogas;
 
 	if ( filename.IsEmpty() && ! saveFileAs()) return false;
 

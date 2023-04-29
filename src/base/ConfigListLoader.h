@@ -30,8 +30,6 @@
 
 class wxJSONValue;
 
-using namespace std;
-
 enum ConfigResourceType { CrtLocalFile, CrtGlobalFile, CrtLocalDir, CrtGlobalDir, CrtCombinedDir };
 
 /*************************************************//**
@@ -61,7 +59,7 @@ protected:
 	const ConfigResourceType resourceType;
 	wxString localResourcename;
 	wxString globalResourcename;
-	map<wxString, long> modtimes;
+	std::map<wxString, long> modtimes;
 
 	// for logging only
 	wxString currentfile;
@@ -76,16 +74,16 @@ template<class T> class ConfigListLoader : public ConfigBaseLoader
 {
 public:
 
-	vector<T*> &getConfigs()
+	std::vector<T*> &getConfigs()
 	{
 		if ( needsReload() || l.size() == 0 ) init();
 		return l;
 	}
 
-	vector<T*> getConfigsDeep()
+	std::vector<T*> getConfigsDeep()
 	{
 		if ( needsReload() || l.size() == 0 ) init();
-		vector<T*> r;
+		std::vector<T*> r;
 		for( uint i = 0; i < l.size(); i++ )
 		{
 			T *t = new T( *(l[i]));
@@ -95,17 +93,17 @@ public:
 		return r;
 	}
 
-	vector<T*> getDefaultConfigsDeep()
+	std::vector<T*> getDefaultConfigsDeep()
 	{
-		vector<T*> currentConfigs = getConfigsDeep();
+		std::vector<T*> currentConfigs = getConfigsDeep();
 		clear();
 		loadDefaultConfigs();
-		vector<T*> defaultConfigs = getConfigsDeep();
+		std::vector<T*> defaultConfigs = getConfigsDeep();
 		setConfigs( currentConfigs );
 		return defaultConfigs;
 	}
 
-	void setConfigs( vector<T*> t )
+	void setConfigs( std::vector<T*> t )
 	{
 		clear();
 		for( uint i = 0; i < t.size(); i++ )
@@ -190,7 +188,7 @@ protected:
 		l.push_back( getDefaultConfig());
 	}
 
-	vector<T*> l;
+	std::vector<T*> l;
 };
 
 #endif

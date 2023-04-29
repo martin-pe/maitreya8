@@ -176,7 +176,7 @@ void AspectExpert::setHoroscopes( Horoscope *h1, Horoscope *h2 )
 **   AspectExpert   ---   updateSbcAspects
 **
 ******************************************************/
-list<AspectEvent> &AspectExpert::updateSbcAspects( ChartProperties *chartprops, const bool &swapCharts )
+std::list<AspectEvent> &AspectExpert::updateSbcAspects( ChartProperties *chartprops, const bool &swapCharts )
 {
 	//printf( "AspectExpert::updateSbcAspects\n" );
 	if ( ! horoscope )
@@ -190,7 +190,7 @@ list<AspectEvent> &AspectExpert::updateSbcAspects( ChartProperties *chartprops, 
 	NakshatraId_28 nak;
 	SarvatobhadraExpert expert;
 	VedicChartBehaviorConfig &bcfg = chartprops->getVedicChartBehaviorConfig();
-	vector<NakshatraId_28> vedhas;
+	std::vector<NakshatraId_28> vedhas;
 
 	Horoscope *h = swapCharts ? horoscope2 : horoscope;
 
@@ -215,7 +215,7 @@ list<AspectEvent> &AspectExpert::updateSbcAspects( ChartProperties *chartprops, 
 **   AspectExpert   ---   updateVedicRasiChartAspects
 **
 ******************************************************/
-list<AspectEvent> &AspectExpert::updateVedicRasiChartAspects( ChartProperties *chartprops, const Varga &varga,
+std::list<AspectEvent> &AspectExpert::updateVedicRasiChartAspects( ChartProperties *chartprops, const Varga &varga,
 	const bool &swapCharts )
 {
 	//printf( "AspectExpert::updateVedicRasiChartAspects\n" );
@@ -318,7 +318,7 @@ list<AspectEvent> &AspectExpert::updateVedicRasiChartAspects( ChartProperties *c
 **   AspectExpert   ---   updateWesternAspects
 **
 ******************************************************/
-list<AspectEvent> &AspectExpert::updateWesternAspects( ChartProperties *chartprops, const ChartType& charttype )
+std::list<AspectEvent> &AspectExpert::updateWesternAspects( ChartProperties *chartprops, const ChartType& charttype )
 {
 	if ( ! horoscope )
 	{
@@ -496,7 +496,7 @@ void AspectExpert::writeWesternAspectarium( Sheet *sheet, ChartProperties *chart
 ******************************************************/
 Table *AspectExpert::getWesternAspectariumTable( Sheet* /*sheet*/, ChartProperties *chartprops )
 {
-	list<AspectEvent>::iterator iter;
+	std::list<AspectEvent>::iterator iter;
 	uint p1, p2;
 	SheetFormatter fmt;
 	MString ms;
@@ -624,7 +624,7 @@ void AspectExpert::writeWesternAspectList( Sheet *sheet, ChartProperties*, const
 	table->setHeader( 2, _( "Type" ) );
 	table->setHeader( 3, _( "Orbis" ) );
 
-	for ( list<AspectEvent>::iterator iter = al.begin(); iter != al.end(); iter++ )
+	for ( std::list<AspectEvent>::iterator iter = al.begin(); iter != al.end(); iter++ )
 	{
 		table->setEntry( 0, line, fmt.getObjectName( (*iter).planet1, TF_LONG ));
 		table->setEntry( 1, line, fmt.getObjectName( (*iter).planet2, TF_LONG ));

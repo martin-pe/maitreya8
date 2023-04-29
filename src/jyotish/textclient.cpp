@@ -56,8 +56,6 @@
 #include "Varga.h"
 #include "Yoga.h"
 
-using namespace std;
-
 Config *config;
 
 
@@ -228,7 +226,7 @@ public:
 		config = 0;
 		writecount = 0;
 #if wxUSE_STD_IOSTREAM && ! defined __WXMSW__
-			wxLog::SetActiveTarget( new wxLogStream( &cout ));
+			wxLog::SetActiveTarget( new wxLogStream( &std::cout ));
 #endif
 	}
 

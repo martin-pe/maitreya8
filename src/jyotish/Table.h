@@ -27,8 +27,6 @@
 
 class Table;
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief represents a single entry of a Table
@@ -98,7 +96,7 @@ public:
 
 	void resetRectangles();
 
-	vector<TableEntry> value;
+	std::vector<TableEntry> value;
 	bool isEmpty();
 
 	const Table *table;
@@ -129,7 +127,7 @@ public:
 	void setEntry( const uint &col, const uint &row, const MString&, const bool isHeader = false );
 
 	TableEntry *getEntry( const uint &col, const uint &row );
-	vector<Row> contents;
+	std::vector<Row> contents;
 
 	void addRow( Row );
 	void resetRectangles();
@@ -138,9 +136,9 @@ public:
 	uint getNbRows() const { return contents.size(); }
 	uint getNbCols() const { return nb_cols; }
 
-	vector<double> col_width;
-	vector<int> col_alignment;
-  vector<bool> col_break;
+	std::vector<double> col_width;
+	std::vector<int> col_alignment;
+  std::vector<bool> col_break;
 
 	bool isEmptyCol( uint &c ) { return col_empty[c]; }
 	bool uniformLayout; 
@@ -149,7 +147,7 @@ public:
 
 private:
 	uint nb_cols;
-	vector<bool> col_empty;
+	std::vector<bool> col_empty;
 
 public:
 	int errorcount;

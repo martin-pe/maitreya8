@@ -64,8 +64,8 @@ class KalachakraDasaExpert : public DasaExpert
 public:
 
 	KalachakraDasaExpert( Horoscope* );
-	virtual vector<Dasa*> getFirstLevel();
-	virtual vector<Dasa*> getNextLevel( Dasa* );
+	virtual std::vector<Dasa*> getFirstLevel();
+	virtual std::vector<Dasa*> getNextLevel( Dasa* );
 
 	virtual KpData getKPLords( const double& );
 	virtual bool hasKpFeatures() const { return true; }
@@ -87,7 +87,7 @@ public:
 	Rasi getDeha() const { return deha; }
 	Rasi getJeeva() const { return jeeva; }
 
-	virtual vector<KPEvent> getKPEventList( const double &startlen, const double &endlen, const double &startjd );
+	virtual std::vector<KPEvent> getKPEventList( const double &startlen, const double &endlen, const double &startjd );
 
 private:
 	Rasi deha, jeeva;

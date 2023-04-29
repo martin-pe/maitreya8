@@ -543,9 +543,9 @@ void ToolbarFactory::init()
 **   ToolbarFactory   ---    getDefaultCommandIdList
 **
 ******************************************************/
-vector<int> ToolbarFactory::getDefaultCommandIdList()
+std::vector<int> ToolbarFactory::getDefaultCommandIdList()
 {
-	vector<int> l;
+	std::vector<int> l;
 	for ( size_t i = 0; i < WXSIZEOF( theIdList ); i++ )
 	{
 		if ( theIdList[i].isDefault )
@@ -561,9 +561,9 @@ vector<int> ToolbarFactory::getDefaultCommandIdList()
 **   ToolbarFactory   ---    getFullCommandIdList
 **
 ******************************************************/
-vector<int> ToolbarFactory::getFullCommandIdList()
+std::vector<int> ToolbarFactory::getFullCommandIdList()
 {
-	vector<int> l;
+	std::vector<int> l;
 	for ( size_t i = 0; i < WXSIZEOF( theIdList ); i++ )
 	{
 		if ( theIdList[i].cmdId )

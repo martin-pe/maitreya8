@@ -142,7 +142,7 @@ void UranianParamPanel::OnSpin( wxSpinEvent &event )
 void UranianParamPanel::OnFilter( wxCommandEvent& )
 {
 	//printf( "UranianParamPanel::OnFilter\n" );
-	vector<ObjectId> planets = props->getPlanetList( FILTER_EXLUDE_LIST );
+	std::vector<ObjectId> planets = props->getPlanetList( FILTER_EXLUDE_LIST );
 
 	ObjectFilterDialog dialog( this, planets, props->getObjectFilter() );
 	if ( dialog.ShowModal() == wxID_OK )
@@ -204,7 +204,7 @@ void UranianParamPanel::updateFilterLabel()
 	{
 		wxString s;
 		uint i = 0;
-		for( set<ObjectId>::iterator iter = filter.begin(); iter != filter.end(); iter++ )
+		for( std::set<ObjectId>::iterator iter = filter.begin(); iter != filter.end(); iter++ )
 		{
 			s << lang.getObjectName( *iter, TF_MEDIUM );
 			if ( ++i < filter.size()) s << wxT( "," );

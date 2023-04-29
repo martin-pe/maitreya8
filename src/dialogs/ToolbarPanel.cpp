@@ -141,7 +141,7 @@ void ToolbarPanel::initToolItems()
 	ImageProvider *ip = ImageProvider::get();
 	MCommand *command;
 
-	vector<int> fullCommandIds = factory->getFullCommandIdList();
+	std::vector<int> fullCommandIds = factory->getFullCommandIdList();
 
 	const int size = ip->getDefaultBitmapSize();
 	imageList = new wxImageList( size, size, true );

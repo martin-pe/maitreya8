@@ -24,8 +24,6 @@
 #include "BasicVedicChart.h"
 #include <vector>
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief Basic abstract class for Vedic charts with 12 Rasi fields
@@ -62,7 +60,7 @@ protected:
 	/**
 	 *  \brief Provides text in the middle of the chart, must be implemented by subclasses.
 	 */
-	virtual vector<wxString> getCenterString() = 0;
+	virtual std::vector<wxString> getCenterString() = 0;
 
 	/**
 	 *  \brief Used by North Indian chart

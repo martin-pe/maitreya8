@@ -56,7 +56,7 @@ BaseDao::~BaseDao()
 **   BaseDao   ---   executeQueryBundle
 **
 ******************************************************/
-int BaseDao::executeQueryBundle( list<wxString> &qb, const bool &dbMustExist )
+int BaseDao::executeQueryBundle( std::list<wxString> &qb, const bool &dbMustExist )
 {
 	int count = 0;
 	if ( qb.size() == 0 ) return 0;
@@ -66,7 +66,8 @@ int BaseDao::executeQueryBundle( list<wxString> &qb, const bool &dbMustExist )
 		wxSQLite3Database *db = getDbHandle( dbMustExist );
 		if ( db )
 		{
-			for ( list<wxString>::iterator iter = qb.begin(); iter != qb.end(); iter++ )
+			for ( std::list<wxString>::iterator iter = qb.begin(); iter != qb.end(); iter++ )
+
 			{
 				queryString = *iter;
 				db->ExecuteUpdate( (*iter) );

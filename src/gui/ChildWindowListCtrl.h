@@ -33,10 +33,7 @@ class wxListEvent;
 class wxMouseEvent;
 class wxSizeEvent;
 
-using namespace std;
-
 #define LISTCTRL_ID wxID_HIGHEST + 12000
-
 
 /*************************************************//**
 *
@@ -70,7 +67,7 @@ private:
 
 	int activeitem;
 	wxListCtrl *listctrl;
-	vector<ChildWindow*> windowlist;
+	std::vector<ChildWindow*> windowlist;
 
 	void insertListItem( ChildWindow *item );
 	void updateItemLabel( ChildWindow *item, const int &pos );

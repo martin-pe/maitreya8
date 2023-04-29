@@ -153,11 +153,11 @@ public:
 	wxJSONValue writePoint( const wxPoint& );
 	void readPoint( wxJSONValue&, wxPoint& );
 
-	wxJSONValue writeIntVector( const vector<int>& );
-	void readIntVector( wxJSONValue&, vector<int>& );
+	wxJSONValue writeIntVector( const std::vector<int>& );
+	void readIntVector( wxJSONValue&, std::vector<int>& );
 
-	wxJSONValue writeStringVector( const vector<wxString>& );
-	void readStringVector( wxJSONValue&, vector<wxString>& );
+	wxJSONValue writeStringVector( const std::vector<wxString>& );
+	void readStringVector( wxJSONValue&, std::vector<wxString>& );
 
 	wxJSONValue writeObjectArray( const ObjectArray& );
 	void readObjectArray( wxJSONValue&, ObjectArray& );
@@ -174,7 +174,7 @@ public:
 	void readPalette( wxJSONValue&, BgPalette& );
 	wxJSONValue writePalette( BgPalette& );
 
-	void readColorList( wxJSONValue&, vector<wxColour>& );
+	void readColorList( wxJSONValue&, std::vector<wxColour>& );
 
 	void readFrameType( wxJSONValue&, CHART_FRAME& );
 
@@ -188,7 +188,7 @@ public:
 
 	void readRegion( wxJSONValue&, GcRegion& );
 
-	void readPatterns( wxJSONValue&, list<GcChartFrameBgPattern>& );
+	void readPatterns( wxJSONValue&, std::list<GcChartFrameBgPattern>& );
 
 	void readChartConfig( wxJSONValue&, ChartConfig* );
 

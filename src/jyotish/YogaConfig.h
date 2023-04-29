@@ -22,6 +22,7 @@
 #define _YOGACONFIG_H_
 
 #include <wx/string.h>
+#include <vector>
 
 #include "maitreya.h"
 #include "ConfigListLoader.h"
@@ -29,8 +30,6 @@
 // for legacy xml support
 class wxXmlNode;
 class Rule;
-
-using namespace std;
 
 /*************************************************//**
 *
@@ -62,9 +61,9 @@ public:
 
 	virtual void loadSingleConfig( wxJSONValue& );
 
-	void saveConfigs( wxString filename, const vector<YogaConfig*> );
-	bool loadConfigXml( wxString filename, vector<YogaConfig*>& );
-	bool loadConfig( wxString filename, vector<YogaConfig*>& );
+	void saveConfigs( wxString filename, const std::vector<YogaConfig*> );
+	bool loadConfigXml( wxString filename, std::vector<YogaConfig*>& );
+	bool loadConfig( wxString filename, std::vector<YogaConfig*>& );
 
 private:
 	YogaConfigLoader();

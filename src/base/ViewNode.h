@@ -29,8 +29,6 @@ class BasicView;
 class wxBookCtrlBase;
 class wxWindow;
 
-using namespace std;
-
 enum ViewNodeId { WniNone = -1, WniWidget, WniSplitter, WniPageNode, WniNotebook };
 
 /*************************************************//**
@@ -82,7 +80,7 @@ struct WidgetNode : public ViewNode
 
 	BasicView *basicview;
 
-	vector<int> vargas;
+	std::vector<int> vargas;
 
 	DECLARE_CLASS( ViewNode )
 };
@@ -158,7 +156,7 @@ struct NotebookNode : public ViewNode
 
 	virtual void dump( const int level = 0 );
 
-	vector<PageNode*> pagenodes;
+	std::vector<PageNode*> pagenodes;
 	wxString name;
 
 	DECLARE_CLASS( NotebookNode )

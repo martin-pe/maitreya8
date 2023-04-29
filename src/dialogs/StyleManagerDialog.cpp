@@ -42,7 +42,7 @@ enum { CD_LIST = wxID_HIGHEST + 300, CD_NEW, CD_COPY, CD_RENAME, CD_DELETE, CD_U
 **   StyleManagerDialog   ---   Constructor
 **
 ******************************************************/
-StyleManagerDialog::StyleManagerDialog(wxWindow* parent, vector<SheetConfig*> &configs, const int &sel )
+StyleManagerDialog::StyleManagerDialog(wxWindow* parent, std::vector<SheetConfig*> &configs, const int &sel )
 	: wxDialog( parent, -1, wxEmptyString, wxDefaultPosition, wxDefaultSize, DEFAULT_DIALOG_STYLE ),
 	v( configs )
 {
@@ -96,7 +96,7 @@ void StyleManagerDialog::populateChoice()
 	//printf( "START populateChoice\n" );
 	list->Clear();
 
-	for( vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
+	for( std::vector<SheetConfig*>::iterator iter = v.begin(); iter != v.end(); iter++ )
 	{
 		list->Append( (*iter)->name );
 	}

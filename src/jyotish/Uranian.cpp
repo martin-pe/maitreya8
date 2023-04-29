@@ -281,9 +281,9 @@ void UranianExpert::OnDataChanged()
 **   UranianExpert   ---   createClusterMatchingList
 **
 ******************************************************/
-map<ObjectId, ClusterMatchingList> UranianExpert::createClusterMatchingList( const PlanetContext &ctx )
+std::map<ObjectId, ClusterMatchingList> UranianExpert::createClusterMatchingList( const PlanetContext &ctx )
 {
-	map<ObjectId, ClusterMatchingList> m;
+	std::map<ObjectId, ClusterMatchingList> m;
 	UranianCalculationResult *v = planetContext2Result( ctx );
 	assert( v );
 	const Horoscope *h = v->horoscope;
@@ -291,7 +291,7 @@ map<ObjectId, ClusterMatchingList> UranianExpert::createClusterMatchingList( con
 
 	const bool skipAries = ( ctx == PcTransit || ctx == PcDirection );
 
-	for( list<UEvent>::iterator iter = v->uevents.begin(); iter != v->uevents.end(); iter++ )
+	for( std::list<UEvent>::iterator iter = v->uevents.begin(); iter != v->uevents.end(); iter++ )
 	{
 		if ( (*iter).isDoubleObjectEvent())
 		{
@@ -711,7 +711,7 @@ void UranianExpert::calculatePeriodPreview( const double &first_jd, const double
 
 	findMatchingEvents( PcRadix, PcPeriod, PcPeriod, orbis );
 
-	for( list<UEvent>::iterator iter = result[PcPeriod]->uevents.begin(); iter != result[PcPeriod]->uevents.end(); iter++ )
+	for( std::list<UEvent>::iterator iter = result[PcPeriod]->uevents.begin(); iter != result[PcPeriod]->uevents.end(); iter++ )
 	{
 		calculateUEventDueDate( *iter, hperiod->getLongitude( OSUN, vedic ));
 	}

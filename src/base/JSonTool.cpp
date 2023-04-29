@@ -127,7 +127,7 @@ void JSonTool::readObjectArray( wxJSONValue &j, ObjectArray &v )
 wxJSONValue JSonTool::writeObjectFilter( const ObjectFilter &v )
 {
 	wxJSONValue j;
-	for( set<ObjectId>::iterator iter = v.begin(); iter != v.end(); iter++ )
+	for( std::set<ObjectId>::iterator iter = v.begin(); iter != v.end(); iter++ )
 	{
 		j.Append( wxJSONValue( *iter ));
 	}
@@ -157,7 +157,7 @@ void JSonTool::readObjectFilter( wxJSONValue &j, ObjectFilter &v )
 **   JSonTool   ---   writeIntVector
 **
 ******************************************************/
-wxJSONValue JSonTool::writeIntVector( const vector<int> &v )
+wxJSONValue JSonTool::writeIntVector( const std::vector<int> &v )
 {
 	wxJSONValue j;
 	for( uint i = 0; i < v.size(); i++ )
@@ -172,7 +172,7 @@ wxJSONValue JSonTool::writeIntVector( const vector<int> &v )
 **   JSonTool   ---   readIntVector
 **
 ******************************************************/
-void JSonTool::readIntVector( wxJSONValue &j, vector<int> &v )
+void JSonTool::readIntVector( wxJSONValue &j, std::vector<int> &v )
 {
 	if ( j.IsArray())
 	{
@@ -190,7 +190,7 @@ void JSonTool::readIntVector( wxJSONValue &j, vector<int> &v )
 **   JSonTool   ---   writeStringVector
 **
 ******************************************************/
-wxJSONValue JSonTool::writeStringVector( const vector<wxString> &v )
+wxJSONValue JSonTool::writeStringVector( const std::vector<wxString> &v )
 {
 	wxJSONValue j;
 	for( uint i = 0; i < v.size(); i++ )
@@ -205,7 +205,7 @@ wxJSONValue JSonTool::writeStringVector( const vector<wxString> &v )
 **   JSonTool   ---   readStringVector
 **
 ******************************************************/
-void JSonTool::readStringVector( wxJSONValue &j, vector<wxString> &v )
+void JSonTool::readStringVector( wxJSONValue &j, std::vector<wxString> &v )
 {
 	if ( j.IsArray())
 	{
@@ -330,7 +330,7 @@ void JSonTool::readBrush( wxJSONValue &v, MBrush &brush )
 **   JSonTool   ---   readPatterns
 **
 ******************************************************/
-void JSonTool::readPatterns( wxJSONValue &v, list<GcChartFrameBgPattern> &l )
+void JSonTool::readPatterns( wxJSONValue &v, std::list<GcChartFrameBgPattern> &l )
 {
 	for ( int i = 0; i < v.Size(); i++ )
 	{
@@ -384,7 +384,7 @@ wxJSONValue JSonTool::writePalette( BgPalette &palette )
 **   JSonTool   ---   readColorList
 **
 ******************************************************/
-void JSonTool::readColorList( wxJSONValue&, vector<wxColour>& )
+void JSonTool::readColorList( wxJSONValue&, std::vector<wxColour>& )
 {
 	assert( false );
 }

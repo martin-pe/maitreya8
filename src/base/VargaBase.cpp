@@ -29,8 +29,6 @@
 #include "maitreya.h"
 #include "Lang.h"
 
-using namespace std;
-
 extern Config *config;
 
 const int VargaConfigLoader::vargaDivisions[NB_VARGAS] =

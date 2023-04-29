@@ -144,7 +144,7 @@ protected:
 
 			// shift all items beginning with item0
 			bool doshift = false;
-			for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
+			for( std::list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 			{
 				if ( *iter == item0 )
 				{

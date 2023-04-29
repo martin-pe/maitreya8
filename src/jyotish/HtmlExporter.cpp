@@ -48,7 +48,7 @@ public:
 
 		writeHtmlHead();
 
-		for( list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
+		for( std::list<SheetItem*>::iterator iter = sheet->items.begin(); iter != sheet->items.end(); iter++ )
 		{
 			SheetItem *item = *iter;
 			if ( item->type == WiTable )
@@ -125,7 +125,7 @@ protected:
 	{
 		wxString s;
 		SheetFormatter formatter( writercfg );
-		for( list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
+		for( std::list<MToken>::const_iterator iter = f.tokens.begin(); iter != f.tokens.end(); iter++ )
 		{
 			switch( iter->fontFormat )
 			{

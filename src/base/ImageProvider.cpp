@@ -56,9 +56,9 @@ public:
 	wxBitmap *findBitmapRef( const wxString &s, const int rotateHue = 0 )
 	{
 		//printf( "BitmapCache::GET 1 size %d name %s rh %d\n", (int)mm.size(), str2char( s ), rotateHue );
-		const pair<wxString, int > k( s, rotateHue );
+		const std::pair<wxString, int > k( s, rotateHue );
 
-		map<pair<wxString, int>, wxBitmap*>::iterator iter = mm.find( k );
+		std::map< std::pair<wxString, int>, wxBitmap*>::iterator iter = mm.find( k );
 		if ( iter != mm.end() )
 		{
 			//printf( "found\n" );
@@ -74,14 +74,14 @@ public:
 	void putBitmapRef( const wxString &s, const int rotateHue, wxBitmap *b )
 	{
 		//printf( "BitmapCache::PUT 1 size %d name %s rh %d\n", (int)mm.size(), str2char( s ), rotateHue );
-		const pair<wxString, int > k( s, rotateHue );
+		const std::pair<wxString, int > k( s, rotateHue );
 		mm[k] = b;
 		//printf( "BitmapCache::PUT 2 size %d\n", (int)mm.size() );
 	}
 
 private:
 	
-	map< pair<wxString, int>, wxBitmap*> mm;
+	std::map< std::pair<wxString, int>, wxBitmap*> mm;
 };
 
 IMPLEMENT_SINGLETON( BitmapCache )

@@ -30,8 +30,6 @@
 
 class wxJSONValue;
 
-using namespace std;
-
 enum PD_ITEM_TYPE { PD_TITLE = 0, PD_HEADER, PD_DASA_SUMMARY, PD_CHART, PD_WIDGET_GRID, PD_COLUMN_SET, PD_SBC,
 	PD_ROW_SET, PD_GRID, PD_WESTERN_CHART, PD_VEDIC_CHART_PAIR,
 	PD_ASPECTARIUM, PD_ASHTAKAVARGA, PD_URANIAN, PD_YOGAS, PD_VARGA_DIAGRAMS,
@@ -96,10 +94,10 @@ public:
 
 	~PrintoutItemContainer()
 	{
-		for( list<PrintoutItem*>::iterator iter = children.begin(); iter != children.end(); iter++ ) { delete *iter; }
+		for( std::list<PrintoutItem*>::iterator iter = children.begin(); iter != children.end(); iter++ ) { delete *iter; }
 	}
 
-	list<PrintoutItem*> children;
+	std::list<PrintoutItem*> children;
 	double ratio;
 };
 
@@ -163,7 +161,7 @@ public:
 	virtual void load( wxJSONValue&, wxString = wxEmptyString );
 	virtual void save( wxJSONValue&, wxString = wxEmptyString );
 
-	vector<PrintoutItem*> items;
+	std::vector<PrintoutItem*> items;
 	wxString name;
 	wxString description;
 	bool vedic;
@@ -189,7 +187,7 @@ private:
 	PrintoutItem *loadItem( wxJSONValue& );
 	void loadContainer( wxJSONValue&, PrintoutItemContainer* );
 
-	map<wxString, PD_ITEM_TYPE> pd_map;
+	std::map<wxString, PD_ITEM_TYPE> pd_map;
 
 };
 

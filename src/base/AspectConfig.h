@@ -28,8 +28,6 @@
 #include "ConfigBase.h"
 #include "maitreya.h"
 
-using namespace std;
-
 /*************************************************//**
 *
 * \brief astrological and graphical configuration for a single aspect
@@ -74,7 +72,7 @@ public:
 
 	void initAspects();
 
-	vector<AspectConfig> getDefaultAspectConfigList();
+	std::vector<AspectConfig> getDefaultAspectConfigList();
 
 private:
 

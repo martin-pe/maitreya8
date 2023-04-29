@@ -28,8 +28,6 @@ class Horoscope;
 class WesternChartConfig;
 class Writer;
 
-using namespace std;
-
 /*************************************************//**
 *
 *  
@@ -69,7 +67,7 @@ protected:
 
 	// marked objects
 	//vector<MRect> h1rects, h2rects;
-	map<ObjectId, MRect> h1rect, h2rect;
+	std::map<ObjectId, MRect> h1rect, h2rect;
 	ObjectId h1marked, h2marked;
 
 	WesternChartConfig *getWChartConfig() const;

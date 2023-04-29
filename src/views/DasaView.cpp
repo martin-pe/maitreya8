@@ -53,8 +53,6 @@ enum { PIC_DASA = 0, PIC_FOLDER, PIC_DASAROOT, PIC_DASATREE1, PIC_DASATREE2, PIC
 	PIC_DASATREE3E, PIC_DASATREE4E, PIC_DASATREE5E
 };
 
-using namespace std;
-
 /*************************************************//**
 * 
 *  \brief bottom panel in Dasa tree view 
@@ -425,8 +423,8 @@ protected:
 			{
 				choice_sourcefilter->Clear();
 				choice_sourcefilter->Append( _( "All Sources" ));
-				set<wxString> &sources = DasaTool::get()->getDasaSources();
-				for( set<wxString>::iterator iter = sources.begin(); iter != sources.end(); iter++ )
+				std::set<wxString> &sources = DasaTool::get()->getDasaSources();
+				for( std::set<wxString>::iterator iter = sources.begin(); iter != sources.end(); iter++ )
 				{
 					choice_sourcefilter->Append( *iter );
 				}

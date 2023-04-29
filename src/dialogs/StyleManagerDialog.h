@@ -22,9 +22,7 @@
 #define STYLEMANAGERDIALOG_H
 
 #include <wx/dialog.h>
-#include<vector>
-
-using namespace std;
+#include <vector>
 
 // begin wxGlade: ::dependencies
 #include <wx/statline.h>
@@ -49,7 +47,7 @@ public:
     // begin wxGlade: StyleManagerDialog::ids
     // end wxGlade
 
-	StyleManagerDialog(wxWindow* parent, vector<SheetConfig*>&, const int &sel );
+	StyleManagerDialog(wxWindow* parent, std::vector<SheetConfig*>&, const int &sel );
 	~StyleManagerDialog();
 	int getSelection() const;
 
@@ -72,7 +70,7 @@ private:
 	void OnUp( wxCommandEvent& );
 	void OnDown( wxCommandEvent& );
 
-	vector<SheetConfig*> &v;
+	std::vector<SheetConfig*> &v;
 
 protected:
     // begin wxGlade: StyleManagerDialog::attributes

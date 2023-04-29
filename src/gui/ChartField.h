@@ -28,8 +28,6 @@
 #include "maitreya.h"
 #include "Painter.h"
 
-using namespace std;
-
 class ChartProperties;
 class Painter;
 class VedicChartConfig;
@@ -84,8 +82,8 @@ public:
 class ChartContents
 {
 public:
-	vector<ChartTextItem> textitems;
-	vector<ChartGraphicItem> graphicitems;
+	std::vector<ChartTextItem> textitems;
+	std::vector<ChartGraphicItem> graphicitems;
 	ObjectArray planets;
 	void clear();
 };

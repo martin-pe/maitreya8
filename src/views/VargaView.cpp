@@ -131,7 +131,7 @@ class GraphicGridView : public BasicView
 
 public:
 
-	GraphicGridView( wxWindow *parent, ChildWindow *frame, const int &rows, const int &cols, vector<Varga> vargas )
+	GraphicGridView( wxWindow *parent, ChildWindow *frame, const int &rows, const int &cols, std::vector<Varga> vargas )
 		: BasicView( parent, frame, VIEW_GRAPHICGRID, false )
 	{
 		props->setFixedVedic();
@@ -222,9 +222,9 @@ BasicView *ViewFactory::createVargaView( wxWindow *parent, ChildWindow *frame )
 **   ViewFactory  ---   createGraphicGridView
 **
 ******************************************************/
-BasicView *ViewFactory::createGraphicGridView( wxWindow *parent, ChildWindow *frame, const int &rows, const int &cols, vector<int> vargas )
+BasicView *ViewFactory::createGraphicGridView( wxWindow *parent, ChildWindow *frame, const int &rows, const int &cols, std::vector<int> vargas )
 {
-	vector<Varga> v;
+	std::vector<Varga> v;
 	for( uint i = 0; i < vargas.size(); i++ ) v.push_back( (Varga)(vargas[i] ));
 	return new GraphicGridView( parent, frame, rows, cols, v );
 }

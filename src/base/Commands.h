@@ -28,8 +28,6 @@
 #include "ImageProvider.h"
 #include "maitreya.h"
 
-using namespace std;
-
 class MCommand;
 class wxKeyEvent;
 class wxWindow;
@@ -276,12 +274,12 @@ public:
 
 	bool processKeyEvent( wxKeyEvent*, wxWindow *window, const bool isTextWidget );
 
-	const map<int, MCommand*> &getCommands() const { return cmds; }
+	const std::map<int, MCommand*> &getCommands() const { return cmds; }
 
 protected:
 	void init();
 
-	map<int, MCommand*> cmds;
+	std::map<int, MCommand*> cmds;
 
 private:
 	CommandHandler();

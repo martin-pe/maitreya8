@@ -145,7 +145,7 @@ void DasaTool::calculateMahaAntarLords( Dasa *dasa, int &lord, int &sublord )
 **   DasaTool   ---   getDasaSources
 **
 ******************************************************/
-set<wxString> &DasaTool::getDasaSources()
+std::set<wxString> &DasaTool::getDasaSources()
 {
 	DasaConfigLoader::get()->getConfigs();
 	return DasaConfigLoader::get()->getSources();
@@ -162,7 +162,7 @@ ObjectId DasaTool::planet2ObjectId( const wxString s )
 	* ugly wxHashmap: operatori[] inserts default value (0=OSUN) if value not found (and returns it)
 	* find method works but doesn't look nice
 	*/
-	map<wxString, ObjectId>::iterator iter = objects.find( s );
+	std::map<wxString, ObjectId>::iterator iter = objects.find( s );
 	if ( iter == objects.end()) return OERROR;
 	else return iter->second;
 }
@@ -190,7 +190,7 @@ void DasaTool::writeDasaEffect( Sheet *sheet, Dasa *dasa, const wxString sourcef
 {
 	//printf( "getDasaEffect filter \"%s\"\n", str2char( sourcefilter ));
 
-	vector<DasaConfig*> &defs = DasaConfigLoader::get()->getConfigs();
+	std::vector<DasaConfig*> &defs = DasaConfigLoader::get()->getConfigs();
 	for ( uint i = 0; i < defs.size(); i++ )
 	{
 		DasaConfig *cfg = (DasaConfig*)defs[i];
@@ -280,8 +280,8 @@ void DasaTool::writeShortReport( Sheet *sheet, Horoscope *horoscope, const DasaI
 		sheet->addHeader( s );
 	}
 
-	vector<Dasa*> v = expert->getFirstLevel();
-	vector<Dasa*> w;
+	std::vector<Dasa*> v = expert->getFirstLevel();
+	std::vector<Dasa*> w;
 
 	for ( i = 0; i < v.size(); i++ )
 	{
@@ -341,8 +341,8 @@ void DasaTool::writeCompactReport( Sheet *sheet, Horoscope *horoscope, const Das
 	//dasaShowDateMode = 0; // 0 = startdate 1 = end date
 	const bool show_enddate = config->vedicCalculation->dasaShowDateMode == 1;
 
-	vector<Dasa*> v = expert->getFirstLevel();
-	vector<Dasa*> w;
+	std::vector<Dasa*> v = expert->getFirstLevel();
+	std::vector<Dasa*> w;
 
 	// test for antardasa length
 	w = expert->getNextLevel( v[0] );
@@ -433,7 +433,7 @@ void DasaTool::writeCompactReport( Sheet *sheet, Horoscope *horoscope, const Das
 		table->setHeaderEntry( 4, line, t );
 
 		w = expert->getNextLevel( v[currentMD] );
-		vector<Dasa*> w2 = expert->getNextLevel( w[currentAD] );
+		std::vector<Dasa*> w2 = expert->getNextLevel( w[currentAD] );
 
 		line++;
 		for ( uint j = 0; j < w2.size(); j++ )
@@ -475,8 +475,8 @@ void DasaTool::writeComprehensiveReport( Sheet *sheet, Horoscope *horoscope, con
 		sheet->addHeader( s );
 	}
 
-	vector<Dasa*> v = expert->getFirstLevel();
-	vector<Dasa*> w;
+	std::vector<Dasa*> v = expert->getFirstLevel();
+	std::vector<Dasa*> w;
 
 	for ( i = 0; i < v.size(); i++ )
 	{

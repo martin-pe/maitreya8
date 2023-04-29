@@ -113,7 +113,7 @@ wxString DasaExpert::getDasaDescription( Dasa *dasa, const TEXT_FORMAT format, W
 ******************************************************/
 int DasaExpert::getBirthMahaDasaLord()
 {
-	vector<Dasa*> v = getFirstLevel();
+	std::vector<Dasa*> v = getFirstLevel();
 	int lord = v[0]->getDasaLord();
 	for( uint i = 0; i < v.size(); i++ )
 	{
