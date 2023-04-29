@@ -64,8 +64,9 @@ VedicCalculationPanel::VedicCalculationPanel( wxWindow* parent ) : ConfigPanel( 
         _("Lahiri"),
         _("Raman"),
         _("Krishnamurti"),
+        _("Custom"),
     };
-    choice_ayanamsa = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_ayanamsa_choices);
+    choice_ayanamsa = new wxChoice(notebook_pane1, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_ayanamsa_choices);
     label_vcalc_node = new wxStaticText(notebook_pane1, wxID_ANY, _("Lunar Node"));
     const wxString choice_node_choices[] = {
         _("True"),

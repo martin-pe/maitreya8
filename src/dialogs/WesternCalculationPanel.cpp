@@ -53,8 +53,9 @@ WesternCalculationPanel::WesternCalculationPanel( wxWindow* parent ) : ConfigPan
         _("Lahiri"),
         _("Raman"),
         _("Krishnamurti"),
+        _("Custom"),
     };
-    choice_ayanamsa = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 4, choice_ayanamsa_choices);
+    choice_ayanamsa = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 5, choice_ayanamsa_choices);
     label_wcalc_node = new wxStaticText(this, wxID_ANY, _("Lunar Node"));
     const wxString choice_wnode_choices[] = {
         _("True"),
