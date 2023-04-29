@@ -58,10 +58,6 @@ public:
 	virtual void restoreDefaults();
 
 private:
-    // begin wxGlade: EphemerisPanel::methods
-    void set_properties();
-    void do_layout();
-    // end wxGlade
 
 
 	void OnSelectSEPath( wxCommandEvent& );
@@ -76,12 +72,12 @@ protected:
     // begin wxGlade: EphemerisPanel::attributes
     wxStaticText* label_custom_aya_t0;
     wxTextCtrl* text_t0;
-    wxStaticText* text_t0_formatted;
     wxPanel* panel_text_t0;
+    wxStaticText* text_t0_formatted;
     wxStaticText* label_custom_aya_ayat0;
     wxTextCtrl* text_ayan_t0;
-    wxStaticText* text_ayan_t0_formatted;
     wxPanel* panel_aya_t0;
+    wxStaticText* text_ayan_t0_formatted;
     wxCheckBox* check_period;
     wxTextCtrl* text_period;
     wxButton* button_sepath;
