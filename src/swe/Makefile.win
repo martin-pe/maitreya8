@@ -1,4 +1,4 @@
-CFLAGS = -g -O9 -Wall -U_WIN32 -D_WINDOWS_
+CFLAGS = -g -O9 -Wall -U_WINDOWS_
 OP=$(CFLAGS)  
 CC=gcc
 

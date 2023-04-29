@@ -6,7 +6,7 @@ CPR = cp -r
 
 MAKEFILE = Makefile.win
 MAIN_PROG = maitreya8.exe
-RELEASE_DIR = ../release
+RELEASE_DIR = ../release_v8
 
 SRC_DIR = src
 GUI_DIR = src/gui
