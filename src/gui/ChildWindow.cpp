@@ -382,7 +382,8 @@ void SimpleChildWindow::OnDataChanged()
 ******************************************************/
 void SimpleChildWindow::OnActivate( wxActivateEvent &event )
 {
-	if ( view )	view->SetFocus();
+	// attention: wx3.2 GTK will cause infinite loop of child focus events if the line below is uncommented
+	//if ( view )	view->SetFocus();
 	ChildWindow::OnActivate( event );
 }
 
