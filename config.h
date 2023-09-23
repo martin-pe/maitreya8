@@ -5,9 +5,9 @@
    language is requested. */
 #define ENABLE_NLS 1
 
-/* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
-   CoreFoundation framework. */
-/* #undef HAVE_CFLOCALECOPYCURRENT */
+/* Define to 1 if you have the Mac OS X function
+   CFLocaleCopyPreferredLanguages in the CoreFoundation framework. */
+/* #undef HAVE_CFLOCALECOPYPREFERREDLANGUAGES */
 
 /* Define to 1 if you have the Mac OS X function CFPreferencesCopyAppValue in
    the CoreFoundation framework. */
@@ -23,6 +23,33 @@
 /* Define if you have the iconv() function and it works. */
 /* #undef HAVE_ICONV */
 
+/* Define to 1 if you have the <inttypes.h> header file. */
+#define HAVE_INTTYPES_H 1
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#define HAVE_STDINT_H 1
+
+/* Define to 1 if you have the <stdio.h> header file. */
+#define HAVE_STDIO_H 1
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#define HAVE_STDLIB_H 1
+
+/* Define to 1 if you have the <strings.h> header file. */
+#define HAVE_STRINGS_H 1
+
+/* Define to 1 if you have the <string.h> header file. */
+#define HAVE_STRING_H 1
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#define HAVE_SYS_STAT_H 1
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#define HAVE_SYS_TYPES_H 1
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#define HAVE_UNISTD_H 1
+
 /* Name of package */
 #define PACKAGE "maitreya8"
 
@@ -33,7 +60,7 @@
 #define PACKAGE_NAME "maitreya8"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "maitreya8 8.0.1"
+#define PACKAGE_STRING "maitreya8 8.1"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "maitreya8"
@@ -42,9 +69,11 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "8.0.1"
+#define PACKAGE_VERSION "8.1"
 
-/* Define to 1 if you have the ANSI C header files. */
+/* Define to 1 if all of the C90 standard headers exist (not just the ones
+   required in a freestanding environment). This macro is provided for
+   backward compatibility; new code need not use it. */
 #define STDC_HEADERS 1
 
 /* Package version of system wide Swiss Ephemeris */
@@ -60,7 +89,7 @@
 #define USE_WXSQLITE_BUILTIN 1
 
 /* Version number of package */
-#define VERSION "8.0.1"
+#define VERSION "8.1"
 
 /* CFLAGS for wxpdfdoc */
 #define WXPDFDOC_CFLAGS ""
@@ -82,4 +111,4 @@
 
 /* Define to 1 if `lex' declares `yytext' as a `char *' by default, not a
    `char[]'. */
-/* #undef YYTEXT_POINTER */
+#define YYTEXT_POINTER 1

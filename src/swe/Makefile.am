@@ -8,7 +8,7 @@ EXTRA_PROGRAMS = swetest
 swetest_SOURCES = swetest.c swehel.c
 swetest_LDADD = libswe.a -lm
 
-EXTRA_DIST = *.h swemptab.c Makefile.win 
+EXTRA_DIST = *.h swemptab.c Makefile.win
 
 clean:
 	rm -f lib*.a *.o *~ *.bak 

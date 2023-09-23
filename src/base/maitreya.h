@@ -230,8 +230,8 @@ const wxString getApplicationVersion();
 
 // AboutDialog
 #define AUTHOR wxT( "Martin Pettau" )
-#define SARAVALI_URL wxT( "http://www.saravali.de" )
-#define SARAVALI_HELP_URL wxT( "http://www.saravali.de/documentation.html" )
+#define SARAVALI_URL wxT( "https://saravali.github.io" )
+#define SARAVALI_HELP_URL wxT( "https://saravali.github.io/documentation.html" )
 
 enum ChartType { CT_RADIX, CT_TRANSIT, CT_PARTNER };
 #define ASSERT_VALID_CHARTTYPE( t ) assert( t == CT_RADIX || t == CT_TRANSIT || t == CT_PARTNER );

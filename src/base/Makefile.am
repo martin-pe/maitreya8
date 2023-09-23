@@ -36,5 +36,4 @@ clean:
 	rm -f lib*.a *.o core *~ *.bak
 	rm -fr obj bin .libs
 
-EXTRA_DIST = Makefile.win 
-
+EXTRA_DIST = Makefile.win
