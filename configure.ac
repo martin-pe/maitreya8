@@ -5,7 +5,7 @@ dnl  File: configure.ac
 dnl
 dnl
 
-AC_INIT(maitreya8, 8.0.1a)
+AC_INIT([maitreya8], 8.1)
 AM_INIT_AUTOMAKE()
 
 dnl should be included according to documentation, but not supported by older versions of automake
@@ -20,7 +20,15 @@ AC_PROG_YACC
 AM_PROG_LEX
 
 AM_CONFIG_HEADER(config.h)
-AC_HEADER_STDC
+m4_warn([obsolete],
+[The preprocessor macro `STDC_HEADERS' is obsolete.
+  Except in unusual embedded environments, you can safely include all
+  ISO C90 headers unconditionally.])dnl
+# Autoupdate added the next two lines to ensure that your configure
+# script's behavior did not change.  They are probably safe to remove.
+AC_CHECK_INCLUDES_DEFAULT
+AC_PROG_EGREP
+
 
 AM_GNU_GETTEXT([external])
 
@@ -159,7 +167,7 @@ AC_DEFINE_UNQUOTED(WXPDFDOC_SYSTEM_VERSION, "$wxpdfdoc_ver", [Package version of
 AC_DEFINE_UNQUOTED(WXPDFDOC_CFLAGS, "$WXPDFDOC_CFLAGS", [CFLAGS for wxpdfdoc])
 AC_DEFINE_UNQUOTED(WXPDFDOC_LIBS, "$WXPDFDOC_LIBS", [LIBS for wxpdfdoc])
 
-AC_OUTPUT( Makefile po/Makefile.in
+AC_CONFIG_FILES([Makefile po/Makefile.in
   debian/Makefile
   src/Makefile
   src/wxJSON/Makefile
@@ -181,7 +189,8 @@ AC_OUTPUT( Makefile po/Makefile.in
   src/resources/mview/Makefile
   src/resources/print/Makefile
   src/dialogs/Makefile
-)
+])
+AC_OUTPUT
 
 echo
 echo "------------------------------------------------------"

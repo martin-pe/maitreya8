@@ -1,8 +1,14 @@
+maitreya8 (8.1) stable; urgency=low
+
+  * see website and ChangeLog in root folder
+
+ -- Martin Pettau <http://saravali.github.io/about.html>  Sat, 16 Sep 2023 15:03:43 +0200
+
 maitreya8 (8.0.1b) stable; urgency=low
 
   * see website and ChangeLog in root folder
 
- -- Martin Pettau <http://www.saravali.de/contact.html>  Wed, 16 Nov 2022 20:53:04 +0200
+ -- Martin Pettau <http://www.saravali.de/contact.html>  Wed, 16 Nov 2022 17:43:43 +0100
 
 maitreya8 (8.0.1) stable; urgency=low
 
