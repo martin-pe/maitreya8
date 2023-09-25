@@ -47,7 +47,8 @@ extern Config *config;
 ******************************************************/
 PlanetSignDisplayPanel::PlanetSignDisplayPanel( wxWindow* parent ) : ConfigPanel( parent )
 {
-		cfg = new WriterConfig( *config->writer );
+		cfg = new WriterConfig;
+        config2model();
 		props = new ChartProperties;
 		horoscope = new Horoscope;
 
@@ -117,7 +118,7 @@ PlanetSignDisplayPanel::~PlanetSignDisplayPanel()
 ******************************************************/
 void PlanetSignDisplayPanel::config2model()
 {
-	*cfg = WriterConfig( *config->writer );
+	*cfg = *config->writer;
 }
 
 /*****************************************************
@@ -211,6 +212,7 @@ void PlanetSignDisplayPanel::updateUi()
 	check_vedic_sign_names->Enable(! vpositions && ! ssymbols );
 	choice_capricorn->Enable( ! vpositions && ssymbols );
 
+    model2config();
 	writeTextContents();
 }
 
