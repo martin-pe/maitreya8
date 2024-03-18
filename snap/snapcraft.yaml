@@ -1,0 +1,110 @@
+name: maitreya8
+description: |
+    Maitreya is an Open Source platform for Vedic and western astrology. Supported platforms are Windows, Max OS X, Linux and UNIX. Mobile platforms like Android or iOS are not supported.
+    The software is licensed under the GNU Public License and is free for private and commercial use. Western and Vedic astrology seem to be two different topics. And so most astrology programs support exactly one of them.
+    Maitreya supports both. And in deed, both branches of astrology are essentially two different views of the same thing.
+base: core20
+confinement: strict
+grade: stable
+summary: |
+    Maitreya is an Open Source platform for Vedic and western astrology.
+license: GPL-2.0
+version: 8.0.1
+
+parts:
+  maitreya8:
+    source: https://github.com/martin-pe/maitreya8.git
+    plugin: autotools
+    build-packages:
+     - gcc
+     - libwxgtk3.0-gtk3-0v5
+     - libwxgtk3.0-gtk3-dev
+     - libwxgtk-media3.0-gtk3-0v5
+     - libwxgtk-media3.0-gtk3-dev
+     - libwxgtk-webview3.0-gtk3-0v5
+     - libwxgtk-webview3.0-gtk3-dev
+     - pkg-config
+     - libfontconfig1-dev
+     - build-essential
+     - automake-1.15
+
+    autotools-configure-parameters:
+     - --prefix=/usr
+    
+    stage-packages:
+     - libatk-bridge2.0-0
+     - libatk1.0-0
+     - libatspi2.0-0
+     - libcairo-gobject2
+     - libcairo2
+     - libdatrie1
+     - libepoxy0
+     - libfontconfig1
+     - libfreetype6
+     - libfribidi0
+     - libgdk-pixbuf2.0-0
+     - libgraphite2-3
+     - libgtk-3-0
+     - libharfbuzz0b
+     - libice6
+     - libjbig0
+     - libjpeg-turbo8
+     - libnotify4
+     - libpango-1.0-0
+     - libpangocairo-1.0-0
+     - libpangoft2-1.0-0
+     - libpixman-1-0
+     - libpng16-16
+     - libsm6
+     - libthai0
+     - libtiff5
+     - libwayland-client0
+     - libwayland-cursor0
+     - libwayland-egl1
+     - libwebp6
+     - libwxbase3.0-0v5
+     - libwxgtk3.0-gtk3-0v5
+     - libx11-6
+     - libxau6
+     - libxcb-render0
+     - libxcb-shm0
+     - libxcb1
+     - libxcomposite1
+     - libxcursor1
+     - libxdamage1
+     - libxdmcp6
+     - libxext6
+     - libxfixes3
+     - libxi6
+     - libxinerama1
+     - libxkbcommon0
+     - libxrandr2
+     - libxrender1
+     - flex
+     - xdg-utils
+    override-prime: |
+      sed -i 's|Icon=maitreya8|Icon=/usr/share/pixmaps/maitreya8.png|' ${SNAPCRAFT_STAGE}/usr/share/applications/maitreya8.desktop
+      snapcraftctl prime 
+
+
+layout:
+  /usr/share/maitreya8:
+    bind: $SNAP/usr/share/maitreya8
+  /usr/share/pixmaps/maitreya8.png:
+    bind-file: $SNAP/usr/share/pixmaps/maitreya8.png
+
+
+
+apps:
+  maitreya8:
+    command: usr/bin/maitreya8
+    desktop: usr/share/applications/maitreya8.desktop
+    extensions: [gnome-3-38]
+    
+    plugs:
+     - home
+     - desktop
+     - x11
+     - desktop-legacy
+
+
