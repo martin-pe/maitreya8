@@ -272,7 +272,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = changelog compat control copyright dirs docs maitreya.menu Makefile.am Makefile.in rules
+EXTRA_DIST = changelog compat control control_ubuntu copyright maitreya.menu Makefile.am rules
 all: all-am
 
 .SUFFIXES:
@@ -459,7 +459,7 @@ uninstall-am:
 
 
 clean:
-	rm -fr *~ *.bak *.log *substvars
+	rm -fr *~ *.bak *.log *substvars .debhelper
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
